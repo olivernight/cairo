@@ -1,0 +1,766 @@
+﻿GaïaMundi 
+
+Mini Guide d’utilisation des cartes et des 
+données 
+
+ 
+
+ 
+
+ 
+
+1 - Comment démarrer ? 
+
+Afficher un fond de carte 
+
+Onglet Cartes -> xxx 
+
+Exemple Etats du Monde 
+
+ 
+
+ 
+
+Choisir une donnée à afficher 
+
+Onglet Données -> Ponctuels et Graphiques de données -> Ponctuels(X) - > xxx 
+
+Par défaut, le réglage des classes est la médiane (Q2) : 50% des territoires sont 
+rouges (valeurs les plus élevés) et 50% sont jaunes (Valeurs les plus faibles). 
+
+La taille des ronds est proportionnelle à la valeur de la donnée. Lorsque la valeur 
+est négative, un signe « moins » est indiqué sur le rond 
+
+Exemple : 22-%variation espérance de vie [1975-2000] 
+
+ 
+
+. Changer le graphique ponctuel 
+
+
+-> Cercles 
+
+ Etoiles 
+
+ Triangles 
+
+ Flèches 
+
+ 
+
+
+
+Retour au sommaire 
+
+ 
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_5dbe9778.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_3a645e4.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_m415ffe29.png
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_m303fa30a.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_37bbe29d.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_3f5a8ac8.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO_html_md8c0385.png
+. Appliquer au fond de carte 
+
+
+-> appliquez au fond 
+
+ 
+
+. Changez le nombre de Quantiles 
+
+
+(classes d’effectifs égaux) 
+
+-> Quantiles -> Q2 Q3,Q4,Q5 
+
+ 
+
+. Changez la palette de couleur 
+
+
+-> Quantiles -> 5 couleur (par défaut) 
+
+ dégradé rouge 
+
+ dégradé marron 
+
+ 
+
+. Afficher et choisir des graphiques (Histogrammes, courbes,...) 
+
+
+Cliquez sur une aire de la carte : un graphique s’affiche en haut à droite de la 
+carte. 
+
+. Pour changer le graphique : 
+
+
+Onglet Données -> Ponctuels et Graphiques de données -> Graphique 1 - > 
+xxx 
+
+ou bien 
+
+Onglet Données -> Ponctuels et Graphiques de données -> Graphique 2 - > 
+xxx 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+. Superposer des données 
+
+
+Une fois réglé le fond de carte coloré : 
+
+Choisir une données à afficher 
+
+ Onglet Données -> Ponctuels et Graphiques de données -> Ponctuels(X) - > 
+xxx 
+
+ Régler la palette de couleur 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_mb5752f6.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3aabfe2b.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3858f1f8.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m3878acfd.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_4ceea14c.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_d2b6f2c.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m57a769eb.png 
+-> Quantiles -> 5 couleur (par défaut) 
+
+ dégradé rouge 
+
+ dégradé marron 
+
+Régler les classes 
+
+-> Quantiles -> 5 couleur (par défaut) 
+
+ dégradé rouge 
+
+ dégradé marron 
+
+ 
+
+ 
+
+
+
+ 
+
+. Variation manuelle des seuils de classe 
+o Une fois réglée sur la carte précédente (Q2, palette 5 couleurs) 
+o Appliquer au fond (le fond existant disparaît et est remplacé par le 
+fond réalisé avec la valeur des graphiques ponctuels). 
+o Survolez le bouton avec la pointe de la souris : une réglette 
+s’affiche sur la carte 
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+2 - Lexique des boutons 
+
+ 
+
+ 
+
+1 - Ouvre le tableau des abonnements du site aux ressources hypertextes communes 
+du réseau : 
+
+. permet l’import d’hypertextes, 
+. permet la mise à jour des documents déjà importés, 
+. commande leur publication ou non. 
+
+
+2 - Donne accès à la liste des hypertextes locaux (crées sur le site) et commande 
+leur publication ou non. 
+
+ 
+
+3 - Donne accès à la liste des onglets du site et commande leur publication ou 
+non : 
+
+. quand on clique sur ce bouton, une fenêtre s'ouvre et propose les trois 
+
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ca986dc.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_66622f8e.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3c6624b2.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m606f3e23.png
+options précédentes. 
+. une fois choisie l’option : un tableau s’affiche avec la liste des hypertextes ou 
+onglets du site. Des boutons permettent alors de définir les opérations et le 
+statut des documents. 
+
+
+ 
+
+ 
+
+Ouvre l'éditeur de pages du site. 
+
+Cet éditeur permet : 
+
+. de créer un nouveau document (hypertexte, page du site, onglet), 
+. de cloner un document existant, 
+. de modifier un document existant (sauf les originaux importés et les pages 
+réseau). 
+
+
+ 
+
+Pour pouvoir modifier un document importé, il faut d’abord le cloner en lui donnant 
+un nouveau nom. L’original est toujours conservé : 
+
+. quand on est dans l’onglet cartes du site : l’éditeur présente toutes les 
+fonctions. 
+. quand on est dans un autre onglet, l’éditeur s’ouvre sur la page courante. 
+
+
+ 
+
+ 
+
+ 
+
+Module de commande des cartes & balises hypertextes. 
+
+ 
+
+Ce bouton déclenche l’ouverture d’une fenêtre : le tableau de bord de commande 
+des cartes qui comporte les principales fonctions de réglage de l’affichage des cartes 
+et des données : 
+
+. choix de carte, 
+. choix de données à afficher, 
+. choix des icônes ponctuels ou modalité "fond de carte coloré", 
+. palette de couleurs, 
+. choix des quantiles. 
+
+
+ 
+
+ 
+
+ 
+
+Bouton de paramétrage des données affichées. 
+
+On ne trouve ce bouton que dans la barre d’outils de la plateforme. 
+
+ 
+
+. choix de la palette de couleurs, 
+. choix des quantiles (Q2 à Q5), 
+. choix du type d’icônes (rond, flèche, étoile, triangle …), 
+. choix d’appliquer la donnée sous forme de fond de carte colorié ou sous 
+forme d’icônes ponctuelles, 
+. choix d’afficher ou non le libellé par défaut dans le texte lorsqu’on on est en 
+mode éditeur de l’hypertexte. 
+
+
+ 
+
+ 
+
+ 
+
+Aide. A tout moment quand vous cliquez sur ce bouton, une fenêtre d'aide s'ouvre 
+sur la gauche de votre écran. 
+
+L’aide est aussi contextuelle. Pour avoir l’explication d’un bouton ou d’une 
+fonctionnalité, placez le curseur au-dessus de l’objet sur lequel vous souhaitez des 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m1e5a6a32.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m63692349.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_2aec24cb.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_5e6b863c.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_540c9287.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_278289b6.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m71614a65.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_2e25ac97.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m1c7046cc.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m9836d26.png
+renseignements et appuyez sur la touche majuscule (shift). 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+Affiche la légende. 
+
+Pour afficher la légende : cliquez sur le bouton. 
+
+Passer la souris sur la fenêtre pour la refermer. 
+
+¤ Pour occulter les légendes : survolez le bouton 
+
+ 
+
+Libellés détaillés. 
+
+Pour visualiser le libellé détaillé de la donnée : placez le pointeur de la souris au 
+dessus de la légende lorsqu'elle est affichée (le libellé détaillé est souvent nécessaire, 
+car la place disponible dans la légende ne suffit généralement pas à fournir une 
+information explicite sur la donnée). 
+
+ 
+
+ 
+
+ 
+
+Zoom plus. 
+
+ 
+
+ 
+
+ 
+
+Zoom moins. 
+
+ 
+
+ Taille initiale. 
+
+ 
+
+ Augmente la taille des icônes ponctuels. 
+
+ 
+
+ Diminue la taille des icônes ponctuels. 
+
+ 
+
+ Modifie l’opacité du fond de carte. Cliquez une première fois pour introduire de 
+la transparence. Cliquez une seconde fois pour supprimer la transparence (et ainsi de 
+suite). 
+
+ 
+
+ Occulte l’affichage des couleurs du fond de carte s’il y en a. Cliquez de nouveau 
+pour revenir à l’affichage des couleurs de fond de carte. 
+
+ 
+
+ Ce bouton sert alors à régler l’opacité des icônes (cliquez une fois pour mettre 
+de la transparence, cliquez une seconde fois pour enlever la transparence, et ainsi de 
+suite). 
+
+Vous le trouverez dans la barre d’outils de la plateforme. 
+
+ 
+
+ Met toutes les icônes à la même taille (utile pour avoir une lecture par classes 
+seulement). 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_7e88ba02.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_6ad1519.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m1626e034.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ca986dc.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m1626e034.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3b32300e.png 
+
+
+ Replace les icônes en taille proportionnelle (après qu’elles ont été placées à 
+taille égale : Cf. bouton précédent). 
+
+ 
+
+ Retour en mode mono varié lorsqu’on était en mode bi varié. Lors du retour, la 
+variable Icône Y est éliminée et le module analyse est réglé par défaut quantile 2 
+palette rouge et jaune (soit les deux premières couleurs de la palette 5 couleurs dites 
+"chinoises"). 
+
+ 
+
+
+
+ 
+
+ Bouton carte. 
+
+Vous trouvez ce bouton dans les hypertextes. 
+
+ 
+
+En mode hypertexte : 
+
+Lorsque vous cliquez sur ce bouton, une carte s’affiche et les répertoires de données 
+associés sont chargés dans les menus déroulants des icônes ponctuelles et des 
+graphiques de données. 
+
+ 
+
+En mode éditeur, c’est-à-dire lorsque vous fabriquez des hypertextes : 
+
+. Cf. menu édition 
+. ou bouton 
+
+
+ 
+
+Le bouton carte est situé dans la barre d’outils de l’éditeur et contient la 
+balise de commande d’affichage de la carte active (c’est-à-dire le dessin de 
+la carte affichée, sans les données). 
+
+ 
+
+Pour l’insérer dans l’hypertexte, placez le curseur à l’endroit où vous 
+souhaitez l’insérer dans le texte, puis cliquez sur le bouton dans la barre 
+d’outils. Un clone du bouton est alors placé dans le texte à l’endroit désiré. 
+
+ 
+
+Toute cartographie de données via l’hypertexte doit commencer par l’affichage de la 
+carte. Autrement dit, tout scénario de données cartographiées commence par un 
+bouton rouge. 
+
+ 
+
+Rappel : les données sont associées à des cartes. Le bouton rouge de carte ouvre en 
+réalité la carte et ses données associées. Un même dessin de carte (par exemple 
+France des régions) peut être associé à différents blocs de données. Ce qui vous placez 
+dans l’hypertexte avec le bouton rouge, c’est une fonction qui dessine la carte et qui 
+mobilise les répertoires de données associés. Ces blocs cartes + données sont 
+identifiés dans le menu déroulant cartes. 
+
+ 
+
+ Affiche les données sous forme de fond de carte coloré. 
+
+ 
+
+ 
+
+Vous trouverez ce bouton dans deux types d’endroits : 
+
+ 
+
+1 - Dans la barre d’outils de la plateforme : il sert à passer d’une représentation 
+d’une donnée en cours d’affichage sous forme icônes ponctuelles, vers une 
+représentation en fond de carte coloré. 
+
+ 
+
+2 - Dans les hypertextes. Il s’agit alors du bouton "fond de carte" c’est-à-dire du 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ca986dc.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m4f314d1d.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3d7212b1.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ca986dc.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3d7212b1.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m480d2255.png
+bouton de commande d’affichage de données sous forme de coloriage du fond de 
+carte. 
+
+ 
+
+NB. A toute donnée projetée sur la carte est toujours aussi associé un graphique de 
+données (histogramme, courbe,…). 
+
+ 
+
+En mode hypertexte 
+
+Ce bouton affiche les icônes avec des paramètres (choix d’une données, couleurs et 
+quantiles) enregistrés en mode éditeur (Cf. ci-dessous). 
+
+ 
+
+En mode éditeur, c’est-à-dire lorsque vous fabriquez des hypertextes : 
+
+. Cf. menu édition dans la plateforme 
+. ou Cf. bouton dans les sites filleuls 
+
+
+ 
+
+Le bouton est situé dans la barre d’outils de l’éditeur. Il contient la balise 
+de commande d’affichage de la donnée représentée par le fond de cadre en 
+cours ainsi que les paramètres du graphique de données en cours dans la 
+carte active. 
+
+ 
+
+Pour insérer le bouton dans l’hypertexte, placez le curseur à l’endroit où 
+vous souhaitez l’insérer dans le texte, puis cliquez sur le bouton dans la 
+barre d’outils. Un clone du bouton est alors placé dans le texte à l’endroit 
+désiré. 
+
+ 
+
+ 
+
+
+
+ Bouton fond + icône + graphique 
+
+Permet d’afficher d’une seul coup : 
+
+. un fond de carte coloré 
+. des graphiques ponctuels (icônes), 
+. ainsi que des graphiques de données (histogrammes, courbes, ...). 
+
+
+ 
+
+En mode hypertexte : 
+
+Ce type de bouton se trouve dans certains hypertextes. Lorsque vous cliquez sur ce 
+bouton, le fond de la carte est coloré, des icônes ponctuelles sont affichées sur la 
+carte et un graphique de données est sélectionné. 
+
+ 
+
+En mode éditeur, c’est-à-dire lorsque vous fabriquez des hypertextes : 
+
+. Cf. menu édition dans la plateforme 
+. ou Cf. bouton dans les sites filleuls 
+
+
+ 
+
+Le bouton est situé dans la barre d’outils. Il contient la balise de commande 
+d’affichage de du fond de carte coloré, des icônes, avec leurs paramètres de réglage 
+(palette de couleurs, quantiles, types d’icônes). Ce bouton contient aussi les 
+graphiques de données sélectionnées dans la carte active. (Attention, on oublie 
+souvent de sélectionner un graphique cohérent avec les données affichées en fonds 
+de carte et en icônes). 
+
+ 
+
+Pour insérer le bouton dans l’hypertexte, placez le curseur à l’endroit où vous 
+souhaitez l’insérer dans le texte, puis cliquez sur le bouton dans la barre d’outils. Un 
+clone du bouton est alors placé dans le texte à l’endroit désiré. 
+
+ 
+
+ Bouton des graphiques de données. 
+
+Ce bouton permet d'afficher des données de synthèse (histogrammes, courbes, ...). 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ca986dc.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m480d2255.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m4f314d1d.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ca986dc.png
+Cette présentation en graphique de données permet : 
+
+. une analyse des caractéristiques du territoire (en passant d'un graphique à 
+l'autre sans changer de territoire), 
+. une analyse comparée des territoires (en changeant les territoires sans 
+changer les graphiques). 
+
+
+ 
+
+Vous pouvez trouver ce bouton dans deux types d’endroits : 
+
+. dans la barre d’outils de la carte, 
+. dans les hypertextes. 
+
+
+ 
+
+1 - Lorsque le bouton est dans la barre d’outils de la carte 
+
+Cliquez sur le bouton et ensuite sur une zone de la carte, le graphique en 
+cours relatif aux données de cette zone s'affiche. 
+
+NB. Le choix du graphique ne s’opère pas ici : soit il s’opère par le menu 
+déroulant des menus graphiques de données, soit il est enregistré dans un 
+bouton de commande dans l’hypertexte : Cf. ci-dessous. 
+
+ 
+
+¤ Cliquez sur le bouton et sélectionnez une aire de la carte pour afficher. 
+
+Survolez ce bouton avec le pointeur de la souris pour refermer le graphique. 
+
+ 
+
+2 – Lorsque le bouton est dans un hypertexte 
+
+ 
+
+En mode hypertexte 
+
+Ce bouton sélectionne automatiquement une ligne dans le menu des graphiques de 
+données. Cliquez sur la carte pour afficher le graphique. Procédez comme indiqué ci-
+dessus avec la barre d’outils pour afficher ou refermer le graphique. 
+
+ 
+
+En mode éditeur, c’est-à-dire lorsque vous fabriquez des hypertextes : 
+
+. Cf. menu édition dans la plateforme 
+. ou Cf. bouton dans les sites filleuls 
+
+
+ 
+
+Le bouton est situé dans la barre d’outils de l’éditeur. Il contient la balise 
+de commande d’affichage de graphiques de données sélectionné dans la 
+carte active. 
+
+ 
+
+Pour insérer le bouton dans l’hypertexte, placez le curseur à l’endroit où 
+vous souhaitez l’insérer dans le texte, puis cliquez sur le bouton dans la 
+barre d’outils. Un clone du bouton est alors placé dans le texte à l’endroit 
+désiré. 
+
+ Il s’agit du bouton "icônes sur carte", c’est-à-dire du bouton de commande 
+d’affichage de données sous forme d’icônes (rond, flèche, étoile, etc.) à partir de 
+l’hypertexte. 
+
+ 
+
+NB. A toute donnée projetée sur la carte est toujours aussi associé un graphique de 
+données (histogramme, courbe, …). 
+
+ 
+
+Vous trouverez ce bouton dans les hypertextes 
+
+En mode hypertexte 
+
+Ce bouton affiche les icônes avec des paramètres (choix d’une données, couleurs et 
+quantiles, taille des icônes) enregistrés en mode éditeur (cf. ci-dessous) 
+
+ 
+
+En mode éditeur, c’est-à-dire lorsque vous fabriquez des hypertextes : 
+
+. Cf. menu édition dans la plateforme 
+. ou Cf. bouton dans les sites filleuls 
+
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m4f314d1d.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m29716a8c.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3aabfe2b.png
+Le bouton est situé dans la barre d’outils de l’éditeur. Il contient la balise de 
+commande d’affichage de la donnée représentée par des icônes ponctuelles, ainsi que 
+les paramètres du graphique de données en cours dans la carte active. 
+
+ 
+
+Pour insérer le bouton dans l’hypertexte, placez le curseur à l’endroit où vous 
+souhaitez l’insérer dans le texte, puis cliquez sur le bouton dans la barre d’outils. Un 
+clone du bouton est alors placé dans le texte à l’endroit désiré. 
+
+ 
+
+ Occulte l’affichage des icônes ponctuelles en cours. Pour désinhiber l’affichage 
+des icônes, cliquez une seconde fois et ainsi de suite. 
+
+ 
+
+Attention, n’oubliez pas de désinhiber l’affichage ! Car cette inhibition persiste même 
+si on change de donnée. 
+
+ 
+
+ 
+
+ Module Analyse (voir ci-après) 
+
+ 
+
+. 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+

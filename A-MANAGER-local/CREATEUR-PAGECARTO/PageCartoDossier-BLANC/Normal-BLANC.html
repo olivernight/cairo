@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>Article</title>
+<script language="javascript">
+/*
+// trois parametres passés par URL:
+
+posgraph -> nb caractères oiur oisitionner ke graphique dans le texte en mod float
+cesure   -> texte de séparation à la fin de la div en colobnne droite
+regl	 -> nb de pixel en plus ou en moins pour ajuster la découpe du texte (éviter que les lettre ne soient coupées)
+*/
+var urlvar="";
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1) 
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	//var visiblebalise=urlvar['balisevisible']
+	//?cesure=&regl=0&posgraph=2500
+	
+
+
+var largecontent;
+if(urlvar['largecontent']){largecontent=urlvar['largecontent'];}else{largecontent="98%"};
+if(largecontent==""){largecontent="98%"}
+	
+var posgraph;
+if(urlvar['posgraph']){posgraph=urlvar['posgraph'];}else{posgraph=0};
+if(posgraph==""){posgraph=0}
+//posgraph=parseInt(posgraph);
+
+var cesure;
+if(urlvar['cesure']){cesure=urlvar['cesure'];}else{cesure=""};
+var regl;
+if(urlvar['regl']){regl=urlvar['regl'];}else{regl=0};
+var nbcartxt=0
+
+function chargehypert(){
+var HyperT=window.frames[0].hypertexte.document.getElementsByTagName("body")[0].innerHTML	;
+
+var nba=window.frames[0].hypertexte.document.getElementsByTagName("a").length
+var nba0=window.frames[0].hypertexte.document.getElementsByTagName("a")[0]
+
+
+
+if(posgraph==0){posgraph=nba0.outerHTML}
+
+posgraph=HyperT.indexOf(posgraph)+posgraph.length
+
+if(cesure==""){
+
+
+var HyperT1=HyperT.substr(0,posgraph);
+var HyperT12=HyperT.substr(posgraph,HyperT.length);
+
+var nbc12=HyperT12.length
+
+
+var HyperT1Bis1=HyperT12.substr(0,ecartCarteGraph1);
+var HyperT1Bis2=HyperT12.substr(ecartCarteGraph1,nbc12);
+
+
+//var HyperT2=HyperT.substr(posgraph+ecartCarteGraph1,HyperT.length);
+
+
+
+//document.getElementById("suite").style.display="none";
+}else{
+
+var HyperT0=HyperT.split(cesure)[0]+cesure;
+var HyperT1=HyperT0.substr(0,posgraph);
+var HyperT1Bis=HyperT0.substr(posgraph,posgraph+ecartCarteGraph1);
+var HyperT2=HyperT0.substr(posgraph+ecartCarteGraph1,HyperT.length);
+
+
+var HyperT3=HyperT.split(cesure)[1];
+//document.getElementById("suite").innerHTML=HyperT3;
+//document.getElementById("suite").style.display="block";
+};
+
+/*document.getElementById("HyperTexte").innerHTML='<span style="clear:left">'+HyperT1+'</span>'+HyperT1Bis+'<img id="imgfloat" src="transparent.jpg" style="float:left;border : 0px solid red; width:265px;height:210px;padding:3px"/>'+HyperT2+''  ;  */
+
+document.getElementById("HyperTexte").innerHTML='<span style="clear:left">'+HyperT1+'</span>'+HyperT1Bis1+'<img id="imgfloat" src="transparent.jpg" style="float:left;border : 0px solid red; width:'+(largeambasegraphique+35)+'px;height:210px;padding:3px"/>'+HyperT1Bis2+''  ;     
+
+if(document.getElementById("baliseTitrePage")){document.getElementById("baliseTitrePage").innerHTML=""};
+
+//.style.height.replace("px","")
+//HF+=parseInt(document.getElementById("suite").offsetHeight)
+
+var clonecarte='<div style="position:relative;float:right;padding:10px;z-index:500000"><div id="divcadre1" style=" width:'+parammetresCarteInTxt[0]+'px;height:'+(parammetresCarteInTxt[5]-150)+'px"></div></div>'
+
+var clonecarteH='<div id="idDivHisto2" style="position: relative;float:right;width:'+largeambasegraphique+'px;height:210px;;padding:10px;z-index:500000"><table padding="0px"style="font-style:normal;font-weight:normal"><tr><td><div id="histla2" style="width:200px;height:200px;font-size:9px;text-align:left"></div></td></tr></table></div>'//
+		nbcartxt=document.getElementById("HyperTexte").innerHTML.length//document.getElementById("HyperTexte").textContent.replace(/\n/g,' ').length
+		//alert(nbcartxt)
+		if(nbcartxt > RepliqueOuiNon){
+		var newTXT=document.getElementById("HyperTexte").innerHTML
+		var newtext1=newTXT.substr(0,nbcartxt*PercentText)
+		var newtext12=newTXT.substr(nbcartxt*PercentText,nbcartxt)
+		
+		//var newtext2=document.getElementById("HyperTexte").innerHTML.substr(nbcartxt*7.5/15,nbcartxt)
+		var nbcartxt12=newtext12.length
+		var newtext2=newtext12.substr(0,ecartCarteGraph2)
+		var newtext22=newtext12.substr(ecartCarteGraph2,nbcartxt12)
+		//newtext2=newtext2.replace("<span",clonecarte+"<span")
+		
+		var nbcartxt22=newtext22.length
+		var newtext3=newtext22//.substr(0,nbcartxt22)
+		
+		//var newtext4=newTXT.substr(nbcartxt*7.5/15+30,nbcartxt)
+		
+		document.getElementById("HyperTexte").innerHTML=newtext1+clonecarte+newtext2+clonecarteH+newtext3//+newtext4
+		}
+if(parent.document.getElementById("fra")){
+if(regl!=""){
+var Hici=document.getElementById("HyperTexte").style.height.replace("px","");
+Hici=parseInt(Hici)+parseInt(regl);
+document.getElementById("HyperTexte").style.height=Hici+"px";
+};
+var HF=0
+HF+=parseInt(document.getElementById("HyperTexte").offsetHeight)
+
+parent.document.getElementById("fra").height=(HF+50)+"px"
+}
+var newtext1=document.getElementById("HyperTexte").innerHTML
+
+var cf=newtext1.split('Cfond(')[1].split(',')[0]+','+newtext1.split('Cfond(')[1].split(',')[1]
+var cp=newtext1.split('CPonctuel(')[1].split(',')[0]+','+newtext1.split('CPonctuel(')[1].split(',')[1]
+var cg=newtext1.split('Cgraph(')[1].split(',')[0]
+setTimeout('CPonctuel('+cp+',2,0,1);Cfond('+cf+',5);Cgraph('+cg+',0);',2000)
+
+};
+function copidivcadre(){
+
+if(nbcartxt > RepliqueOuiNon){
+document.getElementById("divcadre1").innerHTML="";
+document.getElementById("divcadre1").innerHTML=window.frames.framecarte.document.getElementById("panelCarte").innerHTML;
+
+document.getElementById("histla2").innerHTML=document.getElementById("innerhisto").innerHTML;
+
+var h2=document.getElementById("idDivHisto2").firstChild.offsetTop;
+var l2=document.getElementById("idDivHisto2").firstChild.offsetLeft;
+
+
+document.getElementById("histla2").style.position="absolute";
+
+	if(RadOuCourb[0]==1 || RadOuCourb[1]==1){
+	document.getElementById("histla2").style.left=(l2+45)+"px";
+	document.getElementById("histla2").style.top=(h2-15)+"px";
+	}else{
+	document.getElementById("histla2").style.top=(h2+3)+"px";
+	document.getElementById("histla2").style.left=(l2)+"px";
+	}
+}
+}
+</script>
+<script language="javascript">
+var NoDatx=0
+var iSujet=0
+function libelhistomultiover2(){}
+function libelhistomultiout(){}
+function grossiH(){}
+function reduitH(){}
+var chinois="chinois";
+var marron="marron";
+var rouge="rouge";
+var Nonchinois="Nonchinois";
+function CPonctuel(a,b,c,d,e){
+window.frames[0].frames.hypertexte.CPonctuel(a,b,c,d,e);
+};
+function Cfond(a,b,c){
+window.frames[0].frames.hypertexte.Cfond(a,b,c);
+};
+
+function Cgraph(a,b){
+iSujet=a
+b=0
+window.frames[0].frames.hypertexte.Cgraph(a,b);
+setTimeout("copygraph()",500);
+
+};
+
+function marqueurcarte(){
+
+};
+function calculHisto(a,b){
+
+NoDatx=a
+window.frames[0].forceNoDatx(NoDatx)
+window.frames[0].marqueurcarte()
+Cgraph(iSujet,0)
+}
+function rien(){}
+
+var strokewidthpas
+var strokepas
+var opacpas="1"
+function passon(a){}
+function passonnuage(a){}
+function passout(a){}
+function passoutnuage(a){}
+function svggeneral(){}
+function svgdown(a){}
+function svgclick1(){calculHisto(NoDatx,iSujet)}
+function svgclick2(){ calculHisto(NoDatx,iSujet)}
+function svgout(){}
+
+var initgraph=0
+
+function copygraph(){
+
+var hist=window.frames[0].document.getElementById("innerhisto").outerHTML;
+hist=hist.replace(/width="100px"/g,"").replace(/font-size:5px/g,"font-size:7px")
+if(hist.indexOf("NaNpx")>0){hist=hist.replace(/NaNpx"/g,'50px;visibility:hidden"')}
+document.getElementById("histla").innerHTML=hist;
+document.getElementById("commandeTialleHisto").style.display="none";
+document.getElementById("innerhisto").style.display="block";
+var letop=document.getElementById("imgfloat").offsetTop;
+document.getElementById("innerhisto").style.top=(letop+250+15)+"px";
+document.getElementById("innerhisto").style.left=(document.getElementById("imgfloat").offsetLeft-17)+"px";
+document.getElementById("commandeTialleHisto").parentNode.parentNode.parentNode.parentNode.style.display="none";
+document.getElementById("innerhisto").firstChild.style.height="200px"
+
+document.getElementById("innerhisto").firstChild.style.verticalAlign="top" 
+document.getElementById("innerhisto").firstChild.firstChild.style.verticalAlign="top" 
+document.getElementById("innerhisto").firstChild.firstChild.firstChild.style.verticalAlign="top" 
+
+
+
+ajusteGraph();
+setTimeout('copidivcadre()',10)
+
+}
+var RadOuCourb;
+function ajusteGraph(){
+RadOuCourb=window.frames[0].returnRadarOuCourbe()
+var xtop=document.getElementById("imgfloat").offsetTop+225
+var xleft=document.getElementById("imgfloat").offsetLeft
+
+if(RadOuCourb[0]==1 || RadOuCourb[1]==1){xleft+=45}else{xtop+=15}
+document.getElementById("innerhisto").style.top=xtop+"px"
+document.getElementById("innerhisto").style.left=xleft+"px"
+
+}
+
+
+
+
+function gotou(a){}
+</script>
+<style type="text/css">
+body {
+font-size:8px;
+font-family:Century Gothic;
+text-align:left;
+
+}
+.lecontent {
+font-size:12px;
+font-family:Century Gothic;
+text-align:justify;
+
+}
+#commandeTialleHisto{
+display:none;
+
+}
+#aflibel{
+position : relative;
+left:5px;
+top:185px;
+}
+a:link {  color:#3D5A81; text-decoration:none ;font-weight:bold;} a:visited {  color:#0000A0; text-decoration:none ;} a:hover { font-weight:bold; color:#E00000; text-decoration:underline; } a:active { font-weight:bold; color:#E00000; text-decoration:underline ;} a:focus { font-weight:bold; color:#00E000; text-decoration:underline :}
+</style>
+</head>
+<body >
+
+
+
+
+<div id="divcadre0">
+<div id="div0" style="float:left">
+<img id="imgtrame" src="transparent.jpg" style="width: 760px; height: 570px;">
+</div> 
+
+<div style="width:98%; position:relative;left : 0px;top:-13px" class="lecontent" id="HyperTexte" ></div>
+
+
+
+<div id="histla" style="position : absolute ; top:-225px;left:10px;float:left;width:210px;height:210px;font-size:9px"></div>
+</div>
+<div style="position:absolute;top:0px;left:0px">
+<iframe name="framecarte" id="framecarte" style="border: 0px solid gray ; width: 100%; height: 370px; background-color: white;" src="PageCarto/Module-PageCarto-Allege.html" frameborder="0" scrolling="no"></iframe></div>
+
+
+
+<script language="javascript" >
+var posgraghforce=0
+var ecartCarteGraph1=0
+
+var RepliqueOuiNon=0
+var PercentText=0
+var ecartCarteGraph2=0
+var largeambasegraphique=230
+var parammetresCarteInTxt=new Array()
+
+function recupVecteurParametres(a){
+parammetresCarteInTxt=a
+
+posgraghforce=parammetresCarteInTxt[5]
+ecartCarteGraph1=parammetresCarteInTxt[6]
+RepliqueOuiNon=parammetresCarteInTxt[7]
+PercentText=parammetresCarteInTxt[8]
+ecartCarteGraph2=parammetresCarteInTxt[9]
+largeambasegraphique=parammetresCarteInTxt[10]
+
+}
+
+
+
+
+
+
+
+</script>  
+</body>
+</html>

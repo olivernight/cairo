@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+[
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+
+<svg id="gene"  
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+ 
+
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+
+
+>
+
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+var brsrici="ei"
+
+
+function affichN(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGaffichN()}else{
+top.frames.Num0.frames.couches.zoom.SVGaffichN()
+}
+}
+var strokewidthpas
+var strokepas
+var opacpas
+function passon(a){
+strokepas=a.getAttribute('stroke')
+a.setAttribute('stroke','navy');
+opacpas=a.getAttribute('fill-opacity')
+a.setAttribute('fill-opacity','0.5')  
+}
+function passout(a){
+a.setAttribute('fill-opacity',opacpas)
+a.setAttribute('stroke',strokepas);
+}
+function svggeneral(){
+
+brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGgeneral()}else{
+top.frames.Num0.frames[2].indic1()
+}}
+function svgdown(a){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGdown()}else{
+top.frames.Num0.frames.couches.zoom.selxsvg();top.frames.Num0.frames.couches.zoom.rien();
+}}
+function svgclick1(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick1()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}
+}
+function svgclick2(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick2()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx2(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}}
+function svgout(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGout()}else{
+//top.frames.Num0.frames.couches.zoom0()
+//<image x="10" Y="10" width="300" height="300" xlink:href="fonds france contour.jpg" ></image>
+}}
+]]></script>
+
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+ <stop class="begin" offset="0" style="stop-color:#5555AA"/>
+ <stop class="end" offset="1" style="stop-color:white"/>
+</radialGradient>
+</defs>
+
+<g space="preserve" opacity="1" transform="matrix(0.3, 0, 0, 0.3, 0, 0)"  name="ns" id="totalsvg">
+
+
+
+
+
+
+	 
+	 
+
+	
+<rect y="-150" x="-150" height="800" width="800" style="fill: url(#grad1) ; fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.5; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"  transform="matrix(1, 0, 0, 1, 0, 0)" fill="#EBEFF8" id="rectmove"></rect>
+
+
+<g space="preserve" opacity="1" transform="matrix(1, 0, 0, 1, -160, -15)"   id="calageAires">
+
+
+
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond1"/>
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond2"/>
+
+
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="BAS RHIN" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"  onclick="tailCarte='../800-BAS-RHIN';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer" id="1"><path stroke-width="1" stroke="gray" id="p1" d="M 338.59569411011523 62.92944430217676 L 344.9954346991037 81.5953521126761 L 374.32757592829705 87.99508194622285 L 373.79426466069145 93.32822151088357 L 380.72731651728554 94.92814724711911 L 397.79328783610754 86.92846478873247 L 403.1264058898848 88.52841741357241 L 406.8595874519846 92.26157746478884 L 418.05913213828427 93.86153008962873 L 429.2586768245839 62.39613572343154 L 478.3233483994878 59.72956594110127 L 524.7214609475033 76.795548015365 L 509.7887346991037 117.8605505761845 L 470.3236740076825 166.39190012804102 L 463.923933418694 180.25800384122925 L 464.45724468629965 201.05717285531375 L 460.19075185659415 203.19040717029458 L 455.390947759283 231.9892398207427 L 458.5908180537772 249.05521382842517 L 451.65776619718315 251.72177016645335 L 434.058480921895 298.3865396927017 L 415.40923866837386 289.7535580025609 L 415.82588834827146 278.8373358514725 L 387.0937233034571 267.9211137003842 L 381.7106085787452 257.4382040973112 L 367.34452740076824 254.6716517285532 L 362.5947199743918 248.52189987195908 L 356.72829065300897 251.1884588988477 L 347.6619937259923 246.38865480153657 L 350.3285527528809 239.45560294494243 L 347.6619937259923 233.58917362355965 L 351.3951752880922 213.85663252240727 L 347.1286824583867 209.59016389244567 L 352.46179782330347 207.99021126760573 L 352.46179782330347 204.25702432778496 L 342.32887567221513 205.32366837387968 L 342.86218962868116 201.05717285531375 L 359.39484967989756 199.99052880921897 L 379.1273800256082 165.32528297055063 L 373.2609533930858 165.85859154929585 L 370.06108309859155 158.92555313700393 L 379.1273800256082 139.72633674775938 L 372.1943281690141 131.72665428937273 L 351.3951752880922 121.5937375160052 L 339.662319334187 137.59307554417416 L 334.32920208706787 123.19366325224087 L 342.32887567221513 120.52709346991043 L 340.1956306017926 117.8605505761845 L 334.86251362355955 117.8605505761845 L 316.7299176184379 110.92748527528818 L 323.1296574007683 92.26157746478884 L 330.06270898847634 94.39483866837395 L 338.59569411011523 62.92944430217676 338.59569411011523 62.92944430217676  "></path><title>BAS RHIN</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="HAUT RHIN" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-HAUT-RHIN';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="2"><path stroke-width="1" stroke="gray" id="p2" d="M 381.71501024327785 257.4325736235596 L 387.10106658130604 267.9284327784892 L 415.82661971830987 278.8386184379002 L 415.41229321382843 289.7488040973112 L 434.0562868117798 298.3802880921896 L 434.33248655569787 320.4078092189501 L 444.13784635083226 335.3229987195904 L 437.9231907810499 356.1766440460948 L 431.925233162612 385.5829951344431 L 436.7250399487836 399.4490988476313 L 428.7253655569782 405.84883943661976 L 445.25802560819466 430.38117387964155 L 433.52516965428936 446.3805253521127 L 435.6584147247119 447.98045915492963 L 428.1920516005122 460.77993871959035 L 420.19237720870683 457.0467560819463 L 418.05913213828427 461.31325052496805 L 423.9255587708067 463.9798087451985 L 413.79263930857877 473.5794185531371 L 402.5930946222792 473.5794185531371 L 387.12705441741355 479.97915833546745 L 384.99380934699104 475.17935343149816 L 375.39419846350836 472.5127952112677 L 378.59406875800255 463.9798087451985 L 368.9944605633803 459.1800038412293 L 368.9944605633803 453.31357451984644 L 357.79491587708065 436.78091446863004 L 346.59537119078107 439.44747349551864 L 345.5287459667094 423.9814359795135 L 350.3285527528809 423.44812202304746 L 347.6619937259923 402.64896914212557 L 318.8631640332907 389.8494879641486 L 315.66329427656854 382.3831248399489 L 325.79621562099874 374.3834504481435 L 323.66296893725996 365.8504647887325 L 328.9960856466069 336.5183235595391 L 339.662319334187 327.45202663252246 L 350.3285527528809 305.0529372599233 L 347.1286824583867 300.7864417413573 L 362.0614087067862 260.78806978233035 L 367.35224711907813 254.670495518566 381.71501024327785 257.4325736235596 "></path><title>HAUT RHIN</title></g>
+
+
+
+</g>
+</g>
+
+
+
+
+
+
+
+
+<script><![CDATA[
+
+
+]]></script>
+
+
+</svg>

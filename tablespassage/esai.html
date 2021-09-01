@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  
+  <meta http-equiv="content-type"
+ content="text/html; charset=UTF-8">
+  <title>essai</title>
+  <script language="javascript" src="tablepass.js"></script>
+   <script language="javascript" src="metalanguage.js"></script>
+  <script language="javascript">
+
+  </script>
+</head>
+<body style="background-image: url(fondaffiche.JPG);"         
+<a name="haut"></a>
+
+<div
+ style="position: absolute; z-index: 1; top: 30px; left: 15px;">
+<script language="javascript">
+for(i=titre.length-1;i>-1;i--){
+document.write('<br><table style="text-align: left; left: 24px; top: 94px; width: 647px;background-color:white;opacity:0.5 " border="1" cellpadding="2" cellspacing="2" onmouseover="javascript:this.style.opacity=0.9" onmouseout="javascript:this.style.opacity=0.5"><tbody><tr><td><table style="text-align: left; left: 24px; top: 94px; width: 647px;background-color:white;opacity:1 " border="0" cellpadding="2" cellspacing="2"><tbody><tr>')
+document.write('<th style="vertical-align: top; height: 30px;"><font style="font-family: arial;font-size: 13px">')
+document.write((i+1)+" - "+titre[i])
+document.write('</font></th></tr><tr><td style="vertical-align: top;"><font style="font-family: arial;font-size: 13px">')
+document.write(tablepas[i])
+document.write('</font><br><font style="font-family: arial;font-size: 11px"><i><a href="#haut">Haut de page</a></i></font>')
+document.write('<br></td></tr></tbody></table></td></tr></tbody></table><a name="tablepas'+(i-1)+'"></a><br><br>')
+}
+for(z=1;z<100;z++){document.write('<br>')}
+</script>
+
+</div>
+
+</body>
+</html>

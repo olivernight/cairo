@@ -1,0 +1,393 @@
+﻿1 
+
+ 
+
+Module PageCarto Collaboratif 
+
+ 
+
+PageCarto Collaboratif est une version destinée à la production collaborative d’hypertexte, 
+en ligne. 
+
+ 
+
+Une fois les données intégrées et les menus d’affichage fabriqués, chacun des participants 
+peut s’inscrire et contribuer à la réalisation du scénario hypertexte 
+
+ 
+
+Le Module comporte les mêmes fonctions que le PageCarto classique permettant de 
+façonner soi-même des cartes : choix des données dans les menus disponibles, réglage des 
+couleurs, des quantiles, etc. l’érgonomie un peu différente du mode classique de façon à 
+laisser place aux outils du travail collaboratif : 
+
+. Création d’un compte ou connexion à son compte 
+. Saisie de texte ou éléments de code HTML 
+. Incorporation des liens hypertextes qui afficheront les cartes que l’on a fabriquées, 
+les graphiques, le pointage d’une aire géographique particulière. 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+PageCarto Collaboratif est conçu pour un travail équipe qui se répartit trois rôles : 
+
+. Le rôle technique de créer le PageCarto Collaboratif , d’intégrer les données et de 
+fabriquer Les menus de données ( avec les outils de SuiteCairo) 
+. Le rôle de rédaction de l’hypertexte en mode collaboratif 
+. Le rôle de modérer et de mettre en forme le travail collectif réalisé en mode 
+collaboratif 
+
+
+Les participants à la rédaction de l’hypertexte peuvent demander au pool technique 
+d’intégrer de nouvelles données en cours de route … 
+
+ 
+
+Voir ci-après le graphique descriptif des rôles. 
+
+
+2 
+
+DISCUSSION SUR LE PROJET 
+
+Choix de la 
+géographie 
+
+ 
+
+Questionnement de 
+départ 
+
+ 
+
+Choix de 
+données 
+
+ 
+
+Façonnage des données et 
+des menus 
+
+Pool technique avec les 
+outils de SuiteCairo 
+
+Hypertexte collaboratif 
+
+Pool de scénarisation avec le Module 
+PageCarto Collaboratif en ligne 
+
+ 
+
+Modération et Mise 
+en Forme 
+
+Modérateur avec 
+l’interface de 
+modération 
+
+Edition du PageCarto 
+collaboratif 
+
+Pool technique avec les 
+outils de SuiteCairo 
+
+Un travail d’équipe avec un pool technique, un pool de scénarisation et une modération 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+3 
+
+ 
+
+A – Créer un module PageCarto Collaboratif 
+
+ 
+
+ 
+
+ 
+
+Choisir le nom du dossier carte 
+
+ 
+
+ 
+
+ 
+
+
+4 
+
+Deux cas de figure : 
+
+. Si vous aviez déjà créé le Module PageCarto en version Standard sélectionnez seulement le 
+bouton additif Collaboratif puis enregistrez ( en bas de page) 
+. Si vous créez le module PageCarto ex nihilo, sélectionnez le bouton all puis enregistrez ( en 
+bas de page) 
+
+
+ 
+
+Pour le reste, le fonctionnement du générateur PageCarto est exactement équivalent au PageCarto 
+Classique. En particulier, si vous intégrez de nouvelles données et de nouveaux menus, ne sélectionnez 
+que les boutons correspondants, sinon vous écraseriez les données contenues dans l’hypertexte ainsi 
+que le registre des utilisateurs enregistrés dans le module s s’il est déjà en ligne) 
+
+ 
+
+ 
+
+ 
+
+B – Ouvrir un PageCarto Collaboratif existant 
+
+Une fois créé, pour ouvrir le PageCarto Collaboratif, procéder comme suit : 
+
+ 
+
+ 
+
+ 
+
+
+5 
+
+ 
+
+ 
+
+C – créer un compte ou se connecter sur son compte 
+
+ 
+
+1 – Si vous n’avez pas de compte : cliquez sur le bouton « créer un compte » 
+
+ 
+
+Puis saisissez vos login, mot de passe et e-mail. 
+
+ 
+
+Dès que vous validez par le bouton « OK », le cadre de gestion des comptes est remplacé par le cadre 
+de saisie de vos contrinutions. 
+
+ 
+
+ 
+
+2 - Se connecter à son compte : saisissez vos login et mot de passe puis « ok » 
+
+ 
+
+Cela entraîne l’affichage du module de saisie des contributions à la place du module de connexion. 
+
+ 
+
+
+6 
+
+D – façonner des cartes et choisir des graphiques, les 
+intégrer dans l’hypertexe et commenter 
+
+ 
+
+ 
+
+. Choisir rond ……………………………..ou ……………choisir fond 
+. Choisir la variable 
+. Régler les couleurs et les quantiles (c’est surtout important pour le fond) 
+. Choisir le graphique adéquat (en lien avec les variables affichées sur la carte) 
+
+
+ 
+
+ 
+
+Pour insérer la carte que vous avez fabriquée dans l’hypertexte, vous devez donner nom au lien, 
+court mais assez explicite. 
+
+Saisissez ce nom dans le cadre « Balises » 
+
+Puis cliquez sur le bouton « go » de ce cadre 
+
+ 
+
+ 
+
+Cette action entraîne l’affichage d’un code du type suivant dans l’encadré de saisie : 
+
+ 
+
+Vous pouvez soit envoyer le lien directement soit ajouter un commentaire ( c’est préférable) 
+
+ 
+
+Une fois que vous avez cliqué sur envoyé, votre contribution est ajoutée à la fin de l’hypertexte. 
+
+ 
+
+ 
+
+
+7 
+
+ 
+
+NB. Au moment où vous cliquez sur le bouton « go » du cadre balise , le lien inscrit dans le cadre de 
+saisie enregistre ce qu’il y a sur la carte (rond et fond tel que vous les avez fabriqués ou laissés 
+vides) ainsi que le graphique actif. Il y a toujours un graphique actif. Pensez à choisir un graphique 
+en lien avec les variables projetées sur la carte. 
+
+ 
+
+Idem pour un lien de pointage d’une aire géographique de la carte 
+
+ 
+
+ 
+
+Idem pour les liens vers des Graphiques seuls 
+
+ 
+
+ 
+
+ 
+
+Ajouter un morceau de code HTML. 
+
+Par exemple pour introduire un lien vers un site web. 
+
+Procéder de la même manière que pour les balises de carte et les graphiques mais cette fois dans le 
+cadre intitulé HTML 
+
+Attention si vous mettez des liens, n’oubliez pas l’attribut target= "_blank " qui indique au navigateur 
+d’ouvrir le lien dans une nouvelle fenêtre. 
+
+ 
+
+ 
+
+ 
+
+Comme indiqué précédemment, les nouvelles contribution s’ajoutent les unes après les autres 
+
+ 
+
+
+8 
+
+ 
+
+ 
+
+ 
+
+E – Interface de modération et de mise en forme 
+
+ 
+
+Attention : 
+
+. ANNONCEZ sur l’hypertexte collaboratif que vous allez modérer, de manière à ce que votre 
+modération ne détruise pas les travaux d’internautes qui auraient écrit pendant votre 
+modération. 
+. Annoncez aussi la fin de la modération dans l’hypertexte 
+
+
+ 
+
+ videz le cache 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Si votre cadre de modération était déjà ouvert ou si vous avez oublié de vider le cache ; 
+
+Videz le cache et actualisez le cadre (Click droit : exemple ci-dessous sur FireFox) 
+
+
+9 
+
+ 
+
+ 
+
+Puis cliquez sur le bouton : 
+
+ 
+
+ 
+
+
+10 
+
+Vous pouvez maintenant utilisez l’éditeur pour procéder à la modération et/ou à la mise en forme 
+des contributions. 
+
+Vous disposez pour cela des fonctions de l’éditeur : 
+
+ 
+
+ 
+
+ 
+
+A propos de Copier-Coller 
+
+Dans ce type d’éditeur web, vous ne pouvez pas copier-coller les liens avec les fonctions copier-coller 
+des menus du navigateur ni avec CTRL-C et CTRL-V à cause des clauses de sécurité sur le Web. 
+
+Vous pouvez : 
+
+. Soit faire glisser les liens pour les déplacer ( Drag and Drop) 
+. Soit utiliser les fonctions copier et coller de l’éditeur 
+
+
+ 
+
+ sont les boutons pour insérer des liens hypertextes vers des url. Avec « Ext », le lien ouvre 
+une nouvelle fenêtre. Avec « Int » le lien charge la page indiqué par l’url à la place de l’hypertexte . 
+Mieux vaux utiliser toujours « Ext » 
+
+ 
+
+Les bandeaux de signature des contributions sont des tableaux HTML. Pour les supprimer, cliquer 
+dessus puis pointer sur le bouton d’effacement (x) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Le haut de l’hypertexte est une écriture virtuelle. Vous ne pouvez la transformer avec cet éditeur. 
+Voir le manuel : « 1_fabriquer des PageCarto » page 22 
+
+ 
+
+

@@ -1,0 +1,1042 @@
+﻿Sommaire 
+
+ 
+
+ATTENTION VERSION du 24/11/2013 non testée sous Macintosh 
+
+Chapitre 1 – fabrication de cartes 
+
+0 – Présentation de FabricCarte. 
+
+1 – Création à partir d’une carte au format MIF MID (format d’export de mapinfo) 
+
+2 – Créer les fichiers Carte. 
+
+3 – Créer / Modifier le dossier Carte. 
+
+ 
+
+4 –Créer / Modifier le SVG final 
+
+ 
+
+5 – Export / Banque de Cartes 
+
+ 
+
+ 
+
+Chapitre 2 – Couches additionnelles 
+
+ 
+
+$2.1 – Couche contour en dur (intégrée au SVG). 
+
+ 
+
+$2.2 – Couche contour volatile (ajoutée au SVG par une commande dans GaïaMundi). 
+
+ 
+
+0-Présentation de FabricCarte 
+
+ 
+
+FabricCarte est une interface spécialement dédiée à la fabrication de pack-
+ages de cartes utilisables par GaïaMundi (SuiteCairo). 
+
+Comme GaïaMundi, FabricCarte a besoin d’un serveur web local pour fonc-
+tionner (wampserveur pour windows par exemple ou mowes en version por-
+table, MAMP pour Macintosh…) . 
+
+Le dossier FabricCarte doit être collé dans le www local (ou httpdocs dans 
+MAMP/Macintosh). 
+
+Dans la version actuelle, l’interface permet la création de modules Cartes à 
+partir de fichiers export de MapInfo au format MIF MID . 
+
+ 
+
+Il est aussi possible de fabriquer les fichiers à partir du format ShapeFile en 
+fabriquant pour cela manuellement (avec un tableur ou un éditeur de texte) 
+le fichier de transit « national.txt » , encodé en utf-8 dont le format est détail-
+lé à l’étape 2 ci-après. 
+
+ 
+
+Ce format de transit est le même que le format .num de cartes et données 
+d’Articque à l’extension près qui est ici .txt 
+
+Retour au sommaire 
+
+ 
+
+
+
+
+Autrement dit, on peut créer des cartes GaïaMundi (SuiteCairo) à partir des 
+fichiers .num de Carte&Données d’Articque en changeant l’extension .num en 
+.txt et en encodant le fichier en utf-8 puis en démarrant la fabrication dans 
+FabricCarte, comme dans le cas des fichiers shapeFile, à l’étape 2 ci-après. 
+
+ 
+
+ 
+
+Fonctionnalités de l’interface. 
+
+La fabrication des fichiers s’opère en 5 étapes que l’interface vous propose 
+successivement. Mais il est aussi possible d’entrer dans le processus de fabri-
+cation à chacune des étapes pour introduire des changements manuels relati-
+vement au processus automatique. 
+
+Les commandes des étapes sont accessible dans le menu Edition : 
+
+ 
+
+ 
+
+ 
+
+Une fois l’étape 5 réalisée, le module carte final est placé dans le répertoire 
+FabricCarte/Depot_temp. 
+
+ 
+
+Il faut ensuite de le renommer en respectant les conventions de nommage 
+compatible avec les moteurs de recherche de la banque de carte mutualisée 
+et du module « nouvelle carte des plateformes SuiteCairo (GaïaMundi) 
+
+ 
+
+L’interface permet aussi de générer des couches contour additionnelles que 
+l’on peut intégrer en dur ou en couche optionnelle dans le module SVG final. 
+
+ 
+
+
+
+ 
+
+IMPORTANT : AVEC FIREFOX (versions postérieures à V 18), AVANT d’ouvrir FabricCarte, 
+ouvrir une page d’accueil de Firefox et paramétrez l’encodage comme suit : 
+
+ 
+
+ 
+
+
+C:\Users\Jeff\Desktop\text.PNG 
+
+
+Etape 1- Création à partir d’une carte au format MIF MID 
+
+(format d’export de Mapinfo) 
+
+ 
+
+ATTENTION : 
+
+. Les fichiers MIF et MID de départ doivent être encodés en ANSI 
+. Les cartes originales doivent êtres composées uniquement de polygones 
+fermés 
+
+
+ 
+
+L’étape 1 transforme le couple MIF MID encodé ANSI en un fichier de transit « na-
+tional.txt » placé dans le répertoire FabricCarte/A-MANAGER-
+local/CREATEUR/CREA_NAT_et_PARTIE/ 
+
+L’étape 1 crée aussi les fichiers dans le même répertoire: 
+
+. CoordMifMid.txt qui conserve l’entête du fichier MIF (paramètres de géoré-
+férencement) de façon à pourvoir générer des couches supplémentaires 
+avec un SIG 
+. CODE_NOMS.txt qui dresse la liste des noms de régions et sous régions. 
+
+
+ 
+
+Voir la note ci-dessous sur le procédé d’extraction à partir de MIF MID 
+1 
+
+
+ 
+
+Format du fichier de transit « national.txt » 
+
+ 
+
+ 
+
+Chaque ligne de ce fichier contient quatre champs séparés par des tabulations. 
+Chaque ligne décrit un point du contour d’une aire géographique de la carte. 
+
+o Le premier champ contient l’identifiant d’une aire géographique de la carte 
+ainsi que son nom. 
+o Le deuxième et le troisième champ corresponde aux coordonnées du point. 
+o Le quatrième champ doit être un 1. 
+
+
+ 
+
+Exécution de l’étape 1 « convertir carte originale » 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+1 Le procédé de génération du module Carte GaïaMundi à partir de MIF MID fonctionne de la manière sui-
+vante : 
+
+. Toute région x de MF prend le nom correspondant dans le fichier MID ( par ordre d’apparition) 
+. Toute sous-région de la région x , annoncée par un nombre isilé sur une ligne ( nombre de points de la 
+sous-région) entraîne la création d’une sous-région dont le nom sera le nom de la région suivi de SRn 
+avec n = rang de la sous-région dans la région x. 
+. Le code d’identification d’une sous-région est formé comme suit : n00CodeIdentificationRegion 
+
+
+Au cours du processus de fabrication, un fichier DATA-Union.js est créé qui associe les sous régions créées à 
+leur Région. Les informations de rattachement Région/sous-région contenues dans ce fichier déclenchent le 
+transfert des coordonnés contenues dans les balises path des sous-régions créées dans le SVG vers les balise 
+path de la régions parent dans le SVG. Au moment de l’étape de finalisation du SVG, on peut inhiber tout ou 
+partie des lignes du fichier DATA-Unions.js pour conserver les coordonnées dans les path des sous régions, ce 
+qui permet de de leur adresser des données. 
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+Choisir les fichiers MIF et MID puis valider 
+
+ 
+
+ 
+
+Choisir : 
+
+. les éléments composant le nom des aires géographiques 
+. et leur identifiant 
+
+
+l’interface FabricCarte vous propose le tableau suivant. 
+
+Le nombre de colonnes correspond au nombre de colonnes du fichier MID 
+
+ 
+
+ 
+
+Il est nécessaire d’ouvrir le fichier MID avec un éditeur ( NotePad++ par exemple) de 
+façon à repérer les colonnes des identifiants et noms . 
+
+
+
+
+ 
+
+ 
+
+ 
+
+Noms des aires géographiques 
+
+Lorsqu’il s’agit de géographies emboitées, comme les IRIS emboités dans les com-
+munes, il est fréquent que les noms des IRIS ne comprennent pas le nom de la com-
+mune qui est en général inscrit dans une autre colonne. 
+
+ 
+
+Il faut alors composer le nom de l’IRIS en concaténant les deux colonnes ( nom de 
+commune + nom de l’IRIS) : 
+
+ 
+
+NB. Dans le cas où le nom de la première colonne concaténée se retrouve aussi dans 
+la seconde colonne, FabricCarte ne conserve que le premier (quelle que soit la 
+casse). C’est souvent le cas par exemple dans les fichiers de données géographiques 
+IRIS de l’IGN exportées en MIFxMID pour les communes qui n’ont pas d’IRIS (<10000 
+habitants). Pour éviter que les noms soient redoublés, FabricCarte ne conserve que 
+le premier. 
+
+Dans l’exemple, on choisira « LYON 8 » + « Latarget-Mermoz ». 
+
+ 
+
+Code indentifiant : dans cet exemple, on choisira la colonne 4 
+
+ 
+
+ 
+
+ 
+
+La validation entraîne l’ouverture du fichier de transit « national.txt » dans un nouvel 
+onglet du navigateur. Ce fichier doit avoir la configuration suivante : 
+
+ 
+
+ 
+
+ 
+
+Si c’est le cas, fermer cet onglet. Cela vous ramène à l’interface Fabricarte à l’étape 2 
+
+ 
+
+
+
+
+ 
+
+Etape 2- Créer les fichiers Carte 
+
+ 
+
+Cette étape crée les fichiers de coordonnées géographiques spéci-
+fiques au format GaïaMundi, le fichier de noms, ainsi que la matrice 
+de passage entre les tableaux de données et la carte 
+
+ 
+
+ 
+
+Validez : cela vous conduit à l’étape 3 suivante 
+
+Retour au sommaire 
+
+ 
+
+
+
+ 
+
+Etape 3-Créer / Modifier le dossier carte 
+
+ 
+
+ 
+
+ 
+
+Soit vous créer cette carte pour la première fois , alors vous devez créer un nou-
+veau dossier carte, soit vous êtes en train de modifier une carte déjà existante 
+dans FabricCarte, auquel cas vous devez choisir modifier un dossier existant. 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+ 
+
+
+
+
+Même nom que le 
+répertoire ci-dessus 
+
+Code de la maille 
+
+ (très important de respec-
+ter la codification) 
+
+Voir la table ci-dessous 
+et les compléments à la 
+page téléchargement du 
+site SuiteCairo.fr. Si on 
+fait une maille spéciale 
+pour un dossier, on n’est 
+pas obliger d’utiliser une 
+variable numérique, on 
+peut utiliser du texte) 
+
+ 
+
+Commentaire dans le 
+cas où la carte com-
+prend des spécificités 
+
+Votre signature au format 
+suivant : 
+
+« nom » ; »adresse mail » 
+
+Choix Créer un nouveau dossier carte 
+
+ 
+
+Saisissez un nom de répertoire dans le cadre (pas de caractères spéciaux et choix d’un 
+nom explicite) 
+
+Copier le nom que vous avez saisi car il vous servira dans l’étape suivante : 
+
+ (Ctrl-A puis Ctrl-C dans le cadre) 
+
+Puis valider 
+
+ 
+
+ 
+
+ 
+
+On valide le formulaire précédent ( en bas du formulaire) 
+
+ 
+
+
+
+
+ 
+
+Etape 4 - Créer / Modifier le SVG Final 
+
+ 
+
+Une nouvelle interface apparait dans un nouvel onglet. 
+
+La carte en cours de fabrication est pré sélectionnée. 
+
+ 
+
+ 
+
+La carte est au-centrée automatiquement. Si vous souhaitez changer l’azimut 
+(zoom et centrage) éditez ( avec notepad++ par exemple) le fichier javascript «correc-
+tifcoord.js » du dossier carte qu’on a créé (dans notre exemple: FabricCarte/Departement 
+42/ correctifcoord.js ). 
+
+Le fichier coorectifcoord.js comporte deux parties 
+
+. Une première partie relative à l’ajustement des centroïdes 
+. Une seconde partie relative à l’azimut. 
+
+
+ 
+
+ 
+
+ 
+
+Retour au 
+som-
+maire 
+
+ 
+
+
+
+
+4.1 - Réglage de l’azimut : 
+
+Modifiez les trois paramètres ( zoom, x et y), videz le cache et redémarrez la carte avec le 
+menu ci-dessous pour visualisez le résultat de vos modifications : 
+
+Pour redémarrer la carte sélectionnez d’abord le premier item du menu « carte (cliquez ici 
+pour réinitialiser une carte) » puis choisissez votre carte dans le menu. 
+
+ 
+
+ 
+
+4.2 - Ajustement des centroïdes 
+
+Pour repérer les centroïdes qui posent problème : 
+
+ 
+
+. Affichez la donnée test avec le menu Icônes à gauche de la carte 
+. Cliquez sur le bouton « Nonprop » ( taille non proportionnelle). 
+. Réglez la taille des ronds avec les boutons 
+. Zoomez ou dézoomez avec les boutons 
+. Faites glissez la carte (drag and drop) 
+. Cliquez sur l’aire qui présente un centrïde décalé 
+
+
+ 
+
+ 
+
+. Ouvrez le fichier fichier_ID_CODE_NOM.txt dans le dossier carte et repérer le 
+code identifiant GaïaMundi dans la carte ( 1ère code de chaque ligne=rang de l’aire 
+dans GaïaMundi) 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+. Copiez une des lignes commentées dans la première partie du fichier correc-
+tifcoord.js 
+
+
+ 
+
+. Enlevez le double slash « // » 
+. Puis procéder par tâtonnement en redémarrant la carte comme indiqué ci-dessus 
+après chaque modification 
+
+
+ 
+
+if(k==468-1){XYareas[0]-=-5;XYareas[1]+=+10} 
+
+ 
+
+ 
+
+ 
+
+4.3 - Gestion des Unions entre aires géographiques. 
+
+ 
+
+Comme indiqué dans le texte introductif, les sous régions des fichiers originaux sont inté-
+grées automatiquement à leur région parent via le fichier DATA-Union.js. 
+
+Dans cet exemple, le fichier DATA-Union.js présente le contenu suivant : 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+L’explication est la suivante : 
+
+ 
+
+Dans le cas d’ ANDREZIEUX-BOUTHEON Bourg d'Andrezieux : 
+
+ 
+
+ 
+
+Le code d’indentification GaïaMundi de cette aire géographique est le rang 6 . 
+Cette région comporte une sous-région dont l’identifiant GaïaMundi est le rang 7. 
+
+ 
+
+En commentaire, FabricCarte a ajouté le code Insee (identifiant de la carte origi-
+nale voir étape 1) pour la région et la sous-région (code parent avec préfixe n00 
+avec 
+
+n= numéro de la sous-région parmi les sous-régions de cette région). 
+
+ 
+
+Notez que dans le cas ANDREZIEUX-BOUTHEON Agglomeration Sud, il y a deux 
+sous-régions : 
+
+ 
+
+ 
+
+En résumé : le premier code est celui de la région, les codes suivant du vecteur tableau 
+sont les codes des sous-régions associées. 
+
+ 
+
+Notez bien que si vous laissez le fichier dans cet état, les codes géographiques des sous-
+régions sont intégrés aux path des régions parent dans le SVG final, de sorte que les don-
+nées attribuées à la région sont attribuées aussi aux sous régions dans le mode coloration 
+des surfaces. 
+
+ 
+
+Si vous voulez fusionner deux aires géographiques ( par exemple dans le cas de fusion de 
+communes ou de fusion d’IRIS) procédez de la même manière en ajoutant une ligne du 
+type suivant : 
+
+ 
+
+DataUnion[DataUnion.length]=new Array(id rang de l’aire parent , id rang de l’aire fusionnée); 
+
+ 
+
+Ou plus généralement : 
+
+ 
+
+DataUnion[DataUnion.length]=new Array(id rang de l’aire parent , id1, id2,… , idn); 
+
+ 
+
+4.4 – Modification éventuelle du code SVG et génération finale du 
+fichier SVG de la carte. 
+
+ 
+
+Si vous avez procédé aux opérations 4.1, 4.2 ou 4.3, redémarrez la carte : 
+
+ 
+
+Pour redémarrer la carte sélectionnez d’abord le premier item du menu « carte (cliquez ici 
+pour réinitialiser une carte) » puis choisissez votre carte dans le menu. 
+
+ 
+
+Une fois la carte affichée, cliquez sur le lien « Créateur svg » 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Le code SVG final apparaît en superposition de la carte. 
+
+ 
+
+. Vous pouvez opérer des modifications (attention, il s’agit d’une opération sen-
+sible) 
+. Puis Enregistrez 
+
+
+ 
+
+Retournez maintenant dans l’onglet de l’interface FabricCarte 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+5- Export / Banque de Cartes 
+
+ 
+
+Dans cette étape, vous exportez le dossier carte finalisée sous forme de package inté-
+grable dans les banques de cartes en ligne ou dans les dossiers depôt-cartes associés aux 
+plateformes GaïaMundi (suiteCairo) 
+
+Le package finalisé est stocké dans le sous répertoire « depot_temp » de FabricCarte 
+
+ 
+
+ 
+
+ 
+
+La sélection du lien « étape 5 » volet droit ouvre l’interface de travail. 
+
+ 
+
+ 
+
+ 
+
+Retour 
+au som-
+som-
+maire 
+
+ 
+
+
+
+
+Dossiers carte : dossier carte complet affichable avec le menu cartes de FabricCarte. 
+
+Depot_temp : dossier carte destiné à être exporté vers les dépôt carte de GaïaMundi. 
+
+ 
+
+ 
+
+On sélectionne la carte qu’on veut exporter (elles sont dans l’ordre ou on les a créé, dans 
+notre cas la dernière) et on valide : 
+
+ 
+
+ 
+
+ 
+
+Le volet droit se ferme et affiche : 
+
+ 
+
+ 
+
+ 
+
+ Si au lieu de créer une nouvelle carte vous aviez modifié une carte existante, le nom dans 
+le dépôt serait le nom déjà existant. Les fichiers contenus dans l’ancien dossier seraient 
+remplacés par les nouveaux. 
+
+ 
+
+NB. Le fichier svg final se nomme « CARTOSVG.svg » 
+
+ 
+
+
+
+
+ 
+
+Avant de placer une package de carte dans la banque de carte ou dans un répertoire 
+
+depot_cartes associé à une plateforme, il convient de le renommer en respectant la con-
+vention de nommage compatible avec les moteurs de recherche des plateformes ou de la 
+banque de carte en ligne. 
+
+ 
+
+Convention de nommage des dossiers cartes 
+
+Pour que le moteur de recherche puisse fonctionner, on doit impérativement suivre des 
+règles pour nommer les cartes. 
+
+Le nom se décompose en 4 séquences. 
+
+Le séparateur est le « - » 
+
+ 
+
+Exemple : A0-carte-createur-FR-82-69- 6999-8214-69123-Lyon_2008-IRIS 
+
+. A0-carte-createur : partie générique commune à toutes les cartes. 
+. FR-82-69-0-0-69123 : définition du contour de la carte (6 champs). Pour le moment 
+seule la géographie administrative française est définie. 
+o FR : code correspondant à la norme ISO 3166-1 alpha-2 pour le pays. On 
+peut mettre ce qu’on veut en clair mais il ne faut pas mettre d’espace ni de 
+tiret (on peut utiliser le tiret bas). 
+o 82 : code INSEE de la région. Si le contour de la carte est interrégional, on 
+met 0. 
+o 69 : code INSEE du département. Si le contour est interdépartemental , on 
+met 0. 
+o 6999 : code INSEE du canton-villes (voir définitions INSEE). Même règles 
+que ci-dessus. 
+o 8214 : code INSEE de la zone d’emploi . Même règles que ci-dessus. 
+o 69123 code INSEE de la commune. Même règles que ci-dessus. 
+
+
+
+
+Cette partie peut se lire : la carte contient une partie au moins de la France 
+dans la région Rhône-Alpes, dans le département du Rhône, dans le canton-
+ville de Lyon, avec au maximun la commune de Lyon. 
+
+. Nom explicite de la carte toujours sans tiret ni espace. Ici Lyon avec une géogra-
+phie de 2008. 
+. IRIS : nom de la maille toujours sans espace ni tiret. 
+
+
+ 
+
+Le nom du dossier carte doit contenir 10 tirets au total. 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+Chapitre 2 – Couches contour additionnelles 
+
+ 
+
+$2.1 Couche contour en dur. 
+
+ 
+
+Une couche en dur est une couche qui est directement écrite dans le fichier « CAR-
+TOSVG.svg ».Elle apparait dès que l’on ouvre la carte et ne peut pas être effacé. 
+
+Il nous faut un fichier carte de base (1) au même format que celui qui a servi à faire le dos-
+sier carte. On refait la même opération que pour créer les fichiers cartes. 
+
+Une fois que l’interface à changer, on va récupérer le fichier qui va nous servir à faire la 
+couche contour. 
+
+Ce fichier se trouve dans : 
+
+« A-MANAGER-local\CREATEUR\CREA_NAT_et_PARTIE\NAT » à partir de la racine de Fa-
+bricCarte. 
+
+Ce dossier doit contenir 3 fichiers au moins. 
+
+Seul le fichier « DATA-SVG2.js » nous intéresse . 
+
+On l’édite avec un éditeur de texte et on le modifie : 
+
+ 
+
+ 
+
+ 
+
+Avec la fonction Rechercher/remplacer de l’éditeur remplace « ajouter » par « ajouter2 ». 
+
+ 
+
+Puis on supprime la dernière ligne du fichier qui est de la forme : 
+
+« ajouter2("99999-Morbihan,131.9914,384.6396") » 
+
+On enregistre le fichier en le renommant : « DATA-ligneSVG.js » et en l’enregistrant dans le 
+dossier carte ou on souhaite mettre la couche contour. Cela écrase l’ancien fichier qui ne 
+contenait pas de données utilisables. 
+
+ 
+
+Pour finir, on refait la procédure de création du fond de carte SVG. 
+
+ 
+
+ 
+
+Retour 
+au som-
+som-
+maire 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+L’incorporation de la couche contour est finie. Pour la Bretagne cantons et villes avec le 
+contour des départements, on obtient (avant la création et l’enregistrement du SVG) : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Les matrices de base contiennent par défaut de quoi faire 5 aires différentes. Si on veut en 
+faire plus : 
+
+Dans le dossier carte, on édite le fichier « CARTOSVG matrice.svg ». On remplace les 
+ligne existantes par autant de lignes nécessaires qu’on trouve dans le fichier 
+
+« polyline.txt ». 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+§2.2 - Couche volatile. 
+
+ 
+
+Une couche volatile est une couche qu’on peut afficher ou masquer à la demande. 
+
+Il nous faut un fichier carte de base (1) au même format que celui qui a servi à faire le dos-
+sier carte. On refait la même opération que pour créer les fichiers cartes. 
+
+Une fois que l’interface à changer, on va récupérer le fichier qui va nous servir à faire la 
+couche contour. 
+
+Ce fichier se trouve dans : 
+
+« A-MANAGER-local\CREATEUR\CREA_NAT_et_PARTIE\NAT » à partir de la racine de Fa-
+bricCarte. 
+
+Ce dossier doit contenir 3 fichiers au moins. 
+
+Seul le fichier « DATA-SVG2.js » nous intéresse . 
+
+On renomme ce fichier avec le nom de la couche en gardant l’extension «. js » par 
+exemple « couche departements.js ». 
+
+On édite le fichier « listeAdditifContoursSVG.js ». Pour le moment, il ne contient qu’une 
+ligne commençant par « // ». 
+
+A partir de maintenant, on peut fermer FabricCarte , on utilisera GaïaMundi. 
+
+ 
+
+ 
+
+ 
+
+On recopie cette ligne en omettant les 2 « // » du début. 
+
+ 
+
+ 
+
+ 
+
+On remplace "CONTOUR-DEPT.js" par le nom du fichier qu’on vient de créer (Attention, le 
+nom du fichier doit être entre parenthèses. 
+
+On peut changer aussi la couleur de la couche en changeant son nom (on peut le mettre 
+en clair ou avec un code couleur). 
+
+ 
+
+ 
+
+ 
+
+On enregistre. 
+
+A partir de maintenant, on n’a plus besoin de FabricCarte. 
+
+On recopie le fichier des coordonnées de la couche contour qu’on vient de créer et le fi-
+chier « listeAdditifContoursSVG.js » dans le dossier carte ou on veut rajouter la couche de 
+GaïaMundi et on teste : 
+
+Retour au 
+som-
+maire 
+
+ 
+
+
+
+
+On ouvre la carte et on affiche la couche : 
+
+ Données-> Ponctuels et graphiques encadrés->Icônes X->Nom du fichier contour 
+
+ 
+
+ 
+
+ 
+
+On voit que le nom de la couche contour prend la couleur de celle-ci. 
+
+ 
+
+ 
+
+ 
+
+On peut mettre autant de couches différentes qu’on veut. Il suffit de créer les fichiers 
+couches et de rajouter une ligne dans «listeAdditifContoursSVG.js ». 
+
+Pour rendre cette modification permanente dans toutes les carte qu’on créeras , il suffit 
+de recopier le fichier «listeAdditifContoursSVG.js » et le(s) fichier(s) couches contours dans 
+le dossier carte du dépôt de carte. 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+

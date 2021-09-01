@@ -1,0 +1,235 @@
+﻿
+<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+
+
+ if(!document.getElementById) document.getElementById=function (id) {
+ return eval("document.all."+id);
+ }
+
+ if(document.all) {
+
+ document.getElementsByName=function (name) {
+
+ var el=document.all,result=new Array(),j=0;
+ for(var i=0;i<el.length;i++) if(el[i].name.toLowerCase()==name.toLowerCase()) result[j++]=el[i];
+ return result;
+ }}
+ if(!document.getElementsByTagName) document.getElementsByTagName=function (tagName) {
+ var el=document.all,result=new Array(),j=0;
+ for(var i=0;i<el.length;i++) if(el[i].tagName.toLowerCase()==tagName.toLowerCase()) result[j++]=el[i];
+ return result;
+ }
+
+
+
+
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	var numcarte=urlvar["numcarte"]
+
+	var selectedrezo=""//urlvar["selectedrezo"]
+	
+	
+	   function quelle_touche(evenement)
+   {
+       var touche = window.event ? evenement.keyCode : evenement.which;
+       if(touche==13){recherche()}
+   }
+	
+</script>
+</head>
+
+<body STYLE="background-color: white">
+<br><br>
+<!--iframe name="Num0" style="visibility:hidden" src="chimere-ReadLibelRecensement.html"></iframe-->
+<div style="position:absolute;left:0px ;top:205px"><iframe  id="readlibelREC" name="readlibelREC" style="visibility:visible;background-color:#E8E8FF;border:0px solid" width=925 height=2000 src="vide.html"></iframe></div>
+
+<div id="divmaille" style="position: absolute;  top: 7px;left:0px "><form name="maille"><select id="selectmaille" name="selectmaille" onchange="change_maille()"   style="background-color: white; color: black;width:200px" size="1"></select></form></div>
+
+
+
+<div id="conservMotcle" style="position: absolute; top: 5px;left:210px "><small><small>Conserver<br>la requète</small></small><br><input type="radio"  id="B_1" name="B" value="0" onClick="cons=0"><small><small>Non</small></small></input><br><input type="radio" id="B_2" name="B" value="1" onClick="cons=1" value="0" type="text"><small><small>Oui</small></small></div>
+
+<div id="divcartes" style="position: absolute;  top: 30px;;left:0px  "><form name="cartes"><select id="selectcartes" name="selectcartes" onchange="change_cartes()"   style="background-color: white; color: black;width:200px" size="1"></select></form></div>
+
+<div id="divlogic" style="position: absolute;  top: 58px; ;left:0px "><table style="border:0px;width:300px"><tr><td><dt><input type="radio"  id="A_1" name="A" value="1" onClick="fich=1;vide()"><small><small>Icone Principal</small></small></input></td><td><input type="radio" id="A_2" name="A" value="2" onClick="fich=2;vide()" value="0" type="text"><small><small>Icone Complémentaire</small></small></dt></td></tr><tr><td><dt><input type="radio"  id="A_3" name="A" value="0" onClick="fich=3;vide()"><small><small><small style="color:blue">Graph Principal</small></small></small></input></td><td><input type="radio" id="A_4" name="A" value="4" onClick="fich=4;vide()" value="0" type="text"><small><small><small style="color:blue">Graph Complémentaire</small></small></small></dt></td></tr></table></div>
+
+
+<div id="divlogic" style="position: absolute; top: 101px;;left:0px  "><dt><small><small>Type d'opérateur logique</small></small></dt><dt><input type="radio"  id="T_1" name="T" value="1" onClick="ope='et'"><small><small>Et</small></small></input><input type="radio" id="T_2" name="T" value="2" onClick="ope='ou'" value="0" type="text"><small><small>Ou</small></small></dt></div>
+
+<div id="divmotscles" style="position: absolute; height: 24px; top: 147px;;left:0px  "><span name="formmotscle"><input onkeyPress="quelle_touche(event);" id="Xchoix" type="text" style="width:220px" value="Aucun-mots-clés"></input><br><table  style="border:0px;width:300px"><tr><td><input type="button" onclick="recherche()" value="OK"></input></td><td><small><small><small><i>inscrivez vos mots clés en les séparant <br>par un espace, <span style="color:red"><b>puis cliquez sur OK</b></span></i></small></small></small></span></td></tr></table></div>
+
+<script language="javascript">
+var cons=0
+var mapX=new Array()
+libelmap=new Array()
+var selectedrezo
+var selectedrezoTemp
+var selectedcarte
+var rezo=new Array()
+var nomrezo=new Array()
+var choix
+var ope="et"
+var fich=1
+var indicini=1
+top.chargevierge02()
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="A-MANAGER-local/transdata_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="http://altko.org/admin_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+<script id="mapsRezo" language="javascript" ></script>
+
+
+<script type="text/javascript">
+
+
+
+function change_maille() {
+vide()
+var site = document.maille.selectmaille.selectedIndex;
+selectedmaille=document.maille.selectmaille.options[site].value;
+affichmenusmaps()
+
+}
+
+
+function autoselectcarte(){
+setTimeout('autoselectcarte2()',1000)
+}
+function autoselectcarte2(){
+
+var nbopt=document.cartes.getElementsByTagName("option").length
+for(i=1;i<nbopt;i++){
+
+if(parseInt(document.cartes.selectcartes.options[i].value)/5==(numcarte-1)){
+
+document.cartes.selectcartes.selectedIndex=i;change_cartes();indicini=0;i=nbopt+1
+
+}
+}
+}
+
+
+function change_cartes() {
+vide()
+var site = document.cartes.selectcartes.selectedIndex;
+selectedcarte=parseInt(document.cartes.selectcartes.options[site].value);
+if(indicini==0){top.frames.Num0.pilote.document.menu.popup.selectedIndex=(selectedcarte)/5+1;top.frames.Num0.pilote.change_site();}
+
+document.cartes.selectcartes.selectedIndex=site
+}
+
+var menu1=""
+var menu2=""
+function affichmenusmaps(){
+
+document.getElementById("selectcartes").innerHTML=""
+
+				var nouveaux0=document.createElement("option")
+				nouveaux0.setAttribute("value","javascript:rien2()")
+				nouveaux0.setAttribute("id","option0")
+				var nt1=document.createTextNode("  Cartes")
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcartes").appendChild(nouveaux0)
+
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+if(selectedmaille==mapX[i+0]){
+
+				var nouveaux0=document.createElement("option")
+				nouveaux0.setAttribute("value",i)
+				nouveaux0.setAttribute("id","option"+kc)
+				var nt1=document.createTextNode(kc+'-'+mapX[i+3])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcartes").appendChild(nouveaux0)
+}
+}
+}
+
+function affichmaille(){
+document.getElementById("selectmaille").innerHTML=""
+
+			var nouveaux0=document.createElement("option")
+			nouveaux0.setAttribute("value","javascript:rien2()")
+			nouveaux0.setAttribute("id","option0")
+			var nt1=document.createTextNode("  Mailles")
+			nouveaux0.appendChild(nt1)
+			document.getElementById("selectmaille").appendChild(nouveaux0)
+			
+			var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+
+			var nouveaux0=document.createElement("option")
+			nouveaux0.setAttribute("value",mapX[i+0])
+			nouveaux0.setAttribute("id","option"+kc)
+			var nt1=document.createTextNode(kc+'-'+mapX[i+3]+" : maille= "+mapX[i+0]+" - "+libelmap[(i/5)][1])
+			nouveaux0.appendChild(nt1)
+			document.getElementById("selectmaille").appendChild(nouveaux0)
+
+}
+}
+function vide(){
+window.frames.readlibelREC.location.href="vide.html"
+if(cons==0){
+document.getElementById("Xchoix").value="Aucun-mots-clés"
+}
+}
+
+var repTemp=""
+var fichTemp=""
+
+function recherche(){
+choix=document.getElementById("Xchoix").value
+
+if(repTemp==mapX[selectedcarte+4] & fichTemp==fich){
+var criteres=new Array(ope,'"'+choix+'"')
+window.frames.readlibelREC.changeinit(criteres)
+window.frames.readlibelREC.libel(mapX[selectedcarte+4])
+
+}else{
+window.frames.readlibelREC.location.href="readLibelDATAinMaps-MENU.html?REZO="+selectedrezo+"&cible="+mapX[selectedcarte+4]+"&numero="+fich+"&carte="+mapX[selectedcarte+3]+"&maille="+libelmap[(selectedcarte/5)][1]+"&codemaille="+mapX[selectedcarte]+"&operateurlog="+ope+"&choix="+choix
+}
+repTemp=mapX[selectedcarte+4] ;
+fichTemp=fich
+}
+
+
+document.getElementById("T_1").checked=true
+document.getElementById("B_1").checked=true
+document.getElementById("A_1").checked=true
+window.frames.readlibelREC.location.href="vide.html"
+document.getElementById("mapsRezo").src=selectedrezo+"mapsILIADE.js"
+document.getElementById("selectmaille").innerHTML=""
+document.getElementById("selectcartes").innerHTML=""
+document.getElementById("Xchoix").value="Aucun-mots-clés"
+setTimeout('affichmaille();document.maille.selectmaille.selectedIndex=numcarte;change_maille();autoselectcarte()',2000)//;
+</script>
+
+</body >
+</html>

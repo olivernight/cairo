@@ -1,0 +1,527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+
+   
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Bienvenue sur la RoseDesVents</title>
+       <script  language="javascript">
+	  
+	
+
+
+
+ if(!document.getElementById) document.getElementById=function (id) {
+ return eval("document.all."+id);
+ }
+
+ if(document.all) {
+
+ document.getElementsByName=function (name) {
+
+ var el=document.all,result=new Array(),j=0;
+ for(var i=0;i<el.length;i++) if(el[i].name.toLowerCase()==name.toLowerCase()) result[j++]=el[i];
+ return result;
+ }}
+ if(!document.getElementsByTagName) document.getElementsByTagName=function (tagName) {
+ var el=document.all,result=new Array(),j=0;
+ for(var i=0;i<el.length;i++) if(el[i].tagName.toLowerCase()==tagName.toLowerCase()) result[j++]=el[i];
+ return result;
+ }
+	   
+	   
+	   
+	   var xmap=-1
+	   var xn=0
+var tempmc=""
+var tempope="et"
+var rezo=new Array()
+var nomrezo=new Array()
+var InRezo=new Array()
+var traceMapx=new Array() 
+var mapXC=new Array();var libelmapC=new Array(); 
+var kmap=0
+
+var mapX=new Array()
+var libelmap=new Array()
+				
+				function admapX(){			
+				for(i=0;i<mapX.length;i++){
+
+				mapXC[mapXC.length]=mapX[i]
+				
+				}
+				}
+				function adlibelmap(){
+				var jj=-1
+				
+				for(i=0;i<libelmap.length;i++){
+				if(libelmap[i][5]!='none'){var x4=jj;jj+=1}else{var x4=-99999}
+				var xtrace=new Array(libelmapC.length,i,kmap,jj)
+				
+				traceMapx[traceMapx.length]=xtrace
+				libelmapC[libelmapC.length]=libelmap[i]
+				}
+				kmap+=1
+				}
+				
+				function declenche(){
+Xloading("divloading")
+xrezo=rezo[0].replace("bienvenueRDV-2.html","")
+//alert(xrezo)
+//alert("recupMapX.html?lacible="+xrezo+"mapsILIADE.js&rang="+0)
+//alert()
+document.getElementById("maps_0").src="recupMapX.html?lacible="+xrezo+"mapsILIADE.js&rang="+0
+//window.frames[0].location.href="recupMapX.html?lacible="+xrezo+"mapsILIADE.js&rang="+0
+} 
+				
+				
+				
+  </script>
+
+
+      <script type="text/ecmascript">
+pdd=window.location.href
+pdd=pdd.substr(0,(pdd.indexOf("bienvenueRDV.html"))) 
+var specif=1234
+var util=parent.retourneUTIL("return util")
+
+var urlvar=""
+if (window.location.search != "") {
+longueur = window.location.search.length - 1;
+data = window.location.search.substr(1,longueur);
+donnees = data.split("&");
+urlvar = new Array();
+urlvarnum = new Array();
+for (var i=0; i < donnees.length; i++) {
+position = donnees[i].indexOf("=");
+variable = donnees[i].substr(0,position);
+pos = position + 1;
+valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+while (valeur.search(/\+/) != -1)
+valeur = valeur.replace(/\+/," ");
+urlvar[variable] = valeur;
+urlvarnum[i] = valeur;
+}
+}
+function chargeMapX(a){
+				a=parseInt(a)
+				if(a==0){
+				//affich()
+				}
+				//alert(a)
+				//alert(window.document.getElementsByTagName("iframe")[a].getAttribute("id"))
+				//alert(window.document.getElementsByTagName("iframe")[a].getAttribute("id"))
+				mapX=window.frames[a].recupMapX("return mapX")
+				libelmap=window.frames[a].recuplibelmap("return libelmap")
+				
+				admapX();adlibelmap();
+				if(a==rezo.length-1){
+				affich()
+				}else{
+				
+				window.frames[a+1].location.href="recupMapX.html?lacible="+rezo[a+1]+"/mapsILIADE.js&rang="+(a+1)
+				}
+				}
+				
+function Xloading(a){
+document.getElementById(a).style.display="block"
+}
+function Xloaded(a){
+document.getElementById(a).style.display="none"
+}
+function xcharge(a){
+//alert(document.getElementById("Xchoix").value)
+parent.stockmotcle(document.getElementById("Xchoix").value)
+parent.stockope(ope)
+selectedrezo=a
+//alert(selectedrezo+"radar.xml?REZOCIBLE="+selectedrezo+"&selectedrezo="+selectedrezo+"&pdd="+pdd+"&specif="+specif+"&util="+util+"&xmap="+xmap+"&xn="+xn)
+parent.frames.radar.location.href=selectedrezo+"radar.xml?REZOCIBLE="+selectedrezo+"&selectedrezo="+selectedrezo+"&pdd="+pdd+"&specif="+specif+"&util="+util+"&xmap="+xmap+"&xn="+xn
+parent.document.getElementById("divrezo").style.display="block"
+ }
+function affich(){
+Xloaded("divloading")
+document.getElementById("tab").innerHTML=textmenu
+document.getElementById("T_1").checked=true
+tempmc=parent.returnMotcles("return tempmotcle")
+
+document.getElementById("Xchoix").value=tempmc
+tempope=parent.returnope("return tempope")
+
+if(tempope=="ou"){document.getElementById("T_2").checked=true; ope="ou"}
+if(tempmc!=""){
+recherche()
+}
+}	 
+
+
+function declenche(){
+Xloading("divloading")
+xrezo=rezo[0].replace("bienvenueRDV.html","")
+//alert(xrezo)
+//alert("recupMapX.html?lacible="+xrezo+"mapsILIADE.js&rang="+0)
+document.getElementById("maps_0").src="recupMapX.html?lacible="+xrezo+"mapsILIADE.js&rang="+0
+
+} 
+var motcle=""
+var textcompose=""
+
+										   function quelle_touche(evenement)
+										   {
+											   var touche = window.event ? evenement.keyCode : evenement.which;
+											   if(touche==13){recherche()}
+										   }
+										   
+										   
+				function recherche(){
+				Xloading("divsearching")
+				motcle=document.getElementById("Xchoix").value
+				
+for(j=0; j<rezo.length;j=j+1){				
+document.getElementById("result_"+j).innerHTML=""
+}
+
+				for(i=0; i<mapXC.length-1;i=i+5){
+				textcompose=mapXC[(i+0)]+" "+mapXC[(i+1)]+" "+mapXC[(i+2)]+" "+mapXC[(i+3)]+" "+mapXC[(i+4)]
+				for(k=0;k<6;k++){textcompose+=" "+libelmapC[i/5][k]}
+				libel(textcompose,i)
+				}
+				}
+				
+				
+var ope="et"				
+var lignelibel=new Array()				
+var aze=-1				
+				function libel(textcompose,a){ //affichage des entêtes de colonne du fichier de données
+				lignelibel=new Array()
+				lignelibel[0]=textcompose
+				menudata=""
+
+				lignelibel[0]=lignelibel[0].replace(/©/g,"(c)")
+				// supression des doublons d'espace dans le texte
+				lignelibel[0]=lignelibel[0].replace(/  /g," ")
+				var lignelib0=lignelibel[0]				
+
+				OKITotal=0
+				OKI=new Array()									
+
+				if(motcle=="" || motcle=="Aucun-mots-clés"){OKITotal=0}else{
+				aze+=1
+				var motc1=motcle.split(" ")
+
+
+				var stopmot=motc1.length
+				OKITotal=1
+				var kr=0
+	for(r=0;r<stopmot;r++){
+	
+				OKI[r]=0
+				 
+				var motc=motc1[r].toLowerCase()
+				if(motc!=""){
+
+							
+								// chainage de la chaine recherchée par "_" si elle existe dans le texte
+							if(motc.indexOf("_")>0){
+							
+							var motcX=motc.replace("!","")
+									var Xchaine=motcX.split("_")
+									
+									var Zchaine=Xchaine[0]
+									for(z=1;z<Xchaine.length;z++){ Zchaine+=" "+Xchaine[z]}
+
+									Zchaine=Zchaine.replace(/([.?*+^$[\]\\(){}-])/g,"\\$1")
+									var ZZchaine = new RegExp(Zchaine, "g");
+//alert("ZZchaine="+ZZchaine+"    motcX="+motcX)
+
+									lignelib0=lignelib0.toLowerCase().replace(ZZchaine,motcX)
+
+								
+							}
+
+
+				if(motc.indexOf("!")<0){
+				
+				if(lignelib0.toLowerCase().indexOf(motc)>-1){
+
+				if(ope=="ou"){OKI[r]=1;OKITotal=1;kr=1}//r=stopmot
+				if(ope=="et"){OKI[r]=1;OKITotal=OKITotal*OKI[r]}
+				}else{
+				if(ope=="ou"){OKI[r]=0;if(kr==1){OKITotal=1}else{OKITotal=0}}
+				if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+				}
+
+
+
+
+				}else{
+				
+				// cas de sauf !
+				motc=motc.replace("!","")
+				if(lignelib0.toLowerCase().indexOf(motc)>-1  ){
+				if(ope=="ou"){OKITotal=0}
+				if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+
+				}else{
+				if(ope=="ou"){OKI[r]=1;OKITotal=OKITotal*OKI[r];}//r=stopmot
+				if(ope=="et"){OKI[r]=1;OKITota=OKITotal*OKI[r]}
+				}
+				}
+
+				}
+				}
+
+				}
+				Xloaded("divsearching")
+				//affiche les entêtes en liste 
+				if(OKITotal>=1){
+
+				if(libelmapC[a/5][5]!="none"){
+				
+var listici=document.getElementById("result_"+traceMapx[a/5][2]).innerHTML
+var tt=libelmapC[a/5][2].replace(/'/g," ").replace(/<br\/>/g,' - ')
+
+document.getElementById("result_"+traceMapx[a/5][2]).innerHTML=listici+"<span style='color:gray;cursor:pointer' onmouseout='this.style.color=\"gray\"' onmouseover='this.style.color=\"navy\"' onclick='xn="+traceMapx[a/5][3]+";xmap="+(traceMapx[a/5][1]+1)+";xcharge(\""+rezo[traceMapx[a/5][2]]+"\")' title='"+tt+"'> <b>fichier n°"+(traceMapx[a/5][1]+1)+"</b> - "+mapXC[a+4]+"</span><br>"
+				}
+
+				}
+
+/*
+				document.getElementById("ici").innerHTML=menudata
+
+				if(lignelibel.length){}else{
+
+				differelibel()
+				}
+*/
+
+				}
+
+
+	  </script>
+
+
+</head>
+<body style="font-family:arial;font-size:10px" >
+
+<!--		
+		<script id="maps_0" language="javascript"></script>
+		<script id="maps_1" language="javascript"></script>
+		<script id="maps_2" language="javascript"></script>
+		<script id="maps_3" language="javascript"></script>
+		<script id="maps_4" language="javascript"></script>
+		<script id="maps_5" language="javascript"></script>
+		<script id="maps_6" language="javascript"></script>
+		<script id="maps_7" language="javascript"></script>
+		<script id="maps_8" language="javascript"></script>
+		<script id="maps_9" language="javascript"></script>
+		<script id="maps_10" language="javascript"></script>
+		<script id="maps_11" language="javascript"></script>
+		<script id="maps_12" language="javascript"></script>
+		<script id="maps_13" language="javascript"></script>
+		<script id="maps_14" language="javascript"></script>
+		<script id="maps_15" language="javascript"></script>
+		<script id="maps_16" language="javascript"></script>
+		<script id="maps_17" language="javascript"></script>
+		<script id="maps_18" language="javascript"></script>
+		<script id="maps_19" language="javascript"></script>
+		<script id="maps_20" language="javascript"></script>
+		<script id="maps_21" language="javascript"></script>
+		<script id="maps_22" language="javascript"></script>
+		<script id="maps_23" language="javascript"></script>
+		<script id="maps_24" language="javascript"></script>
+		<script id="maps_25" language="javascript"></script>
+
+-->
+
+
+
+<div id="divloading" style="position:absolute;left:350px ;top:100px;z-index:5000;display:none;text-align: center;"><br><br><br><big style="font-family: Arial; color: rgb(153, 153, 153);"><big><span
+style="font-weight: bold;">Téléchargement des metadonnées en cours</span></big></big><br><br><img style="width: 208px; height: 13px;" alt=""
+src="loadingAnimation.gif"><br><br></div>
+<div id="divsearching" style="position:absolute;left:350px ;top:100px;z-index:5000;display:none;text-align: center;"><br><br><br><big style="font-family: Arial; color: rgb(153, 153, 153);"><big><span
+style="font-weight: bold;">Recherche en cours</span></big></big><br><br><img style="width: 208px; height: 13px;" alt=""
+src="loadingAnimation.gif"><br><br></div>
+<center><div id="tab"></div></center>
+
+
+<span style=" display:none" id="iciScriptSRC"></span>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script  language="javascript" src="A-MANAGER-local/transdata_rezo/rezo.js?updated=1234567890"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script id="scrptRezoDistant" language="javascript" src="http://altko.org/admin_rezo/rezo.js?updated=1234567890"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+
+<script  language="javascript" >
+
+
+
+//1 - identifier les plateformes sc1/
+var resoSC1=new Array()
+var rezoDesSc1=new Array()
+
+function detecteSC1(){
+for(i=0;i<rezo.length;i++){
+if(rezo[i].split("sc1")[1]=="/"){
+resoSC1[resoSC1.length]=rezo[i]
+}
+}
+}
+
+function balaieRezoSC1(){
+
+for(ksc1=0;ksc1<resoSC1.length;ksc1+=1){
+		var nouveau=document.createElement("iframe")
+		nouveau.setAttribute("id","SC1maps_"+ksc1)
+		nouveau.setAttribute("name","SC1maps_"+ksc1)
+		document.getElementById("iciScriptSRC").appendChild(nouveau)
+		}
+document.getElementById("SC1maps_0").src="recupMapXdesSC1.html?lacible="+resoSC1[0]+"mapsILIADE.js&rang="+0		
+}
+
+
+
+
+detecteSC1()
+//alert(resoSC1)
+balaieRezoSC1()
+
+
+var bisrezo=new Array()
+var bisInRezo=new Array()
+var bisnomrezo=new Array()
+var k=0
+var ksc1=0
+
+
+function ajouteMapsdesSc1(a){
+rezoDesSc1[rezoDesSc1.length]=a
+//alert(rezoDesSc1)
+
+}
+function rangSC1suivant(a){
+
+if(a==(resoSC1.length-1)){
+
+//alert("fin")
+reconstruitRezo()
+
+}else{
+a=parseInt(a)+1
+//alert(a+"    "+resoSC1[a])
+document.getElementById("SC1maps_"+a).src="recupMapXdesSC1.html?lacible="+resoSC1[a]+"mapsILIADE.js&rang="+a
+
+}
+}
+function reconstruitRezo(){
+//alert("rezo.length = "+rezo.length+"   "+rezo[17])
+for(i=0;i<rezo.length;i++){//reconstruction de rezo sans les plateformes sc1
+if(rezo[i].split("sc1")[1]=="/"){}else{
+bisrezo[bisrezo.length]=rezo[i]
+bisInRezo[bisrezo.length-1]=InRezo[i]
+bisnomrezo[bisrezo.length-1]=nomrezo[i]
+}
+}
+//alert("rezoDesSc1.length = "+rezoDesSc1.length)
+for(i=0;i<rezoDesSc1.length;i++){
+
+bisrezo[bisrezo.length]=rezoDesSc1[i]
+bisInRezo[bisrezo.length-1]=rezoDesSc1[i]
+bisnomrezo[bisrezo.length-1]=rezoDesSc1[i]
+
+
+}
+//for(i=0;i<bisrezo.length;i++){alert("rang="+i+"    "+bisrezo[i])}
+rezo=bisrezo
+InRezo=bisInRezo
+nomrezo=bisnomrezo
+demarrage()
+}
+
+
+</script>
+<script  language="javascript" >
+
+
+
+
+
+
+var textmenu=""
+
+
+function creeFramesetTexte(){
+//alert(rezo.length)
+//alert(document.getElementsByTagName("iframe").length)
+for(i=0;i<rezo.length;i++){//rezo.length
+
+if(i==rezo.length-1){
+
+var nouveau=document.createElement("iframe")
+nouveau.setAttribute("id","maps_"+i)
+document.getElementById("iciScriptSRC").appendChild(nouveau)
+
+}else{
+
+
+var nouveau=document.createElement("iframe")
+nouveau.setAttribute("id","maps_"+i)
+document.getElementById("iciScriptSRC").appendChild(nouveau)
+
+}
+}
+
+//alert(document.getElementsByTagName("iframe").length)
+
+
+
+
+
+
+
+
+for(i=0;i<rezo.length;i++){
+var im2=''
+var im=""
+if(i==0){var im='<center><br> <div style="position:relative;left:-65px;top:30px;font-size:26px;color:gray;font-family:arial">Liste détaillée des plateformes</center><br><br> '
+
+im+='<div id="divlogic" style="position:relative;left:-65px;top:30px; height: 24px; font-family:arial ;font-size:14px"><small><small>Opérateur logique : </small></small><input type="radio"  id="T_1" name="T" value="1" onClick="ope=\'et\'" /><small><small>Et</small></small><input type="radio" id="T_2" name="T" value="2" onClick="ope=\'ou\'" value="0" type="text" /><small><small>Ou</small></small></div>'
+
+if(document.all){var hx1=0}else{var hx1=30}
+im+='<div id="divmotscles"  style=";position:relative;left:-65px;top:'+hx1+'px;z-index :4000; height: 24px;font-family:arial ; color: rgb(153, 153, 255)"><br/><input onkeyPress="quelle_touche(event);" id="Xchoix" type="text" style="width:252px" value=""></input><input type="button" onclick="recherche()" value="OK"></input><br/><br/><small><small><b><u title="Insérez les mots clés séparés par un espace. Pour former une chaine de mots, reliez les avec le tiret bas \'_\'.  Pour indiquer \'sauf\' : placez \'!\' devant le mot clé ou la chaîne_de_mots" style="cursor:pointer ;font-size:10px">Règles de la recherche </u></b></small></small></div>'
+
+im+='<div style="position: relative; left: 188px;top:-25px"><img alt="" width="100px" src="IconRDV.jpg"></div></div>'
+im2='<br/><table style=" width:600px;font-size:10px;color:gray"><tr><td>Introduisez les mots clés désigant les données que vous recherchez. La liste des fichiers qui comprennent ces mots clés s\'affichera sous chaque plateforme. Une description succinte s\'affiche alors en bulle d\'info lorsque vous servolez un nom de fichier. Rendez vous ensuite sur la plateforme choisie en cliquant sur son nom. Vous pourrez ensuite revenir sur cette page pour consulter de nouveau le résultat de votre recherche<br/></td></tr></table> '
+}
+if(rezo[i]!="vide/"){
+textmenu+='<center>'+(im+im2)+'<table  style="width:600px;border:0px solid gray;font-family:arial">'
+textmenu+='<tr style="font-size:11px"><td colspan="2"><span onclick="javascript:xcharge(\''+rezo[i]+'\')" style="cursor:pointer;color:blue"><b><u>'+nomrezo[i]+'</u></b></span></td></tr>'
+textmenu+='<tr><td style="font-size:10px;background-color:#F2F2F2">'+InRezo[i]+'</td></tr>'
+textmenu+='<tr><td id="result_'+i+'" style=" font-size:10px"></td></tr>'
+textmenu+='<table></center><br>'
+}
+
+}
+
+
+
+
+parent.document.getElementById("divrezo").style.display="none"
+textmenu=textmenu.replace(/\%20/g," ").replace("bienvenueRDV-2.html","")
+}
+//
+function demarrage(){
+//alert(rezo[25])
+
+document.getElementById("iciScriptSRC").innerHTML=""
+creeFramesetTexte()
+declenche()
+}
+ </script>
+</body>
+</html>

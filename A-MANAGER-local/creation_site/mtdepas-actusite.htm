@@ -1,0 +1,119 @@
+﻿<html>
+<head><title>Altercarto.com : Création de site</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+<script id="passadmin" type="text/javascript" src="editpas.js"></script> 
+<script type="text/javascript">
+var pasadmin=Editpasici
+</script> 
+
+
+<script id="passsite" type="text/javascript" ></script> 
+
+<script type="text/javascript">
+var listpubcartovision=new Array();var rangliste=new Array(); 
+var menuencaps=new Array();
+ var ItemMenu=new Array()
+ var listpagevision=new Array()
+ var Xtarget=new Array()
+ var LienItemMenu=new Array()
+ var TitreItemMenu=new Array()
+
+ 
+
+    //* <!--
+	var topX=top.location.href
+topX=topX.indexOf("Site-",0)
+	
+	
+	var rep=""
+	var siteici=""
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum) 
+	//alert(urlvar['cible'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->
+	 siteici=(urlvar['SIT'])
+   rep=(urlvar['REP'])
+  
+   if(rep!=""){
+   
+   document.getElementById("passsite").src="../../"+rep+"/editpas.js"
+				}else{Editpasici=new Array()}
+ //Editpasici[Editpasici.length] 
+
+ var titx=""
+ if(rep!=""){titx=rep}else{titx=siteici}
+
+function ajoutpasadmin(){
+for(i=0;i<pasadmin.length;i++){
+Editpasici[Editpasici.length]=pasadmin[i]
+
+}
+}
+
+function quelle_touche(evenement)
+{
+var touche = window.event ? evenement.keyCode : evenement.which;
+var valx=document.getElementById('sais').value
+if(touche==13){testpas(valx)}
+}
+ 
+ 
+ var Editpastemp="10638"
+function testpas(a,j){
+
+ 
+ajoutpasadmin()
+
+var k=0;
+for(i=0;i<Editpasici.length;i++){
+if(a==Editpasici[i] || a==Editpastemp){
+Editpastemp=a;
+if(rep==""){
+//if(siteici=="SITE PILOTE"){window.location.href="actumenu-site-pilote.html?REP="}
+if(siteici=="Global"){window.location.href="actumenu-site-Global.html?REP="}
+if(siteici=="TextesetNotes"){window.location.href="actumenu-site-TextesetNotes.html?REP="}
+}else{
+window.location.href="actumenu.html?REP="+rep
+
+}
+k=1;
+//document.getElementById('editpas').style.visibility='hidden'
+}
+}  
+}
+ document.write("<br><center><big><b>Accès à liste des sites pour mise à jour des menus d'abonnement</b></big>")
+ document.write("<br><span style='color:red' >ooO0 <big ><b>"+titx+"</b></big> 0Ooo</span><br></center >")
+ 
+ 
+   document.write('<div id="editpas" class="texte" style="position:absolute;opacity:1;border:2px solid; top:45px; left:10px;visibility:visible;background-color:#0B6DA0;width:200px;z-index:1000;padding:5px">')
+document.write('<center><b>Saisissez votre <br>mot de passe<br><input onkeyPress="quelle_touche(event)" id="sais" type="texte" value="" ><br><input type="button" onclick="testpas(document.getElementById(\'sais\').value);" value="valider"></input>.....<input type="button" value="annuler" onclick="window.location.href=\'actu_site.php\'"</center>')
+document.write('</div>')
+
+
+
+
+
+
+
+</script>
+</head><body></body></html>

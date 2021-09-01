@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+[
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+
+<svg id="gene"  
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+ 
+
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+
+
+>
+
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+var brsrici="ei"
+
+
+function affichN(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGaffichN()}else{
+top.frames.Num0.frames.couches.zoom.SVGaffichN()
+}
+}
+var strokewidthpas
+var strokepas
+var opacpas
+function passon(a){
+strokepas=a.getAttribute('stroke')
+a.setAttribute('stroke','navy');
+opacpas=a.getAttribute('fill-opacity')
+a.setAttribute('fill-opacity','0.5')  
+}
+function passout(a){
+a.setAttribute('fill-opacity',opacpas)
+a.setAttribute('stroke',strokepas);
+}
+function svggeneral(){
+
+brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGgeneral()}else{
+top.frames.Num0.frames[2].indic1()
+}}
+function svgdown(a){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGdown()}else{
+top.frames.Num0.frames.couches.zoom.selxsvg();top.frames.Num0.frames.couches.zoom.rien();
+}}
+function svgclick1(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick1()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}
+}
+function svgclick2(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick2()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx2(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}}
+function svgout(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGout()}else{
+//top.frames.Num0.frames.couches.zoom0()
+//<image x="10" Y="10" width="300" height="300" xlink:href="fonds france contour.jpg" ></image>
+}}
+]]></script>
+
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+ <stop class="begin" offset="0" style="stop-color:#5555AA"/>
+ <stop class="end" offset="1" style="stop-color:white"/>
+</radialGradient>
+</defs>
+
+<g space="preserve" opacity="1" transform="matrix(0.3, 0, 0, 0.3, 0, 0)"  name="ns" id="totalsvg">
+
+
+
+
+
+
+	 
+	 
+
+	
+<rect y="-150" x="-150" height="800" width="800" style="fill: url(#grad1) ; fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.5; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"  transform="matrix(1, 0, 0, 1, 0, 0)" fill="#EBEFF8" id="rectmove"></rect>
+
+
+<g space="preserve" opacity="1" transform="matrix(1, 0, 0, 1, -160, -15)"   id="calageAires">
+
+
+
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond1"/>
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond2"/>
+
+
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="MEUSE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"  onclick="tailCarte='../800-MEUSE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer" id="1"><path stroke-width="1" stroke="gray" id="p1" d="M 276.7967316890951 59.884696287703036 L 286.02771104408356 88.06882552204178 L 293.5988079118329 110.83292784222743 L 320.6989307888631 103.24489211136898 L 351.5930700696056 191.04929303944328 L 345.631043387471 328.17591647331795 L 301.1868421809745 350.3980141531323 L 222.05448236658933 302.7018006960557 L 203.08439791183295 258.79960023201863 L 220.42847819025522 205.68335986078893 L 207.96242018561486 165.57517726218106 L 231.26852519721578 68.55673642691426 L 276.7967316890951 59.884696287703036 276.7967316890951 59.884696287703036 "></path><title>MEUSE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="MEURTHE-et-MOSELLE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-MEURTHE-et-MOSELLE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="2"><path stroke-width="1" stroke="gray" id="p2" d="M 320.6989307888631 103.24489211136898 L 351.6059331786543 191.03443712296996 L 345.6471320185615 328.161192111369 L 368.85487517401396 331.0096691415314 L 382.4151501160093 362.7832733178655 L 561.2248002320185 312.13163387471 L 437.2050271461717 251.0934431554525 L 422.2925958236659 218.93792645011604 L 369.91843016241296 190.08908143851517 L 375.10242877030163 138.10242668213465 L 355.7036812064965 85.45901276102097 L 336.1506737819026 69.7748241299305 L 286.0264281438515 88.06873781902556 L 293.6096869837587 110.81954338747107 320.6989307888631 103.24489211136898 "></path><title>MEURTHE-et-MOSELLE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="MOSELLE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-MOSELLE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="3"><path id="p3" d="M 416.5815654292344 80.67665986078896 L 449.8140800464037 91.30390232018567 L 509.2430860788864 161.24033387471007 L 512.1678452436195 143.69180812064974 L 539.6871466357309 153.52963085846875 L 568.5358259860789 164.56394199535976 L 605.3611580046404 147.41421160092818 L 636.8687540603248 172.14169211136903 L 627.4297754060325 206.30815614849195 L 584.6219721577726 201.52216844547576 L 552.4496846867751 176.6617399071926 L 531.7105475638052 215.74713480278427 L 554.8426517401392 228.64262575406042 L 554.5767556844548 245.92525545243626 L 567.6052385150813 231.96622900232026 L 591.0032874709977 250.04650301624136 L 583.8243327146172 267.9938728538284 L 591.2691396751741 275.7045758700697 L 561.2248002320185 312.13163387471 L 437.18809071925756 251.11037958236665 L 422.2983647331787 218.93792645011604 L 369.91843016241296 190.08908143851517 L 375.1035835266822 138.09102529002325 L 355.6934540603248 85.46219930394437 416.5815654292344 80.67665986078896 "></path><title>MOSELLE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="VOSGES" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-VOSGES';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="4"><path id="p4" d="M 301.2001886310905 350.38706102088173 L 345.6471320185615 328.161192111369 L 368.85487517401396 331.0096691415314 L 382.4151501160093 362.7832733178655 L 561.2248002320185 312.13163387471 L 579.5707656612528 361.18713689095136 L 537.4276148491879 479.64004872389796 L 425.3559744779583 462.35734106728546 L 407.0097215777262 442.94754292343396 L 360.26511020881674 468.01254995359636 L 328.30703248259863 429.38729234338757 L 343.994373549884 403.06440139211145 L 304.51008584686775 364.5106914153133 L 293.2098445475638 370.7590928074247 L 289.88624129930395 356.26821577726224 L 289.88624129930395 356.26821577726224 301.2001886310905 350.38706102088173 "></path><title>VOSGES</title></g>
+
+
+
+</g>
+</g>
+
+
+
+
+
+
+
+
+<script><![CDATA[
+
+
+]]></script>
+
+
+</svg>

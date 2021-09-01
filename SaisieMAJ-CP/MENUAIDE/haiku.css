@@ -1,0 +1,6 @@
+	
+  a:link {  font-weight:bold; color:#366092; text-decoration:none ;} 
+  a:hover { font-weight:bold; color:#E00000; text-decoration:underline; } 
+  a:active { font-weight:bold; color:#E00000; text-decoration:underline ;} 
+  a:focus { font-weight:bold; color:#00E000; text-decoration:underline ;}  
+  a:visited {  color:#FA4515; text-decoration:none ;}

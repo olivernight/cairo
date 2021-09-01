@@ -1,0 +1,1 @@
+﻿var base00=new Array()

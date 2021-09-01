@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  
+  <meta http-equiv="content-type"
+ content="text/html; charset=UTF-8">
+  <title>Saisie tables de passage</title>
+  <script language="javascript" src="tablepass.js"></script>
+
+
+  <script language="javascript">
+
+
+  var titre2=new Array()
+  var tablepas2=new Array()
+  var titrelong2=new Array()
+  var titretemp=new Array()
+var tablepastemp=new Array()
+var titrelongtemp=new Array()
+for(i=0;i<titre.length;i++){
+ajouter(titre[i])
+ajouter2(tablepas[i])
+ajouter3(titrelong[i])
+}
+
+var fich=""
+  var site =0
+  var essaierreur0=0
+  
+  function opacplus(a){
+
+  a.setAttribute("style","background-color:gray;color:white;opacity:0.9;font-weight:bold")
+
+  }
+  
+  function opacmoins(a){
+ a.setAttribute("style","background-color:white;color:black;opacity:0.7;font-weight:bold")
+
+  }
+function Nouvelle(a){
+this.donnees=a;
+}
+function ajouter(a){
+titre2[titre2.length]=new Nouvelle(a)
+}
+  
+function Nouvelle2(a){
+this.donnees=a;
+}
+function ajouter2(a){
+tablepas2[tablepas2.length]=new Nouvelle2(a)
+}
+function Nouvelle3(a){
+this.donnees=a;
+}
+function ajouter3(a){
+titrelong2[titrelong2.length]=new Nouvelle3(a)
+}
+inittemp()
+function inittemp(){
+titretemp=new Array()
+tablepastemp=new Array()
+titrelongtemp=new Array()
+for(i=0;i<titre2.length;i++){
+titretemp[titretemp.length]=titre2[i].donnees.split()
+tablepastemp[tablepastemp.length]=tablepas2[i].donnees.split()
+titrelongtemp[titrelongtemp.length]=titrelong2[i].donnees.split()
+}
+}
+
+
+ 
+  
+    function mazboutons(){
+  //alert(site)
+if(site==0){
+inittemp()
+}else{essaierreur0=0}
+
+document.saisie1.Q[0].checked=""
+document.saisie1.Q[1].checked=""
+document.getElementById("message").innerHTML="" 
+document.getElementById("publication").innerHTML="" 
+
+document.getElementById("OK2").style.visibility="hidden"
+document.getElementById("radical").style.visibility="hidden"
+document.getElementById("radical").value=""
+document.getElementById("nw").style.visibility="hidden"
+}
+  
+  
+  
+  
+    function change_site() {
+	mazboutons()
+    document.getElementById("datatablepass").innerHTML=""
+titretemp=titre
+tablepastemp=tablepas
+titrelongtemp=titrelong
+site = document.menu.popup.selectedIndex;
+
+{
+var ancre=document.menu.popup.options[site].value;
+document.getElementById("txtar1").value=""
+document.getElementById("txtar2").value=""
+document.getElementById("txtar3").value=""
+  document.saisie1.Q[0].checked=""
+document.saisie1.Q[1].checked=""
+document.getElementById("OK2").style.visibility="hidden"
+document.getElementById("OK1").style.visibility="hidden"
+document.getElementById('eff').style.visibility='hidden'
+
+if(site!=0){
+document.getElementById("message").innerHTML="" 
+document.getElementById("radical").style.visibility="hidden"
+document.getElementById("txtar1").value=titre[ancre]
+document.getElementById("radical").value=titre[ancre]
+
+chargetable1("tables/"+titre[ancre]+".js")
+//document.getElementById("txtar2").value=tablepas[ancre]
+document.getElementById("txtar3").value=titrelong[ancre]
+document.getElementById("nw").style.visibility="visible"
+metBR()
+}else{
+
+
+document.getElementById("message").style.visibility="hidden"
+document.getElementById("radical").style.visibility="hidden"
+
+document.getElementById("radical").value=""
+document.getElementById("nw").style.visibility="hidden"
+
+}
+
+}
+}
+
+function efface(){
+titretemp=new Array()
+for(i=0;i<titre.length-1;i++){
+if(i<(site-1)){titretemp[i]=titre[i];
+titrelongtemp[i]=
+titrelong[i] 
+}else{ titretemp[i]=
+titre[(i+1)];
+titrelongtemp[i]=titrelong[(i+1)]
+}
+}
+ecritdatatablepass()
+}
+
+
+
+
+
+function valide(){
+
+document.getElementById("radical").value=document.getElementById("txtar1").value
+fich=document.getElementById("radical").value
+document.getElementById('message').style.visibility='visible';
+document.getElementById('radic').style.visibility='visible';
+document.getElementById('OK2').style.visibility='visible';
+document.getElementById('OK1').style.visibility='hidden';
+document.getElementById('eff').style.visibility='hidden';
+if(site==10000){document.getElementById('radical').style.visibility='visible'}else{document.getElementById('radical').style.visibility='hidden'}
+enregmodif()
+}
+function enregmodif(){//enregistre les modifs dans les tableaux temporaires et les inputs avent transfert vers module php pour écriture dans le fichier tablepass.js
+
+if(site==0){//nouvelle tablepas 
+
+if(fich!=""){
+
+document.getElementById("message").innerHTML=":  le nouveau fichier : "+fich+".js va être enregistré " 
+
+titretemp[titretemp.length]=document.getElementById("txtar1").value
+titrelongtemp[titrelongtemp.length]=document.getElementById("txtar3").value
+tablepastemp[tablepastemp.length]=document.getElementById("txtar2").value
+
+}else{document.getElementById("OK2").style.visibility="hidden"}
+}else{//modification d'une tablepas existante
+inittemp()
+document.getElementById("message").innerHTML=":  le fichier modifié : "+fich+"-<i>.js</i> va être enregistré " 
+titretemp[(site-1)]=document.getElementById("txtar1").value
+tablepastemp[(site-1)]=document.getElementById("txtar2").value
+titrelongtemp[(site-1)]=document.getElementById("txtar3").value
+
+}
+
+}
+function ecritdatatablepass(){//écrit les données dans des input avat transfert php
+
+//----------------------------------------------------------------tabpublication()
+var cadredata=""
+for(i=0;i<titretemp.length;i++){
+
+cadredata+='<dt id="ID1'+i+'" ></dt><br><dt id="ID2'+i+'" ></dt><br><dt id="ID3'+i+'" ></dt><br><br>'
+}
+
+document.getElementById("datatablepass").innerHTML=cadredata
+
+for(k=0;k<titretemp.length;k++){
+				  //------------Titre =(radical du nom de fichier de brève carto vision  "cartO-radical-encaps.htm"
+				  var noeudmaps=document.createElement("textarea") 
+				  var nm="T["+k+"]"
+				  noeudmaps.setAttribute("name",nm)
+				  noeudmaps.setAttribute("id","titre"+k)
+				  noeudmaps.setAttribute("rows",2)
+				  noeudmaps.setAttribute("cols",120)
+				
+				  
+				  document.getElementById("ID1"+k).appendChild(noeudmaps);	
+var tabic="'"+titretemp[k]+"'"		  
+tabic=tabic.replace(/\n/g,"<br>")
+tabic=tabic.replace(/'/g,"")
+				  var xt=document.createTextNode(tabic)//(titretemp[k])
+				  document.getElementById("titre"+k).appendChild(xt)
+
+				  
+				  //---------table
+				  var noeudmaps=document.createElement("textarea") 
+				  var nm="B["+k+"]"
+				  noeudmaps.setAttribute("name",nm)
+				  noeudmaps.setAttribute("id","tablepas"+k)
+				  noeudmaps.setAttribute("rows",20)
+				  noeudmaps.setAttribute("cols",120)
+				  
+				  document.getElementById("ID2"+k).appendChild(noeudmaps);
+var tabic="'"+tablepastemp[k]+"'"			  
+tabic=tabic.replace(/\n/g,"<br>")
+tabic=tabic.replace(/'/g,"")
+				  var xt=document.createTextNode(tabic)//(tablepastemp[k])
+
+				  document.getElementById("tablepas"+k).appendChild(xt)
+				  //--------------titre long
+				  var noeudmaps=document.createElement("textarea") 
+				  var nm="M["+k+"]"
+				  noeudmaps.setAttribute("name",nm)
+				  noeudmaps.setAttribute("id","titrelong"+k)
+				  noeudmaps.setAttribute("rows",1)
+				  noeudmaps.setAttribute("cols",40)
+				  document.getElementById("ID3"+k).appendChild(noeudmaps);	
+var tabic="'"+titrelongtemp[k]+"'"		  
+tabic=tabic.replace(/\n/g,"<br>")
+tabic=tabic.replace(/'/g,"")
+				  var xt=document.createTextNode(tabic)//(titrelongtemp[k])
+				  document.getElementById("titrelong"+k).appendChild(xt)
+
+}
+
+}
+function firstsupprcrlf(){
+
+var newvlub=""
+var vlubX=""
+var vlub=document.getElementById("txtar2").value// brève carto
+
+var cptbal=0
+for(i=0;i<vlub.length;i++){
+if(vlub.substr(i,1)=='<' ){cptbal=1}
+if(vlub.substr(i,1)=='>' & cptbal==1){cptbal=0}
+if( vlub.substr(i,1)=='\n')
+{
+if(cptbal==1){
+vlubX=" "
+	}else{
+	if((i>0 & i<(vlub.length-1)) & (vlub.substr(i-1,1)>"A" & vlub.substr(i-1,1)<"z") & (vlub.substr(i+1,1)>"A" & vlub.substr(i+1,1)<"z"))
+	{vlubX=" "}else{vlubX=""}
+	     }
+}else{vlubX=vlub.substr(i,1)}
+
+newvlub+=vlubX
+}
+document.getElementById("txtar2").value=newvlub
+var newvlub=""
+var vlub=document.getElementById("txtar2").value// brève carto
+
+for(i=0;i<vlub.length;i++){
+if(vlub.substr(i,1)!='"'){newvlub+=vlub.substr(i,1)}else{newvlub+="'"}
+
+}
+
+document.getElementById("txtar2").value=newvlub
+
+}
+
+function supprimCRLF(){ 
+}
+
+
+
+
+function metBR(){ //transforme <br> en \n pour l'affichage dans l'interface de saisie (à l'ouvertrure de la page)
+
+var newvlu=""
+var newvlub=""
+var vlu=document.getElementById("txtar1").value
+var vlub=document.getElementById("txtar2").value
+for(i=0;i<vlu.length;i++){
+if(vlu.substr(i,4)=='<br>' || vlu.substr(i,4)=='<BR>'){newvlu+="\n";i=i+3}else{newvlu+=vlu.substr(i,1)}
+}
+for(i=0;i<vlub.length;i++){
+if(vlub.substr(i,4)=='<br>' || vlub.substr(i,4)=='<BR>'){newvlub+="\n";i=i+3}else{newvlub+=vlub.substr(i,1)}
+}
+document.getElementById("txtar1").value=newvlu
+document.getElementById("txtar2").value=newvlub
+
+}
+function checkpub(chk,a){
+
+if(chk.value==1){
+;chk.checked="";chk.value="0";document.getElementById("pb"+a).value="0"}else{chk.checked="true";chk.value="1";document.getElementById("pb"+a).value="1"};
+
+}
+
+function tabpublication(){
+document.getElementById("publication").innerHTML=""
+var tabpub="<font color='white'>SELECTIONNEZ les Brèves à Publier<br><small><i>(les items sélectionnés apparaîtront au menu)</i></small></font> "
+for(i=0;i<titretemp.length;i++){
+if(titretemp[i]!=""){
+tabpub+='<dt ><INPUT id="pub'+i+'" TYPE = "RADIO" NAME ="PUB'+i+'"  onclick="javascript:var a='+i+';var chk=this;checkpub(chk,a)" VALUE="1"><label for="pub'+i+'"><b ><font size="+1" style=";color:white" >'+titretemp[i]+'</font></label></b><input id="pb'+i+'" type="text" name="P['+i+']" value="1" style="width:10;visibility:hidden" title=""></dt>'
+
+}
+}
+tabpub+='<dt ><input id="OK3" type="submit" name="OK3" value="OK" title=""></dt>'
+document.getElementById("publication").innerHTML=tabpub
+for(i=0;i<titretemp.length;i++){
+document.getElementById("pub"+i).checked="true"
+}
+}
+
+  </script>
+</head>
+<body style="background-color: black">
+
+<div style="position:absolute; top:5px;left:5px;z-index:20000">
+<dt><a HREF="#" onclick="document.location.reload();return(false)" style="font-size:13px; color:white;font-family:arial"><b><big>Rafraîchir la page</big></b></a><dt>
+</div>
+<div style="position:absolute; top:-100;left:60;"><img src="../second_life.jpg" style="opacity:1;width:1130;height:650"  ></div>
+ <div style="position: absolute; z-index: 1; top: 0px; left: 0px;">
+ <table width=1200 height=40 BGCOLOR=black><tr><td></td></tr></table>
+ </div>
+<div
+ style="position: absolute; z-index: 1; top: 30px; left: 60px;">
+ <form NAME="menu">
+<p ><b><font face="Arial" size="3"  color="black"></font></b><select NAME="popup"
+onChange="change_site();"   style=";border:1px dotted black; color:black;width:370px;opacity:0.95" size="1" >
+<option VALUE="javascript:rien()"  style="background-color: pink;opacity:0.5;color:red">Créer une nouvelle table de passage</option>
+<script language="javascript">
+
+
+for(i=0;i<titre.length;i++){
+
+document.write('<option VALUE="'+i+'" style="background-color: white;opacity:0.5" title="'+titrelong[i]+'">Modifier la table : '+titre[i]+'</option>')
+
+}
+
+</script>
+</select> </p>
+
+</form>
+
+ 
+ </div>
+
+<div style="position:absolute;left:100px;top:100">
+<form  method="post" action="tablepas.php" name="saisie1">
+
+<dt><font style="font-size:13px; color:black;font-family:arial"><B > Nom du fichier (sans l'extension .js)</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>libellé long de la table de passage</b></font></dt>
+<textarea id="txtar1" onclick="javascript:mazboutons()" name="N[1]" rows="1" cols="30" style="background-color:white;color:black;opacity:0.4;font-weight:bold" onmouseover="opacplus(this)" onmouseout="opacmoins(this)"></textarea>  <textarea id="txtar3" onclick="javascript:mazboutons()" name="N[3]" rows="1" cols="40" style="background-color:white;color:black;opacity:0.4;font-weight:bold" onmouseover="opacplus(this)" onmouseout="opacmoins(this)"></textarea>
+<br><br>
+<textarea id="txtar2" onclick="javascript:mazboutons()" name="N[2]" rows="17" cols="100" style="background-color:white;color:black;opacity:0.4;font-weight:bold" onmouseover="opacplus(this)" onmouseout="opacmoins(this)"></textarea>
+<br>
+
+<dt id="nw"><INPUT id="Q1" TYPE = "RADIO" NAME ="Q" VALUE = "1" onclick="javascript:efface();document.getElementById('message').style.visibility='hidden';document.getElementById('OK2').style.visibility='hidden';document.getElementById('OK1').style.visibility='visible';document.getElementById('eff').style.visibility='visible'"><label for="Q1"><b style="color:red">effacer</label></b><span id="eff" style="visibility:hidden"><font color="white"> <b >  : Attention, le fichier et son contenu seront perdus   <input id="OK1" type="button" onclick="supprimCRLF();ecritdatatablepass();document.saisie1.submit()" name="OK1" value="OK" title=""></font></b></span></dt>
+<dt><INPUT id="Q2" TYPE = "RADIO" NAME ="Q" VALUE = "2" onclick="javascript:valide()"><label for="Q2"><b style="color:red">valider</label></b>
+<span id="radic" style="visibility:hidden"><font color="white"> <b id="message"></b></font><input id="radical" type="text" style="width:120px" name="radical" value="" title=""><input id="OK2" type="button" style="width:125px" name="OK2" value="enregistrer le fichier" onclick="supprimCRLF();ecritdatatablepass();document.saisie1.submit()" title=""></span></dt>
+
+<dt id="datatablepass" style="visibility:hidden"><dt>
+<dt id="dtsite" style="visibility:hidden"><textarea id="inputsite" name="S[0]" rows="1" cols="3"></textarea><dt>
+<dt id="dteffval" style="visibility:hidden"><textarea id="inputeffval" name="E[0]" rows="1" cols="3"></textarea><dt>
+
+<div id="publication" style="position:absolute;top:0;right:-100"></div>
+
+
+</form>
+</div>
+
+<div id="texteinfo" style="position:absolute;left:940px;top:120px;width:230px;height:350px;border:1px dotted black;overflow:scroll;background-color:white">
+<br><div style="text-align: center; font-family: Arial;"><small><small><span
+ style="font-weight: bold;">Cette
+interface est destinée à <br>
+créer ou modifier</span></small></small><small><small><span
+ style="font-weight: bold;"><br>
+les Tables de passage </span><br style="font-weight: bold;">
+<span style="font-weight: bold;">pour le transfert de
+Méta-Données </span><br style="font-weight: bold;">
+<span style="font-weight: bold;">d'un dossier carte à un
+autre</span><br>
+</small></small></div>
+<div style="text-align: center; font-family: Arial;"><small><small><span
+ style="font-weight: bold; font-style: italic;"></span></small></small><small><small><span
+ style="font-style: italic; font-family: Arial;"><span
+ style="font-weight: bold; color: red;"><br>
+NB</span>
+ Pour transférer des
+Méta-Données d'une carte à une autre il faut que les deux cartes aient
+le même code maille (Cf. onglet architecture)</span></small></small></div>
+<small><small></small></small>
+<div style="text-align: center;"><small
+ style="color: rgb(51, 102, 102);"><small><big
+ style="font-family: Arial; font-weight: bold;"><br>
+<br>
+Fonctions des Tables de passage</big></small></small><br
+ style="font-family: Arial;">
+</div>
+<small><small><span style="font-family: Arial;">Les
+tables de passage
+conditionnent deux types d'opérations exécutées par l'interface
+"transfert de données"</span><br style="font-family: Arial;">
+</small></small>
+<div style="margin-left: 0px; font-family: Arial;"><small><small></small></small>
+<ul>
+  <li><small><small>la
+sommation des valeurs lors de regroupements d'aires
+géographique (par exemple : passage de l'échelle département à
+l'échelle région)</small></small></li>
+  <li><small><small>la
+neutralisation des aires géographiques contenues dans un
+regroupement, si ces aires sont présentes sur la carte (en particulier
+dans le cas où l'aire de regroupemlent se superpose aux aires
+regroupées) <span style="font-style: italic;">Sur le plan
+pratique, dans les fichiers de données, cette neutralisation se traduit par des cases vides
+ sur les lignes des aires géographiques regroupées après exécution des transferts de données via
+la table de passage.</span></small></small></li>
+</ul>
+</div>
+<div style="text-align: left; font-family: Arial;"><small><span
+ style="color: rgb(51, 102, 102); font-weight: bold;">Créer
+ou modifier <br>
+une table de passage.</span></small><br><br>
+</div>
+<small><small><span
+ style="color: red; font-weight: bold; font-family: Arial;">NB
+</span><span style="font-family: Arial;">L'interface
+s'ouvre en mode "créer" Le menu en haut à gauche permet de se placer
+sur un fichier à modifier. Une fois les saisies réalisées : valider
+puis enregistrer. </span><br style="font-family: Arial;">
+<span style="font-family: Arial;">Le lien rafraichir la
+page permet de remettre tout à zero (si l'on n'a pas enregistré). </span><br
+ style="font-family: Arial;">
+<span style="font-family: Arial;"></span><br
+ style="font-family: Arial;">
+<span style="font-weight: bold; font-family: Arial;"><br>
+<big>Créer un table de passage : </big></span><small
+ style="font-family: Arial;"><small><br>
+</small></small></small></small>
+<div style="margin-left: 0px; font-family: Arial;"><small><small><small><small></small>
+</small></small></small>
+<ul>
+  <li><small><small>saisir le titre (sans caractères
+spéciaux : le titre sera le nom du fichier)</small></small></li>
+  <li><small><small>saisir le titre long : le titre
+long doit expliciter les fonctions de la
+table : par exemple "passage de la France des départements à la France
+des régions y compris l'outremer"</small></small></li>
+  <li><small><small>Saisir la table de passage.</small></small></li>
+</ul>
+<div style="margin-left: 5px;"><small><small><span
+ style="text-decoration: underline;">Le format d'une table de
+passage est le suivant </span>:&nbsp;</small></small><br>
+<small><small><big><span style="font-weight: bold;"><small>tablePAS[tablePAS.length]=new
+Array(9902,7308,7318)</small></span></big><br>où les nombres sont les
+clés d'index cartograhiques de la carte et des données&nbsp;</small></small><br>
+<br>
+</div>
+</div>
+
+
+
+</div>
+<div style="position:absolute;z-index:100000;visibility:hidden">
+<iframe name="chargetab" id="chargetab" width=100 height=100 frameborder=1 style="background-color:white" ></iframe>
+</div>
+  <script language="javascript">
+
+  mazboutons()  
+document.getElementById("txtar1").value=""
+document.getElementById("txtar2").value=""
+document.getElementById("txtar3").value=""
+
+document.menu.popup.selectedIndex=0
+
+function chargetable2(){
+var textTable=window.frames.chargetab.document.getElementsByTagName("body")[0].innerHTML
+textTable=textTable.replace(/<pre>/g,"")
+textTable=textTable.replace(/<\/pre>/g,"")
+
+document.getElementById("txtar2").value=textTable
+}
+function chargetable1(a){
+
+window.frames.chargetab.location.href=a
+setTimeout('chargetable2()',2000)
+
+}
+//var ala="tables/ZE-Formapap-Speciale.js"
+//chargetable1(ala)
+  </script>
+
+</body>
+</html>

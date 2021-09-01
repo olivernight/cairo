@@ -1,0 +1,425 @@
+﻿<html>
+<head>
+
+<script language="javascript">//l'ouverture de ce fichier dans la frames zaguide de couches (fichier carte..htm) est déclenchée par une instructon en fin de fichier DATAGuide.htm ouvert directement par src dans la frames zaguidex du même fichier carte.htm ouvert lui-même dans la frames couches de CartO1.htm
+//alert("guide.htm dans zaguide")
+var MenuGuide=new Array()
+var MenuCartes=new Array()
+var paramGuide=new Array()
+var targe="#sommaire"
+var vartemp=""
+var fond=0
+var icon=0
+var z2=1000000
+var z3=0
+var kx=0 //indicateur qui agit sur la fonction GXY du module analyse lorsqu'on click pour la prelière ou la seconde , troisième nième .. fois
+var memecouleur=0 //0=couleur différente pour le fonds et les icônes
+MenuGuide=top.frames.Num0.frames.couches.zaguidex.transMenuGuide("return MenuGuide")
+MenuCartes=top.frames.Num0.frames.couches.zaguidex.transMenuCartes("return MenuCartes")
+
+menuIconeEchelle=top.frames.Num0.frames.paramcarte.transmenuIconeEchelle("return menuIconeEchelle")
+menuIconeSup=top.frames.Num0.frames.paramcarte.transmenuIconeSup("return menuIconeSup")
+menuSujet=top.frames.Num0.frames.paramcarte.transmenuSujet("return menuSujet")
+menuOther=top.frames.Num0.frames.paramcarte.transmenuOther("return menuOther")
+
+
+
+
+function somm(){
+top.frames.Num0.frames.couches.zaguide.location.hash="#sommaire"
+top.frames.Num0.location.hash="#sommet"
+}
+function allerQ(n){
+
+top.frames.Num0.frames.couches.zaguide.location.hash=n
+top.frames.Num0.location.hash="#sommet"
+
+}
+function allerC(n){
+
+top.frames.Num0.frames.couches.zaguide.location.hash=n
+top.frames.Num0.location.hash="#sommet"
+}
+function removenoeud(vartemp){
+if(vartemp!=""){
+var nx=document.getElementById(vartemp).firstChild
+document.getElementById(vartemp).removeChild(nx)
+}
+}
+
+
+
+function kx1(){
+kx=1
+}
+
+function iconencadre(z){
+//alert(z)
+top.frames.Num0.frames.datacarte.iconeoucadre1()
+if(z>=0 & z<100){
+var z=z
+
+top.frames.Num0.frames.pilote.framemenu.document.menu22.popup22.selectedIndex=z
+top.frames.Num0.frames.pilote.change_site22()
+}
+if(z>=100 & z<1000){
+var z=z-100
+top.frames.Num0.frames.pilote.framemenu1.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.pilote.change_site3()
+}
+
+}
+
+function fondcarte(z){
+guide1()
+kx=1 // indique que l'on a passé le premier cclick sur les menus pilote2 et 3 des icônes sur carte
+if(z2==0 & fond==0){
+
+
+} else{
+top.frames.Num0.frames.datacarte.iconeoucadre2()
+if(z>=2000 & z<3000){
+var z=z-2000
+top.frames.Num0.frames.tab.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.tab.change_site3()
+}
+if(z>=1000 & z<2000){
+var z=z-1000
+top.frames.Num0.frames.tab2.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.tab2.change_site3()
+}
+top.frames.Num0.frames.couches.document.getElementById("mobileX").style.left=1800
+top.frames.Num0.guide0()
+}
+
+}
+var indicguideoufentre=1// 1 pour guide et 0 pour fenetre
+function guide1(){
+indicguideoufentre=1
+}
+function guide0(){
+indicguideoufentre=0
+}
+function cartO2z2(){
+  var fenetreouv=top.frames.Num0.transfenetre("return fenetre")
+if(fenetreouv=="cartO2" & indicguideoufentre==0){
+z2=top.frames.Num0.transz2("return z2")}else{}
+}
+function transz2(){cartO2z2();return z2}
+function forcez2(){z2=10000000;
+//alert("force z2 dans guide")
+
+}
+
+function appliquefondcarte(){// appellée par instruction à la fin de l'execution de  la fonction GXY() du module analyse
+
+if(fond==1){
+fond=0
+top.frames.Num0.frames.couches.zam3.indicouinit0() // indique le rouge et jaune dans la fonction GXY() du module analyse
+top.frames.Num0.frames.couches.zam4.alacarte()
+if(memecouleur==1){top.frames.Num0.frames.couches.zam3.indicouinit0()}
+var z=z2
+
+
+
+fondcarte(z)
+
+icon=1
+z=z3
+
+}
+
+}
+var comptico=0
+
+
+function iconX(){// déchenché par fin de GXY() dans Module analyse. se déclenche au deuxième passage de fondcarte () ci-dessus. seulement si icon=1 est activé par appliquefondcarte() ci-dessus.
+if(comptico>0){if(icon==1){comptico=0;icon=0;z=z3
+iconencadre(z)}}else{comptico+=1}
+
+}
+
+</script>
+
+
+</head>
+
+<body STYLE="background-color:#C4D2E0">
+<script language="javascript">
+
+// MENU CARTES--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// MENU CARTES--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+document.write('<A name="sommaire"></a><div style="left:30;top:60;visibility:visible;position:absolute">')
+
+document.write('<center><p><FONT size="4" face="Arial" ><B><I>Cartes</I></B></FONT></p></center>') 
+document.write('<Table border=0 >')
+
+for(i=0;i<MenuCartes.length;i++){
+var x=MenuCartes[i]
+var ch0=""
+ch0+='<TR><TABLE width="270"><TR bgcolor="gray"><TD>'
+var et=""
+for(e=0;e<x[2].length;e++){if(x[2].substr(e,1)=="'"){et+="‘"}else{et+=x[2].substr(e,1)}}
+x[2]=et
+var a="'"+x[2]+"'"
+var b="'C"+i+"'"
+ch0+='<FONT size="2" face="Arial" ><B><DT  onmouseover="javascript:removenoeud(vartemp);vartemp='+b+';var a='
+ch0+=a
+ch0+=';var b='+b+';var ntext'+i+'=document.createTextNode(a);document.getElementById('+b+').appendChild(ntext'+i+')" >'
+ch0+='CARTES-' 
+//NUMERO CARTES
+ch0+=i+1
+ch0+='/Objet:'
+//thème
+ch0+=x[1]
+ch0+='</DT></B></FONT>'
+ch0+='</TD></TR><TR><TABLE width="270"><TR><TD width="20"></TD><TD bgcolor="#EFF2F9"><FONT size="2" face="Arial" ><B><A  href="javascript:allerC(\'#CARTES'+(i+1)+'\')" id='+b+' style="color:gray"></A></B></FONT></TD></TR></TABLE></TR>'
+document.write('</Table></TR>')
+document.write(ch0)
+}
+document.write('</table>')
+document.write('</div>')
+document.write('<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>')
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+// MENU QUESTIONS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// MENU QUESTIONS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+document.write('<div style="left:430;top:60;visibility:visible;position:absolute">')
+
+document.write('<center><p><FONT size="4" face="Arial" ><B><I>Questions</I></B></FONT></p></center>') 
+document.write('<Table border=0 >')
+
+for(i=0;i<MenuGuide.length;i++){
+var x=MenuGuide[i]
+var ch0=""
+ch0+='<TR><TABLE width="270"><TR bgcolor="gray"><TD>'
+var et=""
+for(e=0;e<x[2].length;e++){if(x[2].substr(e,1)=="'"){et+="‘"}else{et+=x[2].substr(e,1)}}
+x[2]=et
+var a="'"+x[2]+"'"
+var b="'S"+i+"'"
+ch0+='<FONT size="2" face="Arial" ><B><DT  onmouseover="javascript:removenoeud(vartemp);vartemp='+b+';var a='
+ch0+=a
+ch0+=';var b='+b+';var ntext'+i+'=document.createTextNode(a);document.getElementById('+b+').appendChild(ntext'+i+')" >'
+ch0+='QUESTION-' 
+//NUMERO QUESTION
+ch0+=i+1
+ch0+='/Thème:'
+//thème
+ch0+=x[1]
+ch0+='</DT></B></FONT>'
+ch0+='</TD></TR><TR><TABLE width="270"><TR><TD width="20"></TD><TD bgcolor="#EFF2F9"><FONT size="2" face="Arial" ><B><A href="javascript:allerQ(\'#QUESTION'+(i+1)+'\')" id='+b+' style="color:gray"></A></B></FONT></TD></TR></TABLE></TR>'
+document.write('</Table></TR>')
+document.write(ch0)
+}
+document.write('</table>')
+document.write('</div>')
+document.write('<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>')
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------Question (cartes+ icones sur carte + icone encadré)
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for(i=0;i<MenuGuide.length;i++){
+var x=MenuGuide[i]
+var ch=""
+ch+='<TABLE><TR ><TD width=780><A NAME=QUESTION'+(i+1)+'></A><center><p><FONT size="4" face="Arial" color="black"><B>'
+ch+='QUESTION ' 
+//NUMERO QUESTION
+ch+=i+1
+ch+='/ Thème : '
+//thème
+ch+=x[1]
+ch+='</B></FONT></p></center><p> </p></TD></TR><TR ><TD><p><FONT size="4" face="Arial" color="black"><B> <I>'
+//QUESTION
+ch+='<DT >'
+ch+=x[2]
+ch+='</DT>'
+ch+='</I></B></FONT></p></TD></TR><TR>'
+// fleches et sommaire
+if(i==0){var qp=""}else{var qp="question précédente"}
+ch+='<TABLE ><TR><TD width=300 style="font-family:arial;color:white;font-weight:bold" align="right">'+qp+'</TD><TD  align=center>'
+var xci=i
+var xc="'#QUESTION"+xci+"'"
+if(i==0){ch+='<img src="carretransparent.gif" width=20 >'}else{ch+='<img src="anti-fleche.gif" height=20 onclick="javascript:var n='+xc+';allerQ(n)">'}
+var xci=i+2
+var xc="'#QUESTION"+xci+"'"
+ch+='</TD><TD  align=center><img src="sommaire.gif" height=20 onclick="javascript:somm()" ></TD><TD align=center >'
+if(i==MenuGuide.length-1){var qs=""}else{var qs="question suivante"}
+if(i<MenuGuide.length-1){
+ch+='<img src="fleche.gif" height=20 onclick="javascript:var n='+xc+';allerQ(n)" >'}else{}
+ch+='</TD><TD style="font-family:arial;color:white;font-weight:bold" align=left>'+qs+'</TD></TR></TABLE>'
+// fin de flèches et sommaire
+ch+='</TR><TR ><p><FONT  size="3" face="Arial black" color="gray"><B><u> <DT>'
+ch+='hypothèses:'
+ch+='</DT></u></B></FONT></p></TD></TR>'
+ch+='<TR ><TABLE><TR bgcolor="#C4D2E0"><TD > </td><TD bgcolor="#F2F4FF" width=770><FONT size="3" face="Arial" color="black"><B> '
+//texte intro des hypothèses
+ch+=x[3]
+//1er alinéa des hypothèses
+if(x[4]!=""){
+ch+='<p> </p>'
+ch+="<li>"+x[4]+"</li>"
+}
+//2ème alinéa des hypothèses
+if(x[5]!=""){
+ch+='<p> </p>'
+ch+="<li>"+x[5]+"</li>"
+}
+//3ème alinéa des hypothèses
+if(x[6]!=""){
+ch+='<p> </p>'
+ch+="<li>"+x[6]+"</li>"
+}
+ ch+='</B></FONT></TD></TR></TABLE></TR><TR><TD><p> </p></TD></TR><TR><TD>'
+ ch+='<DT><FONT size="3" face="Arial black" color="gray"><B><u> Mise en oeuvre Cartographique des hypothèses</u></B></FONT></DT></TD></TR><TR><TD><p> </p></TD></TR></TABLE>'
+ ch+='<TABLE border=1  bgcolor="#C4D2E0"><TR><TD width=250>'
+ var cpt=0
+  if(x[8]=="" || x[8]==0 || x[8]==1000 || x[8]==2000 ){x[8]=0; cpt+=1}else{cpt=0}
+ 
+ ch+='<DT><FONT size="2" face="Arial" color="black"><B><u> fond de carte :</u></B></FONT></DT><DT><FONT size="2" face="Arial" color="black"><A href="javascript:comptico=0;if(kx>0){top.frames.Num0.frames.couches.zam3.indicouinit0()};comptico='+cpt+';z2='+x[8]+';z3='+x[9]+';z='+x[7]+';memecouleur='+x[10]+';fond=1;fondcarte(z)">   '
+ //fond de carte--------------------------------------------------------------------------------------------------------------------------------------------
+var w=new Array()
+ var g=""
+  if(x[7]=="" || x[7]==0 || x[7]==1000 || x[7]==2000 ){g="";w[2]="";w[8]=""}
+ if(x[7]>=1000 & x[7]<2000){w=menuIconeSup[x[7]-1000-1];g=w[10]}
+  if(x[7]>=2000 & x[7]<3000){w=menuIconeEchelle[x[7]-2000-1];g=w[9]}
+ch+=g
+ch+='</A></FONT></DT>'
+ch+='<DT><FONT size="1" face="Arial" color="black"><B><i> Source:</i></B></FONT><FONT size="1" face="Arial" color="red"><B><i>'+w[2]+'----------</i></B></FONT>'
+ch+='<FONT size="1" face="Arial" color="black"><B><i> Unité:</i></B></FONT><FONT size="1" face="Arial" color="red"><B><i>'+w[8]+'</i></B></FONT></DT>'	
+	ch+='</TD>'
+ch+='<TD width=255>'
+ch+='<DT><FONT size="2" face="Arial" color="black"><B><u> icones sur la carte:</u></B></FONT></DT><DT><FONT size="2" face="Arial" color="black">   '
+ //icones sur la carte--------------------------------------------------------------------------------------------------------------------------------------------
+var w=new Array()
+ var g=""
+ if(x[8]=="" || x[8]==0 || x[8]==1000 || x[8]==2000 ){g="";w[2]="";w[8]=""}
+ if(x[8]>=1000 & x[8]<2000){w=menuIconeSup[x[8]-1000-1];g=w[9]}
+  if(x[8]>=2000 & x[8]<3000){w=menuIconeEchelle[x[8]-2000-1];g=w[9]}
+ch+=g
+ch+='</FONT></DT>'
+ch+='<DT><FONT size="1" face="Arial" color="black"><B><i> Source:</i></B></FONT><FONT size="1" face="Arial" color="red"><B><i>'+w[2]+'----------</i></B></FONT>'
+ch+='<FONT size="1" face="Arial" color="black"><B><i> Unité:</i></B></FONT><FONT size="1" face="Arial" color="red"><B><i>'+w[8]+'</i></B></FONT></DT>'
+ch+='</TD>'
+ch+='<TD width=250>'
+ch+='<DT><FONT size="2" face="Arial" color="black"><B><u> icone encadré:</u></B></FONT></DT><DT><FONT size="2" face="Arial" color="black">  '
+ //icones encadrés--------------------------------------------------------------------------------------------------------------------------------------------
+var w
+ var g=""
+ 
+ if(x[9]>=0 & x[9]<100){w=menuSujet[x[9]-1];g=w[1]}
+  if(x[9]>=100 & x[9]<1000){w=menuOther[x[9]-100-1];g=w[1]}
+ch+=g
+ch+='</FONT></DT>'
+ch+='<DT><FONT size="1" face="Arial" color="red"><B><i> '+w[2]+'----------</i></B></FONT>'
+ch+='<FONT size="1" face="Arial" color="black"><B><i> -------</i></B></FONT></DT>'
+ch+='</TD></TR></TABLE>'
+ch+='<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>'
+document.write(ch)
+}
+//--------------------------------------------------FIN de QUESTIONS---------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------CARTES (cartes+ icone encadré)
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for(i=0;i<MenuCartes.length;i++){
+var x=MenuCartes[i]
+var ch=""
+ch+='<TABLE><tr><TD width=780><A NAME=CARTES'+(i+1)+'></A><p><center><FONT size="4" face="Arial" color="black"><B>'
+ch+='CARTE ' 
+//NUMERO QUESTION
+ch+=i+1
+ch+='/ Thème : '
+//thème
+ch+=x[1]
+ch+='</B></FONT></center></p></TD></TR><TR bgcolor="#C4D2E0"><TD><p><FONT size="4" face="Arial" color="black"><B> '
+//CARTES
+ch+='<DT >'
+ch+=x[2]
+ch+='</DT>'
+ch+='</B></FONT></p></TD></TR><TR>'
+// fleches et sommaire
+if(i==0){var qp=""}else{var qp="carte précédente"}
+ch+='<TABLE ><TR><TD width=300 style="font-family:arial;color:white;font-weight:bold" align="right">'+qp+'</TD><TD  align=center>'
+var xci=i
+var xc="'#CARTES"+xci+"'"
+if(i==0){ch+='<img src="carretransparent.gif" width=20 >'}else{ch+='<img src="anti-fleche.gif" height=20 onclick="javascript:var n='+xc+';allerC(n)">'}
+var xci=i+2
+var xc="'#CARTES"+xci+"'"
+ch+='</TD><TD  align=center><img src="sommaire.gif" height=20 onclick="javascript:somm()" ></TD><TD align=center >'
+if(i==MenuCartes.length-1){var qs=""}else{var qs="carte suivante"}
+if(i<MenuCartes.length-1){
+ch+='<img src="fleche.gif" height=20 onclick="javascript:var n='+xc+';allerC(n)" >'}else{}
+ch+='</TD><TD style="font-family:arial;color:white;font-weight:bold" align=left>'+qs+'</TD></TR></TABLE>'
+// fin de flèches et sommaire
+ch+='</TR><TR ><p><FONT  size="3" face="Arial black" color="gray"><B><u> <DT>'
+ch+='Commentaires:'
+ch+='</DT></u></B></FONT></p></TD></TR>'
+ch+='<TR ><TABLE><TR bgcolor="#C4D2E0"><TD > </td><TD bgcolor="#F2F4FF" width=770><FONT size="3" face="Arial" color="black"><B> '
+//texte intro des commetaires
+ch+=x[3]
+//1er alinéa des  commetaires
+if(x[4]!=""){
+ch+='<p> </p>'
+ch+="<li>"+x[4]+"</li>"
+}
+//2ème alinéa des  commetaires
+if(x[5]!=""){
+ch+='<p> </p>'
+ch+="<li>"+x[5]+"</li>"
+}
+//3ème alinéa des  commetaires
+if(x[6]!=""){
+ch+='<p> </p>'
+ch+="<li>"+x[6]+"</li>"
+}
+ ch+='</B></FONT></TD></TR></TABLE></TR><TR><TD><p> </p></TD></TR><TR><TD>'
+ ch+='<DT><FONT size="3" face="Arial black" color="gray"><B><u> Réalisation de la carte</u></B></FONT></DT></TD></TR><TR><TD><p> </p></TD></TR></TABLE>'
+ ch+='<TABLE border=1  bgcolor="#EEEEDD"><TR><TD width=260>'
+ var cpt=0
+  if(x[8]=="" || x[8]==0 || x[8]==1000 || x[8]==2000 ){x[8]=0; cpt+=1}else{cpt=0}
+  
+ ch+='<DT><FONT size="2" face="Arial" color="black"><B><u> fond de carte :</u></B></FONT></DT><DT><FONT size="2" face="Arial" color="black"><A href="javascript:comptico=0;if(kx>0){top.frames.Num0.frames.couches.zam3.indicouinit0()};comptico='+cpt+';z2='+x[8]+';z3='+x[9]+';z='+x[7]+';memecouleur='+x[10]+';fond=1;fondcarte(z)">   '
+ //fond de carte--------------------------------------------------------------------------------------------------------------------------------------------
+var w=new Array()
+ var g=""
+  if(x[7]=="" || x[7]==0 || x[7]==1000 || x[7]==2000 ){g="";w[2]="";w[8]=""}
+ if(x[7]>=1000 & x[7]<2000){w=menuIconeSup[x[7]-1000-1];g=w[10]}
+  if(x[7]>=2000 & x[7]<3000){w=menuIconeEchelle[x[7]-2000-1];g=w[9]}
+ch+=g
+ch+='</A></FONT></DT>'
+ch+='<DT><FONT size="1" face="Arial" color="black"><B><i> Source:</i></B></FONT><FONT size="1" face="Arial" color="red"><B><i>'+w[2]+'----------</i></B></FONT>'
+ch+='<FONT size="1" face="Arial" color="black"><B><i> Unité:</i></B></FONT><FONT size="1" face="Arial" color="red"><B><i>'+w[8]+'</i></B></FONT></DT>'	
+	ch+='</TD>' 
+	//icones sur la carte--------------------------------------------------------------------------------------------------------------------------------------------
+
+ //icones encadrés--------------------------------------------------------------------------------------------------------------------------------------------
+ch+='<TD width=270>'
+ch+='<DT><FONT size="2" face="Arial" color="black"><B><u> icone encadré:</u></B></FONT></DT><DT><FONT size="2" face="Arial" color="black">  '
+
+var w
+ var g=""
+ if(x[9]>=0 & x[9]<100){w=menuSujet[x[9]-1];g=w[1]}
+  if(x[9]>=100 & x[9]<1000){w=menuOther[x[9]-100-1];g=w[1]}
+ch+=g
+ch+='</FONT></DT>'
+ch+='<DT><FONT size="1" face="Arial" color="red"><B><i> '+w[2]+'----------</i></B></FONT>'
+ch+='<FONT size="1" face="Arial" color="black"><B><i> -------</i></B></FONT></DT>'
+ch+='</TD></TR></TABLE>'
+ch+='<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>'
+//document.write('<table width="100%" border=1 bgcolor="white"><TR ><td  height=40><A NAME=CARTES'+(i+1)+'></A></td></tr></table>')
+document.write(ch)
+}
+//--------------------------------------------------FIN de CARTES---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+</script>
+
+</body >
+</html>

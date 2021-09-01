@@ -1,0 +1,80 @@
+﻿<html id="GaiaMundi AlterCarto.com"><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+<script language="JavaScript" onload="javascript:chargecible()" id="operationEnCoursX"></script>
+<script  language="JavaScript">
+var base00=new Array()
+</script>
+<script language="JavaScript" src="../../enteteDATAhaut.js"></script>
+<script id="chargedatajs" onload="javascript:entetebas()" language="JavaScript"></script>
+<script language="JavaScript" id="entetebas" ></script>
+<script  language="JavaScript">
+
+var indicSucces
+
+var Code0pe0
+var Code0pe1=0
+
+function entetebas(){
+
+if(indicSucces==1){
+
+document.getElementById("entetebas").src="../../enteteDATAbas.js"
+}
+
+}
+
+function chargecible(){
+if(Code0pe0==Code0pe1){indicSucces=1}else{indicSucces=-1;}
+//alert("indicSucces="+indicSucces+"     CIBLE="+CIBLE)
+if(indicSucces==1){
+document.getElementById("chargedatajs").src=CIBLE+"?updated=1234567890"
+
+}else{
+
+alert(" la récupération des données dans le fichier source est en cours: attendez quelques secondes, cliquez sur OK pour renouveler la tentative de transfert, et videz le cache")
+setTimeout('parent.recupDataX()',3000)
+}
+
+}
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+var CIBLE=urlvar['cible']
+var rep=urlvar['REP0']
+var rezo=urlvar['REZO']
+
+document.getElementById("operationEnCoursX").src=rezo+rep+"/OperationEnCours.js?updated=1234567890"
+
+
+</script>
+
+
+<script  language="JavaScript">
+
+
+//setTimeout('chargecible()',1500)
+</script>
+</head><body>
+
+</body></html>

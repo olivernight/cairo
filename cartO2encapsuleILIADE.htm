@@ -1,0 +1,727 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr"><head><!--Copyright [2005-2007] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA-->
+ 
+<HEAD>
+<TITLE>cartO2encapsule</TITLE>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<!-- SCRIPT LANGUAGE="JavaScript" src="parametregenraux2.js"><!/SCRIPT -->
+<SCRIPT LANGUAGE="JavaScript">
+var longx2=0
+var a=document.location.href
+//alert(a.substr((a.length-i),1,2))
+
+for(i=0;i<a.length;i++){
+if(a.substr((a.length-i),1,1)=="?"){longx2=i}
+}
+
+a=a.substr((a.length-1),1,1)
+a=2 //transitoire pour site anact
+function vala(){
+return a
+}
+
+var indicarte=0
+var sansfondx=1
+function annulsansfondx(){sansfondx=0}
+function onesansfondx(){sansfondx=1}
+function transsansfondx(){return sansfondx}
+var recupparam=new Array()
+//var origine=new Array()
+//origine=document.location.href
+// PAS UTILISE ICI :dans l'URL de la popup : r�cup�ration des parametres  de la carte ouverte � l'ouverture de la popup
+//for(i=1;i<origine.length;i++){
+//if (origine[i]=="?"){recupparam[0]=origine[i+1];recupparam[1]=origine[i+3];recupparam[2]=origine[i+5]}
+//}
+function fermefenetre(){
+//window.close()
+}
+var topX=top.location.href
+topX=topX.indexOf("encaps.",0)
+var fenetre="cartO2"
+var choixcartela="10000"
+function returnchoixcartela(){return choixcartela}
+
+function transchoixcartela(){choixcartela=top.frames.Num0txt.transchoixcarte("return choixcarte");
+choixcartela=100001;// valeur forcée pour oblioger le rechargement de la carte même quand on recharge la même page hypertext
+return choixcartela}
+function transfenetre(){return fenetre}
+function chgbgcolor(a,b,c){
+a="font-size:"+c+";background-color:"+a
+b.setAttribute('style',a)
+}
+var largeurecran
+var hauteurecran
+var transHL=new Array()
+var pas=0
+var z=1
+var vartemp=""
+var fond=0
+var icon=1
+var z2=1000000
+var z3=0
+var kx=0 //indicateur qui agit sur la fonction GXY du module analyse lorsqu'on click pour la prelière ou la seconde , troisième nième .. fois
+var memecouleur=0 //0=couleur différente pour le fonds et les icônes
+
+var initzam3x=0
+function Initzam3(){
+
+if(topX>0){top.Initzam3()}
+
+  initzam3x=1
+ 
+}
+function Initzam30(){
+
+if(topX>0){top.Initzam30()}
+  initzam3x=0
+ 
+}
+function cachePM0(a){
+if(topX<0){
+/*
+  if(a==1){
+    document.getElementById("PM0").style.visibility="hidden"
+        document.getElementById("PLUx").style.visibility="hidden"
+            document.getElementById("MOIx").style.visibility="hidden"
+    }else{
+    document.getElementById("PM0").style.visibility="visible"
+        document.getElementById("PLUx").style.visibility="visible"
+            document.getElementById("MOIx").style.visibility="visible"
+}
+*/
+}
+
+}
+
+function kx1(){
+
+top.frames.Num0txt.kx1()
+kx=1
+}
+function kx0(){
+top.frames.Num0txt.kx0()
+kx=0
+}
+var cartechange=0
+
+function icone0(Xz3,Xz,mc,typICONE,TailleGRAPH,cartechange){ //function appelée par les pages hypertexte via metalangage.js
+if(cartechange==0){
+comptico=0;
+if(kx>0){pas=0;top.frames.Num0.frames.couches.zam3.indicouinit0()};
+comptico=1;
+z3=Xz3;//numéro graphique
+z=Xz;//numéro icone
+memecouleur=mc;
+fond=0;indicarte=0;
+sansfond(z,typICONE,TailleGRAPH);
+cartO2z2();
+top.frames.Num0.frames.couches.zaguide.cartO2z2();
+}else{top.frames.Num0txt.cartechange0()}
+}
+
+
+function fond0(Xz3,Xz,cartechange){
+if(cartechange==0){
+comptico=0;
+if(kx>0){pas=0;top.frames.Num0.frames.couches.zam3.indicouinit0()};
+comptico=1;
+z3=Xz3;//numéro graphique
+z=Xz;//numéro icone
+memecouleur=0;
+fond=1;
+fondcarte(z);
+
+cartO2z2();
+top.frames.Num0.frames.couches.zaguide.cartO2z2()
+}else{top.frames.Num0txt.cartechange0()}
+}
+
+function fi0(Xz3,Xz,mc,typICONE,TailleGRAPH,cartechange){
+//alert(Xz3+","+Xz+","+mc+","+typICONE+","+TailleGRAPH+","+cartechange)
+if(cartechange==0){
+comptico=0;
+if(kx>0){pas=0;top.frames.Num0.frames.couches.zam3.indicouinit0()};
+
+z3=Xz3;//numéro graphique
+var zgraph=Xz3
+
+z=Xz;//numéro icone
+memecouleur=mc;
+fond=1;
+cartO2z2();
+
+fondcarte(z,typICONE,TailleGRAPH);
+
+top.frames.Num0.frames.couches.zaguide.cartO2z2()
+
+}else{top.frames.Num0txt.cartechange0()}
+}
+
+function iconencadre(zx){
+
+paramHISTOX1=top.frames.Num0.frames.datacarte.transpara("return paramHISTOX1")
+
+if(paramHISTOX1[11][0] & zx>=1000 & zx<3000){
+
+top.frames.Num0.frames.couches.zoom.SVGaffichNTer(paramHISTOX1[11][0])
+}
+{
+top.frames.Num0.frames.datacarte.iconeoucadre1()
+
+if(zx>=0 & zx<100){
+zx=zx
+
+top.frames.Num0.frames.pilote.framemenu.document.menu22.popup22.selectedIndex=zx
+if(topX<0){
+top.frames.SUJET.document.menu22.popup22.selectedIndex=zx
+}
+top.frames.Num0.frames.pilote.change_site22()
+//alert("iconencadre zx="+zx)
+}
+if(zx>=100 & zx<1000){
+
+zx=zx-100
+
+top.frames.Num0.frames.pilote.framemenu1.document.menu3.popup3.selectedIndex=zx
+if(topX<0){
+top.frames.OTHER.document.menu3.popup3.selectedIndex=zx
+}
+top.frames.Num0.frames.pilote.change_site3()
+
+}
+}
+}
+var ktailletype=0
+var typeicones=1
+var tailleico=0
+var transtailleico=new Array()
+function typetaille(){
+transtailleico[0]=typeicones
+transtailleico[1]=tailleico
+return transtailleico }
+
+
+function typetaille0(){
+typeicones=1
+tailleico=0
+}
+
+function sansfond(z,b,c){
+if(topX>0){top.document.menua222.choix222.selectedIndex=(b-1)}
+var MnC=top.frames.Num0.frames.datacarte.transmenucouches("return MnC" )
+
+
+typeicones=b
+tailleico=c
+sansfondx=1
+  fond=0
+  indicarte=0
+  indicarte2=0
+  cachePM0(0)
+  if(initzam3x==1){
+  top.frames.Num0.frames.couches.zam3.razcarte()
+  }
+  top.frames.Num0.frames.couches.zaguide.guide0()
+top.frames.Num0txt.kx1()
+top.frames.Num0.frames.datacarte.iconeoucadre2()
+if(z>=2000 & z<3000){
+var z=z-2000+MnC
+top.frames.Num0.frames.tab.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.tab.change_site3()
+}
+if(z>=1000 & z<2000){
+var MnE=top.frames.Num0.frames.datacarte.transmenuechelle("return MnE" )
+var z=z-1000+MnE+MnC
+top.frames.Num0.frames.tab.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.tab.change_site3()
+}
+
+top.frames.Num0.frames.couches.document.getElementById("mobileX").style.left=1800
+top.frames.Num0.guide0()
+
+}
+var ktailpas=0
+var typ=1
+var tai=0
+
+
+function fondcarte(z,b,c){
+var MnC=top.frames.Num0.frames.datacarte.transmenucouches("return MnC" )
+
+if(ktailpas==0){typ=b;tai=c;ktailpas=1}else{
+//alert("kx=1  "+typ+"   "+tai)
+typeicones=typ
+tailleico=tai
+ktailpas=0
+}
+  sansfondx=0
+top.frames.Num0.frames.couches.zaguide.guide0()
+top.frames.Num0txt.kx1()
+kx=1 // indique que l'on a passé le premier cclick sur les menus pilote2 et 3 des icônes sur carte
+if(z2==0 & fond==0){
+} else{
+
+top.frames.Num0.frames.datacarte.iconeoucadre2()
+if(z>=2000 & z<3000){
+var z=z-2000+MnC
+top.frames.Num0.frames.tab.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.tab.change_site3()
+}
+if(z>=1000 & z<2000){
+var MnE=top.frames.Num0.frames.datacarte.transmenuechelle("return MnE" )
+var z=z-1000+MnE+MnC
+
+top.frames.Num0.frames.tab.document.menu3.popup3.selectedIndex=z
+top.frames.Num0.frames.tab.change_site3()
+}
+
+top.frames.Num0.frames.couches.document.getElementById("mobileX").style.left=1800
+top.frames.Num0.guide0()
+
+}
+ pas+=1
+//iconX2()
+}
+function cartO2z2(){
+z2=top.frames.Num0txt.transz2("return z2")
+}
+var xtbase
+var catx
+
+function transxtbase(){
+xtbase=top.frames.Num0txt.transxtbase("return xtbase")
+return xtbase}
+
+function transcatx(){
+catx=top.frames.Num0txt.transcatx("return catx")
+return catx}
+
+function transz2(){return z2}
+function annulz2(){z2=0}
+function forcez2(){z2=10000000}
+
+function transfond(){return fond}
+
+var icoseul=0
+
+function appliquefondcarte(){// appellée par instruction à la fin de l'execution de  la fonction GXY() du module analyse
+//alert("applifoncarte fond="+fond)
+if(fond==1){
+icoseul=0
+fond=0
+top.frames.Num0.frames.couches.zam3.indicouinit0() // indique le rouge et jaune dans la fonction GXY() du module analyse
+top.frames.Num0.frames.couches.zam4.alacarte()
+if(memecouleur==1){top.frames.Num0.frames.couches.zam3.indicouinit0()}
+var z=z2
+fondcarte(z)
+}
+icon=1
+z=z3
+}
+
+var comptico=0
+function comptico0(){comptico=0}
+function iconX(){//}
+// déchenché par fin de GXY() dans Module analyse. se déclenche au deuxième passage de fondcarte () ci-dessus. seulement si icon=1 est activé par appliquefondcarte() ci-dessus.
+var kici=0
+//alert("iconXcon icon="+icon+"   comptico="+comptico)
+if(comptico>0){
+if(icon==1){comptico=0;icon=0;z=z3
+iconencadre(z3);kici=1;}}else{comptico+=1}
+if(kici==0){
+paramHISTOX1=top.frames.Num0.frames.datacarte.transpara("return paramHISTOX1")
+kici=0
+
+if(paramHISTOX1[11][0]){iconencadre(z3)}
+}
+
+}
+
+
+
+
+</SCRIPT>
+
+
+
+
+<script type="text/javascript">
+var scrol=top.transscrol("return scrol")
+transHL=top.transHLecran("return transHL")
+
+var largeurecran=transHL[0]
+var hauteurecran=transHL[1]
+transHL[0]=largeurecran
+transHL[1]=hauteurecran
+function transHLecran(){
+return transHL
+}
+function transscrol(){
+return scrol
+}
+function alacarte(){
+
+top.frames.Num0.frames.couches.zatitre.document.getElementById("them2").firstChild.data=""
+top.frames.Num0.frames.datacarte.indicnouvellecarte()
+top.frames.Num0.frames.couches.zam3.indicarte21()
+indicarte=1
+top.frames.Num0.frames.couches.zam4.document.getElementById("enr").style.visibility="visible"
+top.frames.Num0.frames.couches.zam3.grilleapplycarte()
+//document.menu.choix.selectedIndex=indexoption
+
+}
+//BGCOLOR="#6699CC"
+
+</script>
+</HEAD>
+<BODY   STYLE="opacity:1" BGCOLOR="white" onload="javascript:top.frames.Num0.scrollTo(110,56)">
+
+
+
+
+
+
+
+<P><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+   <TR>
+      <TD WIDTH=250>
+        <!-- <CENTER><FONT SIZE="-2" FACE="Arial Black">Altercarto</FONT></CENTER> -->
+      </TD>
+      <TD>
+        <!-- <P><FONT SIZE="-1" FACE="Arial Black" COLOR="#99FFCC"></FONT><FONT SIZE="-2" FACE="Arial Black" COLOR="#99FFCC">&nbsp; Ga�aMundi - R�alis� par les ateliers cartographiques &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT SIZE="-3" FACE="Arial Black" COLOR="#99FFCC">Altercarto &nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="http://altercarto.com" TARGET="_blank"><FONT COLOR="navy" FACE="Arial" SIZE="-3"><B>altercarto.com</FONT></A><FONT SIZE="-3" FACE="Arial Black" COLOR="#99FFCC">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><A HREF="mailto:altercarto@wanadoo.fr"><FONT Color="navy" SIZE="-3" FACE="Arial Narrow" COLOR="#0000CC">altercarto@wanadoo.fr</B></FONT></A><FONT SIZE="-2" FACE="Arial" COLOR="navy"><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyrightFrance</I></FONT></P>-->
+      </TD>
+      <TD WIDTH=20%>
+
+      </TD>
+   </TR>
+   <TR>
+      <TD ALIGN=center VALIGN=top WIDTH=150 height=100>
+       
+
+  <!-- <DT><FONT SIZE="-3" FACE="Arial Black" COLOR="navy"><!I>Pr�carit�s<!/I></FONT></DT> 
+
+<A NAME=manuel></A>
+<SCRIPT LANGUAGE="JavaScript">
+if(document.allxxxx){
+document.write('<CENTER><A HREF="MANUEL.doc" Target="_blank"><IMG SRC="manuel.gif" WIDTH=99 HEIGHT=22 ALIGN=top></A><FONT COLOR="#FFCC99"></FONT></CENTER>')
+}else{
+document.write('<CENTER><A HREF="MANUEL.doc" ><IMG SRC="manuel.gif" WIDTH=99 HEIGHT=22 ALIGN=top></A><FONT COLOR="#FFCC99"></FONT></CENTER>')
+
+}
+         
+</SCRIPT>
+
+
+         <FONT SIZE="-2" FACE="Arial Black" COLOR="#99FFCC"><DT>Copie d'�cran:</DT>
+<SCRIPT LANGUAGE="JavaScript">		 
+		 if(document.allxxxx){document.write('<DT>&nbsp;</DT>')}
+		 </SCRIPT>
+		 
+		
+		 <A HREF="Srip32/SRip32.exe">&nbsp;ScreenRip32 <A></FONT><FONT SIZE="-3" FACE="Arial " COLOR="#99FFCC"><DT>(www.progency.com)</DT></FONT><DT></DT>
+         <P>
+		 
+		 -->
+		<script>
+if(document.allxxxx){
+document.write('<div id="variablea" style="position:absolute;left:13;top:205;visibility:hidden">')
+}else{
+document.write('<div id="variablea" style="position:absolute;left:1;top:195;visibility:hidden">')
+}
+</script>
+<iFRAME SRC="vide.htm" id="tab" NAME="tab"   width=100 height=150 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME></P>
+</DIV>
+         <PRE></PRE>
+      </TD>
+      <TD>
+         <P><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+            <TR>
+               <TD>
+
+                   <P>
+                  <script type="text/javascript">
+                  document.write('<iFRAME SRC="piloteILIADE.htm" id="pilote" NAME="pilote" width=')
+                  document.write(largeurecran-4)
+                  document.write(' height=')
+				  var hici=0
+                  document.write(hici)
+                  document.write(' NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0   FRAMEBORDER=0 ></iFRAME>')
+                  </script>
+                  
+                  </P>
+               </TD>
+            </TR>
+            <TR>
+               <TD>
+                  
+               </TD>
+            </TR>
+            <TR>
+               <TD>
+                 
+				  <div  style='left:110;top:53;visibility:visible;position:absolute'>
+                  <script type="text/javascript">
+                  document.write('<iFRAME SRC="vide.htm" name="couches" id="couches" width=')
+                  document.write(largeurecran)
+                  document.write(' height=')
+                  document.write(hauteurecran)
+                  document.write(' NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0   FRAMEBORDER=0 ></iFRAME>')
+                  </script>
+                  </div>
+                 
+               </TD>
+            </TR>
+            <TR>
+               <TD>
+                  <P>
+                  <script type="text/javascript">
+                  document.write('<iFRAME  SRC="vide.htm" id="precarte" name="precarte" width=')
+                  document.write(largeurecran)
+                  document.write(' height=')
+                  document.write(0)
+                  document.write(' NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME>')
+                  </script>
+                  </P>
+               </TD>
+            </TR>
+		<TR>
+               <TD>
+                  <P>
+                  <script type="text/javascript">
+                  document.write('<iFRAME  SRC="vide.htm" id="ico" name="ico" width=')
+                  document.write(largeurecran)
+                  document.write(' height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME>')
+                  </script>
+                  </P>
+               </TD>
+            </TR>
+		<TR>
+               <TD>
+                  <P>
+<script>
+if(document.allxxxx){
+document.write('<div id="variable2" style="position:absolute;left:13;top:380;visibility:hidden">')
+}else{
+document.write('<div id="variable2" style="position:absolute;left:1;top:370;visibility:hidden">')
+}
+</script>
+<table border=1 bgcolor="#FFE0CC" CELLSPACING=0 CELLPADDING=0>
+<TR>
+<TD>
+<script>
+if(document.allxxxx){
+document.write('<iFRAME  SRC="vide.htm" id="tab2" name="tab2" width=98 height=26 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME>')
+}else{
+document.write('<iFRAME  SRC="vide.htm" id="tab2" name="tab2" width=95 height=24 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME>')
+}
+</script>
+
+</TD>
+</TR>
+<TR>
+<TD >
+<table border=1 bgcolor="#FFE0CC" CELLSPACING=0 CELLPADDING=0>
+<TR>
+<!TD width=95 >
+<script>
+if(document.allxxxx){
+document.write('<TD width=93 >')
+}else{
+document.write('<TD width=95 >')
+}
+</script>
+<DT><FONT face="arial" size="-3"><center><B>Module Analyse</DT>
+<DT>Variable Y</b></center></font></DT>
+</TD>
+<TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+</TABLE>
+
+
+</div></P>
+               <TD>
+                  <P><iFRAME  SRC="selecteurana.htm" id="selectana" name="selectana" width=0 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME></P>
+               </TD>
+            </TR>
+
+               </TD>
+            </TR>
+		<TR>
+               <TD>
+                  <P><iFRAME  SRC="vide.htm" id="analyse" name="analyse" width=0 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME></P>
+               </TD>
+            </TR>
+<TR>
+<TD>
+<P><iFRAME  SRC="vide.htm" id="iconeencadre" name="iconeencadre" width=0 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME></P>
+</TD>
+<TD>
+<P><iFRAME  SRC="vide.htm" id="datacarte" name="datacarte" width=0 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME></P>
+</TD>
+<TD>
+<P><iFRAME  SRC="vide.htm" id="paramcarte" name="paramcarte" width=0 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME></P>
+</TD>
+<TD>
+<P><!iFRAME   id="vide" name="vide" width=0 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0><!/iFRAME></P>
+</TD>
+</TR>
+         </TABLE>
+         </P>
+      </TD>
+      <TD width=100 VALIGN=top>
+         <center><P>images</P></center>
+         <script>
+         if(document.allxxxx){
+document.write('<iFRAME  SRC="vide.htm" id="lieux" name="lieux" width=98 height=26 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME>')
+}else{
+document.write('<iFRAME  SRC="vide.htm" id="lieux" name="lieux" width=95 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME>')
+}
+         </script>
+<script>
+if(document.allxxxx){
+document.write('<iFRAME  SRC="vide.htm" id="themes" name="themes" width=98 height=26 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME>')
+}else{
+document.write('<iFRAME  SRC="vide.htm" id="themes" name="themes" width=95 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME>')
+}
+</script>
+<script>
+if(document.allxxxx){
+document.write('<iFRAME  SRC="vide.htm" id="images1" name="images1" width=98 height=26 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME>')
+}else{
+document.write('<iFRAME  SRC="vide.htm" id="images1" name="images1" width=95 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME>')
+}
+
+</script>
+<P></P>
+<P></P>
+<P></P>
+<P></P>
+<P></P>
+<P></P>
+<script>
+
+
+
+if(document.allxxxx){
+document.write('<iFRAME  SRC="vide.htm" id="imagesfond" name="imagesfond" width=98 height=26 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iFRAME>')
+}else{
+document.write('<iFRAME  SRC="vide.htm" id="imagesfond" name="imagesfond" width=95 height=0 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0></iFRAME>')
+}
+</script>
+      </TD>
+   </TR>
+   <TR>
+      <TD >
+         <P></P>
+      </TD>
+      <TD>
+         <P></P>
+      </TD>
+      <TD >
+         <P></P>
+      </TD>
+   </TR>
+</TABLE>
+<script>
+function rien(){
+}
+var afguide=0
+var raapc=1
+var opcicone=0.8
+var opccarte=1
+
+function guide0(){
+
+if(topX>0){top.guide0()}
+afguide=0
+}
+function opacitecarte(){
+if(opccarte==1){opccarte=0.75}else{opccarte=1}
+top.frames.Num0.frames.couches.zam3.carteopacity(opccarte)
+}
+function afficheguide(){
+if(afguide==1){afguide=0;top.frames.Num0.frames.couches.document.getElementById("mobileX").style.left=1800}else{afguide=1;top.frames.Num0.frames.couches.document.getElementById("mobileX").style.left=0;
+
+//top.frames.Num0.frames.couches.zaguide.locat()
+}
+
+}
+function opaciteicone(){
+if(opcicone==1){opcicone=0.8}else{opcicone=1 }
+top.frames.Num0.frames.couches.zam3.icoopacity(opcicone)
+}
+
+function razapplyCARTE(){
+  
+var idc2=top.frames.Num0.frames.datacarte.transidc2("return idc2")
+top.frames.Num0.frames.couches.zoom.initselec0()
+if(raapc==1){raapc=0}else{raapc=1 }
+if(raapc==1){
+
+    var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulf").setAttribute("transform",mat)
+
+if(idc2==1){
+
+top.frames.Num0.frames.couches.zatitre.document.getElementById("th2").style.top=75
+}else{
+top.frames.Num0.frames.couches.zatitre.document.getElementById("th1").style.top=30
+}
+top.frames.Num0.frames.couches.zam3.rappliquecarte()
+}
+if(raapc==0){
+    if(initzam3x==1){
+  top.frames.Num0.frames.couches.zam3.razcarte()
+    }
+
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulf").setAttribute("transform",mat)
+
+
+if(idc2==1){
+top.frames.Num0.frames.couches.zatitre.document.getElementById("th2").style.top=1000
+}else{
+top.frames.Num0.frames.couches.zatitre.document.getElementById("th1").style.top=1000
+}
+}
+top.frames.Num0.frames.couches.zam3.icoopacity(opcicone)
+}
+</script>
+
+<div style="position:absolute;left:20;top:440;visibility:visible">
+<A href="javascript:rien()" onclick="top.frames.Num0.frames.couches.zam3.monovariable()" ><FONT SIZE="-2" FACE="Arial Black" COLOR="#99FFCC"></A><!-- Monovarié (X)  --->
+</div>
+<div style="position:absolute;left:20;top:460;visibility:visible">
+<A href="javascript:rien()" onclick="razapplyCARTE()" ></A><!-- Efface carte  --->
+</div>
+<div style="position:absolute;left:20;top:480;visibility:visible">
+<A href="javascript:rien()" onclick="opaciteicone()" ></A><!-- Opacité icones  --->
+</div>
+<div style="position:absolute;left:20;top:500;visibility:visible">
+<A href="javascript:rien()" onclick="opacitecarte()"></A><!-- Opacité carte  --->
+</div>
+<div style="position:absolute;left:1;top:520;visibility:visible">
+<iframe id="validite" src="vide.html" name="validite" width=98 height=20 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=1></iframe>
+</div>
+<div id="divguide" style="position:absolute;left:20;top:550;visibility:visible">
+<A href="javascript:rien()" onclick="afficheguide()"></A><!-- GUIDE  --->
+</div>
+<div style="position:absolute;left:20;top:565;visibility:visible">
+<A href="javascript:rien()" onclick="alacarte()"></FONT></A><!-- Carte  --->
+</div>
+
+
+
+</P>
+</div>
+<script type="text/javascript"> 
+if(topX<0){
+document.write('<div id="PM0" style="position:absolute;left:182;top:52;visibility:hidden"><table  CELLSPACING=0 CELLPADDING=2 border=0 ><TR ><TD height=10 align=center ><p align=center><FONT id="PLUx" onclick="top.frames.Num0.frames.tab.plusmoinsadistance(1);top.frames.commande1.tailleicoplus()" onmouseOver="chgbgcolor(\'#E5EAF5\',this,14)" onmouseout="javascript:chgbgcolor(\'#C2CFDD\',this,12)"  style="visibility:hidden" FACE="Arial Black" COLOR="#9494C9">&nbsp;&nbsp;+&nbsp;&nbsp;</FONT><FONT id="MOIx" onclick="top.frames.Num0.frames.tab.plusmoinsadistance(2);top.frames.commande1.tailleicomoins()" onmouseOver="chgbgcolor(\'#E5EAF5\',this,14)" onmouseout="javascript:chgbgcolor(\'#C2CFDD\',this,12)" size="3" style="visibility:hidden" FACE="Arial Black" COLOR="#9494C9">&nbsp;&nbsp;-&nbsp;&nbsp;</FONT></p></TD></TR></table></div>')
+}
+</script>
+</BODY>
+</HTML>

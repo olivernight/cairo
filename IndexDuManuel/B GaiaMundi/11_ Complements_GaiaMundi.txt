@@ -1,0 +1,247 @@
+﻿ 
+
+ 
+
+Compléments pour GaïaMundi 
+
+ 
+
+ 
+
+ 
+
+ 
+
+1 – Personnalisez la plateforme 
+
+Vous pouvez adapter les éléments du panneau de gauche de la plateforme GaïaMundi ainsi 
+que le titre html de la page (celui qui apparaît dans les onglets du navigateur) 
+
+Les paramètres sont dans le fichier « intitulesILIADE.js » dans le répertoire racine de 
+GaïaMundi, dans la section I (ne pas modifier les sections II et III) 
+
+ 
+
+// I -partie page d'accueil globale : informations, logos et textes de la plateforme 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+2 – modification du mot de passe et ajout 
+de mots de passe. 
+
+ 
+
+Si vous le souhaitez, changer les mots de passe existants et/ou joutez d’autres mots de passe 
+dans le fichier « mapsILIADEmotpas.js ». 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+3 – ouvrir la plateforme sans appel de mot 
+de passe à partir du fichier index.html 
+
+ 
+
+<a style="color: rgb(102, 102, 204);font-family: Arial;" target="_blank" 
+href="A0%20PageCarto%20serpent%20encaps.html?tail=3&mtp2=admin"><i>"GaïaMundi" </i>Suite including <i>"PageCarto"</i> and <i>"la Rose des Vents"</i></a></b><br> 
+
+ 
+
+En ajoutant la partie en rouge ligne 20 du fichier index.html vous permettez que le lien de 
+la page d’accueil ouvre la plateforme sans appeler le mot de passé et en adoptant le format 
+d’ouverture correspondant au choix « redemarrer (3) » du menu « système ». 
+
+Attention, si vous changez les mots de passe (Cf. ci-dessus). Vous devez mettre ici un mot de 
+passe valide. 
+
+ 
+
+Ci-dessous la page d’accueil index.html 
+
+ 
+
+ 
+
+ 
+
+ 
+
+4 – ajouter des plateformes au réseau 
+
+ 
+
+Vous avez deux modes de connexion en réseau à d’autres plateformes GaïaMundi : 
+
+1. via le réseau partagé. Ce mode est automatique et vous ne pouvez pas le changer à 
+partir de votre plateforme, 
+2. Via votre plateforme, à travers le fichier « rezo.js » situé dans le répertoire 
+suivant : 
+
+
+“ A-MANAGER-local/transdata-rezo/ ” 
+
+ 
+
+Voir un exemple page suivante. 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Vous ne devez pas modifier la section d’entête. 
+
+Chaque plateforme comporte trois items : 
+
+rezo[rezo.length]= adresse de la plateforme 
+
+nomrezo[nomrezo.length]= nom de la plateforme 
+
+InRezo[rezo.length-1]= contenu résumé de la plateforme 
+
+ 
+
+Pour votre plateforme, c'est-à-dire dans le fichier la section « cette plateforme », 
+
+. L’adresse est écrite automatiquement (ne pas la changer) 
+. Le nom est aussi écrit automatiquement : vous pouvez le changer 
+. Le contenu résumé doit être renseigné 
+
+
+ 
+
+Vous pouvez ajouter autant de plateforme que vous le souhaitez. 
+
+Si vous voulez ajouter une plateforme située sur votre ordinateur, vous avez deux modes 
+d’adressage possibles : 
+
+Le mode relatif. Par exemple : rezo[rezo.length]="../DB-ressources/" 
+
+Le mode absolu. Par exemple : rezo[rezo.length]=http://localhost/DB-ressources-2/ 
+
+ 
+
+Pour les plateformes distantes auxquelles vous voulez vous connecter, vous devez bien sûr 
+utiliser le mode absolu. Par exemple : 
+
+rezo[rezo.length]=http://213.251.176.22/DB-ressources-RGP_2007/DB-ressources-2/ 
+
+ 
+
+Dans ces exemples :DB-ressources et DB-ressources-2 sont les répertoires racines de 
+GaïaMundi pour les plateformes connectées. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+5 - Liens directs vers les hypertextes de la 
+plateforme 
+
+ 
+
+Si votre plateforme est située sur un serveur Internet ou Intranet il peut être utile de 
+disposer de liens adressant directement les hypertextes plutôt que de passer par l’ouverture 
+de la plateforme puis la sélection manuelle de l’hypertexte désiré. 
+
+L’adressage direct des hypertextes consiste à adresser la plateforme en envoyant en 
+paramètre url les éléments suivants 
+
+ 
+
+. Format d’ouverture de la plateforme qui doit fermer le panneau de gauche pour 
+privilégier l’hypertexte. 
+. Mot de passe 
+. Le nom de l’hypertexte en respectant la casse (majustules te minuscules) 
+
+
+ 
+
+Par exemple, pour une plateforme située sur votre serveur local , si l’on veut adresser 
+l’hypertexte dénommé « DocDeTravail », l’adresse sera : 
+
+ 
+
+http://localhost/SuiteCairo-V1-1-Candidate-
+UNDP/A0%20PageCarto%20serpent%20encaps.html?tail=4&mtp2=admin&hypertext=DocDeTravail 
+
+ 
+
+ 
+
+ 
+
+ 
+
+On a donc : 
+
+. Format d’ouverture . tail=4 
+. Mot de passe . mtp2=admin 
+. Le nom de l’hypertexte . hypertext=DocDeTravail 
+
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+

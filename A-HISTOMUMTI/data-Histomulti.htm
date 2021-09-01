@@ -1,0 +1,130 @@
+﻿<html id="GaïaMundi AlterCarto.com">
+<head>
+<title>Untitled Document</title>
+
+<script  id="chargedatajs" language="JavaScript"  >
+
+var paramHisto=new Array()
+paramHisto=top.frames.Num0.frames.datacarte.recupparamHisto()
+var colonx=paramHisto[0]
+//var titrex=paramHisto[1]
+var soustitrex=paramHisto[2]
+var iconetypex=paramHisto[3]
+var categ=paramHisto[4]
+
+
+var refetalon=paramHisto[8]
+var base0 = new Array()
+var trabas=new Array()
+
+//_______________________bloc de paramètres de l'histogramme________________________________
+
+//var colonx=new Array(58,59,60,61,62,63,64,65,66,67) // n° des colonnes de données de l'histogramme dans la Base de donnée iconeencadre
+var LLx=top.frames.Num0.frames.iconeencadre.longueurdata("return longa") //position de l'area "ensemble" dans le tableau
+
+var titrex=paramHisto[1]+","+paramHisto[6]+","+paramHisto[7]+",150,"+paramHisto[2]+","
+
+for(i=0;i<categ.length;i++){titrex+=categ[i]+","}
+for(i=0;i<categ.length;i++){titrex+=","}
+
+for(i=0;i<refetalon.length;i++){titrex+=","+refetalon[i]}
+
+//var iconetypex=new Array(3,1)
+
+addressDATAx="A-HISTOMUMTI/histoMULTI.htm"
+
+var parreg=paramHisto[11]
+
+var centpourcent=parreg[0]	//=100 si c'est un histogramme 100% sinon=0. ça corrige les écarts dus aux arrondis
+var decal=parreg[1]            //  permet de centrer les chiffres dans l'histo pour IE6
+var bgauche=parreg[2]            // élargi la bande vide à gauche pour IE6
+var LargCol=parreg[3]          // largeur colonnes
+var indicechellex=parreg[4]    // joue sur l'ajustement vertical
+var HIGT=parreg[5]           // hauteur de la règle gradu.gif
+var inhib=parreg[6]          // INHIBITION DU CALCUL DE FACTEUR D'ECHELLE=1
+var ecartbarre=parreg[7]        //écart entre les barres
+var Kchiffre=parreg[8]          //seuil d'apparition des chiffres dans l'histogramme
+var hautitre=parreg[9]		//régulation hauteur des chiffres affichés par rapport au titre
+//___________________________________________________________________________________________
+
+top.frames.Num0.frames.iconeencadre.recuptypehistomulti()
+var transparamreg=new Array()
+
+function transparametrereglage(){
+transparamreg[0]=centpourcent
+transparamreg[1]=decal
+transparamreg[2]=bgauche
+transparamreg[3]=LargCol
+transparamreg[4]=indicechellex
+transparamreg[5]=HIGT
+transparamreg[6]=inhib
+transparamreg[7]=ecartbarre
+transparamreg[8]=Kchiffre
+transparamreg[9]=hautitre
+transparamreg[10]=paramHisto[5]
+return transparamreg
+}
+
+
+top.frames.Num0.frames.iconeencadre.recuptypehistomulti()
+
+
+
+function transiconetypex(){
+return iconetypex
+}
+
+function transsoustitrex(){
+return soustitrex
+}
+function transaddressDATAx(){
+return addressDATAx
+}
+
+function transtitrex(){
+return titrex
+}
+
+function transLLx(){
+return LLx
+}
+
+function transcolonx(){
+return colonx
+}
+
+
+function recupbaseinit(){
+
+
+base0=top.frames.Num0.frames.iconeencadre.transbase0("return trabas0")
+
+top.frames.Num0.frames.pilote.changeXFOND()
+}
+
+function transbase(){
+
+var trabas=base0
+//alert(trabas.length)
+//alert(trabas[trabas.length-1].donnees.split(','))
+return trabas
+}
+
+function numdata(){
+//numdatax=top.frames.Num0.frames.couches.zam2.numix("return numx")
+//alert(base0)
+datahistoMULTI=base0//[numdatax] //[0]////.donnees.split(',')
+return datahistoMULTI
+}
+
+top.frames.Num0.frames.iconeencadre.calculbaseselct()
+
+
+</script>
+
+</head>
+
+<body>
+
+</body >
+</html>

@@ -1,0 +1,317 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <!Copyright [2005-2007] [Hervé¡aris]
+ hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr
+
+ This file is part of Gaà¢undi.
+
+    Gaà¢undi is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    Gaà¢undi is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Gaà¢undi; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA!>
+
+<HTML id="tout">
+<HEAD>
+   <TITLE>carte GaïaMundi AlterCarto.com</TITLE>
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<script type="text/javascript"> 
+
+var vala=parent.vala("return a")
+// transitoire
+vala=2
+// fin de transitoire pour site anact
+function vala(){return a}
+var xcvb 
+var topX=top.location.href
+topX=topX.indexOf("encaps.",0)
+var tipX=top.location.href
+tipX=tipX.indexOf("Site-",0)
+
+function chgbgcolor2(a,b,c){
+/*
+var st="font-size:"+c+";background-color:"+a
+b.setAttribute('style',st)
+*/
+}
+</script>
+<script id="truc" src="vide.js" type="text/javascript"></script>
+<script type="text/javascript"> 
+var tapx=top.location.href
+tapx=tapx.indexOf("A0A",0)
+if(top.forcevala){tapx=top.forcevala("return tapx")}//appleÃ© par des sites oÃ¹ on met la fonctiion d'appel forcevala() manuellement
+
+if(vala==1){xcvb="cartereduit.js"}else{xcvb="cartenormal.js"}
+if(tapx>=0){xcvb="carteTexteEtNotes.js";vala=1}
+
+//document.getElementById("truc").src="cartenormal.js" //xcvb
+
+var asrc='<script src="'+xcvb+'" type="text/javascript"><\/script>'
+document.write(asrc)
+</script>
+</HEAD>
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx      DEBUT BODY  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..onload="javascript:"-->
+
+<BODY STYLE="left:0;top:0;BORDER:0;opacity:1" onkeydown="javascript:if(tipX<0){top.test(event)}else{top.test3(event)}">
+
+
+
+
+
+
+
+
+
+
+<div id='zoomBox' style='left:0;top:0';>
+<table width=0 height=0 cellspacing='0' cellpadding='0' style='background-color:#C4D2E0;border:0px solid #324B64' id='magContainer'>
+<tr>
+<td> 
+
+
+
+
+
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------DATA-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<div id='mobilew' style='left:0;top:3;visibility:visible;position:absolute'>
+<table  cellspacing='0' cellpadding='0' style="opacity:1" >
+<script language="javascript">
+if(topX<0 ){
+if(tapx>=0){var visi="hidden"}else{var visi="visible"}
+document.write('<tr><td   width=130 height=16 align=right valign=buttom title="click=visible"><FONT  OnMousedown="hidelegend2()"  onmouseOver="chgbgcolor2(\'#E5EAF5\',this,\'12px\');disable22();" onmouseout="javascript:chgbgcolor2(\'#C2CFDD\',this,\'12px\')" id="bouton1" style="font-size:16px" FACE="Arial Black" COLOR="#9494C9"><img OnMousedown="hidelegend2()"  onmouseOver="disable22();top.ouvHelp(\'graphique\')" style=";visibility:'+visi+'" src="icones/jaune.png" title="Graphiques : cliquez pour afficher. Survolez pour replier"></FONT></td></tr>')
+}
+</script>
+</table>
+
+</div>
+
+<div id='mobile2' style='right:15;top:5;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+
+<tr>
+<td  align=center id='ouinon2' style='visibility:hidden'>
+<iframe  ALLOWTRANSPARENCY='true' id='zam2' src="vide.htm" width=0 height=0 style='padding:0px;visibility:hidden;border:0px solid gray'  scrolling='no' name='zam2'></iframe>
+</td>
+</tr>
+</table>
+</div>
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------LEGENDE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+<div id='mobile' style='left:2;top:4;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<script language="javascript">
+if(topX<0){
+
+document.write('<tr><td   width=100 height=16 align=left valign=buttom title=\'click=visible\'><DT><FONT OnMouseUp=\'visiblelegende();\' onmouseOver="chgbgcolor2(\'#E5EAF5\',this,\'12px\');hiddenlegende();;top.ouvHelp(\'legende\')" onmouseout="javascript:chgbgcolor2(\'#C2CFDD\',this,\'12px\')" id=\'boutonan\' style="font-size:16px;visibility:visible"  FACE="Arial Black" COLOR="#9494C9"><img OnMouseUp=\'visiblelegende();\' onmouseOver="hiddenlegende()"  src="icones/legende.png" title="LÃ©gende : cliquez pour afficher. Survolez pour replier"></FONT></DT></td></tr>')
+}
+
+</script>
+<tr>
+
+<td colspan=2 align=center id='ouinon'   style='visibility:hidden'>
+<iframe  ALLOWTRANSPARENCY='true' id='za' src=""   height=0 width=0 style='border:0px;padding:0px;visibility:visible;' FRAMEBORDER=0 scrolling='no'  name='za' ></iframe>
+
+</td>
+</tr>
+</table>
+</div>
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------IFRAME ZOOM-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<table onmouseover='top.ouvHelp("dragmap")' width=0 height=0 cellspacing='0' cellpadding='0' style='background-color:white;border:0px solid #324B64' id='magContainer'>
+
+<td></td></tr><TR>
+<td colspan=0 align=center>
+
+<script>
+
+document.write(ABC);change1="";
+//top.frames.Num0.frames.pilote.initlegende()
+
+//document.write('<div style="position:absolute;visibility:visible;left:0;top:20"><img width=')
+//document.write(LFrame)//(0)
+//document.write(' height=')
+//document.write(HFrame)
+//document.write(' src="Q2.gif">')<!/div>
+
+</script>
+
+</td>
+
+</tr>
+<tr>
+<td style='border:0px;padding:0px;' id='resizeObj' valign=bottom align=right>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------TITRE CARTE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<div id='mobile' style='left:5;top:445;visibility:hidden;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ></td></tr>
+<tr>
+<td colspan=2 align=center id='ouinon'   style='visibility:hidden'>
+<iframe  ALLOWTRANSPARENCY='true' id='zatitre' src="bandotitre.htm" width=300 height=150 style='border:0px;padding:0px;visibility:hidden;' FRAMEBORDER=0 scrolling='no'  name='zatitre' ></iframe>
+<script></script>
+</td>
+</tr>
+</table>
+</div>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------LEGENDE ICONE ON MAP-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------ANALYSE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<div id='mobile5' style='left:194;top:5;visibility:hidden;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td  height=16 align=center valign=center title='click=visible'>
+<script language="javascript">
+if(tapx>=0){var dist=-7;}else{var dist=28;}
+document.write("<div id='mobile5b' style='left:"+dist+";top:-2;position:absolute'>")
+
+var fenetreouv=top.frames.Num0.transfenetre("return fenetre")
+//alert(fenetreouv+"   "+topX)
+if(fenetreouv=="cartO1"){
+
+document.write('<table padding=0 cellspacing=0><tr><td><img src="icones/analyse.png"  OnMouseUp="hidelegend3();disable22();" onmouseOver="disable33();top.ouvHelp(\'analyse\')"  id="boutonan" title="Module Analyse : cliquez pour afficher. Survolez pour replier"></td><td><img src="icones/monovarie.png" onclick="top.frames.Num0.frames.couches.zam3.monovariable()" onmouseOver="top.ouvHelp(\'monovarie\')"/></td></tr></table>')
+//document.write('&nbsp;&nbsp;Analyse &nbsp;&nbsp;')
+}
+
+if((fenetreouv=="cartO2" & topX<0)){
+if(tapx>=0){document.write('<table padding=0 cellspacing=0 valign=top><tr><td><img src="icones/analyse.png"   onmouseOver="disable33();top.ouvHelp(\'analyse\')"  id="boutonan" title="rÃ©glette : Survolez pour afficher"></td></tr></table>')}
+else{
+document.write('<table padding=0 cellspacing=0 valign=top><tr><td><img src="icones/analyse.png"  OnMouseUp="hidelegend3();disable22();" onmouseOver="disable33();top.ouvHelp(\'analyse\')"  id="boutonan" title="Module Analyse : cliquez pour afficher. Survolez pour replier"></td><td><img src="icones/monovarie.png" onclick="top.frames.Num0.frames.couches.zam3.monovariable()"  onmouseOver="top.ouvHelp(\'monovarie\')"/></td></tr></table>')}
+//document.write('&nbsp;&nbsp;Analyse &nbsp;&nbsp;')
+
+}
+</script>
+</div>
+</td>
+
+
+</div>
+
+</tr>
+<tr>
+<td ><td colspan=2 align=center id='ouinon3' style='visibility:hidden'>
+<script language="javascript">
+if(tapx>=0){var dist=-80}else{var dist=52}
+document.write("<div id='mobile7' style='left:"+dist+";top:25;visibility:visible;position:absolute'>")
+
+</script>
+<iframe  ALLOWTRANSPARENCY='true' id='zam3' src="h_0.gif" width=0  height=0 style='padding:0px;visibility:visible;'  scrolling='no' FRAMEBORDER=0 name='zam3'></iframe>
+</td>
+</tr>
+</table>
+</div>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------ANALYSEBIS CARTE/ICONE -------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<div id='mobile6' style='left:245;top:-50;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+
+<tr>
+<td ><td colspan=2 align=center id='ouinon3' style='visibility:visible'>
+<iframe  ALLOWTRANSPARENCY='true' id='zam4' src="cartefondcommande.htm" width=440  height=30 style='padding:0px;visibility:visible'  scrolling='no' name='zam4'></iframe>
+</td>
+</tr>
+</table>
+</div>
+
+<!--xxxxxxxxxxxx chargement inutile pour reporsitionner les rê±¥rtoitres -->
+<div id='mobile8' style='left:0;top:0;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ></td></tr>
+<tr>
+<td colspan=2 align=center id='ouinonx'   style='visibility:visible'>
+<script language="javascript">
+if(initout==1){
+var mappocoord=top.frames.Num0.frames.paramcarte.transma("return mappocoord")
+
+var A=mappocoord[6]+"/DATA-Guide.htm"
+
+
+document.write("<iframe  ALLOWTRANSPARENCY='true' id='zaguidex' src='")
+document.write(A)
+document.write("' width=1 height=1 style='border:0px;padding:0px;visibility:visible;' FRAMEBORDER=0 scrolling='yes'  name='zaguidex' ></iframe>")
+}
+</script>
+<script>
+</script>
+</td>
+</tr>
+</table>
+</div>
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------GUIDE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+<div id='mobileX' style='left:1800;top:0;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ></td></tr>
+<tr>
+<td colspan=2 align=center id='ouinon'   style='visibility:visible'>
+<script language="javascript">
+var A="vide.htm"
+
+document.write("<iframe  ALLOWTRANSPARENCY='true' id='zaguide' src='")
+document.write(A)
+document.write("' width=")
+document.write(LFrame)
+document.write(" height=")
+document.write(HFrame+30)
+document.write(" style='border:0px;padding:0px;visibility:visible;' FRAMEBORDER=0 scrolling='yes'  name='zaguide' ></iframe>")
+</script>
+<script>
+//alert(LFrame)
+var fenetreouv=top.frames.Num0.transfenetre("return fenetre")
+if(fenetreouv=="cartO2" ){
+   if(initout==1){
+top.chargemenu()
+   }
+var scrol=top.frames.Num0.transscrol("return scrol")//
+
+parent.scrollTo(scrol[0],scrol[1])
+}
+</script>
+</td>
+</tr>
+</table>
+</div>
+
+
+<script type="text/javascript"> 
+if(topX<0){
+document.write('<span  style="position:absolute;left:25px;top:5px;visibility:visible">')
+document.write("<table  height=0 cellspacing='0' cellpadding='0' style='border:0px  id='magContainer'><tr><td id='boutonw'  style='border:0px;padding:0px;color:#210AAA;width:0'  valign=top align=left><img id=\"moins\" style=\"font-size:16px;visibility:visible\" onmouseover=';top.ouvHelp(\"zoommoins\")' OnClick='zoomOut()' src='icones/zoom_moins.png' title='Zoom moins'></td><td><img id=\"plus\" style=\"visibility:visible\"  OnClick=\"zoomIn()\" src='icones/zoom_plus.png' onmouseover=';top.ouvHelp(\"zoomplus\")' title='Zoom Plus'></td><td><img OnClick=\"razclick();document.getElementById('moins').style.visibility='hidden'\"  id=\"raz0\" style=\"visibility:visible\" onmouseover=';top.ouvHelp(\"raz\")' src='icones/taille_initiale.png' title='Retour taille initiale'></td></tr></table>")
+document.write('</span >')
+}
+if(topX<0){
+if(tapx>=0){var dist=100}else{var dist=135}
+document.write('<span id="PM0" style="position:absolute;left:'+dist+';top:2px;visibility:visible"><table  CELLSPACING=0 CELLPADDING=2 border=0 ><TR ><TD height=10 align=center ><span align=center><FONT id="PLUx" onclick="top.frames.Num0.frames.tab.plusmoinsadistance(1);if(top.frames.commande1){top.frames.commande1.tailleicoplus()};" onmouseOver="top.ouvHelp(\'icoplus\');chgbgcolor2(\'#E5EAF5\',this,14)" onmouseout="javascript:chgbgcolor2(\'#C2CFDD\',this,12)"  style="visibility:visible" FACE="Arial Black" COLOR="#9494C9"><img src="icones/ico+.png" title="Augmente la taille des icones"></FONT><FONT id="MOIx" onclick="top.frames.Num0.frames.tab.plusmoinsadistance(2);if(top.frames.commande1){top.frames.commande1.tailleicomoins()}" onmouseOver="chgbgcolor2(\'#E5EAF5\',this,14);top.ouvHelp(\'icomoins\')" onmouseout="javascript:chgbgcolor2(\'#C2CFDD\',this,12)" size="3" style="visibility:visible" FACE="Arial Black" COLOR="#9494C9">  <img src="icones/ico-.png" title="Diminue la taille des icones"></FONT></span>  <img onmouseover=";top.ouvHelp(\'makefondcarte\')"  onclick="top.frames.Num0.couches.zam4.alacarte()" src="vert.png" title="Fond de carte: colore le fond de carte avec les donnÃ©es des icones" >  </TD></TR></table></span>')
+var rpicila=top.transrepsite("return repsite")
+if(rpicila!="HYPERTEXTES-tous"){
+document.write('<span  style="position:absolute;right:36;top:5px;visibility:visible"><img onmouseover="top.clowikimode();top.ouvHelp(\'makewikimode\')"  onclick="top.affwikimode()" src="icones/wikimode.png" title="module de commande de cartes et de balise hypertexte en mode wiki" ></span>')
+}
+
+document.write('<span id="Help" style="position:absolute;right:6;top:5px;visibility:visible"><img onmouseover=";top.ouvHelp(\'Help\')" onclick="top.ouvHelp(\'Help2\')" src="icones/help.png" title="Aide"></span>')
+}
+
+
+
+</script>
+
+
+</BODY>
+</HTML>

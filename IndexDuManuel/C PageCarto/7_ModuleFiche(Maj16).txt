@@ -1,0 +1,152 @@
+﻿Additif n° 1 dans la MAJ 16ème du 26 Novembre 2013 
+
+Option Fiche 
+
+La fiche est un complément de l’hypertexte qui permet de d’afficher une série de valeurs de 
+variables choisies lorsqu’on clique sur une aire de la carte 
+
+L’interface de génération de PageCarto propose trois options : 
+
+. Pas de fiche ( formule classique avec seulement l’hypertexte) 
+. Hypertexte + fiche avec sélecteur 
+. Fiche seule 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+La fiche comprend : 
+
+1. Le nom de l’aire sélectionnée 
+2. Et une série (section) d’informations relatives à une variable choisie : 
+. Le titre de la variable 
+. La valeur de la variable qui sera affichée lorsqu’on cliquera sur une aire de la carte 
+. L’unité de mesure si nécessaire 
+. Un commentaire 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+Le choix entre les trois options ( hypertexte seul, fiche seule ou les deux) s’opère avec l’interface de 
+génération de PageCarto dans le menu édition de GaïamUndi. 
+
+ 
+
+ 
+
+ 
+
+Notez que cette mise à jour a ajouté deux paramétrages supplémentaires qui s’opéraient auparavant 
+manuellement : l’affichage ou non du module de synthèse et l’affichage ou non des sommes des 
+barres dans les histogrammes simples. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Réalisation du contenu de la fiche 
+
+ 
+
+Deux fichiers placés dans le sous répertoire PageCarto/ constituent la fiche 
+
+ 
+
+ 
+
+La réalisation du contenu de la fiche s’opère manuellement. 
+
+ 
+
+Le procédé est très simple si l’on suit les indications données pages suivante. 
+
+
+Dans fiche.js 
+
+ 
+
+ 
+
+ 
+
+. Remplir la variable GrandTitre 
+. Remplir pour chaque item de la fiche la section de 4 variables 
+
+
+ 
+
+javascript:CPonctuel(1,chinois,2,2,1);Cfond(1,marron,5) ;Cgraph(1,0)" 
+
+ 
+
+CPonctuel(1,chinois,2,2,1) 
+
+numéro du menu Variables 
+
+palette de couleur : chinois, rouge, marron, Nonchinois 
+
+quantile 
+
+taille des ronds (standard=0, -x =réduit, +x = agrandi) 
+
+proportionnel = 1, non proportionnel = 0 
+
+ 
+
+Cfond(1,marron,5) 
+
+numéro du menu Variables 
+
+palette de couleur : chinois, rouge, marron, Nonchinois 
+
+quantile 
+
+ Cgraph(1,0)" 
+
+numéro du menu Graphiques 
+
+Graphique agrandi=1, réduit=0 
+
+ 
+
+ 
+
+Dans fiche.htm 
+
+ 
+
+. Lorsqu’on clique sur une aire de la carte, le nom de l’aire s’inscrit dans la balise <span 
+id= « titreAire » 
+. le Titre de la Fiche (Variable GrandTitre) est placé automatiquement dans la balise <span 
+id= GdTitre 
+. les items définis par les secteions de 4 variables ci-dessus sont acocaténés et inscrits dans la 
+balise <span id= « ContenuFiche » 
+
+
+ 
+
+

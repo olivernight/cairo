@@ -1,0 +1,597 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr"><head><!--Copyright [2005-2007] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA--><title>cartes et commentaires/GaïaMundi</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+	
+	<link rel="stylesheet" type="text/css" title="normal" media="screen" href="style_gda20.css">
+	<link rel="stylesheet" type="text/css" href="js/sddm.css">
+		 <script type="text/javascript" src="menucontextuel_HAUT.js"></script>
+	<script type="text/javascript">
+			var rememberPositionedInCookie = true;
+	var rememberPosition_cookieName = 'anact';
+	</script>
+
+	<script type="text/javascript" src="js/dragable-content.js"></script>
+<script language="javascript" src="intitulesILIADE.js"></script>
+
+
+<script language="javascript">
+var repsite="HYPERTEXTES-tous"
+function transrepsite(){return repsite}
+var Iliade="Iliade"
+var createurSVG="non"
+function retournecreateurSVG(){return createurSVG}
+function retourneIliade(){return Iliade}
+function retourneintitules1(){return intit}
+function retourneintitules2(){return initO1}
+var optionwiki=new Array()
+function rien(){}
+var u=0
+var objaide=""
+
+function changeimagefond(a){
+if(top.frames.Num0.imagesfond.document.menufond){
+top.frames.Num0.imagesfond.document.menufond.choix.selectedIndex=a
+top.frames.Num0.imagesfond.change()
+}
+}
+
+
+function test(event){
+//alert(event.keyCode)
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert(objaide)
+document.getElementById("aide").style.visibility="visible"
+top.frames.frameaide.location.href="aidecartecom.html?REP="+objaide
+}
+
+}
+function test2(event){//évennement engendré dans le svg
+//alert(event.keyCode)
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert(objaide)
+document.getElementById("aide").style.visibility="visible"
+top.frames.frameaide.location.href="../aidecartecom.html?REP="+objaide
+}
+
+}
+function antitest0(event){event.stopPropagation()}
+function antitest(event){
+u=0
+top.document.getElementById('aide').style.visibility='hidden'
+window.addEventListener("keydown",test,true)
+//onKeyDown="javascript:test(event);"
+//alert(event.keyCode)
+
+
+}
+function ouvHelp(a){
+if(a=="Help2"){document.getElementById("aide").style.visibility="visible";top.frames.frameaide.location.href="aidecartecom.html?REP=Help"}
+
+objaide=a
+//alert(a)
+//top.frames.frameaide.location.href="aidecartecom.html#"+a
+
+
+
+}
+
+
+
+var menuencaps=new Array()
+</script><script language="javascript" src="intitulesILIADE.js"></script><script language="javascript" src="menuencapsules-Site.js?updated=1234567890"></script><script language="javascript" src="parametregenraux2-17-2.js"></script>
+<script language="javascript" src="wikiencapsulILIADE.js"></script>
+<script language="javascript">
+var initulprojet=intit[4]
+function retourneintit4(){ return initulprojet }
+function chgbgetcolor(a,b,c){
+
+a="background-color:"+a+";color:"+c
+b.setAttribute('style',a)
+}
+function chgcolor(a,b){
+
+a="color:"+a
+b.setAttribute('style',a)
+}
+
+var aw=document.location.href
+
+var longx2=0
+for(i=0;i<aw.length;i++){
+if(aw.substr((aw.length-i),1,1)=="?"){longx2=i}
+}
+
+aw=aw.substr(aw.length-longx2+1,longx2,1)
+
+function valaw(){
+return aw
+}
+function BL(){ //début signal chargement top.BL()
+
+document.getElementById("divloading").style.top=400+'px' 
+top.frames.FloadingBis.location.href="vide.htm"
+
+}
+function EL(){//fin signal chargement  top.EL()
+document.getElementById("divloading").style.top=-1000+'px'
+
+}
+function retournemenuencaps(){
+return menuencaps}
+
+var transHL=new Array()
+transHL[0]=largeurecran
+transHL[1]=hauteurecran
+function transHLecran(){
+return transHL
+}
+
+function transscrol(){
+return scrol
+}
+function scroltravail(){
+document.getElementById("Num0").scrolling="yes"
+}
+
+
+function chargemenu(){
+document.getElementById("SUJET").height=25
+document.getElementById("OTHER").height=25
+top.frames.SUJET.location.href="MENU-SUJET.htm"
+top.frames.OTHER.location.href="MENU-OTHER.htm"
+}
+var btemp="b1"
+function changebouton(a){
+var bx="bt"+a.substr(a.length-1,1)
+var ax="b"+a.substr(a.length-1,1)
+var fich=document.getElementById(bx).firstChild.nodeValue
+A="cartO-"+fich+"-encaps.htm"
+top.frames.Num0txt.location.href=A
+document.getElementById(ax).src="boutonselect.png"
+document.getElementById(btemp).src="bouton.png"
+btemp=ax
+}
+function changepage(a){
+//var op="option"+a.substr(a.length-1,1)var fich=document.getElementById(a).firstChild.nodeValue
+var fich=document.getElementById(a).firstChild.nodeValue
+var pas=fich.indexOf("-",0)
+fich=fich.substr((pas+1),fich.length-(pas+1))
+
+A="cartO-"+fich+"-encaps.htm"
+
+top.frames.Num0txt.location.href=repsite+"/"+A
+
+}
+var optw=""
+
+
+function change_site() {
+var site = document.menu.popup.selectedIndex;
+{
+
+window.location.href =
+document.menu.popup.options[site].value;
+
+document.menu.popup.selectedIndex=0
+}
+}
+function rien2(){}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//module de commande pour créer les balises de méta language de textualisation
+var initmove=0
+function disable(event){
+X0=document.getElementById("commande1").width
+Y0=parseInt(divpoint.style.top)
+imag1point.width=40
+imag1point.height=40
+imagpoint.style.top=parseInt(divpoint.style.top)
+imagpoint.style.left=parseInt(document.getElementById("commande1").width)+0
+initmove=0
+}
+var trez=0
+function A2moveXY(event){
+if(initmove==1){
+
+
+if (document.all){
+//-------à faire
+
+}else{
+
+X1=-(event.clientX-X)
+Y1=-(event.clientY-Y)
+document.getElementById("commande1").height=parseInt(trez)+parseInt(Y1)
+//divpoint.style.left=X0-X1+tempx
+divpoint.style.top=Y0-Y1+tempy
+imagpoint.style.top=Y0-Y1+tempy+30-200
+imagpoint.style.left=X0-X1+tempy+0-200
+if(X0-X1+tempx<400){document.getElementById("textstatus").firstChild.data=""}
+document.getElementById("commande1").width=X0-X1+tempx
+//trez=trez0+Y1
+
+
+}
+
+}
+}
+
+function ajustcol(){
+document.getElementById('com').style.left=trucx2
+
+}
+
+function AmoveXY(event){
+
+if(initmove==0){
+initmove=1
+
+if(document.all){
+X = event.clientX;
+Y = event.clientY;
+tempx=parseInt(divpoint.style.left)
+tempy=parseInt(divpoint.style.top)
+}else{
+X = event.clientX;
+Y = event.clientY;
+tempx=0
+tempy=0
+//trez=document.getElementById("commande1").height
+
+imag1point.width=400
+imag1point.height=400
+
+trez=parseInt(document.getElementById("commande1").height)
+}
+}
+
+}
+
+
+function init2(){
+if(initialmove==0){
+indicinit2=1
+
+
+}
+}
+function initmoveXY(){initmove=1}
+function init(){}
+function initXXXXXXXXXXXX(){//fonction d'initialisation inhibée
+if(document.all){
+document.getElementById("com").attachEvent("onmousedown",AmoveXY)
+document.getElementById("com").attachEvent("onmousemove",A2moveXY)
+document.getElementById("com").attachEvent("onmouseup",disable)
+}else{
+
+//document.getElementById("fondcom").addEventListener("mousedown",AmoveXY,true)
+//document.getElementById("fondcom").addEventListener("mousemove",A2moveXY,true)
+//document.getElementById("fondcom").addEventListener("mouseup",disable,true)
+document.getElementById("imag0").addEventListener("mousedown",AmoveXY,true)
+document.getElementById("imag0").addEventListener("mousemove",A2moveXY,true)
+document.getElementById("imag0").addEventListener("mouseup",disable,true)
+}
+
+X0=document.getElementById("commande1").width//parseInt(divpoint.style.left)
+Y0=parseInt(divpoint.style.top)
+trez0=document.getElementById("commande1").height
+initmove=0
+//tempx=parseFloat(divpoint.style.left)
+
+}
+
+
+var largeurcadre0=400
+var debdblc=1
+
+function ouvferouv(){
+
+if(debdblc==0){
+debdblc=1
+divpoint.style.top=divpoint0
+document.getElementById("commande1").width=commandewidth0
+document.getElementById("commande1").height=commandeheight0
+imagpoint.style.left=imagpointleft0
+imagpoint.style.top=imagpointtop0
+document.getElementById("textstatus").firstChild.data="Commandes et générateur de méta-balises pour wikini  "
+}
+X0=document.getElementById("commande1").width//parseInt(divpoint.style.left)
+//trez0=
+
+Y0=parseInt(divpoint.style.top)
+
+imag1point.width=60
+imag1point.height=40
+imagpoint.style.top=parseInt(divpoint.style.top)
+imagpoint.style.left=parseInt(document.getElementById("commande1").width)+0
+//stop()
+initmove=0
+}
+//}else{
+function ouvferfer(){
+if(debdblc==1){
+
+debdblc=0
+divpoint.style.top=hauteurecran+70
+document.getElementById("commande1").width=0
+document.getElementById("commande1").height=0
+imagpoint.style.left=5+0
+imagpoint.style.top=hauteurecran
+document.getElementById("textstatus").firstChild.data=""
+}
+X0=document.getElementById("commande1").width//parseInt(divpoint.style.left)
+//trez0=
+
+Y0=parseInt(divpoint.style.top)
+
+imag1point.width=60
+imag1point.height=40
+imagpoint.style.top=parseInt(divpoint.style.top)
+imagpoint.style.left=parseInt(document.getElementById("commande1").width)+0
+//stop()
+initmove=0
+
+}
+
+
+</script>
+<script>
+  function rienici()
+{
+}
+ function cachex(thingId)
+{
+var targetElement;
+targetElement = document.getElementById(thingId) ;
+targetElement.style.display = "none" ;
+}
+function affiche(thingId)
+{
+var targetElement;
+targetElement = document.getElementById(thingId) ;
+targetElement.style.display = "" ;
+}
+</script>
+</head>
+<body onKeyDown="javascript:test(event);" onKeyUp="javascript:antitest0(event);">
+<script>
+if(document.all){var hautsur2=0;var largsur2=(document.body.clientWidth-1000)/2;document.write('<div id="conteneur2" style="position:absolute;top:'+hautsur2+'px;left:'+largsur2+'px;width:1000px">')}else{var largsur2=(window.innerWidth-1000)/2;document.write('<div id="conteneur">')}
+</script>
+<!--div id="conteneur"-->
+
+
+<!--menu haut -->
+<table id="gda_top" cellpadding="0px" cellspacing="0px" border="0px">
+   <tr>
+     <td width="50"><a href="http://www.anact.fr/portal/page/portal/AnactWeb/NOTINPW_PAGES_TRANSVERSES/NOTINMENU_HOME_ANACT_WEB"><img src="./images/logo_anact_petit.jpg" alt="Anact"/></a>
+      <a href="http://ec.europa.eu/employment_social/esf/index_fr.htm"><img src="./images/logo_ue_petit.jpg"/></a>
+     </td>
+     <td width="101">
+      <a href="http://www.anact.fr/portal/page/portal/GDA/Actualites"><img src="./images/logo_gda_petit.jpg" alt="Gestion des Ages"></a>
+     </td>
+     <td width="154">
+     </td>
+    
+     <td width="140" align="center">
+	 	 <a href="accueil-iliade-texte.html"  class="appli_link">Iliade</a>
+	   </td>
+     
+     <td width="140" align="center">
+	   <a href="faq2.html"  class="appli_link">Questions Réponses</a>
+	   </td>
+	   <td width="140" align="center">
+     <a href="accueil-10000.htm"  class="appli_link">Enquête 10 000</a>
+	   </td>
+ 
+	    <td width="140" align="center">
+	 	 <a href="AccueilAttlas4.html"  class="appli_link">&nbsp; &nbsp;Attlas &nbsp; &nbsp;</a>
+	   </td>    
+	   <td width="140" align="center">
+     <a href="http://www.anact.fr/portal/page/portal/GDA/Outils_GDA/Ressources_Documentaires"  class="appli_link">Ressources Documentaires</a>
+	   </td>
+    </tr>
+	
+	
+    <tr style="background-color:#aa00a3;">
+     <td colspan="3" valign="top" style="background:#aa00a3 url(./images/onglet_right.jpg) top right no-repeat;height:88px;">
+      <div id="current_appli">Attlas 
+	    <div id="current_appli_descr">Outil d'analyse cartographique de la relation âge emploi et territoire
+	   </div>
+      </div>
+     </td>
+	 
+	 
+	 
+	 
+
+     <td valign="top">
+	   <a href="accueil-iliade-texte.html" onmouseover="javascript:affiche('menu_iliade');" onmouseout="javascript:cachex('menu_iliade');"><img src="./images/horiz_icon_iliade.jpg" alt="iliade"/></a>
+	   <div id="menu_iliade" class="box_menu" style="display:none;">Outil de sensibilisation sur les enjeux de la gestion des âges
+     </div>
+     </td>     
+	 <td valign="top">
+	   <a href="faq2.html" onmouseover="javascript:affiche('menu_faq');" onmouseout="javascript:cachex('menu_faq');"><img src="./images/horiz_icon_questions.jpg" alt="Questions Réponses"/></a>
+	   <div id="menu_faq" class="box_menu" style="display:none;">Les réponses sur la gestion des âges, la retraite, la législation</div>
+     </td>
+     <td valign="top">
+	   <a href="accueil-10000.htm" onmouseover="javascript:affiche('menu_10000');" onmouseout="javascript:cachex('menu_10000');"><img src="./images/horiz_icon_enquete.jpg" alt="Enquête 10000"/></a>
+	   <div id="menu_10000" class="box_menu" style="display:none;">Résultat en ligne de l’enquête 10 000
+     </div>
+     </td>
+	      <td valign="top">
+	   <a href="AccueilAttlas4.html" onmouseover="javascript:affiche('menu_attlas');" onmouseout="javascript:cachex('menu_attlas');"><img src="images/horiz_icon_attlas.jpg" alt="Attlas"/></a>
+	   <div id="menu_attlas" class="box_menu" style="display:none;">Outil d'analyse cartographique de la relation âge emploi et territoire
+     </div>
+     </td>
+     <td valign="top">
+	   <a href="http://www.anact.fr/portal/page/portal/GDA/Outils_GDA/Ressources_Documentaires" onmouseover="javascript:affiche('menu_ressources');" onmouseout="javascript:cachex('menu_ressources');"><img src="./images/horiz_icon_docs.jpg" alt="Ressources Documentaire"/></a>
+	   <div id="menu_ressources" class="box_menu" style="display:none;">Les ressources documentaires concernant la gestion des âges
+     </div>
+     </td>
+
+    </tr>
+  </table>
+
+
+
+<!--fin menu haut -->
+
+
+
+<script language="javascript">
+
+//var Iliade=top.retourneIliade("return Iliade")
+if(Iliade=="Iliade"){
+document.write('<div onmouseover="document.getElementById(\'Num0txt\').width=largtext;agr=0;" class="texte2" style="position:absolute; top:155px; left:325px; width:675px; height:450px; background: white; border:1px dotted #000000;filter:alpha(opacity=70); opacity: 1;"><iframe  src="cartO2encapsuleILIADE.htm"')}else{
+document.write('<div style="position: absolute; left: 325px; top: 190px;"><iframe  src="cartO2encapsule.htm"')}
+document.write(' id="Num0" name="Num0" style="border-color: white;" noresize=""  marginwidth="0" marginheight="0" frameborder="1" height="'+(hauteurecran-4)+'" scrolling="no" width="'+(largeurecran-5)+'"></iframe></div>')
+var largtext
+if(largeurecran>705){largtext=310+3.5*(largeurecran-705)/10}else{largtext=310}
+
+document.write('<div class="texte" style="position:absolute; top:155px; left:0px; width:310px; height:450px; background: white; border:1px dotted #000000;filter:alpha(opacity=70); opacity: 1;z-index:100">')
+
+document.write('<form  onmouseover="ouvHelp(\'menucartecom\')"  name="menu"><select title="pour re-initialiser une page,selectionnez cartes et commentaires puis selectionnez de nouveau la page" name="popup" onchange="change_site();" style="background-color: white; color: black;width:212" size="1"><option value="javascript:rien2()">&nbsp;Cartes et Commentaires</option>')
+for(i=0;i<menuencaps.length;i++){
+
+
+if(listpubcartovision[i]=="1"){
+
+
+
+j=i+1
+O='<option id="option'
+O+=j
+
+
+O+='" VALUE="javascript:a='
+O+="'option"+j+"'"
+O+=';changepage(a)">'
+O+=j
+
+O+="-"
+O+=menuencaps[i]
+O+='</option>'
+document.write(O)
+}
+}
+</script>
+<script language="javascript">
+/*
+for(i=0;i<optionwiki.length;i++){
+document.write('<option id="travail" value="javascript:appeltravail2(\''+optionwiki[i]+'\')">&nbsp;'+optionwiki[i]+'</option>')
+}
+*/
+</script>
+</select></form>
+<script language="javascript">
+var agr=0
+</script>
+<script language="javascript">
+document.write('<div style="position: absolute; top: 5px; left:215">')
+</script>
+
+<a onclick="javascript:if(agr==0){document.getElementById('Num0txt').width=430;agr=1}else{document.getElementById('Num0txt').width=largtext;agr=0}" onmouseOver="ouvHelp('+/-large')" href="javascript:rien()"><b><font face="arial black">texte +/- large</font></b></a>
+
+
+</div>
+<script language="javascript">
+
+document.write('<iframe onmouseover="top.ouvHelp(\'hypert\')"   src="'+repsite+'/cartO-'+menuencaps[0]+'-encaps.htm" id="Num0txt" name="Num0txt" noresize="" marginwidth="0" marginheight="0" style="border-color: white;padding:5px" frameborder="0" height="'+(hauteurecran-30)+'" scrolling="yes" width="'+largtext+'"  ></iframe></div>')
+
+document.write('<div style="position: absolute; left: '+(largeurecran-136)+'; top: '+(hauteurecran+190-35)+';"><a href="COPYING GNU.txt" onmouseover="javascript:chgbgetcolor(\'#C2CFDD\',this,\'red\');" onmouseout="javascript:chgbgetcolor(\'#E5EAF5\',this,\'gray\')" style="color:gray"><font size="1" >Copyright[H.paris][2006-7][GPL]</font></a></div>')
+
+document.write('<div  style="position: absolute; left:335px; top: '+(hauteurecran+131-35)+';"><a><b><font face="Arial" color=gray size="1">Menus des Graphiques de données : </font></b></a></div>')
+
+document.write('<div onmouseover="ouvHelp(\'menugraph1\')" style="position: absolute; left:325px; top: '+(hauteurecran+140-35)+';"><iframe src="" id="SUJET" name="SUJET" noresize="" marginwidth="0" marginheight="0" frameborder="0" height="0" scrolling="no" width="250"></iframe></div>')
+document.write('<div onmouseover="ouvHelp(\'menugraph2\')" style="position: absolute; left: 325px; top: '+(hauteurecran+165-35)+'px;"><iframe src="" id="OTHER" name="OTHER" noresize="" marginwidth="0" marginheight="0" frameborder="0" height="0" scrolling="no" width="250"></iframe></div>')
+
+</script>
+<div id="aide" class="texte" style="position:absolute; top:155px; left:0px; width:310px; height:445px; background: white; border:1px dotted #000000;filter:alpha(opacity=70); opacity: 1;z-index:110;visibility:hidden"><iframe name="frameaide" id="frameaide" style="width:310px; height:445px;border:0;padding:5px" src="vide.html"></iframe></div>
+</div>
+
+<script language="javascript">
+
+
+document.write('<div id="com" name="com"  style="position:absolute;left:-15;top:'+(hauteurecran-280)+';visibility:hidden >')
+</script>
+<table border=0  id="fondcom" cellpadding=0 cellspacing=0><TR><TD id="tabcom" width=20 height=10 ></TD><TD  id="tabcom2" style="border:solid;padding:0px;color:gray" BGCOLOR="blue" align="right"><b><font id="textstatus" face="arial" color="white" size="2" >Commandes et générateur de méta-balises pour wikini&nbsp;&nbsp;</font></b><img style="visibility:hidden" src="tir.gif" width=20 height=20 onClick="javascript:ouvfer()"></TD><TD BGCOLOR="blue"></TD></TR><TR><TD  id="tabcom3" width=10 ></TD><TD >
+
+<iframe  id="commande1" name="commande1" src="comtravailILIADE.htm" frameborder="1" width=400 height=250 style="visibility:hidden;background-color: transparent" ></iframe>
+
+</TD><TD ></TD></TR></table>
+</div>
+
+
+
+<div id="divloading"  style="position:absolute;top:-1000px;left:800px;color:gray;background-color:white;border:1px dotted #000;visibility:visible;"><img id="loading" style="background-color:white;left:60px;top;-30px; width:60px;height:60px" border="0px" src="loading.gif"><p style="font-family:arial;font-weight:bold">CHARGEMENT en COURS</p><br><br><br><br><br><br></div>
+
+<iframe id="FloadingBis" name="FloadingBis" width=0 border=0 height=0 src="vide.htm"></iframe>
+
+<script language="javascript">
+var largeurcadre0=400
+document.write('<div id="imag0" name="imag0" style="position:absolute;left:'+(5+largeurcadre0+0)+';top:'+(hauteurecran-280)+';visibility:hidden" ><img id="imag1" title="click=ouvert;survol=fermé " onClick="javascript:ouvferouv()" onmouseover="javascript:ouvferfer()" src="carretransparent.gif" width=60 height=40></div>')
+var divpoint=document.getElementById('com')
+var imagpoint=document.getElementById('imag0')
+var imag1point=document.getElementById('imag1')
+
+var divpoint0=hauteurecran-210
+var commandewidth0=400
+var commandeheight0=250
+var imagpointleft0=5+largeurcadre0+0
+var imagpointtop0=hauteurecran-280
+
+
+
+</script>
+
+
+<script language="javascript">
+ouvferfer()
+
+function eventKeyframes(){
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test(event)")
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("totalsvg").setAttribute("onclick","javascript:onkeydown='top.test(event)'")
+}
+setTimeout('eventKeyframes()',1250)
+
+//alert("ici")
+//top.addEventListener("keyup",antitest,false)
+</script>
+<!--
+<div id="vignette" onmouseover="document.getElementById('imx1').width=200" onmouseout="document.getElementById('imx1').width=0" align="right" class="dragableElement"  style="position:absolute; left:1000px; top:200px; ; border: 1px dotted #222222; background: white; filter:alpha(opacity=70); opacity: 0.9;" >
+<dt style="color:gray"  class="texte" >Version "expert"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="A-Frame-Num0-cartO1-defautILIADE.htm" style="background-color:white" onclick=""><b style="color:blue"><small></small>&nbsp;=>&nbsp;</b></a></dt>
+<dt><img id="imx1" src="FranceZE vignette.jpg" width=0 ></dt>
+</div>
+
+<div id="vignette2" onmouseover="document.getElementById('imx2').width=200" onmouseout="document.getElementById('imx2').width=0" class="dragableElement"  style="position:absolute; left:780px; top:200px; ; border: 1px dotted #222222; background: white; filter:alpha(opacity=70); opacity: 0.9;" ><dt style="color:gray"  class="texte" >Version "commentée"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="A-Frame-Num0-cartO2-17-ILIADE.htm" style="background-color:white" onclick=""><b style="color:blue"  ><small></small>&nbsp;=>&nbsp;</b></a></dt>
+<dt><img id="imx2" src="cartecommentee.jpg" width=0 ></dt></div>
+-->
+<script type="text/javascript" src="menucontextuel_BODY.js"></script>
+<script language="javascript">
+function evennementmenucontext(){
+
+
+//page courante
+document.oncontextmenu = top.ouvrir_menu;
+document.onclick = top.fermer_menu;
+document.getElementsByTagName("body")[0].setAttribute("onmousemove","javascript:top.positionX(event,0,0)")
+
+//page hypertexte
+var valx=(top.innerWidth-parseInt(document.styleSheets[0].cssRules[2].style.getPropertyValue('width')))/2+10
+var valy=parseInt(document.getElementById("Num0txt").parentNode.style.top)+25
+
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onmousemove","javascript:top.positionX(event,"+valx+","+valy+")")
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onclick","javascript:top.fermer_menu(event)")
+var noed=document.createElement("script")
+noed.setAttribute("id","noedid")
+noed.setAttribute("language","javascript")
+top.frames.Num0txt.document.getElementsByTagName("body")[0].appendChild(noed)
+top.frames.Num0txt.document.getElementById("noedid").innerHTML="document.oncontextmenu = top.ouvrir_menu;"
+}
+//setTimeout('evennementmenucontext()',1250)
+
+</script>
+</body></html>

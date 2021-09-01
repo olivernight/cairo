@@ -1,0 +1,536 @@
+﻿<HTML>
+<head>
+ <TITLE>Pilote2</TITLE>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language="javascript">
+var topX=top.location.href
+topX=topX.indexOf("encaps.",0)
+//Ccouche=top.frames.Num0.frames.couches.frames.zoom.Ccarte("return couchecarte")
+top.frames.Num0.document.getElementById("variable2").style.visibility="hidden"
+//top.frames.Num0.frames.couches.document.getElementById("zam3").style.visibility="hidden"
+//top.frames.Num0.frames.couches.document.getElementById("boutonan").style.visibility="hidden"
+var initmenu=0
+var initanal=0
+var indicarte=0
+var taille0=15
+var SEL1=""
+var SEL2=""
+var SEL3=""
+var SEL4=""
+var trdat2=new Array()
+//var trdat1X=new Array()
+var trdatdimico= new Array()
+var ICD=0
+var adressDATA=""
+
+var im=1
+var imico
+var ka3=0
+var MAXTD
+var xl=1
+var xh=1
+var curs=1
+var vh=1
+var TT=""
+var INIT0=0
+var INITA=0
+var longx=0
+var Ccouche
+var imx=1
+var ICD
+var ICD2
+
+top.frames.Num0.frames.couches.zoom.tailleicodepart()
+
+function plusmoinsadistance(a){
+  curs=a;if(INIT0==1){ajust()}
+}
+
+function indicinitanal(){initanal=1}
+function recupinitanal(){return initanal}
+function recuptaille0(){
+return taille0
+}
+function indicarte1(){indicarte=1;}
+function indicarte0(){indicarte=0}
+function transindicarte0(){return indicarte}
+
+function rien(){
+}
+function recupICD(){
+ICD2=ICD
+return ICD2
+}
+function transMAXTD(){
+return MAXTD
+}
+
+function returnIM(){return im}
+function imchange1(){
+im=1;vh=1;
+curs=0
+//document.getElementById('vertic').style.visibility='hidden';
+//document.getElementById('horiz').style.visibility='hidden';
+document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible'
+imx=1
+}
+function imchange2(){
+im=2;vh=1;
+curs=0
+document.getElementById('vertic').style.visibility='visible';document.getElementById('horiz').style.visibility='visible';document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible'
+imx=2
+}
+function imchange3(){
+im=3;vh=1;
+curs=0
+document.getElementById('vertic').style.visibility='hidden';document.getElementById('horiz').style.visibility='hidden';document.getElementById('MOI').style.visibility='hidden';document.getElementById('PLU').style.visibility='hidden'
+imx=3
+}
+function imchange4(){
+im=4;vh=1;
+curs=0
+document.getElementById('vertic').style.visibility='hidden';document.getElementById('horiz').style.visibility='hidden';document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible'
+imx=4
+}
+function ECH1X(){
+top.frames.Num0.frames.datacarte.ECH1()
+ECHX=1
+}
+function ECH2X(){
+top.frames.Num0.frames.datacarte.ECH2()
+ECHX=2
+
+}
+function retourneech(){
+return ECHX
+}
+//_____________________________________________
+function titleX(){
+return TT
+}
+
+function retourtabdimico(){
+
+trdatdimico=top.frames.Num0.frames.couches.frames.zam3.dimicorestant("return RECUPDIMICO1")
+top.frames.Num0.frames.couches.frames.zoom.recupicodim()
+}
+function cursX(){
+
+im=3;
+vh=1
+curs=0
+}
+
+function ajust(){
+//alert("curs="+curs+"   imx="+imx+"   vh="+vh)
+if(curs==0){
+
+top.frames.Num0.frames.couches.frames.zoom.recuptrdat2()
+top.frames.Num0.frames.couches.frames.zoom.recupicodim()
+}
+if (imx==2 ){
+if(vh==1){top.frames.Num0.frames.couches.frames.zoom.changeXH()}
+if(vh==2){top.frames.Num0.frames.couches.frames.zoom.changeXL()}
+}
+if (imx==1 || imx==4){
+
+//top.frames.Num0.frames.couches.frames.zoom.changeXH()
+top.frames.Num0.frames.couches.frames.zoom.changeXL()
+}
+}
+function cursX2(){
+
+im=1;
+vh=1
+curs=0
+}
+
+
+
+function varxl(){
+
+if(curs==1){xl=xl*(1.2)}
+if(curs==2){xl=xl/(1.2)}
+if(curs==0){xl=xl}
+
+return xl
+}
+
+function varxh(){
+if(curs==1){xh=xh*(1.2)}
+if(curs==2){xh=xh/(1.2)}
+if(curs==0){xh=xh}
+
+return xh
+}
+
+function longueurX1(){
+return longx
+}
+
+
+function imicox(){
+var imico=new Array(0,0)
+if(im==1){imico[0]="cir_0.gif";imico[1]=1;top.frames.Num0.frames.couches.frames.zam3.IMC1()}
+if(im==2){imico[0]="hx_0.gif";imico[1]=2;top.frames.Num0.frames.couches.frames.zam3.IMC2()}
+if(im==4){imico[0]="TRX0.gif";imico[1]=4;top.frames.Num0.frames.couches.frames.zam3.IMC4()}
+if(im==3){imico[0]="carretransparent.gif";imico[1]=3}
+
+return imico
+}
+
+function transdata1(){
+
+//trdat1X=top.frames.Num0.frames.ico.transbase("return trabas")
+
+var trdat1=new Array()
+//trdat1=trdat1X
+trdat1=top.frames.Num0.frames.ico.transbase("return trabas")
+//alert("pilote 2 ... "+trdat1)
+var TTI=trdat1[0]
+TT=TTI[0]
+
+
+
+
+longx=TTI[1]
+
+
+//top.frames.Num0.frames.datacarte.diverstitrex()
+//window.frames[0].location.href="titrex.htm"
+//top.frames.Num0.frames.tab.titreX.document.src="../titrex.htm"
+
+MAXTD=-10000000
+//for(var i=1;i<trdat1.length;i++){
+
+for(var i=1;i<longx-2;i++){
+var TDX=trdat1[i]
+
+trdat2[i]=TDX[1]
+
+if(trdat2[i]!=-99999 && parseFloat(Math.abs(trdat2[i]))>MAXTD){MAXTD=parseFloat(Math.abs(trdat2[i]))}
+}
+
+//top.frames.Num0.frames.couches.frames.zoom.longueurX()
+xh=1
+xl=1
+top.frames.Num0.frames.couches.frames.zoom.rzXHXL()
+normalise()
+top.frames.Num0.frames.couches.frames.zoom.recuptrdat2()
+top.frames.Num0.frames.couches.frames.zoom.recupicodim()
+//top.frames.Num0.frames.couches.frames.zoom.icodim()
+if(INIT0==0){top.frames.Num0.frames.tab2.location.href="../pilote3.htm"}
+
+top.frames.Num0.document.getElementById("variable2").style.visibility="visible"
+INIT0=1
+}
+
+function normalise(){
+//alert("pilote2.....   "+MAXTD+"   trdat2...."+trdat2)
+for(var i=1;i<longx;i++){
+if(trdat2[i]==-99999){trdatdimico[i]=0}else{
+trdatdimico[i]=trdat2[i]/MAXTD*taille0}
+}
+}
+
+function transdata2(){
+
+return trdat2
+}
+function transdatadimico(){
+
+return trdatdimico
+}
+
+
+//___________________________________________ TACHE DE FOND DANS l'affectation de donn�es______
+
+function transadress(){
+
+return adressDATA
+}
+function XINITA2(){ INITA=2}
+function XINITA0(){ INITA=0}
+var indicvalidit=0
+function changeXFOND(){
+transdata1() 
+
+
+if(INITA==0){
+//alert("pilote2 inita")
+top.frames.Num0.frames.couches.frames.zam3.location.href="../ANALYSE-droite.htm";
+top.frames.Num0.frames.couches.document.getElementById("mobile5").style.visibility="visible"
+INITA=1
+
+}else{
+//alert("pilote2 init1X")
+var init1X=top.frames.Num0.frames.couches.frames.zam3.transINIT1("return INIT1")
+//if(init1X==1){top.frames.Num0.frames.couches.frames.zam3.recupdonnees1()}
+
+top.frames.Num0.frames.couches.frames.zam3.recupdonnees1();
+
+top.frames.Num0.frames.datacarte.affectcoul()
+//indicvalidit=top.frames.Num0.frames.datacarte.transindicvalidit("return indicvalidit")
+//if(indicvalidit==1){top.frames.Num0.frames.datacarte.validitici2();indicvalidit=0}
+}
+//top.frames.Num0.frames.couches.document.getElementById("zam3").idicarteX()
+
+}
+
+function initiedata(){
+top.frames.Num0.frames.couches.frames.zam3.recupdonnees1()
+
+}
+
+function CC(){
+//Ccouche=top.frames.Num0.frames.couches.frames.zoom.Ccarte("return couchecarte")
+}
+
+</script>
+
+
+
+
+
+</head>
+<!--_________________________________________________BODY_____________________onload="top.document.getElementById('pilote2bis').innerHTML=document.getElementsByTagName('html')[0].innerHTML"_____________________ -->
+<body bgcolor="white" >
+
+<script language="javascript">
+if(document.all){ 
+document.write("<div style='left:2;top:2;visibility:visible;position:absolute'>")
+}
+else{
+document.write("<div style='left:2;top:2;visibility:visible;position:absolute'>")
+}
+</script>
+<table width=100  height=0 border=0 CELLSPACING=0 CELLPADDING=0>
+<TR >
+
+<TD ALIGN=left VALIGN=top>
+
+<!-- DEBUT DU SCRIPT MENU DEROULANT ------------------->
+<form NAME="menu3">
+<DT><select NAME="popup3" 
+onChange="change_site3();" onmouseover="if(document.all){top.frames.Num0.frames.couches.zoom0()};if(initmenu==1){top.frames.Num0.frames.datacarte.iconeoucadre2()};" style="background-color:#EFF2F9;border:0; color:gray" size="-1">
+<option VALUE="javascript:rien()">&nbsp;Icônes &nbsp;&nbsp;&nbsp;&nbsp;</option>
+<script>
+SEL2=top.frames.Num0.frames.datacarte.transfertmenuicone("return ISEL")
+
+var SELad=top.frames.Num0.frames.datacarte.transfertmenuicone3("return ISEL3")
+var FDS=SELad+SEL2
+document.write(FDS)
+
+initmenu=1
+</script>
+<script>
+function SEL1trans(){
+return SEL1
+}
+
+function SEL2trans(){
+
+return SEL2
+}
+
+function SEL3trans(){
+return SEL3
+}
+
+function SEL4trans(){
+return SEL4
+}
+</script>
+</select> <b><font  face="Arial" size="3" color="#400080">&nbsp;&nbsp;<script>
+//document.write("other")
+</script></font></b></DT><DT></DT>
+
+</form>
+<script>
+function changeicoiciX(a){
+top.frames.Num0.comptico0()//remet le compte de passage des boucles de métalanguage à zero ce qui évite que le graphique encadré ne soit repositionné aléatoirement
+document.menu3.popup3.selectedIndex=a
+
+change_site3()
+}
+
+
+
+
+
+function change_site3() {
+
+if(initanal==1){
+
+top.frames.Num0.frames.couches.zam3.indicarte20()
+top.frames.Num0.frames.couches.zam3.indicmenuico1()
+top.frames.Num0.frames.datacarte.indicmenuico1()
+}
+top.frames.Num0.frames.selectana.selectvar1()
+
+var site = document.menu3.popup3.selectedIndex;
+//alert(document.menu3.popup3.options[site].value)
+//{
+
+window.location.href =
+document.menu3.popup3.options[site].value;
+ka3=site
+
+
+
+
+//}
+}
+function retICDencours(){ICDencours=ICD; return ICDencours}
+function razselectindex(){
+document.menu3.popup3.selectedIndex=ka3
+
+}
+</script>
+
+</td></tr></table>
+</div>
+
+
+
+
+<script language="javascript">
+if(document.all){ 
+document.write("<div style='left:2;top:30;visibility:visible;position:absolute'>")
+}
+else{
+document.write("<div style='left:2;top:30;visibility:visible;position:absolute'>")
+}
+</script>
+
+<table border=0  BGCOLOR="#EFF2F9" width=0 CELLSPACING=0 CELLPADDING=0>
+<tr>
+<td>
+<table border=0 width=99 CELLSPACING=0 CELLPADDING=0> <!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtable sous le menu d�roulantxxxxxxxxxxxxx>
+<tr>
+<td width=5  >
+</td>
+<td width=28  >
+<table border=0  CELLSPACING=0 CELLPADDING=0>
+<tr>
+<td ALIGN=left VALIGN=top>
+
+<DT><img SRC="cir_0.gif" id="cir" width=15 height=15 onclick="top.frames.Num0.frames.couches.zoom.choixICONE(1);im=1;vh=1;document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible';if(INIT0==1){top.frames.Num0.frames.couches.frames.zam3.IMCX1()}"></DT>
+</td>
+</tr>
+<tr>
+<td ALIGN=left VALIGN=top>
+
+<DT><img id="barclick" SRC="etoile.jpg"  width=15 height=15 onclick="top.frames.Num0.frames.couches.zoom.choixICONE(2);im=1;vh=1;document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible';if(INIT0==1){top.frames.Num0.frames.couches.frames.zam3.IMCX1()}"></DT>
+</td>
+</tr>
+<tr>
+<td ALIGN=left VALIGN=top>
+<DT><img SRC="carretransparent.gif" border=1 id="transpar" width=15 height=15 onclick="im=3;vh=1;top.frames.Num0.tab.document.getElementById('MOI').style.visibility='hidden';top.frames.Num0.tab.document.getElementById('PLU').style.visibility='hidden';if(INIT0==1){;curs=0;top.frames.Num0.frames.couches.frames.zoom.imgicox() }"></DT>
+</td>
+</tr>
+</table>
+</td>
+
+<td width=28>
+<table  CELLSPACING=0 CELLPADDING=0>
+<tr>
+<TD ALIGN=left VALIGN=top style="visibility:hidden">
+<DT><img id="PLU" name="PLU" SRC="plus.gif"  width=15 height=15 onclick="curs=1;if(INIT0==1){ajust()}" style="visibility:visible"></DT>
+</td>
+</tr>
+<TR>
+<td ALIGN=left VALIGN=top>
+<DT><img id="MOI" SRC="moins.gif"  width=15 height=15 onclick="curs=2;if(INIT0==1){ajust()}" style="visibility:visible"></DT>
+</td>
+</tr>
+<TR>
+<td ALIGN=left VALIGN=top width=15 height=15>
+<DT><img  src="carretransparent.gif" width=15 height=15  style="visibility:visible"></DT>
+</td>
+</tr>
+</table>
+</td>
+
+<td width=28>
+<table  CELLSPACING=0 CELLPADDING=0>
+<tr>
+<TD ALIGN=left VALIGN=top>
+<DT><img SRC="vertical.gif" id="vertic" style="visibility:hidden" width=15 height=15 onclick="javascript:vh=1"></DT>
+</td>
+</tr>
+<TR>
+<td ALIGN=left VALIGN=top>
+<DT><img SRC="anti-fleche.gif" id="fleche" width=17 height=17 onclick="top.frames.Num0.frames.couches.zoom.choixICONE(4);im=1;vh=1;document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible';if(INIT0==1){top.frames.Num0.frames.couches.frames.zam3.IMCX1()}"></DT>
+</td>
+</tr>
+<TR>
+<td ALIGN=left VALIGN=top width=17 height=17>
+<DT><img SRC="TRX0.gif"  width=17 id="tri" height=17 onclick="top.frames.Num0.frames.couches.zoom.choixICONE(3);im=1;vh=1;document.getElementById('MOI').style.visibility='visible';document.getElementById('PLU').style.visibility='visible';if(INIT0==1){top.frames.Num0.frames.couches.frames.zam3.IMCX1()}"></DT>
+</td>
+</tr>
+
+</table>
+</td>
+
+</tr>
+
+</table>
+</td>
+</tr>
+<TR>
+<td ALIGN=left VALIGN=top width=100% height=17>
+<img ad=4006 src="propX.gif" id="propX" width=40 height=17 style="visibility:visible" onclick="top.frames.Num0.tab.document.getElementById('MOI').style.visibility='visible';top.frames.Num0.tab.document.getElementById('PLU').style.visibility='visible';top.frames.Num0.frames.couches.zam3.propX()" title="appliquer grille-analayse en mode proportionnel">
+
+<img ad=4007 src="Nonprop.gif" id="Nonprop" width=40 height=17 style="visibility:visible" onclick="top.frames.Num0.tab.document.getElementById('MOI').style.visibility='visible';top.frames.Num0.tab.document.getElementById('PLU').style.visibility='visible';top.frames.Num0.frames.couches.zam3.Nonprop2()" title=" appliquer-analyse en mode non-proportionnel">
+</td>
+</tr>
+</table>
+<script language="javascript">
+if(document.all){ 
+document.write("<div style='left:30;top:45;visibility:visible;position:absolute'><font face='arial' size='-4'><DT>efface</DT></font></div>")
+}
+else{
+document.write("<div style='left:30;top:45;visibility:visible;position:absolute'><font face='arial' size='-4'><DT>efface</DT></font></div>")
+}
+</script>
+
+<script language="javascript">
+if(document.all){ 
+document.write("<div style='left:0;top:95;visibility:visible;position:absolute'>")
+}
+else{
+document.write("<div style='left:-2;top:95;visibility:visible;position:absolute'>")
+}
+</script>
+<table border=0  width=0 CELLSPACING=0 CELLPADDING=2>
+<tr>
+<td>
+<table border=0 width=0 CELLSPACING=0 CELLPADDING=0> <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxtable TITRExxxxxxxxxxxxx -->
+<tr>
+<td WIDTH=100>
+<DT><font face='arial' size='1'><center><B></B></center></font></DT>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</div>
+<script language="javascript">
+//var part=parent.location.href
+//part=part.substr(part.length-10,10)
+//alert(part)
+//if(part=="cartO1.htm" || part=="sule.htm?m"){
+//var topX=top.location.href.substr(top.location.href.length-11,11)
+if(topX>=0){top.changeIconeX()}
+
+
+//}
+</script>
+</body >
+
+</HTML>
+

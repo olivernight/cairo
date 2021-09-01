@@ -1,0 +1,197 @@
+﻿<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var mappocoord=new Array()
+var init1=0
+var LLx
+var lignelibel
+
+
+
+if(top.forcechg2220){top.forcechg2220()};
+var cibleX="num0"
+	var cibleXtemp="num0"
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->
+
+var ope=urlvar["operateurlog"]
+var motcle=urlvar["choix"]//parent.transmotscles("return choix")
+
+var OKITotal=0
+var OKI=new Array()
+
+</script>
+<script id="mappocoord" name="mappocoord" type="text/javascript"></script>
+<script id="menuX" name="icosujet" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+var menuIconeEchelle=new Array()
+var menuIconeSup=new Array
+var menuSujet=new Array()
+var menuOther=new Array()
+var datajs
+var Xmenu
+var menu=new Array()
+var MnC=0
+var MnE=0
+
+if(parent.location.href.indexOf("Recherche",0)>0){
+var MnC=top.frames.Num0.frames.datacarte.transmenucouches("return MnC")
+var MnE=top.frames.Num0.frames.datacarte.transmenuechelle("return MnE")
+}
+
+if(urlvar["numero"]==1){datajs="DATA-IcoSujet.js";Xmenu="icone principal"}
+if(urlvar["numero"]==2){datajs="DATA-IcoOther.js"; Xmenu="icone complémentaire"}
+if(urlvar["numero"]==3){datajs="DATA-Sujet.js";Xmenu="graphique principal"}
+if(urlvar["numero"]==4){datajs="DATA-Other.js";Xmenu="graphique complémentaire"}
+document.getElementById("menuX").src=urlvar["cible"]+'/'+datajs
+if(urlvar["numero"]==1){menu=menuIconeEchelle}
+if(urlvar["numero"]==2){menu=menuIconeSup}
+if(urlvar["numero"]==3){menu=menuSujet}
+if(urlvar["numero"]==4){menu=menuOther}
+setTimeout('libel()',2000)
+var tipX=-1
+var test
+
+function differelibel(){
+init1=0
+setTimeout('',500)
+}
+function changeinit(a){init1=0;ope=a[0];motcle=a[1].replace(/"/g,'')} // déclenché par parent
+function libel(){ //affichage des entêtes de colonne du fichier de données
+//alert(init1)
+
+if(top.location.href.indexOf("serpent")>=0){
+window.document.getElementById("ici").style.width="250px"
+parent.document.getElementById("readlibelREC").width="290"
+}
+menudata="<br/><br/>"
+window.document.getElementById("ici").innerHTML=""
+
+for(i=0;i<menu.length;i++){
+
+OKITotal=0
+OKI=new Array()
+if(motcle=="" || motcle=="Aucun-mots-clés"){OKITotal=1}else{
+	var motc1=motcle.split(" ")
+
+	var stopmot=motc1.length
+	
+	for(r=0;r<stopmot;r++){
+	OKI[r]=0
+    OKITotal=1
+var motc=motc1[r].toLowerCase()
+var ligcol=""
+for(j=0;j<menu[i][4].length;j++){ligcol+=" "+menu[i][4][j]}
+for(j=0;j<menu[i][5].length;j++){ligcol+=" "+menu[i][5][j]}
+if(menu[i][1].toLowerCase().indexOf(motc)>-1 || menu[i][2].toLowerCase().indexOf(motc)>-1 || menu[i][9].toLowerCase().indexOf(motc)>-1 || menu[i][12].toLowerCase().indexOf(motc)>-1  || ligcol.toLowerCase().indexOf(motc)>-1){
+
+if(ope=="ou"){OKI[r]=1;OKITotal=OKITotal*OKI[r];r=stopmot}
+if(ope=="et"){OKI[r]=1;OKITotal=OKITotal*OKI[r]}
+}else{
+if(ope=="ou"){OKITotal=0}
+if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+}
+
+
+}
+}
+
+//affiche les entêtes en liste 
+if(OKITotal==1){
+menudata+='<dt>'
+
+if(parent.location.href.indexOf("Recherche",0)>0){
+
+if(urlvar["numero"]==1){menudata+='<img src="bleu.png" width="15px" onclick="top.commandesvisibles();top.regulZ2etsansfond();top.change222();top.frames.Num0.frames.datacarte.iconeoucadre2();top.frames.Num0.tab.changeicoiciX('+(i+1+MnC)+')">&nbsp;'}
+if(urlvar["numero"]==2){menudata+='<img src="bleu.png" width="15px" onclick="top.commandesvisibles();top.regulZ2etsansfond();top.change222();top.frames.Num0.frames.datacarte.iconeoucadre2();top.frames.Num0.tab.changeicoiciX('+(i+1+MnC+MnE)+')">&nbsp;'}
+if(urlvar["numero"]==3){menudata+='<img src="jaune.png" width="15px"  onclick="top.commandesvisibles();top.frames.Num0.frames.datacarte.iconeoucadre1();top.frames.Num0.frames.pilote.framemenu.changemenugraph1('+(i+1)+')">&nbsp;'}
+if(urlvar["numero"]==4){menudata+='<img src="jaune.png" width="15px"  onclick="top.commandesvisibles();top.frames.Num0.frames.datacarte.iconeoucadre1();top.frames.Num0.frames.pilote.framemenu1.changemenugraph2('+(i+1)+')">&nbsp;'}
+}
+menudata+='<label id="Qlabel'+(i)+'_1" for="Q'+(i)+'"><b style="color:red">'+(i+1)+'</b> Libellé legende :<b style="color:blue"> '+menu[i][1]+'</b></label></dt>'
+menudata+='<dt><label id="QlabelLong'+(i)+'_1" for="Qlong'+(i)+'">Source et date de validité :<b> '+menu[i][2]+'</b></label></dt>'
+menudata+='<dt><label id="QlabelSourceetDate'+(i)+'_1" for="Qlong'+(i)+'">Libellé du menu:<b> '+menu[i][9]+'</b><br>Libellé long :<i> '+menu[i][12]+'</i></label></dt>'
+if(menu[i][3][0]==3 || menu[i][3][0]==1){
+var l
+var c
+if(menu[i][3][0]==3){l=parseFloat(menu[i][6])+1;;c=parseFloat(menu[i][7])+1}else{l=1;c=menu[i][0].length+1}
+menudata+='<table style="font-size:8px">'
+
+for(li=0;li<(l);li++){
+menudata+='<tr>'
+for(ci=0;ci<(c);ci++){
+if(li==0 & ci>0){menudata+='<td style="border:0.5px solid gray;">'+menu[i][4][ci-1]+'</td>'}else{
+if(ci==0){if(li==0){menudata+='<td></td>'}else{menudata+='<td style="border:0.5px solid gray;">'+menu[i][5][li-1]+'</td>'}}else{
+menudata+='<td></td>'//li='+li+'  c='+ci+'
+
+}
+
+}
+}
+menudata+='</tr>'
+}
+menudata+='</table>'
+}
+menudata+='<br><br>'
+}
+
+}
+
+
+
+document.getElementById("ici").innerHTML='<br><br>'+menudata
+
+
+
+
+}
+
+
+
+
+</script>
+</head>
+
+<body STYLE=";background-color:#E8E8FF">
+<br><br>
+<p id="ici" style="font-family:arial;font-size:10;">Si les données ne s'affichent pas au bout de quelques secondes, cliquez de nouveau sur le fichier que vous avez choisi.</p>
+<script type="text/javascript">
+
+document.write('<div id="divdata" style="position:fixed;top:10px;left:10px;visibility:hidden"></div>')
+document.write('<div style="position:fixed;top:-2px;left:0px;visibility:visible"><table width=100%><tr><td style="font-family:arial;font-size:11px;;background-color:#E8E8FF">Données du menu <span style="color:red">'+Xmenu+'</span><br>  dans le répertoire <span style="color:red">'+urlvar["cible"]+'</span> associé à la carte <span style="color:red">'+urlvar["carte"]+'</span>, <br>à la maille : <span style="color:red">'+urlvar["maille"]+' (code='+urlvar["codemaille"]+')</span><br><br></td></tr></table></div>')
+
+
+
+     //setTimeout('libel(urlvar["cible"])',500)
+
+
+
+</script>
+
+
+
+
+
+</body ></html>

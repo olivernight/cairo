@@ -1,0 +1,125 @@
+﻿<html>
+<head>
+
+<script language="javascript">
+
+var libel="libel0"
+var stockcarte=new Array()
+var stockicones=new Array()
+var stockfond=new Array()
+var stockencadre=new Array()
+var stockfi=new Array()
+var numeroCARTE
+var TITREcarte
+var TITREvar
+var ICD
+var parampopup=""
+function popupX() {
+page="popupmetabalise.html"
+var1="width=680,height=20,top=100,left=400,toolbar=no,menuBar=0,scrollbars=0,resizable=1"
+page+="?"
+page+=parampopup
+document.open(page,"truc",var1)
+window.blur()
+}
+
+
+var envoi
+function envoipopup(){
+return envoi
+}
+
+function vallibel(lib){libel=lib}
+
+function enregencadre(a,b,c){
+ICDencadre=top.frames.Num0.frames.datacarte.transICDencadre("return ICDencadre")
+
+TITREencadre=top.frames.Num0.frames.couches.frames.zoom.titreDATA("return titreD")
+//alert(TITREencadre[0])
+envoi="&nbsp;&nbsp;<encadre>graph"+ICDencadre+","+TITREencadre[0]+","+libel+"</encadre>&nbsp;&nbsp;"
+envoi='""'+envoi+'""'
+parent.valbalise(envoi)//popupX()
+}
+
+
+function enregfico(a,b,c){
+ICDcarte=top.frames.Num0.frames.datacarte.transICDcarte("ICDcarteencours")
+//alert("ICDcarte"+ICDcarte)
+TITREcarte=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("titrefond").firstChild.data
+//alert(TITREcarte)
+colbasecarte=top.frames.Num0.frames.couches.frames.zam3.retcolbaseCARTE("return colbaseCARTE")
+//alert(colbasecarte)
+if(colbasecarte==0){coul="defaut"}
+if(colbasecarte==1){coul="rouge"}
+if(colbasecarte==2){coul="marron"}
+CAT=top.frames.Num0.frames.couches.frames.zam3.recattemp2("return cattemp2")
+
+ICDencadre=top.frames.Num0.frames.datacarte.transICDencadre("return ICDencadre")
+//alert(ICDencadre)
+ICD=top.frames.Num0.frames.tab.retICDencours("return ICDencours")
+//alert(ICD)
+TITREvar=top.frames.Num0.frames.couches.frames.zam3.retTITRE1("return titre1")
+//alert(TITREvar)
+vertrouge=top.frames.Num0.frames.couches.frames.zam3.retvertrouge("return indicoulinit")
+if(vertrouge==0){vertrouge="rouge"}
+if(vertrouge==1){vertrouge="vert"}
+envoi="&nbsp;&nbsp;<fi>"+ICDcarte+","+TITREcarte+","+coul+",Q"+CAT+",graph"+ICDencadre+","+ICD+","+TITREvar+","+vertrouge+","+b+","+c+","+libel+"</fi>&nbsp;&nbsp;"
+envoi='""'+envoi+'""'
+
+parent.valbalise(envoi)//popupX()
+}
+function enregcarte(){
+
+numeroCARTE=top.frames.Num0.frames.pilote.retNUMEROcarte("return numerocarte")
+
+TITREcarte=top.frames.Num0.frames.datacarte.transtitrecarte("return tcarte")
+
+ICDencadre=top.frames.Num0.frames.datacarte.transICDencadre("return ICDencadre")
+
+envoi="&nbsp;&nbsp;<carte>"+numeroCARTE+","+TITREcarte+",graph"+ICDencadre+","+libel+"</carte>&nbsp;&nbsp;"
+envoi='""'+envoi+'""'
+
+parent.valbalise(envoi)//popupX()
+}
+
+function enregicones(a,b,c){
+
+ICD=top.frames.Num0.frames.tab.retICDencours("return ICDencours")
+//alert(ICD)
+TITREvar=top.frames.Num0.frames.couches.frames.zam3.retTITRE1("return titre1")
+//alert(TITREvar)
+ICDencadre=top.frames.Num0.frames.datacarte.transICDencadre("return ICDencadre")
+//alert(ICDencadre)
+envoi="&nbsp;&nbsp;<icone>"+ICD+","+TITREvar+",graph"+ICDencadre+","+b+","+c+","+libel+"</icone>&nbsp;&nbsp;"
+envoi='""'+envoi+'""'
+parent.valbalise(envoi)//popupX()
+}
+var coul
+function enregfond(a,b,c){
+ICDcarte=top.frames.Num0.frames.datacarte.transICDcarte("ICDcarteencours")
+//alert(ICDcarte)
+TITREcarte=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("titrefond").firstChild.data
+//alert(TITREcarte)
+colbasecarte=top.frames.Num0.frames.couches.frames.zam3.retcolbaseCARTE("return colbaseCARTE")
+//alert(colbasecarte)
+CAT=top.frames.Num0.frames.couches.frames.zam3.recat("return cat")
+//alert(CAT)
+ICDencadre=top.frames.Num0.frames.datacarte.transICDencadre("return ICDencadre")
+//alert(ICDencadre)
+if(colbasecarte==0){coul="defaut"}
+if(colbasecarte==1){coul="rouge"}
+if(colbasecarte==2){coul="marron"}
+envoi="&nbsp;&nbsp;<fond>"+ICDcarte+","+TITREcarte+","+coul+",Q"+CAT+",graph"+ICDencadre+","+libel+"</fond>&nbsp;&nbsp;"
+envoi='""'+envoi+'""'
+parent.valbalise(envoi)//popupX()
+}
+
+</script>
+
+</head>
+
+<body STYLE="background-color: transparent">
+
+
+</body >
+</html>

@@ -1,0 +1,45 @@
+﻿<html>
+<head><title>Altercarto.fr : liste publication</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+ var ItemMenu=new Array()
+ var listpagevision=new Array()
+ var Xtarget=new Array()
+ var LienItemMenu=new Array()
+ var TitreItemMenu=new Array()
+
+
+
+
+
+</script>
+	 <script id="menupublicici" type="text/javascript"></script>
+	 <script type="text/javascript">
+	 
+
+	 var repici=parent.recuprep("return rep")
+	
+	 if(repici==""){
+	 // cas du site pilote :: inutile ici
+	 document.getElementById("menupublicici").src="../../menuencapsules-Site.js"
+	 }else{
+	 // cas des sites en étoile
+	 
+	
+	 
+	 document.getElementById("menupublicici").src="../../"+repici+"/ItemMenu.js"
+	 
+	 
+	 }
+	 var listpubcartovision=listpagevision;
+	 var rangliste=listpagevision; // cette égalité est forcée car itemmenu n'a pas de variable rang et la seule variable numérique dans itemMenu est listepagevision
+	 var menuencaps=ItemMenu;
+	 
+	 function fait(){
+	 parent.transMenu(menuencaps)
+	 parent.transListe(listpubcartovision)
+	 parent.transRang(rangliste)
+	 parent.ecrittabactu()
+	 }
+	 setTimeout('fait()',1500)
+	 </script>
+	 </head><body></body></html>

@@ -1,0 +1,636 @@
+<html id="GaÃ¯aMundi AlterCarto.com"><head>
+<script id="chargedatajs" language="JavaScript">
+var base00 = new Array()
+var k=2
+var colox=new Array()
+var colox0=new Array()
+var base00Aselect= new Array()
+var base00select= new Array()
+var LL
+var LLx0
+var typeicone0=new Array()
+var kb=0
+var trabas0=new Array()
+function longueurdata(){
+longa=LLx0
+return longa
+}
+var rangappel=0
+function rgappel(a){
+rangappel=a
+}
+function transbas00de0(){
+var lignelabel=base00[rangappel]
+return lignelabel
+}
+
+function recuptypeiconeonmap(){
+SL=top.frames.Num0.frames.selectana.selectvar("return selectx")
+if(SL==1){
+typeicone0=top.frames.Num0.frames.ico.transiconetypex("return iconetypex")
+}else{
+typeicone0=top.frames.Num0.frames.analyse.transiconetypex("return iconetypex")
+}
+}
+
+function recuptypeiconeencadre(){
+typeicone0=top.frames.Num0.frames.precarte.transiconetypex("return iconetypex")
+}
+function recuptypehistomulti(){
+typeicone0=top.frames.Num0.frames.precarte.transiconetypex("return iconetypex")
+addressDATA0=top.frames.Num0.frames.precarte.transaddressDATAx("return addressDATAx")
+}
+
+function Nouvelle(a){
+this.donnees=a;
+}
+
+function Nouvelle2(a){
+this.donnees=a;
+}
+
+
+function ajouter(a){
+base00[base00.length]=new Nouvelle(a)
+}
+
+function ajouter2(a){
+var bastrans=new Array()
+base00Aselect[base00Aselect.length]=new Nouvelle2(a)
+
+//if(kb<LLx0+1){
+bastrans=base00Aselect[base00Aselect.length-1].donnees.split(',')
+base00select[kb]=bastrans
+kb+=1
+//}
+}
+
+
+function calculcolox0(){
+if(typeicone0[0]==1 || typeicone0[0]==2){
+
+colox[0]=0
+colox[colox0.length+1]=1
+for(i=1;i<colox0.length+1;i++){colox[i]=colox0[i-1]}
+
+}
+if(typeicone0[0]==3){
+
+colox[0]=0
+colox[1]=1
+for(i=2;i<colox0.length+2;i++){colox[i]=colox0[i-2]}
+
+}
+}
+
+
+function calculbaseselct(){
+kb=0
+colox=new Array()
+colox0=new Array()
+base00select= new Array()
+base00Aselect=new Array()
+if(typeicone0[0]==1 || typeicone0[0]==3){
+
+colox0=top.frames.Num0.frames.precarte.transcolonx("return colonx")//varaible tableau contenant les nÂ°de colonne des donnÃ©es de l'histo dans la base
+calculcolox0()
+}
+if(typeicone0[0]==2){
+if(SL==1){
+colox0=top.frames.Num0.frames.ico.transcolonx("return colonx")//varaible tableau contenant les nÂ°de colonne des donnÃ©es de l'histo dans la base
+calculcolox0()
+}else{
+colox0=top.frames.Num0.frames.analyse.transcolonx("return colonx")
+calculcolox0()
+}
+}
+
+
+for (i=0;i<LLx0+1;i++){
+
+var transitici=""
+var lignbase00=new Array()
+lignbase00=base00[i]
+
+for (j=0;j<colox.length;j++){
+//alert(lignbase00[colox[j]])
+
+if(j==0){transitici+=lignbase00[colox[j]]}else{transitici+=","+lignbase00[colox[j]]}
+if(j==0 && i==0){
+
+if(typeicone0[0]==1 ){transitici=top.frames.Num0.frames.precarte.transtitrex("return titrex")}
+if(typeicone0[0]==2){
+var LLx01=LLx0+1; 
+if(SL==1){
+transitici=top.frames.Num0.frames.ico.transtitrex("return titrex")+","+LLx01;
+}else{
+transitici=top.frames.Num0.frames.analyse.transtitrex("return titrex")+","+LLx01;
+}
+
+}
+
+
+}
+if(j==colox.length-2 && i==0 && typeicone0[0]==1){transitici+=","+top.frames.Num0.frames.precarte.transsourcex("return sourcex")}
+if(j==0 && i>0 && typeicone0[0]==3){transitici+=","+addressDATA0}
+
+}//fin boucle j
+if(typeicone0[0]==3 && i==0){transitici=top.frames.Num0.frames.precarte.transtitrex("return titrex")}
+if(typeicone0[0]==3 && i==LLx0){transitici=i+","+0+",ensemble"}
+ajouter2(transitici)
+//alert(transitici)
+}//fin boucle i
+//alert(base00select[188].donnees.split(','))
+
+
+// --------------------- dÃ©but calcul des donnÃ©es de lÃ©gende de l'histo
+
+if(typeicone0[0]!=3){ 
+for (j=0;j<colox.length-2;j++){
+var transitici=""
+var kx=0
+
+if(typeicone0[0]==[1]){kx=6}
+if(typeicone0[0]==[2]){kx=2}
+
+for (i=1;i<kx;i++){
+var lignbase00=new Array()
+lignbase00=base00[i+LLx0]
+
+
+//alert(lignbase00[colox[j+1]])
+
+if(i==1){transitici+=lignbase00[colox[j+1]]}else{transitici+=","+lignbase00[colox[j+1]]}
+
+
+
+
+
+}// fin de boucle en i
+
+ajouter2(transitici)
+
+}//fin boucle j
+}
+
+// --------------------- dÃ©but calcul ddes commentaires dÃ©taillÃ©s
+if(typeicone0[0]==[1]){
+var transitici=""
+var lignbase00=new Array()
+lignbase00=base00[7+LLx0]
+for (j=0;j<colox.length-2;j++){
+transitici=lignbase00[colox[j+1]]
+
+ajouter2(transitici)
+}
+}
+
+
+if(typeicone0[0]==[3]){
+var debj=1
+var transitici=""
+var lignbase00=new Array()
+lignbase00=base00[1+LLx0]
+for (j=0;j<colox.length-2;j++){
+transitici=lignbase00[colox[j+1+debj]]
+
+ajouter2(transitici)
+}
+}
+
+
+
+
+
+//-------------------dÃ©clachement de l'affichage
+if(typeicone0[0]==1 || typeicone0[0]==3){
+
+
+
+top.frames.Num0.frames.precarte.recupbaseinit() //dÃ©clenche le chargement de donnÃ©es dans le fichier Data-histo... lui mÃªme ouvert par selection dans un menu de pilote
+}
+if(typeicone0[0]==2){
+if(SL==1){
+top.frames.Num0.frames.ico.recupbaseinit() //dÃ©clenche le chargement de donnÃ©es dans le fichier Data-ico... lui mÃªme ouvert par selection dans un menu de pilote2
+}else{
+top.frames.Num0.frames.analyse.recupbaseinit()
+}
+
+
+}
+}//fin function
+function actubase0(){
+for(i=0;i<LLx0+1;i++){
+base00select[i]=base00Aselect[i].donnees.split(',')
+}
+trabas0=base00select
+return trabas0
+}
+function transbase00(){
+return base00Aselect
+}
+function transbase0(){
+
+var trabas0=base00select
+return trabas0
+};
+;base00[0]=new Array("idcarte","libel","codeINSEE","essai 1","essai 2","essai 3",0
+);
+base00[1]=new Array(1,"Boulogne_sur_mer",1623,1,78,77,0
+);
+base00[2]=new Array(2,"Dunkerque",1594,2,97,95,0
+);
+base00[3]=new Array(3,"Hazebrouck",1595,3,68,65,0
+);
+base00[4]=new Array(4,"Lille",1596,4,71,67,0
+);
+base00[5]=new Array(5,"Douai",1593,5,40,35,0
+);
+base00[6]=new Array(6,"Valenciennes",1597,6,9,3,0
+);
+base00[7]=new Array(7,"Avesnes-sur-Helpe",1591,7,87,80,0
+);
+base00[8]=new Array(8,"Cambrai",1592,8,63,55,0
+);
+base00[9]=new Array(9,"Arras",1621,9,7,-2,0
+);
+base00[10]=new Array(10,"Bethune",1622,10,65,55,0
+);
+base00[11]=new Array(11,"Saint-Omer",1624,11,59,48,0
+);
+base00[12]=new Array(12,"Abbeville",1801,12,29,17,0
+);
+base00[13]=new Array(13,"Peronne",1803,13,5,-8,0
+);
+base00[14]=new Array(14,"Amiens",1802,14,15,1,0
+);
+base00[15]=new Array(15,"Beauvais",1601,15,39,24,0
+);
+base00[16]=new Array(16,"Dieppe",1761,16,61,45,0
+);
+base00[17]=new Array(17,"Rouen",1763,17,5,-12,0
+);
+base00[18]=new Array(18,"Senlis",1603,18,2,-16,0
+);
+base00[19]=new Array(19,"Compiegne",1602,19,53,34,0
+);
+base00[20]=new Array(20,"Evreux",1272,20,65,45,0
+);
+base00[21]=new Array(21,"Chartres",1281,21,64,43,0
+);
+base00[22]=new Array(22,"Versailles",1781,22,78,56,0
+);
+base00[23]=new Array(23,"Pontoise",1951,23,44,21,0
+);
+base00[24]=new Array(24,"Nanterre",1921,24,76,52,0
+);
+base00[25]=new Array(25,"Laon",1021,25,75,50,0
+);
+base00[26]=new Array(26,"Bernay",1271,26,37,11,0
+);
+base00[27]=new Array(27,"Creteil",1911,27,62,35,0
+);
+base00[28]=new Array(28,"Meaux",1772,28,28,0,0
+);
+base00[29]=new Array(29,"Melun",1773,29,91,62,0
+);
+base00[30]=new Array(30,"Evry",1941,30,82,52,0
+);
+base00[31]=new Array(31,"Soissons",1023,31,39,8,0
+);
+base00[32]=new Array(32,"Saint-Quentin",1022,32,11,-21,0
+);
+base00[33]=new Array(33,"Orleans",1452,33,94,61,0
+);
+base00[34]=new Array(34,"Reims",1512,34,0,-34,0
+);
+base00[35]=new Array(35,"Charleville-Mezieres",1081,35,88,53,0
+);
+base00[36]=new Array(36,"Chalons-en-Champagne",1511,36,25,-11,0
+);
+base00[37]=new Array(37,"Verdun",1552,37,80,43,0
+);
+base00[38]=new Array(38,"Bar-le-Duc",1551,38,45,7,0
+);
+base00[39]=new Array(39,"Briey",1541,39,25,-14,0
+);
+base00[40]=new Array(40,"Sarreguemines",1572,40,71,31,0
+);
+base00[41]=new Array(41,"Saverne",1671,41,81,40,0
+);
+base00[42]=new Array(42,"Nancy",1542,42,31,-11,0
+);
+base00[43]=new Array(43,"Saint-Die",1882,43,68,25,0
+);
+base00[44]=new Array(44,"Epinal",1881,44,3,-41,0
+);
+base00[45]=new Array(45,"Colmar",1681,45,81,36,0
+);
+base00[46]=new Array(46,"Chaumont",1521,46,99,53,0
+);
+base00[47]=new Array(47,"Troyes",1101,47,32,-15,0
+);
+base00[48]=new Array(48,"Auxerre",1891,48,60,12,0
+);
+base00[49]=new Array(49,"Sens",1892,49,52,3,0
+);
+base00[50]=new Array(50,"Fontanebleau",1771,50,6,-44,0
+);
+base00[51]=new Array(51,"Montargis",1451,51,48,-3,0
+);
+base00[52]=new Array(52,"Blois",1411,52,34,-18,0
+);
+base00[53]=new Array(53,"Alen�on",1611,53,90,37,0
+);
+base00[54]=new Array(54,"Caen",1141,54,32,-22,0
+);
+base00[55]=new Array(55,"Cherbourg-Octeville",1502,55,48,-7,0
+);
+base00[56]=new Array(56,"Coutances",1503,56,73,17,0
+);
+base00[57]=new Array(57,"Avranches",1501,57,56,-1,0
+);
+base00[58]=new Array(58,"Argentan",1612,58,12,-46,0
+);
+base00[59]=new Array(59,"Le-Mans",1721,59,85,26,0
+);
+base00[60]=new Array(60,"Tours",1371,60,92,32,0
+);
+base00[61]=new Array(61,"Laval",1531,61,15,-46,0
+);
+base00[62]=new Array(62,"Saint-Malo",1352,62,66,4,0
+);
+base00[63]=new Array(63,"Rennes",1351,63,46,-17,0
+);
+base00[64]=new Array(64,"Poitiers",1861,64,25,-39,0
+);
+base00[65]=new Array(65,"La-Rochelle",1171,65,32,-33,0
+);
+base00[66]=new Array(66,"Saint-Nazaire",1442,66,29,-37,0
+);
+base00[67]=new Array(67,"Saint-Brieuc",1223,67,14,-53,0
+);
+base00[68]=new Array(68,"Dinan",1221,68,93,25,0
+);
+base00[69]=new Array(69,"Guingamp",1222,69,33,-36,0
+);
+base00[70]=new Array(70,"Morlaix",1292,70,7,-63,0
+);
+base00[71]=new Array(71,"Brest",1291,71,56,-15,0
+);
+base00[72]=new Array(72,"Quimper",1293,72,88,16,0
+);
+base00[73]=new Array(73,"Lorient",1561,73,45,-28,0
+);
+base00[74]=new Array(74,"Vannes",1562,74,63,-11,0
+);
+base00[75]=new Array(75,"Nantes",1441,75,76,1,0
+);
+base00[76]=new Array(76,"Les-Sables-d-Olonne",1852,76,21,-55,0
+);
+base00[77]=new Array(77,"Bressuire",1791,77,95,18,0
+);
+base00[78]=new Array(78,"Niort",1792,78,74,-4,0
+);
+base00[79]=new Array(79,"Saintes",1173,79,73,-6,0
+);
+base00[80]=new Array(80,"Chateauroux",1361,80,21,-59,0
+);
+base00[81]=new Array(81,"Bourges",1181,81,36,-45,0
+);
+base00[82]=new Array(82,"Rochefort",1172,82,28,-54,0
+);
+base00[83]=new Array(83,"Angoulemes",1161,83,24,-59,0
+);
+base00[84]=new Array(84,"Limoges",1871,84,49,-35,0
+);
+base00[85]=new Array(85,"Perigueux",1242,85,15,-70,0
+);
+base00[86]=new Array(86,"Bordeaux",1331,86,77,-9,0
+);
+base00[87]=new Array(87,"Libourne",1332,87,95,8,0
+);
+base00[88]=new Array(88,"Marmande",1472,88,11,-77,0
+);
+base00[89]=new Array(89,"Bergerac",1241,89,46,-43,0
+);
+base00[90]=new Array(90,"Agen",1471,90,82,-8,0
+);
+base00[91]=new Array(91,"Cahors",1461,91,27,-64,0
+);
+base00[92]=new Array(92,"Brive-la-Gaillarde",1191,92,70,-22,0
+);
+base00[93]=new Array(93,"Gueret",1231,93,53,-40,0
+);
+base00[94]=new Array(94,"Le-Havre",1762,94,57,-37,0
+);
+base00[95]=new Array(95,"Nevers",1581,95,75,-20,0
+);
+base00[96]=new Array(96,"Chalon-sur-Saone",1711,96,26,-70,0
+);
+base00[97]=new Array(97,"Macon",1712,97,89,-8,0
+);
+base00[98]=new Array(98,"Dijon",1211,98,56,-42,0
+);
+base00[99]=new Array(99,"Dole",1491,99,2,-97,0
+);
+base00[100]=new Array(100,"Vesoul",1702,100,4,-96,0
+);
+base00[101]=new Array(101,"Besan�on",1251,101,61,-40,0
+);
+base00[102]=new Array(102,"Lure",1701,102,80,-22,0
+);
+base00[103]=new Array(103,"Monbeliard",1252,103,18,-85,0
+);
+base00[104]=new Array(104,"Belfort",1901,104,38,-66,0
+);
+base00[105]=new Array(105,"Mulhouse",1682,105,51,-54,0
+);
+base00[106]=new Array(106,"Lons-le-Saulnier",1492,106,57,-49,0
+);
+base00[107]=new Array(107,"Bourg-en-Bresse",1012,107,14,-93,0
+);
+base00[108]=new Array(108,"Villefranche-sur-Saone",1692,108,88,-20,0
+);
+base00[109]=new Array(109,"Roanne",1422,109,71,-38,0
+);
+base00[110]=new Array(110,"Montbrison",1421,110,41,-69,0
+);
+base00[111]=new Array(111,"Bobigny",1931,111,38,-73,0
+);
+base00[112]=new Array(112,"Clermont-Ferrand",1631,112,33,-79,0
+);
+base00[113]=new Array(113,"Saint-Etienne",1423,113,68,-45,0
+);
+base00[114]=new Array(114,"Lyon",1691,114,94,-20,0
+);
+base00[115]=new Array(115,"Vienne",1383,115,61,-54,0
+);
+base00[116]=new Array(116,"Belley",1011,116,98,-18,0
+);
+base00[117]=new Array(117,"Annecy",1741,117,98,-19,0
+);
+base00[118]=new Array(118,"Thonon-les-Bains",1743,118,27,-91,0
+);
+base00[119]=new Array(119,"Bonneville",1742,119,52,-67,0
+);
+base00[120]=new Array(120,"Chambery",1732,120,60,-60,0
+);
+base00[121]=new Array(121,"Albertville",1731,121,40,-81,0
+);
+base00[122]=new Array(122,"Bourgoin-Jallieu",1381,122,27,-95,0
+);
+base00[123]=new Array(123,"Grenoble",1382,123,68,-55,0
+);
+base00[124]=new Array(124,"Gap",1051,124,51,-73,0
+);
+base00[125]=new Array(125,"Valence",1261,125,1,-124,0
+);
+base00[126]=new Array(126,"Grasse",1061,126,6,-120,0
+);
+base00[127]=new Array(127,"Nice",1062,127,62,-65,0
+);
+base00[128]=new Array(128,"Digne-les-Bains",1041,128,64,-64,0
+);
+base00[129]=new Array(129,"Draguignan",1831,129,80,-49,0
+);
+base00[130]=new Array(130,"Toulon",1832,130,33,-97,0
+);
+base00[131]=new Array(131,"Aix-en-Provence",1131,131,68,-63,0
+);
+base00[132]=new Array(132,"Auch",1321,132,33,-99,0
+);
+base00[133]=new Array(133,"Tarascon",1133,133,38,-95,0
+);
+base00[134]=new Array(134,"Marseille",1132,134,52,-82,0
+);
+base00[135]=new Array(135,"Nimes",1302,135,64,-71,0
+);
+base00[136]=new Array(136,"Avignon",1841,136,77,-59,0
+);
+base00[137]=new Array(137,"Privas",1071,137,91,-46,0
+);
+base00[138]=new Array(138,"Mende",1481,138,26,-112,0
+);
+base00[139]=new Array(139,"Ales",1301,139,56,-83,0
+);
+base00[140]=new Array(140,"Millau",1121,140,5,-135,0
+);
+base00[141]=new Array(141,"Rodez",1122,141,24,-117,0
+);
+base00[142]=new Array(142,"Albi",1811,142,92,-50,0
+);
+base00[143]=new Array(143,"Castres",1122,143,1,-142,0
+);
+base00[144]=new Array(144,"Montauban",1821,144,53,-91,0
+);
+base00[145]=new Array(145,"Toulouse",1312,145,49,-96,0
+);
+base00[146]=new Array(146,"Carcassonne",1111,146,76,-70,0
+);
+base00[147]=new Array(147,"Narbonne",1112,147,25,-122,0
+);
+base00[148]=new Array(148,"Perpignan",1661,148,14,-134,0
+);
+base00[149]=new Array(149,"Saint-Gaudens",1311,149,95,-54,0
+);
+base00[150]=new Array(150,"Tarbes",1651,150,57,-93,0
+);
+base00[151]=new Array(151,"Pau",1642,151,29,-122,0
+);
+base00[152]=new Array(152,"Foix",1091,152,66,-86,0
+);
+base00[153]=new Array(153,"Tulle",1192,153,87,-66,0
+);
+base00[154]=new Array(154,"Aurillac",1151,154,32,-122,0
+);
+base00[155]=new Array(155,"Le-Puy",1431,155,19,-136,0
+);
+base00[156]=new Array(156,"Dax",1401,156,22,-134,0
+);
+base00[157]=new Array(157,"Bayonne",1641,157,40,-117,0
+);
+base00[158]=new Array(158,"Bastia",1202,158,59,-99,0
+);
+base00[159]=new Array(159,"Ajaccio",1201,159,93,-66,0
+);
+base00[160]=new Array(160,"Bobigny",9931,160,79,-81,0
+);
+base00[161]=new Array(161,"Nanterre",9921,161,41,-120,0
+);
+base00[162]=new Array(162,"Paris",9751,162,41,-121,0
+);
+base00[163]=new Array(163,"Creteil",9911,163,72,-91,0
+);
+base00[164]=new Array(164,"Montlucon",1032,164,20,-144,0
+);
+base00[165]=new Array(165,"Beziers",1341,165,9,-156,0
+);
+base00[166]=new Array(166,"Cusset",1031,166,98,-68,0
+);
+base00[167]=new Array(167,"Mont-de-Marsan",1402,167,59,-108,0
+);
+base00[168]=new Array(168,"Carpentras",1842,168,10,-158,0
+);
+base00[169]=new Array(169,"Montpellier",1342,169,25,-144,0
+);
+base00[170]=new Array(170,"Moulins",1033,170,20,-150,0
+);
+base00[171]=new Array(171,"Paris",1751,171,31,-140,0
+);
+base00[172]=new Array(172,"Angers",1491,172,92,-80,0
+);
+base00[173]=new Array(173,"Saumur",1492,173,43,-130,0
+);
+base00[174]=new Array(174,"La-Roche-sur-Yon",1851,174,71,-103,0
+);
+base00[175]=new Array(175,"Strasbourg",1672,175,9,-166,0
+);
+base00[176]=new Array(176,"Thionville",1573,176,98,-78,0
+);
+base00[177]=new Array(177,"Metz",1571,177,32,-145,0
+);
+base00[178]=new Array(178,"Lisieux",1142,178,13,-165,0
+);
+base00[179]=new Array(179,"Riom",1632,179,23,-156,0
+);
+base00[180]=new Array(180,"Riom",99999,-99999,-99999,-99999,0
+);
+base00[181]=new Array(181,"ensemble",0,0,0,0,0
+);
+base00[182]=new Array("182","-99999","codeINSEE","essai 1","essai 2","essai 3",0
+);
+base00[183]=new Array(183,"libélé long","lulu","lala","lolo","-99999",0
+);
+base00[184]=new Array(184,"source","su","sa","so","si",0
+);
+base00[185]=new Array(185,"date validité","du","da",-99999,"di",0
+);
+base00[186]=new Array(186,"-99999",-99999,-99999,-99999,-99999,0
+);
+base00[187]=new Array(187,"-99999",-99999,-99999,-99999,-99999,0
+);
+base00[188]=new Array("188","-99999","codeINSEE","essai 1","essai 2","essai 3",0
+);
+</script></head><body><script language="JavaScript">
+
+
+var ly
+var ly1
+var xx=new Array()
+
+LLx0=base00.length-8
+var i=0
+var essai=new Array()
+
+
+
+var indicouvcarte=top.frames.Num0.frames.pilote.transindicouvcarte("return indicouvcarte")
+if (indicouvcarte==0){
+top.frames.Num0.frames.couches.location.href="../carte.htm"
+}else{
+top.frames.Num0.frames.datacarte.choixdata()}
+
+
+</script>
+</body></html>

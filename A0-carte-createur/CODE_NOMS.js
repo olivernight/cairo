@@ -1,0 +1,1 @@
+ZENOM= new Array("Centre","Boucle du Mouhoun","Cascades","Centre-Est","Centre-Nord","Centre-Ouest","Centre-Sud","Est","Hauts-Bassins","Nord","Plateau Central","Sahel","Sud-Ouest","","rien");

@@ -1,0 +1,99 @@
+﻿
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+ <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+
+ <script language="javascript">
+ var Code0pe0=0
+ var Code0pe1=0
+ </script>
+
+ <script language="javascript">
+   var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+var rep=urlvar["REP0"]
+var fich=urlvar["fichierO"]
+var Rezo=urlvar["REZO"]
+</script>
+<script language="javascript" id="opeEncours"></script>
+<script language="javascript" id="DateActuelleServeur"></script>
+<script language="javascript" >
+
+document.getElementById("opeEncours").src=Rezo+rep+"/OperationEnCours.js"
+ //var xvar='<script id="opeEncours" language="javascript" src="'+(Rezo+rep)+'/OperationEnCours.js" ><\/script>'
+	// document.write(xvar)
+
+document.getElementById("DateActuelleServeur").src=Rezo+"A-MANAGER-local/transdata_rezo/date-actuelle-serveur.js"
+ //var xvar='<script id="DateActuelleServeur" language="javascript" src="'+Rezo+'A-MANAGER-local/transdata_rezo/date-actuelle-serveur.js" ><\/script>'
+//	 document.write(xvar)
+
+function testcodes(){
+//parent.alertX(Code0pe0,Code0pe1)
+
+if(Code0pe0==Code0pe1){parent.copyData()}else{
+
+
+var DateActServ = Date_Actuelle_Serveur.split(',');
+
+var d0=2000+parseFloat(DateActServ[0])
+var d1=parseFloat(DateActServ[1])
+var d2=parseFloat(DateActServ[2])
+var d3=parseFloat(DateActServ[3])
+var d4=parseFloat(DateActServ[4])
+var d5=parseFloat(DateActServ[5])
+var DAS0 = new Date(d0,d1,d2,d3,d4,d5);
+
+DAS0 = DAS0.getTime() / 1000/60;
+
+
+var HX0=datefichierHTML.split(',')
+var h0=2000+parseFloat(HX0[0])
+var h1=parseFloat(HX0[1])
+var h2=parseFloat(HX0[2])
+var h3=parseFloat(HX0[3])
+var h4=parseFloat(HX0[4])
+var h5=parseFloat(HX0[5])
+var H0 = new Date(h0,h1,h2,h3,h4,h5);
+H0 = H0.getTime() / 1000/60;
+
+var reste = Math.floor(DAS0-H0);// en minutes
+if(reste>30){
+parent.message2(reste)
+}else{
+parent.message1()
+}
+} 
+}
+setTimeout('testcodes()',2000)
+</script>;
+
+
+ </head><body>
+ 
+ ?>
+
+</body></html>

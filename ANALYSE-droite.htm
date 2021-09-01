@@ -1,0 +1,4101 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--Copyleft [2005-2010] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr --><!--This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA-->
+<html>
+<head>
+<title>Analyse - droite</title>
+
+</script>
+<script language="javascript" >
+var inskape=top.frames.Num0.couches.zoom.retourneInskape("return inskape")
+
+ if(!document.getElementById) document.getElementById=function (id) {
+ return eval("document.all."+id);
+ }
+
+ if(document.all) {
+
+ document.getElementsByName=function (name) {
+
+ var el=document.all,result=new Array(),j=0;
+ for(var i=0;i<el.length;i++) if(el[i].name.toLowerCase()==name.toLowerCase()) result[j++]=el[i];
+ return result;
+ }}
+ if(!document.getElementsByTagName) document.getElementsByTagName=function (tagName) {
+ var el=document.all,result=new Array(),j=0;
+ for(var i=0;i<el.length;i++) if(el[i].tagName.toLowerCase()==tagName.toLowerCase()) result[j++]=el[i];
+ return result;
+ }
+
+
+</script>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+
+var topX=top.location.href
+var microsite=topX.indexOf("Site-",0)
+topX=topX.indexOf("encaps.",0)
+
+var typeicones=1
+var tailleico=0
+var cattemp2=2
+var cattemp3
+
+var fenetreouv=top.frames.Num0.transfenetre("return fenetre")
+
+if(fenetreouv=="cartO2"){top.frames.Num0.onesansfondx()}// met sansfondx à 1 c'est à dire sans fonds en cours
+
+
+top.frames.Num0.Initzam3()
+var TABI=new Array()
+var xfond=0
+var indicarte=0
+var ABORNES1temp=new Array()
+var trmmxtemp=new Array()
+var comptico=0
+var perct=0
+var idpox1=0
+var carto3=1
+var longx1=top.frames.Num0.frames.tab.longueurX1("return longx")-2
+var longx2=longx1
+var indicoulinit=0
+var memtabtempCARTE=new Array()
+var memtabtemp1=new Array()
+var memtab=new Array()
+var memtabtemp=new Array()
+var memtabW=new Array()
+var Xclic=0
+var defautY=1
+var borneclasX
+var indicquantile=0
+var indicdebutX=1,indicdebutY=1
+var MIN110=60
+var MIN120=120
+var MIN130=180
+var MIN140=240
+var MIN210=240
+var MIN220=180
+var MIN230=120
+var MIN240=60
+
+var MIN11=60
+var MIN12=120
+var MIN13=180
+var MIN14=240
+var MIN21=240
+var MIN22=180
+var MIN23=120
+var MIN24=60
+
+var TotLarg=0
+
+var comptw=0
+var COUL
+var cico=2
+var colbase=0
+var cl=0
+var lieusvg=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument()
+
+var couleurbase= new Array()
+couleurbase[0]= new Array("red","yellow","lime","aqua","fuchsia") // jeu de Couleur de base
+couleurbase[1]=new Array("#E50916","#F24F12","#FF8538","#FFB66E","#FFDC8C") //DEGRADE ROUGE
+couleurbase[2]=new Array("#5A1B1E","#B34B34","#D67046","#DC965A","#ECCF9A") // DEGRADE MARRON
+
+var fondcouleur=new Array("#DEEED3","#EFF2F9","transparent") // fond de carte (vert clair, ocre clair)
+var fdcarte=fondcouleur[1]
+var legiconeretrait=-400
+var legfondretrait=-400
+var initdataanalyse=0
+var indicarte2=0
+
+for(i=1;i<26;i++){memtabtemp[i]=5;memtab[i]=5;memtabtempCARTE[i]=5;memtabtemp1[i]=5}
+
+function recupINIT1(){
+return INIT1
+}
+
+function ttransindicarte(){return indicarte}
+
+function transgroupepoint(){
+top.frames.Num0.frames.couches.zoom.recupgroupepoint(groupepoint)
+}
+function positionpox(){
+//alert("positionpox")
+for(i=1;i<5;i++){
+var divxy="divcol"+i
+Xpoxinit[i]=parseInt(document.getElementById(divxy).style.left)
+Ypoxinit[i]=parseInt(document.getElementById(divxy).style.top)
+
+}
+//alert(Xpoxinit)
+//alert(Ypoxinit)
+}
+var groupepointici=new Array()
+function recupGP(a){groupepointici=a}
+var Xpoxinittemp=new Array()
+var Ypoxinittemp=new Array()
+var Xpoxinittemp2=new Array()
+var Ypoxinittemp2=new Array()
+var indicsequence2=0
+
+
+function positionpox2(){
+//alert("positionpox2")
+for(i=1;i<5;i++){
+var divxy="divcol"+i
+Xpoxinittemp[i]=parseInt(document.getElementById(divxy).style.left)
+Ypoxinittemp[i]=parseInt(document.getElementById(divxy).style.top)
+}
+}
+var indicsequence=0
+function retourpositionpox2(){
+//alert("retour positionpox2")
+for(i=1;i<5;i++){
+var divxy="divcol"+i
+//document.getElementById(divxy).style.left=Xpoxinittemp[i]
+//alert(Ypoxinittemp)
+document.getElementById(divxy).style.top=Ypoxinittemp[i]
+}
+}
+var selctmenuico=1
+var indicarte3=0
+function recupinitanalyse(){return initdataanalyse}
+function translegiconeretrait(){return legiconeretrait}
+function translegfondretrait(){return legfondretrait}
+function indicarte20(){indicarte2=0}
+function indicmenuico1(){selctmenuico=1}
+function indicmenuico2(){selctmenuico=2}
+function transindicmenu(){return selctmenuico}
+function indicarte21(){indicarte2=1; indicarte3=1;carto3=1}
+function transindicarte2(){return indicarte2}
+var cl2=0
+
+function tbase(cl){//activé par menu2 dans cartefondcommande.htm : détermine la palette de couleur
+colbase=cl
+cl2=cl
+//alert("cl="+cl)
+var pal=couleurbase[cl]
+
+if(cl==0){
+//if(indicarte==0){chooseicoC()}
+
+} else{
+for(i=0;i<6;i++){document.getElementById(5000+i).src="carretransparent.gif"}//enlève des boule dans le selecteur de couleur
+}
+if(document.allxxxx){
+document.getElementById(50000).style.setAttribute("cssText","background-color:"+pal[4])//color le sélecteur de couleur
+
+document.getElementById(50001).style.setAttribute("cssText","background-color:"+pal[0])
+document.getElementById(50002).style.setAttribute("cssText","background-color:"+pal[1])
+document.getElementById(50003).style.setAttribute("cssText","background-color:"+pal[2])
+document.getElementById(50004).style.setAttribute("cssText","background-color:"+pal[3])
+document.getElementById(50005).style.setAttribute("cssText","background-color:#DEEED3")
+}else{
+document.getElementById(50000).setAttribute("BGCOLOR",pal[4])//color le sélecteur de couleur
+
+document.getElementById(50001).setAttribute("BGCOLOR",pal[0])
+document.getElementById(50002).setAttribute("BGCOLOR",pal[1])
+document.getElementById(50003).setAttribute("BGCOLOR",pal[2])
+document.getElementById(50004).setAttribute("BGCOLOR",pal[3])
+document.getElementById(50005).setAttribute("BGCOLOR","#DEEED3")
+}
+//ci dessous : va chercher les couleurs dans la table des couleurs
+for(i=1;i<26;i++){
+attribcouleur(colbase,memtab[i]);
+
+//document.getElementById(30000+i).setAttribute("BGCOLOR",COUL)}
+if(document.allxxxx){
+top.frames.Num0.frames.couches.zam3.document.getElementById(30000+i).style.setAttribute("cssText","background-color:"+COUL)
+}else{
+top.frames.Num0.frames.couches.zam3.document.getElementById(30000+i).setAttribute("bgcolor",COUL)
+}
+}
+// ci-dessous : si indicateur d'application à la carte =1; alors aplliquer à la carte sinon appliquer aux icônes
+
+//if (indicarte==1){
+//grilleapplycarte()
+//}else{
+//grilleapply()
+//}
+//alert("attente ici")
+}
+
+function mentabdefaut(){ // gestion de la légende
+
+if (INIT1==0){
+
+
+memvertical();}else{
+
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height","211")
+var eyo=top.frames.Num0.frames.datacarte.transpara("return paramHISTOX1")
+
+
+lieusvg.getElementById("titricone2").replaceChild(document.createTextNode(titre2),lieusvg.getElementById("titricone2").firstChild)
+var nbc=lieusvg.getElementById("sourceicone2").firstChild.nodeValue
+lieusvg.getElementById("sourceicone2").firstChild.deleteData(0,nbc.length)
+var interc=eyo[2]+" "+eyo[8] //source de variable Y et UNité
+lieusvg.getElementById("sourceicone2").firstChild.appendData(interc)
+
+
+memhorizontal()}
+}
+var memtabH=new Array()
+function memhorizontal(){ // effecte les couleurs dans la version horizontale par défaut
+defautY=1
+topdepart=1
+for(i=1;i<26;i++){
+if(i<6){memtab[i]=1;memtabH[i]=1}
+if(i>5 & i<11){memtab[i]=2;memtabH[i]=2}
+if(i>10 & i<16){memtab[i]=3;memtabH[i]=3}
+if(i>15 & i<21){memtab[i]=4;memtabH[i]=4}
+if(i>20 & i<26){memtab[i]=0;memtabH[i]=0}
+}
+
+affectpointcasedefaut()
+//tbase(colbase)
+}
+function memvertical(){// effecte les couleurs dans la version verticale par défaut
+topdepart=1
+
+for(i=1;i<26;i++){
+if(i==1 || i==6 || i==11 || i==16 || i==21){memtab[i]=0;memtabW[i]=0}
+if(i==2 || i==7 || i==12 || i==17 || i==22){memtab[i]=4;memtabW[i]=4}
+if(i==3 || i==8 || i==13 || i==18 || i==23){memtab[i]=3;memtabW[i]=3}
+if(i==4 || i==9 || i==14 || i==19 || i==24){memtab[i]=2;memtabW[i]=2}
+if(i==5 || i==10 || i==15 || i==20 || i==25){memtab[i]=1;memtabW[i]=1}
+}
+
+//affectpointcasedefaut()
+//tbase(colbase)
+}
+var b
+
+var Kimage
+Kimage=top.frames.Num0.frames.couches.frames.zoom.KimageX("return Kimage0") 
+var DELTAX
+var indicpoint=0
+var tablecouleurpoint=new Array()
+var widthimage=document.createAttribute("width")
+var Winit=new Array()
+var Hinit=new Array()
+var Xpoxinit=new Array
+var Ypoxinit=new Array
+var boulecourante
+var boulecarteneg
+var Wl=new Array()
+var Hl=new Array()
+var indiccase0=0
+var indiccase02=0
+var indiccase0Y=0
+var indiccase02Y=0
+var xc=0
+var yc=0
+var transa=0
+var transb=0
+var delta=0
+var delta2=0
+var DELTA=0
+var DELTA2=0
+var tempx
+var tempy
+var point
+var X
+var Y
+var X0=86
+var Y0=105
+var poX
+var poY
+var initialmove=0
+var trucx
+var trucy
+var trucx2
+var trucy2
+var Khaut
+var Kbas
+var idc=0
+var POX=0
+var indicinit2=0
+var coul=new Array()
+var Kreafect=0
+var Koul
+var DELTA
+var DELTA2
+var maxxcase=0
+var maxycase=0
+
+var initana
+var supero=0
+var XZERO=0
+var YZERO=0
+var MAXX1
+var indicplus=0
+var max1restant=0
+var titre2bis=""
+var titre1bis=""
+var indicmaxrest=0
+var RECUPDIMICO1=new Array()
+
+var AXEY0
+var indexicouleur
+var coordencoursici=new Array()
+var kchos=0
+
+var indANA=0
+var indANA2=0
+var AXX=0
+var AYY=0
+var max1=300
+var max2=300
+var min1=0
+var min2=0
+var dimX=300
+var dimY=300
+//var XX0=new Array()
+var XX=new Array()
+//var YY0=new Array()
+var YY=new Array()
+var aX=new Array()
+var aY=new Array()
+var titx=""
+var titre1=""
+var titre2="vide"
+var INIT1=0
+var longueur1
+var longueur2
+var CCarteX
+var TABPASS=new Array()
+
+
+var axex
+var axey
+var ardam=""
+var damtrans=""
+var idk
+var transid
+var imcolor="h_3.gif"
+var coulid
+var maxycase
+
+var indicCOLOR=0
+var indicCOLOR0=0
+var groupepoint=new Array()
+groupepoint[0]=new Array(0,0,0)
+
+var groupepoint2=new Array()
+var kpoint=0
+var kpoint2=0
+var boulecarte
+var carregrille
+var dfg=0 //compteur de function init3()
+var decall
+var poxlig=1
+var hlig=10
+if(document.allxxxx){decall=-8}else{decall=0}
+var kp=top.frames.Num0.frames.couches.transkp("return kp")
+//______________________________________________________________________________
+
+
+TABPASS=top.frames.Num0.frames.couches.frames.zoom.transtablepass("return Tablepass")
+function transindicarte(){return indicarte}
+function indicarte0(){
+
+indicarte=0
+legiconeretrait=0
+//top.frames.Num0.frames.couches.reposeleg()
+}
+function calccouleurencours(){
+var ty=coulid-1000
+indicCOLOR=parseInt(memtab[ty])
+Kreafect=0
+}
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx POX en Ligne xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//poxenligne()
+
+function change() {
+//top.BL()// logotype de chargement
+//alert("icila")
+
+
+var site = document.menu.choix.selectedIndex;
+{
+document.location.href=document.menu.choix.options[site].value;
+indexoption=site
+}
+document.menu.choix.selectedIndex=0
+}
+
+
+function couleurlegende(){
+
+for(i=1;i<6;i++){
+var COLORTD
+if(document.allxxxx){
+if(i==1){COLORTD=document.getElementById(30021).style.getAttribute("cssText").substr(17,10)}
+if(i==2){COLORTD=document.getElementById(30017).style.getAttribute("cssText").substr(17,10)}
+if(i==3){COLORTD=document.getElementById(30013).style.getAttribute("cssText").substr(17,10)}
+if(i==4){COLORTD=document.getElementById(30009).style.getAttribute("cssText").substr(17,10)}
+if(i==5){COLORTD=document.getElementById(30005).style.getAttribute("cssText").substr(17,10)}
+
+
+}else{
+if(i==1){COLORTD=document.getElementById(30021).getAttribute("bgcolor")}
+if(i==2){COLORTD=document.getElementById(30017).getAttribute("bgcolor")}
+if(i==3){COLORTD=document.getElementById(30013).getAttribute("bgcolor")}
+if(i==4){COLORTD=document.getElementById(30009).getAttribute("bgcolor")}
+if(i==5){COLORTD=document.getElementById(30005).getAttribute("bgcolor")}
+
+
+}
+if(indicarte==0){
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc"+i).style.setProperty('fill',COLORTD,'')}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc"+i).setAttribute("fill",COLORTD)}}else{
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectfond"+i).style.setProperty('fill',COLORTD,'')}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectfond"+i).setAttribute("fill",COLORTD)}
+}
+}
+}
+function poxenligne(){ //colore le tableau pour POX en ligne et colore la légende icone (tableau restant ouvert après la fermeture du module analyse)
+//alert("poxenligne")
+XMpoxinit=Xpoxinit
+for(i=1;i<6;i++){
+var COLORTD
+var wcas
+if(document.allxxxx){
+if(i==1){COLORTD=document.getElementById(30021).style.getAttribute("cssText").substr(17,10);wcas=document.getElementById(1021).getAttribute("width")}
+//alert(COLORTD+"     "+wcas)
+if(i==2){COLORTD=document.getElementById(30017).style.getAttribute("cssText").substr(17,10);wcas=document.getElementById(1017).getAttribute("width")}
+if(i==3){COLORTD=document.getElementById(30013).style.getAttribute("cssText").substr(17,10);wcas=document.getElementById(1021).getAttribute("width")}
+if(i==4){COLORTD=document.getElementById(30009).style.getAttribute("cssText").substr(17,10);wcas=document.getElementById(1009).getAttribute("width")}
+if(i==5){COLORTD=document.getElementById(30005).style.getAttribute("cssText").substr(17,10);wcas=document.getElementById(1005).getAttribute("width")}
+
+document.getElementById("caselig"+i).style.setAttribute("cssText","background-color:"+COLORTD)
+}else{
+if(i==1){COLORTD=document.getElementById(30021).getAttribute("bgcolor");wcas=document.getElementById(1021).getAttribute("width")}
+//alert(COLORTD+"     "+wcas)
+if(i==2){COLORTD=document.getElementById(30017).getAttribute("bgcolor");wcas=document.getElementById(1017).getAttribute("width")}
+if(i==3){COLORTD=document.getElementById(30013).getAttribute("bgcolor");wcas=document.getElementById(1021).getAttribute("width")}
+if(i==4){COLORTD=document.getElementById(30009).getAttribute("bgcolor");wcas=document.getElementById(1009).getAttribute("width")}
+if(i==5){COLORTD=document.getElementById(30005).getAttribute("bgcolor");wcas=document.getElementById(1005).getAttribute("width")}
+
+document.getElementById("caselig"+i).setAttribute("bgcolor",COLORTD)
+}
+if(indicarte==0){
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc"+i).style.setProperty('fill',COLORTD,'')}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc"+i).setAttribute("fill",COLORTD)}}else{
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectfond"+i).style.setProperty('fill',COLORTD,'')}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectfond"+i).setAttribute("fill",COLORTD)}
+}
+}
+//alert("ici et lalll")
+}
+
+function alignpox(){// met les poignées POX en ligne dans la partie restant ouverte après la fermeture du module analyse
+//alert("alignepox")
+poxlig=0
+for(k=1;k<5;k++){
+var rt="divcol"+k
+document.getElementById(rt).style.top=hlig
+}
+}
+
+
+function ecartpox(){ // retire les poignées non séléctionnées lorsque'on manipule poxenligne pour éviter le télescopage des évennements
+if(poxlig==0){
+for(i=1;i<5;i++){
+if(i==POX){}else{document.getElementById("divcol"+i).style.top=-100}
+}
+}
+}
+function dimpoxligne(){// ajuste les dmensions du tableau POXen ligne lorsqu'on déplace une poignée
+
+for(i=1;i<6;i++){
+
+var wcas
+var xdr
+if(i==1){wcas=Wl[21]}
+if(i==2){wcas=Wl[17]}
+if(i==3){wcas=Wl[13]}
+if(i==4){wcas=Wl[9]}
+if(i==5){wcas=Wl[5]}
+wcas=parseInt(wcas)
+if(document.all){if(wcas<=0){wcas=1}}
+//alert(wcas)----------------------------------------------------------------------------------BRICOLAGE : ie refue les case =0 
+document.getElementById("caselig"+i).width=wcas
+}
+
+}
+function retourPOXlig(){ // remet les poignées en place après qu'elles aient été retirées dans la manipultaion Pox en ligne
+if(poxlig==0){
+for(i=1;i<5;i++){
+document.getElementById("divcol"+i).style.top=hlig
+}
+}
+}
+
+function poxendiag(){ //remet les poignées POX en diagonale dans le modul eAnalyse
+//alert(XMpoxinit)
+Xpoxinit=XMpoxinit
+//alert(Xpoxinit)
+poxlig=1
+for(i=1;i<5;i++){
+document.getElementById("divcol"+i).style.top=parseInt(Xpoxinit[i])+25
+//XMpoxinit[i]=document.getElementById("divcol"+i).style.top-25
+
+}
+}
+function triX(a,b){ // sous fonction de la fonction tri croissant pour les quantiles
+return a-b
+}
+var delta0
+var xp=0
+var borneclas=new Array
+var initcattemp3=0
+var paramHISTOX1ici=new Array()
+function Xpercent(){ // fonction de trie pour les quantiles (récupère les données, les met dans un new Array et les trie puis détermine les bornes )
+
+
+//if(ouicartetemp==1){
+//if(initcattemp3==0){
+//alert("mamorisation de cattemp3="+cat);cattemp3=cat;initcattemp3=1;
+//}
+//}
+perct=1
+indiccase0=0
+indiccase02=0
+//indiccase0Y=0
+//indiccase02Y=0
+var Xtriee=new Array 
+initgrillePOX()
+
+MIN11=MIN110
+MIN12=MIN120
+MIN13=MIN130
+MIN14=MIN140
+MIN21=MIN210
+MIN22=MIN220
+MIN23=MIN230
+MIN24=MIN240
+var dif=5-cat //=différence entre valeur choisie du nombre de quantiles et nombre max=5
+//alert("cat="+cat+"    dif="+dif)
+var k=1
+
+for(i=1;i<longx1;i++){if(XX[i]!=-99999){Xtriee[k]=XX[i];k=k+1}}
+var lxt=Xtriee.length
+Xtriee.sort(triX)
+borneclas=new Array
+var intervpc=parseFloat(lxt/cat)
+
+//alert(" intervpc="+intervpc+"   lxt="+lxt)
+for(i=1;i<5;i++){
+
+if(i<=dif){
+borneclas[i]=min1
+}else{
+/*
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
+var t=0
+for(j=parseInt(intervpc*(i-dif));j>parseInt(intervpc*(i-1-dif))-1;j--){if(parseFloat(Xtriee[intervpc*(i-dif)])!=parseFloat(Xtriee[j])){t=j;j=intervpc*(i-1-dif)}else{t=j}}
+//alert("Xtriee["+(intervpc*(i-dif))+"]="+Xtriee[intervpc*(i-dif)]+"   t="+t)
+borneclas[i]=(parseFloat(Xtriee[intervpc*(i-dif)])+parseFloat(Xtriee[t]))/2;
+//init4(i)
+//alert("borneclas["+i+"]="+borneclas[i])
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+if(parseInt(intervpc*(i-dif))==1){borneclas[i]=min1}else{
+borneclas[i]=parseFloat(Xtriee[parseInt(intervpc*(i-dif))])
+}
+paramHISTOX1ici=top.frames.Num0.frames.datacarte.transpara("return paramHISTOX1")
+if(paramHISTOX1ici){
+if(paramHISTOX1ici[3].length>5){if(paramHISTOX1ici[3][5]!=-99999 & cat==2){borneclas[4]=parseFloat(paramHISTOX1ici[3][5])}}
+}
+//alert(borneclas[i])
+}
+}
+
+//alert(MIN11+","+MIN12+","+MIN13+","+MIN14)
+//alert(MIN21,MIN22,MIN23,MIN24)
+// boucle sur POX pour changer les colonnes
+for (POX=1;POX<5;POX++){//!!!!!!!!!  inhibé par <0 au lieu de <5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+delta2=0
+Khaut=1
+xp=1
+delta=0
+if(POX==1){delta=(borneclas[1]-MIN11)*(dimX)/(axex)-1}//
+if(POX==2){delta=(borneclas[2]-MIN12)*(dimX)/(axex)-1}//
+if(POX==3){delta=(borneclas[3]-MIN13)*(dimX)/(axex)-1}//
+if(POX==4){delta=(borneclas[4]-MIN14)*(dimX)/(axex)-1}//
+if(borneclas[POX]==min1){indicquantile=1}else{indicquantile=0}
+delta0=delta
+var lfx=document.getElementById("divcol"+POX).style.left
+document.getElementById("divcol"+POX).style.left=parseFloat(lfx)+delta
+
+//alert( "delta="+delta)
+
+//borneclas[4]-MIN11-2.5*(dimX)/(axex)
+//alert(borneclasX)
+changer_colonne()
+
+
+}
+
+if(indicarte==1){grilleapplycarte()}
+perct=0
+
+}
+
+function Xinterv(){}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+function initgrillePOX(){
+
+positionpox2()
+
+for(az=1;az<26;az++){
+document.getElementById(1000+az).width=Winit[az]
+document.getElementById(1000+az).height=Hinit[az]
+document.getElementById(1000+az).border=1
+Wl[az]=Winit[az]
+Hl[az]=Hinit[az]
+//alert(Wl[az])
+}
+for(az=1;az<5;az++){
+var divxy="divcol"+az
+//alert(divxy)
+document.getElementById(divxy).style.left=Xpoxinit[az]+"px"
+document.getElementById(divxy).style.top=Ypoxinit[az]+"px"
+//alert(document.getElementById(divxy).style.top)
+}
+POX=0
+
+}
+
+var cptcoul=0
+
+function reaffectobjet(){ //redistribue les pays dans les cases qui ont bougé
+
+init3()
+if(DELTA>0){// reaffecte la colonne à gauche de POX
+
+for(var zx=1;zx<6;zx++){
+
+coulid=1000+POX+(zx-1)*5
+calccouleurencours() // recup couleur de la case dont id=coulidX
+
+couleur() // déclencher la function couleur (qui partira des paramètres coulid et indicCOLOR)
+
+}//fin for zx
+}//fin if delta
+
+
+if(DELTA<=0){ // reaffecte la colonne à droite de POX
+//alert(DELTA)
+for(var zx=1;zx<6;zx++){
+coulid=1000+POX+(zx-1)*5+1
+calccouleurencours() // recup couleur de la case dont id=coulidX
+
+couleur() // déclencher la function couleur (qui partira des paramètres coulid et indicCOLOR)
+
+}//fin for zx
+}//fin if delta
+//alert(DELTA2)
+if(DELTA2>=0){
+
+for(var zx=1;zx<6;zx++){
+
+coulid=1000+5*(POX-1)+zx
+
+calccouleurencours() // recup couleur de la case dont id=coulidX
+
+couleur() // déclencher la function couleur (qui partira des paramètres coulid et indicCOLOR)
+
+}//fin for zx
+}//fin if delta
+
+if(DELTA2<0){
+
+for(var zx=1;zx<6;zx++){
+
+coulid=1000+5*(POX-1)+zx+5
+
+calccouleurencours() // recup couleur de la case dont id=coulidX
+
+couleur() // déclencher la function couleur (qui partira des paramètres coulid et indicCOLOR)
+
+}//fin for zx
+}//fin if delta
+
+DELTA=0
+DELTA2=0
+//alert("ici reaffectobjet")
+if(indicarte==1){grilleapplycarte()}
+}//fin function reaffect
+
+var col1=new Array(1,6,11,16,21)
+var col2=new Array(2,7,12,17,22)
+var col3=new Array(3,8,13,18,23)
+var col4=new Array(4,9,14,19,24)
+var col5=new Array(5,10,15,20,25)
+
+function reaffectINIT10(){
+init3()
+
+ if(perct==0){//cas normal
+
+for(S=1;S<26;S++){
+coulid=1000+S
+calccouleurencours() // recup couleur de la case dont id=coulidX
+couleur() // déclencher la function couleur (qui partira des paramètres coulid et indicCOLOR)
+}
+}else{//cas où cette fonction est activée par function percent()
+
+//------------version1----------------
+var k2
+var idcol
+
+if(POX==1){k2=21}
+if(POX==2){k2=17}
+if(POX==3){k2=13}
+if(POX==4){k2=9}
+
+coulid=1000+k2
+calccouleurencours() // recup couleur de la case dont id=coulidX
+if(POX>5-cat-1){
+couleur() // déclencher la function couleur (qui partira des paramètres coulid et indicCOLOR)
+}
+if(POX==4){
+coulid=1000+5;
+calccouleurencours()
+couleur()
+}
+if(POX<=5-cat){
+if(POX==1){for(j=0;j<5;j++){document.getElementById(1000+col1[j]).border=0}}
+if(POX==2){for(j=0;j<5;j++){document.getElementById(1000+col2[j]).border=0}}
+if(POX==3){for(j=0;j<5;j++){document.getElementById(1000+col3[j]).border=0}}
+if(POX==4){for(j=0;j<5;j++){document.getElementById(1000+col4[j]).border=0}}
+}
+}
+DELTA=0
+DELTA2=0
+//if(indicarte==1){grilleapplycarte()}
+//alignpox()
+for(ii=1;ii<26;ii++){
+//alert("n° "+ii+"  Wl["+ii+"]="+document.getElementById(1000+ii).width+"    Hl["+ii+"]"+document.getElementById(1000+ii).height)
+}
+}
+
+
+
+
+
+function ajustINIT1(){ // symétrisation lignes et colonnes
+if(POX>0){
+var DIVCOL=""
+var opp=0
+for(j=0;j<5;j++){   //colonnes
+for(i=0;i<5;i++){  //lignes
+var G=1021-(5*i)+j
+var G2=1021+i
+document.getElementById(G2).src="carretransparent.gif"
+Hl[G-1000]=Wl[G2-1000]
+if(Hl[G-1000]==0){document.getElementById(G).border=0}
+else{if(Wl[G-1000]>0){document.getElementById(G).border=1}}
+
+document.getElementById(G).height=Hl[G-1000]
+document.getElementById(G2).width=Wl[G2-1000]
+}
+}
+opp=5-POX
+DIVCOL="divcol"+opp
+var DDx=parseInt(document.getElementById(DIVCOL).style.top)
+DDx-=DELTAX
+kp=top.frames.Num0.frames.couches.transkp("return kp")//indicateur de gestion des POX lors de l'ouverture et de la fermeture du module Analyse
+if(kp==1){
+document.getElementById(DIVCOL).style.top=DDx*poxlig+(1-poxlig)*hlig
+}
+}
+
+affichcoordaxeX()
+affichcoordaxeY()
+}
+
+function ecart2(){
+var ttx=POX+1
+var tty=5*POX+1
+transa=Wl[ttx]
+transb=Hl[tty]
+}
+
+
+
+function ecart(){
+var ttx2=POX
+var tty2=5*(POX-1)+1
+trans=Wl[ttx2]
+trans2=Hl[tty2]
+}
+
+
+function rechargeimageIE(){
+document.getElementById("1012").src="carretransparent.gif"
+document.getElementById("1012").height=document.getElementById("1006").height
+}
+function rechargeimageIE2(){
+for(i=1;i<26;i++){document.getElementById(1000+i).src="carretransparent.gif"}
+}
+
+function col0(){
+//---------------------------action sur les x
+if(Khaut==1){
+if(indicquantile==1 & borneclasX==min1){
+trans=trans-1
+for(f=0;f<5;f++){
+var t=1000+POX+5*f
+document.getElementById(t).border='0px'
+}
+}
+if(indiccase0==1){
+trans=trans+1
+for(f=0;f<5;f++){
+var t=1000+POX+1+5*f
+document.getElementById(t).border='0px'
+}
+}
+if(document.getElementById(1000+POX+1).width==0 && delta<0){
+trans=trans-1
+for(f=0;f<5;f++){
+var t=1000+POX+1+5*f
+document.getElementById(t).border='1px'
+}
+}
+if(document.getElementById(1000+POX).width==0 && delta>0){
+trans=trans-1
+for(f=0;f<5;f++){
+var t=1000+POX+5*f
+document.getElementById(t).border='1px'
+}
+}
+if(indiccase02==1){
+delta=delta-1
+for(f=0;f<5;f++){
+var t=1000+POX+5*f
+document.getElementById(t).border='0px'
+}
+}
+}
+//---------------------------action sur les y
+if (INIT1==1 && Kbas==1){
+if(indiccase0Y==1){
+trans2=trans2+1
+for(f=0;f<5;f++){
+var t=1001+(POX)*5+f
+document.getElementById(t).border=0
+}
+}
+if(document.getElementById(1000+5*POX+1).height==0 && delta2<0){
+trans2=trans2-1
+for(f=0;f<5;f++){
+var t=1001+(POX)*5+f
+document.getElementById(t).border=1
+}
+}
+if(document.getElementById(1000+5*(POX-1)+1).height==0 && delta2>0){
+trans2=trans2-1
+for(f=0;f<5;f++){
+var t=1001+(POX-1)*5+f
+document.getElementById(t).border=1
+}
+}
+if(indiccase02Y==1){
+delta2=delta2-1
+for(f=0;f<5;f++){
+var t=1001+(POX-1)*5+f
+document.getElementById(t).border=0
+}
+}
+}
+}//fin de col0()
+
+function Dif(xWHl,Xdelta){
+
+ if(Xdelta<xWHl){
+ xWHl=xWHl-Xdelta
+ }else{
+ xWHl=0
+ }
+ return xWHl
+}
+function Add(xtrans,Xdelta){
+
+if(Xdelta==0 & POX==1  & xp==0 ){Xdelta=-1}//& cat==2
+if(xtrans==0){Xdelta+=-1}
+if(xtrans>=303 & POX==4 & Xdelta==0){Xdelta+=-1}
+xtrans=xtrans+Xdelta
+return xtrans
+}
+var divpoint
+function changer_colonne() {
+
+//alert("Khaut="+Khaut+"    delta="+delta+"   delta2="+delta2)
+//alert(" Wl="+Wl+"    MIN11="+MIN11+","+MIN12+","+MIN13+","+MIN14)
+//alert("tran"+trans)
+//
+if(xp==1){
+ecart()
+
+}
+
+
+
+
+if(Khaut==1){delta2=0}else{delta=0}
+trans=Add(trans,delta) 
+
+trans2=trans2+delta2
+DELTA=delta
+DELTAX=delta
+DELTA2=delta2
+ 
+//alert(cat)
+if(divpoint){// Cas médiane Qauntile2 (cat==2) cliqué avec le bouton 4 de la réglette (POX==4 et xp=0)
+if(INIT1==0 & xp==0 & cat==2 & POX==4 &  parseFloat(divpoint.style.left)<332){
+
+trans=parseFloat(divpoint.style.left)-15 
+delta=(302-trans) 
+if(delta<0){delta=0}
+ document.getElementById("1005").width=delta;Wl[5]=delta
+ document.getElementById("1010").width=delta;Wl[10]=delta
+ document.getElementById("1015").width=delta;Wl[15]=delta
+ document.getElementById("1020").width=delta;Wl[20]=delta
+ document.getElementById("1025").width=delta;Wl[25]=delta
+ 
+  document.getElementById("1004").width=trans;Wl[4]=trans
+ document.getElementById("1009").width=trans;Wl[9]=trans
+ document.getElementById("1014").width=trans;Wl[14]=trans
+ document.getElementById("1019").width=trans;Wl[19]=trans
+ document.getElementById("1024").width=trans;Wl[24]=trans
+
+}
+}
+
+if (POX==1){
+
+col0()
+if(trans<0){trans=0}
+if(trans2<0){trans2=0}
+ document.getElementById("1001").width=trans
+ document.getElementById("1006").width=trans
+ document.getElementById("1011").width=trans
+ document.getElementById("1016").width=trans
+ document.getElementById("1021").width=trans
+
+for(i=1;i<6;i++){Wl[5*(i-1)+1]=trans}
+delta=delta-1*indicquantile;indicquantile=0
+//alert(Dif(Wl[2],delta))
+  Wl[2]=Dif(Wl[2],delta)//Wl[2]-delta
+ Wl[7]=Dif(Wl[7],delta)//Wl[7]-delta
+Wl[12]=Dif(Wl[12],delta)//Wl[12]-delta
+Wl[17]=Dif(Wl[17],delta)//Wl[17]-delta
+Wl[22]=Dif(Wl[22],delta)//Wl[22]-delta
+
+ document.getElementById("1002").width=Wl[2]
+ document.getElementById("1007").width=Wl[7]
+ document.getElementById("1012").width=Wl[12]
+ document.getElementById("1017").width=Wl[17]
+ document.getElementById("1022").width=Wl[22]
+
+
+ document.getElementById("1001").height=trans2
+ document.getElementById("1002").height=trans2
+ document.getElementById("1003").height=trans2
+ document.getElementById("1004").height=trans2
+ document.getElementById("1005").height=trans2
+
+for(i=1;i<6;i++){Hl[i]=trans2}
+
+Hl[6]=Dif(Hl[6],delta2)//Hl[6]-delta2
+Hl[7]=Dif(Hl[7],delta2)//Hl[7]-delta2
+Hl[8]=Dif(Hl[8],delta2)//Hl[8]-delta2
+Hl[9]=Dif(Hl[9],delta2)//Hl[9]-delta2
+Hl[10]=Dif(Hl[10],delta2)//Hl[10]-delta2
+
+ document.getElementById("1006").height=Hl[6]
+ document.getElementById("1007").height=Hl[7]
+ document.getElementById("1008").height=Hl[8]
+ document.getElementById("1009").height=Hl[9]
+ document.getElementById("1010").height=Hl[10]
+if(document.allxxxx){
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini24").src="min24.htm"
+
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini11").src="min11.htm"
+}
+}
+if (POX==2){
+
+col0()
+if(trans<0){trans=0}
+if(trans2<0){trans2=0}
+ document.getElementById("1002").width=trans
+ document.getElementById("1007").width=trans
+ document.getElementById("1012").width=trans
+ document.getElementById("1017").width=trans
+ document.getElementById("1022").width=trans
+
+for(i=1;i<6;i++){Wl[5*(i-1)+2]=trans}
+delta=delta-1*indicquantile;indicquantile=0
+ Wl[3]=Dif(Wl[3],delta)//Wl[3]-delta
+ Wl[8]=Dif(Wl[8],delta)//Wl[8]-delta
+Wl[13]=Dif(Wl[13],delta)//Wl[13]-delta
+Wl[18]=Dif(Wl[18],delta)//Wl[18]-delta
+Wl[23]=Dif(Wl[23],delta)//Wl[23]-delta
+
+
+ document.getElementById("1003").width=Wl[3]
+ document.getElementById("1008").width=Wl[8]
+ document.getElementById("1013").width=Wl[13]
+ document.getElementById("1018").width=Wl[18]
+ document.getElementById("1023").width=Wl[23]
+
+ document.getElementById("1006").height=trans2
+ document.getElementById("1007").height=trans2
+ document.getElementById("1008").height=trans2
+ document.getElementById("1009").height=trans2
+ document.getElementById("1010").height=trans2
+
+for(i=1;i<6;i++){Hl[i+5]=trans2}
+
+Hl[11]=Dif(Hl[11],delta2)//Hl[11]-delta2
+Hl[12]=Dif(Hl[12],delta2)//Hl[12]-delta2
+Hl[13]=Dif(Hl[13],delta2)//Hl[13]-delta2
+Hl[14]=Dif(Hl[14],delta2)//Hl[14]-delta2
+Hl[15]=Dif(Hl[15],delta2)//Hl[15]-delta2
+
+ document.getElementById("1011").height=Hl[11]
+ document.getElementById("1012").height=Hl[12]
+ document.getElementById("1013").height=Hl[13]
+ document.getElementById("1014").height=Hl[14]
+ document.getElementById("1015").height=Hl[15]
+if(document.allxxxx){
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini23").src="min23.htm"
+
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini12").src="min12.htm"
+ }
+
+}
+if (POX==3){
+col0()
+if(trans<0){trans=0}
+if(trans2<0){trans2=0}
+ document.getElementById("1003").width=trans
+ document.getElementById("1008").width=trans
+ document.getElementById("1013").width=trans
+ document.getElementById("1018").width=trans
+ document.getElementById("1023").width=trans
+
+for(i=1;i<6;i++){Wl[5*(i-1)+3]=trans}
+delta=delta-1*indicquantile;indicquantile=0
+ Wl[4]=Dif(Wl[4],delta)//Wl[4]-delta
+ Wl[9]=Dif(Wl[9],delta)//Wl[9]-delta
+Wl[14]=Dif(Wl[14],delta)//Wl[14]-delta
+Wl[19]=Dif(Wl[19],delta)//Wl[19]-delta
+Wl[24]=Dif(Wl[24],delta)//Wl[24]-delta
+
+ document.getElementById("1004").width=Wl[4]
+ document.getElementById("1009").width=Wl[9]
+ document.getElementById("1014").width=Wl[14]
+ document.getElementById("1019").width=Wl[19]
+ document.getElementById("1024").width=Wl[24]
+
+ document.getElementById("1011").height=trans2
+ document.getElementById("1012").height=trans2
+ document.getElementById("1013").height=trans2
+ document.getElementById("1014").height=trans2
+ document.getElementById("1015").height=trans2
+
+for(i=1;i<6;i++){Hl[i+10]=trans2}
+
+Hl[16]=Dif(Hl[16],delta2)//Hl[16]-delta2
+Hl[17]=Dif(Hl[17],delta2)//Hl[17]-delta2
+Hl[18]=Dif(Hl[18],delta2)//Hl[18]-delta2
+Hl[19]=Dif(Hl[19],delta2)//Hl[19]-delta2
+Hl[20]=Dif(Hl[20],delta2)//Hl[20]-delta2
+
+ document.getElementById("1016").height=Hl[16]
+ document.getElementById("1017").height=Hl[17]
+ document.getElementById("1018").height=Hl[18]
+ document.getElementById("1019").height=Hl[19]
+ document.getElementById("1020").height=Hl[20]
+  if(document.allxxxx){
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini22").src="min22.htm"
+
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini13").src="min13.htm"
+   }
+}
+if (POX==4 & ((cat!=2 & INIT1==0) || xp==1 || INIT1==1)){
+col0()
+if(trans<0){trans=0}
+if(trans2<0){trans2=0}
+ document.getElementById("1004").width=trans
+ document.getElementById("1009").width=trans
+ document.getElementById("1014").width=trans
+ document.getElementById("1019").width=trans
+ document.getElementById("1024").width=trans
+
+for(i=1;i<6;i++){Wl[5*(i-1)+4]=trans}
+delta=delta-1*indicquantile;//indicquantile=0
+ Wl[5]=Dif(Wl[5],delta)//Wl[5]-delta
+Wl[10]=Dif(Wl[10],delta)//Wl[10]-delta
+Wl[15]=Dif(Wl[15],delta)//Wl[15]-delta
+Wl[20]=Dif(Wl[20],delta)//Wl[20]-delta
+Wl[25]=Dif(Wl[25],delta)//Wl[25]-delta
+
+ document.getElementById("1005").width=Wl[5]
+ document.getElementById("1010").width=Wl[10]
+ document.getElementById("1015").width=Wl[15]
+ document.getElementById("1020").width=Wl[20]
+ document.getElementById("1025").width=Wl[25]
+
+ document.getElementById("1016").height=trans2
+ document.getElementById("1017").height=trans2
+ document.getElementById("1018").height=trans2
+ document.getElementById("1019").height=trans2
+ document.getElementById("1020").height=trans2
+
+for(i=1;i<6;i++){Hl[i+15]=trans2}
+
+Hl[21]=Dif(Hl[21],delta2)//Hl[21]-delta2
+Hl[22]=Dif(Hl[22],delta2)//Hl[22]-delta2
+Hl[23]=Dif(Hl[23],delta2)//Hl[23]-delta2
+Hl[24]=Dif(Hl[24],delta2)//Hl[24]-delta2
+Hl[25]=Dif(Hl[25],delta2)//Hl[25]-delta2
+
+
+ document.getElementById("1021").height=Hl[21]
+ document.getElementById("1022").height=Hl[22]
+ document.getElementById("1023").height=Hl[23]
+ document.getElementById("1024").height=Hl[24]
+ document.getElementById("1025").height=Hl[25]
+  if(document.allxxxx){
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini21").src="min21.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini14").src="min14.htm"
+}
+}
+
+xp=0
+//alert(" Wl="+Wl+"   "+min1+"   "+MIN11+"   "+MIN12+"  "+MIN13+"   "+MIN14+"   "+max1   )
+
+   if(INIT1==1){
+  affichcoordaxeX()
+  affichcoordaxeY()
+  }
+
+if(INIT1==0){
+ajustINIT1();
+reaffectINIT10()
+
+}else{
+reaffectobjet()
+}
+
+DELTA=0
+DELTA2=0
+delta=0
+delta2=0
+
+trucx=trucx2
+trucy=trucy2
+
+dimpoxligne()
+
+}
+
+function indicdisaX(){
+indicdisa=1
+
+}
+
+
+function disable(){
+kp=top.frames.Num0.frames.couches.transkp("return kp")
+indicGXY=1
+if(kp==1){
+retourPOXlig()
+}
+indicinit2=1
+initialmove=0
+
+if(indicdisa==1){
+if(document.allxxxx){
+changer_colonne()
+}else{
+
+changer_colonne()
+}
+}
+document.body.focus()
+indicdisa=0
+idc=0
+}
+
+
+function Xstopevent(event){
+if(!document.allxxxx){
+
+}
+event.stopPropagation()
+document.body.focus()
+}
+
+function A2moveXY(event){
+
+if(initialmove==1){
+
+if (document.allxxxx){
+if(Math.abs(event.clientX-X)>=Math.abs(event.clientY-Y)-idc){Khaut=1;Kbas=0;idc=30}else{Khaut=0;Kbas=1;idc=-30}
+if(INIT1==0){Khaut=1;Kbas=0;idc=30}
+
+
+var wi=parseFloat(tempx)+Khaut*(event.clientX-X);
+var hi=parseFloat(tempy)+Kbas*poxlig*(event.clientY-Y)
+
+if(Khaut==1){
+if((parseFloat(tempx)+Khaut*(event.clientX-X))>(transa+parseFloat(trucx))){
+indiccase0=1
+wi=Khaut*transa+parseInt(trucx)
+hi=Kbas*poxlig*transb+parseInt(trucy)
+}else{indiccase0=0}
+
+if((parseFloat(tempx)+Khaut*(event.clientX-X))<=(-trans+parseFloat(trucx))){
+indiccase02=1
+wi=-Khaut*trans+parseInt(trucx)
+hi=-Kbas*poxlig*trans2+parseInt(trucy)
+}else{indiccase02=0}
+}
+
+
+if(INIT1==1 && Kbas==1){
+if((parseFloat(tempy)+Kbas*poxlig*(event.clientY-Y))>(transb+parseFloat(trucy))){
+indiccase0Y=1
+wi=Khaut*transa+parseInt(trucx)
+hi=Kbas*poxlig*transb+parseInt(trucy)
+}else{indiccase0Y=0}
+
+if((parseFloat(tempy)+Kbas*poxlig*(event.clientY-Y))<=(-trans2+parseFloat(trucy))){
+indiccase02Y=1
+wi=-Khaut*trans+parseInt(trucx)
+hi=-Kbas*poxlig*trans2+parseInt(trucy)
+}else{indiccase02Y=0}
+
+}
+
+
+
+divpoint.style.left=wi
+divpoint.style.top=hi
+trucx2=parseFloat(divpoint.style.left) 
+trucy2=parseFloat(divpoint.style.top) 
+delta=parseFloat(trucx2)-parseFloat(trucx)
+delta2=parseFloat(trucy2)-parseFloat(trucy)
+
+
+}else{
+
+if(event.clientX < 331 & event.clientY < 351){
+
+	
+
+if(Math.abs(event.clientX-X)>=Math.abs(event.clientY-Y)-idc){Khaut=1;Kbas=0;idc=30}else{Khaut=0;Kbas=1;idc=-30}
+if(INIT1==0){Khaut=1;Kbas=0;idc=30}
+
+
+var wi=parseFloat(tempx)+Khaut*(event.clientX-X);
+var hi=parseFloat(tempy)+Kbas*poxlig*(event.clientY-Y)
+
+if(Khaut==1){
+if((parseFloat(tempx)+Khaut*(event.clientX-X))>(transa+parseFloat(trucx))){
+indiccase0=1
+wi=Khaut*transa+parseInt(trucx)
+hi=Kbas*poxlig*transb+parseInt(trucy)
+}else{indiccase0=0}
+
+if((parseFloat(tempx)+Khaut*(event.clientX-X))<=(-trans+parseFloat(trucx))){
+indiccase02=1
+wi=-Khaut*trans+parseInt(trucx)
+hi=-Kbas*poxlig*trans2+parseInt(trucy)
+}else{indiccase02=0}
+}
+
+
+if(INIT1==1 && Kbas==1){
+if((parseFloat(tempy)+Kbas*poxlig*(event.clientY-Y))>(transb+parseFloat(trucy))){
+indiccase0Y=1
+wi=Khaut*transa+parseInt(trucx)
+hi=Kbas*poxlig*transb+parseInt(trucy)
+}else{indiccase0Y=0}
+
+if((parseFloat(tempy)+Kbas*poxlig*(event.clientY-Y))<=(-trans2+parseFloat(trucy))){
+indiccase02Y=1
+wi=-Khaut*trans+parseInt(trucx)
+hi=-Kbas*poxlig*trans2+parseInt(trucy)
+}else{indiccase02Y=0}
+
+}
+
+
+
+divpoint.style.left=wi
+divpoint.style.top=hi
+trucx2=parseFloat(divpoint.style.left) 
+trucy2=parseFloat(divpoint.style.top) 
+delta=parseFloat(trucx2)-parseFloat(trucx)
+delta2=parseFloat(trucy2)-parseFloat(trucy)
+recupkp()
+if(kp==2){positionpox2()}
+if(cat==2 & POX==4 & longx1<2000){
+
+changer_colonne()
+
+}
+}else{}
+}
+}
+}
+function recupkp(){
+kp=top.frames.Num0.frames.couches.transkp("return kp")
+}
+function ajustcol(){
+document.getElementById('divcol1').style.left=trucx2
+document.getElementById('divcol2').style.left=trucx2
+document.getElementById('divcol3').style.left=trucx2
+document.getElementById('divcol4').style.left=trucx2
+}
+
+function AmoveXY(event){
+ecartpox()
+if(indicinit2==1){
+
+
+
+indicinit2=0
+indicdisa=1
+initialmove=1
+
+if(document.allxxxx){
+ecart2()
+ecart()
+X = event.clientX;
+Y = event.clientY;
+tempx=parseInt(divpoint.style.left)
+tempy=parseInt(divpoint.style.top)
+
+
+}else{
+
+
+ecart2()
+ecart()
+
+X = event.clientX;
+Y = event.clientY
+
+tempx=parseFloat(divpoint.style.left)
+
+
+tempy=parseFloat(divpoint.style.top)
+document.onmousemove=A2moveXY
+	
+}
+}
+}
+
+function fpox1(){POX=1;init2()}
+function fpox2(){POX=2;init2()}
+function fpox3(){POX=3;init2()}
+function fpox4(){POX=4;init2()}
+
+
+
+
+
+function init2(){
+if(initialmove==0){
+indicinit2=1
+
+if(POX==1){divpoint=document.getElementById('divcol1')}
+if(POX==2){divpoint=document.getElementById('divcol2')}
+if(POX==3){divpoint=document.getElementById('divcol3')}
+if(POX==4){divpoint=document.getElementById('divcol4')}
+
+trucx=parseInt(divpoint.style.left)
+trucy=parseInt(divpoint.style.top)
+trucx2=trucx
+trucy2=trucy
+}
+}
+function init3(){
+     if(dfg==0){
+       dfg+=1
+
+for(i=1;i<26;i++){
+Wl[i]=document.getElementById(1000+i).width
+Hl[i]=document.getElementById(1000+i).height
+
+}
+}
+ 
+}
+
+
+function init(){
+
+if(document.allxxxx){
+document.getElementById("map2").attachEvent("onmousedown",AmoveXY)
+document.getElementById("map2").attachEvent("onmousemove",A2moveXY)
+document.getElementById("map2").attachEvent("onmouseup",disable)
+
+document.getElementById("map22").attachEvent("onmousedown",AmoveXY)
+document.getElementById("map22").attachEvent("onmousemove",A2moveXY)
+document.getElementById("map22").attachEvent("onmouseup",disable)
+
+document.getElementById("map23").attachEvent("onmousedown",AmoveXY)
+document.getElementById("map23").attachEvent("onmousemove",A2moveXY)
+document.getElementById("map23").attachEvent("onmouseup",disable)
+
+document.getElementById("map24").attachEvent("onmousedown",AmoveXY)
+document.getElementById("map24").attachEvent("onmousemove",A2moveXY)
+document.getElementById("map24").attachEvent("onmouseup",disable)
+}else{
+document.getElementById("map2").addEventListener("mousedown",AmoveXY,false)
+document.getElementById("map22").addEventListener("mousedown",AmoveXY,false)
+document.getElementById("map23").addEventListener("mousedown",AmoveXY,false)
+document.getElementById("map24").addEventListener("mousedown",AmoveXY,false)
+}
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------DEBUT FONCTIONS CALCULS SUR DONNEES------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function transINIT1(){
+return INIT1
+}
+
+function trminmax(){
+var trmmx=new Array()
+trmmx[0]=min1
+trmmx[1]=max1
+trmmx[2]=min2
+trmmx[3]=max2
+trmmx[4]=MIN11
+trmmx[5]=MIN12
+trmmx[6]=MIN13
+trmmx[7]=MIN14
+trmmx[8]=MIN21
+trmmx[9]=MIN22
+trmmx[10]=MIN23
+trmmx[11]=MIN24
+trmmxtemp=trmmx
+return trmmx
+}
+function retourINIT1(){
+return INIT1
+}
+function BORNES1(){
+//alert("xxxx")
+var ABORNES1=new Array()
+ABORNES1[0]=parseInt(100*borneclas[1])/100
+ABORNES1[1]=parseInt(100*borneclas[2])/100
+ABORNES1[2]=parseInt(100*borneclas[3])/100
+ABORNES1[3]=parseInt(100*borneclas[4])/100
+//if(MIN11>100){ABORNES1[0]=parseInt(MIN11)}else{ABORNES1[0]=parseInt(MIN11*100)/100}
+//if(MIN12>100){ABORNES1[1]=parseInt(MIN12)}else{ABORNES1[1]=parseInt(MIN12*100)/100}
+//if(MIN13>100){ABORNES1[2]=parseInt(MIN13)}else{ABORNES1[2]=parseInt(MIN13*100)/100}
+//if(MIN14>100){ABORNES1[3]=parseInt(MIN14)}else{ABORNES1[3]=parseInt(MIN14*100)/100}
+ABORNES1temp=ABORNES1
+return ABORNES1
+}
+var ABORNES2=new Array()
+function BORNES2(){
+
+if(MIN21>100){ABORNES2[0]=parseInt(MIN21)}else{ABORNES2[0]=parseInt(MIN21*100)/100}
+if(MIN22>100){ABORNES2[1]=parseInt(MIN22)}else{ABORNES2[1]=parseInt(MIN22*100)/100}
+if(MIN23>100){ABORNES2[2]=parseInt(MIN23)}else{ABORNES2[2]=parseInt(MIN23*100)/100}
+if(MIN24>100){ABORNES2[3]=parseInt(MIN24)}else{ABORNES2[3]=parseInt(MIN24*100)/100}
+return ABORNES2
+}
+var recupdimico
+function dgs1(){dgs=1}
+function dgs0(){dgs=0}
+function recupdonnees1(){
+//alert("recup analyse")
+ouiicone1()
+
+recupdimico=top.frames.Num0.frames.tab.transdatadimico("return trdatdimico")
+//alert("recupdonnees1 ANALYSE....   "+recupdimico)
+top.frames.Num0.frames.tab.indicinitanal()//indique à pilote2 que le module analyse est ouvert
+initgrillePOX()
+top.frames.Num0.frames.couches.zam4.document.getElementById("enr").style.visibility="hidden"
+indicarte=0
+dfg=0
+dgs=0
+
+trans=59
+indicdebutX=1
+razmemtab()
+XZERO=0
+YZERO=0
+kpoint=0
+groupepoint=new Array()
+groupepoint[0]=new Array(0,0,0)
+titre1=top.frames.Num0.frames.tab.titleX("return TT")
+max1=-1000000000000
+min1=100000000000
+XX=top.frames.Num0.frames.tab.transdata2("return trdat2")
+if (titre2==titre1 || titre2=="vide"){INIT1=0;}else{INIT1=1;razanaX()}
+
+
+
+
+var j
+for(i=1;i<longx1;i++){
+if(INIT1==0){YY[i]=XX[i]}
+if(parseFloat(XX[i])>max1){max1=parseFloat(XX[i])}
+if(parseFloat(XX[i])<min1 & parseFloat(XX[i])!=-99999){min1=parseFloat(XX[i])}
+}
+//if(min1>0){min1=min1-Math.abs(min1/100)}else{min1=min1-Math.abs(min1/100)}
+max1=max1//+max1/100
+axex=max1-min1
+//alert("titre1="+titre1+"   titre2="+titre2)
+
+if(INIT1==0){
+//for(i=1;i<longx1;i++){YY[i]=XX[i]}
+AXEY0=axex
+dimY=dimX
+min2=min1
+max2=max1
+axey=axex
+
+affichcoordaxeY()
+}
+//for(i=1;i<longx1;i++){if(XX[i]!=(-99999)){aX[i]=XX[i]*dimX/axex}else{aX[i]=min1*dimX/axex-100}};
+if(titre1!=titre1bis){indicmaxrest=0}
+titre1bis=titre1
+top.frames.Num0.frames.couches.frames.zoom.TITRE2Y()
+top.frames.Num0.frames.couches.frames.zoom.recupvaldeY()
+gXY()
+cico=2
+legiconeretrait=0
+
+top.frames.Num0.frames.couches.reposeleg()
+//alert("recupdonnees1 legfondretrait="+legfondretrait)
+//top.frames.Num0.frames.couches.zoom.acroiscerclelegende()
+//var mat="matrix(1 0 0 1 0 "+legfondretrait+")"
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulf").setAttribute("transform",mat)
+if(INIT1==1){affichcoordaxeX()}
+//
+top.EL();
+}
+
+function anultitre2(){
+titre2="vide"
+INIT1=0
+}
+
+function monovariable(){
+//razan=1;razanaX()
+top.frames.Num0.frames.couches.zam3.razcarte()
+if(fenetreouv=="cartO2"){top.frames.Num0.onesansfondx()}
+INIT1=0
+indicarte=0
+indichyper2=0// remise à zero de l'indicateur d'analyse bi varié inséré dans les lhypertextes  voir function hypertextstockmemtab()
+YY=new Array
+YY0=new Array
+titre2="vide"
+indicarte2=0
+indicmenuico1()
+top.frames.Num0.frames.selectana.selectvar1()
+top.frames.Num0.frames.datacarte.indicmenuico1()
+top.frames.Num0.frames.datacarte.monodestockICDpourX()
+if(topX>=0){
+top.frames.Num0.frames.datacarte.iconeoucadre2()
+top.frames.Num0.frames.tab.change_site3();
+}else{
+top.frames.Num0.frames.tab.change_site3()
+}
+
+}
+function cachelegfond(){
+
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulf").setAttribute("transform",mat)
+
+}
+function recupdonnees2(){
+top.frames.Num0.frames.couches.zam3.razcarte()
+indicarte=0
+dfg=0
+dgs=0
+trans=59
+indicdebutY=1
+razmemtab()
+XZERO=0
+YZERO=0
+kpoint=0
+groupepoint=new Array()
+groupepoint[0]=new Array(0,0,0)
+titre2=top.frames.Num0.frames.tab2.titleX("return TT")
+max2=-10000000000
+min2=10000000000
+YY=top.frames.Num0.frames.tab2.transdata2("return trdat2")
+var j
+for(i=1;i<longx2;i++){
+if(parseFloat(YY[i])>max2){max2=parseFloat(YY[i])}
+if(parseFloat(YY[i])<min2 & parseFloat(YY[i])!=-99999){min2=parseFloat(YY[i])-0.000001}
+}
+if(min2>0){min2=min2-Math.abs(min2/100)}else{min2=min2-Math.abs(min2/100)}
+max2=max2//+max2/100
+axey=max2-min2
+affichcoordaxeY()
+INIT1=1
+POX=0
+if (titre2==titre1){INIT1=0;ajustINIT1()}
+for(i=1;i<longx2;i++){aY[i]=YY[i]*dimY/axey}
+top.frames.Num0.frames.couches.frames.zoom.TITRE2Y()
+top.frames.Num0.frames.couches.frames.zoom.recupvaldeY()
+top.frames.Num0.frames.couches.frames.zoom.actutitre()
+//razanaX()
+if(titre2!=titre2bis){indicmaxrest=0}
+titre2bis=titre2
+
+gXY()
+
+kpoint=0
+legiconeretrait=0
+if(INIT1==1){
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height","130")
+}else{
+top.frames.Num0.frames.couches.zam4.document.getElementById("choix").style.visibility="visible"
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height","211")
+var t=" "
+lieusvg.getElementById("titricone2").replaceChild(document.createTextNode(t),lieusvg.getElementById("titricone2").firstChild)
+}
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.EL();
+}
+
+
+function affichcoordXEI(){
+
+var X=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1001").width
+MIN11=(max1-min1)*(X)/300+min1
+X+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1002").width
+MIN12=(max1-min1)*(X)/300+min1
+X+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1003").width
+MIN13=(max1-min1)*(X)/300+min1
+X+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1004").width
+MIN14=(max1-min1)*(X)/300+min1
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("axix").src="titrexana.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini1").src="min1.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini11").src="min11.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini12").src="min12.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini13").src="min13.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini14").src="min14.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("maxi1").src="max1.htm"
+
+if(indicdebutX==1){MIN110=MIN11}
+if(indicdebutX==1){MIN120=MIN12}
+if(indicdebutX==1){MIN130=MIN13}
+if(indicdebutX==1){MIN140=MIN14}
+indicdebutX=0
+initdataanalyse=1
+top.frames.Num0.frames.couches.recupinitretrait()
+
+if(indicarte==0){top.frames.Num0.frames.couches.zoom.acroiscerclelegende()}
+
+if(INIT1==0 & POX==0){
+//alert(POX)
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height","130")
+}
+}
+function affichcoordYEI(){
+if(INIT1==0){MIN21=MIN11;MIN22=MIN12;MIN23=MIN13;MIN24=MIN14;MIN210=MIN110;MIN220=MIN120;MIN230=MIN130;MIN240=MIN140;
+}else{
+  var X=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1021").width//+1
+MIN21=(max2-min2)*(X)/300+min2
+X+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1016").width//+1
+MIN22=(max2-min2)*(X)/300+min2
+X+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1011").width//+1
+MIN23=(max2-min2)*(X)/300+min2
+X+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1006").width//+1
+MIN24=(max2-min2)*(X)/300+min2
+}
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("axiy").src="titreyana.htm"
+if(indicdebutY==1){
+MIN210=MIN21
+MIN220=MIN22
+MIN230=MIN23
+MIN240=MIN24
+}
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini2").src="min2.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini21").src="min21.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini22").src="min22.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini23").src="min23.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("mini24").src="min24.htm"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById("maxi2").src="max2.htm"
+indicdebutY=0
+}
+
+
+
+
+
+function affichcoordaxeX(){
+if(INIT1==1){indicGXY=1}
+
+
+if(document.allxxxx){affichcoordXEI()}else{
+var zti=document.createTextNode(titre1)
+var noeudtexte=document.getElementById("axix").firstChild
+document.getElementById("axix").replaceChild(zti,noeudtexte); 
+var mn1
+if(min1>10){mn1=parseInt(min1)}else{mn1=parseInt(min1*100)/100}
+document.getElementById("mini1").replaceChild(document.createTextNode(mn1),document.getElementById("mini1").firstChild)
+//alert("MIN11 avant="+MIN11)
+var Bici1=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1001").width
+//alert("max1="+max1+"   min1="+min1)
+//alert("Bici1 / id:1001="+Bici1)
+var Aici=(max1-min1)*(Bici1)/300+min1
+MIN11=Aici
+//alert("MIN11= Aici="+MIN11)
+if(indicGXY==1){borneclas[1]=Aici}
+if(indicdebutX==1){MIN110=MIN11}
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+document.getElementById("mini11").replaceChild(document.createTextNode(parseInt(100*borneclas[1])/100),document.getElementById("mini11").firstChild)
+Bici1+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1002").width
+Aici=(max1-min1)*(Bici1)/300+min1
+MIN12=Aici
+if(indicGXY==1){borneclas[2]=Aici}
+if(indicdebutX==1){MIN120=MIN12}
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+document.getElementById("mini12").replaceChild(document.createTextNode(parseInt(100*borneclas[2])/100),document.getElementById("mini12").firstChild)
+Bici1+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1003").width
+Aici=(max1-min1)*(Bici1)/300+min1
+MIN13=Aici
+if(indicGXY==1){borneclas[3]=Aici}
+if(indicdebutX==1){MIN130=MIN13}
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+
+document.getElementById("mini13").replaceChild(document.createTextNode(parseInt(100*borneclas[3])/100),document.getElementById("mini13").firstChild)
+Bici1+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1004").width
+Aici=(max1-min1)*(Bici1)/300+min1
+MIN14=Aici
+if(indicGXY==1){borneclas[4]=Aici}
+if(indicdebutX==1){MIN140=MIN14}
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+document.getElementById("mini14").replaceChild(document.createTextNode(parseInt(100*borneclas[4])/100),document.getElementById("mini14").firstChild)
+
+var mx1
+if(max1>10){mx1=parseInt(max1)}else{mx1=parseInt(max1*100)/100}
+document.getElementById("maxi1").replaceChild(document.createTextNode(parseInt(mx1*100)/100),document.getElementById("maxi1").firstChild)
+indicdebutX=0
+initdataanalyse=1
+
+top.frames.Num0.frames.couches.recupinitretrait()
+//alert("analyse lala")
+if(indicarte==0){top.frames.Num0.frames.couches.zoom.acroiscerclelegende()}
+if(indicarte==1){top.frames.Num0.frames.couches.zoom.fondlegende()}
+
+if(INIT1==0 & POX==0){
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height","130")
+}
+}
+}
+
+function affichcoordaxeY(){
+if(document.allxxxx){affichcoordYEI()}else{
+document.getElementById("axiy").replaceChild(document.createTextNode(titre2),document.getElementById("axiy").firstChild)
+var mn2
+if(min2>10){mn2=parseInt(min2)}else{mn2=parseInt(min2*100)/100}
+document.getElementById("mini2").replaceChild(document.createTextNode(mn2),document.getElementById("mini2").firstChild)
+var Bici1=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1021").height
+var Aici=(max2-min2)*(Bici1)/300+min2
+MIN21=Aici
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+if(indicdebutY==1){MIN210=MIN21}
+document.getElementById("mini21").replaceChild(document.createTextNode(Aici),document.getElementById("mini21").firstChild)
+Bici1+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1016").height
+Aici=(max2-min2)*(Bici1)/300+min2
+MIN22=Aici
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+if(indicdebutY==1){MIN220=MIN22}
+document.getElementById("mini22").replaceChild(document.createTextNode(Aici),document.getElementById("mini22").firstChild)
+Bici1+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1011").height
+Aici=(max2-min2)*(Bici1)/300+min2
+MIN23=Aici
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+if(indicdebutY==1){MIN230=MIN23}
+document.getElementById("mini23").replaceChild(document.createTextNode(Aici),document.getElementById("mini23").firstChild)
+Bici1+=top.frames.Num0.frames.couches.frames.zam3.document.getElementById("1006").height
+Aici=(max2-min2)*(Bici1)/300+min2
+MIN24=Aici
+if(Aici>10){Aici=parseInt(Aici)}else{Aici=parseInt(Aici*100)/100}
+if(indicdebutY==1){MIN240=MIN24}
+
+document.getElementById("mini24").replaceChild(document.createTextNode(Aici),document.getElementById("mini24").firstChild)
+var mx2
+if(max2>10){mx2=parseInt(max2)}else{mx2=parseInt(max2*100)/100}
+document.getElementById("maxi2").replaceChild(document.createTextNode(parseInt(mx2*100)/100),document.getElementById("maxi2").firstChild)
+indicdebutY=0
+}
+}
+
+
+
+function valdetitre2(){
+return titre2
+}
+function zam3Yval(){
+return YY
+}
+
+function gpointcase(){
+var gp=new Array()
+gp[1]=i
+gp[0]=5
+gp[2]=0
+
+kpoint+=1
+TABI[i]=kpoint
+groupepoint[kpoint]=gp 
+
+//groupepoint[i]=gp
+//alert("i="+i+"  kpoint="+kpoint)
+}
+function gpointcase2(){
+var gp=new Array()
+gp[1]=i
+gp[0]=5
+gp[2]=0
+if(XX[i]==-99999){}else{
+if(XX[i]<MIN11){
+gh1=1
+if(YY[i]<=MIN21 ){gp[0]=5;gp[1]=i;gp[2]=21}
+if(YY[i]<=MIN22 & YY[i]>MIN21){gp[0]=5;gp[1]=i;gp[2]=16}
+if(YY[i]<=MIN23 & YY[i]>MIN22){gp[0]=5;gp[1]=i;gp[2]=11}
+if(YY[i]<=MIN24 & YY[i]>MIN23){gp[0]=5;gp[1]=i;gp[2]=6}
+if( YY[i]>MIN24){gp[0]=5;gp[1]=i;gp[2]=1}
+}
+if(XX[i]<MIN12 & XX[i]>=MIN11){
+gh2=1
+if(YY[i]<=MIN21 ){gp[0]=5;gp[1]=i;gp[2]=22}
+if(YY[i]<=MIN22 & YY[i]>MIN21){gp[0]=5;gp[1]=i;gp[2]=17}
+if(YY[i]<=MIN23 & YY[i]>MIN22){gp[0]=5;gp[1]=i;gp[2]=12}
+if(YY[i]<=MIN24 & YY[i]>MIN23){gp[0]=5;gp[1]=i;gp[2]=7}
+if( YY[i]>MIN24){gp[0]=5;gp[1]=i;gp[2]=2}
+}
+if(XX[i]<MIN13 & XX[i]>=MIN12){
+gh3=1
+if(YY[i]<=MIN21 ){gp[0]=5;gp[1]=i;gp[2]=23}
+if(YY[i]<=MIN22 & YY[i]>MIN21){gp[0]=5;gp[1]=i;gp[2]=18}
+if(YY[i]<=MIN23 & YY[i]>MIN22){gp[0]=5;gp[1]=i;gp[2]=13}
+if(YY[i]<=MIN24 & YY[i]>MIN23){gp[0]=5;gp[1]=i;gp[2]=8}
+if( YY[i]>MIN24){gp[0]=5;gp[1]=i;gp[2]=3}
+}
+if(XX[i]<MIN14 & XX[i]>=MIN13){
+gh4=1
+if(YY[i]<=MIN21 ){gp[0]=5;gp[1]=i;gp[2]=24}
+if(YY[i]<=MIN22 & YY[i]>MIN21){gp[0]=5;gp[1]=i;gp[2]=19}
+if(YY[i]<=MIN23 & YY[i]>MIN22){gp[0]=5;gp[1]=i;gp[2]=14}
+if(YY[i]<=MIN24 & YY[i]>MIN23){gp[0]=5;gp[1]=i;gp[2]=9}
+if( YY[i]>MIN24){gp[0]=5;gp[1]=i;gp[2]=4}
+}
+if( XX[i]>=MIN14){
+gh5=1
+if(YY[i]<=MIN21 ){gp[0]=5;gp[1]=i;gp[2]=25}
+if(YY[i]<=MIN22 & YY[i]>MIN21){gp[0]=5;gp[1]=i;gp[2]=20}
+if(YY[i]<=MIN23 & YY[i]>MIN22){gp[0]=5;gp[1]=i;gp[2]=15}
+if(YY[i]<=MIN24 & YY[i]>MIN23){gp[0]=5;gp[1]=i;gp[2]=10}
+if( YY[i]>MIN24){gp[0]=5;gp[1]=i;gp[2]=5}
+}
+}
+kpoint+=1
+groupepoint[i]=gp
+
+}
+//---------------------------------------------------------------------------------------------------------------------------------------gXY()----------------------------------------------
+//____________________________________________________________________________________________________________
+var cattemp=2
+var cat=2
+var kp2=0
+var TIT
+var razan=0
+var indicGXY
+function gXY(){
+
+razan=0
+indicGXY=0
+if(INIT1==0){
+affichcoordaxeX()
+affichcoordaxeY()
+}
+
+if(INIT1==0){
+top.frames.Num0.document.getElementById("validite").height=20
+}else{
+top.frames.Num0.document.getElementById("validite").height=0
+}
+Xclic=0
+defautY=1
+top.frames.Num0.frames.couches.zoom.indictitleX2()
+//tbase(cl2)//0
+
+top.frames.Num0.frames.couches.zam4.document.menu.choix.selectedIndex=0
+top.frames.Num0.frames.couches.zam4.document.menu2.choix2.selectedIndex=0
+indicarte=0
+indANA=1
+
+//alert(aX)
+var tit=titreaires //top.frames.Num0.frames.couches.frames.zoom.transTITREaires("return TITREaires")
+for(i=1;i<longx1;i++){
+
+if(XX[i]!=(-99999)){aX[i]=XX[i]*dimX/axex}else{aX[i]=min1*dimX/axex-100}
+gpointcase()
+///top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("fill","#DEEED3")//"aqua"
+initana=0
+topdepart=1
+document.getElementById(i).style.left=aX[i]+30-min1*dimX/axex
+if(INIT1==0){aY[i]=aX[i]}
+document.getElementById(i).style.top=350-aY[i]+min2*dimY/axey
+if(INIT1==0){
+if(indicpoint==0){document.images[i+25].src="h_7.gif"}
+
+
+
+}
+TIT=tit[i]//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).getAttribute("title")
+if(INIT1==0){document.getElementById(i).title=TIT+" : X="+XX[i]}else{document.getElementById(i).title=TIT+" : X="+XX[i]+"  ;  Y="+YY[i]}
+}
+
+init3()
+if(document.allxxxx){
+for(i=1;i<26;i++){top.frames.Num0.frames.couches.zam3.document.getElementById(30000+i).style.setAttribute("cssText","background-color:#DEEED3")}
+}else{
+for(i=1;i<26;i++){top.frames.Num0.frames.couches.zam3.document.getElementById(30000+i).setAttribute("bgcolor","#DEEED3")}
+}
+
+top.frames.Num0.frames.couches.zoom.INIT1trans()
+indicsequence=1
+
+if(INIT1==1){
+//poxendiag()
+initgrillePOX()
+for(i=1;i<26;i++){memtab[i]=5}
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",130)
+}
+
+if(INIT1==0){
+
+
+xfond=0
+if(fenetreouv=="cartO2"){xfond=top.frames.Num0.transfond("return fond")}
+if(fenetreouv=="cartO2" & xfond==1 ){//
+  cattemp=cat
+  cat=top.frames.Num0.transcatx("return catx");
+  var degr=top.frames.Num0.transxtbase("return xtbase")
+  mentabdefaut();
+  tbase(degr);
+paramHISTOX1ici=top.frames.Num0.frames.datacarte.transpara("return paramHISTOX1")
+if(paramHISTOX1ici[3][5] && cat==2){//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CAS  d'introduction d'un seuil fixe sur la barrete de règlage au lieu de la médiane
+//alert("ici="+paramHISTOX1ici[3][5])
+if(paramHISTOX1ici[3][5]!=-99999){
+memtab[1]=3;memtab[2]=3;memtab[3]=4;memtab[4]=3;memtab[5]=4
+memtab[6]=3;memtab[7]=3;memtab[8]=4;memtab[9]=3;memtab[10]=4
+memtab[11]=3;memtab[12]=3;memtab[13]=4;memtab[14]=3;memtab[15]=4
+memtab[16]=3;memtab[17]=3;memtab[18]=4;memtab[19]=3;memtab[20]=4
+memtab[21]=3;memtab[22]=3;memtab[23]=4;memtab[24]=3;memtab[25]=4
+}}
+  }else{
+
+cat=2//cattemp//2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! OPTION pour avoir la médiane par défaut 
+cattemp=2//cat//2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! OPTION pour avoir la médiane par défaut 
+paramHISTOX1ici=top.frames.Num0.frames.datacarte.transpara("return paramHISTOX1")
+if((cat==2 & fenetreouv=="cartO2") || paramHISTOX1ici[3][5])  { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CAS  d'introduction d'un seuil fixe sur la barrete de règlage au lieu de la médiane
+//if(indicoulinit==0 ){
+//alert("avant là="+paramHISTOX1ici[3][5])
+tbase(0)   
+memtab[1]=2;memtab[2]=2;memtab[3]=2;memtab[4]=2;memtab[5]=1
+memtab[6]=2;memtab[7]=2;memtab[8]=2;memtab[9]=2;memtab[10]=1
+memtab[11]=2;memtab[12]=2;memtab[13]=2;memtab[14]=2;memtab[15]=1
+memtab[16]=2;memtab[17]=2;memtab[18]=2;memtab[19]=2;memtab[20]=1
+memtab[21]=2;memtab[22]=2;memtab[23]=2;memtab[24]=2;memtab[25]=1
+//}else{
+//tbase(0)
+
+if(paramHISTOX1ici[3][5] && cat==2){//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CAS  d'introduction d'un seuil fixe sur la barrete de règlage au lieu de la médiane
+if(paramHISTOX1ici[3][5]!=-99999 ){
+//alert("là="+paramHISTOX1ici[3][5])
+memtab[1]=3;memtab[2]=3;memtab[3]=4;memtab[4]=3;memtab[5]=4
+memtab[6]=3;memtab[7]=3;memtab[8]=4;memtab[9]=3;memtab[10]=4
+memtab[11]=3;memtab[12]=3;memtab[13]=4;memtab[14]=3;memtab[15]=4
+memtab[16]=3;memtab[17]=3;memtab[18]=4;memtab[19]=3;memtab[20]=4
+memtab[21]=3;memtab[22]=3;memtab[23]=4;memtab[24]=3;memtab[25]=4
+}
+}
+
+//}
+}else{
+mentabdefaut();
+tbase(cl2);}//tbase(cl2)
+
+}
+
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",211)
+
+//alert("cat="+cat+"   cl2="+cl2)
+
+Xpercent();
+poxenligne();//cat=cattemp;
+//cat=cattemp//;INHIBE le 11 janvier 2011 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+document.getElementById("choix").style.visibility="visible"
+if (kp==2){poxendiag();}else{alignpox()}
+if(kp2==1){poxendiag();kp2=0}else{alignpox()}
+}
+
+top.frames.Num0.frames.couches.zaguide.appliquefondcarte() //déclenche l'application du fonds de carte dans le guide selon un cycle déterminé dans guide
+top.frames.Num0.frames.couches.zaguide.iconX()//déclenche l'application de icone encadré dans le guide selon un cycle déterminé dans guide
+
+if(fenetreouv=="cartO2"){top.frames.Num0.iconX();top.frames.Num0.appliquefondcarte()
+
+if(xfond==0){
+
+
+}
+}
+if(INIT1==1){
+document.getElementById("choix").style.visibility="hidden"
+top.frames.Num0.frames.couches.hidelegend3()
+poxendiag()
+kp2=1
+razanaX();
+affichcoordaxeX()
+affichcoordaxeY()
+}
+gereenreg() // gestion del'affichage des boutons du générateur de méta balise
+
+if(fenetreouv=="cartO2"){
+//
+if(xfond==0){
+var typtai=top.frames.Num0.typetaille("return transtailleico")
+//alert("typtai="+typtai)
+var kataille
+typeicones=typtai[0]
+//tailleico=typtai[1]
+//if (tailleico>-1){kataille=1}else{kataille=2;tailleico=tailleico*(-1)}
+
+
+top.frames.Num0.frames.couches.zoom.choixICONE(typeicones);
+top.frames.Num0.frames.couches.frames.zam3.IMCX1()
+
+
+//top.frames.Num0.frames.couches.zoom.changeXH()
+//top.frames.Num0.frames.tab.plusmoinsadistance(kataille)
+//for(i=0;i<tailleico;i++){top.frames.Num0.frames.tab.plusmoinsadistance(kataille)}
+//re initialisation
+ktaille=0
+typeicones=1
+tailleico=0
+top.frames.Num0.typetaille0()
+}else{
+top.frames.Num0.frames.couches.zoom.effaceflechetrietc()
+//top.frames.Num0.frames.couches.zoom.choixICONE(1)
+//;top.frames.Num0.frames.couches.frames.zam3.IMCX1()
+}
+}else{
+if(INIT1==0){
+
+chooseicoC()
+}
+}
+if (indicarte==1){
+//grilleapplycarte()
+}else{
+//grilleapply()
+}
+top.focus()
+if(indichyper2==1){
+top.frames.Num0.tab2.execbivarie()
+
+}
+//----------------------------GESTION DE l'aFFICHAGE LEGENDE
+
+if(INIT1==0){// Mono Varié
+legiconeretrait=0;
+//alert(ouicartetemp)
+if(ouicartetemp==0){//S'il n'y a pas de fonds de carte en cours d'affichage
+legfondretrait=-400;
+
+}else{// s'il ya un fonds de carte en cours d'affichage
+
+legfondretrait=0
+ouicartetemp=0
+}
+}else{//Bi-varié
+legiconeretrait=-400
+legfondretrait=-400;
+}
+
+top.frames.Num0.frames.couches.reposeleg()
+//-------------------------------
+//alert("fin? INIT1="+INIT1+"    indicarte="+indicarte+"    ouicartetemp="+ouicartetemp)
+initchoixiciXX=1
+}
+function legiconeretrait0(){legiconeretrait=0}
+
+function typetaille(b,c){
+ktaille=1
+typeicones=b
+tailleico=c
+}
+
+
+var ouicarte=0
+var ouiicone=0
+function ouiicone0(){ouiicone=0}
+function ouiicone1(){ouiicone=1}
+function ouicarte0(){ouicarte=0}
+function ouicarte1(){ouicarte=1}
+
+var listboutons=new Array("cartu","iconu","fondu","fico","encadru")
+var listboutons2=new Array("cartu","iconu","fondu","f-ico","encadru")
+var valisteboutons=new Array()
+function gereenreg(){
+if(fenetreouv=="cartO2"){
+
+if(topX>=0){
+top.document.getElementById("cartu").style.visibility="visible"
+top.document.getElementById("encadru").style.visibility="visible"}else{
+top.frames.commande1.document.getElementById("cartu").style.visibility="visible"
+top.frames.commande1.document.getElementById("encadru").style.visibility="visible"
+}
+if(ouiicone==1 & ouicarte==0){valisteboutons=new Array(1,1,0,0,1)}
+if(ouiicone==0 & ouicarte==1){valisteboutons=new Array(1,0,1,0,1)}
+if(ouiicone==1 & ouicarte==1){valisteboutons=new Array(1,1,1,1,1)}
+if(ouiicone==0 & ouicarte==0){valisteboutons=new Array(1,0,0,0,1)}
+affectboutons()
+}
+}
+var vue
+function affectboutons(){
+
+for(i=0;i<listboutons.length;i++){
+if(valisteboutons[i]==0){vue="hidden"}else{vue="visible"}
+
+if(topX>=0){
+var editeur=top.retourneediteur("return editeurOuiNon")
+top.document.getElementById(listboutons[i]).style.visibility=vue
+
+if(editeur==1){
+
+top.frames.Num0txt.document.getElementById(listboutons2[i]).style.visibility=vue
+}
+}else{
+top.frames.commande1.document.getElementById(listboutons[i]).style.visibility=vue
+if(microsite>0){
+var edt=top.frames.editla.location.href
+edt=edt.indexOf("ecrit_hypertext.html",0)
+if(edt>=0){
+top.frames.editla.document.getElementById(listboutons2[i]).style.visibility=vue
+}}
+}
+}
+}
+function retvertrouge(){return indicoulinit}
+function indicouinit0(){
+indicoulinit=0
+}
+
+function selecCol1(){
+var z1=indicCOLOR0+4000
+document.getElementById(z1).style.visibility="hidden"
+}
+
+function selecCol2(){
+var z2=indicCOLOR+4000
+document.getElementById(z2).style.visibility="visible"
+indicCOLOR0=indicCOLOR
+}
+
+
+function dimicorestant(){
+return RECUPDIMICO1
+}
+
+function envoiII(){
+return IX
+}
+
+
+//---------------------------------------------------------------------------------------
+
+function affectpointcase(){
+initana=1
+topdepart=0
+for (var i=1;i<26;i++){
+coulid=i+1000;
+indicCOLOR=5;
+couleur();
+if(indicarte==1){grilleapplycarte()}
+}
+initana=0
+topdepart=1
+}
+
+function affectpointcasedefaut(){
+indANA=0
+topdepart=1
+for (var i=1;i<26;i++){
+coulid=i+1000;
+indicCOLOR=memtab[i];
+couleur()
+}
+if(INIT1==1){
+if(defautY==0){
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",130)
+}
+if(defautY==1){
+top.frames.Num0.frames.couches.zoom.acroiscerclelegende()
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",211)
+}
+
+}else{
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",211)
+
+}
+Xclic=0
+}
+
+
+function recupboulecourante(){
+boulecourante=top.frames.Num0.frames.couches.zoom.transboulecourante("return imgico")
+}
+
+
+
+
+function couleurnegatif(){
+}
+
+
+function attribcouleur(colbase,indicCOLOR){
+
+
+COUL=couleurbase[colbase]
+if(indicCOLOR==5){COUL="#DEEED3"}else{
+var coulX=indicCOLOR-1
+if(indicCOLOR==0){coulX=4}
+
+COUL=COUL[coulX]
+
+}
+return COUL
+}
+
+function transindicolor(){
+return indicCOLOR
+}
+
+function memtemp(){
+for(i=1;i<26;i++){memtabtemp1[i]=memtab[i]}
+}
+function memtempCARTE(){ //stock les valeurs de memtab de la dernière carte en cours : activé par grilleapplycarte() et 
+for(i=1;i<26;i++){memtabtempCARTE[i]=memtab[i]}
+}
+//---------------------------------------COULEUR gestion des légendes en fonction des clicks sur la grille du module d'anayse--------------------------------------------------------
+var egaltest 
+var defautX=0
+
+function legclickgrille(){
+if(INIT1==1 & Xclic==1 & indicCOLOR!=memtab[coulid-1000]){
+egaltest=0
+memtab[coulid-1000]=indicCOLOR
+
+for(i=1;i<26;i++){if(memtab[i]!=memtabH[i]){egaltest=1;i=26; }}
+if (egaltest==0){defautY=1}else{
+defautY=0}
+}
+if(INIT1==0 & Xclic==1 & indicCOLOR!=memtab[coulid-1000]){
+egaltest=0
+memtab[coulid-1000]=indicCOLOR
+
+for(i=1;i<26;i++){if(memtab[i]!=memtabW[i]){egaltest=1;i=26; }}
+if (egaltest==0){defautX=1}else{
+defautX=0}
+}
+//alert("INIT1="+INIT1+"    defautX="+defautX+"   defautY="+defautY)
+if((INIT1==0 & Xclic==1) ){
+
+if(defautX==0){
+if(iidcarte==1){var hloc=211;var xmat=0}else{var hloc=130;var xmat=-400}
+var mat="matrix(1 0 0 1 0 "+xmat+")"
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",hloc)
+}
+if(defautX==1){
+top.frames.Num0.frames.couches.zoom.acroiscerclelegende()
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",211)
+
+}
+Xclic=0
+}
+
+
+if(INIT1==1 & Xclic==1){
+if(defautY==0){
+var mat="matrix(1 0 0 1 0 -400)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",130)
+}
+if(defautY==1){
+top.frames.Num0.frames.couches.zoom.acroiscerclelegende()
+var mat="matrix(1 0 0 1 0 0)"
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectprint").setAttribute("height",211)
+
+}
+Xclic=0
+}
+dgs=1
+
+
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------------------COULEUR-----------------------------------------------------
+
+function destockmemtemp(){
+for(i=1;i<26;i++){memtabtemp[i]=memtabtemp1[i];};
+//alert(memtabtemp)
+}
+
+function destockmemtempCARTE(){
+for(i=1;i<26;i++){memtabtemp[i]=memtabtempCARTE[i];};
+}
+var groupepointtemp=new Array()
+
+function stockgroupepoint(){groupepointtemp=groupepoint}
+function destockgroupepoint(){groupepoint=groupepointtemp}
+function validitcoulid(Xcoulid){coulid=Xcoulid;indicCOLOR=memtabtemp[coulid-1000];Xclic=1;if(indicCOLOR!=5){couleur()}}
+
+
+
+function couleur(){
+
+legclickgrille() //gestion des légendes en fonction des clicks sur la grille du module d'anayse
+
+
+if (Kreafect==0){
+
+supero=1
+var carregrille
+coordencoursici=top.frames.Num0.frames.couches.frames.zoom.transcoordencours("return coordencours")
+attribcouleur(colbase,indicCOLOR)
+
+
+var tabcol=30000+coulid-1000
+
+if(document.allxxxx){
+document.getElementById(tabcol).style.setAttribute("cssText","background-color:"+COUL)
+}else{
+document.getElementById(tabcol).setAttribute("BGCOLOR",COUL)
+}
+
+coulid=coulid-1000
+var modulo=parseInt((coulid-0.1)/5)
+var maxxcase=(coulid-modulo*5)
+MAXxcase=maxxcase
+if( maxxcase==0){maxxcase=5}
+maxycase=5-modulo
+MAXycase=maxycase
+var minxcase=maxxcase-1
+var MINxcase=minxcase
+var MXC=min1
+var MIXC=min1
+for(i=1;i<maxxcase+1;i++){
+var idX=1000+i
+MXC+=(parseFloat(Wl[i]))*(axex)/dimX
+if(i==maxxcase-1){MIXC=MXC-1*(axex)/dimX}
+}
+//ATTENTION changement de nature de la variable maxxcase etc.. qui passe de rang des bornes à valeur des borne
+
+if(Math.abs(max1-min1)>10){
+maxxcase=parseInt(10*MXC)/10
+minxcase=parseInt(10*MIXC)/10
+}else{
+maxxcase=MXC
+minxcase=MIXC
+}
+
+
+if(INIT1==0){axey=AXEY0; }
+var minycase=maxycase-1
+var MINycase=minycase
+var MYC=min2
+var MIYC=min2
+for(i=1;i<maxycase+1;i++){
+var idX=1026-i*5
+
+MYC+=(parseFloat(Hl[26-5*i]))*(axey)/dimY
+if(i==maxycase-1){MIYC=MYC-1*(axey)/dimX}
+}
+if(Math.abs(max2-min2)>10){
+maxycase=parseInt(10*MYC)/10
+minycase=parseInt(10*MIYC)/10
+}else{
+maxycase=MYC
+minycase=MIYC
+}
+//alert(minycase+" ; "+maxycase)
+
+if(perct==1){ //lorsque cette fonction est activée par Xpencent() àl'initialisation du module analyse
+minxcase=borneclas[MINxcase]
+maxxcase=borneclas[MAXxcase]
+minycase=borneclas[MINycase]
+maxycase=borneclas[MAXycase]
+if(coulid==1  ||  coulid==6   ||  coulid==11  ||  coulid==16  ||  coulid==21){minxcase=min1}
+if(coulid==5  ||  coulid==10  ||  coulid==15  ||  coulid==20  ||  coulid==25){maxxcase=max1}
+if(coulid==1  ||  coulid==2   ||  coulid==3  ||  coulid==4  ||  coulid==5){maxycase=max2}
+if(coulid==21  ||  coulid==22  ||  coulid==23  ||  coulid==24  ||  coulid==25){minycase=min2}
+}
+
+var limitXY=0
+mem()
+
+//-------------------------------------------------------------
+//alert("longx1="+longx1)
+for(i=1;i<longx1;i++){
+
+if((XX[i]>=minxcase & XX[i]<maxxcase )  & (YY[i]>=minycase & YY[i]<maxycase )
+|| (coulid==5 & XX[i]>=minxcase-0*axex/300 & YY[i]>=minycase-0*axey/300 )
+|| INIT1*(XX[i]>=minxcase & (coulid==5 || coulid==10 || coulid==15 || coulid==20 || coulid==25) & (YY[i]>=(minycase) & YY[i]<=maxycase ))
+|| INIT1*(YY[i]>=minycase & (coulid==1 || coulid==2 || coulid==3 || coulid==4 || coulid==5) & (XX[i]>=(minxcase) & XX[i]<=maxxcase ))
+)
+
+{
+souscouleur1()
+}else{
+souscouleur2()}
+}// fin de la boucle sur i
+
+top.frames.Num0.frames.tab.document.getElementById('MOI').style.visibility='visible';
+top.frames.Num0.frames.tab.document.getElementById('PLU').style.visibility='visible'
+initana=1
+
+}//fin de if Kreafect==0
+Kreafect=0
+
+indicCOLOR=indicCOLOR0
+top.frames.Num0.frames.couches.zoom.indictitleX()
+
+}//fin de couleur()
+
+
+function souscouleur1(){
+
+mem()
+//recherche dans groupepoint si le pays est déjà dns la liste des aires appartenant à une case sélectionnée
+var deja=0
+comptw+=1
+var ztrans=new Array()
+ztrans=groupepoint[TABI[i]]
+if(ztrans[1]==i){
+ztrans[0]=indicCOLOR
+ztrans[2]=coulid
+
+//var rayx
+//if(indicCOLOR==5){rayx=0}else{rayx=Math.abs(recupdimico[i])}
+//alert(" XX="+XX[i]+"  YY="+YY[i]+"  indicCOLOR="+indicCOLOR+"  recupdimico="+recupdimico[i])
+//if(xfond==0){
+//if(i==1){alert("ici")}
+//if(XX[i]!=-99999 & YY[i]!=-99999){top.frames.Num0.frames.couches.zoom.icones2(i,i,rayx)}
+//}
+groupepoint[TABI[i]]=ztrans
+deja=1
+}
+
+
+if(deja==0){// ajout d'une aire dans groupepoint si pas déja
+
+kpoint+=1;
+var z3=new Array
+z3[0]=indicCOLOR
+z3[1]=i 
+z3[2]=coulid
+if(indicCOLOR==5){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+}
+}
+
+
+IX=i
+//top.frames.Num0.frames.couches.frames.zoom.recupII()
+//top.frames.Num0.frames.couches.frames.zoom.reposit2()
+if(indicCOLOR==5){
+COUL="#DEEED3"//"aqua"
+
+}
+//attribue la couleur de la case aux points compris dans la case
+if(indicarte==1){
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).style.setProperty("fill",COUL,'')
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).setAttribute("fill",COUL)
+}
+}else{
+if(INIT1==1 || (razan==1 )){// cas bi varié ou après raz ATTENTION trouver une autre solution carralenti beaucoup l'interractivité après avoir activé la fonction RAZ
+
+top.frames.Num0.frames.couches.zoom.icones(i,i,0)
+}
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).style.setProperty("fill",COUL,'')
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).style.setProperty("fill",COUL,'')
+}else{
+//cas des cercles
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("fill",COUL)
+// cas des autres icones
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).setAttribute("fill",COUL)
+}
+}
+//_________________________________________________________________________
+//GESTION DES NEGATIFS
+
+
+//if(XX[i]<0){
+//couleurnegatif()
+//IX=i
+//top.frames.Num0.frames.couches.frames.zoom.recupII()
+//top.frames.Num0.frames.couches.frames.zoom.reposit2()
+//}
+
+//___________________________________________________________________________
+var m=new Array()
+var treza=new Array(0,0,0) //variable pour entregistre les coordonnées x,Y et treza[2]=0->icone affiché et treza[2]=1-> icone invisible
+m=coordencoursici[i]
+//if (i<5){alert(coordencoursici)}
+treza[0]=m[0]
+treza[1]=m[1]
+if(indicCOLOR==5){ // plcae les invisibles dans le coin haut gauche de la carte sauf à l'initialisation
+treza[2]=1 // invisible
+
+if(topdepart==0){treza[2]=0;}
+if(topdepart==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+}
+coordencoursici[i]=treza// enregistre les coordonnées originales et l'indicateur de visibilité
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+
+}else{ 
+treza[2]=0 // visible
+coordencoursici[i]=treza
+if(indicCOLOR==5){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+}
+}
+if(deja==0){groupepoint[kpoint]=z3;}
+}//fin de souscouleur1()
+
+function souscouleur2(){
+//alert(initana)
+if(initana==0){// lors du premier click sur la carte, tous ceux qui ne sont pas dans la case selectionnée sont placés dans le coin gauche, avec leur coordonnées originales conservées dans coordencoursici
+
+var m=new Array()
+var treza=new Array(0,0,0)
+m=coordencoursici[i]
+treza[0]=0
+treza[1]=0
+treza[2]=1
+coordencoursici[i]=treza
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+}
+}
+
+
+
+function repositiontout(){
+
+for(var k=1;k<kpoint;k=k+1){
+var kz=new Array(0,0,0)
+indexicouleur=i
+kz=groupepoint[k];
+if(kz[2]==coulid & kz[1]==i & kz[0]==5){top.frames.Num0.frames.couches.frames.zoom.reposit()}
+}
+indicpoint=0
+}
+
+function RAZcouleurpoint(){
+
+var indCP=new Array()
+indCP[0]=0 // n° Area
+indCP[1]=0 //couleur du point correspondant à l'area
+for(i=1;i<longx1;i++){
+tablecouleurpoint[i]=indCP
+document.images[i+25].src="h_7.gif";
+document.images[i+25].width=5;
+document.images[i+25].height=5;
+}
+document.getElementById("pointrond").title="selection/couleurs/points:"
+indicpoint=1
+}
+var idimagegrilletemp=1
+var imagepointtemp="h_7.gif"
+var heightimagegrilletemp=5
+var widthimagegrilletemp=5
+var idimageencours
+function effacecouleurpointselect(){
+if(document.images[idimageencours+25]){
+document.images[idimageencours+25].height=heightimagegrilletemp;
+document.images[idimageencours+25].width=widthimagegrilletemp;
+document.images[idimageencours+25].src=imagepointtemp
+}
+}
+
+
+
+function couleurpointselect(n){
+
+idimagegrilletemp=top.frames.Num0.frames.couches.zoom.transnumeroTemp("return numeroTemp")
+document.images[idimagegrilletemp+25].src=imagepointtemp
+document.images[idimagegrilletemp+25].height=heightimagegrilletemp;
+document.images[idimagegrilletemp+25].width=widthimagegrilletemp;
+imagepointtemp=document.images[n+25].src
+heightimagegrilletemp=document.images[n+25].height
+widthimagegrilletemp=document.images[n+25].width
+document.images[n+25].src="selec.gif"
+document.images[n+25].height=15;
+document.images[n+25].width=15;
+idimageencours=n
+if(n==0){document.images[n+25].height=heightimagegrilletemp;document.images[n+25].width=widthimagegrilletemp;document.images[idimagegrilletemp+25].src=imagepointtemp}
+
+
+idimagrilletemp=n
+}
+var initpoint1=0
+function couleurpoint(){
+RAZcouleurpoint()
+var indCP=new Array()
+for(i=1;i<groupepoint.length;i++){
+
+indCP=groupepoint[i]
+tablecouleurpoint[indCP[1]]=indCP[0]
+if (indCP[0]==1){document.images[indCP[1]+25].src="pointrouge.png"}
+if (indCP[0]==2){document.images[indCP[1]+25].src="pointjaune.png"}
+if (indCP[0]==3){document.images[indCP[1]+25].src="pointvert.png"}
+if (indCP[0]==4){document.images[indCP[1]+25].src="pointbleu.png"}
+if (indCP[0]==0){document.images[indCP[1]+25].src="pointviolet.png"}
+
+if(indCP[0]==0 || indCP[0]==1 || indCP[0]==2 || indCP[0]==3 || indCP[0]==4){
+document.images[indCP[1]+25].width=8;
+document.images[indCP[1]+25].height=8;
+}
+}
+document.getElementById("pointrond").title+="X="+titre1+";Y="+titre2
+initpoint1=1
+}
+
+
+
+
+function transindexicouleur(){
+//alert(indexicouleur)
+return indexicouleur
+}
+
+function transcoordici(){
+return coordencoursici
+}
+
+
+function supprimxzero(){
+
+supzero=1
+for(i=1;i<longx1+1;i=i+1){
+if(YY[i]!=0 || (XX[i]==0 & YY[i]==0)){
+if(XX[i]==0){
+//top.frames.Num0.frames.couches.frames.zoom.document.getElementById(3000+i).style.left=0
+//top.frames.Num0.frames.couches.frames.zoom.document.getElementById(3000+i).style.top=0
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+//top.frames.Num0.frames.couches.frames.zam3.top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src="carretransparent.gif"
+}}
+}
+}
+
+function supprimyzero(){
+supzero=1
+for(i=1;i<longx1+1;i=i+1){
+if(XX[i]!=0 || (XX[i]==0 & YY[i]==0)){
+if(YY[i]==0){
+//top.frames.Num0.frames.couches.frames.zoom.document.getElementById(3000+i).style.left=0
+//top.frames.Num0.frames.couches.frames.zoom.document.getElementById(3000+i).style.top=0
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+//top.frames.Num0.frames.couches.frames.zam3.top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src="carretransparent.gif"
+}}
+}
+}
+
+function raziconecarte(){
+var imgicodeux=top.frames.Num0.frames.tab.imicox("return imico")
+//alert(imgicodeux)
+for(var i=1;i<longx1;i++){
+
+//top.frames.Num0.frames.couches.frames.zam3.top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src=imgicodeux[0]
+}
+//top.frames.Num0.frames.tab.ajust()
+}
+
+
+function razanaX(){
+
+indicarte2=1
+initana=0
+//document.getElementById(8101).style.visibility="hidden"
+//document.getElementById(8102).style.visibility="visible"
+//document.getElementById(8103).style.visibility="hidden"
+//document.getElementById(8001).style.visibility="hidden"
+//document.getElementById(8002).style.visibility="visible"
+//document.getElementById(8003).style.visibility="hidden"
+XZERO=0
+//document.getElementById(9101).style.visibility="hidden"
+//document.getElementById(9102).style.visibility="visible"
+//document.getElementById(9103).style.visibility="hidden"
+//document.getElementById(9001).style.visibility="hidden"
+//document.getElementById(9002).style.visibility="visible"
+//document.getElementById(9003).style.visibility="hidden"
+YZERO=0
+
+kpoint=0
+groupepoint=new Array()
+groupepoint[0]=new Array(0,0,0)
+//alert(groupepoint.length)
+razmemtab()
+
+indicCOLOR=0;selecCol1();selecCol2();
+carregrille="carretransparent.gif";
+if(cico==4){boulecarte="TRX0.gif"}
+if(cico==2){boulecarte="cir_0.gif"}
+if(cico==1){boulecarte="hx_0.gif"}
+for(i=1;i<26;i++){
+coulid=1000+i
+//document.getElementById(30000+i).setAttribute("BGCOLOR","#DEEED3")
+//document.getElementById(coulid).src=carregrille
+if(document.allxxxx){
+top.frames.Num0.frames.couches.zam3.document.getElementById(30000+i).style.setAttribute("cssText","background-color:#DEEED3")
+}else{
+top.frames.Num0.frames.couches.zam3.document.getElementById(30000+i).setAttribute("bgcolor","#DEEED3")
+}
+}
+for(i=1;i<longx1;i++){
+IX=i
+gpointcase()
+//top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src=boulecarte
+
+//GESTION DES NEGATIFS
+boulecourante=boulecarte
+
+//if(XX[i]<0){couleurnegatif()
+//top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src=boulecarteneg
+//}
+//if(XX[i]==-99999 || YY[i]==-99999 ){couleurnegatif()
+//top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src="carretransparent.gif"
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+//}
+//boulecarte=boulecourante
+//top.frames.Num0.frames.couches.frames.zoom.recupII()
+//top.frames.Num0.frames.couches.frames.zoom.reposit2()
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+
+}
+//top.frames.Num0.frames.tab.ajust()
+//suprimnonappar()
+
+//if(indANA==1){propX()}
+
+poxenligne()
+if(indicarte==1){razgrilleappaycarte()}else{ouiicone0();gereenreg()}
+}
+
+function razanaX2(){
+
+initana=0
+kpoint=0
+groupepoint=new Array()
+
+indicCOLOR=0;selecCol1();selecCol2();
+carregrille="carretransparent.gif";
+if(cico==4){boulecarte="TRX0.gif"}
+if(cico==2){boulecarte="cir_0.gif"}
+if(cico==1){boulecarte="hx_0.gif"}
+for(i=1;i<26;i++){
+coulid=1000+i
+
+document.getElementById(coulid).src=carregrille
+
+}
+for(i=1;i<longx1;i++){
+//top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src=boulecarte
+}
+//top.frames.Num0.frames.tab.ajust()
+//suprimnonappar()
+
+}
+
+function razmemtab(){
+
+for(i=1;i<26;i++){
+memtab[i]=5
+var j=1000+i
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(j).src="carretransparent.gif"
+}
+//top.frames.Num0.frames.couches.frames.zoom.imgicox()
+}
+
+function mem(){
+var ty=coulid
+
+memtab[ty]=indicCOLOR
+
+}
+
+function Oanalyse(){
+
+return indANA
+}
+
+function propX(){
+indANA=0
+//alert("icodim2")
+top.frames.Num0.frames.couches.frames.zoom.Aanalyse()
+top.frames.Num0.frames.couches.frames.zoom.icodimxx()
+
+}
+
+function propX2(){
+
+indANA=0
+top.frames.Num0.frames.couches.frames.zoom.Aanalyse()
+top.frames.Num0.frames.couches.frames.zoom.icodim2()
+
+}
+
+
+function retourzero(){
+if(XZERO==2){
+if(cico==4){boulecarte="TRX0.gif"}
+if(cico==2){boulecarte="cir_0.gif"}
+if(cico==1){boulecarte="hx_0.gif"}
+for(i=1;i<longx1;i=i+1){
+//top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src=boulecarte
+}
+if(indANA==0){propX()}
+if(indANA==1){Nonprop()}
+}
+}
+function retourzeroy(){
+if(YZERO==2){
+if(cico==4){boulecarte="TRX0.gif"}
+if(cico==2){boulecarte="cir_0.gif"}
+if(cico==1){boulecarte="hx_0.gif"}
+for(i=1;i<longx1;i=i+1){
+//top.frames.Num0.frames.couches.frames.zoom.document.images[i+Kimage].src=boulecarte
+}
+if(indANA==0){propX()}
+if(indANA==1){Nonprop()}
+}
+}
+
+
+function Nonprop(){
+
+if(XZERO==0){
+//document.getElementById(8001).style.visibility="hidden"
+//document.getElementById(8002).style.visibility="visible"
+//document.getElementById(8003).style.visibility="hidden"
+}
+if(XZERO==1){
+//document.getElementById(8001).style.visibility="visible"
+//document.getElementById(8002).style.visibility="hidden"
+//document.getElementById(8003).style.visibility="hidden"
+}
+if(YZERO==0){
+//document.getElementById(9001).style.visibility="hidden"
+//document.getElementById(9002).style.visibility="visible"
+//document.getElementById(9003).style.visibility="hidden"
+}
+if(YZERO==1){
+//document.getElementById(9001).style.visibility="visible"
+//document.getElementById(9002).style.visibility="hidden"
+//document.getElementById(9003).style.visibility="hidden"
+}
+
+indANA=1
+top.frames.Num0.frames.couches.frames.zoom.Aanalyse()
+
+}
+
+function Nonprop2(){
+
+if(XZERO==0){
+//document.getElementById(8001).style.visibility="hidden"
+//document.getElementById(8002).style.visibility="visible"
+//document.getElementById(8003).style.visibility="hidden"
+}
+if(XZERO==1){
+//document.getElementById(8001).style.visibility="visible"
+//document.getElementById(8002).style.visibility="hidden"
+//document.getElementById(8003).style.visibility="hidden"
+}
+if(YZERO==0){
+//document.getElementById(9001).style.visibility="hidden"
+//document.getElementById(9002).style.visibility="visible"
+//document.getElementById(9003).style.visibility="hidden"
+}
+if(YZERO==1){
+//document.getElementById(9001).style.visibility="visible"
+//document.getElementById(9002).style.visibility="hidden"
+//document.getElementById(9003).style.visibility="hidden"
+}
+
+indANA=1
+top.frames.Num0.frames.couches.frames.zoom.Aanalyse()
+top.frames.Num0.frames.couches.zoom.recupgroupepoint(groupepoint)
+top.frames.Num0.frames.couches.frames.zoom.icodim2()
+}
+
+function IMC2(){
+cico=1
+if(kchos==1){}else{chooseicoB();kchos=0}
+}
+function IMC1(){
+cico=2
+if(kchos==1){}else{chooseicoB();kchos=0}
+}
+function IMC4(){
+cico=4
+if(kchos==1){}else{chooseicoB();kchos=0}
+}
+function IMCX2(){
+cico=1
+chooseicoC()
+}
+function IMCX1(){
+
+cico=2
+chooseicoC()
+}
+
+function IMCX4(){
+cico=4
+chooseicoC()
+}
+function IMCX3(){
+
+cico=2
+chooseico()
+}
+
+function chooseicoC(){ //sert à actualiser le tableaux de couleur à partir de pilote 2 (X)
+
+if(cico==1){
+top.frames.Num0.frames.tab.imchange2()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="hx_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="hx_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="hx_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="hx_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="hx_0.gif"
+
+}
+if(cico==2){
+top.frames.Num0.frames.tab.imchange1()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="cir_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="cir_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="cir_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="cir_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="cir_0.gif"
+
+}
+if(cico==4){
+top.frames.Num0.frames.tab.imchange4()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="TRI_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="TRI_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="TRI_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="TRI_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="TRX0.gif"
+
+}
+if(cico==3){
+top.frames.Num0.frames.tab.imchange3()
+}
+top.frames.Num0.frames.couches.frames.zoom.recupcico()
+grilleapply()
+//top.frames.Num0.frames.couches.frames.zoom.imgicox2()
+//suprimnonappar()
+
+}
+
+function chooseicoB(){ 
+
+if(cico==1){
+top.frames.Num0.frames.tab.imchange2()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="hx_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="hx_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="hx_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="hx_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="hx_0.gif"
+kchos=1
+}
+if(cico==2){
+top.frames.Num0.frames.tab.imchange1()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="cir_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="cir_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="cir_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="cir_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="cir_0.gif"
+kchos=1
+}
+if(cico==4){
+top.frames.Num0.frames.tab.imchange4()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="TRI_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="TRI_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="TRI_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="TRI_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="TRX0.gif"
+
+}
+}
+
+function transcico(){
+return cico
+}
+
+
+function chooseico(){
+
+
+if(cico==1){
+top.frames.Num0.frames.tab.imchange2()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="hx_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="hx_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="hx_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="hx_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="hx_0.gif"
+
+}
+if(cico==2){
+top.frames.Num0.frames.tab.imchange1()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="cir_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="cir_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="cir_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="cir_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="cir_0.gif"
+
+}
+if(cico==4){
+top.frames.Num0.frames.tab.imchange4()
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5001).src="TRI_rouge.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5002).src="TRI_jaune.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5003).src="TRI_vert.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5004).src="TRI_bleu.gif"
+top.frames.Num0.frames.couches.frames.zam3.document.getElementById(5000).src="TRX0.gif"
+
+}
+if(cico==3){
+top.frames.Num0.frames.tab.imchange3()
+}
+top.frames.Num0.frames.couches.frames.zoom.recupcico()
+top.frames.Num0.frames.couches.frames.zoom.imgicox2()
+
+suprimnonappar()
+//grilleapply()
+}
+
+//-------------------------------------------------------------------------efface le fond de carte--------------------------------------------------------------------------------------
+function razgrilleappaycarte(){
+ouicartetemp=0
+ouicarte0()
+gereenreg()
+var numeroTemp=top.frames.Num0.frames.couches.zoom.transnumeroTemp("numeroTemp")
+var indcolorsvg=fdcarte
+for(i=1;i<kpoint+1;i++){
+if(numeroTemp==i){top.frames.Num0.frames.couches.zoom.actucolorareaTemp(fdcarte)}
+var z4=groupepoint[i]
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[parseInt(z4[1])].setAttribute("fill",indcolorsvg)
+if(inskape==1){
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).style.setProperty("fill",indcolorsvg,'')
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).setAttribute("fill",indcolorsvg)
+}
+}
+}
+
+function razcarte(){
+//alert("razcarte")
+
+ouicarte0()
+gereenreg()
+var numeroTemp=top.frames.Num0.frames.couches.zoom.transnumeroTemp("numeroTemp")
+for(i=1;i<longx1;i++){
+TIT=" "
+titreareas(TIT,i)
+var indcolorsvg=fdcarte
+if(numeroTemp==i){top.frames.Num0.frames.couches.zoom.actucolorareaTemp(fdcarte)}
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[i].setAttribute("fill",indcolorsvg)
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).style.setProperty("fill",indcolorsvg,'')
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).setAttribute("fill",indcolorsvg)
+}
+
+}
+}
+//------------------------------------------------------------------------------------------applique fond de carte enregistré-------------------------------------------------------
+var Xgroupepoint=new Array
+var Xmemtab=new Array()
+var Xcolbase
+var Xtitre1
+function applyfondBORNES1enregistre(XXBORNES1,XXtrmmx,XXtitre1,Xcolorreg){
+//titre1=XXtitre1
+//trmmx=XXtrmmx
+//ABORNES1=XXBORNES1
+//alert(ABORNES1)
+top.frames.Num0.frames.couches.zoom.fondlegendereg(XXtitre1,XXBORNES1,XXtrmmx)
+for(i=1;i<6;i++){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectfond"+i).setAttribute("fill",Xcolorreg[i])
+}
+}
+function transenregiscarte(){
+Xtitre1=titre1
+ICDcarte=top.frames.Num0.frames.datacarte.transICDcarte("return ICDcarteencours")
+//alert("analyse "+ICDcarte)
+var colorreg=new Array()
+for(i=1;i<6;i++){
+colorreg[i]=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("rectfond"+i).getAttribute("fill")
+}
+var sourcefd=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("sourcefond").firstChild.data
+var libelc=top.frames.Num0.frames.couches.zatitre.document.getElementById("them2").firstChild.data
+if(libelc==""){libelc=top.frames.Num0.frames.couches.zatitre.document.getElementById("them1").firstChild.data}
+top.frames.Num0.frames.couches.zam4.adcarte(groupepoint,colbase,memtab,Xtitre1,ICDcarte,ABORNES1temp,trmmxtemp,colorreg,sourcefd,libelc)
+
+
+}
+function validitapplycarte(){
+
+ouicartetemp=1
+ouiicone0()
+ouicarte1()
+gereenreg()
+Xgroupepoint=groupepointtemp
+Xmemtab=memtab
+Xcolbase=colbase
+//alert(colbase)
+applyfondenregistre(Xcolbase,Xmemtab,Xgroupepoint)
+}
+
+function applyfondenregistre(Xcolbase,Xmemtab,Xgroupepoint,ICDcartex){
+memtabtempCARTE=Xmemtab
+ICDcarte=ICDcartex
+top.frames.Num0.frames.datacarte.recupICDcarteenregistre(ICDcarte)
+legfondretrait=0
+top.frames.Num0.frames.couches.reposeleg()
+
+//boucle pour toutes les cases de Xmemtab, aplliquer couleur pour regénérer groupepoint
+
+
+//appliquer groupepoint sur le fonds de carte
+indicarte=1
+for(i=1;i<kpoint+1;i++){ //applique les couleurs au fond de carte 
+var indcolorsvg=fdcarte
+//alert(groupepoint.length)
+var z4=Xgroupepoint[i]
+//alert(z4[1])
+attribcouleur(Xcolbase,z4[0])//attribue la couleur z[4]=indicCOLOR de la pallette colbase à tous les point de rang kpoint de groupepoint
+indcolorsvg=COUL //COUL=valeur en retour de attribcouleur
+if(z4[0]==5){indcolorsvg=fdcarte} //couleur du fond de carte par défaut
+
+
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[parseInt(z4[1])].setAttribute("fill",indcolorsvg)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).setAttribute("fill",indcolorsvg)
+indcolorsvg=fdcarte
+}
+//for(i=1;i<longx1;i++){
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("r",0)
+//}
+
+}
+var opccarte,opcicone
+//------------------------------------------------------------------------------------transparence-----------------------------------------------------------------------
+function carteopacity(opccarte){
+for(i=1;i<longx1;i++){
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[i].setAttribute("fill-opacity",opccarte)
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).style.setProperty("fill-opacity",opccarte,"")
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(i).setAttribute("fill-opacity",opccarte)
+}
+}
+}
+
+function icoopacity(opcicone){
+for(i=1;i<longx1;i++){
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).style.setProperty("fill-opacity",opcicone,'')
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).style.setProperty("fill-opacity",opcicone,'')
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("fill-opacity",opcicone)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).setAttribute("fill-opacity",opcicone)
+}
+var opcstroke
+if(opcicone==0){
+opcstroke=0
+var mat="matrix(1 0 0 1 0 -400)"
+}else{
+var mat="matrix(1 0 0 1 0 0)"
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("coulc").setAttribute("transform",mat)
+
+opcstroke=1
+}
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("leico").setAttribute("transform",mat)
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).style.setProperty("stroke-opacity",opcstroke,'')
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).style.setProperty("stroke-opacity",opcstroke,"")
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+i).setAttribute("stroke-opacity",opcstroke)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).setAttribute("stroke-opacity",opcstroke)
+}
+}
+}
+var ouicartetemp=0
+//---------------------------------------------------------------------------------------APPLY---------------------------------------------------------------------------------------------
+function rappliquecarte(){
+if( ouicartetemp==1){ouicarte1()}else{ouicarte0()}
+
+gereenreg()
+var numeroTemp=top.frames.Num0.frames.couches.zoom.transnumeroTemp("numeroTemp")
+for(i=1;i<groupepointCARTE.length;i++){
+
+titreareas(TITc[i],i)
+var indcolorsvg=fdcarte
+//alert(groupepoint.length)
+var z4=groupepointCARTE[i]
+
+attribcouleur(colbase,z4[0])
+indcolorsvg=COUL
+
+if(z4[0]==5){indcolorsvg=fdcarte}
+if(numeroTemp==i){top.frames.Num0.frames.couches.zoom.actucolorareaTemp(COUL)}
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[parseInt(z4[1])].setAttribute("fill",indcolorsvg)
+if(inskape==1){
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).style.setProperty("fill",indcolorsvg,"")
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).setAttribute("fill",indcolorsvg)
+}
+indcolorsvg=fdcarte
+}
+}
+var colbaseCARTE
+var groupepointCARTE=new Array()
+var cartex=0
+var iidcarte=1 //turnover pour l'alternace carte icone dans validit
+var iddcarte=0
+var cl3
+var cl22
+function retcolbaseCARTE(){return colbaseCARTE}
+function recat(){return cat}
+function cattempcartevalidit(){cat=cattemp2; cattemp=cat; cl2=cl22
+//alert("cat et cattemp prennent la valeur de cattemp2  "+cattemp2)
+}//affecte à cat (quantiles) la valeur cattemp2 du dernier fond de carte calculé : commandé par datacarte (fonction affectcoul)
+function cattempICONEvalidit(){cattemp=cattemp3;cl2=cl3
+//alert("cattemp prend la valeur de cattemp3  "+cattemp)
+}//affecte à cat (quantiles) la valeur cattemp3 du dernier ICONE calculé : commandé par datacarte (fonction carteapplique)
+function cattempICONE(){cattemp3=cattemp; ;cl3=cl2
+//alert( "cattemp3 prend la valeur de cat  "+cat)
+}
+function recattemp2(){return cattemp2}
+function retICD(){return ICD}
+function retTITRE1(){return titre1}
+function retTITRE1bis(){return titre1bis}
+//function retTITRE2(){return titre2}
+
+function titreareas(titrearea,rang){
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(rang).setAttribute("title",titreaires[rang]+titrearea)
+top.frames.Num0.frames.couches.zoom.changeInBaliseTitre("TitreAire"+rang,titreaires[rang]+titrearea)
+}
+
+
+var TITc=new Array()
+var titreaires=new Array()
+titreaires=top.frames.Num0.frames.couches.frames.zoom.transTITREaires("return TITREaires")
+
+var recuptrdat2ico
+var indichyper=0
+var indichyper2=0
+var hyperstockgroupepoint
+var groupepointHyper
+var groupepointHyperTemp
+var memtabHYPER=new Array()
+
+
+function hypertextstockgroupepoint(){
+hyperstockgroupepoint=groupepoint
+return hyperstockgroupepoint
+}
+
+
+function hypertextstockmemtab(){//ref haut de page:    couleurbase[0]= new Array("red","yellow","lime","aqua","fuchsia") // jeu de Couleur de base
+var memtabtrans=new Array()
+memtabtrans[0]=5
+for(e=1;e<26;e+=1){
+var ncoul=5
+couleurbase[0]
+var coultabla=top.frames.Num0.frames.couches.zam3.document.getElementById(30000+e).getAttribute("bgcolor")
+if(coultabla=="#DEEED3"){ncoul=5}
+for(i=0;i<5;i++){
+if(coultabla==couleurbase[0][i]){
+ncoul=i+1
+if(ncoul==5){ncoul=0};
+i=5
+}
+}
+memtabtrans[e]=ncoul
+}
+return memtabtrans
+}
+
+
+function hypertextDESTOCKgroupepoint(a,b){
+memtabHYPER=b
+//alert("memtabHYPER destock="+memtabHYPER)
+groupepointHyper=new Array()
+groupepointHyperTemp=a
+var trax=new Array()
+var j=0
+for(i=0;i<groupepointHyperTemp.length;i++){
+trax[j]=groupepointHyperTemp[i]
+j=j+1
+if(j==3){groupepointHyper[groupepointHyper.length]=trax;trax=new Array();j=0}
+}
+indichyper=1
+}
+function retournIndicHyper(){return indichyper}
+
+function grilleapplycarte(){
+//alert("grilleapplycarte()")
+initcattemp3=0
+//titreaires=top.frames.Num0.frames.couches.frames.zoom.transTITREaires("return TITREaires")
+recuptrdat2icocarte=top.frames.Num0.frames.tab.transdata2("return trdat2")
+
+cl22=cl2
+cattemp2=cat
+ouicartetemp=1
+ouiicone0()
+ouicarte1()
+gereenreg()
+var numeroTemp=top.frames.Num0.frames.couches.zoom.transnumeroTemp("numeroTemp")
+indicoulinit=1
+cartex=top.frames.Num0.frames.datacarte.retourncartex("return cartex") //indicaeur pour la gestion des validités
+memtempCARTE() //stock les couleurs de la carte pour la gestion des validités
+
+top.frames.Num0.frames.datacarte.ICDcarteencoursX() // fixe la valeur de ICD du memu icone qui a permis de colorer la carte: utilisé dans la gestion des validités
+legiconeretrait=-400
+//alert(" grilleapplycarte")
+if(INIT1==0){
+legfondretrait=0
+}else{legfondretrait=-400}
+top.frames.Num0.frames.couches.reposeleg()
+
+groupepointCARTE=groupepoint
+if(indichyper==1){// cas bi varié appelé par hypertexte
+groupepoint=groupepointHyper
+indichyper=0
+var indichyper2=1
+//alert("colbase="+colbase+"  memtabHYPER="+ memtabHYPER)
+var kq=0
+for(e=1;e<26;e+=1){
+
+attribcouleur(colbase,memtabHYPER[e])
+
+top.frames.Num0.frames.couches.zam3.document.getElementById(30000+e).setAttribute("bgcolor",COUL)
+
+}
+}
+var choixicone=top.frames.Num0.frames.couches.zoom.transchoixicones("return choixicone")
+//alert(choixicone)
+for(i=1;i<groupepoint.length;i++){
+if(recuptrdat2icocarte[i]==-99999){TITc[i]=""}else{TITc[i]=" - "+titre1+" : "+recuptrdat2icocarte[i]}
+titreareas(TITc[i],i)
+var indcolorsvg=fdcarte
+//alert(groupepoint.length)
+var z4=groupepoint[i]
+colbaseCARTE=colbase
+attribcouleur(colbase,z4[0])
+indcolorsvg=COUL
+if(z4[0]==5){indcolorsvg=fdcarte}
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).style.setProperty("fill",indcolorsvg,"")
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).setAttribute("fill",indcolorsvg)
+}
+var lieuxici=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument()
+if(recuptrdat2icocarte[parseInt(z4[1])]==-99999){
+if(inskape==1){
+lieuxici.getElementById(parseInt(z4[1])).style.setProperty("fill-opacity",0.2,"")
+
+}else{
+lieuxici.getElementById(parseInt(z4[1])).setAttribute("fill-opacity",0.2)
+}
+}else{
+if(inskape==1){
+lieuxici.getElementById(parseInt(z4[1])).style.setProperty("fill-opacity",1,"")
+}else{
+lieuxici.getElementById(parseInt(z4[1])).setAttribute("fill-opacity",1)
+}
+}
+if(numeroTemp==i){top.frames.Num0.frames.couches.zoom.actucolorareaTemp(COUL)}
+indcolorsvg=fdcarte
+}
+for(i=1;i<longx1;i++){
+
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).setAttribute("d","")
+var r=0
+var a=i
+var b=r
+
+if(choixicone==1){top.frames.Num0.frames.couches.zoom.rond(i,r)}
+if(choixicone==2){top.frames.Num0.frames.couches.zoom.Xetoile(a,b)}
+if(choixicone==3){top.frames.Num0.frames.couches.zoom.triangle(a,b)}
+
+}
+//gère la visbilité du menu ico other
+//top.frames.Num0.document.getElementById("tab2").height=0
+//-----------------------
+indicarte=1
+//top.frames.Num0.frames.couches.zoom.initselec0()
+if(INIT1==0){top.frames.Num0.frames.couches.zoom.fondlegende()}
+poxenligne()
+if(cartex==1){top.frames.Num0.frames.datacarte.cartex0()}
+
+if( cartex==1 && indicarte2==0 ){top.frames.Num0.frames.datacarte.validitici2()}
+}
+
+
+function indicarteegal1(){indicarte=1}
+
+function Xindana0(){
+indANA=0
+}
+
+
+function appliquecouleur(){
+//alert("indichyper="+indichyper+"         indicarte="+indicarte)
+if(indichyper==1){// cas bi varié appelé par hypertexte
+groupepoint=groupepointHyper
+indichyper=0
+var indichyper2=1
+//alert("colbase="+colbase+"  memtabHYPER="+ memtabHYPER)
+var kq=0
+for(e=1;e<26;e+=1){
+
+attribcouleur(colbase,memtabHYPER[e])
+
+top.frames.Num0.frames.couches.zam3.document.getElementById(30000+e).setAttribute("bgcolor",COUL)
+
+}
+}
+for(i=1;i<groupepoint.length;i++){
+var indcolorsvg=fdcarte//"aqua"
+//alert(fdcarte)
+var z4=groupepoint[i]
+//alert(z4[1])
+attribcouleur(colbase,z4[0])
+indcolorsvg=COUL
+if(indicarte==1){
+if(z4[0]==5){indcolorsvg=fdcarte
+}
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).style.setProperty("fill",indcolorsvg,"")
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[parseInt(z4[1])].style.setProperty("fill",indcolorsvg,"")
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById(parseInt(z4[1])).setAttribute("fill",indcolorsvg)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementsByTagName("g")[parseInt(z4[1])].setAttribute("fill",indcolorsvg)
+}
+}else{
+if(inskape==1){
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).style.setProperty("fill",indcolorsvg,"")
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+parseInt(z4[1])).style.setProperty("fill",indcolorsvg,"")
+}else{
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("fpath"+i).setAttribute("fill",indcolorsvg)
+top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("c"+parseInt(z4[1])).setAttribute("fill",indcolorsvg)
+}
+}
+indcolorsvg=fdcarte
+}
+if(indicarte==1){grilleapplycarte()}
+poxenligne()
+}
+
+
+var initchoixiciXX=0
+function grilleapply(){
+
+if(dgs!=0){
+coordencoursici=top.frames.Num0.frames.couches.frames.zoom.transcoordencours("return coordencours")
+recuptrdat2icocarte=top.frames.Num0.frames.tab.transdata2("return trdat2")
+for(i=1;i<groupepoint.length;i++){
+var lieuxici=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument()
+if(recuptrdat2icocarte[i]==-99999){
+if(inskape==1){
+lieuxici.getElementById(parseInt(i)).style.setProperty("fill-opacity",0.2,"")
+}else{
+lieuxici.getElementById(parseInt(i)).setAttribute("fill-opacity",0.2)
+}
+}else{
+if(inskape==1){
+lieuxici.getElementById(parseInt(i)).style.setProperty("fill-opacity",1,"")
+}else{
+lieuxici.getElementById(parseInt(i)).setAttribute("fill-opacity",1)
+}
+}
+var ic=i
+//alert(initchoixiciXX)  gère l'amorçage après le premier passage de GXY() . SI on envoie les typeicones au premier passage, ça plante. Le type icone est cercle par défaut et il peut changer ensuite
+if(initchoixiciXX==0){}else{
+if(topX>0){top.frames.Num0.frames.couches.zoom.choixICONE(top.document.menua222.choix222.selectedIndex+1)}
+}
+//alert("analyse ic="+ic)
+top.frames.Num0.frames.couches.zoom.icones(ic,ic,0) //( le 0 st une valeur indifférente: en réalité cette valeur est recalculée dans icones )
+}
+}
+//alert("grilleapply")
+poxenligne()
+}
+
+
+function grilleapply2Y(){//---------------------------------------------------------------------grilleapply2Y
+
+for(i=1;i<kpoint+1;i++){
+
+
+var z4=groupepoint[i]
+if(cico==2){
+if(z4[0]==1){boulecarte="cir_rouge.gif"}
+if(z4[0]==2){boulecarte="cir_jaune.gif"}
+if(z4[0]==3){boulecarte="cir_vert.gif"}
+if(z4[0]==4){boulecarte="cir_bleu.gif"}
+if(z4[0]==5){boulecarte="carretransparent.gif"}
+if(z4[0]==0){boulecarte="cir_0.gif"}
+//if(z4[0]==6){boulecarte="carretransparent.gif"}
+//if(z4[0]==7){boulecarte="carretransparent.gif"}
+}
+if(cico==1){
+if(z4[0]==1){boulecarte="hx_rouge.gif"}
+if(z4[0]==2){boulecarte="hx_jaune.gif"}
+if(z4[0]==3){boulecarte="hx_vert.gif"}
+if(z4[0]==4){boulecarte="hx_bleu.gif"}
+if(z4[0]==5){boulecarte="carretransparent.gif"}
+if(z4[0]==0){boulecarte="hx_0.gif"}
+//if(z4[0]==6){boulecarte="carretransparent.gif"}
+//if(z4[0]==7){boulecarte="carretransparent.gif"}
+}
+if(cico==4){
+if(z4[0]==1){boulecarte="TRI_rouge.gif"}
+if(z4[0]==2){boulecarte="TRI_jaune.gif"}
+if(z4[0]==3){boulecarte="TRI_vert.gif"}
+if(z4[0]==4){boulecarte="TRI_bleu.gif"}
+if(z4[0]==5){boulecarte="carretransparent.gif"}
+if(z4[0]==0){boulecarte="TRX0.gif"}
+//if(z4[0]==6){boulecarte="carretransparent.gif"}
+//if(z4[0]==7){boulecarte="carretransparent.gif"}
+}
+var boulecarte2=boulecarte
+if(YY[z4[1]]==0){if(YZERO==1){boulecarte="zeroY.gif"}}
+if(XX[z4[1]]==0 & YY[z4[1]]==0){if(YZERO==1){boulecarte="zeroXY.gif"}}
+if(XX[z4[1]]==0 & XZERO==1){boulecarte="zero.gif"}
+//top.frames.Num0.frames.couches.frames.zam3.top.frames.Num0.frames.couches.frames.zoom.document.images[parseInt(z4[1])+Kimage].src=boulecarte
+
+boulecarte=boulecarte2
+//GESTION DES NEGATIFS_____________________________________________________
+boulecourante=boulecarte
+
+if(XX[z4[1]]<0){couleurnegatif()
+//top.frames.Num0.frames.couches.frames.zoom.document.images[parseInt(z4[1])+Kimage].src=boulecarteneg
+
+}
+boulecarte=boulecourante
+//___________________________________________________________________________
+
+top.frames.Num0.frames.tab.document.getElementById('MOI').style.visibility='visible';
+top.frames.Num0.frames.tab.document.getElementById('PLU').style.visibility='visible'
+if(cico==1){
+top.frames.Num0.frames.tab.document.getElementById('vertic').style.visibility='visible';
+top.frames.Num0.frames.tab.document.getElementById('horiz').style.visibility='visible'
+}
+}
+
+}
+
+function grilleapply2(){//-----------------------------------------------------------------------grilleapply2
+
+for(i=1;i<kpoint+1;i++){
+
+
+var z4=groupepoint[i]
+if(cico==2){
+if(z4[0]==1){boulecarte="cir_rouge.gif"}
+if(z4[0]==2){boulecarte="cir_jaune.gif"}
+if(z4[0]==3){boulecarte="cir_vert.gif"}
+if(z4[0]==4){boulecarte="cir_bleu.gif"}
+if(z4[0]==5){boulecarte="carretransparent.gif"}
+if(z4[0]==0){boulecarte="cir_0.gif"}
+//if(z4[0]==6){boulecarte="carretransparent.gif"}
+//if(z4[0]==7){boulecarte="carretransparent.gif"}
+}
+if(cico==1){
+if(z4[0]==1){boulecarte="hx_rouge.gif"}
+if(z4[0]==2){boulecarte="hx_jaune.gif"}
+if(z4[0]==3){boulecarte="hx_vert.gif"}
+if(z4[0]==4){boulecarte="hx_bleu.gif"}
+if(z4[0]==5){boulecarte="carretransparent.gif"}
+if(z4[0]==0){boulecarte="hx_0.gif"}
+//if(z4[0]==6){boulecarte="carretransparent.gif"}
+//if(z4[0]==7){boulecarte="carretransparent.gif"}
+}
+if(cico==4){
+if(z4[0]==1){boulecarte="TRI_rouge.gif"}
+if(z4[0]==2){boulecarte="TRI_jaune.gif"}
+if(z4[0]==3){boulecarte="TRI_vert.gif"}
+if(z4[0]==4){boulecarte="TRI_bleu.gif"}
+if(z4[0]==5){boulecarte="carretransparent.gif"}
+if(z4[0]==0){boulecarte="TRX0.gif"}
+//if(z4[0]==6){boulecarte="carretransparent.gif"}
+//if(z4[0]==7){boulecarte="carretransparent.gif"}
+}
+var boulecarte2=boulecarte
+if(XX[z4[1]]==0){if(XZERO==1){boulecarte="zero.gif"}}
+if(XX[z4[1]]==0 & YY[z4[1]]==0){if(XZERO==1){boulecarte="zeroXY.gif"}}
+if(YY[z4[1]]==0 & YZERO==1){boulecarte="zeroY.gif"}
+//top.frames.Num0.frames.couches.frames.zam3.top.frames.Num0.frames.couches.frames.zoom.document.images[parseInt(z4[1])+Kimage].src=boulecarte
+boulecarte=boulecarte2
+//GESTION DES NEGATIFS_____________________________________________________
+boulecourante=boulecarte
+
+if(XX[z4[1]]<0){couleurnegatif()
+//top.frames.Num0.frames.couches.frames.zoom.document.images[parseInt(z4[1])+Kimage].src=boulecarteneg
+}
+boulecarte=boulecourante
+//___________________________________________________________________________
+
+top.frames.Num0.frames.tab.document.getElementById('MOI').style.visibility='visible';
+top.frames.Num0.frames.tab.document.getElementById('PLU').style.visibility='visible'
+if(cico==1){
+top.frames.Num0.frames.tab.document.getElementById('vertic').style.visibility='visible';
+top.frames.Num0.frames.tab.document.getElementById('horiz').style.visibility='visible'
+}
+}
+
+}
+
+</script>
+
+</head>
+
+<body STYLE="background-color: transparent;font-family:arial;font-size:10px" onload="javascript=init();" onkeydown="javascript:top.test3(event);" >
+
+
+
+
+<div onmouseover=";top.ouvHelp('analyse')" style="position:absolute;left:0;top:30"><img src="grille.gif" width=445 height=365 ></div>
+
+<div style="position:absolute;left:30;top:50">
+<table id="TabGrille" onmouseover=";top.ouvHelp('analyse')" border=0   width=302  cellpadding=0 cellspacing=0>
+<tr VALIGN="bottom">
+<script></script>
+<td id=3001 ><table id=30001 border=0   BGCOLOR="#DEEED3"  cellpadding=0 cellspacing=0><tr><td><p><img id=1001 src="carretransparent.gif" border=1  width=59 height=59  onclick="maxycase=5;coulid=1001;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30002 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1002 src="carretransparent.gif"  border=1 width=59 height=59 onclick="maxycase=5;coulid=1002;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30003 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1003 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=5;coulid=1003;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30004 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1004 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=5;coulid=1004;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30005 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1005 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=5;coulid=1005;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+</tr>
+<tr VALIGN="bottom">
+<td id=2001><table id=30006 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1006 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=4;coulid=1006;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30007 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1007 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=4;coulid=1007;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30008 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1008 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=4;coulid=1008;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30009 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1009 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=4;coulid=1009;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30010 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1010 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=4;coulid=1010;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+</tr>
+<tr>
+<td id=2001><table id=30011 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1011 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=3;coulid=1011;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30012 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1012 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=3;coulid=1012;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30013 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1013 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=3;coulid=1013;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30014 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1014 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=3;coulid=1014;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30015 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1015 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=3;coulid=1015;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+</tr>
+<tr>
+<td id=2001><table id=30016 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1016 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=2;coulid=1016;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30017 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1017 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=2;coulid=1017;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30018 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1018 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=2;coulid=1018;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30019 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1019 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=2;coulid=1019;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30020 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1020 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=2;coulid=1020;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+</tr>
+<tr>
+<td id=2001><table id=30021 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1021 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=1;coulid=1021;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30022 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1022 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=1;coulid=1022;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30023 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1023 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=1;coulid=1023;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30024 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1024 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=1;coulid=1024;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+<td id=2001><table id=30025 border=0 BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td><p><img id=1025 src="carretransparent.gif" border=1 width=59 height=59 onclick="maxycase=1;coulid=1025;Xclic=1;couleur();if(indicarte==1){ }else{  } ; poxenligne();if(indicarte2==1){indicarte2=0}"></p></tr></td></table></td>
+</tr>
+</table>
+</div>
+
+<script language="javascript">
+for(var i=1;i<longx1;i++){
+document.write('<div id='+i+' style="position:absolute;left:'+AXX+';top:'+AYY+'" onclick="top.frames.Num0.couches.zoom.valNoDatx2(\'x\'+this.id);top.frames.Num0.frames.couches.zoom.valNoDatx(this.id);top.frames.Num0.frames.couches.zoom.idcsvg0();top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte();"><img src="carretransparent.gif" width=5 height=5></div>')
+}
+</script>
+<div style="position:absolute;left:360;top:50">
+
+<table border=0 bgcolor="#CCCCFF" width=60 height=310 cellpadding=0 cellspacing=0>
+<table border=1 bgcolor="#CCCCFF" width=60  cellpadding=0 cellspacing=0>
+<tr >
+<TD width=15 height=12 ><table id=50001 width=100% border=0  BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td>
+<img id=5001 onmouseover="top.ouvHelp('coulcase')"  src="cir_rouge.gif" width=12 height=12 onclick="indicCOLOR=1;selecCol1();selecCol2();"><BR>
+</TD></TR></table></TD>
+<TD width=15 height=12>
+<img id=4001 src="selec.gif" width=12 height=12 style="visibility:hidden"><BR>
+</TD>
+<TD  width=15 height=12>
+<img id="pointrond"  onmouseover="top.ouvHelp('trace')"  src="pointrouge.png" width=10 height=10 onclick="couleurpoint()" title="selection /couleurs/points:">
+</TD>
+</tr>
+
+<tr>
+<TD width=15 height=12><table id=50002 border=0 width=100% BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td>
+<img id=5002 onmouseover="top.ouvHelp('coulcase')" src="cir_jaune.gif" width=12 height=12 onclick="indicCOLOR=2;selecCol1();selecCol2();"><BR>
+</TD></TR></table></TD>
+<TD>
+<img id=4002 src="selec.gif" width=12 height=12 style="visibility:hidden"><BR>
+</TD>
+<TD>
+<img id="pointnon"  onmouseover="top.ouvHelp('trace')"  src="pointNON.png" width=10 height=10 onclick="RAZcouleurpoint()" title="remise à zero des couleurs de point" >
+</TD>
+</tr>
+
+<tr>
+<TD width=15 height=12><table id=50003 border=0 width=100% BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td>
+<img id=5003 onmouseover="top.ouvHelp('coulcase')" src="cir_vert.gif" width=12 height=12 onclick="indicCOLOR=3;selecCol1();selecCol2();"><BR>
+</TD></TR></table></TD>
+<TD>
+<img  id=4003 src="selec.gif" width=12 height=12 style="visibility:hidden"><BR>
+</TD>
+<TD>
+</TD>
+</tr>
+
+<tr>
+<TD width=15 height=12><table id=50004 border=0 width=100% BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td>
+<img id=5004 onmouseover="top.ouvHelp('coulcase')" src="cir_bleu.gif" width=12 height=12 onclick="indicCOLOR=4;selecCol1();selecCol2();"><BR>
+</TD></TR></table></TD>
+<TD>
+<img id=4004 src="selec.gif" width=15 height=15 style="visibility:hidden"><BR>
+</TD>
+<TD>
+</TD>
+</tr>
+
+<tr>
+<TD width=15 height=12><table id=50000 border=0 width=100% BGCOLOR="#DEEED3" cellpadding=0 cellspacing=0><tr><td>
+<img id=5000 onmouseover="top.ouvHelp('coulcase')" src="cir_0.gif" width=12 height=12 onclick="indicCOLOR=0;selecCol1();selecCol2();"><BR>
+</TD></TR></table></TD>
+<TD>
+<img id=4000 src="selec.gif" width=15 height=15 style="visibility:visible"><BR>
+</TD>
+<TD>
+</TD>
+</tr>
+
+<tr>
+<TD width=15 height=12><table id=50005 border=0 width=100% BGCOLOR="#CCCCFF" cellpadding=0 cellspacing=0><tr><td>
+<img id=5005 onmouseover="top.ouvHelp('coulcase')" src="carretransparent.gif" width=12 height=12 onclick="indicCOLOR=5;selecCol1();selecCol2();" title="unvisible"><BR>
+</TD></TR></table></TD>
+<TD>
+<img id=4005 src="selec.gif" width=12 height=12 style="visibility:hidden"><BR>
+</TD>
+<TD>
+</TD>
+</tr>
+
+<tr>
+<TD>
+</TD>
+<TD>
+</TD>
+<TD>
+</TD>
+</tr>
+
+<tr>
+<TD>
+</TD>
+<TD>
+</TD>
+<TD>
+</TD>
+</tr>
+
+</table>
+
+<tr>
+<TD height=10>
+</TD>
+</tr>
+
+<table border=1 bgcolor="#FFFFFF" width=60  cellpadding=0 cellspacing=0>
+
+
+<TR>
+<TD>
+</TD>
+</tr>
+</table>
+<table border=1 bgcolor="#FFFFFF" width=60  cellpadding=0 cellspacing=0>
+<tr>
+<TD>
+<DT><font face="arial" size="-4"><center>-----</center></font></DT>
+</TD>
+</TR>
+
+
+
+<!--TR-->
+</TD>
+</tr>
+</table>
+<!----------------------------------------------------------------------------------------->
+
+
+<!--TR>
+<!/TD>
+<!/tr>
+<!/table-->
+<!----------------------------------------------------------------------------------------->
+<tr>
+<TD height=10>
+</TD>
+</tr>
+<tr>
+<table border=1 bgcolor="#CCCCFF" width=60  cellpadding=0 cellspacing=0>
+
+<TR>
+<TD>
+<img id=4007  onmouseover="top.ouvHelp('propX')" src="propX.gif" width=55 height=19 style="visibility:visible" onclick="propX()" title="taille des icones en proportion de la variable X (horizontale)"><BR>
+</TD>
+</tr>
+<TR>
+<TD>
+<img id=4008 onmouseover="top.ouvHelp('propX')" src="Nonprop.gif" width=55 height=19 style="visibility:visible" onclick="Nonprop2()" title="taille des icones égale"><BR>
+</TD>
+</tr>
+<TR>
+<TD>
+<img id=4009  onmouseover="top.ouvHelp('razana')" src="RAZana.gif" width=55 height=19 style="visibility:visible" onclick="razan=1;razanaX()" title="Remise à Zero : efface les couleurs du tableau"><BR>
+</TD>
+</tr>
+<TR height="5">
+<TD>
+<center><font size="2" ><A onmouseover="top.ouvHelp('reactiv')" HREF="javascript:;indicoulinit=0; mentabdefaut();affectpointcasedefaut();poxenligne();couleurlegende()">reactiver
+<script language="javascript">
+function defautzam3(){
+indicoulinit=0;mentabdefaut();affectpointcasedefaut();tbase(colbase)
+}
+</script>
+</A></font></center>
+</TD>
+</tr>
+</table>
+</TR>
+</table>
+
+<form NAME="menu">
+
+<select onmouseover="top.ouvHelp('choixQ')"  id="choix" NAME="choix" onchange="change()";" onmouseover="if(document.allxxxx){top.frames.Num0.frames.couches.zoom0()}" style="background-color:white; color:black;visibility:visible" size="1" >
+<option  VALUE="javascript:document.getElementById('enr').style.visibility='visible';rien()">choix</option>
+<option  VALUE="javascript:indicGXY=0;cl2=colbase;mentabdefaut();cat=5;cattemp=5;initcattemp3=0;Xpercent();tbase(cl2);poxenligne();top.EL()">Q5</option>
+<option  VALUE="javascript:indicGXY=0;cl2=colbase;mentabdefaut();cat=4;cattemp=4;initcattemp3=0;Xpercent();tbase(cl2);poxenligne();top.EL()">Q4</option>
+<option  VALUE="javascript:indicGXY=0;cl2=colbase;mentabdefaut();cat=3;cattemp=3;initcattemp3=0;Xpercent();tbase(cl2);poxenligne();top.EL()">Q3</option>
+<option  VALUE="javascript:indicGXY=0;cl2=colbase;mentabdefaut();cat=2;cattemp=2;initcattemp3=0;Xpercent();tbase(cl2);poxenligne();top.EL()">Q2</option>
+</select>
+</form>
+
+<font face="arial" size=-4 >
+
+</div>
+<div style="position:absolute;left:200;top:372;background-color: transparent">
+<script>
+if(document.allxxxx){
+  document.write('<iframe  ALLOWTRANSPARENCY="true"  id="axix" src="vide.htm"  width=500  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')
+  }else{
+  document.write('<dt id="axix"> </dt>')}
+  </script>
+</div>
+
+<div style="position:absolute;left:50;top:35;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="axiy" src="vide.htm" width=250  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="axiy"> </dt>')}</script>
+</div>
+
+<div style="position:absolute;left:30;top:357;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe ALLOWTRANSPARENCY="true" id="mini1" width=40 src="vide.htm" height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini1"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:90;top:357;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe ALLOWTRANSPARENCY="true" id="mini11" name="mini11" width=40 src="vide.htm" height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini11"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:150;top:357;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe ALLOWTRANSPARENCY="true" id="mini12" name="mini12" width=40 src="vide.htm" height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini12"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:210;top:357;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe ALLOWTRANSPARENCY="true" id="mini13" name="mini13" width=40 src="vide.htm" height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini13"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:270;top:357;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe ALLOWTRANSPARENCY="true" id="mini14" name="mini14" width=40 src="vide.htm" height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini14"> </dt>')}</script>
+</div>
+
+<div style="position:absolute;left:340;top:357;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="maxi1" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="maxi1"> </dt>')}</script>
+</div>
+
+
+<div style="position:absolute;left:2;top:345;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="mini2" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini2"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:3;top:285;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="mini21" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini21"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:3;top:225;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="mini22" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini22"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:3;top:165;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="mini23" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini23"> </dt>')}</script>
+</div>
+<div style="position:absolute;left:3;top:105;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="mini24" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="mini24"> </dt>')}</script>
+</div>
+
+<div style="position:absolute;left:2;top:35;background-color: transparent">
+<script>if(document.allxxxx){document.write('<iframe  ALLOWTRANSPARENCY="true"  id="maxi2" src="vide.htm"  width=40  height=30 CELLSPACING=0 CELLPADDING=0 FRAMEBORDER=0 scrolling="no"></iframe>')}else{document.write('<dt id="maxi2"> </dt>')}</script>
+</div>
+
+</font>
+
+<div style="position:absolute;left:0;top:5;background-color: transparent">
+
+<img id=7000 src="h_7.gif" width=0 height=0 style="visibility:hidden">
+</div>
+
+
+<script language="javascript">
+if (document.allxxxx){
+var A='<div id="divcol1" name="divcol1"  style="position:absolute;left:78;top:97;background-color: transparent" ><img  id="map2"  src="POX1.gif" onmouseover="javascript:POX=1;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+
+}else{
+
+var A='<div id="divcol1" name="divcol1" style="position:absolute;left:78;top:97;background-color: transparent" ><img  id="map2"   src="POX1.gif" onmouseover="javascript:top.ouvHelp(\'losange\');POX=1;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+
+}
+document.write(A)
+</script>
+
+<script language="javascript">
+if (document.allxxxx){
+var A='<div id="divcol2" name="divcol2"  style="position:absolute;left:138;top:158;background-color: transparent" ><img  id="map22" src="POX2.gif" onmouseover="javascript:POX=2;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+
+}else{
+var A='<div id="divcol2" name="divcol2"  style="position:absolute;left:138;top:158;background-color: transparent" ><img  id="map22"   src="POX2.gif" onmouseover="javascript:top.ouvHelp(\'losange\');POX=2;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+}
+document.write(A)
+</script>
+<script language="javascript">
+if (document.allxxxx){
+var A='<div id="divcol3" name="divcol3" style="position:absolute;left:198;top:219;background-color: transparent" ><img  id="map23" src="POX3.gif" onmouseover="javascript:POX=3;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+
+}else{
+var A='<div id="divcol3" name="divcol3" style="position:absolute;left:198;top:219;background-color: transparent" ><img  id="map23"  src="POX3.gif" onmouseover="javascript:top.ouvHelp(\'losange\');POX=3;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+}
+document.write(A)
+</script>
+
+<script language="javascript">
+if (document.allxxxx){
+var A='<div id="divcol4" name="divcol4" style="position:absolute;left:258;top:280;background-color: transparent" ><img  id="map24" src="POX4.gif" onmouseover="javascript:POX=4;init2()"  width=20 height=20 style="visibility:visible" ></div>'
+
+}else{
+var A='<div id="divcol4" name="divcol4" style="position:absolute;left:258;top:280;background-color: transparent" ><img  id="map24"   src="POX4.gif" onmouseover="javascript:top.ouvHelp(\'losange\');POX=4;init2()" onmouseup="javascript:indicdisaX();disable();Xstopevent(event)" width=20 height=20 style="visibility:visible" ></div>'
+}
+document.write(A)
+
+for(i=1;i<26;i++){
+//if (document.allxxxx){// ce module sert à corriger  un bug dans ie6 qui fait que l'image de la première case du tableau ne se charge pas toujours à l'ouverture de analyse.htm
+document.getElementById(1000+i).src="carretransparent.gif"
+document.getElementById(1000+i).width=59
+document.getElementById(1000+i).height=59
+//}
+Wl[i]=document.getElementById(1000+i).width
+Hl[i]=document.getElementById(1000+i).height
+Winit[i]=Wl[i]
+Hinit[i]=Hl[i]
+//alert("n° "+i+"  Wl["+i+"]="+Wl[i]+"    Hl["+i+"]"+Hl[i])
+}
+
+//alert("analyse")
+positionpox()
+A='<div id="poxligne" onmouseover="top.ouvHelp(\'reglette\')" style="position:absolute;top:5;left:25;visibility:hidden"><table border=0  cellpadding=0 cellspacing=0><TR><TD><table border=0  cellpadding=0 cellspacing=0><TR><td id="caselig1" bgcolor="navy" width=60 height=5></td><td id="caselig2" bgcolor="navy" width=60 height=5></td><td id="caselig3" bgcolor="navy" width=60 height=5></td><td id="caselig4" bgcolor="navy" width=60 height=5></td><td id="caselig5" bgcolor="navy" width=60 height=5></td></tr></table></TD><td id="caselig6" bgcolor="white" width=10 height=10><img src="Xclose.gif" width=10 height=10 onmouseup="javascript:top.frames.Num0.frames.couches.disable33b()"  ></td></tr></table></div>'
+
+
+document.write(A)
+</script>
+<script language="javascript">
+top.frames.Num0.frames.couches.frames.zoom.modulanalyse()
+
+</script>
+<div style="position: fixed; top: 35px; right: 15px;"><img src="boutonferme.gif" onmouseover="top.frames.Num0.couches.disable33()"><!--
+<input type="button" onclick="top.antitest()" value="fermer l'aide"></input>
+--></div>
+<script language="javascript">
+
+top.frames.Num0.frames.tab.initiedata()
+</script>
+</body >
+</html>

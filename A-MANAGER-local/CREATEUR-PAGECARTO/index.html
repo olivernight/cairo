@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>index</title>
+  <script language="javascript">
+	
+	var mtpas=new Array();
+
+var ArrayURL=window.location.href.split('/')
+mtpas[mtpas.length]=ArrayURL[ArrayURL.length-2]
+mtpas[0]=mtpas[0].replace(/%20/g," ")
+
+  var mt2="xxx"
+  </script>
+  <script language="javascript" src="motpasPC.js"></script>
+</head>
+<body>
+<script language="javascript">
+  var casici=0 // cas du démarrage
+  var retconfirm=false
+function MotPas(){
+idmt=0
+for(i=0;i<mtpas.length;i++){
+if(mt2==mtpas[i]){idmt=1;mt=mt2}
+
+}
+if(idmt!=1){
+mt=prompt('saisissez votre mot de passe',mt2);
+
+for(i=0;i<mtpas.length;i++){
+if(mt==mtpas[i]){idmt=1}
+
+}
+}
+
+if(idmt!=1){
+retconfirm=confirm("désolé, votre mot de passe est incorrect, voulez vous recommencer?");
+
+if(retconfirm==true){
+MotPas()
+//window.location.href=aw2
+}else{
+retconfirm=false
+if(casici==0){
+
+window.close()
+}else{}
+}
+}
+casici=1
+}
+MotPas()
+window.location.href="PageCartoDossier/ENTRER.html"
+</script>
+<br>
+<br>
+</body>
+</html>

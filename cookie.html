@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>cookie</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="style_blanc.css">
+</head>
+<body><span class="texte">
+<script language="JavaScript"><!--
+
+   function cre_cook0(nom,contenu) {
+      document.cookie = nom + "=" + escape(contenu)
+      }
+     
+   function cre_cook(nom,contenu,jours) {
+      var expireDate = new Date();
+      expireDate.setTime(expireDate.getTime() + jours*24*3600*1000);
+      document.cookie = nom + "=" + escape(contenu)
+         + ";expires=" + expireDate.toGMTString();
+      }
+     
+   function lit_cook(nom) {
+      var deb,fin
+      deb = document.cookie.indexOf(nom + "=")
+      if (deb >= 0) {
+         deb += nom.length + 1
+         fin = document.cookie.indexOf(";",deb)
+         if (fin < 0) fin = document.cookie.length
+         return unescape(document.cookie.substring(deb,fin))
+         }
+      return ""
+      }
+     
+   function tue_cook(nom) { cre_cook(nom,"",-1) }
+
+   function askCook(nom) {
+      c=prompt("Mettre dans le cookie :","")
+      cre_cook0(nom,c)
+      }
+
+   function litCook(nom) {
+      c=lit_cook(nom)
+      if(c=="") alert("Le cookie est vide !")
+      else alert("Le cookie vaut : "+c)
+      }
+
+--></script>
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<FORM>
+   <table><tr>
+      <td><INPUT onclick=askCook('test') type=button value="Créer le cookie"></td>
+      <td><INPUT onclick=litCook('test') type=button value="Lire le cookie"></td>
+      <td><INPUT onclick="tue_cook('test')" type=button value="Effacer le cookie"></td>
+   </tr></table>
+</FORM>
+
+
+</span>
+</body>
+</html>

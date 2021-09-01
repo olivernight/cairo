@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+	<title>poster un commentaire</title>
+	<style type="text/css">
+	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
+	body {
+	background-image: url('second_life.jpg');
+      	background-attachment: fixed;
+			background-repeat: repeat-x;
+	
+		background-color:#FFF;
+		color:black;
+		}
+.textbox {
+	 color:black;
+	 width:100px;
+	 vertical-align: top; 
+	 font-size:11px;
+	 border:1px dotted #383838;
+	 background-color: white;
+	 font-family: Verdana, Arial;
+}
+.texte {
+color:#000000;
+background-color:transparent;
+font-family:verdana, arial, Sans-serif;
+font-weight:bold;
+font-size:12px;
+padding-right:0px;
+}
+.texte a:link{
+color:#0090ff;
+background-color:transparent;
+text-decoration:none;
+}
+.texte a:visited{
+color:#0090ff;
+background-color:transparent;
+text-decoration:none;
+}
+.texte a:hover{
+color:#00baff;
+background-color:transparent;
+text-decoration:underline;
+}
+.texte a:active{
+color:#FF33CC;
+background-color:transparent;
+text-decoration:none;
+}
+
+.titre {
+color:#555555;
+font-size:25px;
+background-color:transparent;
+text-decoration:none;
+}
+.bouton {
+	 color:#000000;
+	 font-size:12px;
+	 border:1px dotted #000;
+	 background-color: white;
+	 font-family: Verdana, Arial;
+	 font-weight: bold;
+	 height: 25px;
+}
+.bouton:hover{
+	 border:1px solid #6600ff;
+	 background-color: black;
+	 color:#FFFFFF;
+}
+.bouton2 {
+	 color:#000000;
+	 font-size:12px;
+	 border:1px dotted #000;
+	 background-color: white;
+	 font-family: Verdana, Arial;
+	 height: 20px;
+width: 310px;
+}
+.bouton2:hover{
+	 border:1px solid #6600ff;
+	 background-color: black;
+	 color:#FFFFFF;
+}
+	</style>	
+		<script type="text/javascript" src="js/appel_page.js"></script>
+		<script>
+function cache(thingId)
+{
+//alert("cache "+thingId)
+var targetElement;
+targetElement = document.getElementById(thingId) ;
+targetElement.style.display = "none" ;
+}
+function montre(thingId)
+{
+//alert("montre  "+thingId)
+var targetElement;
+targetElement = document.getElementById(thingId) ;
+targetElement.style.display = "" ;
+}
+</script>
+</HEAD>
+<body>
+
+
+<br>
+<table style=" border: 1px dotted #222222; background: white; filter:alpha(opacity=70); opacity: 0.7;">
+<tr><td class="texte" colspan="2" align="right">  <p align="right"><a href='' onclick='self.parent.tb_remove();'><b>FERMER CETTE PAGE</b></a></p></td></tr>
+<tr><td class="texte" colspan="2"><form>
+<button onClick="micoxUpload(this.form,'lire_messages.php?page=autodiag0-sauvegardeILIADE.html','commentaires','<img src=\'loading.gif\' height=20 width=20>Chargement, merci de patienter...','Error in upload'); return false;" type="button" class="bouton2">Afficher les commentaires</button></form></td></tr>
+<tr><td class="texte" colspan="2"><div id="commentaires" class="recebe" style="background-color:#FFFFFF;">&nbsp;</div></td></tr>
+
+
+
+<tr><td class="titre" colspan="2">
+<form>Poster un message :
+</td></tr>
+<tr><td class="texte" colspan="2">Votre nom : <INPUT type="text" name="nom" style="width:200px; height:20px;" class="textbox"></td></tr>
+<tr><td class="texte" colspan="2">Votre email : <INPUT type="text" name="email" style="width:200px; height:20px;" class="textbox"></td></tr>
+<tr><td class="texte" colspan="2"><TEXTAREA name="message" style="width:310px; height:60px;" class="textbox"></TEXTAREA></td></tr>
+<tr><td class="texte" colspan="2" align="right">
+<input type="hidden" name="page" value="autodiag0-sauvegardeILIADE.html">
+<div id="upload_1" class="recebe" style="background-color:#FFFFFF;">&nbsp;</div>
+<br>
+<button onClick="micoxUpload(this.form,'envoi_message.php','upload_1','<img src=\'loading.gif\' height=20 width=20>Envoi en cours, merci de patienter...','Error in upload'); return false;" type="button" class="bouton">Envoyer</button>
+  </form></td></tr>
+<tr><td class="texte" colspan="2" align="right">  <p align="right"><a href='' onclick='self.parent.tb_remove();'><b>FERMER CETTE PAGE</b></a></p></td></tr>
+</table>
+</body>
+</html>

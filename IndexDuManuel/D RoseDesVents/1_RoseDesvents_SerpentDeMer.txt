@@ -1,0 +1,2736 @@
+﻿ 
+
+La Rose des Vents et la visionneuse 
+cartographique en ligne 
+
+ 
+
+ 
+
+Le Serpent de Mer est un ensemble d'interfaces qui mettent en réseau un ensemble d'outils de 
+gestion de données localisées en vue de les représenter sur des cartes et divers outils liées aux 
+cartes. 
+
+ 
+
+Ces interfaces sont soit embarquées dans les plateformes GaïaMundi (interface web collaborative 
+en cartographie statistique http://gaiamundi.fr), soit dans des plateformes de ressources parta-
+gées en données localisées (DB-ressources) compatibles avec les plateformes GaïaMundi. Ainsi 
+reliées entre elles par les interfaces du Serpent de Mer, les plateformes GaïaMundi et DB-
+ressources constituent le support technique d'un réseau de mutualisation et d'échange de don-
+nées. 
+
+ 
+
+Le SerpentDeMer permet ainsi à tout utilisateur d'une plateforme GaïaMundi de rechercher les 
+données utiles à son travail, de les pré visualiser, de les intégrer directement aux cartes de sa pla-
+teforme, sans avoir à les rechercher sur les sites sources et à les façonner pour les rendre compa-
+tibles avec son interface cartographique. 
+
+ 
+
+L'association altercarto, qui réuni les utilisateurs, alimente le réseau via les plateformes de res-
+sources partagées DB-ressources. Mais chaque utilisateur ou groupe d'utilisateurs qui intègre des 
+données nouvelles sur sa plateforme GaïaMundi connectée au réseau, les rend accessibles à tous. 
+La mutualisation des ressources est ainsi aussi une amplification des ressources. 
+
+. 
+
+Les interfaces du Serpent de Mer sont les suivantes: 
+
+ 
+
+• l'interface de recherche de données assistée « RoseDesVents » 
+• l'interface de recherche par contenu ou par niveaux géographique 
+• la visionneuse cartographique des données localisées. 
+• Les modules de sauvegarde et surtout de transfert entre plateformes avec intégration 
+automatique dans les dossiers de cartographie localisée des utilisateurs.(items « transfert de don-
+nées DBHTML », « transfert de Menus REZO » et « transfert de données PANIER » dans le menu 
+Edition ->Données de GaïaMundi) 
+
+
+ 
+
+Cet ensemble a été fusionné en une seule interface et existe dans une version indépendante des 
+plateformes GaïaMundi sur le site http://altercarto.fr 
+
+ 
+
+Le réseau des plateformes est ainsi accessible et utilisable « de l'extérieur » par les internautes. 
+
+ 
+
+La RoseDesVents est l’interface de recherche et de visualisation dans le réseau des plateformes 
+connectées. Elle est destinée à identifier rapidement les fichiers disponibles dans le réseau qui 
+contiennent les données que l'on cherche. 
+
+ 
+
+Le module de recherche thématique ou géographique permet de compléter cette recherche par 
+une lecture directe du contenu des fichiers (les contenus sont présentés en liste déroulante) ou 
+encore de servir de moteur de recherche pour les utilisateurs qui préfèrent la recherche par mot 
+clé classique ou par gestion de liste (recherche par contenu ou recherche par niveau géogra-
+phique). 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+………………………
+………. 
+
+
+
+
+S’orienter avec la Rose des Vents 
+
+ 
+
+A partir de GaïaMundi, l’entrée dans la rose des vents se fait par le menu édition, avec deux op-
+tions : 
+
+. L’option Rose des Vents (Self) qui ouvre sur les plateformes que dont vous avez inscrit 
+l’adresse dans le registre « rezo.js »1 de votre plateforme 
+
+
+ 
+
+. L’option Rose des Vents (WEB) qui ouvre sur l’ensemble des plateformes accessibles à 
+partir de votre propre plateforme : c'est-à-dire les plateformes de l’option (Self) ci-dessus 
+et les plateformes inscrites au registre de référence en ligne dans lequel vous trouvez 
+toutes les plateformes mutualisées. 
+
+
+ 
+
+NB. Lorsque la connexion internet n’est pas bonne et que vous n’avez pas besoins de mobiliser les 
+données des plateformes mutualisées, utilisez l’option (Self) pour gagner du temps lors de 
+l’ouverture de la page d’accueil de la Rose des vents. En effet celle-ci charge les métadonnées is-
+sues des registres « rezo » avant de s’afficher. Lorsque la connexion est défectueuse ou à bas débit, 
+cela peu ralentir ou bloquer l’usage de la Rose des Vents. 
+
+ 
+
+La page d’entrée dans l’univers de la Rose des Vents est la suivante 
+
+ 
+
+ 
+
+ 
+
+Elle présente la liste des plateformes connectée au réseau, différente selon l’option choisie, (Web) 
+ou (Self). 
+
+ 
+
+
+
+1 Le fichier rezo.js de votre plateforme est situé dans le répertoire A-MANAGER-local/transdata-rezo/ 
+
+
+ 
+
+Un moteur de recherche permet de rechercher dans les plateformes le fichiers qui correspondent 
+à notre sujet : 
+
+Par exemple si l’on recherche les données sur l’emploi des femmes, on peut saisir deux mots clés 
+« emploi » et « femmes » 
+
+ 
+
+ 
+
+ 
+
+La validation par « Ok » déclenche l’affichage, pour chaque plateforme, de la liste des fichiers qui 
+contiennent les mots clés. Le survol du nom de fichier affiche en encadré un résumé de la fiche 
+signalétique du fichier. 
+
+Si l’on clique sur un de ces liens, la liste des plateformes est remplacée par l’affichage de la Rose 
+des Vents positionnée sur la plateforme du fichier choisi, dont la fiche apparaît présélectionnée. 
+
+ 
+
+ 
+
+ 
+
+Pour accéder aux données et à la visionneuse cartographique incorporée dans la Rose des Vents, il 
+suffit de cliquer sur le lien entouré de rouge. 
+
+ 
+
+
+
+
+ 
+
+En haut à Gauche de l’écran, vous trouvez un menu déroulant « REZO » qui correspondt à la liste 
+des plateformes listée sur la page d’accueil, à laquelle est ajoutée l’option retour à la liste détail-
+lée, c'est-à-dire à la page d’accueil. 
+
+Vous pouvez ainsi naviguer directement d’une plateforme à une autre ou revenir, comme bon 
+vous semble, à la liste détaillée et à son moteur de recherche qui porte sur l’ensemble du réseau 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Lorsque vous revenez à la liste détaillée (page d’accueil), celle-ci conserver la mémoire de la der-
+nière requête que vous avez effectuée et s’affiche avec les résultats de cette requête. Ainsi vous 
+pouvez tester les différentes solutions proposées dans ces résultats et revenir à la liste détaillée 
+sans avoir à retaper à chaque fois la requête. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+L’interface la Rose des Vents se compose de trois parties disposées sur la même page web, l'une 
+en dessous de l'autre comme indiqué dans la Vue d'ensemble. On se déplace d’une partie à 
+l’autre par l’ascenseur verticale di navigateur. A l’ouverture, la partie centrale est repliée 
+(recherche par contenu ou recherche par niveau géographique). 
+
+ 
+
+Vue d'ensemble 
+
+Une fois que vous aurez sélectionné la plateforme du réseau dans laquelle vous souhaitez chercher 
+des données, et une fois le fichier ad'hoc identifié avec la Rose des Vents (écran1), la visionneuse 
+affichera la liste des données et le module cartographique associé au fichier identifié (écran 2). 
+
+ 
+
+L'interface Serpent de Mer se compose alors de deux parties parties principales, et suivant les 
+opérations que vous réalisez, c'est l'écran 1 ou l'écran 2 qui est affiché. En réalité, les deux écrans 
+sont dans la même page Web et il suffit d'utiliser l'ascenseur ou les liens dédiés inséré dans la page 
+pour passer d'une partie à l'autre de l'interface, exactement comme sur une page Web classique. 
+
+Située à la jonction des deux écrans (Bulle Partie 3), la troisième partie est repliée par défaut. Elle 
+comprend les modules de recherche complémentaires, par contenu et par niveau géographique. 
+Cette partie se déploie dans la page si vous cliquez sur les liens bleus pointés par la bulle « écran 3 ». 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+Écran 2 
+
+Visionneuse 
+
+Écran 1 
+
+La RoseDesVents 
+
+Partie 3 
+
+(repliée) 
+
+ 
+
+
+Module de recherche et visionneuse la Rose des Vents 
+
+Les plateformes sont constituées d'un ensemble de dossiers Cartes+données. Le nom des dossiers 
+contenus dans chaque plateforme s'affiche dans la grande roue de la rose des vents (B) 
+
+ 
+
+Le jeu consiste donc à repérer les dossiers carte+données qui contiennent les informations qui 
+nous intéressent. Le descriptif des dossiers carte+données, c'est à dire les métadonnées du réseau, 
+ont été façonnées pour faciliter cette recherche. On y trouve à la fois le descriptif des niveaux 
+géographiques, le contenu détaillé des données, la taille physique des fichiers de données, cette 
+information étant importante car elle donne non seulement une idée des temps de télécharge-
+ment, mais aussi de la densité d'information contenu dans les dossiers Cartes+données. La partie 
+droite de la Rose des Vents est consacrée à la sélection des dossiers cartes+données en fonction 
+des critères que vous choisissez. Soit en prenant les critères préétablis (C et D), soit en entrant des 
+mots clés dans le cadre de saisie (G), soit les deux. Les critères réduisent le nombre de dossiers 
+dans la grande roue 
+
+Comment procéder? 
+
+Résumé : une fois la plateforme sélectionné dans le menu REZO (A) la rose des vents s'affiche. Le 
+survol des noms affichés (B) dans la roue déclenche l'affichage de la fiche (F). En cliquant sur le lien 
+inscrit dans la fiche (ici : IRIS-BTX_IC_POP_2006), vous déclenchez l'affichage des données et la vision-
+neuse cartographique 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+E – indication de la taille 
+
+des fichiers de données 
+
+à télécharger: 
+
+La valeur maximum est celle 
+
+du plus grand fichier de données 
+
+de la plateforme en cours. 
+
+L'indication numérique est 
+
+donnée en Mo dans 
+
+la fiche pointée au n°F 
+
+A – Choix de la 
+
+plateforme : accès aux 
+
+plateformes ressources 
+
+et aux plateformes 
+
+connectées au réseau 
+
+B –nom des dossiers 
+
+carte+ données 
+
+disponibles dans 
+
+la plateforme choisie 
+
+C – critères 
+
+Thématiques 
+
+ou de populations 
+
+de référence 
+
+(voir § paramétrage 
+
+de la Rose des Vents) 
+
+ 
+
+D-sélection de critères courants 
+
+(voir § paramétrage de la Rose 
+des Vents) 
+
+G – mots clés. 
+
+Les mots clés sont séparés par un espace. 
+
+Pour indiquer une condition sauf, on fait 
+
+précéder le mot clé par « ! » comme par 
+
+exemple !revenu pour dire sauf revenu 
+
+F –fiche descriptive du fichier de 
+
+Données sélectionné au n°B 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Le survol des titre de dossiers autour de la grande rose déclenche l'affichage de la fiche descriptive du dossier 
+Carte+données (Cf fiche en dessous à gauche). 
+
+ 
+
+. Pour verrouiller une fiche : cliquez sur la fiche ou sur le titre dans la grande rose. 
+. Pour déverrouiller, re-cliquez sur la fiche ou sur l'importe quel autre titre dans la grande rose. 
+
+
+ 
+
+Dans la fiche descriptive du dossier Carte+données (fiche de gauche) sélectionnée dans la grande 
+rose, lorsqu'on clique sur le lien « détails », un cadran du type de celui de droite s'affiche. Il con-
+tient un texte qui reprend tous 
+les mots utilisés dans la défini-
+tion des données (métadon-
+nées). 
+
+ 
+
+En général, il s'agit de la liste 
+des libellés des entêtes de co-
+lonnes de données dans le 
+fichier de données. 
+
+ 
+
+Un module permet de surligner, 
+dans le texte présenté dans cet 
+encadré, les mots clés que l'on 
+aura saisis dans le champ situé 
+au dessus du texte, ce qui faci-
+lite grandement sa lecture 
+lorsqu'il y a beaucoup de données dans le dossier. 
+
+ 
+
+ 
+
+
+
+C bis – exemple d'effet d'une sélection: 
+
+Après qu'on a sélectionné un critère 
+
+(ici en rouge dans la petite rose) 
+
+la grande rose se reconfigure 
+
+avec les dossiers Cartes+donnés contenant 
+
+ce critère. Et ainsi de suite si l'on ajoute 
+
+ d'autres critères 
+
+NB. les critères s'ajoutent les uns aux 
+
+autres par une fonction logique « et ». 
+
+
+ 
+
+Une fois que l'on pense avoir trouvé le fichier correspondant à sa recherche, il est temps de 
+
+se rendre dans le module visionneuse pour représenter les données sur des cartes. 
+
+ 
+
+Pour cela on clique sur le lien bleu portant le nom de dossier dans la fiche du dossier ou dans la 
+fiche détail 
+
+ (ici, par exemple, le lien : MONDE) 
+
+ 
+
+Fonctionnement de la visionneuse 
+
+l'activation de ce lien déclenche : 
+
+• le téléchargement du fichier principal du dossier que vous avez sélectionné , te affiche les 
+données en liste cliquable pour les afficher sur la carte 
+• l'affichage du module cartographique de la visionneuse. 
+
+
+ 
+
+Deux cas de figure se présentent: 
+
+1. Soit le périmètre géographique couvert par les données comporte moins de 3100 zones 
+géographiques,(comme la région Rhône Alpes par exemple ou la liste des États du 
+Monde), alors le module cartographique de la visionneuse affiche directement la carte as-
+sociée au dossier de données, 
+2. Soit le fichier de données correspond à un nombre d'aires géographiques plus important 
+et trop lourd à afficher en format Web ( par exemple: la France des communes ou des ar-
+rondissements comporte près de 37 000 aires) , alors la visionneuse vous propose de 
+choisir parmi les cartes disponibles ( par exemple, dans le cas d'un découpage commu-
+nale : des cartes de département). 
+
+
+ 
+
+Dans ce cas, une fois que la carte de votre choix est téléchargée et affichée, il suffit de cli-
+quez sur une donnée de la liste de gauche pour l'afficher sur la carte. 
+
+ 
+
+NB. Au moment de la rédaction de ce manuel, la liste des cartes disponibles au niveau géogra-
+phique communal ou cantonal ne couvre pas encore la France entière. Nous avons commencé par 
+Rhône Alpes pour compléter progressivement au cours du premier semestre 2011. Idem pour le 
+niveau géographique canton. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ Choix de la carte de la 
+
+région Rhône Alpes 
+
+ Choix de la carte d'un 
+
+Département de la 
+
+région Rhône Alpes 
+
+ Choix d'une autre carte : 
+
+liste accessible 
+
+par le menu déroulant 
+
+
+ 
+
+Dans le Cas 1 (visiteur) comme dans le Cas 2 (adhérent), après avoir choisi une carte, vous vous 
+trouvez devant une interface de ce type : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ Dans le cas 2 vous disposez 
+
+d'un bouton pour choisir 
+
+une autre carte 
+
+
+Changement de maille géographique 
+
+depuis fin 2011, il est possible, avec le même fichier de données, d’afficher des cartes avec des 
+mailles géographiques différentes, pour peu que deux conditions soient remplies : 
+
+. que les données soient sommables. Depuis fin 2011, une rubrique de la fiche est consa-
+crée à la déclaration de sommabilité (voir le manuel Fiche signalétique de la Carte) 
+. et que les mailles soient emboîtées les unes dans les autres, le plus fines des mailles 
+emboîtables étant celle du fichier. Par exemple, si le fichier est à la maille Canton, on 
+peut regrouper les aires géographiques en départements, ou en régions. 
+
+
+ 
+
+Dans l’exemple suivant : les données à la maille communale sont déclarées sommable ( en vert) 
+
+ 
+
+ 
+
+Du fait qu’elles sont sommables, dans le volet de choix des cartes, apparaissent toutes les options 
+d’emboîtement de maille disponible dans la Rose des Vents à partir de la maille commune. (Can-
+ton, département, région).Par défaut il y a toujours l’option « tous ». cependant son usage n’est 
+pas recommandé. 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+La sélection de chacune de ces options a pour effet d’afficher la liste des cartes dans la maille choi-
+sie. 
+
+Par exemple, la liste suivante pour la sélection Canton 
+
+ 
+
+Si vous sélectionnez l’une de ces cartes, la Rose des Vents mobilise la table de passage ad’hoc et 
+opère les calculs nécessaire à l’affichage des données calculées dans la carte à la choisie. 
+
+ 
+
+Cas Non sommable 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+CAS Non précisé ou Non renseigné ou indication de sommabilité partielle 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Module cartographique 
+
+ 
+
+Chaque colonne de donnée contenue dans le fichier est représentée, dans un encadré, par un 
+libellé court, un libellé long, la source originale et la date de validité. Pour afficher une donnée sur 
+la carte, il suffit de cliquer sur l'encadré de la donnée 
+
+Le bouton violet (Panier) affecte la donnée au panier en vue de l'export des données sélectionnées 
+au format .txt (Cf. ci après).Lorsqu'une donnée à été affectée au panier, son encadré devient 
+jaune. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dans la visionneuse, les aires géographiques sont réparties en classes dénommées quantiles. Les 
+quantiles sont des ensembles d'effectifs égaux. Par défaut : 
+
+ 
+
+• dans le cas des ronds, la répartition est donnée en quantile 2, c'est à dire que 50% des terri-
+toires sont en ronds verts et 50% des territoires en ronds bleus. Lorsque les écarts de va-
+leurs des données sont importants, les bleus sont très petits et pratiquement invisibles. En 
+revanche, ils sont perceptibles lorsque l'écart entre minimum et maximum est réduit. 
+
+
+ 
+
+• Dans le cas des surfaces, (choix fonds de carte), les territoires sont classés en quantiles 5, 
+c'est à dire en 5 classes comprenant chacun 20% de l'ensemble des territoires de la carte 
+
+
+ 
+
+On peut changer les quantiles, de même que les couleurs (bulle n°8 ci-dessus) . Attention, les 
+changements de couleur ou de quantile affectent soit les ronds, soit les surfaces colorées selon 
+que le sélecteur de couche est sur « ponctuel » ou sur « fonds de carte ». 
+
+
+
+6 -cliquer pour afficher 
+
+ cette donnée dans la 
+
+visionneuse cartographique 
+
+5 - Recherche des territoires par nom 
+
+En cliquant OK avec le champ vide, 
+
+on la liste de tous les territoires 
+
+7 – par défaut, la donnée s'affiche 
+
+en fond de carte. 
+
+SI on sélectionne le bouton « Ponctuels » 
+
+La prochaine donnée s'affichera 
+
+en ronds verts et bleus 
+
+comme dans l'image ci dessous. 
+
+On peut ainsi raisonner en classes 
+
+(en surfaces colorées par classes) 
+
+ou bien raisonner en valeur 
+
+(ronds ponctuels proportionnels à la valeur) 
+
+8 – on peut changer 
+
+la palette de couleur 
+
+et le nombre de classes 
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+Module de Calcul en ligne 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+A ce stade du développement de la visionneuse, il n'y a qu'une seule opération de calcul disponible 
+dans le module de calcul. 
+
+Dans les prochains mois, des opérations complémentaires seront intégrées : %(a-b)/c, (a+b+c+d...), 
+% (a+b+c..)/e etc... 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+9 – On peut introduire des seuils 
+
+minimum et maximum . 
+
+Pour appliquer les seuils, 
+
+sélectionner « on », 
+
+pour revenir à l'affichage original, 
+
+sélectionner « off ». 
+
+Cette fonctionnalité est très utile lorsqu'on 
+
+a des valeurs nulles qui perturbent la vision. 
+
+Il suffit alors de mettre 0 comme seuil . 
+
+Les territoires dont les données sont 
+
+occultés par le seuil sont grisés bleu clair. 
+
+Pour réactiver le seuil recliquer sur On 
+
+ 
+
+10 – On dispose d'un module de 
+
+calcul de pourcentages. 
+
+Il suffit de noter le numéro des données 
+
+choisies dans les cases « numérateur » 
+
+et « dénominateur » . 
+
+Puis de cliquer sur le bouton « carte » 
+
+pour afficher le pourcentage 
+
+ou sur le bouton panier pour ajouter la 
+
+donnée calculée au panier. 
+
+(ATTENTION: si vous placez une donnée 
+
+en pourcentages calculés 
+
+dans le panier, veillez à bien écrire les 
+
+libellés car une fois exportée, vous 
+
+ n'aurez plus d'autre information sur la 
+
+définition de cette donnée). 
+
+ 
+
+Lorsqu'on sélectionne le bouton radio 
+
+en dessous du Numérateur ou du 
+
+Dénominateur, on peut changer la 
+
+donnée prise en compte dans le calcul 
+
+en cliquant sur le bouton bleu « carte » 
+
+d'une donnée choisie tout en maintenant 
+
+la touche majuscule appuyée 
+
+(schift+click sur bouton carte) 
+
+ 
+
+
+ 
+
+Graphiques interactifs 
+
+Depuis juin 2012, de nouvelles fonctionnalités permettant de réaliser des graphiques interactifs 
+associés aux cartes ont été incorporées dans la Rose des Vents 
+
+ 
+
+ 
+
+ 
+
+La sélection du bouton « Déplier/replier Graph » déclenche l’ouverture d’un encadré d’affichage et 
+de gestion des graphiques. 
+
+ 
+
+Fonctionnement du module 
+Graphique 
+
+Le menu déroulant situé en haut à 
+gauche du module propose trois 
+choix de graphiques : 
+
+. Histogramme 
+. courbe 
+. Radar 
+
+
+1 - Le mode Histogramme 
+
+A l’ouverture c’est l’histogramme 
+qui est sélectionné. 
+
+Pour réaliser un graphique, on in-
+jecte des données dans le module 
+en faisant glisser les boutons bleus 
+vers le cadre du module. 
+
+ 
+
+Cela déclenche automatiquement 
+l’affichage d’une barre dans le gra-
+phique 
+
+ 
+
+Et ainsi de suite pour avoir plusieurs 
+barres 
+
+On peut aussi saisir les numéros des 
+données dans le champ de saisie 
+n°DATA en les séparant par une 
+virgule (ATTAENTION : PAS de point) 
+
+En mode histogramme, après avoir 
+injecté des données, on a le choix 
+suivant : 
+
+ 
+
+Si l’on coche le bouton Serial, le 
+module recherche le plus petit nu-
+méro de données et le plus grand, 
+puis affiche la série de valeurs entre ces deux bornes comprises comme indiqué ci-après. 
+
+
+
+
+ 
+
+ 
+
+A partir de 18 données, les barres sont naturalisées en gris et la légende est occultée. 
+
+ 
+
+2 - Le mode Courbes 
+
+Le procédé d’injection de données est le même. 
+
+ Exemple d’une courbe avec 5 données 
+
+ 
+
+ 
+
+(NB lorsqu’on survole la courbe avec le pointeur, les noeuds de la courbe sont signalés par un point 
+gris et la valeur affichée) 
+
+Dans le mode courbe on peut aussi passer en mode série en cochant le bouton sérial ( le procédé 
+de mise en série est le même que pour l’histogramme) 
+
+ 
+
+: 
+
+ 
+
+Le mode Courbe propose des fonctionnalités complémentaires : 
+
+
+
+
+Prenons la courbe en série du GDP/capita [1960 ; 2009] par exemple : 
+
+ 
+
+ 
+
+Comparaison à la moyenne simple 
+
+(moyenne simple: pour chaque point de la courbe bleue, le point correspondant de la courbe grise 
+est la moyenne des valeurs pour toutes les aires de la carte) 
+
+Pour occulter la courbe grise, cocher le bouton Off. Le bouton abs est alors décoché. 
+
+ 
+
+ 
+
+On peut aussi faire établir la comparaison avec une moyenne pondérée par un coefficient de 
+pondération indexé sur une variable du fichier. 
+
+Par exemple, ici la population en 2009 qui est la données n°49 dans ce fichier). On saisie la variable 
+de référence dans le champ de saisie « Coef weight » 
+
+ 
+
+ 
+
+Dans cet exemple, on, voit que la pondération abaisse la valeur de la moyenne et corrige sensi-
+blement la position de la Courbe du Nicaragua en la positionnant plus rapproché de la moyenne 
+pondérée qu’elle ne l’était de moyenne simple. 
+
+Pour revenir à la moyenne simple, il faut supprimer le numéro de données de référence dans le 
+champ « Coef weight ». 
+
+ 
+
+ 
+
+3 - Le mode Radar 
+
+
+
+
+ 
+
+ 
+
+ 
+
+Le procédé d’injection des données est le même que pour les courbes et les histogrammes. 
+
+Pour le Radar, il faut au moins trois données. 
+
+Les libellés détaillés des données s’affichent lorsqu’on survole les extrémités du radar. 
+
+ 
+
+Comme pour les courbes peut comparer à la moyenne simple. 
+
+Dans l’exemple, on a mis en graphique 5 indicateurs de malnutrition. 
+
+ 
+
+ 
+
+Ou encore à une moyenne pondérée par un coefficient indexé sur une variable du fichier ( ici la 
+population en 2009) 
+
+ 
+
+Non pondéré Pondéré 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+On peut aussi normaliser les données de référence et représenter les données du pays sélectionné 
+en pourcentage de la donnée de référence en cliquant sur le bouton % : 
+
+ 
+
+ 
+
+Niger Madagascar 
+
+ 
+
+ 
+
+4 - Passage d’un mode à un autre. 
+
+On peut passer d’un mode à un autre sans changer les données. 
+
+Le passage du mode Histogramme au mode Courbe et réciproquement ou le passage du mode 
+Hhistogramme au mode Radar et réciproquement, sont souvent les plus utiles 
+
+ 
+
+ 
+
+NB. Penser à intégrer les données de référence pour la pondération lorsque vous réalisez les fi-
+chiers de données pour la Rose des Vents. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Remplissage du panier et export des données au format 
+texte (.txt) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Gestion du Panier 
+
+Les données en jaunes sont celles qui ont été attribuées au panier 
+
+ 
+
+1 - Usage du panier pour exporter des données sous 
+forme de tableau 
+
+ 
+
+Le panier vous permet de sélectionner des données à usage 
+immédiat (export de tableau) 
+
+ 
+
+Pour extraire les données du panier sous forme de tableau 
+que vous pouvez copier –coller dans un tableur (Excel , Open 
+Office,…) ou un traitement de texte (Word , Open Office,…), 
+procéder comme suit. 
+
+ 
+
+Cliquez sur le bouton « extraire : Déplier/Replier » 
+
+ 
+
+Après un temps de calcul et de téléchargement, la liste intégrale des aires géographiques s’affiche 
+avec des boutons de sélection pour chacune d’elles. 
+
+ 
+
+Vous pouvez : 
+
+• sélectionner tous avec le bouton « tous », 
+• sélectionnez manuellement en cochant les boutons sélecteurs, 
+• ou effacer votre sélection avec le bouton « RAZ » 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+11 – Les données sélectionnées 
+
+avec le bouton violet 
+
+sont ajoutées au panier et 
+
+marquées par une bande jaune. 
+
+ 
+
+Déplie ou replie le panier. 
+
+Vide le panier. 
+
+12 – déclenche l'export 
+
+des données du panier 
+
+
+ 
+
+ 
+
+ 
+
+Vous disposez de trois outils de sélection automatique 
+des aires géographique qui constitueront les lignes de 
+votre tableau : « Nom contient », « code débute par » et 
+« code contient ». 
+
+ 
+
+Code est le Code Insee référencé au Code Géographique 
+national. S’il s’agit de géographie non standard, lire les 
+métadonnées ou repérer les codes dans la liste. 
+
+ 
+
+Par exemple, recherchons les communes de l'Ile de la 
+Réunion parmi l’ensemble des communes de France. On 
+sait que le code 974 = les trois premiers chiffres du code 
+Insee des communes de la Réunion. 
+
+On saisit ce code dans le champ « Début code» puis on 
+valide par le bouton « OK ». 
+
+ 
+
+Après un temps de calcul, une nouvelle liste s’affiche : la 
+liste des communes de la Réunion. 
+
+ 
+
+On sélectionne alors comme indiqué ci-avant (avec le 
+bouton « tous » ou bien manuellement). 
+
+ 
+
+On édite le tableau avec le bouton « éditer ».Un nouveau cadre s’affiche, qui contient le tableau. 
+
+Pour récupérer le tableau : 
+
+• cliquer dans le cadre du tableau, 
+• faites Ctrl + A (contrôle+ A) 
+• puis copier et coller sur le support de votre choix, de préférence dans un tableur. Cela 
+vous permet de faire des calculs ou de produire des graphiques. 
+
+
+ 
+
+Moyennant quelques aménagements de forme on obtient en trois ou quatre minutes un tableau 
+tel que le suivant, auquel nous avons ajouté une synthèse calculée via un tableur. 
+
+ 
+
+NB ne pas oublier de relever les éléments de métadonnées importantes : populations de réfé-
+rence, la source (précise : par exemple RGP ou fichier CLAP, …), l’indication sur le lieu de recen-
+sion ( lieu de travail ou de résidence), et dans le cas du recensement, l’exploitation principale ou 
+complémentaire (Les données issues de l’une ou de l’autre ne peuvent être utilisées ensemble 
+pour faire des calculs). 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+Tableau : Fabrication de denrées alimentaires de boissons et de produits à base de tabac 
+
+Population active de 15 ans ou plus ayant un emploi RGP 2007 au lieu de résidence 
+
+Insee RGP 2007 (Exploitation complémentaire) 
+
+ 
+
+ 
+
+ 
+
+total 
+salariés 
+
+hommes 
+
+femmes 
+
+agriculteurs 
+exploitants 
+
+Artisans 
+Commerçants 
+
+Cadres et 
+professions 
+supérieures 
+
+Professions 
+intermédiaires 
+
+employés 
+
+ouvriers 
+
+Les Avirons 
+
+97401 
+
+101 
+
+79 
+
+22 
+
+0 
+
+9 
+
+5 
+
+13 
+
+22 
+
+52 
+
+Bras-Panon 
+
+97402 
+
+130 
+
+75 
+
+55 
+
+0 
+
+24 
+
+8 
+
+4 
+
+8 
+
+87 
+
+Entre-Deux 
+
+97403 
+
+42 
+
+34 
+
+8 
+
+0 
+
+4 
+
+0 
+
+0 
+
+8 
+
+30 
+
+L'Étang-Salé 
+
+97404 
+
+188 
+
+142 
+
+46 
+
+0 
+
+8 
+
+8 
+
+18 
+
+18 
+
+137 
+
+Petite-Île 
+
+97405 
+
+82 
+
+60 
+
+22 
+
+0 
+
+0 
+
+3 
+
+15 
+
+25 
+
+40 
+
+La Plaine-des-
+Palmistes 
+
+97406 
+
+46 
+
+34 
+
+13 
+
+0 
+
+13 
+
+0 
+
+13 
+
+9 
+
+12 
+
+Le Port 
+
+97407 
+
+242 
+
+177 
+
+65 
+
+0 
+
+12 
+
+0 
+
+17 
+
+43 
+
+170 
+
+La Possession 
+
+97408 
+
+183 
+
+141 
+
+43 
+
+0 
+
+23 
+
+20 
+
+38 
+
+18 
+
+85 
+
+Saint-André 
+
+97409 
+
+318 
+
+258 
+
+60 
+
+0 
+
+55 
+
+5 
+
+28 
+
+40 
+
+190 
+
+Saint-Benoît 
+
+97410 
+
+239 
+
+156 
+
+83 
+
+3 
+
+28 
+
+0 
+
+23 
+
+40 
+
+146 
+
+Saint-Denis 
+
+97411 
+
+683 
+
+453 
+
+231 
+
+0 
+
+134 
+
+53 
+
+92 
+
+164 
+
+241 
+
+Saint-Joseph 
+
+97412 
+
+182 
+
+130 
+
+53 
+
+3 
+
+15 
+
+3 
+
+25 
+
+43 
+
+94 
+
+Saint-Leu 
+
+97413 
+
+142 
+
+107 
+
+35 
+
+0 
+
+20 
+
+10 
+
+15 
+
+20 
+
+77 
+
+Saint-Louis 
+
+97414 
+
+279 
+
+222 
+
+57 
+
+0 
+
+27 
+
+7 
+
+32 
+
+35 
+
+177 
+
+Saint-Paul 
+
+97415 
+
+544 
+
+369 
+
+175 
+
+3 
+
+67 
+
+42 
+
+80 
+
+107 
+
+245 
+
+Saint-Pierre 
+
+97416 
+
+561 
+
+430 
+
+131 
+
+12 
+
+50 
+
+25 
+
+63 
+
+78 
+
+332 
+
+Saint-Philippe 
+
+97417 
+
+12 
+
+12 
+
+0 
+
+0 
+
+0 
+
+0 
+
+8 
+
+0 
+
+4 
+
+Sainte-Marie 
+
+97418 
+
+142 
+
+99 
+
+43 
+
+0 
+
+8 
+
+5 
+
+38 
+
+22 
+
+68 
+
+Sainte-Rose 
+
+97419 
+
+28 
+
+28 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+28 
+
+Sainte-
+Suzanne 
+
+97420 
+
+145 
+
+103 
+
+42 
+
+0 
+
+20 
+
+5 
+
+15 
+
+37 
+
+67 
+
+Salazie 
+
+97421 
+
+93 
+
+62 
+
+31 
+
+4 
+
+15 
+
+4 
+
+8 
+
+15 
+
+46 
+
+Le Tampon 
+
+97422 
+
+518 
+
+385 
+
+133 
+
+0 
+
+53 
+
+30 
+
+83 
+
+101 
+
+251 
+
+Les Trois-
+Bassins 
+
+97423 
+
+47 
+
+42 
+
+4 
+
+0 
+
+4 
+
+0 
+
+4 
+
+8 
+
+29 
+
+Cilaos 
+
+97424 
+
+28 
+
+16 
+
+12 
+
+0 
+
+4 
+
+0 
+
+12 
+
+8 
+
+4 
+
+Synthèse 
+
+ 
+
+ 
+
+total 
+salariés 
+
+hommes 
+
+femmes 
+
+agriculteurs 
+exploitants 
+
+Artisans 
+Commerçants 
+
+Cadres et 
+professions 
+supérieures 
+
+Professions 
+intermédiaires 
+
+employés 
+
+ouvriers 
+
+ 
+
+effectifs 
+
+4975 
+
+3614 
+
+1364 
+
+25 
+
+593 
+
+233 
+
+644 
+
+869 
+
+2612 
+
+ 
+
+% du 
+total 
+
+100% 
+
+73% 
+
+27% 
+
+1% 
+
+12% 
+
+5% 
+
+13% 
+
+17% 
+
+53% 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+2 - Usage du panier pour exporter l'intégralité du fichier de données 
+
+ 
+
+1er cas : visiteur : récupération du fichier au format .txt 
+
+ 
+
+Le bouton « sauve » (bulle 12 page précédente) déclenche l'ouverture d'une nouvelle interface 
+dans le Serpent de Mer qui propose le panneau suivant: 
+
+ 
+
+ 
+
+L'activation du bouton OK n°13 déclenche l'affichage d'un nouveau cadre qui se substitue au pré-
+cédent. Les données du panier, sous format .txt récupérable sous tableur, vont être affichées dans 
+ce cadre. Le temps d'exécution du processus d'extraction et d'export des données au format .txt 
+est proportionnel au volume de données et aussi à la qualité de la connexion Internet. 
+
+ 
+
+ 
+
+ 
+
+2ème cas : titulaire d'un compte public 
+
+ 
+
+
+
+13 – Déclenche l'édition du fichier de données au format texte 
+
+dans un nouvel onglet du navigateur (FireFox) 
+
+14 – Enregistrer le fichier avec la commande « enregistrer le cadre sous » du menu contextuel 
+
+du navigateur activé par le click droit de la souris 
+
+13 bis – idem cas visiteur 
+
+
+Sauvegarde des données dans un nouveau panier personnel 
+
+ 
+
+ 
+
+ 
+
+Vous pouvez enregistrer vos données dans un panier personnel accessible uniquement avec votre 
+code et mot de passe. Vous pouvez créer autant de paniers personnels que vous le souhaitez. 
+Remplissez le formulaire de saisie : 
+
+• Le code maille de la carte est rempli automatiquement. 
+• Le nom du panier doit être explicite pour vous, car quand vous rechercherez ce panier per-
+sonnel avec les moteurs de recherche, ce nom s'inscrit dans la fiche signalétique et com-
+plète l'information donnée par le nom du dossier lequel doit être plus très concis et sans 
+caractères spéciaux (accents, ponctuation, symboles mathématiques...) 
+• soyez attentif à être à la fois bref et précis dans le libellé du contour, de la maille en clair et 
+surtout du contenu du fichier. 
+
+
+ En cliquant sur OK vous enregistrez vos données dans le panier personnel nouvellement créé 
+
+ 
+
+ 
+
+
+
+15 – Sauvegarde des données dans un nouveau panier personnel 
+
+
+Compléments. 
+
+Vous pouvez faire le choix d'écraser les données contenues dans un panier existant. Pour cela, 
+cliquez sur le lien bleu dans la liste (à gauche) des paniers existants par exemple ici : choix : PA-
+NIERS-hp4 ….., 
+
+ 
+
+Vous pouvez visualiser le contenu des fichiers (entête des colonnes de données) en cliquant sur le 
+lien entêtes de colonnes pour le panier de votre choix dans la liste de gauche 
+
+ 
+
+Sauvegarde des données dans un panier personnel existant 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Vous pouvez ajouter vos données à un panier existant, à condition que la maille soit la même dans 
+vos données sélectionnées et les données contenues dans le panier existant. A condition aussi que 
+le contour géographique (périmètre) couvert par le fichier de destination soit inclus dans ou égal 
+au périmètre couvert par les données que vous ajoutez. 
+
+ 
+
+La sélection du bouton 16 déclenche l'ouverture d'une nouvelle interface qui vous guide dans 
+l'ajout de données à un panier existant. Dans un premier temps, l'interface télécharge les données 
+et affiche les entêtes de colonnes dans le carré gris à gauche. Par défaut, toutes les colonnes de 
+votre sélection sont cochées. Vous pouvez ainsi vérifier la liste et choisir de décocher certaines 
+données. 
+
+ 
+
+ 
+
+ 
+
+
+
+16 – Sauvegarde des données dans un panier personnel existant 
+
+
+ 
+
+En cliquant OK, vous accédez à la partie droite de l'interface, par 
+laquelle vous choisissez le panier de destination. 
+
+On procède en sélectionnant d'abord la maille (premier menu dé-
+roulant) puis le panier de destination dans la liste des paniers com-
+patibles avec cette maille (troisième menu déroulant) 
+
+Lorsque le panneau gris ci-joint apparaît : cliquez sur le bouton 
+radio 
+
+ 
+
+NB dans la version 0.1 expérimentale le second menu, relatif aux tables de 
+passages, n'est pas fonctionnel. Ne l'activez pas, au risque de dégrader les 
+données 
+
+ 
+
+Après un temps de calcul proportionnel au volume de données 
+transférées et au nombre d'aires géographiques, le panneau ci 
+joint apparaît. 
+
+• Cliquez sur « transférer les méta données ». 
+
+
+ 
+
+Le fichier du panier existant est alors actualisé avec les nou-
+velles colonnes ajoutées. 
+
+ 
+
+ 
+
+3ème cas : titulaire d'un compte adhérent de la plateforme 
+
+ 
+
+ 
+
+ 
+
+Les possibilités offertes au titulaire d’un compte sur la plateforme sont les mêmes que pour le 
+titulaire d’un compte public avec en plus le privilège de pouvoir transférer des données dans les 
+dossiers cartes de la plateforme. 
+
+La procédure de transfert de données vers les dossiers cartes de la plateforme est la même que la 
+procédure ci-dessus « sauvegarde des données dans un panier personnel existant ». 
+
+ 
+
+ 
+
+Visionner les données des paniers dans la Rose des vents 
+
+• videz le cache [pour Firefox : Outils, options, avancé, onglet réseau, bouton videz le cache 
+maintenant, bouton Ok. ] 
+• dans le menu déroulant REZO en haut à gauche, sélectionnez « cette plateforme » 
+
+
+ 
+
+A l’ouverture de la Rose des vents pour une plateforme choisie, la Grande Rose affiche les fichiers 
+des dossiers cartes de la plateforme. Cependant elle recense aussi les fichiers sauvegardés dans le 
+sous répertoire « PANIERS-utilisateur » de la plateforme choisie et vous pouvez les affichez dans la 
+Rose des Vents avec le sélecteurs prévu à cet effet dans les filtres complémentaires. 
+
+ 
+
+ 
+
+
+
+17 – ajout des données à un dossier carte de la plateforme 
+
+
+ 
+
+Recherche par contenu ou par niveau géographique 
+
+ 
+
+En complément de la Rose des Vents, vous disposez de deux autres procédés de recherche : 
+
+• la recherche par contenu, 
+• la recherche par niveau géographiques 
+
+
+ 
+
+ 
+
+Pour accéder à ces deux modules, cliquez sur les liens situés en dessous de la Rose des Vents et au 
+dessus de la visionneuse. 
+
+ 
+
+Module de recherche par contenu, 
+
+Le lien « Recherche par contenu » ouvre le panneau suivant : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Recherche par niveau géographique, 
+
+Le lien « Recherche par niveau gégraphique » ouvre le panneau suivant : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+Recherche par mot clé 
+
+( filtre du menu déroulant présentant 
+
+les fiches des dossiers carte+données) 
+
+Mode de présentation du contenu 
+
+détaillé des fiches « cartes+données » 
+
+Choix du dossier carte+données . 
+
+Cette action déclenche le téléchargement 
+
+des données dans la visionneuse et du module cartographique 
+
+Menu déroulant 
+
+(liste des fiches de dossiers de données) 
+
+I – On choisi d'abord la maille (ou niveau géographique) 
+
+II – On choisi ensuite le dossier carte+données souhaité. 
+
+Cette action déclenche le téléchargement 
+
+des données dans la visionneuse et du module cartographique 
+
+
+Notes d'information importantes 
+
+ 
+
+Parti pris sur le format des sources et données calculées 
+
+ 
+
+Dans le cas général, les fichiers DB-ressources ne regroupent pas de données issues de fichiers 
+sources distincts (chaque fichier ressource correspond à un fichier source unique). 
+
+ 
+
+Dans le cas général, les données disponibles dans les plateformes DB-ressources du Serpent de 
+Mer conservent la valeur numérique qu'elles avaient dans les fichiers sources. En revanche les 
+libellés sont transformés, pour des raisons de traitement des métadonnées (formalisation des 
+libellés courts et longs, isolement des champs sources et dates de validité, afin d'affichage et 
+d'identification par les moteurs de recherche...) Cependant, autant que possible, on cherche à 
+coller aussi près que possible au contenu initial des métadonnées. 
+
+ 
+
+Les seules données calculées par nous sont des totaux ou des sous totaux, et sont reconnaissables 
+par un signe inscrit dans les libellés des variables : le signe (c ) parfois transformé en © par l'enco-
+dage automatique des fichiers. 
+
+ 
+
+Dès lors les partis pris des auteurs originaux des fichiers sont conservés, notamment en ce qui 
+concerne les zéros et les valeurs lacunaires. 
+
+ 
+
+Données lacunaires 
+
+Lorsque les données sont lacunaires (lorsque, pour une aire géographique, la donnée est man-
+quante), en mode de projection cartographique en fond coloré, l'aire géographique est colorée en 
+bleu gris. 
+
+Dans le fichier de données exporté, les données lacunaires sont notées « -99999 ». 
+
+ 
+
+Sommabilité des données. 
+
+A ce stade (février 2011) dans les fichiers DB -ressources, les libellés de données ne précisent pas 
+certaines indications importantes comme la sommabilité par regroupement géographique (un 
+pourcentage « en ligne » n'est pas sommable par regroupement sans une opération complexe de 
+pondération), et le statut des lacunes, ces deux indications étant en partie liées. Une lacune peut 
+par exemple indiquer un défaut de sondage dans l'aire géographique considérée ou l'effet d'une 
+mesure de secret statistique - dans ces deux cas, les données ne sont pas sommables – ou sim-
+plement la lacune est un pseudo zéro permettant la sommation géographique des données. 
+
+Ces indications absentes aujourd'hui, seront ajoutées rétroactivement sur les fiches signalétiques 
+des fichiers dans les moteurs de recherche du Serpent de Mer d'ici le 1er avril 2011, et à partir de 
+cette date, pour ce qui concerne les données nouvellement intégrées à la base, dans les champs 
+dédiés dans l'entête basse des colonnes de données dans les fichiers ( lorsque cela est utile, 
+comme pour les pourcentages en ligne, les taux d'accroissement, par exemple)bien que les libellés 
+soient en principe déjà explicites sur ce plan. 
+
+ 
+
+Notation des décimales. Dans les fichiers exports au format .txt, les décimales sont séparées par 
+des points « . » et non par des virgules « , » 
+
+ 
+
+NB De ce qui précède, il résulte que lorsque vous récupérez les données d'export dans un tableur, 
+vous devez remplacer, dans le corps des données, les valeurs « -99999 » par vide « » et les points 
+« . » par des virgules « , ». 
+
+ 
+
+ 
+
+ 
+
+
+
+
+A propos des quantiles. 
+
+La classification par quantiles s'opère sur les aires non lacunaires. Lorsqu'on introduit un seuil, les 
+données en dehors de la fourchette définie sont considérées comme lacunaires. 
+
+Dans le cas général, la classification par quantiles est juste, c'est à dire qu'il y a un nombre égal 
+d'aires dans chaque classe modulo le nombre de quantiles. Par exemple, 20% dans le cas du choix 
+quantile 5. 
+
+Dans le cas où le nombre d'aires n'est pas un multiple du nombre de quantiles choisi, la dernière 
+classe calculée (celle de valeurs les plus élevées) ajuste le décompte au reste modulo le nombre de 
+quantiles. 
+
+ 
+
+Cependant, lorsque la borne théorique entre deux quantiles tombe dans une série de valeurs 
+égales, la borne est reportée à la fin de la série de valeurs égales. L''ensemble des données res-
+tantes est divisé en parties égales, sauf si une série de valeurs égales apparaît de nouveau etc. 
+Dans ces cas, les quantiles ne sont donc plus justes. Voire le calcul des quantiles s'avère impossible 
+( il faut alors tenter de changer le nombre de quantiles). 
+
+Dans la pratique, cette situation arrive, relativement fréquemment, dans deux types de cas : 
+
+ 
+
+1. le cas de nombreuses valeurs nulles pour une variable (Cf parti pris des auteurs originaux ci-
+dessus). Dans ce cas, il peut être pertinent d'introduire un seuil minimum à 0 pour exclure 
+les zéros de la classification, en ayant présent à l'esprit que l'on a forcé le résultat en pro-
+cédant de la sorte : ce qui s'affiche alors est la classification des non nuls et non la classifica-
+tion de la population dans son ensemble. Le fait de rendre apparemment lacunaire une 
+donnée nulle peut conduire à des erreurs d'interprétation très problématiques. C'est pour-
+quoi, même si cela aurait été une mesure de confort, nous n'avons pas laissé la possibilité 
+que les seuils soient bloqués lors des changements de données, même dans le cas où l'on 
+sait que toute les données du fichier ont une forte proportion de valeurs nulles. 
+
+
+ 
+
+2. Le cas où le nombre de données non lacunaires est faible et/ou lorsqu'il s'agit de dé-
+comptes unitaires à faible densité d'information ( par exemple, au niveau géographique 
+communal, la variable « cadres dans l'agriculture » est selon la source, soit très lacunaire, 
+avec des exceptions à 1 ou 2, soit généralement nulle avec les mêmes exceptions). 
+
+
+ 
+
+Lorsque l'effectif des aires géographiques non lacunaires est très faibles (effectifs par classe < 3, 4 
+ou 5 fois le nombre de quantiles), les quantiles n'ont pas beaucoup de sens comme outil de rai-
+sonnement en classes. Tout au plus indiquent-ils une graduation de valeur. 
+
+ 
+
+ 
+
+A propos des données du recensement (en France). 
+
+Deux indications importantes doivent retenir votre attention lorsque vous utilisez ces données : 
+
+• le lieu de recensement (lieu de travail ou lieu de résidence). 
+• l'exploitation : principale ou complémentaire. 
+
+
+ 
+
+A propos du lieu de recensement 
+
+Le lieu lieu de travail concerne logiquement la seule population des personnes qui ont un emploi, 
+que celui-ci soit salarié ou non salarié. 
+
+Cependant il faut prendre garde à ne pas confondre les résultats relatifs à la population au lieu de 
+travail avec les résultat relatifs à la population au lieu de résidence, même si les libellés des don-
+nées se ressemblent. Au lieu de résidence, le recensement estime aussi la population des actifs 
+ayant un emploi ou actifs occupés. 
+
+Dans les fichiers sources standards des tableaux détaillés du recensement , qui comporte le seg-
+ment « _TD_ » dans le nom de fichier, l'indication du lieu de recensement est donnée en tête de 
+fichier et n'est pas reportée dans les libellés des données. Mais lorsqu'on exporte des colonnes de 
+données dans d'autres fichiers, (paniers par exemple), on perd ainsi toute indication du lieu de 
+recensement. C'est pourquoi nous les avons introduit l'indication du lieur de recensement dans les 
+libellés : sous la forme (LT) pour lieu de travail et (LR) pour lieu de résidence. 
+
+
+
+
+ 
+
+A propos de l'exploitation principale ou complémentaire. 
+
+L'exploitation principale concerne le premier dépouillement du recensement dans lequel l'Insee 
+exploite l'ensemble des bulletins de recensement, mais sur un ensemble limité de données. Le 
+dépouillement est approfondi dans un deuxième temps lors de l'exploitation complémentaire qui 
+ne traite que des échantillons partiels des bulletins ( les variables concernés par le dépouillement 
+complémentaire sont par exemple, les CSP, les secteurs professionnels, … et tous les « croise-
+ments » impliquant ces variables) 
+
+Les résultats du recensement complémentaire permettent d'extrapoler en retour la population 
+dans son ensemble. Il résulte de ce procédé de sondage partiel une conséquence importante : 
+
+• les populations de référence estimées par l'exploitation principale et l'exploitation complémen-
+taire peuvent ne pas coïncider exactement. 
+
+
+ 
+
+Comme tout procédé de sondage, le procédé d'exploitation complémentaire introduit une incerti-
+tude d'autant plus importante que les effectifs concernés par une variable (ou une catégorie ) sont 
+faibles. 
+
+Notons aussi que le recensement principal est lui-même un sondage partiel de l'ensemble de la 
+population, et que ses résultats présentent de ce fait un niveau d'incertitude d'autant plus impor-
+tant que les effectifs concernés sont faibles. 
+
+ 
+
+Illustration : si l'on prend le cas de la population active composée des chômeurs et des actifs ayant 
+un emploi, selon que l'on est dans un fichier exploitation principal ou complémentaire, ne donne 
+pas les mêmes résultats. L'écart est par exemple inférieur à 0,03 % à Lyon, et le taux de chômage 
+estimé par le rapport chômeurs/actifs est équivalent dans les deux exploitations à Lyon, mais il 
+peut varier de 5 à 20% dans des communes de 500 habitants selon que l'on est en exploitation 
+principale ou complémentaire. 
+
+ 
+
+De ces remarques il résulte des préconisations importantes: 
+
+• la première est donnée par l'Insee qui considère comme valide les données pour des effec-
+tifs supérieurs ou égaux à 500 dans une catégorie, invite à la prudence autour de 200 et pré-
+conise de ne pas utiliser pour les effectifs inférieurs à 50. Ceci pour l'exploitation principale 
+tandis qu'il est fortement déconseillé de faire preuve de prudence pour les effectifs de 
+moins de 500 dans le cas de exploitation complémentaire. 
+
+
+ 
+
+Les suivantes concernent les opérations de calcul sur les variables : 
+
+ 
+
+• Il ne faut jamais faire d'opérations (somme, pourcentage etc...) entre des données issues de 
+fichiers d'exploitation principale et complémentaires. 
+
+
+ 
+
+• Il est très risqué de réaliser des pourcentages avec les données du recensement complé-
+mentaire pour les petits effectifs. 
+
+
+ 
+
+• Le contrôle interne des données (comparaison et vérification par sous totaux) doit donc se 
+faire à l'intérieur d'une même exploitation et à l'intérieur d'un même lieu de recensement. 
+
+
+ 
+
+Ainsi, en ce qui concerne l'exploitation, pour prévenir des incohérences, nous avons procédé de la 
+même manière que pour le lieu de recensement, en ajoutant aux libellés des données l'indication 
+(princ) pour exploitation principale et (compl) pour l'exploitation complémentaire, 
+
+ 
+
+Ceci concerne principalement les fichiers comportant le segment « _TD_ » dans le nom de fichier. 
+Les autres fichiers produits par l'Insee sur le recensement sont des fichiers dits de « chiffres clés » 
+comportant le segment « _IC_ » (pour la maille IRIS) et « _CC_ » (pour la maille commune) dans le 
+nom de fichier. Dans ces fichiers, qui mêlent souvent des données des deux exploitations, l'Insee a 
+déjà indiqué (princ) ou (compl) dans les libellés de données. 
+
+ 
+
+ 
+
+Pour plus d'information sur le réseau serpent de Mer et sur la politique d'intégration de données 
+dans le réseau, rendez-vous sur le site altercarto.fr, onglet Serpent de Mer. 
+
+ 
+
+
+
+ 
+
+

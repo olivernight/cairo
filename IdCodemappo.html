@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>data files mappo</title>
+<script type="text/javascript" >
+var mappocoord=new Array()
+</script>
+<script id="srcici" type="text/javascript" ></script>
+<script type="text/javascript" >
+
+ var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    var fich=(urlvar['fich'])
+	var REP=(urlvar['REP'])
+	var x
+	var y
+	function SuiteParent(){
+	if(fich=="principal"){x=6;y=0}else{x=7;y=1}
+	//alert("mappocoord["+x+"]="+mappocoord[x])
+	parent.FileDataActualiste1bis(mappocoord[x]+"/"+mappocoord[y])
+	
+	}
+	
+
+document.getElementById("srcici").src=REP+"/DATA-mappocoord.js"
+
+setTimeout('SuiteParent()',800)
+
+
+
+
+
+</script>
+
+
+
+
+
+</head>
+
+<body STYLE="background-color: transparent">
+
+
+</body >
+</html>

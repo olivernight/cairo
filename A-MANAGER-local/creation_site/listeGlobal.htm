@@ -1,0 +1,18 @@
+﻿<html>
+<head><title>Altercarto.fr : liste publication</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+	 <script id="menupublicici" type="text/javascript"></script>
+	 <script type="text/javascript">
+	 var repici=''//parent.recuprep("return rep")
+	
+	 if(repici==""){document.getElementById("menupublicici").src="../../menuencapsulesILIADE.js"}else{document.getElementById("menupublicici").src="../../"+repici+"/menuencapsules-Site.js"}
+	 
+	 function fait(){
+	 parent.transMenu(menuencaps)
+	 parent.transListe(listpubcartovision)
+	 parent.transRang(listpubcartovision)// forcée car pas de rang liste dans lsite globale menuencapsulesILIADE.js
+	 parent.ecrittabactu()
+	 }
+	 setTimeout('fait()',1500)
+	 </script>
+	 </head><body></body></html>

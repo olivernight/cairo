@@ -1,0 +1,435 @@
+﻿ 
+
+ 
+
+Module Analyse et mode bi-varié 
+
+Le module analyse s’affiche en cliquant sur le bouton 
+
+NB. Le module d’Analyse requière l’affichage d’une donnée sur la carte 
+
+ 
+
+Réglette de réglage des bornes de classe. 
+
+
+ 
+Fonctionnalités du module Analyse 
+Ce module présente la distribution des données dans un plan (x,y). Le plan (x,y) est 
+divisé en colonnes et en lignes qui correspondent aux bornes des classes choisies pour 
+la distribution. 
+
+ 
+
+Le module peut fonctionner en mode mono varié ou bi varié. 
+
+ 
+
+ En mode mono-varié 
+
+ 
+
+ 
+
+Par défaut, c’est le mode mono varié qui es activé automatiquement dès qu’on choisit 
+une variable dans le menu "Icône X" : c’est alors la distribution de la donnée située sur 
+la couche active qui est présentée dans le plan (x,y). Dans le cas mono varié, la forme 
+de la distribution est une droite. 
+
+ 
+
+Couche active : 
+
+. lorsque seul le fond de carte est appliqué, la couche active est le fond de carte, 
+. lorsque les icônes sont appliquées avec ou sans fond de carte, la couche active 
+est celle des icônes. 
+
+
+ 
+
+En mode bi varié (deux variables) la distribution prend la forme d’un nuage de points 
+répartis dans le plan (x,y). Le mode bi varié est activé dès que l’on choisit une variable 
+dans le menu "Icône Y" du menu des données. La variable Icône X est représentée sur 
+l’axe des X et Icône Y sur l’axe des Y. 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m66c1ea29.jpg
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m66c1ea29.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_54678d72.png 
+
+
+ En mode bi-varié 
+
+ 
+
+ 
+
+ 
+
+Fonctionnalités du module analyse 
+
+Toutes les opérations que vous réalisez dans le module Analyse se répercutent 
+automatiquement sur la carte et réciproquement. 
+
+ 
+
+A partir du module Analyse, vous pouvez : 
+
+. faire varier les bornes de classes de manière dynamique en faisant glisser de 
+gauche à droite les boutons losanges violets, 
+. Changer la palette de couleurs, 
+. Changer les quantiles (Q2,Q3,Q4,Q5), 
+. effacer tout, 
+. réactiver (en mode mono varié : active la palette de couleur en cours sur l’axe 
+des X, et en mode bi varié : active la palette de couleurs en cours l’axe des Y), 
+. attribuer une couleur à une case du tableau (cela entraîne automatiquement 
+l'affectation de la couleur aux aires de la carte contenues dans la case du 
+tableau) : sélectionnez une couleur dans la palette située en haut à droite, 
+cliquez sur une case du tableau, 
+. appliquez la configuration du tableau au fond de carte ou aux icônes, 
+. dans le cas où les icônes sont affichées, vous pouvez choisir le mode taille 
+proportionnelle à la valeur de la donnée (représentation par grandeur et 
+classes à la fois) ou taille constante (représentation par classes seulement), 
+. enregistrer un fond de carte : l’enregistrement est volatile, c’est-à-dire qu’il 
+n’est conservé que le temps de votre session) et appliquer un fond de carte 
+préalablement enregistré, 
+. marquer (pour les tracer) les groupes appartenant à telle ou telle classe pour 
+voir si ces groupes sont conservés avec d'autres données. En cliquant sur le 
+bouton rouge situé en haut à droite, les points du plan se colorent aux 
+couleurs des cases. Si vous changez les données, ou les bornes de classes, ce 
+marquage des points par la couleur est conservé. Très utile en mode bi varié. 
+Pour effacer le marquage, cliquez sur le bouton rouge avec une crois blanche. 
+
+
+ 
+
+ 
+
+Réglette de réglage des bornes de classe : 
+
+ 
+
+La réglette s’affiche lorsqu’on ferme le module Analyse. 
+
+Cliquez ici pour fermer la réglette. 
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m55caad30.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3820c696.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m24a79308.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_43d39527.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3a8af421.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3f3166d.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7ce2aab5.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m7343b1f5.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3ec4eea5.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m944e723.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m57c81f0f.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m600d3036.jpg
+La réglette de réglage des bornes de classes vous permet de modifier l'attribution des 
+classes sur la carte de façon dynamique. Cette fonctionnalité est particulièrement utile 
+pour observer de manière dynamique comment un phénomène représenté par une 
+donnée affecte les territoires. 
+Il suffit pour cela de faire glisser les losanges numérotés violets le long de la réglette. 
+
+ 
+Cette fonctionnalité est particulièrement dédiée à la situation: 
+
+. où le fond de carte est affiché seul (Cf. appliquez au fond ou bouton vert), 
+. et où la médiane (Q2) a été choisie comme borne de classe (Cf. Quantiles). 
+
+
+ 
+Pour faire glisser : sélectionnez, engagez un léger mouvement, et tout en 
+continuant le mouvement, lâchez la sélection : le losange suit alors les déplacements 
+du pointeur de la souris. Pour fixer la position, cliquez à l'endroit désiré. (Essayez : c'est 
+un coup à prendre !) 
+
+NB. Lorsque vous opérez le glissement les autres losanges disparaissent. Pour les faire 
+réapparaître, survolez le bouton analyse. 
+
+ 
+Changer la palette de couleurs. 
+Cette fonctionnalité s'applique à la couche active. 
+Changer les quantiles (Q2,Q3,Q4,Q5). 
+Effacer le contenu du tableau. 
+(Les paramètres sont conservés : pour les appliquer à nouveau cliquez sur réactiver). 
+Réactiver après avoir effacé. 
+Attribuer une couleur à une case du tableau. 
+Cette action entraîne automatiquement l'affectation de la couleur aux aires de la carte 
+contenues dans la case du tableau. 
+Appliquez la configuration du tableau à la carte . 
+
+Deux options : appliquer au fond de carte ou aux icônes. 
+
+Dans le cas où les icônes sont affichées, vous pouvez choisir le mode : 
+
+ taille proportionnelle à la valeur de la donnée (représentation par grandeur 
+et classes à la fois), 
+
+ 
+
+ taille constante (représentation par classes seulement). 
+
+ 
+Enregistrer le fond de carte en cours. 
+(L'enregistrement est temporaire. Il n'est pas conservé lorsqu'on change de carte). 
+
+ 
+Appliquer un fond de carte préalablement enregistré. 
+Traçabilité des groupes appartenant à une classe ou à une sélection choisie. 
+
+Marquer (pour les tracer) les groupes appartenant à telle ou telle classe pour voir 
+si ces groupes sont conservés avec d'autres données. 
+
+Effacer le marquage 
+
+
+
+
+ 
+
+ 
+
+Ce dispositif a plusieurs fonctions : 
+
+Le module analyse est avant tout un espace de représentation des territoires dans le 
+plan numérique. Tandis que la représentation cartographique attribue les données au 
+territoire, dans la représentation graphique d’un l’espace numérique à deux 
+dimensions, le module analyse attribue les territoires aux données. Les territoires 
+(aires géographiques de la carte) sont alors représentés par des points distribués dans 
+le plan. 
+
+ 
+
+La première fonction est de donner un aperçu de la distribution des territoires dans 
+l’espace numérique : sont-ils dispersés, regroupés, y a-t-il des effets de normes avec 
+les marges ? 
+
+ 
+
+La deuxième fonction est de permettre des représentations bi-variées dans l’espace 
+numérique. On place alors la distribution d’une variable (Icône X) sur l’axe horizontal 
+et la distribution d’une seconde variable (Icône Y) sur l’axe vertical. 
+
+ 
+
+La troisième fonction est de permettre analyser la persistance ou non de la 
+distribution des aires géographiques dans l’espace des données lorsqu’on change les 
+variables ; (les regroupements ou les marges observables avec une paire de variables 
+sont-ils persistant avec telles ou telles autres variables ?) 
+
+ 
+
+La quatrième fonction est de soutenir une permettre la réflexivité entre le plan 
+numérique et le plan graphique, de manière interactive. Pour cela le module analyse 
+permet d’agir sur l’affichage des cartes et réciproquement. En particulier, on peut faire 
+varier les seuils de classes ou sélectionner des zones de l’espace numérique bi-varié 
+pour voir comment cela se traduit sur le plan géographique. 
+
+ 
+
+Pour cela le module analyse incorpore différentes fonctions de réglage des cartes déjà 
+disponibles dans la barre de menu (quantiles, palettes de couleur) et propose des 
+fonctionnalités ergonomiques spécifiques (réactivité du plan numérique, remise à zéro, 
+retour au mode mono varié etc…) 
+
+ 
+
+Prenons un exemple. 
+
+ 
+
+On s’interroge sur les dynamiques d’accroissement de la population depuis les années 
+1960 jusqu’à 2010. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Qu’en est-il de la dynamique d’accroissement au cours de la dernière décennie [2000 ; 
+2010] ? 
+
+ 
+
+ 
+
+ 
+
+ On voit bien que certaine pays on conservé un taux de croissance important tandis 
+que d’autres ont ralenti leur croissance démographique, comme par exemple la 
+Tunisie : 
+
+ 
+
+ 
+
+Alors qu’au contraire l’Erythrée accélère sa croissance au cours de la dernière décennie 
+
+ 
+
+ 
+
+ 
+
+Tentons d’en savoir plus sur ces phénomènes et en particulier sur les pays qui ont un 
+taux de croissance soutenu depuis 2000. 
+
+
+
+
+ 
+
+Chaque pays est représenté par un point. Si l’on clique sur une aire de la carte, le point 
+du plan numérique est affecté d’une flèche et réciproquement. Lorsqu’on survole un 
+point, le nom du pays apparaît avec les valeurs de la variable en X et de la variable en Y 
+
+ 
+
+ 
+
+ 
+
+On peut déplacer les barre de la grille avec les boutons 1 à 4 et coloré les cases (on 
+sélectionne d’abord la couleur dans la palette de droite puis on clique sur la case 
+désirée). 
+
+ 
+
+Dans cet exemple on a coloré les régions de l’espace numérique où les pays ont un 
+taux d’accroissement [2000 ; 2010] soutenu par rapport au plus grand nombre à taux 
+d’accroissement démographique [1960 ; 2010] équivalent. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Avec le menu Appliquer, on applique cette sélection de couleur au fond de carte 
+
+ 
+
+ 
+
+ 
+
+On peut utiliser le bouton ou bien (icones en mode non 
+proportionnel) pour pointer les territoires concernés, ce qui permet de mieux 
+visualiser les aires à surface réduite compris dans cette sélection. 
+
+ 
+
+ 
+
+ 
+
+Il faudrait se poser la question de l’unité de ce groupe de pays et bien d’autres 
+questions comme par exemple les effets des guerres dans la dynamique 
+démographique comme en Erythrée (graphique précédent) ou au Sierra-
+Leone(Graphique ci-dessous) 
+
+ 
+
+De même que la question de pose de savoir si ces pays sont riches ou pauvres et 
+comment cette information nous renseigne sur le type dynamique qui les anime. 
+
+
+
+
+Pour cela on va marquer ces pays en cliquant sur le bouton 
+
+ 
+
+ 
+
+ 
+
+Chaque pays de la sélection est maintenant affecté d’un rond violet. 
+
+ 
+
+On peut alors changer les variables et voir comment se comporte ce groupe 
+
+Si l’on introduit le produit intérieur brut par personne en 2009 (unité : GDP/capita Constant 
+$ 2000) 
+
+ 
+
+ 
+
+on observe que le groupe se réparti en trois sous groupe : à gauche le plus important, 
+des pays pauvres d’Afrique, d’Asie et d’Amérique centrale ; au milieu des iles ( St Kits 
+et Nevis, Antigua et Barbuda, Chypre avec aussi la Guinée Equatoriale, puis un 
+troisième groupe tourné vers les hauts revenus : l’Espagne, l’Irlande et le cas 
+particulier de Singapour). 
+
+ 
+
+ 
+
+ 
+
+Majoritairement ce sont des Pays Pauvres, mais ce groupe est-il homogène au regard 
+d’autres critères tels que la santé. Prenons par exemple l’espérance de vie à la 
+naissance (ici pour les hommes). Du point de vue de la distribution, on note d’abord la 
+condition des pays à bas revenu par habitant est inégale avec un groupe de pays très 
+
+
+
+
+fragilisé, tandis que l’espérance de vie des pays riches est très élevée avec cependant 
+des nuances comme par exemple les Etats Unis plus bas que la Suisse, la Norvège, le 
+Qatar ou encore Islande. 
+
+ 
+
+ 
+
+ 
+
+Seconde remarque quand à notre groupe de pays pauvres à taux de croissance 
+démographique soutenu. Il est lui-même éclaté du point de vue de l’espérance de vie. 
+
+La plupart sont parmi les jaunes et les rouges, les rouges , à bas revenu et à faible 
+espérance de vie étant tous en Afrique 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+

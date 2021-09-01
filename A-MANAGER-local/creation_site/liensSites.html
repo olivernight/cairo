@@ -1,0 +1,76 @@
+﻿<html>
+<head><title>Altercarto.fr : liste Sites</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+	 <script language="javascript" src="editpas.js"></script>
+	 <script type="text/javascript">
+	 var liensSites=new Array();var rangliste=new Array(); 
+var listpubcartovision=new Array();
+	 function motdepasse(){
+	 }
+	 
+	 
+	 var Editpastemp="10638"
+function testpas(a,j){
+var k=0;
+for(i=0;i<Editpasici.length;i++){
+if(a==Editpasici[i] || a==Editpastemp){
+Editpastemp=a;
+
+if(selectici=="SITE PILOTE"){
+open("../../A-Frame-Num0-cartO2-17-ILIADE 2.htm")
+}else{
+open("../../"+selectici+"/index.html")
+}
+
+k=1;
+document.getElementById('editpas').style.visibility='hidden'
+}
+}
+if(k==0){alert("désolé, votre mot de passe n'est pas valide. Renouvelez votre saisie");}
+}
+var rgx=0
+var selectici=''
+	 document.write('<div id="editpas" class="texte" style="position:absolute;opacity:1;border:2px solid; top:45px; left:10px;visibility:hidden;background-color:#0B6DA0;width:200px;z-index:1000;padding:5px">')
+document.write('<form><center><b>Saisissez votre <br>mot de passe<br><input id="sais" type="texte" value="" ><br><input type="button" onclick="testpas(document.getElementById(\'sais\').value);" value="valider"></input>.....<input type="button" value="annuler" onclick="document.getElementById(\'editpas\').style.visibility=\'hidden\'"</center></form>')
+document.write('</div>')
+	 	 </script>
+	 <script id="" type="text/javascript" src="liensSites.js"></script>
+	 </head><body style="font-family:arial;font-size:10px">
+	 <center>
+	 
+	 <big><big>Liens vers les sites du réseau en étoile</big></big>
+	  <br><br>
+	  <table border=0 style="font-size:12px">
+	  <script type="text/javascript">
+	 var tabici=""
+	 var toutescartes=top.transTTCARTES("return toutescartes")
+	 for(i=1;i<liensSites.length;i++){
+	 if(toutescartes==1){listpubcartovision[i]=1}// force l'affichage des sites si toutescartes ==1
+	 if(listpubcartovision[i]==1 ){
+	 tabici+='<tr><td>'
+	 if(liensSites[i].indexOf("travail",0)>0 || liensSites[i].indexOf("Travail",0)>0 || liensSites[i].indexOf("TRAVAIL",0)>0){
+	  tabici+='<a href="#" onclick="selectici=\''+liensSites[i]+'\';rgx='+i+';document.getElementById(\'editpas\').style.visibility=\'visible\'" style="color:gray;"><b>'+liensSites[i]+'</b></a><br></td></tr>'	
+	 }else{
+	tabici+='<a href="../../'+liensSites[i]+'/index.html" target="_blank"><b>'+liensSites[i]+'</b></a><br></td></tr>'	
+	
+	 } 
+	 tabici+=''
+	 }
+	 }
+	 document.write(tabici)
+
+	
+	document.write('<tr><td><dt>-----------------</dt></td></tr>')
+	document.write('<tr><td><a href="../../A0A-Page texte carto.htm" target="_blank" style="color:#4C8CA2;"><b>Textes et Notes</b></a></td></tr>')
+	 	 
+	document.write('<tr><td><dt>-----------------</dt></td></tr>')
+	document.write('<tr><td><a href="../../A-Frame-Num0-cartO1-defautILIADE.htm" target="_blank" style="color:#4C8CA2;"><b>Noyeau GaïaMundi</b></a></td></tr>')
+	 	 	 
+
+	  </script>
+	</table>
+	 
+	 
+	 
+	 
+	 </body></html>

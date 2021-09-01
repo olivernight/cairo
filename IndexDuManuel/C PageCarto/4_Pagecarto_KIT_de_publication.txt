@@ -1,0 +1,316 @@
+﻿ 
+
+ 
+
+PageCarto 
+
+Formation du Kit de publication 
+
+L’une des spécificités majeures de PageCarto est qu’il peut être détaché de la 
+plateforme avec laquelle il a été fabriqué. 
+
+Pour cela l’ensemble des fichiers de chaque Module PageCarto sont regroupés dans 
+un répertoire unique PageCartoDossier situé dans le « dossier carte » de GaïaMundi 
+avec lequel il a été généré 
+
+Dans l’exemple : 
+
+. le répertoire racine de GaïaMundi est « SuiteCairo-V1-1-Candidate-UNDP » 
+. et le dossier cartes est « Arab-countries-DEMO » 
+
+
+ 
+
+ 
+
+ 
+
+On peut copier le répertoire sur n’importe quel support amovible, ordinateur ou 
+serveur Web local ou distant. 
+
+Il est aussi nécessaire de le compresser (zipper) pour permettre sa diffusion par 
+téléchargement voir par e-mail. Il faut le « zipper » à la main (il n’y a pas de fonction 
+prévue pour cela dans cette version de la plateforme) 
+
+ 
+
+Démarrage du module PageCarto une fois 
+détaché de GaïaMundi 
+
+Le contenu du répertoire PageCartoDossier est le suivant 
+
+ 
+
+Pour démarrer PageCarto sur un support disque ou USB sans passer par Internet, on a 
+deux solutions : soit on ouvre le fichier ENTRER. Html avec le navigateur (FIREFOX 
+récent ou SAFARI - voir ci-après pour Explorer V9+). Soit on ouvre directement l’une 
+
+ 
+
+
+
+
+des 4 autres fichiers html qui correspondent aux 4 versions de publication 
+
+ 
+
+Par exemple, avec le fichier Normal.html, on obtient la page suivante : 
+
+ 
+
+ 
+
+ 
+
+Avec le fichier ENTRER.html, par défaut, on obtient l’affichage du type suivant : 
+
+ 
+
+ 
+
+Suite Page Suivante-> 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Cette fiche d’accueil est évidemment modifiable. Il suffit d’un éditeur de PageWeb 
+du type Composer ou un éditeur de texte type NotePad++ sous windows ( il existe 
+des équivalent pour Mac et Linux). Vous pouvez même la supprimer 
+
+ 
+
+Ce qui compte est l’esprit de cette page d’accueil. 
+
+ 
+
+Même si l’on renvoie les utilisateurs directement sur les PageCarto, il est important 
+qu’ils aient accès à la documentation, aux données mobilisées ainsi qu’aux 
+principales nomenclatures et définitions utilisées. 
+
+ 
+
+Si vous changez complètement la Page ENTER.html, relevez d’abord les liens inscrit au 
+début et à la fin pour les reproduire ou les adapter à votre projet. 
+
+ 
+
+Le premier groupe de liens renvoie vers les 4 versions. 
+
+Le second groupe de lien renvoie vers des documents contenu dans un sous 
+répertoire de PageCartoDossier , c'est-à-dire dans le répertoire info dont le chemin 
+est : PageCartoDossier/PageCarto/info 
+
+ 
+
+ 
+
+Dossier d’information et liens utiles à 
+incorporer dans l’hypertexte 
+
+Le contenu du dossier info généré par défaut est le suivant : 
+
+ 
+
+ 
+
+Les fichiers principal.txt et complementaire.txt contiennent les données mobilisées 
+dans le module PageCarto, mises en un format universel incorporable dans un tableur 
+(text unicode avec séparateur tab ; encodé en utf-8, séparateur décimale : « , ») 
+
+ 
+
+Dans la logique d’informer l’utilisateur les fichiers suivants sont ajoutés par défaut : 
+
+ 
+
+ documentation METHODOLOGIQUE.pdf : méthodologie générale de PageCarto 
+écrite par ses auteurs originaux. Ce document peut bien sûr être remplacé par un 
+autre de votre conception. 
+
+ 
+
+ documentation USAGE.pdf exemple de documentation d’usage. Il s’agit d’une sorte 
+de guide pour naviguer dans l’hypertexte du PageCarto, explicitant les liens 
+d’activation des cartes. 
+
+ 
+
+ fiche-exploitation.pdf : par défaut il s’agit d’une fiche de l’INSEE sur l’exploitation du 
+recensement. Bien sût le contenu de cette fiche peut être changé. L’esprit est de 
+fournir à l’utilisateur les clés de lecture des sources de données et des usages que 
+l’on peut en faire sans risque de mauvaises interprétations. 
+
+ 
+
+ nomenclatures-et-defenitions.html fiche à remplir par vos soins sur les 
+nomenclatures et définitions principales utilisées dans le PageCarto. 
+
+ 
+
+
+
+
+ 
+
+Affichage Web 
+
+. Incorporer PageCarto dans une pageWeb 
+. Afficher PageCarto dans une nouvelle fenêtre 
+
+
+ 
+
+ 
+
+Incorporer PageCarto dans une pageWeb 
+
+Pour incorporer PageCarto dans un Page Web il faut utiliser une balise <iframe 
+
+ 
+
+Le format est le suivant avec Chemin_du_repertoire_PageCartoDossier égal à : 
+
+. soit le chemin absolu (qui commence par http://...) 
+. soit le chemin relatif par rapport à votre pageweb sur le répertoire 
+PageCArtoDossier est dans le même domaine sur le serveur. 
+
+
+ 
+
+Pour la version normale 
+
+ 
+
+< iframe style="border: 0px none ; width: 760px; height: 670px; background-color: 
+white;" src="Chemin_du_repertoire_PageCartoDossier/ 
+PageCartoDossier/PageCarto/Module-PageCarto-Allege.html" 
+frameborder="0"></iframe> </div> 
+
+ 
+
+ 
+
+Pour la version pour fouiller 
+
+ 
+
+< iframe style="border: 0px none ; width: 760px; height: 670px; background-color: 
+white;" src="Chemin_du_repertoire_PageCartoDossier/ 
+PageCartoDossier/PageCarto/Module-PageCarto-Complet.html" 
+frameborder="0"></iframe> </div> 
+
+ 
+
+Pour la version GRAND FORMAT 
+
+ 
+
+< iframe style="border: 0px none ; width: 885px; height: 870px; background-color: 
+white;" src=" 
+Chemin_du_repertoire_PageCartoDossier/PageCartoDossier/PageCarto/Module-
+PageCarto.xml?format=big" frameborder="0"></iframe> </div> 
+
+ 
+
+ 
+
+Pour la version réduite 
+
+ 
+
+<iframe style="border: 0px solid black ; width: 650px; height: 580px; background-
+color: white;" src=" 
+Chemin_du_repertoire_PageCartoDossier/PageCartoDossier/PageCarto/Module-
+PageCarto-Allege-Reduit.html" frameborder="0"></iframe> </div> </center> 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Afficher PageCarto dans une nouvelle fenêtre 
+
+Pour la version normale 
+
+ 
+
+<a href= " Chemin_du_repertoire_PageCartoDossier/PageCartoDossier/Normal.html" 
+target=”_blank”>nom du lien</a> 
+
+ 
+
+Pour la version pour fouiller 
+
+ 
+
+<a href= " Chemin_du_repertoire_PageCartoDossier/PageCartoDossier/version-pour-
+fouiller.html" target=”_blank”>nom du lien</a> 
+
+ 
+
+ 
+
+Pour la version GRAND FORMAT 
+
+ 
+
+<a href= " Chemin_du_repertoire_PageCartoDossier/PageCartoDossier/GRAND pour 
+Firefox.html" target=”_blank”>nom du lien</a> 
+
+ 
+
+ 
+
+Pour la version réduite 
+
+ 
+
+<a href= " Chemin_du_repertoire_PageCartoDossier/PageCartoDossier/REDUIT.html" 
+target=”_blank”>nom du lien</a> 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+[
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+
+<svg id="gene"  
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+ 
+
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+
+
+>
+
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+var brsrici="ei"
+
+
+function affichN(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGaffichN()}else{
+top.frames.Num0.frames.couches.zoom.SVGaffichN()
+}
+}
+var strokewidthpas
+var strokepas
+var opacpas
+function passon(a){
+strokepas=a.getAttribute('stroke')
+a.setAttribute('stroke','navy');
+opacpas=a.getAttribute('fill-opacity')
+a.setAttribute('fill-opacity','0.5')  
+}
+function passout(a){
+a.setAttribute('fill-opacity',opacpas)
+a.setAttribute('stroke',strokepas);
+}
+function svggeneral(){
+
+brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGgeneral()}else{
+top.frames.Num0.frames[2].indic1()
+}}
+function svgdown(a){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGdown()}else{
+top.frames.Num0.frames.couches.zoom.selxsvg();top.frames.Num0.frames.couches.zoom.rien();
+}}
+function svgclick1(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick1()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}
+}
+function svgclick2(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick2()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx2(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}}
+function svgout(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGout()}else{
+//top.frames.Num0.frames.couches.zoom0()
+//<image x="10" Y="10" width="300" height="300" xlink:href="fonds france contour.jpg" ></image>
+}}
+]]></script>
+
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+ <stop class="begin" offset="0" style="stop-color:#5555AA"/>
+ <stop class="end" offset="1" style="stop-color:white"/>
+</radialGradient>
+</defs>
+
+<g space="preserve" opacity="1" transform="matrix(0.3, 0, 0, 0.3, 0, 0)"  name="ns" id="totalsvg">
+
+
+
+
+
+
+	 
+	 
+
+	
+<rect y="-150" x="-150" height="800" width="800" style="fill: url(#grad1) ; fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.5; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"  transform="matrix(1, 0, 0, 1, 0, 0)" fill="#EBEFF8" id="rectmove"></rect>
+
+
+<g space="preserve" opacity="1" transform="matrix(1, 0, 0, 1, -160, -15)"   id="calageAires">
+
+
+
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond1"/>
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond2"/>
+
+
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="MANCHE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"  onclick="tailCarte='../800-MANCHE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer" id="1"><path stroke-width="1" stroke="gray" id="p1" d="M 180.21822 59.64691384615389 L 236.71909384615384 83.63313692307696 L 265.5025583076923 71.37351230769235 L 295.88510413846154 73.50562153846158 L 297.4841856923077 105.48724615384623 L 288.9557516307692 100.69000153846156 L 282.5594261538462 110.28449076923084 L 308.1447276923077 152.3936353846155 L 303.8805110769231 160.38904153846164 L 312.9419718461538 163.58720307692317 L 312.40894476923074 181.7101246153847 L 335.86213799999996 207.82845230769243 L 345.45662769230773 198.76699384615392 L 351.3199246153846 205.163316923077 L 343.32451846153845 216.8899153846154 L 352.3859769230769 249.937596923077 L 330.53186676923076 271.79170615384623 L 321.47040553846153 266.99446615384625 L 318.272243076923 276.58895076923085 L 328.39975846153845 275.52289846153855 L 305.4795923076923 299.50911830769235 L 353.98506 320.8302027692308 L 372.10798153846156 340.55220600000007 L 349.1878153846154 387.4585938461539 L 284.15850738461535 376.265022923077 L 255.37504338461537 393.32189076923083 L 237.78514615384614 378.39713123076933 L 229.25671384615384 349.0806401538462 L 252.17688046153845 347.48155846153855 L 250.57779923076924 342.15128769230773 L 239.38422923076922 333.6228536307693 L 230.32277076923074 317.63204030769236 L 228.7236876923077 298.97609123076927 L 222.32736 294.17884707692315 L 228.7236876923077 289.3816015384616 L 231.92184923076923 203.56423846153848 L 198.87416769230768 153.99271384615395 L 191.94481846153846 118.81292769230777 L 185.0154646153846 111.88357384615392 L 195.14298 101.22303230769234 L 191.94481846153846 80.43497076923086 L 175.9540015384615 71.9065384615385 L 180.21822 59.64691384615389 180.21822 59.64691384615389 "></path><title>MANCHE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="CALVADOS" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-CALVADOS';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="2"><path stroke-width="1" stroke="gray" id="p2" d="M 323.0694872307692 152.3936353846155 L 347.58873230769234 152.92666153846164 L 372.64100769230765 167.31839538461548 L 433.93912615384613 173.7147184615386 L 471.78405230769226 189.17250461538464 L 505.89778615384614 176.37985384615394 L 525.6197907692308 158.78995846153856 L 542.1436338461539 152.92666153846164 L 556.0023369230769 152.3936353846155 L 556.5353630769231 189.17250461538464 L 565.5968261538461 188.1064523076924 L 568.7949876923077 194.5027753846154 L 559.7335292307692 198.23396769230777 L 573.0592061538462 227.55045692307704 L 570.9270969230769 244.6073261538462 L 565.0637999999999 248.33851384615392 L 566.1298523076923 254.7348415384616 L 578.3894769230769 260.0651123076924 L 571.4601230769231 277.6550076923078 L 514.4262230769231 280.32014307692316 L 472.85010923076925 308.03755200000006 L 445.66572461538465 298.97609123076927 L 439.2693969230769 307.50452492307704 L 428.0758292307693 294.7118741538462 L 389.69787692307693 303.24030784615394 L 388.09879384615385 300.0421453846154 L 379.0373353846154 300.5751724615385 L 381.7024707692308 306.43847076923083 L 353.98506 320.8302027692308 L 305.4795923076923 299.50911830769235 L 328.39975846153845 275.52289846153855 L 318.272243076923 276.58895076923085 L 321.47040553846153 266.99446615384625 L 330.53186676923076 271.79170615384623 L 352.3859769230769 249.937596923077 L 343.32451846153845 216.8899153846154 L 351.3199246153846 205.163316923077 L 345.45662769230773 198.76699384615392 L 335.86213799999996 207.82845230769243 L 312.40894476923074 182.2431507692308 L 312.9419718461538 163.58720307692317 323.0694872307692 152.3936353846155 "></path><title>CALVADOS</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="ORNE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-ORNE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="3"><path id="p3" d="M 514.4262230769231 280.32014307692316 L 472.85010923076925 308.03755200000006 L 445.66572461538465 298.97609123076927 L 439.2693969230769 307.50452492307704 L 428.0758292307693 294.7118741538462 L 389.69787692307693 303.24030784615394 L 388.09879384615385 300.0421453846154 L 379.0373353846154 300.5751724615385 L 379.0373353846154 300.5751724615385 L 381.7024707692308 306.43847076923083 L 353.98506 320.8302027692308 L 372.10798153846156 340.55220600000007 L 349.1878153846154 387.4585938461539 L 367.3107369230769 403.9824323076924 L 371.04192923076926 402.3833538461539 L 370.5088984615384 397.5861092307693 L 381.1694446153846 393.32189076923083 L 383.83458 403.9824323076924 L 417.41528769230763 386.92556307692314 L 435.5382092307692 394.38794307692314 L 442.46756307692306 385.3264846153847 L 451.5290215384615 389.05767230769237 L 455.2602138461539 381.06226707692315 L 452.5950784615385 378.93015876923084 L 455.2602138461539 375.1989687692309 L 472.3170784615385 384.79345846153853 L 466.9868076923077 391.1897815384616 L 472.85010923076925 405.58151538461544 L 478.7134061538461 407.1805938461539 L 485.64275999999995 401.317296923077 L 488.84092153846154 405.0484892307693 L 485.1097292307692 425.30352000000005 L 507.4968692307692 423.70443692307697 L 522.4216292307692 408.2466507692308 L 542.1436338461539 399.7182138461539 L 554.9362846153846 401.317296923077 L 562.3986646153846 418.3741661538462 L 565.5968261538461 443.42644153846163 L 590.1160707692308 460.48330615384623 L 605.0408307692308 462.0823892307693 L 610.3711015384615 458.351196923077 L 627.9609969230769 480.20531076923083 L 639.6875953846154 471.14384769230776 L 630.0931061538462 449.28973846153855 L 626.3619184615385 447.1576292307693 L 634.8903507692307 434.3649784615385 L 642.3527307692308 437.03011384615394 L 664.2068399999999 414.64297384615395 L 662.0747353846155 389.05767230769237 L 624.7628353846154 344.2833960000001 L 631.6921892307693 334.1558807076924 L 628.4940230769231 326.1604740000001 L 605.0408307692308 309.1036061538462 L 606.6399138461538 305.90544369230776 L 600.2435861538462 294.7118741538462 L 594.9133153846153 297.9100366153847 L 566.1298523076923 288.3155492307693 L 571.4601230769231 277.6550076923078 514.4262230769231 280.32014307692316 "></path><title>ORNE</title></g>
+
+
+
+</g>
+</g>
+
+
+
+
+
+
+
+
+<script><![CDATA[
+
+
+]]></script>
+
+
+</svg>

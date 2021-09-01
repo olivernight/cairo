@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Suite Cairo (GM)</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+</head>
+<body style="background-color: transparent;font-family:arial">
+
+<div style="text-align: center;cursor:pointer;color:gray"><img src="Logo-gaiamundi.jpg" width="150px" onclick="window.open(http:/:gaiamundi.fr)"><br><b>Version Cairo</b><br><i><small><small>Octobre 2014</small></small></i>
+</font><br> </div> <div style="text-align: center;"><small style="color: rgb(102, 102, 102);"><font style="font-family: Verdana,Arial,Helvetica,sans-serif; font-weight: bold; color: gray;" size="2"><small>Application Web Collaborative de Cartographie Statistique<br> <a href="COPYING GNU.txt" target="_blank">GNU GPL</a> - Copyleft [2006 - 2014] par <a href="http://citepublique.fr" target="_blank">Cité Publique</a></small> 
+ 
+ <!--br><a
+ style="color: rgb(102, 102, 204);"
+ href="A0%20serpent%20encaps.html?tail=&amp;mtp2=">GaïaMundi</a><br>
+<br-->
+<br><br><b>
+<a style="color: rgb(102, 102, 204);font-family: Arial;" target="_blank" href="A0%20PageCarto%20serpent%20encaps.html?tail=3&mtp2=admin"><i>"GaïaMundi" </i>Suite  incluant <i>"PageCarto"</i> et <i>"la Rose des Vents"</i></a></b><br>
+</div>
+<center><iframe id="fra" name="fra" src="" frameborder="0" style="width:720px;height:450px;border:0px solid gray"></iframe></center>
+
+
+<script language="javascript">
+//document.getElementById("entete").innerHTML=titrepage
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+
+var modif
+if(urlvar['modif']){modif=urlvar['modif']}else{modif=1}
+
+var paneactive=0
+function stockpane(a){paneactive=a}
+function returnpane(){return paneactive}
+
+
+
+
+window.frames.fra.location.href="SaisieMAJ-CP/MENUchantier.html?modif="+modif+"&ini="+Math.random()
+
+
+
+var wx=window.innerWidth/2-720/2-5
+document.write('<div style="position: absolute;top:90px;left:'+wx+'px">')
+
+</script>
+
+<br><img style="width: 40px; height: 43px;cursor:pointer" alt="" src="logo-FireFox.jpg" onclick="window.open('http://www.mozilla.org/')"><br/><small><span style="color: rgb(102, 102, 102); font-weight: bold;"><small><small>Use Firefox</small></small></span></small></div>
+</body>
+</html>

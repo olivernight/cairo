@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+[
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+
+<svg id="gene"  
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+ 
+
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+
+
+>
+
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+var brsrici="ei"
+
+
+function affichN(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGaffichN()}else{
+top.frames.Num0.frames.couches.zoom.SVGaffichN()
+}
+}
+var strokewidthpas
+var strokepas
+var opacpas
+function passon(a){
+strokepas=a.getAttribute('stroke')
+a.setAttribute('stroke','navy');
+opacpas=a.getAttribute('fill-opacity')
+a.setAttribute('fill-opacity','0.5')  
+}
+function passout(a){
+a.setAttribute('fill-opacity',opacpas)
+a.setAttribute('stroke',strokepas);
+}
+function svggeneral(){
+
+brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGgeneral()}else{
+top.frames.Num0.frames[2].indic1()
+}}
+function svgdown(a){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGdown()}else{
+top.frames.Num0.frames.couches.zoom.selxsvg();top.frames.Num0.frames.couches.zoom.rien();
+}}
+function svgclick1(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick1()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}
+}
+function svgclick2(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick2()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx2(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}}
+function svgout(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGout()}else{
+//top.frames.Num0.frames.couches.zoom0()
+//<image x="10" Y="10" width="300" height="300" xlink:href="fonds france contour.jpg" ></image>
+}}
+]]></script>
+
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+ <stop class="begin" offset="0" style="stop-color:#5555AA"/>
+ <stop class="end" offset="1" style="stop-color:white"/>
+</radialGradient>
+</defs>
+
+<g space="preserve" opacity="1" transform="matrix(0.3, 0, 0, 0.3, 0, 0)"  name="ns" id="totalsvg">
+
+
+
+
+
+
+	 
+	 
+
+	
+<rect y="-150" x="-150" height="800" width="800" style="fill: url(#grad1) ; fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.5; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"  transform="matrix(1, 0, 0, 1, 0, 0)" fill="#EBEFF8" id="rectmove"></rect>
+
+
+<g space="preserve" opacity="1" transform="matrix(1, 0, 0, 1, -160, -15)"   id="calageAires">
+
+
+
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond1"/>
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond2"/>
+
+
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="ARDECHE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"  onclick="tailCarte='../358-ARDECHE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer" id="1"><path stroke-width="1" stroke="gray" id="p1" d="M 351.8702290076336 350.14967175572525 L 343.85496183206106 383.81379389312985 L 335.8396946564885 420.6840229007634 L 329.4274809160305 446.33287786259547 L 329.4274809160305 455.9511984732825 L 295.76335877862596 444.729824427481 L 263.7022900763359 451.142038167939 L 244.4656488549618 425.49318320610695 L 228.43511450381678 387.01990076335886 L 226.83206106870227 374.19547328244283 L 249.27480916030532 351.7527251908398 L 281.3358778625954 329.3099770992367 L 298.96946564885496 298.85196183206114 L 303.77862595419845 286.0275343511451 L 337.44274809160305 260.37867938931305 L 343.85496183206106 273.2031068702291 L 351.8702290076336 314.8824961832062 L 351.8702290076336 350.14967175572525 351.8702290076336 350.14967175572525 "></path><title>ARDECHE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="ISERE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-ISERE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="2"><path stroke-width="1" stroke="gray" id="p2" d="M 337.44274809160305 260.37867938931305 L 337.44274809160305 244.348145038168 L 366.2977099236641 217.09623664122142 L 377.51908396946567 180.22600763358787 L 417.59541984732823 173.81379389312985 L 440.0381679389313 204.2718091603054 L 444.84732824427476 213.89012977099242 L 468.89312977099235 244.348145038168 L 510.5725190839695 245.95119847328252 L 512.175572519084 279.6153206106871 L 528.206106870229 295.64585496183213 L 523.3969465648855 306.8672290076337 L 542.6335877862596 337.3252442748092 L 505.76335877862596 353.35577862595426 L 473.7022900763359 374.19547328244283 L 460.87786259541986 370.9893664122138 L 428.8167938931298 358.1649389312978 L 428.8167938931298 314.8824961832062 L 391.9465648854962 310.07333587786263 L 385.53435114503816 271.60005343511455 L 343.85496183206106 273.2031068702291 337.44274809160305 260.37867938931305 "></path><title>ISERE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="RHONE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../358-RHONE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="3"><path id="p3" d="M 327.82442748091603 228.31761068702298 L 292.55725190839695 213.89012977099242 L 289.35114503816794 178.62295419847334 L 271.7175572519084 143.35577862595426 L 286.14503816793894 109.69165648854971 L 326.2213740458015 95.26417557251915 L 335.8396946564885 116.10387022900773 L 332.63358778625957 154.5771526717558 L 355.07633587786256 181.82906106870234 L 377.51908396946567 180.22600763358787 L 366.2977099236641 217.09623664122142 L 337.44274809160305 244.348145038168 327.82442748091603 228.31761068702298 "></path><title>RHONE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="HAUTE-SAVOIE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../358-HAUTE-SAVOIE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="4"><path id="p4" d="M 606.7557251908397 164.19547328244283 L 589.1221374045801 177.01990076335886 L 579.5038167938931 186.63822137404588 L 547.442748091603 159.3863129770993 L 523.3969465648855 196.2565419847329 L 489.73282442748086 186.63822137404588 L 467.29007633587787 154.5771526717558 L 473.7022900763359 122.51608396946574 L 481.7175572519084 119.30997709923673 L 512.175572519084 106.4855496183207 L 533.0152671755725 79.23364122137411 L 571.4885496183206 66.40921374045809 L 590.7251908396946 92.05806870229014 L 606.7557251908397 130.53135114503823 606.7557251908397 164.19547328244283 "></path><title>HAUTE-SAVOIE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="LOIRE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../358-LOIRE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="5"><path id="p5" d="M 239.6564885496183 263.58478625954206 L 230.03816793893128 265.18783969465653 L 233.2442748091603 225.11150381679397 L 209.19847328244273 197.85959541984738 L 202.78625954198472 162.5924198473283 L 214.00763358778624 130.53135114503823 L 226.83206106870227 101.67638931297716 L 266.9083969465649 117.7069236641222 L 286.14503816793894 109.69165648854971 L 271.7175572519084 143.35577862595426 L 289.35114503816794 178.62295419847334 L 292.55725190839695 213.89012977099242 L 327.82442748091603 228.31761068702298 L 337.44274809160305 244.348145038168 L 337.44274809160305 260.37867938931305 L 303.77862595419845 286.0275343511451 L 273.3206106870229 258.7756259541985 239.6564885496183 263.58478625954206 "></path><title>LOIRE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="DROME" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-DROME';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="6"><path id="p6" d="M 351.8702290076336 350.14967175572525 L 351.8702290076336 314.8824961832062 L 343.85496183206106 273.2031068702291 L 385.53435114503816 271.60005343511455 L 391.9465648854962 310.07333587786263 L 428.8167938931298 314.8824961832062 L 428.8167938931298 358.1649389312978 L 460.87786259541986 370.9893664122138 L 473.7022900763359 374.19547328244283 L 456.0687022900763 407.8595954198474 L 441.6412213740458 438.317610687023 L 462.48091603053433 465.5695190839695 L 440.0381679389313 479.99700000000007 L 404.7709923664122 463.96646564885503 L 372.70992366412213 452.7450916030535 L 329.4274809160305 446.33287786259547 L 335.8396946564885 420.6840229007634 L 343.85496183206106 383.81379389312985 351.8702290076336 350.14967175572525 "></path><title>DROME</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="SAVOIE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../358-SAVOIE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="7"><path id="p7" d="M 606.7557251908397 287.63058778625964 L 574.6946564885496 295.64585496183213 L 561.8702290076336 298.85196183206114 L 528.206106870229 295.64585496183213 L 512.175572519084 279.6153206106871 L 510.5725190839695 245.95119847328252 L 468.89312977099235 244.348145038168 L 444.84732824427476 213.89012977099242 L 462.48091603053433 183.43211450381688 L 467.29007633587787 154.5771526717558 L 489.73282442748086 186.63822137404588 L 523.3969465648855 196.2565419847329 L 547.442748091603 159.3863129770993 L 579.5038167938931 186.63822137404588 L 589.1221374045801 177.01990076335886 L 614.7709923664122 210.6840229007634 L 637.2137404580153 261.9817328244276 606.7557251908397 287.63058778625964 "></path><title>SAVOIE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="AIN" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-AIN';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="8"><path id="p8" d="M 462.48091603053433 183.43211450381688 L 444.84732824427476 213.89012977099242 L 440.0381679389313 204.2718091603054 L 417.59541984732823 173.81379389312985 L 377.51908396946567 180.22600763358787 L 355.07633587786256 181.82906106870234 L 332.63358778625957 154.5771526717558 L 335.8396946564885 116.10387022900773 L 342.25190839694653 95.26417557251915 L 367.9007633587786 59.99700000000007 L 399.96183206106866 66.40921374045809 L 398.3587786259542 71.21837404580162 L 435.2290076335878 92.05806870229014 L 470.4961832061068 95.26417557251915 L 492.9389312977099 68.01226717557262 L 499.35114503816794 100.07333587786269 L 481.7175572519084 119.30997709923673 L 473.7022900763359 122.51608396946574 L 467.29007633587787 154.5771526717558 462.48091603053433 183.43211450381688 "></path><title>AIN</title></g>
+
+
+
+</g>
+</g>
+
+
+
+
+
+
+
+
+<script><![CDATA[
+
+
+]]></script>
+
+
+</svg>

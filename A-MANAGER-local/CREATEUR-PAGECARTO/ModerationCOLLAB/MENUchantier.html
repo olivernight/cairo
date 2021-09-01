@@ -1,0 +1,140 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+ 
+	<script type="text/javascript" src="PageCartoDossier/listeaide.js"></script>
+<link rel="stylesheet" href="../tbcss/demos.css" media="screen" type="text/css"> 
+<script language="javascript" src="editpas.js"></script>	
+	<script type="text/javascript">
+
+	var DocOuDiscus=parent.retourneRadx("return DocOuDiscus") //1-> documents et 0-> discussion
+var liste2=new Array()		
+
+if(DocOuDiscus==0){
+//liste[liste.length]="listediscussions"
+}
+
+for(i=0;i<liste.length;i++){
+
+var repert=liste[i].split("/")[liste[i].split("/").length-1]
+if(DocOuDiscus==1){
+liste[i]=repert+"/ListeDocs"
+}
+liste2[i]=repert
+}
+
+	function adtitre(){}
+	function NoDatXici(){}
+	
+	
+var sousrep=''
+var onglet=1 // =1 affichage  des onglets en popup dans l'éditeur paramètre d'url. Sinon =0
+	
+var mt2=""
+var mtpas=Editpasici
+var casici=0 // cas du démarrage
+function rien(){}
+function MotPas(){
+idmt=0
+for(i=0;i<mtpas.length;i++){
+if(mt2==mtpas[i]){idmt=1;mt=mt2}
+
+}
+if(idmt!=1){
+mt=prompt('saisissez votre mot de passe',mt2);
+
+for(i=0;i<mtpas.length;i++){
+if(mt==mtpas[i]){idmt=1}
+
+}
+}
+var retconfirm=false
+if(idmt!=1){
+retconfirm=confirm("dÃ©solÃ©, votre mot de passe est incorrect, voulez vous recommencer?");
+if(retconfirm==true){
+MotPas()
+//window.location.href=aw2
+}else{
+
+if(casici==0){
+//top.location.href="../index.html"
+}else{}
+}
+}else{window.location.href='MODIFaide.html?onglet=0'}
+casici=1
+
+}
+</script>
+<style type="text/css">
+	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
+	h3{
+		margin-top:40px;
+	}
+
+		/* SLIDER CSS */
+		#valueOfRedSlider,#valueOfGreenSlider,#valueOfBlueSlider{
+			width:50px;
+			float:left;
+		}
+		#redSlider,#greenSlider,#blueSlider{
+			width:200px;
+			height:20px;
+			float:left;
+			margin-right:5px;
+		
+		}
+		#sliderInputDiv{
+			width:30px;
+			height:20px;
+		}
+		
+		.clear{
+			clear:both;
+	
+		}	
+		.ver_slider{
+			height:230px;
+			width:30px;
+			float:left;
+		}
+		#ver_slide1,#ver_slide2,#ver_slide3{
+			width:30px;
+			height:200px;
+			margin-bottom:3px;
+		}
+
+#box2{
+		width:520px;
+	
+		float:left;
+		background-color:#FFF;
+		
+
+	filter:alpha(opacity=70);
+	opacity: 0.7;
+	background-image:url('../haut_box.png');
+	background-repeat: repeat-x;
+	}
+	</style>	
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="../tbcss/tab-view.css">
+<script type="text/javascript" src="../js-mod/dhtml-suite-for-applications-without-comments.js"></script>
+
+
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="../tbcss/style.css">
+<script type="text/javascript" src="../js-mod/dragable-contentMODIF.js"></script>
+<script type="text/javascript" src="../js-mod/menuaide.js"></script>
+
+</head>
+<body style="background-color:transparent">
+
+<div style="position : fixed; top:5px;left:5px" onclick="MotPas()"  ><a id="modif" href="#">Modifier</a></div>
+<script language="javascript">
+document.write('<div id="editpas" class="texte" style="position:absolute;opacity:0.7;border:2px solid; top:45px; right:10px;visibility:hidden;background-color:white;width:200px;z-index:1000;padding:5px">')
+document.write('<form><center><b><big>Saisissez votre mot de passe</big><br><input id="sais" type="texte" value="" ><br><input type="button" onclick="testpas(document.getElementById(\'sais\').value);" value="valider"></input>...<input type="button" value="annuler" onclick="document.getElementById(\'editpas\').style.visibility=\'hidden\'"</center></form>')
+document.write('</div>')
+</script>
+</body></html>

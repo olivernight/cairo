@@ -1,0 +1,683 @@
+<HTML id="tout">
+<HEAD>
+   <TITLE>carte GaïaMundi AlterCarto.com</TITLE>
+<script type="text/javascript" >
+
+var ABC="" // variable qui sert à récupérer le texte de la balise iframe "zoom" envoyé par la fonction change du fichier pilote.html
+
+//xxxxxxxxxxxxxxxxxxx variables de stockage des coordonnées des Shapes "circle" situées dans les area de la map accollée à la carte insérée par src dans le fichier inséré par src dans l'iframe "zoom"
+var hide1=0
+var Hza2bis
+var C1 ;
+var C21;
+var C22;
+var C23;
+//xxxxxxxxxxxxxxxxx variables de stockage intermédiaire dans la fonction zoom
+var LL
+var HH
+//xxxxxxxxxxxxxxx variable dans laqelle est stocké l'"objet" à zoomer
+var DOC
+
+var AZI // compter de la fonction zoom0 qui sert à recadrer les coordonnées de l'iframe zoom lors du retour des opération href quand on clik sur les zones sensbles de la map.
+
+var zoomFactor=20 // taux d'aggrandissement entier entre 0 et 100
+
+var DEF=1 // variable qui récupère un indicateur provenant du fichier contenant la carte et son map - cet indicateur sert à discriminer les évennement onmousemove des évennements click mouseup et mouse down de manière à distinguer l'action de déplacement de la carte et la sélection des zones sensibles du map
+
+//xxxxxxxxxxxxxxxxxx divers variables utilisées dans les fonctions
+var tempY,tempX,initialized,X,Y,rX,rY,tempW,tempH,zoomBox;
+
+//xxxxxxxxxxxxxx variables intermédiaires dans la fonction zoom et zoom0
+var trucy0;
+var trucx0;
+var trucy=Y0;
+var trucx=X0;
+var trucx2;
+var trucy2;
+
+var ZI=1; // compteur de zoom
+
+var deltamoveX=0;//= valeur du déplacement reportée dans les fonction zoomIn et zoomOut
+var deltamoveY=0;
+
+//xxxxxxxxxxxx Dimensions des iframes d'affichage de la légende et des données
+var Lza=0 //210;
+var Hza=0 //400;
+var Lza2=110;
+var Hza2=135;
+
+var Lza3=450;
+var Hza3=450;
+
+var XY0=0
+var zzzz=0
+
+//xxxxxxxxxxxxxxcoordonnées initiales de zoomBox, (première balise <div>)
+var X0=25;
+var Y0=25;
+//xxxxxxxxxx variable de stockage intermédiaire pour la fonction zoom
+var X1=0;
+var Y1=0;
+//xxxxxxxxxxxxx dimension de la iframe "zoom" dans laquelle s'affiche la carte. Dans ce script HTML, l'iframe zoom est remplacée par une fonction write dont l'argument est récupéré par un script javascript dans la variable ABC. Le texte HTML de la balise iframe zoom se trouve dans le fichier pilote html. 
+var HFrame=1500;
+var LFrame=1000;
+var LFrame0
+var HFrame0
+var LZOOM 
+var coefzoom
+//xxxxxxxxxxxxxxxxxxxxxx variables de centrage du zoom (réglage plus ou moins empirique)
+var WindX=350;
+var WindY=270;
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx DEBUT DU SCRPTxxxxxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+</script>
+<script type="text/javascript">
+
+function changeHLframe(){
+LL=10
+HH=10
+HFrame=10
+LFrame=10
+
+}
+
+
+function documentallhistoLZA0(){
+return Lza2}
+function documentallhistoHZA0(){
+return Hza2}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx déplacement xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function moveZoomBox(event){ 
+
+if(XY0==1){
+if(document.all){ 
+if(initialized==true){
+
+zoomBox.style.pixelLeft=tempX-(event.clientX-X)
+
+zoomBox.style.pixelTop=tempY-(event.clientY-Y)
+
+trucx2=zoomBox.style.pixelLeft;
+trucy2=zoomBox.style.pixelTop;
+
+if(trucx2-trucx!=0 ||trucy2-trucy!=0){ 
+document.frames.zoom.selectarea0()
+}else{
+document.frames.zoom.selectarea1()
+}
+
+if(trucx2>(LL-LFrame0+X0)){trucx2=LL-LFrame0+X0}
+if(trucy2>(HH-HFrame0+Y0)){trucy2=HH-HFrame0+Y0}
+if(trucy2<Y0){trucy2=Y0}
+if(trucx2<X0){trucx2=X0}
+
+
+
+document.frames.zoom.scrollTo(trucx2,trucy2);
+//document.frames.zoom.scrollTo(tempX-(event.clientX-X),tempY-(event.clientY-Y));
+
+return false;
+}
+
+
+}
+else {    
+
+if(initialized==true){
+
+
+trucx2=tempX-(event.clientX-X)
+trucy2=tempY-(event.clientY-Y)
+
+
+if(trucx2>(LL-LFrame0+X0)){trucx2=LL-LFrame0+X0}
+if(trucy2>(HH-HFrame0+Y0)){trucy2=HH-HFrame0+Y0}
+if(trucy2<Y0){trucy2=Y0}
+if(trucx2<X0){trucx2=X0}
+
+zoomBox.style.pixelLeft=trucx2;
+zoomBox.style.pixelTop=trucy2
+window.frames.zoom.scrollTo(trucx2,trucy2);
+
+
+window.frames[2].document.onmouseup=disable(event)
+//return false;
+}
+}
+}//fin de if XY0
+
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx disable xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function disable(event){
+
+
+
+XY0=0
+
+if(XY0==0){
+
+
+if(document.all){ 
+
+initialized=false;
+
+deltamoveX=trucx2-trucx;
+deltamoveY=trucy2-trucy;
+
+trucx=trucx2
+trucy=trucy2
+
+X1+=deltamoveX;
+Y1+=deltamoveY;
+
+
+}
+else { 
+
+initialized=false;
+trucx2=zoomBox.style.pixelLeft;
+trucy2=zoomBox.style.pixelTop;
+deltamoveX=trucx2-trucx;
+deltamoveY=trucy2-trucy;
+trucx=trucx2
+trucy=trucy2
+X1+=deltamoveX;
+Y1+=deltamoveY;
+//event.stopPropagation();
+}
+}//fin du if XY==0
+
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx initXY xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function initXY(event){
+XY0=1
+if(XY0==1){
+if(document.all){ 
+if(DEF==1){
+
+zoom0()
+
+X = event.clientX;
+Y = event.clientY;
+tempX=zoomBox.style.pixelLeft;
+tempY=zoomBox.style.pixelTop;
+initialized=true;
+//document.event.cancelBubble=true
+//document.onmousemove=moveZoomBox; 
+
+}
+}
+else { 
+if(DEF==1){
+zoom0()
+X = event.clientX;
+Y = event.clientY;
+
+tempX=zoomBox.style.pixelLeft;
+tempY=zoomBox.style.pixelTop;
+
+initialized=true;
+//event.stopPropagation();
+
+window.frames[2].document.onmousemove=moveZoomBox; 
+}
+}
+}
+}//fin de if XY0
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx resize xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function resize(){
+zoomBox.style.pixelLeft=X0;
+zoomBox.style.pixelTop=Y0;
+window.frames.zoom.scrollTo(X0,Y0);
+zoomBox.style.visibility = "visible";
+trucx=zoomBox.style.pixelLeft
+trucy=zoomBox.style.pixelTop
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx raz = vue initiale xxxxxxxxxxxxxxxxxxxxxxxxx
+function razclick(){
+for(var j=ZI;j>1;j--){
+//for(var i=1; i<window.frames[2].document.links.length+1; i++){
+for(var i=1;window.frames[2].document.getElementById(i); i++){
+var AZI=j
+C1=window.frames[2].document.getElementById(i).coords.split(',')
+C21 =C1[0]
+C21=parseFloat(C21);
+C21=C21/(1+zoomFactor/100);
+C22 = C1[1];
+C22=parseFloat(C22);
+C22=C22/(1+zoomFactor/100);
+C23 = C1[2];
+C23a=parseFloat(C23);
+C23=C23a/(1+zoomFactor/100);
+//if(C23-C23a<=1)C23=C23a+1;
+C1=String(C21)+","+String(C22)+","+String(C23)
+window.frames[2].document.getElementById(i).coords=C1;
+}
+}
+ZI=AZI
+init()
+window.frames[2].zoompos()
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx fonction init xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function init(){
+//alert("ici")
+zoomBox=document.getElementById('zoomBox');
+zoomBox.style.visibility = "hidden";
+window.frames.zoom.scroll="no"
+DOC=window.frames[2].document.images[0];
+DOC.style.width=LFrame;
+DOC.style.height=HFrame;
+LL=LFrame
+HH=HFrame
+window.frames.zoom.scrollTo(X0,Y0);
+resize()
+document.getElementById('za').width=Lza;
+document.getElementById('za').height=Hza;
+
+top.frames.Num0.frames[2].document.getElementById('za').style.visibility="visible";
+document.getElementById('zam2').width=Lza2;
+document.getElementById('zam2').height=Hza2;
+document.getElementById('zam2').style.visibility="hidden";
+top.frames.Num0.frames.pilote.visioTOUTDATA()
+LFrame0=LFrame
+HFrame0=HFrame
+ZI=1
+
+even()
+
+}
+function even(){
+if(document.all){ // gestion d'evénement IE
+window.frames[2].document.getElementById('map1').attachEvent("onmousedown",initXY)
+window.frames[2].document.getElementById('map1').attachEvent("onmousemove",moveZoomBox)
+window.frames[2].document.getElementById('map1').attachEvent("onmouseup",disable)
+}
+else{
+//window.frames[2].document.getElementById('map1').addEventListener("mousemove",initXY,false)
+//window.frames[2].document.getElementById('map1').addEventListener("mousemove",moveZoomBox,false)
+window.frames[2].document.getElementById('map1').addEventListener("mousedown",initXY,false)
+}
+//top.frames.Num0.frames.pilote.visioTOUTDATA()
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx ZOOM plus xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function zoomIn(){
+if (ZI==8){return false}else{
+document.getElementById('moins').style.visibility="visible";
+ZI+=1; //compteur de zoom + ou -
+
+pixelZPX1=trucx;
+pixelZPY1=trucy;
+LL=LL*(1+zoomFactor/100)
+HH=HH*(1+zoomFactor/100)
+
+//for(var i=1;i<window.frames[2].document.links.length+1; i++){
+for(var i=1;window.frames[2].document.getElementById(i); i++){
+
+C1=window.frames[2].document.getElementById(i).coords.split(',')
+C21 =C1[0]
+C21=parseFloat(C21);
+C21=C21*(1+zoomFactor/100);
+C22 = C1[1];
+C22=parseFloat(C22);
+C22=C22*(1+zoomFactor/100);
+C23 = C1[2];
+C23a=parseFloat(C23);
+C23=C23a*(1+zoomFactor/100);
+if(C23-C23a<=1) {C23=C23a+1};
+C1=String(C21)+","+String(C22)+","+String(C23)
+window.frames[2].document.getElementById(i).coords=C1;
+}
+
+if(document.all){window.frames[2].zoompos()}
+DOC.style.width=LL
+DOC.style.height=HH
+trucx=pixelZPX1+(X0-X1/(1-zoomFactor)+WindX+pixelZPX1)*((zoomFactor)/(100));
+trucy=pixelZPY1+(Y0-Y1/(1-zoomFactor)+WindY+pixelZPY1)*((zoomFactor)/(100));
+
+
+
+//window.frames.zoom.scrollTo(trucx,trucy);
+
+
+
+zoomBox.style.pixelLeft=trucx;
+zoomBox.style.pixelTop=trucy;
+if(!document.all){window.frames[2].zoompos()}
+}
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx ZOOM moins xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function zoomOut(){
+
+if(ZI==1){document.getElementById('moins').style.visibility="hidden"}else{
+ZI+=-1;
+if(ZI==1){document.getElementById('moins').style.visibility="hidden"}
+if(ZI<=1){ZI+=1;razclick()}else{
+pixelZPX1=trucx;
+pixelZPY1=trucy;
+LL=LL/(1+zoomFactor/100)
+HH=HH/(1+zoomFactor/100)
+
+
+//for(var i=1; i<window.frames[2].document.links.length+1; i++){
+for(var i=1;window.frames[2].document.getElementById(i); i++){
+C1=window.frames[2].document.getElementById(i).coords.split(',')
+C21 =C1[0]
+C21=parseInt(C21);
+C21=C21/(1+zoomFactor/100)+0.5;
+C22 = C1[1];
+C22=parseInt(C22);
+C22=C22/(1+zoomFactor/100)+0.5;
+C23 = C1[2];
+C23a=parseInt(C23);
+C23=C23a/(1+zoomFactor/100)+0.5;
+C1=String(C21)+","+String(C22)+","+String(C23)
+window.frames[2].document.getElementById(i).coords=C1;
+
+}
+if(document.all){window.frames[2].zoompos()}
+DOC.style.width=LL
+DOC.style.height=HH
+trucx=pixelZPX1-(X0-X1/(1+zoomFactor)+WindX+pixelZPX1)*(zoomFactor/100)/(1+zoomFactor/100);
+trucy=pixelZPY1-(Y0+Y1/(1+zoomFactor)+WindY+pixelZPY1)*(zoomFactor/100)/(1+zoomFactor/100);
+if(trucx<X0){trucx=X0}
+if(trucy<Y0){trucy=Y0}
+
+
+
+//window.frames.zoom.scrollTo(trucx,trucy);
+
+
+
+zoomBox.style.pixelLeft=trucx;
+zoomBox.style.pixelTop=trucy;
+if(!document.all){window.frames[2].zoompos()}
+}
+}
+}
+
+
+//xxxxxxxxxxxxxxxxxxxxxxx FENETRES LEGENDE ET DONNEES xxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx disable2 et 22 xxxxxxxxxxxxxxxxxxxxxxxxx
+function initHIDEDIS(){
+document.getElementById('za').width=Lza;
+document.getElementById('za').height=Hza;
+
+top.frames.Num0.frames[2].document.getElementById('za').style.visibility="visible";
+document.getElementById('zam2').width=Lza2;
+document.getElementById('zam2').height=Hza2;
+document.getElementById('zam2').style.visibility="hidden";
+top.frames.Num0.frames.pilote.visioTOUTDATA()
+}
+
+
+
+
+
+function disable2(){
+document.getElementById('za').style.visibility="hidden";
+document.getElementById('za').width=100;
+document.getElementById('za').height=0;
+}
+
+function disable22(){
+document.getElementById('zam2').style.visibility="hidden";
+document.getElementById('zam2').width=100;
+document.getElementById('zam2').height=0;
+
+}
+function disable33(){
+document.getElementById('zam3').style.visibility="hidden";
+document.getElementById('zam3').width=0;
+document.getElementById('zam3').height=0;
+
+}
+
+function disable22a(){
+//document.getElementById('zam2').style.visibility="hidden";
+document.getElementById('zam2').width=Lza2;
+document.getElementById('zam2').height=187;
+
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx hidden xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function hidelegend(){
+document.getElementById('za').style.visibility="visible";
+document.getElementById('za').style.ALLOWTRANSPARENCY="true";
+document.getElementById('za').width=Lza;
+document.getElementById('za').height=Hza;
+
+
+}
+
+function hidelegend2(){
+
+document.getElementById('zam2').style.visibility="visible";
+document.getElementById('zam2').style.ALLOWTRANSPARENCY="true";
+
+document.getElementById('zam2').width=Lza2;
+document.getElementById('zam2').height=Hza2;
+
+}
+function hidelegend3(){
+
+document.getElementById('zam3').style.visibility="visible";
+document.getElementById('zam3').style.ALLOWTRANSPARENCY="true";
+
+document.getElementById('zam3').width=Lza3;
+document.getElementById('zam3').height=Hza3;
+
+}
+
+
+function hidelegend2bis(){
+
+document.getElementById('zam2').height=Hza2bis;
+}
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx autre hidden visible xxxxxxxxxxxxxxxxxxx
+
+function hiddentoutDATA(){
+document.getElementById("bouton1").style.visibility="hidden"
+top.frames.Num0.frames.couches.document.getElementById('zam2').style.visibility="hidden"
+
+}
+
+function visibletoutDATA(){
+document.getElementById("bouton1").style.visibility="visible"
+top.frames.Num0.frames.couches.document.getElementById("zam2").style.visibility="visible"
+top.frames.Num0.frames.couches.zoom.document.getElementById('map1').style.visibility="visible"
+}
+
+
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx AUXILIAIRES xxxxxxxxxxxxxxxxxxxxxxxxx
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx zoom0 xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function zoom0(){
+//alert(trucx)
+var GHI=zoomFactor
+zoomFactor=0
+pixelZPX1=trucx;
+pixelZPY1=trucy;
+
+LL=LL*(1+zoomFactor/100)
+HH=HH*(1+zoomFactor/100)
+
+
+DOC.style.width=LL
+DOC.style.height=HH
+trucx=pixelZPX1+(X0-X1/(1-zoomFactor)+WindX+pixelZPX1)*((zoomFactor)/(100));
+trucy=pixelZPY1+(Y0-Y1/(1-zoomFactor)+WindY+pixelZPY1)*((zoomFactor)/(100));
+trucx2=trucx
+trucy2=trucy
+//if(trucx<X0){trucx=X0}
+//if(trucy<Y0){trucy=Y0}
+
+window.frames.zoom.scrollTo(trucx,trucy);
+
+zoomBox.style.pixelLeft=trucx;
+zoomBox.style.pixelTop=trucy;
+zoomFactor=GHI
+//window.frames[2].zoompos()
+}
+
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx indic xxxxxxxxxxxxxxxxxxxxxxxxx
+function indic0(){
+DEF=0
+}
+
+function indic1(){
+DEF=1
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx TACHES DE FOND xxxxxxxxxxxxxxxxxxxxxxxxx
+
+window.onresize=resize;
+
+ABC=top.frames.Num0.frames.pilote.changeX("return change1"); // AMORcage : choix de la carte ou photo initiale
+
+
+
+function dim(){
+XDATA=top.frames.Num0.frames.couches.zoom.hdata("return largDATA")
+
+Lza2=XDATA[0]
+Hza2=XDATA[1]
+if(hide1==0){Hza2bis=Hza2}
+//hide1=1
+
+document.getElementById('zam2').width=Lza2;
+
+document.getElementById('zam2').height=Hza2;
+
+}
+
+function dimleg(){
+Lza=top.frames.Num0.frames.couches.za.dimleg0L("return Ltable")
+Hza=top.frames.Num0.frames.couches.za.dimleg0H("return Htable")+13
+//alert(Hza)
+hidelegend()
+//document.getElementById("zoom").style.visibility="visible"
+
+}
+
+function visibilityzoom(){
+document.getElementById("zoom").style.visibility="visible"
+}
+</script>
+</HEAD>
+
+<!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx      DEBUT BODY  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+
+<BODY STYLE="left:0;top:0;BORDER:0" onload="javascript:init()">
+
+<div id='zoomBox' style='left:0;top:0';>
+<table width=0 height=0 cellspacing='0' cellpadding='0' style='background-color:#210AAA;border:0px solid #324B64' id='magContainer'>
+<tr>
+<td> 
+
+<table width="LFrame" height=0 cellspacing='0' cellpadding='0' style='background-color:#210AAA;border:0px solid #324B64' id='magContainer'>
+<tr>
+<td style='height:16px;color:#210AAA;font-weight:bold;font-family:verdana;font-size:8pt;border:0px;width:520'>
+</td>
+<td id='bouton' style='border:0px;padding:0px;color:#210AAA;width:600'  valign=top align=left><img src='mag_minus.gif' OnClick='zoomOut()' id='moins' style='visibility:visible' title='réduire'><img src='mag_plus.gif' OnClick='zoomIn()' id='plus' style='visibility:visible' title='agrandir'><img src='raz.gif' OnClick='razclick()' id='raz0' style='visibility:visible' title='zoom=0'>
+</td>
+
+</tr>
+</table>
+
+
+
+
+<!xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------DATA-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+<div id='mobile2' style='right:-200;top:0;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ><img  src='donnees.gif'  OnMouseUp='hidelegend2()' onmouseOver='disable22()' id='bouton1'  align=right title='click=visible'></td></tr>
+<tr>
+<td colspan=2 align=center id='ouinon2' style='visibility:hidden'>
+<iframe  ALLOWTRANSPARENCY='true' id='zam2' src="vide.htm" width=0 height=0 style='border:0px;padding:0px;visibility:hidden;' FRAMEBORDER=0 scrolling='no' name='zam2'></iframe>
+</td>
+</tr>
+</table>
+</div>
+
+<!xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------LEGENDE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+<div id='mobile' style='left:0;top:0;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ><img  src='leg.gif'  OnMouseUp='hidelegend()' onmouseOver='disable2()' id='bouton'  title='click=visible'></td></tr>
+<tr>
+
+<td colspan=2 align=center id='ouinon'   style='visibility:hidden'>
+<iframe  ALLOWTRANSPARENCY='true' id='za' src=""   height=0 width=0 style='border:0px;padding:0px;visibility:visible;' FRAMEBORDER=0 scrolling='no'  name='za' ></iframe>
+
+</td>
+</tr>
+</table>
+</div>
+
+<!xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------IFRAME ZOOM-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+<table width=0 height=0 cellspacing='0' cellpadding='0'style='background-color:#6699CC;border:0px solid #324B64' id='magContainer'>
+<tr>
+
+<td colspan=0 align=center>
+
+<script>document.write(ABC);change1="";top.frames.Num0.frames.pilote.initlegende()</script>
+
+</td>
+
+</tr>
+<tr>
+<td style='border:0px;padding:0px;' id='resizeObj' valign=bottom align=right>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------TITRE CARTE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+<div id='mobile' style='left:5;top:440;visibility:visible;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ></td></tr>
+<tr>
+<td colspan=2 align=center id='ouinon'   style='visibility:visible'>
+<iframe  ALLOWTRANSPARENCY='true' id='zatitre' src="bandotitre.htm" width=500 height=50 style='border:0px;padding:0px;visibility:visible;' FRAMEBORDER=0 scrolling='no'  name='zatitre' ></iframe>
+<script></script>
+</td>
+</tr>
+</table>
+</div>
+<!xxxxxxxxxxxxxxxxxxxxxxxxxxxx-------ANALYSE-------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>
+<div id='mobile5' style='left:150;top:0;visibility:hidden;position:absolute'>
+<table width=0 height=0 cellspacing='0' cellpadding='0'  >
+<tr>
+<td ><img  src='analyse.gif'  OnMouseUp='hidelegend3()' onmouseOver='disable33()' id='boutonan'  align=left title='click=visible'></td></tr>
+<tr>
+<td colspan=2 align=center id='ouinon3' style='visibility:hidden'>
+<iframe  ALLOWTRANSPARENCY='true' id='zam3' src="h_0.gif" width=0  height=0 style='border:0px;padding:0px;visibility:visible;' FRAMEBORDER=0 scrolling='no' name='zam3'></iframe>
+</td>
+</tr>
+</table>
+</div>
+</BODY>
+</HTML>

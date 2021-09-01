@@ -1,0 +1,374 @@
+<html>
+<head> 
+<script language="javascript"> 
+
+var vala=top.frames.Num0.vala("return a")
+var p;
+var Coef10=1;
+var sign=1
+var commentClasrecept=new Array()
+var IM
+var numx
+//var echelle=100
+//var k=2 // nombre de courbes
+var XXport=new Array()
+var Xport=new Array()
+var pixel1 = new Image(); 
+var pixel2 = new Image(); 
+var pixel3 = new Image(); 
+var pixel4 = new Image(); 
+var pixel5 = new Image(); 
+var pixel6 = new Image(); 
+var pixel7 = new Image(); 
+var pixel8 = new Image(); 
+
+pixel1.src="pixel1.gif"
+pixel2.src="pixel2.gif"
+pixel3.src="pixel3.gif"
+pixel4.src="pixel4.gif"
+pixel5.src="pixel5.gif"
+pixel6.src="pixel6.gif"
+pixel7.src="pixel7.gif"
+pixel8.src="pixel8.gif"
+
+var yx=0
+var hplus=0
+var kx=0
+var min0=0
+var Amin=0
+var Asup=0
+var indicmin=0
+var min=0
+var sup=0
+function numix(){
+return numx
+}
+
+//________________Reception de données___________________________________________
+
+TITRED= top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.titreDATA("return titreD")
+var k=TITRED[1]// nombre de courbes
+var titre=TITRED[0]
+
+
+DATArecept=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.transDATA("return datax")
+
+var pays=DATArecept[2]
+
+
+numx=top.frames.Num0.frames.couches.zoom.document.links.length+(parseFloat(DATArecept[0])+1)
+//alert("numx="+numx)
+//commentClasrecept=top.frames.Num0.frames.precarte.numdata("return datahistomulti")
+for(i=0;i<k;i++){
+//numx=top.frames.Num0.frames.couches.zoom.document.links.length+(i+1)
+//commentClasrecept[i]=top.frames.Num0.frames.precarte.numdata("return datahistomulti")
+commentClasrecept[i-3]=top.frames.Num0.frames.precarte.numdata("return datahistomulti")
+}
+
+//_______________________________________-tableau de légende_________________________
+var ch=""
+ch+='<table border=0  cellpadding=0 cellspacing=0 align=center ><TR>'
+ch+='<TD width=1></TD><TD >'
+ch+='<table border=1  cellpadding=0 cellspacing=0 align=center><TR><TD >'
+ch+='<table border=0 height=30 width=170 cellpadding=0 cellspacing=0 align=center bgcolor="#FFFFFF"><TR>'
+//alert(commentClasrecept[0])
+for(j=0;j<k;j++){
+if(j==2){ch+='<TR></TR>'}
+if(parseFloat(commentClasrecept[j+1])==-99999){}else{
+ch+='<TD width=10></TD>'//---------------------------espace gauche des Icônes
+//'+commentClasrecept[j+1]+'
+ch+='<TD><img src="pixel'+(j+1)+'.gif" width=10 height=10 border=1></TD><TD><p><font face="Arial " size=-2 color="navy"><b>'+TITRED[TITRED.length-k+j]+'</b></font></p></TD>'
+}
+}
+ch+='</TR></table>'
+ch+='</TD></TR></table>'
+ch+='</TD>'
+ch+='</TR></table>'
+//______________________________légende axe des x_________________________
+var ch2=""
+
+var LargCol=190/((DATArecept.length-3)/k)
+ch2+='<table width=175>'
+ch2+='<TR>'
+for(j=0;j<(DATArecept.length-3)/k;j++){
+ch2+='<TD valign=bottom width='+LargCol+' height=30>'
+ch2+='<p><font face="Arial" size=-2 color="navy"><b>'+TITRED[j+5]+'</b></font></p></TD>'
+}
+ch2+='</TR>'
+
+ch2+='</table>'
+
+//_______________________________________________________________________________
+
+
+
+
+for(var i=0;i<DATArecept.length-3;i++){
+XXport[i]=DATArecept[i+3]
+//if(XXport[i]==-99999){XXport[i]=0}
+}
+
+
+
+
+//__________________________________________________________________________________
+
+var maxtop = 136         //------------------intervalle de calcul axe des Y
+var it=139  		//------------------intervalle de calcul axe des X !!!! =MEME VALEUR QUE WIDTH DES DIV
+
+
+
+var w=1
+var h=2
+var CI=0 //conditions initiales
+
+
+var graph=new Array()
+
+
+//---------variable 1
+var x, y; 
+
+
+var max0=XXport[0]
+for(i=0;i<XXport.length;i++){
+if(parseFloat(XXport[i])>parseFloat(max0)){max0=XXport[i]}
+}
+if(max0>=1 & max0<=10){p=1}else{p=10};
+if(max0<1){p=1/10}
+Asup=(parseInt(max0/Coef10/p)+1*sign)*Coef10*p;
+
+var min0=XXport[0]
+for(i=0;i<XXport.length;i++){
+if(parseFloat(XXport[i])<parseFloat(min0) & parseFloat(XXport[i])!=-99999){min0=XXport[i]}
+}
+if(-min0>=1 & -min0<=10){p=1}else{p=10};
+if(-min<1){p=1/10}
+
+Amin=(parseInt(min0/Coef10/p)+1*sign)*Coef10*p;
+
+if(Amin>=0){Amin=0;indicmin=0}else{indicmin=1;}
+
+//if(Amin>=0){sup=Asup}else{
+//if(Math.abs(Amin)>Asup){sup=2*Amin}else{sup=2*Asup}
+//var translatvert=sup
+//}
+
+sup=parseInt(Math.abs(Amin)+Asup)
+
+var Hleg
+if(indicmin==1){Hleg=indicmin*Asup*maxtop/sup+5}else{Hleg=140}
+
+for(i=0;i<XXport.length;i++){
+if(parseFloat(XXport[i])!=-99999){Xport[i]=(XXport[i])*(maxtop)/sup-Amin*maxtop/sup     } else{Xport[i]=-99999  }  //+indicmin*Asup
+}
+
+//alert(70+Asup*maxtop/sup/2)
+if(sup-parseInt(-Amin)==-99998){var Xsup=""}else{
+var Xsup=sup-parseInt(-Amin)+"&nbsp;"+TITRED[4]}
+
+if(document.all){
+var A="<div id='xx' style='width:90px;height:10px;top:86px;left:12px;position:absolute;border:1px '><font face='Arial narrow' size=-1><b><p>"
+var B="</p></b></font></div>"
+var C="<div id='xx' style='width:10px;height:10px;top:"+(86+Hleg/2)+";left:12px;position:absolute;border:1px '><font face='Arial narrow' size=-1><b><p>"
+var D="</p></b></font></div>"
+var E="<div id='xx' style='width:10px;height:10px;top:"+(86+Hleg)+";left:17px;position:absolute;border:1px '><font face='Arialnarrow' size=-1><b><p>"
+var F="</p></b></font></div>"
+}else{
+
+var A="<div id='xx' style='width:10px;height:10px;top:70px;left:12px;position:absolute;border:1px '><font face='Arial narrow' size=-1><b><p>"
+var B="</p></b></font></div>"
+var C="<div id='xx' style='width:10px;height:10px;top:"+(70+Hleg/2)+";left:12px;position:absolute;border:1px '><font face='Arial narrow' size=-1><b><p>"
+var D="</p></b></font></div>"
+var E="<div id='xx' style='width:10px;height:10px;top:"+(70+Hleg)+";left:17px;position:absolute;border:1px '><font face='Arial narrow' size=-1><b><p>"
+var F="</p></b></font></div>"
+}
+
+
+
+
+//----------------------------------------------------------------------------------------
+function courbe() {
+
+
+
+
+
+
+
+
+for(var nbcourbes=1;nbcourbes<=k;nbcourbes++){
+var nb1=Xport.length/k
+
+var VAR1=new Array()
+VAR1[0]=0
+for(var i=1;i<=nb1;i++){
+//VAR1[i]=Xport[i+(nbcourbes-1)*nb1-1]
+VAR1[i]=Xport[(i-1)*k+(nbcourbes-1)]
+//if(parseFloat(VAR1[i])==-99999){; alert("ici")}
+}
+
+
+var a=new Array()
+var borne=new Array()
+
+
+//alert(nb1)
+
+//-------------------bornes et coefficients directeurs
+
+for(var i=1;i<nb1;i++){
+borne[i]=i*(it-3)/(nb1-1)
+borne[0]=0
+a[i]=(VAR1[i+1]-VAR1[i])/((it-3)/(nb1-1))
+if(VAR1[i+1]==-99999 || VAR1[i]==-99999){a[i]=0.999}
+}
+
+
+if( nbcourbes==1 ){IM= pixel1.src}; //noir
+if( nbcourbes==2 ){IM= pixel2.src}; //bleu
+if( nbcourbes==3 ){IM= pixel3.src}; //rouge
+if( nbcourbes==4 ){IM= pixel4.src}; //violet
+if( nbcourbes==5 ){IM= pixel5.src}; //violet
+if( nbcourbes==6 ){IM= pixel6.src}; //violet
+if( nbcourbes==7 ){IM= pixel7.src}; //violet
+if( nbcourbes==8 ){IM= pixel8.src}; //violet
+
+
+
+graph[nbcourbes]=""
+
+var y0=VAR1[1]
+var a0=a[1]
+
+
+for (x=1; x<=it-3; x++) 
+   { 
+testvide=0
+for(i=1;i<=nb1;i++){
+if(x>borne[i-1] & x<borne[i]){
+if(a[i]!=a0){
+testvide=0
+a0=a[i];
+y0=y-a[i]*borne[i-1];y=a[i]*x+y0;
+}else{
+y=a[i]*x+y0;}
+if(x==parseInt(borne[i])-1){kx=1}else{kx=0}
+if(a[i]==0.999){testvide=1}
+}
+
+}
+
+
+var visib="visible"
+if(testvide==1){visib="hidden"}
+
+if(x==1){hplus=0}else{hplus=Math.abs(y-yx)}
+if(kx==1){hplus=0}
+graph[nbcourbes] += "<img src='" + IM + "'  style='visibility:"+visib+";position:relative;top:" +(maxtop-y)+ ";width:"+(w)+"px; height:"+((h+hplus))+"px'>" 
+
+yx=y
+
+   } 
+
+document.getElementById(nbcourbes).innerHTML=graph[nbcourbes]; 
+
+} //________________________________fin de boucle sur nbcourbes ______________________________
+
+
+
+}//________________________________fin de fonction courbes
+
+
+
+
+
+
+</script> 
+</head> 
+<body onLoad="courbe()" STYLE="background-color: transparent"  onkeydown="javascript:top.test2(event);"> 
+<div style="width:190px;height:294px;top:8px;left:0px;position:absolute;border:1px solid gray"><IMG src="C-HM.gif" width=190 height=294></div>
+<script language="javascript">
+if(document.all){
+document.write('<div id=0 style="background-color:#dddddd;width:145px;height:140px;top:102px;left:27px;position:absolute;border:3px solid white"></div>')
+if(indicmin==1){
+document.write('<div id=minzero style="background-color:#BBBDDD;width:142px;top:'+(102+Asup*maxtop/sup)+';left:27px;position:absolute;border:0px solid white"></div>')
+}
+
+}else{
+document.write('<div id=0 style="background-color:#dddddd;width:145px;height:134px;top:102px;left:27px;position:absolute;border:3px solid white"></div>')
+if(indicmin==1){
+var Hminzero=-Amin*maxtop/sup
+
+document.write('<div id=minzero style="background-color:#BBBDDD;width:148px;height:'+Hminzero+';top:'+(102+Asup*maxtop/sup)+';left:27px;position:absolute;border:0px solid white"></div>')
+}
+}
+</script>
+<div id=1 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+<div id=2 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+<div id=3 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+<div id=4 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div> 
+<div id=5 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+<div id=6 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+<div id=7 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+<div id=8 style="width:140px;height:140px;top:102px;left:30px;position:absolute;border:1px "></div>
+
+<div id="yy" style="width:10px;height:140px;top:102px;left:27px;position:absolute;border:1px "><img src="echelle.gif" witdh=8 height=140></div>
+<script language="javascript"> 
+document.write(A)
+document.write(Xsup)
+document.write(B)
+document.write(C)
+var interm=(sup+parseInt(Amin))/2
+
+if(interm==-49999){}else{document.write((sup+parseInt(Amin))/2)}
+document.write(D)
+document.write(E)
+if(interm==-49999){}else{document.write(0)}
+document.write(F)
+</script>
+
+<div id="axex" style="width:140px;height:150px;top:226px;left:15px;position:absolute;border:1px ">
+<script language="javascript"> document.write(ch2)</script>
+</div>
+
+<div id="legende" style="width:140px;height:200px;top:260px;left:8px;position:absolute;border:1px ">
+<script language="javascript"> document.write(ch)</script>
+</div>
+
+<script language="javascript"> 
+
+
+if(document.all){
+document.write('<div id="pays" style="width:175px;height:20px;')
+document.write('top:12px;left:5px;position:absolute;border:1px ">')
+document.write('<p><font face="Arial " size=4 color="black"><center><b>')
+}else{
+document.write('<div id="pays" style="width:175px;height:20px;')
+document.write('top:-2px;left:5px;position:absolute;border:1px ">')
+document.write('<p><font face="Arial " size=4 color="black"><center><b>')
+}
+if(pays.length<10){document.write(pays)}else{document.write('<span style="font-size:11px">'+pays+'</span>')}
+//document.write(pays)
+</script>
+</b></font></p></div>
+
+<script language="javascript"> 
+
+
+if(document.all){
+document.write('<div id="titrecourbe" style="width:175px;height:40px;top:35px;left:5px;position:absolute;border:1px "><p><font face="Arial narrow" size=-1 color="navy"><center><b>')
+}else{
+document.write('<div id="titrecourbe" style="width:175px;height:40px;top:18px;left:5px;position:absolute;border:1px "><p><font face="Arial narrow" size=-1 color="navy"><center><b>')
+}
+
+if(titre.length<70){document.write(titre)}else{document.write('<span style="font-size:10px">'+titre+'</span>')}
+ 
+ top.frames.Num0.frames.couches.document.getElementById("zam2").setAttribute('style','padding:0px;visibility:visible;border:0px solid gray')
+ if(vala==1){document.write('<div id="bferm" style="position:absolute; visibility:visible;top:7px;left:7px"><img src="../boutonferme.gif" onmouseover="javascript:top.document.getElementById(\'zam2\').height=0" title="Fermer menu Check liste"></div>')}
+</script>
+</b></font></p></div>
+
+
+</body> 
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  
+  <meta http-equiv="content-type"
+ content="text/html; charset=UTF-8">
+  <title>vues tables de passages</title>
+  <script language="javascript" src="tablepass.js"></script>
+  
+  <script language="javascript">
+    function change_site() {
+
+var site = document.menu.popup.selectedIndex;
+
+{
+var ancre=document.menu.popup.options[site].value;
+if(site!=0){
+if(site==1){window.frames.frametablepas.location.href="esai.html#haut"}else{
+window.frames.frametablepas.location.href="esai.html"+ancre
+}
+//parent.scrollTo(0,0)
+}
+}
+}
+  </script>
+</head>
+<body style="background-color: black;">
+ <div
+ style="position: absolute; z-index: 1; top: 0px; left: 0px;">
+ <table width=700 height=40 BGCOLOR=black><tr><td></td></tr></table>
+ </div>
+<div
+ style="position: absolute; z-index: 1; top: 0px; left: 500px;">
+ <form NAME="menu">
+<p ><b><font face="Arial" size="3"  color="black"></font></b><select title="liste des brèves dans la page" NAME="popup"
+onChange="change_site();"   style="background-color: white;border:0; color:gray;width:230px;opacity:0.95" size="1" >
+<option VALUE="javascript:rien()"  style="background-color: white;opacity:0.5">Brèves et actualités</option>
+<script language="javascript">
+
+for(i=titre.length-1;i>-1;i--){
+
+document.write('<option VALUE="#tablepas'+i+'" style="background-color: white;opacity:0.5">'+titre[i]+'</option>')
+}
+
+</script>
+</select> </p>
+
+</form>
+
+ 
+ </div>
+
+<div style="position:absolute:left:0px"><iframe id="frametablepas" name="frametablepas" src="esai.html" width="750" height="1020" frameborder=0 scrolling="yes"></iframe></div>
+</body>
+</html>

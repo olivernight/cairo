@@ -1,0 +1,184 @@
+﻿<html></head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="discussionsAltercarto/listeaide.js?updated=1234567890"></script>
+	<link rel="stylesheet" href="tbcss/demos.css" media="screen" type="text/css">	
+	<script type="text/javascript">
+var DocOuDiscus=parent.retourneRadx("return DocOuDiscus") //1-> documents et 0-> discussion
+
+var liste2=new Array()		
+if(DocOuDiscus==0){
+liste[liste.length]="listediscussions"
+}
+
+for(i=0;i<liste.length;i++){
+
+var repert=liste[i].split("/")[liste[i].split("/").length-1]
+if(DocOuDiscus==1){
+liste[i]=repert+"/ListeDocs"
+}
+liste2[i]=repert
+}
+
+	
+	
+var sousrep=''
+</script>
+<style type="text/css">
+	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
+	h3{
+		margin-top:40px;
+	}
+
+		/* SLIDER CSS */
+		#valueOfRedSlider,#valueOfGreenSlider,#valueOfBlueSlider{
+			width:50px;
+			float:left;
+		}
+		#redSlider,#greenSlider,#blueSlider{
+			width:200px;
+			height:20px;
+			float:left;
+			margin-right:5px;
+		
+		}
+		#sliderInputDiv{
+			width:30px;
+			height:20px;
+		}
+		
+		.clear{
+			clear:both;
+	
+		}	
+		.ver_slider{
+			height:230px;
+			width:30px;
+			float:left;
+		}
+		#ver_slide1,#ver_slide2,#ver_slide3{
+			width:30px;
+			height:200px;
+			margin-bottom:3px;
+		}
+
+#box2{
+		width:520px;
+	
+		float:left;
+		background-color:#FFF;
+		
+
+	filter:alpha(opacity=70);
+	opacity: 0.7;
+	background-image:url('haut_box.png');
+	background-repeat: repeat-x;
+	}
+	</style>	
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="tbcss/tab-view.css">
+<script type="text/javascript" src="js-mod/dhtml-suite-for-applications-without-comments.js"></script>
+
+
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="tbcss/style.css">
+<script type="text/javascript" src="js-mod/dragable-contentMODIF.js"></script>
+
+	
+
+		<script type="text/javascript" >
+		var lacible=""		//index du fichier à modifier dans la liste des fichier d'onglets listeaide.js
+		
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    lacible=(urlvar['lacible'])
+	
+	var onglet=1 // =1 affichage  des onglets en popup dans l'éditeur paramètre d'url. Sinon =0	
+	if(urlvar['onglet']){onglet=(urlvar['onglet'])}
+		var encaps=liste[0] 
+	
+		if(lacible){if(lacible!=''){encaps=liste[lacible-1]}	}else{lacible=1}// page d'aide affichée à l'ouverture
+
+	var indicouv=1
+	function rien(){}
+	function retournelacible(){return lacible}
+	    function retourneonglet(){return onglet}
+		function retourneindicouv(){return indicouv}
+		function retournencaps(){return encaps}
+		var TextToModif=""
+		function chargepage(a){
+		encaps=a
+
+		window.frames.fichaide.location.href="discussionsAltercarto/"+a+".html"
+		
+		}
+		function retournTextToModif(){
+		
+		TextToModif=window.fichaide.document.getElementsByTagName("body")[0].innerHTML
+		return TextToModif
+		
+		}
+		
+		</script>
+
+		
+		
+	
+<script type="text/javascript" src="js-mod/menuaide.js?updated=1234567890"></script>		
+
+</head>
+<body >
+
+
+<form name="choix" style="width:100px">
+<script language="javascript">
+onglet2=1
+if(onglet2==0){
+document.write('<div style="position:absolute;left:10px"><dt class="text"><b>fichier en cours de modification : '+encaps+'.html</b></dt></div>')
+var visonglet="opacity:0"}else{
+document.write('<div style="position:absolute;left:10px"><dt class="text"><b>Sélectionnez la page que vous souhaitez modifier ou à créer</b></dt></div><br>')
+var visonglet=''}
+document.write('<select name="select" style="width:200px;'+visonglet+'">')
+
+for(i=0;i<liste.length;i++){
+document.write('<option onclick="var a =\''+liste[i]+'\';lacible='+(i+1)+';indicouv=1;chargepage(a)">'+liste[i]+'</option>')
+}
+document.write('<option style="color:blue;font-weight:bold;" onclick="var a =\'vide\';lacible='+(liste.length+1)+';indicouv=2;chargepage(a)">Nouveau</option>')
+</script>
+</select>
+</form>
+
+
+
+
+<script language="javascript">
+
+var larg
+if(document.all){larg=(document.body.clientWidth)-10}else{var larg=(window.innerWidth)-10}
+document.write('<iframe id="changeaide" name="changeaide" width="'+(larg-10)+'px" height="90%" src="#" style="border:1px solid gray"></iframe><br>')
+document.write('<iframe id="fichaide" name="fichaide" width="'+larg+'px" height="1px" src="discussionAltercarto/vide.html" style="visibility:hidden;border:1px solid gray"></iframe>')
+document.choix.select.selectedIndex=lacible-1
+
+setTimeout('chargepage("'+encaps+'")',0)
+if(onglet==0){
+setTimeout('document.getElementById("box2").style.left="0px";document.getElementById("box3").style.left="0px"',500)
+}
+reduit()
+</script>
+</body></html>

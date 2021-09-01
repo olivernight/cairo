@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head id="head">
+    <meta charset=utf-8>
+    <title id="titrepage">*InserPCinPage*</title>
+	
+		<style >	
+body {background-color:white;color:black;font-size:14px;font-family:arial;}
+		</style>
+
+<script language="javascript" > 
+var carteici=window.location.href.split('/');
+carteici=carteici[carteici.length-3]
+</script>
+</head>
+
+<body>
+<script src="redesignPCcomplet.js"></script>
+<!--b style="color:gray">
+<span>&nbsp;Carte : 
+<script language="javascript" > 
+document.write(carteici);
+</script>
+</span>
+
+</b-->
+
+<div id="divref" style="width:856px; height: 645px;border:1px solid #EEEEEE">
+
+<script language="javascript" > 
+document.write('<iframe onload="if(window.DesigninitPCcomplet){DesigninitPCcomplet(this)}" src="PageCarto/Module-PageCarto.xml?format=normal" id="pc1" name="pc1" style="border: 0px none ; width: 856px; height: 645px; background-color: white;" scrolling="no" frameborder="0"></iframe>');
+</script>
+
+</div>
+</body >
+</html>

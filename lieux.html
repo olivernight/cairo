@@ -1,0 +1,99 @@
+<html>
+<head>
+<script>
+var mapX=new Array()
+var opac=0
+var cptimage=0
+
+var lieuxselect=""
+var indicarte=0
+var indexoption=0
+var indexoption2=0
+var indexoption3=0
+var rgcarte
+
+var initlieux=0
+var optionlieux=new Array()
+var indicretour=0
+
+function rien(){
+rgcarte=rgcarte
+}
+
+function translieuxselect(){
+ return lieuxselect
+}
+var repdata=top.frames.Num0.frames.paramcarte.transma("return mappocoord")
+DATAlieux=top.frames.Num0.frames.paramcarte.transDATAlieux("return DATAlieux")
+</script>
+
+<script>
+//DATAlieux[DATAlieux.length]="transparent.png"
+//alert(DATAlieux)
+
+
+var xici
+for(i=0;i<DATAlieux.length;i++){
+xici="'"+repdata[6]+"/images1/"+DATAlieux[i]+"'"
+//alert(xici)
+optionlieux[i]='<option style="color:black" VALUE="javascript:lieuxselect='+xici+';injectlieux()">'+DATAlieux[i]+'</option>'
+
+}
+//optionlieux[optionlieux.length-1]='<option style="color:red" VALUE="javascript:indicretour=1;lieuxselect='+xici+';injectlieux()">retour carte</option>'
+// ci dessous combine pour src avec variable
+//var cla='<scri'
+//cla+='pt src="'
+//cla+=repdata[6]
+//cla+='"></sc'
+//cla+='ript>'
+//alert(cla)
+function injectlieux(){
+//alert(lieuxselect)
+top.frames.Num0.frames.themes.location.href="themes.html"
+top.frames.Num0.document.getElementById("themes").height=22
+}
+
+//--------------------------------------------------------------------------------
+function change() {
+
+var site = document.menu.choix.selectedIndex;
+{
+document.location.href=document.menu.choix.options[site].value;
+indexoption=site
+}
+
+}
+
+</script>
+
+
+
+</head>
+
+<body STYLE="background-color:#e0ef00">
+
+<script>
+
+//document.write(cla)
+</script>
+<!--------------------------------------------------MENU lieux--------------------------------------->
+<div style="position:absolute;top:1;left:0">
+<form NAME="menu">
+
+<select id="choix" NAME="choix" onchange="change()";"  style="background-color:white; color:black;visibility:visible" size="1" >
+<option  VALUE="javascript:rien()">lieux------------------------</option>
+<script>
+
+document.write(optionlieux)
+</script>
+</select>
+</form>
+</div>
+
+
+
+
+
+
+</body >
+</html>

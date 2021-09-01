@@ -1,0 +1,99 @@
+idcarte	libel	codeINSEE	essai 1 	essai2 	essai 3	0
+1	Indonesia12	1181				0
+2	Oman	1106	56	74	71	0
+3	Japan	1223	15	54	43	0
+4	Kazakhstan	1103	46	25	16	0
+5	Indonesia	1175	21	85	80	0
+6	Philippines6	1251				0
+7	Indonesia6	1183				0
+8	Sudan	1184	51	73	74	0
+9	Indonesia5	1185				0
+10	Lao_people_s_democratic_Republ	1241	68	62	76	0
+11	Philippines10	1254				0
+12	Armenia	1113	80	22	33	0
+13	Saudi_Arabia	1013	66	43	12	0
+14	Barhain	1187	13	45	97	0
+15	Azerbijan	1115	10	79	35	0
+16	Lebanon	1243	73	36	75	0
+17	Philippines8	1248				0
+18	Indonesia	1189				0
+19	Indonesia10	1173				0
+20	Philippines2	1120				0
+21	Georgia	1121	17	38	89	0
+22	Philippines5	1252				0
+23	Singapore	1190	28	79	77	0
+24	Indonesia7	1191				0
+25	Philippines9	1249				0
+26	Viietnam	1226	91	52	56	0
+27	Indonesia11	1193				0
+28	Turkey	1091	54	67	61	0
+29	Indonesia15	1128				0
+30	Maldives	1030	57	77	80	0
+31	Ethiopia	1031	82	50	90	0
+32	Russian_Federation	1129	23	43	26	0
+33	Kenya	1033	60	32	14	0
+34	Indonesia9	1180				0
+35	Turkmenistan	1035	2	30	32	0
+36	Ukraine	1131	60	48	34	0
+37	Indonesia3	1195				0
+38	Tanzania	1196	65	60	80	0
+39	Syrian_Arab_Republic	1039	74	8	50	0
+40	Malaysia2	1245				0
+41	Jordan	1229	61	70	82	0
+42	Indonesia4	1199				0
+43	Papua_New_Guinea	1230	12	6	91	0
+44	Indonesia14	1171				0
+45	Cambodia	1231	82	11	72	0
+46	Yemen	1203	38	19	12	0
+47	Tajikistan	1246	74	79	83	0
+48	Philippines7	1250				0
+49	Nepal	1205	14	17	48	0
+50	Philippines3	1255				0
+51	Mozambique	1207	76	56	97	0
+52	Indonesia13	1179				0
+53	Somalia	1208	33	59	22	0
+54	Egypt	1054	96	95	96	0
+55	West_Bank	1209	69	75	80	0
+56	Qatar	1234	47	6	15	0
+57	Korea_Democratic_Peoples_s_Rep	1235	32	66	11	0
+58	Malawi	1212	58	93	91	0
+59	Mongolia	1213	77	46	75	0
+60	Philippines1	1247	64	32	44	0
+61	Thailand	1061	0	88	15	0
+62	Eritrea	1062	68	36	56	0
+63	Afghanistan	1153	26	69	78	0
+64	Iraq	1215	63	47	92	0
+65	Bangaldesh	1155	34	35	45	0
+66	Philippines4	1253				0
+67	Korea_Republic_of	1237	96	55	28	0
+68	Bhutan	1157	91	63	60	0
+69	Djibouti	1158	2	95	67	0
+70	Hong_Kong	1070	95	32	14	0
+71	Myanmar	1159	65	26	33	0
+72	MACAU	1072	15	47	28	0
+73	Iran_Islamic_Republic	1217	35	79	42	0
+74	Brunei_Daru	1161	24	29	67	0
+75	Comoros	1075	91	99	4	0
+76	Timor_Leste	1177	46	49	2	0
+77	Sri_Lanka	1077	58	55	39	0
+78	Israel	1220	11	47	36	0
+79	Taiwan	1163	7	41	51	0
+80	United_Arab_Emirats	1164	39	65	67	0
+81	China	1165	3	60	71	0
+82	Malaysia	1238	81	78	31	0
+83	India	1167	86	98	70	0
+84	Pakistan	1084	68	41	87	0
+85	Kyrgystan	1085	18	13	81	0
+86	Kuwait	1239	29	90	43	0
+87	indonesia1	1169				0
+88	Uzbekistan	1088	92	2	13	0
+89	Ugranda	1170	56	73	40	0
+90	Ugranda	99999	-99999	-99999	-99999	0
+91	ensemble	0	0	0	0	0
+92	-99999	codeINSEE	essai 1 	essai2 	essai 3	0
+93	-99999	-99999	-99999	-99999	-99999	0
+94	-99999	-99999	-99999	-99999	-99999	0
+95	-99999	-99999	-99999	-99999	-99999	0
+96	-99999	-99999	-99999	-99999	-99999	0
+97	-99999	-99999	-99999	-99999	-99999	0
+98	-99999	codeINSEE	essai 1 	essai2 	essai 3	0

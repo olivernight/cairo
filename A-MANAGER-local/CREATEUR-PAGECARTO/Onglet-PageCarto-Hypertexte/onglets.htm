@@ -1,0 +1,420 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr">
+<head>
+<script language='javascript' >
+
+
+
+  </script>
+<script language='javascript' src='REP.js?updated=1234567890'></script>
+<script language='javascript' src='../../../mapsILIADE.js?updated=1234567890'></script>
+  
+  <title>Editeur PageCarto</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language='javascript' >
+
+
+var ici=window.location.href
+var Xcarte
+function appelmanagerico(){
+window.frames.managerICOSujet.location.href="../selection.repertoireMENUS.php?carte="+Xcarte
+}
+
+
+function appelcarte(k){
+window.frames.pagecarto.location.href="../../../"+liste[k]+"/PageCartoDossier/PageCarto/Module-PageCarto.xml?format=complete"
+Xcarte=liste[k]
+listejs[0]="../../../../../../"+liste[k]+"/PageCartoDossier/PageCarto/hypertexte.htm?alea="+Math.random();
+window.frames.edithypertexte.location.href="SaisieMAJ-CP/MENUchantier.html?LISTEJS="+listejs[0]
+window.frames.editTitre.location.href="editTitres.html?LISTEJS="+liste[k]
+document.getElementById('editTitre').style.visibility='hidden'
+document.getElementById('editTitreComment').style.visibility='hidden'
+
+appelmanagerico()
+fichiersParamPageCarto1()
+}
+function changecarte(){
+document.getElementById('modifentete').style.display='block'
+var carte = document.menucarte.selectcarte.selectedIndex;
+if(carte>0){
+appelcarte(carte-1)
+}
+}
+
+
+</script>
+</head>
+
+
+<body style="background-color: transparent;font-family:arial" > 
+
+<div >
+<table><tr><td>
+<!--img src="http://altko.org/gaiamundi-dev/bandeau.jpg"  border=0 -->
+<table><tr><td>
+<dt style="font-size:18px;color:gray">
+<b>PageCarto Editeur d'Hypertextes&nbsp;&nbsp;&nbsp;</b>
+</td><td>
+<form name="menucarte">
+<select name="selectcarte" id="selectcarte" onchange="changecarte()">
+<option >Choisissez un module PageCarto</option>
+</select>
+</form></td><td>
+   <input type="button" value="rafraichir" onclick="window.location.href=ici">
+</td></tr></table>
+
+
+</dt>
+
+</dt>
+
+<table><tr><td>
+<iframe name="pagecarto" src="" style="border: 0px none ; width: 750px; height: 670px; background-color: white;"></iframe>
+</td><td>
+<iframe name="edithypertexte" src="" style="border: 0px none ; background-color: transparent;" width="530" height="670"></iframe>
+</td><td>  </td><td>
+    <span id="modifentete" style="color:blue;cursor:pointer;display:none;font-size:11px" onclick=" document.getElementById('editTitre').style.visibility='visible';document.getElementById('editTitreComment').style.visibility='visible'">       Modifier l'entête du module</span>
+<iframe name="editTitre" id="editTitre" src="" style="border: 0px none; background-color: transparent;visibility:none" width="350" height="330"></iframe>
+<br>
+<span id="editTitreComment" style="visibility:hidden">
+PRECAUTIONS : <br><small><small><i>
+<ul>
+<li>écrire en language html/xml : <u>fermer les balises</u>. <br>Par exemple : &lt;br/&gt;</li>
+<li>pour les attributs n'utiliser que des <u>guillements simples ( ' ) et à l'intérieur des doubles ( " ) sans antislash.</u><br/> Ex : onclick='javascript:window.open("http://pargecarto.fr")' </li>
+<li>les sauts de lignes manuels sont éffacés par l'interface. Pour enegistrer un saut de ligne, mettre la balise &lt;br/&gt;</li>
+<li>actualisez les cadres après avoir enregistré</li>
+</ul>
+</i></small></small>
+</span>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+</td></tr></table>
+
+</div>
+<div id="divtest" style="display:none"></div>
+<br>
+
+<script language='javascript' >
+var menu='<option value="">choisir un dossier PageCarto</option>'
+var liste=new Array()
+var listejs=new Array()
+var listeid=new Array()
+var tabtest=""
+
+var chem=window.location.href.replace("A-MANAGER-local/CREATEUR-PAGECARTO/Onglet-PageCarto-Hypertexte/onglets.htm","")
+
+for(i=0;i<mapX.length;i=i+5){
+listeid[i/5]=""
+var nouveaux0=document.createElement("script")
+nouveaux0.setAttribute("id","test"+(i/5+3))
+nouveaux0.setAttribute("src",chem+mapX[i+4]+"/PageCartoDossier/PageCarto/azimut.js?updated=1234567890")
+nouveaux0.setAttribute("onload","listeid["+(i/5)+"]=1")
+document.getElementById("divtest").appendChild(nouveaux0)
+}
+
+function affichemenu(){
+
+
+for(i=0;i<mapX.length;i=i+5){
+
+if(listeid[i/5]==1){
+
+liste[liste.length]=mapX[i+4]
+
+var nouveaux0=document.createElement("option")
+nouveaux0.setAttribute("value",mapX[i+4])
+var nt1=document.createTextNode((i/5+1)+'-'+mapX[i+3]+'(  répertoire : '+mapX[i+4])
+nouveaux0.appendChild(nt1)
+document.getElementById("selectcarte").appendChild(nouveaux0)
+
+
+}
+}
+
+}
+
+setTimeout('affichemenu()',3000)
+
+
+  </script>
+  <p id="decalprincipal"></p>
+  <div id="managerIco"><iframe id="managerICOSujet" name="managerICOSujet" style="width:700px;height:750px;border:1px solid gray" scrolling="no"></iframe></div>
+
+<!------------------------------------------------------------------------------------------------------->
+<!----------------------------------EDITER-FICHIERS Paramètres des Modules PageCarto-------------------->
+<!------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------->
+  <script language="javascript">
+var mtpas=new Array();
+var mt="vdl";
+
+  
+  </script>
+  <br>
+  <br>
+  
+  <script language="javascript" src="i0/motpas.js"></script>
+<script language="javascript" > 
+    var urlvar=''
+    
+   /* if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	var mt2="xxx"
+	*/
+if(urlvar['mt']){mt2=urlvar['mt']}
+  
+  var casici=0 // cas du démarrage
+function MotPas(){
+idmt=1
+for(i=0;i<mtpas.length;i++){
+if(mt2==mtpas[i]){idmt=1;mt=mt2}
+
+}
+if(idmt!=1){
+mt=prompt('saisissez votre mot de passe',mt2);
+
+for(i=0;i<mtpas.length;i++){
+if(mt==mtpas[i]){idmt=1}
+
+}
+}
+var retconfirm=false
+if(idmt!=1){
+retconfirm=confirm("désolé, votre mot de passe est incorrect, voulez vous recommencer?");
+if(retconfirm==true){
+MotPas()
+//window.location.href=aw2
+}else{
+
+if(casici==0){
+
+window.close()
+}else{}
+}
+}
+casici=1
+}
+MotPas()
+ 
+
+
+
+
+
+
+var suffixe=""
+function intextarea(){
+
+if(suffixe.indexOf("txt")>=0){
+document.getElementById("formEnreg").setAttribute("action","listemodifTXT.php");
+document.getElementById("L[1]").value=document.getElementById("L[1]").value+".txt"
+}else{
+document.getElementById("formEnreg").setAttribute("action","listemodif.php");
+}
+document.getElementById("L[0]").value=window.frames.fichiersjs.document.getElementsByTagName("body")[0].innerHTML.replace("<pre>","").replace("</pre>","").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/%20/g," ");;
+
+}
+</script>
+<!--center-->
+<span style="font-weight : bold; font-size : 14px; color gray"><b>Package SuiteCairo <b><font color="#F93C4B">Coquelicot</font></b></b></span><br>
+<img src="../../../coquelicot_moy.jpg"/>
+<br>
+
+
+<div style="position : relative; left : 0px">
+<!--span style="font-weight : bold; font-size : 14px; color gray"><b>Gestion des paramètres</b></span-->
+<br><br>
+
+<br>
+<b><b><big>Paramètres généraux du Module PageCarto-Article</big></b></b>
+<table id="tabs" cellpadding="3px" style="font-family:arial;font-size:11px;width:550p"></table>
+
+<br><br>
+<!--b><b><big><big>Paramètres Machines</big></big></b></b-->
+<table id="tabsc" cellpadding="3px" style="font-family:arial;font-size:11px;width:550p"></table>
+<br>
+
+<span style="font-size : 14px; color : red"><b>Attention : manipuler ces fichiers avec une grande prudence</b></span><br>
+<span style="font-size : 12px; color : brown"><small><i>(NB. en cas de problèmes, vous pouvez récupérer manuellement jusqu'à 4 versions précédentes)</i></small></span>
+<form id="formEnreg" name="formEnreg" method="post" > 
+<textarea name="L[0]" id="L[0]" style="width:1000px ; height:400px"></textarea>
+<input style="display : none" type="text" id="L[1]" name="L[1]"><!-- nom fichier-->
+<input style="display : none" type="text" id="L[2]" name="L[2]"><!-- chemin -->
+<input style="display : none" type="text" id="L[3]" name="L[3]"><!-- mt -->
+<br>
+<div style="position:relative;left:823px"><input type="submit" value="Enregistrer les modifications"></div>
+</form>
+
+
+
+</div>
+<!--/center-->
+<iframe id="fichiersjs" name="fichiersjs" style="display : none"  src="vide.html" onload="intextarea()"></iframe>
+<script language="javascript">
+window.frames.fichiersjs.location.href="vide.html"
+var fichparamsite=new Array();
+document.getElementById("L[0]").innerHTML=""
+document.getElementById("L[0]").value=""
+document.getElementById("L[1]").value=""
+document.getElementById("L[2]").value=""
+document.getElementById("L[3]").value=mt
+//chargeListejs()
+
+function chargejs(a,b){
+suffixe=a.split(".")
+suffixe=suffixe[suffixe.length-1]
+
+document.getElementById("L[1]").value=a
+document.getElementById("L[2]").value=b
+//alert((b+a).replace("site0/",""))
+if(b.indexOf("sc1")>=0){b="../"+b}
+window.frames.fichiersjs.location.href=(b+a).replace("site0/","")
+}
+function chargeali(a,b){
+suffixe="txt"
+
+
+document.getElementById("L[1]").value=a
+document.getElementById("L[2]").value=b
+//alert((b+a).replace("site0/",""))
+if(b.indexOf("sc1")>=0){b="../"+b}
+window.frames.fichiersjs.location.href="renameFichierToTXT.php?cible="+(b+a).replace("site0/","")
+
+
+}
+
+function paramsite(){
+ligntab='<tr><td>Objet du fichier</td><td width="10px"></td><td>Nom du fichier</td><td width="10px"></td><td>chemin</td><td width="10px"></td><td></td></tr>';
+for(i=1;i<fichparamsite.length;i++){
+// test si siffixe != js alors appeler fichier php pour rename en ajoutant .txt derière le siffixe existant puis parent.chargejs
+
+if(fichparamsite[i][0].indexOf(".js")<0){
+ligntab+='<tr><td id="sf'+i+'"><b>'+fichparamsite[i][0]+'</b></td><td width="10px"></td><td id="sn'+i+'" style="color:blue;cursor:pointer" onclick="chargeali(\''+(fichparamsite[i][1])+'\',\''+fichparamsite[i][2]+'\')">'+fichparamsite[i][1]+'</td><td width="10px"></td><td id="sc'+i+'">'+fichparamsite[i][2]+'</td><td width="10px"></td><td id="sx'+i+'">'+fichparamsite[i][3]+'</td></tr>'
+}else{ 
+ligntab+='<tr><td id="sf'+i+'"><b>'+fichparamsite[i][0]+'</b></td><td width="10px"></td><td id="sn'+i+'" style="color:blue;cursor:pointer" onclick="chargejs(\''+(fichparamsite[i][1])+'\',\''+fichparamsite[i][2]+'\')">'+fichparamsite[i][1]+'</td><td width="10px"></td><td id="sc'+i+'">'+fichparamsite[i][2]+'</td><td width="10px"></td><td id="sx'+i+'">'+fichparamsite[i][3]+'</td></tr>'
+}
+}
+document.getElementById("tabs").innerHTML=ligntab
+}
+function paramscen(){
+ligntab='<tr><td>Objet du fichier</td><td width="10px"></td><td>Nom du fichier</td><td width="10px"></td><td>chemin</td><td width="10px"></td><td></td></tr>';
+for(i=1;i<fichparamsite.length;i++){
+
+ligntab+='<tr><td id="sf'+i+'"><b>'+fichparamsite[i][0]+'</b></td><td width="10px"></td><td id="sn'+i+'" style="color:blue;cursor:pointer" onclick="chargejs(\''+(fichparamsite[i][1])+'\',\''+fichparamsite[i][2]+'\')">'+fichparamsite[i][1]+'</td><td width="10px"></td><td id="sc'+i+'">'+fichparamsite[i][2]+'</td><td width="10px"></td><td id="sx'+i+'">'+fichparamsite[i][3]+'</td></tr>'
+}
+document.getElementById("tabsc").innerHTML=ligntab
+}
+
+
+
+
+// SECTION FICHIERS de PARAMETRES DU Module PageCarto  
+var fichparamsite=new Array();
+var listeAddContoursSVG=new Array();
+var chemfich=""
+function fichiersParamPageCarto1(){
+chemfich="../../../"+Xcarte+"/PageCartoDossier/PageCarto/"
+
+extractContours()
+
+}
+function extractContours(){
+
+document.getElementById("contours").innerHTML=""
+listeAddContoursSVG=new Array();
+var nouv=document.createElement("script")
+nouv.setAttribute("id","contoursJs")
+nouv.setAttribute("onload","makelignecontour()")
+nouv.setAttribute("src",chemfich+"listeAdditifContoursSVG.js")
+document.getElementById("contours").appendChild(nouv)
+}
+var lignc=new Array();
+function makelignecontour(){
+lignc=new Array();
+for(i=0;i<listeAddContoursSVG.length;i++){
+lignc[lignc.length]=new Array("<i><font color='purple'>Contour "+(i+1)+"</font></i>",listeAddContoursSVG[i][0],chemfich,"");
+}
+fichiersParamPageCarto2()
+}
+function fichiersParamPageCarto2(){
+
+fichparamsite[0]=""
+fichparamsite[fichparamsite.length]=new Array("Divers réglages du PageCarto","parametres.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("Centrage et zoom de départ","zoomW3C-vertic.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("index de tous les articles édités","articles.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("Langue de l'interface","lang.js",chemfich,"");
+//----------//////--
+fichparamsite[fichparamsite.length]=new Array("<b><Big>fichiers machine</big></b>","","","");
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("SECTION 4","section4.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("SECTION 3","section3.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("SECTION 2","section2.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("SECTION 1","section1.js",chemfich,"");
+
+fichparamsite[fichparamsite.length]=new Array("fonctions hypertexte et paramètres initialisation","hypertexte.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("fonctions Mode FICHE et paramètres initialisation","fiche.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("numérotation des liens hypertexte vers la carte","numeroationHyperTexte.js",chemfich,"");
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("<b><Big>paramètres de liaison Carte et données</big></b>","","","");
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("Max et Min des coordonnées svg de la carte","azimut.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("Union des aires géographiques","DATA-Union.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<font color='purple'><b>Couches Contour SVG</b><font>","listeAdditifContoursSVG.js",chemfich,"");
+for(i=0;i<lignc.length;i++){
+fichparamsite[fichparamsite.length]=lignc[i]
+}
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("<b><Big style='color:green'>fichiers Hypertexte utilisateur</big></b>","","","");
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("<i><font color='green'>Fichier Hypertexte (menu déroulant des liens)</font></i>","hypertexte.htm",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<i><font color='green'>Fichier fiche hypertexte interractive (option fiche)</font></i>","fiche.htm",chemfich,"");
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("<b><Big style='color:brown'>fichiers de données utilisateur</big></b>","","","");
+//---------//////--
+fichparamsite[fichparamsite.length]=new Array("<i><font color='brown'>fichier de données principal</font></i>","principal.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<i><font color='brown'>fichier de données principal</font></i>","complementaire.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<i><font color='brown'>Menu Icone principal</font></i>","DATA-IcoSujet.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<i><font color='brown'>Menu Icone complémentaire</font></i>","DATA-IcoOther.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<i><font color='brown'>Menu Graphique principal</font></i>","DATA-Sujet.js",chemfich,"");
+fichparamsite[fichparamsite.length]=new Array("<i><font color='brown'>Menu Graphique complémentaire</font></i>","DATA-Other.js",chemfich,"");
+
+paramsite()
+/*
+// SECTION PARAMETRES DU du module Cartes Données et Scénarios
+var fichparamsite=new Array();
+fichparamsite[0]=""
+fichparamsite[fichparamsite.length]=new Array("Plateformes additionnelles au réseau","REZOperso.js","sc1/","")
+fichparamsite[fichparamsite.length]=new Array("header du fichier indexVoirCarte.html","scriptleHeader.js","sc1/","")
+fichparamsite[fichparamsite.length]=new Array("Module de traduction des boutons etc.","traductionEnFr.js","sc1/","")
+fichparamsite[fichparamsite.length]=new Array("Module de traduction des inititués de plateforme","traductionEnFr_HAUT.js","sc1/","")
+  
+paramscen();
+*/
+}
+
+document.write('<span id="contours" style="display:none"></span>');
+document.write('<span id="couches" style="display:none"></span>');
+</script>
+
+  <br><br>
+  </body></html>

@@ -1,0 +1,135 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr"><head><!--Copyright [2005-2007] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA--><title>cartes et commentaires/GaïaMundi</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<script  language="JavaScript">
+
+
+var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    //alert(urlvar['REP'])
+    //alert(urlvar['Xfile'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->
+
+
+
+var baseetalon=new Array()
+var baselignesmanquantes=new Array()
+var Newbase=new Array()
+var NumColTest=2 //indique sur quelle colonne s'opère la comparaison des fichiers : par exemple 2 pour comparaison à partir des n° Insee
+
+function recupdatas(){
+baseetalon=window.frames.etalon.transbase00("return base00")
+baselignesmanquantes=window.frames.lignesmanquantes.transbase00("return base00")
+alert(baselignesmanquantes)
+}
+
+function completemanquants(){
+/* méthode : on part du fichier étalon. Pour chaque ligne on prend l'indicateur de comparaison  indiqué par NumColTest et on le recherche dans la base lacunaire.
+si on le trouve, on affecte la ligen de la base lacunaire à la newbase au rang courant dans la boucle sur l'étalon
+*/
+Newbase=new Array()
+
+for (i=0;i<baseetalon.length;i++){
+var ligneencours=baseetalon[i]
+var valtest=ligneencours[NumColTest]
+// créer ligne vierge--------------------------
+var newval=new Array()
+for(k=3;k<baselignesmanquantes[0].length-1;k++){newval[k]=-99999} 
+newval[baselignesmanquantes[0].length-1]=0
+// -----------------------------------------------
+for(j=0;j<baselignesmanquantes.length;j++){
+if(valtest==baselignesmanquantes[j][NumColTest]){
+newval=baselignesmanquantes[j]
+
+}
+}
+if(i==0 || i==(Newbase.length-1) || i==(Newbase.length-7)){newval=baselignesmanquantes[i]} //lignes de libélés
+newval[0]=ligneencours[0] //idcarte
+newval[1]=ligneencours[1]//nom
+newval[2]=ligneencours[2]//codeInsee
+Newbase[i]=newval
+}
+
+}
+
+
+function ajoutsuretalon(){
+
+
+}
+function creeTabPassageSurEtalon(){
+
+}
+
+function ecritnewBase(){
+
+textnewbase=""
+for(i=0;i<baseetalon.length;i++){
+textnewbase+="base00["+i+"]=new Array("
+var lignenewbase=Newbase[i]
+for(j=0;j<lignenewbase.length-1;j++){// ATTENTION : on arrete & rang avant la fin pour ne pas prendre le 0 cequi implique de toujours trabvailler avec des fichiers standard gaïaMundi
+var guil=''
+if(j==1){guil='"'} //colonne des noms
+if(i==0 || i==(baseetalon.length-1) || i==(baseetalon.length-7)){guil='"'}
+if(i>(baseetalon.length-7) && i<(baseetalon.length-1)){guil='"'}
+var varX=lignenewbase[j]
+textnewbase+=guil+varX+guil+","
+}
+textnewbase+="0);\n"
+}
+document.getElementById("tempo").innerHTML=textnewbase
+document.getElementById("repert").value=urlvar['REP']
+document.getElementById("xfile").value=urlvar['Xfile']
+document.getElementById("submit").style.visibility='visible'
+}
+
+
+function executelignemanquente(){
+recupdatas()
+completemanquants()
+ecritnewBase()
+}
+</script>
+</head>
+<body>
+<iframe id="etalon" name="etalon" width=1 height=1 border=0 ></iframe>
+<iframe id="lignesmanquantes" name="lignesmanquantes" width=1 height=1 border=0 ></iframe>
+
+
+<script id="chargedatajs" language="JavaScript">
+if(urlvar['Xcommand']==0){// cas des lignes manquantes
+document.write('<input type="button" value="exécuter" onclick="executelignemanquente()">')
+}
+window.frames.etalon.location.href="../../"+urlvar['REP']+"/etalon.html"
+alert("../../"+urlvar['REP']+"/"+urlvar['Xfile'])
+window.frames.lignesmanquantes.location.href="../../"+urlvar['REP']+"/"+urlvar['Xfile']
+
+</script>
+<form id='formlignmanq'  action='txt_to_html_manquantes.php' method='post'>
+<textarea style='visibility:hidden' id="tempo" rows=1 cols=1 name="tempo" ></textarea>
+<input style='visibility:hidden' id='repert' name='repert' type='text' type="button">
+<input style='visibility:hidden' id='xfile' name='xfile' type='text' type="button">
+<input style='visibility:hidden' id="submit" type="submit"  name="submit">
+</form>
+</body>
+</html>

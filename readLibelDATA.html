@@ -1,0 +1,142 @@
+﻿<html>
+<head>
+<script type="text/javascript">
+var mappocoord=new Array()
+var init1=0
+var LLx
+var lignelibel
+
+var cibleX="num0"
+	var cibleXtemp="num0"
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    //alert(urlvar['REP'])
+    //alert(urlvar['cible'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->
+
+
+
+
+
+</script>
+<script id="mappocoord" name="mappocoord" type="text/javascript"></script>
+<script type="text/javascript">
+//alert(urlvar["cible"]+'/DATA-mappocoord.js')
+document.getElementById("mappocoord").src=urlvar["cible"]+'/DATA-mappocoord.js?updated=1234567890'
+//var azer=urlvar["cible"]+'/DATA-mappocoord.js'
+//document.write('<script id="mappocoord" name="mappocoord" src="'+azer+'" type="text/javascript"><\/script>')
+var tipX=-1
+function differelibel(){
+init1=0
+setTimeout('libel(urlvar["cible"])',500)
+}
+
+function libel(cible){ //affichage des entêtes de colonne du fichier de données
+menudata=""
+window.document.getElementById("ici").innerHTML=""
+cibleX=cible
+
+//document.getElementById(cibleXtemp).setAttribute("style","background-color:white")
+//document.getElementById("divfiledata").setAttribute("style","position:fixed;top:100;right:40;visibility:visible")
+//document.getElementById("divfiledata2").setAttribute("style","position:fixed;top:110;right:32;visibility:visible")
+
+if(init1==0){//récupère les entêtes de colone dans le fichier de données
+
+
+
+window.frames.filedata.rgappel(0)
+LLx=window.frames.filedata.longueurdata("return longa")+8
+lignelibel=window.frames.filedata.transbas00de0("return lignelabel")
+
+init1=1
+
+}
+
+for(i=3;i<lignelibel.length-1;i++){//affiche les entêtes en liste 
+menudata+='<dt>'
+//menudata+='<INPUT id="Q'+(i)+'_1" TYPE = "RADIO" NAME ="Q" VALUE = "'+i+'" onclick="javascript:valeur=this.value;parent.attrib(valeur)">'
+menudata+='<label id="Qlabel'+(i)+'_1" for="Q'+(i)+'"><b style="color:red">'+i+'</b> - '+lignelibel[i]+'</label></dt>'
+}
+
+
+//menudata+='<div id="divfermer" style="position:fixed;top:01;right:20;visibility:visible"><dt>charger le libélé long et la date</dt><input type="radio"  id="T_1" name="T" value="1" onClick=" parent.indicrecuplibelLdate(this.value);">oui</input><input type="radio" id="T_2" name="T" value="2" onClick="parent.indicrecuplibelLdate(this.value)" value="0" type="text">non</imput></div>'
+menudata+='<div id="divfermer" style="position:fixed;top:65;right:0;visibility:visible"><input type="button" name="datafermer" onclick="javascript:parent.fermermenudata()" value="fermer"></input></div>'
+
+
+
+
+document.getElementById("ici").innerHTML='<br>'+menudata
+
+
+//window.frames.framedata.document.getElementById("T_"+indiclibeldate).checked="true"
+
+if(lignelibel.length){}else{
+
+differelibel()
+//alert("ici")
+}
+
+//cibleXtemp=cibleX
+}
+
+//alert(urlvar["cible"]+'/'+mappocoord[urlvar["numero"]])
+document.write('<br><br>')
+document.write('<p id="ici" style="font-family:arial;font-size:10">Si les données ne s\'affichent pas au bout de quelques secondes, cliquez de nouveau sur le fichier que vous avez choisi.</p>')
+document.write('<div id="divdata" style="position:fixed;top:10px;left:10px;visibility:hidden"><iframe id="filedata"  name="filedata"   height=0 onload="javascript:libel(urlvar[\'cible\'])"></iframe></div>')
+document.write('<div style="position:fixed;top:-2px;left:0px;visibility:visible"><table width=100%><tr><td style="font-family:arial;font-size:11px;background-color:white"><center>Données du fichier <span id="fich" style="color:red"></span>  dans le répertoire <span style="color:red">'+urlvar["cible"]+'</span> associé à la carte <span style="color:red">'+urlvar["carte"]+'</span><br><br> </center></td></tr></table></div>')
+function chargefichier(){
+window.frames.filedata.location.href=urlvar["cible"]+'/'+mappocoord[urlvar["numero"]]+"?alea="+Math.random() 
+document.getElementById("fich").innerHTML=mappocoord[urlvar["numero"]]
+}
+setTimeout("chargefichier()",500)
+//src="'+urlvar["cible"]+'/'+mappocoord[urlvar["numero"]]+'"
+/*
+//alert(window.frames.filedata.document.getElementsByTagName("body")[0].tagName)
+var theDiv = document.getElementById("divdata");
+//theDiv.innerHTML = ...;
+var theFrame = theDiv.firstChild;
+theFrame.onLoadWaiter=setInterval(function() {
+   try { if (window.frames.filedata.document.getElementsByTagName("body")[0].tagName && theFrame.contentWindow) {
+     clearInterval(theFrame.onLoadWaiter);
+     delete theFrame.onLoadWaiter;
+     // The page is loaded
+     setTimeout('libel(urlvar["cible"])',500)
+   } } catch (ex) {}
+}, 500)
+*/
+
+</script>
+</head>
+
+<body STYLE="background-color: white">
+
+<script type="text/javascript">
+
+
+</script>
+
+
+
+
+
+</body >

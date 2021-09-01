@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--Copyleft [2005-2010] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr --><!--This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA-->
+<html id="html balise" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <title>SVG incorporé dans un fichier XHTML</title>
+   <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8"  />
+   <script id="scrpt"  language="javascript" ><![CDATA[
+
+var FixeMaille=""
+var FixeCarte=""
+var carre=750// dimensions du cadre carre
+var retrait=12// retrait   en % de la dimesnion du cadre carre
+var dimDenom=700 // amplitude dans le cadre carré
+
+var sommableEchelleP=new Array()//pour les fichiers de panier
+
+var verou=0
+var mapX=new Array()
+var libelmap=new Array()
+var coul=new Array()
+var axescote=new Array()
+var libelaxe=new Array()
+var TabSelectIndex=new Array()
+var mapXP=new Array()//Panier
+libelmapP=new Array() //libellés des paniers
+
+
+var urlvar=""
+if (window.location.search != "") {
+longueur = window.location.search.length - 1;
+data = window.location.search.substr(1,longueur);
+donnees = data.split("&");
+urlvar = new Array();
+urlvarnum = new Array();
+for (var i=0; i < donnees.length; i++) {
+position = donnees[i].indexOf("=");
+variable = donnees[i].substr(0,position);
+pos = position + 1;
+valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+while (valeur.search(/\+/) != -1)
+valeur = valeur.replace(/\+/," ");
+urlvar[variable] = valeur;
+urlvarnum[i] = valeur;
+}
+}
+var rezocible=window.location.href.substr(0,(window.location.href.indexOf("radar.xml")))
+
+
+
+
+
+function demar2(){
+//alert(urlvar['xmap'])
+if(sommableEchelleP){
+for(i=0;i<sommableEchelleP.length;i++){sommableEchelle[sommableEchelle.length]=sommableEchelleP[i]}
+}
+initCarte();annuleCheck();blackfill();chargeMailleEtCarte()
+if(urlvar['xmap']){
+if(urlvar['xmap']>0){
+
+aff("'"+mapX[urlvar['xmap']*5+3]+"'",300,380,parseInt(urlvar['xmap']),parseInt(urlvar['xn']))
+setTimeout("verou=1",10)
+setTimeout("verou=1",70)
+setTimeout("verou=1",100)
+setTimeout("verou=1",300)
+setTimeout("verou=1",400)
+setTimeout("verou=1",500)
+}
+}
+}
+var kdemarre=0
+function demar1(){
+for(i=0;i<libelmap.length;i++){
+libelmap[i][2]=libelmap[i][2].split("<br id=0 />")[0]
+
+}
+document.getElementById("scrptPANIER").src="mapsILIADEPanier-"+(urlvar["util"])+".js"// on déclenche de cette manière car il y a des chances qu'il que le fichier .js utilisateur soit inexistant et que par conséquent le onload ne se déclenche pas
+if(kdemarre==0){
+setTimeout('demar2()',1500)
+kdemarre=1
+}
+}
+var sommableEchelle=new Array() // trois cas de figures codés 1 = sommable - 2 = sommable partiellement - 3 = NON sommable. Le code est inscrit en troisème terpme du vercteur sommableEchelle[sommableEchelle.length]=new Array("","","")
+
+]]></script>
+   <script id="scrptMAPS" onload="javascript:demar1()" language="javascript" ></script>
+    <script id="scrptPANIER"  language="javascript" ></script>
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+
+//document.getElementById("scrptMAPS").src=rezocible+"mapsILIADE.js"//src="mapsILIADE.js" 
+//document.getElementById("scrptPANIER").src="mapsILIADEPanier-"+(urlvar["util"])+".js"
+var initancre=0
+function chargeMailleEtCarte(){
+
+if(initancre==1){
+
+window.location.href="#AncreMailleEtCarte"
+}
+initancre=1
+Xloading()
+if(FixeCarte>0 & sommableEchelle.length>0){
+window.frames.MailleEtCarte.location.href=rezocible+"readLibelDATA-MailleEtCarte.html?selectedrezo="+rezocible+"&pdd="+pdd+"&specif="+specif+"&util="+urlvar["util"]+"&FixeCarte="+FixeCarte+"&maille="+FixeMaille+"&CodeSommable="+sommableEchelle[FixeCarte-1][2]
+}else{
+window.frames.MailleEtCarte.location.href=rezocible+"readLibelDATA-MailleEtCarte.html?selectedrezo="+rezocible+"&pdd="+pdd+"&specif="+specif+"&util="+urlvar["util"]+"&FixeCarte="+FixeCarte+"&maille="+FixeMaille+"&CodeSommable=2"
+
+
+}
+}
+
+var motcleET=""
+var maxtaille=0
+var mintaille=1000000000
+var tailleKo=new Array()
+var numeroCarte=new Array()
+var rgx=0
+function initCarte(){
+var k=0
+for(i=0;i<mapXP.length;i++){
+
+if(k==5){k=0}
+if(k==3){mapX[mapX.length]=libelmapP[parseInt(i/5)][2]}else{mapX[mapX.length]=mapXP[i]}
+k+=1
+}
+for(i=0;i<libelmapP.length;i++){
+libelmap[libelmap.length]=libelmapP[i]
+}
+var nbcici=0
+numeroCarte=new Array()
+TabSelectIndex=new Array()
+for(rg=0;rg<mapX.length;rg=rg+5){
+if(libelmap[rg/5][5]!='none' & nbcici<=49){
+libelaxe[libelaxe.length]=mapX[rg+3]
+nbcici+=1
+coul[coul.length]="black"
+var tk=libelmap[rg/5][2]//.split("<br id=0 />")[0]
+//tk=libelmap[rg/5][2].replace("taille fichier","").replace("Taille fichier","").replace(":","").replace("ko","").replace("Ko","").replace(/ /g,"")
+//alert(tk)
+tk=tk.toLowerCase()
+tk=tk.substring(tk.indexOf("taille fichier"),tk.indexOf("ko")).replace("taille fichier : ","")
+
+tk=parseInt(tk.replace(/ /g,""))
+if(tk>=0){}else{tk=0}
+tailleKo[tailleKo.length]=tk
+if(tk>maxtaille){maxtaille=tk}
+if(tk<mintaille){mintaille=tk}
+rgx+=1
+numeroCarte[numeroCarte.length]=rg/5+1
+TabSelectIndex[TabSelectIndex.length]=rg/5
+
+//if((rg/5)<6){alert(TabSelectIndex[rg])}
+}
+
+}
+if(nbcici>=50){alert("le nombre de cartes actives est limité à 50 dans la Rose des Vents. Désactivez certaines cartes en fixant la variable var autrescommnt='none' dans le registre des cartes mapsILIADE.js")}
+for(i=0;i<tailleKo.length;i++){axescote[axescote.length]=5*tailleKo[i]/maxtaille}
+}
+
+retrait=carre*retrait/100
+]]></script>
+</head>
+  <body  style="font-family:arial;font-size:11px" >
+<a name="haut"></a>
+<div id="divloading" style="position:absolute;left:380px ;top:790px;z-index:5000;display:none;text-align: center;;font-size:16px"><br/><br/><br/><big style="font-family: Arial; color: rgb(153, 153, 153);"><big><span
+style="font-weight: bold;">Téléchargement en cours</span></big></big><br/><br/><img style="width: 208px; height: 13px;" alt=""
+src="loadingAnimation.gif"/><br/><br/></div>
+
+<div style="position:absolute;top:0px;left:0px">
+<table style="border:1px dotted black;background-color:transparent"><tr><td>
+<svg id="bouton2" 
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+     width="300"
+   height="300"
+   >
+    <metadata
+     id="metadata7">
+    <rdf:RDF>
+
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+<stop class="begin" offset="0.5" style="stop-color:green"/>
+
+<stop class="end" offset="1" style="stop-color:red"/>
+</radialGradient>
+</defs>
+<g>
+<!--clipPath id="chemindecoupe">
+<circle  cx="65" cy="65" r="55" />
+</clipPath-->
+<defs>
+
+<g opacity="0" >
+<g id="ensemble" >
+<g stroke="black" stroke-width="0.5px"><path id="p0" ></path></g>
+  <ellipse rx="30" ry="30"   cy="0" cx="0" stroke-opacity="1" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1px" stroke="none" fill-rule="evenodd" fill-opacity="0.2" fill="gray" id="c0"></ellipse>
+
+
+</g> 
+<g id="ensemblegreen" >
+<g stroke="black" stroke-width="0.5px"><path id="p0" ></path></g>
+  <ellipse rx="30" ry="30"   cy="0" cx="0" stroke-opacity="1" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1px" stroke="none" fill-rule="evenodd" fill-opacity="0.5" fill="green" id="c02"></ellipse>
+
+
+</g> 
+</g> 
+</defs>
+
+		  <g id="radTot" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.1" stroke-width="1px"><path id="p2" ></path></g>
+		 <g id="rad" stroke="black" fill="blue" fill-opacity="0.2" stroke-width="0.5px"><path id="p1" ></path></g>
+		 
+<rect id="carre1"  onclick="setTimeout('verou=0',1);" x="0" y="0"  height="0" width="0" fill="none" ></rect>
+
+<g >
+
+ <use id="userond1" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userond2" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userond3" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userond4" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userond5" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userond6" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userond7" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userond8" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userond9" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userond10" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+
+ <use id="userond11" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte11"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb11"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userond12" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte12"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb12"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userond13" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte13"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb13"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userond14" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte14"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb14"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userond15" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte15"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb15"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userond16" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte16"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb16"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userond17" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte17"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb17"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userond18" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte18"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb18"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userond19" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte19"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb19"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userond20" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte20"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	<text id="texteb20"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	
+
+ <use id="userond21" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte21"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb21"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userond22" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte22"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb22"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userond23" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte23"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb23"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userond24" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte24"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb24"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userond25" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte25"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb25"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userond26" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte26"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb26"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userond27" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte27"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb27"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userond28" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte28"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb28"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userond29" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte29"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb29"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userond30" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte30"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	<text id="texteb30"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	 
+
+
+ <use id="userond31" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte31"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb31"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userond32" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte32"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb32"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userond33" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte33"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb33"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userond34" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte34"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb34"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userond35" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte35"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb35"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userond36" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte36"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb36"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userond37" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte37"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb37"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userond38" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte38"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb38"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userond39" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte39"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb39"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userond40" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte40"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	<text id="texteb40"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	
+
+
+ <use id="userond41" xlink:href="#ensemble"  opacity="0"   x="0" y="0"/><text id="texte41"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb41"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userond42" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte42"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb42"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userond43" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte43"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb43"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userond44" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte44"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb44"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userond45" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte45"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb45"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userond46" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte46"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb46"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userond47" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte47"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb47"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userond48" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte48"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb48"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userond49" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte49"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="texteb49"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userond50" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte50"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	<text id="texteb50"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>			 
+		 
+
+</g>		 
+</g>
+
+<text y="0" x="0" font-size="10" style="font-family: Arial; text-anchor: start;fill:gray;font-weight:bold" transform="matrix(1, 0, 0, 1, 10, 10)" id="affichNOM">Copyleft [2005-2010] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr</text>
+<text y="40" x="10" font-size="18" style="font-family: Arial; text-anchor: start;fill:gray;" transform="matrix(1, 0, 0, 1, 10, 10)" id="affichNOM-n°p">altercarto.fr : plateforme DB-Ressources</text>
+
+</svg> 
+</td></tr></table>
+</div>
+<div id="specifs" style="position:absolute;top:100px;left:100px;display:none"><table onclick="if(verou==0){verou=1}else{verou=0}" style="width:250px;background-color:white;border:1px solid gray"><tr><td style="text-align:center"><span id="afd"  style="color:blue;font-weight:bold;cursor:pointer"><u>Détails</u></span></td></tr><tr><td id="titrespecifs" style="font-size:10px;font-weight:bold;color:black"> </td></tr><tr><td id="contenuspecifs" style="font-size:10px;color:black"> xxxxxxxxxxxxxxxx</td></tr><tr><td><span id="ControleIci"></span></td></tr><tr><td style="font-size:10px;;color:black;text-align:center"><span id="authors" ></span><br/><span onclick="closaff2();document.getElementById('detail').style.display='none'" style="color:blue;font-weight:bold;cursor:pointer"><u>Fermer</u></span></td></tr></table></div>
+
+
+<div id="detail" style="position:absolute;top:180px;left:100px;display:none;;width:520px;height:370px"><table style="background-color:white;border:1px solid gray;width:100%;height:370px"><tr><td style="font-size:10px;;color:black;text-align:center"><b>Détail carte n°&nbsp;<span id="numc" style="color:red"></span><span id="nomc"></span></b><span onclick="javascript:document.getElementById('detail').style.display='none'" style="color:blue;font-weight:bold;cursor:pointer;background-color:white">&nbsp;&nbsp;&nbsp;&nbsp;<u>Fermer</u>&nbsp;&nbsp;&nbsp;&nbsp;</span><br/>
+<small><i>Mots clés séparés par un espace</i></small><br/>
+<input id="sas" type="text" style="width:200px"></input><input type="button" onclick="heightlightmotcle(document.getElementById('sas').value)" value="OK"></input>
+
+</td></tr><tr style="height:20px"><td id="resultsearch" style="font-size:9px;color:black;color:navy"></td></tr><tr><td style="font-size:11px;font-weight:bold;color:black"><big><div  id="detailsIci" style="width:100%;height:310px;overflow:scroll"> </div></big> </td></tr></table></div>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+function heightlightmotcle(mo){//
+document.getElementById("resultsearch").innerHTML=""
+document.getElementById("detailsIci").innerHTML=libelmap[(RangCarteCourant-1)][3].replace("<br/><br/>","")
+var coulx=new Array("yellow","pink","#B0C5E0","#08C5E0","#A6C20D","#FF594A","#FF59FF","#68D36B","#B4AA8B","#B4AA8B","#B4AA8B","#B4AA8B","#B4AA8B")
+var Xmo=mo.split(" ")
+var Xtexte=document.getElementById("detailsIci").innerHTML.toLowerCase()
+var resultSearch="mots trouvés : "
+for(i=0;i<Xmo.length;i++){
+var mot=Xmo[i].toLowerCase()
+Xtexte=Xtexte.replace(/xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g,"")
+mot=mot.replace(/([.?*+^$[\]\\(){}-])/g,"\\$1")
+var rplc = new RegExp(mot, "g")
+
+if(Xtexte.indexOf(mot)>=0 & mot!=""){
+resultSearch+=rplc.exec(Xtexte)+" "
+Xtexte=Xtexte.replace(rplc,"<span style='background-color:"+coulx[i]+"'>"+mot+"</span>")
+}
+
+}
+
+document.getElementById("detailsIci").innerHTML=Xtexte
+document.getElementById("resultsearch").innerHTML=resultSearch
+}
+
+
+
+var RangCarteCourant
+function affdetail(a,b,c){
+
+document.getElementById("sas").value=""
+document.getElementById("detailsIci").innerHTML=libelmap[(RangCarteCourant-1)][3].replace("<br/><br/>","").replace(/&/g,"&#38;") 
+document.getElementById("resultsearch").innerHTML=""
+document.getElementById("numc").innerHTML=a+"  :   "
+document.getElementById("nomc").innerHTML='<span onclick="FixeCarte='+a+';FixeMaille=\''+b+'\';chargeMailleEtCarte()" style="color:blue;cursor:pointer"><b><u>'+c+'</u></b></span>'
+}
+
+
+
+function aff(lib,xi,yi,rg,n){
+
+if(verou==0){
+/*
+document.getElementById("affichNOM").setAttribute("x",xi)
+document.getElementById("affichNOM").setAttribute("y",yi)
+document.getElementById("affichNOM").firstChild.nodeValue=lib
+*/
+RangCarteCourant=rg
+
+libelmap[rg-1][2]=libelmap[rg-1][2].replace("Maille","Level").replace("Taille fichier","File size").replace("pop de référence","ref. pop.")
+
+
+if(libelmap[rg-1][4].length==0){var coulstroke="black"}else{var coulstroke="green"}
+n=n+1
+document.getElementById("texte"+n).setAttribute("style","cursor:pointer;stroke:"+coulstroke+";stroke-width:0.5px;fill:"+coulstroke+";font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texteb"+n).setAttribute("style","cursor:pointer;stroke:"+coulstroke+";stroke-width:0.5px;fill:"+coulstroke+";font-family:Arial;text-anchor:middle;opacity:1")
+
+
+document.getElementById("specifs").setAttribute("style","position:absolute;top:"+(xi-100)+"px;left:"+(yi-100)+"px;display:block")
+lib=lib.replace(/<br>/g,"<br/>")
+
+document.getElementById("afd").setAttribute("onclick","javascript:setTimeout('verou=1',10);document.getElementById('detail').style.display='block';affdetail("+rg+","+mapX[(rg-1)*5]+",'"+mapX[(rg-1)*5+4]+"')")
+
+var nmc='<span onclick="setTimeout(\'verou=1\',10);FixeCarte='+rg+';FixeMaille=\''+mapX[(rg-1)*5]+'\';chargeMailleEtCarte()" style="color:blue;cursor:pointer"><b><u>'+mapX[(rg-1)*5+4]+'</u></b></span>'
+document.getElementById("titrespecifs").innerHTML='<big>Carte n° <span style="color:red">'+rg+'</span></big><br/>'+nmc+'<br/>'+lib
+var lib2=libelmap[rg-1][2]//.split("<br id=0 />")[0]
+lib2=lib2.replace(/\[/g,"(")
+lib2=lib2.replace(/\]/g,")")
+lib2=lib2.replace(/<br>/g,"<br/>")
+
+document.getElementById("contenuspecifs").innerHTML='<dt>'+libelmap[rg-1][2]+'<br/><a href="'+mapX[(rg-1)*5+4]+'/documentation.pdf" target="_blank">documentation</a></dt>'
+
+document.getElementById("ControleIci").innerHTML='<u  style="font-family:arial;font-size:10px;font-weight: bold; color: rgb(153, 153, 255);" title="Control team supervision">Contrôle post production : </u><br/><span style="font-family:arial;font-size:10px; color: red;" ><i>Pas encore controlé</i></span><br/>'
+if(libelmap[(rg-1)][4].length>0){
+
+var control='<center><span style="font-family:arial;font-size:10px;font-weight: bold; color: rgb(153, 153, 255);" title="Control team supervision"><u>Contrôle Post Production</u></span>';
+control+='<table border="1px" cellspacing="0px" style="font-family:arial;font-size:10px;text-align:center;">';
+control+='<tr style="font-weight: bold; color: rgb(153, 153, 255);"><td title=" Comparaison des données de ce fichier avec celle du fichier source : procédé par sondage"><u>/Source</u></td><td title="controle des calculs de sous totaux notés (c): recalcul/sondage parmi chaque série de sous totaux et cohérence interne aux séries de sous totaux"><u>(c) Totaux</u></td><td title="le controle de cohérence cherche à confronter autant que possible les données avec la réalité ou des représentations stabilisées: on procède par comparaison avec d\'autres sources certifiées ou avec des connaissances empiriques"><u>Cohérence</u></td></tr>';
+control+='<tr><td>'+libelmap[(rg-1)][4][0]+'</td><td>'+libelmap[(rg-1)][4][1]+'</td><td>'+libelmap[(rg-1)][4][2]+'</td></tr>';
+control+='</table></center>';
+var lacolor="black"
+if(sommableEchelle.length>0){
+if(sommableEchelle.length>=[rg-1]){
+if(sommableEchelle[rg-1][2]==1){lacolor="green"}
+if(sommableEchelle[rg-1][2]==2){lacolor="orange"}
+if(sommableEchelle[rg-1][2]==3){lacolor="red"}
+control+='<center><small><span title="'+sommableEchelle[rg-1][1]+'">Sommabilité (/niveau géographique) : <b style="color:'+lacolor+'"><u>'+sommableEchelle[rg-1][0]+'</u></b></span></small></center>'
+}
+}
+document.getElementById("ControleIci").innerHTML=control
+
+}
+				var Auth='';var ixi='';
+				
+				var aut1=(libelmap[rg-1][6]+"").replace("&","+")
+				var aut2=(libelmap[rg-1][7]+"").replace("&","+")
+				
+				Auth="<span style='font-size:8px'><u>Réalisation</u><br/>carte : "+aut1+"<br/>Data making: "+aut2+"</span>"
+				/*
+				if(typeof(libelmap[rg-1][6])!="object"){
+				ixi=libelmap[rg-1][6]
+				}else{
+				ixi=""
+				if(libelmap[rg-1][6].length==1){ixi=libelmap[rg-1][6][0]}else{
+				ixi+=libelmap[rg-1][6][0]+" : "+libelmap[rg-1][6][1]
+				for(k=2;k<libelmap[rg-1][6].length;k+=2){ixi+=" --- "+libelmap[rg-1][6][k]+" : "+libelmap[rg-1][6][k+1]}
+				}
+				Auth+=ixi+"<br/>"  }
+				
+				if(typeof(libelmap[rg-1][6])!="object"){
+				ixi+=libelmap[rg-1][6]
+				}else{
+				ixi+=""
+				if(libelmap[rg-1][7].length==1){ixi=libelmap[rg-1][7][0]}else{
+				ixi+=libelmap[rg-1][7][0]+" : "+libelmap[rg-1][7][1]
+				for(k=2;k<libelmap[rg-1][7].length;k+=2){ixi+=" --- "+libelmap[rg-1][7][k]+" : "+libelmap[rg-1][7][k+1]}
+				}
+				Auth+=ixi  }
+				*/
+				
+				document.getElementById("authors").innerHTML=Auth
+
+				
+}
+}
+
+function closeaff(n){
+
+n=n+1
+document.getElementById("texte"+n).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texteb"+n).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:middle;opacity:1")
+
+}
+function  closaff2(){
+document.getElementById("specifs").setAttribute("style","position:absolute;top:"+(0)+"px;left:"+(0)+"px;display:none")
+setTimeout("verou=1",10)
+setTimeout("verou=0",300)
+}
+
+
+
+
+document.getElementById("bouton2").setAttribute("width",carre)
+document.getElementById("bouton2").setAttribute("height",carre)
+document.getElementById("carre1").setAttribute("width",carre)
+document.getElementById("carre1").setAttribute("height",carre)
+var rad=""
+var radTot=""
+var rad0=""
+var rad0Tot=""
+var rayon=carre/2-retrait*carre/dimDenom
+var dd="M 0 0 "+rayon+" 0"
+
+document.getElementById("p0").setAttribute("d",dd)
+
+document.getElementById("c0").setAttribute("cx",rayon)
+
+var j=0
+var j2=0
+var nbaxes//=libelaxe.length
+var angle0=0
+var angle=0
+
+
+function CalculRadar(){
+
+angle0=360/nbaxes
+angle=-angle0-90
+var deb=0
+
+for(j=0;j<TabSelectIndex.length;j++){
+
+var i=j
+var XIC=parseInt(TabSelectIndex[i]) // Numéro de la carte démarrant à zero
+
+if(XIC>=0){
+deb+=1
+angle+=angle0
+var a = 3.1416 * (angle) / 180 
+
+//var xt=document.createTextNode("feurs")
+//document.getElementById("usetexte"+i).appendData(xt)
+
+var tr=Math.cos(a)+" "+Math.sin(a)+" "+(-Math.sin(a))+" "+Math.cos(a)+" "+(carre/2)+" "+(carre/2) // rotation
+document.getElementById("userond"+(i+1)).setAttribute("transform","matrix("+tr+")")
+document.getElementById("userond"+(i+1)).setAttribute("opacity",0.5)
+document.getElementById("userond"+(i+1)).setAttribute("style","cursor:pointer")
+
+
+
+//alert(XIC)
+var xtit=libelaxe[i]
+var prem=xtit.substring(0,xtit.indexOf(":"))
+var suite="n° "+(XIC+1)+" - "+xtit.replace(prem,"").substring(0,25)+"..."
+
+var tr="matrix(1 0 0 1 "+(carre/2+rayon*Math.cos(a))+" "+(carre/2+rayon*Math.sin(a))+")"
+document.getElementById("texte"+(i+1)).setAttribute("onmouseover",'aff("'+libelaxe[i]+'",'+(carre/2+rayon*0.3*Math.cos(a))+','+(carre/2+rayon*0.3*Math.sin(-a))+','+(XIC+1)+','+i+')')
+document.getElementById("texte"+(i+1)).setAttribute("onmouseout",'closeaff('+(i)+')')
+document.getElementById("texte"+(i+1)).setAttribute("transform",tr)
+document.getElementById("texte"+(i+1)).firstChild.nodeValue=suite
+document.getElementById("texte"+(i+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:"+coul[i]+";font-family:Arial;text-anchor:middle;opacity:1;")
+document.getElementById("texte"+(i+1)).setAttribute("font-size",parseInt(10*carre/dimDenom))
+document.getElementById("texte"+(i+1)).setAttribute("onclick",'if(verou==0){verou=1}else{verou=0};aff("'+libelaxe[i]+'",'+(carre/2+rayon*0.3*Math.cos(a))+','+(carre/2+rayon*0.3*Math.sin(-a))+','+(XIC+1)+','+i+')')
+
+
+
+var tr="matrix(1 0 0 1 "+(carre/2+rayon*Math.cos(a))+" "+((carre/2+rayon*Math.sin(a))+parseInt(11*carre/dimDenom)+0)+")"
+document.getElementById("texteb"+(i+1)).setAttribute("onmouseover",'aff("'+libelaxe[i]+'",'+(carre/2+rayon*0.3*Math.cos(a))+','+(carre/2+rayon*0.3*Math.sin(-a))+','+(XIC+1)+','+i+')')
+document.getElementById("texteb"+(i+1)).setAttribute("onmouseout",'closeaff('+(i)+')')
+document.getElementById("texteb"+(i+1)).setAttribute("transform",tr)
+document.getElementById("texteb"+(i+1)).firstChild.nodeValue=prem
+document.getElementById("texteb"+(i+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:"+coul[i]+";font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texteb"+(i+1)).setAttribute("font-size",parseInt(10*carre/dimDenom))
+document.getElementById("texteb"+(i+1)).setAttribute("onclick",'if(verou==0){verou=1}else{verou=0};aff("'+libelaxe[i]+'",'+(carre/2+rayon*0.3*Math.cos(a))+','+(carre/2+rayon*0.3*Math.sin(-a))+','+(XIC+1)+','+i+')')
+
+document.getElementById("userond"+(i+1)).setAttribute("onmouseover",'aff("'+libelaxe[i]+'",'+(carre/2+rayon*0.3*Math.cos(a))+','+(carre/2+rayon*0.3*Math.sin(-a))+','+(XIC+1)+','+i+')')
+document.getElementById("userond"+(i+1)).setAttribute("onmouseout",'closeaff('+i+')')
+document.getElementById("userond"+(i+1)).setAttribute("onclick",'if(verou==0){verou=1}else{verou=0};aff("'+libelaxe[i]+'",'+(carre/2+rayon*0.3*Math.cos(a))+','+(carre/2+rayon*0.3*Math.sin(-a))+','+(XIC+1)+','+i+')')
+
+
+var ML
+if(deb==1){ML="M"}else{ML="L"}
+rad+=" "+ML+" "+((carre/2)+rayon*Math.cos(a)/5*axescote[i])+" "+((carre/2)+rayon*Math.sin(a)/5*axescote[i])+" "
+if(deb==1){rad0=" "+((carre/2)+rayon*Math.cos(a)/5*axescote[i])+" "+((carre/2)+rayon*Math.sin(a)/5*axescote[i])}
+
+if(deb==1){ML="M"}else{ML="L"}
+radTot+=" "+ML+" "+((carre/2)+rayon*Math.cos(a))+" "+((carre/2)+rayon*Math.sin(a))+" "
+if(deb==1){rad0Tot=" "+((carre/2)+rayon*Math.cos(a))+" "+((carre/2)+rayon*Math.sin(a))}
+
+
+}
+}
+
+rad+=rad0
+document.getElementById("p1").setAttribute("d",rad)
+radTot+=rad0Tot
+document.getElementById("p2").setAttribute("d",radTot)
+
+}
+
+
+					function rien(){}
+					function RAZradar(){
+					angle0=0
+					angle=0
+
+					for(j=0;j<TabSelectIndex.length;j++){
+var i=j
+					//---------------RAZ-------------------------------------
+
+
+					//--------------------------------------------------------
+
+					angle+=angle0
+					var a = 3.1416 * (angle) / 180 
+
+					//var xt=document.createTextNode("feurs")
+					//document.getElementById("usetexte"+i).appendData(xt)
+
+					var tr=1+" "+0+" "+0+" "+1+" "+(-100)+" "+(-100) // rien
+					document.getElementById("userond"+(i+1)).setAttribute("transform","matrix("+tr+")")
+					document.getElementById("userond"+(i+1)).setAttribute("opacity",0.5)
+
+					document.getElementById("userond"+(i+1)).setAttribute("onclick","rien()")
+
+					var xtit=""
+					var prem=""
+					var suite=""
+
+					var tr="matrix(1 0 0 1 0 0)"
+					document.getElementById("texte"+(i+1)).setAttribute("onmouseover",'rien()')
+					document.getElementById("texte"+(i+1)).setAttribute("onmouseout",'')
+					document.getElementById("texte"+(i+1)).setAttribute("transform",tr)
+					document.getElementById("texte"+(i+1)).firstChild.nodeValue=suite
+					document.getElementById("texte"+(i+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:transparent;font-family:Arial;text-anchor:middle;opacity:1")
+					document.getElementById("texte"+(i+1)).setAttribute("font-size","0px")
+
+					var tr="matrix(1 0 0 1 0 0)"
+					document.getElementById("texteb"+(i+1)).setAttribute("onmouseover",'rien()')
+					document.getElementById("texteb"+(i+1)).setAttribute("onmouseout",'rien()')
+					document.getElementById("texteb"+(i+1)).setAttribute("transform",tr)
+					document.getElementById("texteb"+(i+1)).firstChild.nodeValue=prem
+					document.getElementById("texteb"+(i+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:transparent;font-family:Arial;text-anchor:middle;opacity:1")
+					document.getElementById("texteb"+(i+1)).setAttribute("font-size","0px")
+
+					document.getElementById("userond"+(i+1)).setAttribute("onmouseover",'rien()')
+					document.getElementById("userond"+(i+1)).setAttribute("onmouseout",'rien()')
+
+					var ML
+					if(i==0){ML="M"}else{ML="L"}
+					rad+=ML+" "+0+" "+0+" "
+					if(i==0){rad0=" "+0+" "+0}
+
+					if(i==0){ML="M"}else{ML="L"}
+					radTot+=ML+" "+0+" "+0+" "
+					if(i==0){rad0Tot=" "+0+" "+0}
+
+					}
+					rad+=rad0
+					document.getElementById("p1").setAttribute("d",rad)
+					radTot+=rad0Tot
+					document.getElementById("p2").setAttribute("d",radTot)
+					
+					}
+//-----------------------------------------------------------------------------------------
+function blackfill(){
+for(i=0;i<libelaxeB.length;i++){
+document.getElementById("Btexte"+(i+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("Btexteb"+(i+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("Tout").setAttribute("style","font-family: Arial; text-anchor: start;cursor:pointer;fill:black")
+
+}
+}
+
+function indexmotcle(m){
+blackfill()
+document.getElementById("Btexte"+(m+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("Btexteb"+(m+1)).setAttribute("style","cursor:pointer;stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1")
+
+
+
+
+motcle=libelaxeB[m]
+document.getElementById("affichNOM2").firstChild.nodeValue="filtre : "+libelaxeB[m][0]
+RAZradar()
+rad=""
+radTot=""
+rad0=""
+rad0Tot=""
+angle=0
+
+}
+
+var racine=""
+var ope1="ou"
+
+var motcle=""//new Array("logement") //new Array("actifs","occupés","emploi")//"Aucun-mots-clés"
+
+
+
+function libel2(textcompose,motcOU){ 
+
+
+//alert("motcOU="+motcOU)
+var ope1OU="ou"
+motcle3=motcOU+""// transforme en string
+//motcle3=motcle3.replace(/\,/g," ")
+
+menudata=""
+OKITotalOU=0
+OKI=new Array()
+if(motcle3==""){OKITotalOU=1}else{
+var motc1=motcle3.split(" ")
+//alert("motc1="+motc1)
+var stopmot=motc1.length
+	   var kr=0
+for(r=0;r<stopmot;r++){
+OKI[r]=0
+OKITotalOU=1
+var motc=motc1[r].toLowerCase()
+		if(motc.indexOf("!")<0){
+if(textcompose.toLowerCase().indexOf(motc)>-1 ){
+if(ope1OU=="ou"){OKI[r]=1;OKITotalOU=1;kr=1}//OKITotalOU*OKI[r];r=stopmot
+//if(ope1OU=="et"){OKI[r]=1;OKITotalOU=OKITotalOU*OKI[r]}
+}else{
+if(ope1OU=="ou"){OKI[r]=0;if(kr==1){OKITotalOU=1}else{OKITotalOU=0}}//OKITotalOU=0
+//if(ope1OU=="et"){OKI[r]=0;OKITotalOU=OKITotalOU*OKI[r];r=stopmot}
+}
+		}
+}
+}
+
+
+// cas des sauf marqués par un ! en début de mot clé
+if(motcle3.indexOf("!")>=0){
+
+for(r=0;r<stopmot;r++){
+if(motc1[r].indexOf("!")>=0){
+if(textcompose.toLowerCase().indexOf(motc1[r].replace("!",""))>-1 ){OKITotalOU=0}
+}
+}
+}
+//alert("motcOU="+motcOU+"  OKITotalOU= "+OKITotalOU)
+return OKITotalOU
+}
+
+
+function libel(textcompose){ 
+//
+
+motcle1=motcle+""// transforme en string
+motcle1=motcle1.replace(/\,/g," ")
+
+ope1="ou"
+
+menudata=""
+OKITotal=0
+OKI=new Array()
+if(motcle1==""){OKITotal=1}else{
+var motc1=motcle1.split(" ")
+var stopmot=motc1.length
+for(r=0;r<stopmot;r++){
+OKI[r]=0
+OKITotal=1
+var motc=motc1[r].toLowerCase()
+//if(motc=="!revenu"){alert(textcompose.indexOf("!"))}
+if(textcompose.toLowerCase().indexOf(motc)>-1 ){
+if(ope1=="ou"){OKI[r]=1;OKITotal=OKITotal*OKI[r];r=stopmot}
+//if(ope1=="et"){OKI[r]=1;OKITotal=OKITotal*OKI[r]}
+}else{
+if(ope1=="ou"){OKITotal=0}
+//if(ope1=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+}
+}
+}
+// cas des sauf marqués par un ! en début de mot clé
+if(motcle1.indexOf("!")>=0){
+for(r=0;r<stopmot;r++){
+if(motc1[r].indexOf("!")>=0){
+if(textcompose.toLowerCase().indexOf(motc1[r].replace("!",""))>-1 ){OKITotal=0}
+}
+}
+}
+OKITotal2=OKITotal
+
+
+ope1="et"
+
+motcle2=motcleET
+
+menudata=""
+OKITotal=0
+OKI=new Array()
+if(motcle2==""){OKITotal=1}else{
+var motc1=motcle2.split("**")
+//alert("motc1 dans le et de libel()="+motc1)
+var stopmot=motc1.length
+OKITotal=1
+for(r2=0;r2<stopmot;r2++){
+OKI[r2]=0
+
+var motcx=motc1[r2].toLowerCase()
+	//alert("motcx="+motcx)
+	
+	
+	
+	
+	
+						// supression des doublons d'espace dans le texte
+					textcompose=textcompose.replace(/  /g," ")
+					
+			
+			
+				// chainage de la chaine recherchée par "_" si elle existe dans le texte
+			if(motcx.indexOf("_")>0){
+			var motcX=motcx.replace("!","")
+					var Xchaine=motcX.split("_")
+					
+					var Zchaine=Xchaine[0]
+					for(a=1;a<Xchaine.length;a++){ Zchaine+=" "+Xchaine[a]}
+
+					Zchaine=Zchaine.replace(/([.?*+^$[\]\\(){}-])/g,"\\$1")
+					var ZZchaine = new RegExp(Zchaine, "g");
+
+
+					textcompose=textcompose.toLowerCase().replace(ZZchaine,motcX)
+					
+				
+			}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+if(libel2(textcompose,motcx)==1 ){
+
+if(ope1=="et"){OKI[r2]=1;OKITotal=OKITotal*OKI[r2]}
+}else{
+
+if(ope1=="et"){OKI[r2]=0;OKITotal=OKITotal*OKI[r2];r=stopmot}//
+}
+	
+}
+}
+//alert(OKITotal2+"  "+OKITotal)
+OKITotal=OKITotal2*OKITotal
+
+return OKITotal
+
+}
+
+	 var etatcheck
+	 function overcontrolCheck(a){
+	 etatcheck=a.checked
+	 }
+	 function controlCheck(a){
+	 
+	 //alert(a.checked)
+	 a.checked="checked"
+	 if(etatcheck==true){a.checked=false}else{a.checked="checked"}
+	 SuiteCheck()
+	 etatcheck=a.checked
+	 }
+	 function SuiteCheck(){
+	 	RAZradar()
+	    rad=""
+		radTot=""
+		rad0=""
+		rad0Tot=""
+		angle=0
+	 selectCarte()
+	 }
+
+//
+function selectCarte(){
+document.getElementById('detail').style.display='none'
+closaff2()
+FiltreCompET()// recueil les valeurs des mots clés complémentaire en condition logique "ET"
+nbaxes=0
+//TabSelectIndex=new Array()
+//
+for(i=0;i<TabSelectIndex.length;i++){TabSelectIndex[i]=""}
+//
+for(i=0;i<TabSelectIndex.length;i++){
+
+var c=numeroCarte[i]-1
+var textcompose=mapX[(c*5+0)]+" "+mapX[(c*5+1)]+" "+mapX[(c*5+2)]+" "+mapX[(c*5+3)]+" "+mapX[(c*5+4)]
+
+for(k=0;k<6;k++){textcompose+=" "+libelmap[c][k]}
+textcompose=textcompose.replace(/lieu de travail/g,"lieu_de_travail")
+textcompose=textcompose.replace(/ LT /g,"(LT)")
+textcompose=textcompose.replace(/ LR /g,"(LR)")
+textcompose=textcompose.replace(/ ans /g,"_ans ")
+//if(i<5){alert(libel(textcompose))}
+if(libel(textcompose)==1 & libelmap[c][5]!='none'){
+
+TabSelectIndex[i]=c
+nbaxes+=1
+}
+}
+
+CalculRadar()
+}
+
+
+//-----------------------------------------------------------------------------------------
+
+]]></script>
+<script id="scrpt"  language="javascript" ><![CDATA[
+   
+var carreB=300// dimensions du cadre carre
+var retraitB=12// retrait   en % de la dimesnion du cadre carre
+var dimDenomB=260 // amplitude dans le cadre carré
+
+var coulB=new Array()
+var axescoteB=new Array()
+var libelaxeB=new Array()
+
+
+]]></script>
+   <script id="scrpt"  language="javascript" src="PetiteRoue.js" ></script>
+<div style="position:absolute;top:0px;left:700px">
+<table style="border:1px dotted black;background-color:transparent"><tr><td>
+<svg id="bouton3" 
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+     width="300"
+   height="300"
+   >
+    <metadata
+     id="metadata7">
+    <rdf:RDF>
+
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+<stop class="begin" offset="0.5" style="stop-color:green"/>
+
+<stop class="end" offset="1" style="stop-color:red"/>
+</radialGradient>
+</defs>
+<g>
+<!--clipPath id="chemindecoupe">
+<circle  cx="65" cy="65" r="55" />
+</clipPath-->
+<defs>
+<g opacity="0" >
+<g id="ensembleB" >
+<g stroke="black" stroke-width="0.5px"><path id="pB0" ></path></g>
+  <ellipse rx="15" ry="15"   cy="0" cx="0" stroke-opacity="1" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1px" stroke="none" fill-rule="evenodd" fill-opacity="0.2" fill="gray" id="cB0"></ellipse>
+
+
+</g> 
+</g> 
+</defs>
+
+		  <g id="radTotB" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.1" stroke-width="1px"><path id="pB2" ></path></g>
+		 <g id="radB" stroke="black" fill="blue" fill-opacity="0.2" stroke-width="0.5px"><path id="pB1" ></path></g>
+
+<g >
+ <use id="userondB1" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userondB2" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userondB3" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userondB4" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userondB5" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userondB6" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userondB7" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userondB8" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userondB9" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userondB10" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+
+ <use id="userondB11" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte11"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb11"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userondB12" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte12"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb12"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userondB13" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte13"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb13"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userondB14" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte14"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb14"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userondB15" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte15"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb15"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userondB16" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte16"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb16"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userondB17" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte17"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb17"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userondB18" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte18"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb18"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userondB19" xlink:href="#ensembleB"  opacity="0"  x="0" y="0"/><text id="Btexte19"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text><text id="Btexteb19"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userondB20" xlink:href="#ensembleB" opacity="0"   x="0" y="0"/><text id="Btexte20"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	<text id="Btexteb20"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>	
+	 
+		 
+
+</g>		 
+</g>
+
+<text y="150" x="129" font-size="15" style="font-family: Arial; text-anchor: start;cursor:pointer;fill:red" transform="matrix(1, 0, 0, 1, 5, 5)" id="Tout">&nbsp;&nbsp;All</text>
+<text y="10" x="10" font-size="18" style="font-family: Arial; text-anchor: start;" transform="matrix(1, 0, 0, 1, 5, 5)" id="affichNOM">Focus</text>
+<text y="285" x="10" font-size="18" style="font-family: Arial; text-anchor: start;fill:navy" transform="matrix(1, 0, 0, 1, 5, 5)" id="affichNOM2">filtre : All</text>
+<circle   r="25" cy="" cx="" stroke-opacity="1" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1px" stroke="#000000" fill-rule="evenodd" fill-opacity="0.80" fill="transparent" id="c1" style="cursor:pointer"><title >Tout</title></circle>
+</svg> 
+</td></tr></table>
+</div>
+
+<div style="position:absolute;top:320px;left:700px">
+<form id="compSelect">
+
+</form>
+<script id="scrpt"  language="javascript" >
+
+document.getElementById("compSelect").innerHTML=TableCompSelect
+
+</script>
+</div>
+
+<div id="DivMailleEtCarte0" style="position:absolute;width:950px;top:807px;left:20px"><a name="AncreMailleEtCarte"></a></div>
+<div id="DivMailleEtCarte" style="position:absolute;width:955px;top:690px;left:20px"><iframe  id="MailleEtCarte" name="MailleEtCarte" style="visibility:visible;border:1px dotted gray;width:940px;height:1200px" onload="setTimeout('Xloaded()',2500)" src=""></iframe></div>
+
+<div id="RdV" style="position:absolute;top:703px;left:450px;z-index:1000;font-size:13px"><b>
+<span onclick="javascript:window.location.href='#haut'" style="color:blue;cursor:pointer;background-color:#DCDCDC"><b><u> Retour à la Rose des Vents </u></b></span>
+</b></div>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+
+var initalertload=0
+function Xloading(){
+document.getElementById("divloading").style.display="block"
+}
+function Xloaded(){
+document.getElementById("divloading").style.display="none"
+}
+
+
+
+document.getElementById("c1").setAttribute("cx",carreB/2)
+document.getElementById("c1").setAttribute("cy",carreB/2)
+document.getElementById("c1").setAttribute("onclick","motcle='';blackfill();document.getElementById('Tout').setAttribute('style','font-family: Arial; text-anchor: start;cursor:pointer;fill:red');document.getElementById('affichNOM2').firstChild.nodeValue='filtre : All';SuiteCheck()")
+
+var nbaxesB=libelaxeB.length
+
+retraitB=carreB*retraitB/100
+document.getElementById("bouton3").setAttribute("width",carreB)
+document.getElementById("bouton3").setAttribute("height",carreB)
+var radB=""
+var radTotB=""
+var rad0B=""
+var rad0TotB=""
+var rayonB=carreB/2-retraitB*carreB/dimDenomB
+var dd="M 0 0 "+rayonB+" 0"
+document.getElementById("pB0").setAttribute("d",dd)
+document.getElementById("cB0").setAttribute("cx",rayonB)
+var angle0B=360/nbaxesB
+var angleB=-angle0B-90
+for(i=1;i<nbaxesB+1;i++){
+
+angleB+=angle0B
+var a = 3.1416 * (angleB) / 180 
+
+//var xt=document.createTextNode("feurs")
+//document.getElementById("usetexte"+i).appendData(xt)
+
+var tr=Math.cos(a)+" "+Math.sin(a)+" "+(-Math.sin(a))+" "+Math.cos(a)+" "+(carreB/2)+" "+(carreB/2) // rotation
+document.getElementById("userondB"+i).setAttribute("transform","matrix("+tr+")")
+document.getElementById("userondB"+i).setAttribute("opacity",0.5)
+document.getElementById("userondB"+i).setAttribute("style","cursor:pointer")
+document.getElementById("userondB"+i).setAttribute("onclick","indexmotcle("+(i-1)+");;selectCarte()")
+
+var tr="matrix(1 0 0 1 "+(carreB/2+rayonB*Math.cos(a))+" "+(carreB/2+rayonB*Math.sin(a))+")"
+
+document.getElementById("Btexte"+i).setAttribute("transform",tr)
+document.getElementById("Btexte"+i).firstChild.nodeValue=libelaxeB[i-1][0]
+document.getElementById("Btexte"+i).setAttribute("style","stroke:black;stroke-width:0px;fill:"+coul[i-1]+";font-family:Arial;text-anchor:middle;opacity:1;cursor:pointer")
+document.getElementById("Btexte"+i).setAttribute("font-size",parseInt(10*carreB/dimDenomB))
+document.getElementById("Btexte"+i).setAttribute("onclick","indexmotcle("+(i-1)+");;selectCarte()")
+
+
+var tr="matrix(1 0 0 1 "+(carreB/2+rayonB*Math.cos(a))+" "+((carreB/2+rayonB*Math.sin(a))+parseInt(11*carreB/dimDenomB))+")"
+document.getElementById("Btexteb"+i).setAttribute("transform",tr)
+var st=""
+if(libelaxeB[i-1][1]){
+if(libelaxeB[i-1][1]!="*" & libelaxeB[i-1][1].indexOf("!")<0 ){st+=libelaxeB[i-1][1]}
+if(libelaxeB[i-1][2]){
+if(libelaxeB[i-1][2]!="*" & libelaxeB[i-1][2].indexOf("!")<0){st+=" "+libelaxeB[i-1][2]}
+}
+}
+document.getElementById("Btexteb"+i).firstChild.nodeValue=st
+document.getElementById("Btexteb"+i).setAttribute("style","stroke:black;stroke-width:0px;fill:"+coul[i-1]+";font-family:Arial;text-anchor:middle;opacity:1;cursor:pointer")
+document.getElementById("Btexteb"+i).setAttribute("font-size",parseInt(10*carreB/dimDenomB))
+document.getElementById("Btexteb"+i).setAttribute("onclick","indexmotcle("+(i-1)+");;selectCarte()")
+
+
+
+var ML
+if(i==1){ML="M"}else{ML="L"}
+radB+=ML+" "+((carreB/2)+rayonB*Math.cos(a)/5*axescoteB[i-1])+" "+((carreB/2)+rayonB*Math.sin(a)/5*axescoteB[i-1])+" "
+if(i==1){rad0B =" "+((carreB/2)+rayonB*Math.cos(a)/5*axescoteB[i-1])+" "+((carreB/2)+rayonB*Math.sin(a)/5*axescoteB[i-1])}
+
+if(i==1){ML="M"}else{ML="L"}
+radTotB+=ML+" "+((carreB/2)+rayonB*Math.cos(a))+" "+((carreB/2)+rayonB*Math.sin(a))+" "
+if(i==1){rad0TotB=" "+((carreB/2)+rayonB*Math.cos(a))+" "+((carreB/2)+rayonB*Math.sin(a))}
+
+}
+radB+=rad0B
+document.getElementById("pB1").setAttribute("d",radB)
+radTotB+=rad0TotB
+document.getElementById("pB2").setAttribute("d",radTotB)
+//setTimeout('initCarte();annuleCheck();chargeMailleEtCarte()',2000)
+
+//NumeroPlateforme// variable définie dans le fichier PetiteRoue.js
+
+//--------------------------------------------------MENU REZO----------------------------------------------------------------------
+//--------------------------------------------------MENU REZO-------------------------------------------------------------------------------
+var pdd // point de départ
+var specif
+
+function nb_aleatoire(nb){specif= Math.floor(Math.random() * nb)+1;} 
+nb_aleatoire(9999)
+
+var specif=1234
+
+var selectedrezo
+var selectedcarte
+var rezo=new Array()
+var nomrezo=new Array()
+
+]]></script>
+<script language="javascript"><![CDATA[
+if(typeof(InRezo)=='undefined'){
+var InRezo=new Array() 
+for(i=0;i<rezo.length;i=i+1){
+InRezo[rezo.length]="Summary not available"
+}
+}
+]]></script>
+<script language="javascript" src="A-MANAGER-local/transdata_rezo/rezo.js"></script>
+<script  language="javascript" ><![CDATA[
+if(rezo.length-InRezo.length>0){
+for(i=0;i<rezo.length;i++){
+InRezo[InRezo.length]="Summary not available"
+}
+}
+]]></script>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+
+if(urlvar['pdd']){pdd=urlvar['pdd']}else{
+pdd=window.location.href
+pdd=pdd.substr(0,(pdd.indexOf("radar"))) 
+}
+
+var rezolocal=new Array()
+var nomrezolocal=new Array()
+
+
+var selectedrezo=urlvar["selectedrezo"]
+
+if(urlvar['localdistant']!="distant"){
+
+for(a=0;a<rezo.length;a++){rezolocal[a]=rezo[a];nomrezolocal[a]=nomrezo[a]}
+
+selectedrezo=urlvar['selectedrezo']
+}else{
+var rezo=urlvar['rezolocal'].split(',');
+var nomrezo=urlvar['nomrezolocal'].split(',');
+for(a=0;a<rezo.length;a++){rezolocal[a]=rezo[a];nomrezolocal[a]=nomrezo[a]}
+
+}
+
+						
+					
+var rg=rezo.length// dimension du réseau des plateformes implantées en local
+
+]]></script>
+<script language="javascript"><![CDATA[
+if(typeof(InRezo)=='undefined'){
+var InRezo=new Array()
+for(i=0;i<rezo.length;i++){
+InRezo[rezo.length]="Summary not available"
+}
+}
+]]></script>
+<!--script id="scrptRezoDistant" language="javascript" src="http://213.251.176.22/admin_rezo/rezo.js"></script-->
+<script  language="javascript" ><![CDATA[
+if(rezo.length-InRezo.length>0){
+for(i=0;i<rezo.length;i++){
+InRezo[InRezo.length]="Summary not available"
+}
+}
+]]></script>
+
+
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+if(selectedrezo){
+var platef=selectedrezo.split('/')
+
+document.getElementById("affichNOM-n°p").firstChild.nodeValue="altercarto.fr : plateforme "+platef[platef.length-2]
+}
+
+//setTimeout('initCarte();annuleCheck();blackfill();chargeMailleEtCarte()',3000)
+
+document.getElementById("scrptMAPS").src=rezocible+"mapsILIADE.js"//src="mapsILIADE.js" 
+
+]]></script>
+</body >
+</html>

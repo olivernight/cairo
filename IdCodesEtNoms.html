@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>data files</title>
+<script type="text/javascript" src="mapsILIADEmotpas.js"></script>
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="mapsILIADE.js?alea='+Math.random()+'"><\/script>');
+</script>
+<script type="text/javascript" >
+var mt2
+var mt
+var idmt=0
+var casici=0 // cas du démarrage
+
+
+var mt2
+
+	
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    lacible=(urlvar['cible'])
+
+if(urlvar['mtp2']){mt2=urlvar['mtp2']}else{mt2='xxxxx'}
+
+
+function MotPas(){
+idmt=0
+for(i=0;i<mtpas.length;i++){
+if(mt2==mtpas[i]){idmt=1}
+
+}
+if(idmt!=1){
+mt=prompt('saisissez votre mot de passe',mt2);
+for(i=0;i<mtpas.length;i++){
+if(mt==mtpas[i]){idmt=1}
+
+}
+}
+var retconfirm=false
+if(idmt!=1){
+retconfirm=confirm("désolé, votre mot de passe est incorrect, voulez vous recommencer?");
+if(retconfirm==true){
+MotPas()
+//window.location.href=aw2
+}else{
+if(casici==0){
+window.location.href="vide.html"
+}else{}
+}
+}
+casici=1
+}
+MotPas()
+
+var indicselectmode=1
+function selectmode(a){
+indicselectmode=a
+}
+
+
+function BL(){ //début signal chargement top.BL()
+
+document.getElementById("divloading").style.top=200+'px'
+top.frames.FloadingBis.location.href="vide.htm" //introduit une interruption dans le cycle firefox et permet ainsi de forcer l'affichage du signal de téléchargement
+
+}
+function EL(){//fin signal chargement  top.EL()
+
+document.getElementById("divloading").style.top=-1000+'px'
+//menuBar.hideSubMenus()
+}
+
+var base00=new Array()
+
+var toutescartes=top.transTTCARTES("return toutescartes")
+
+
+var A
+var B
+
+/*actualisation du fichier principal.txt : on récupère le fichier principal.html; on extrait les données ; on reconstitue le fichier principal.txt après avoir suvegardé l'existant au format N-1.principal.txt*/
+function FileDataActualiste1(a,b){ //a=complementaire ou principal
+BL()
+document.getElementById("R[0]").value=b
+document.getElementById("N[0]").innerHTML=""
+document.getElementById("F[0]").value=a
+if(indicselectmode==1){ // ouvre le fichier txt
+document.getElementById("K[0]").value=1
+
+document.fait.submit()
+}
+if(indicselectmode==2){ //génère le fichier .txt
+document.getElementById("K[0]").value=2
+window.mappo.location.href="IdCodemappo.html?fich="+a+"&REP="+b
+}
+
+}
+
+function FileDataActualiste1bis(f){ //A= adresse du fichier complementaire.html ou principal.html ou leurs noms susbstitutifs (aniennes versions de dossiers cartes) : cette function est appelée par le fichier IdCodemappo.html dans la frame mappo
+
+//window.frameData.location.href=f
+FileDataActualiste2()
+//setTimeout('FileDataActualiste2()',2300) // remplacé par enteteBas.js fin d'execution de l'ouverture des fichiers de données
+}
+
+var lign=new Array()
+
+function FileDataActualiste2(){ // appelée par enteteBas.js fin d'execution de l'ouverture des fichiers de données
+
+//alert(window.frameData.document.getElementById("chargedatajs").innerHTML)
+//var innerTextarea=window.frameData.document.getElementById("chargedatajs").innerHTML
+//document.getElementById("N[0]").innerHTML=innerTextarea
+
+document.fait.submit()
+
+}
+
+</script>
+
+
+
+
+
+
+</head>
+<body style="background-color: transparent;font-family:arial;font-size:11px">
+
+
+<center><big><b>Fichiers de données</b></big><br>
+<table border=0 width="250px" style="font-family:arial;font-size:11px"><tr><td ><center><input type="radio"  id="T_1" name="T" value="1" onClick="selectmode(1)" ><br>télécharger <br>les données<br>(format .txt)<br></input></center></td><td ><center><input type="radio" id="T_3" name="T" value="0" onClick="selectmode(2);" value="0" type="text" ><br><dt style="color:red">Synchoniser<br>les données<br>(.html->.txt)</dt> <small><i>(le fichier .txt courant est sauvegardé)</i></small></imput></center></td></tr></table>
+</center>
+
+
+
+
+
+
+
+
+<div>
+<table style=" ;font-size:11px;border:1px solid gray" cellpadding="2" cellspacing="2">
+<tbody>
+
+<tr style="text-align: center;">
+<td style="text-align: left;width:120px;" ><b>Carte</b></td>
+<td style="text-align: left;width:100px;" ><b>Répertoire</b></td>
+<td style="text-align: center;width:40px;"><b>Matrice de tableau de données</b></td>
+<td style="text-align: center;width:40px;"><b>Fichier principal.txt</b></td>
+<td style="text-align: center;width:40px;"><b>Fichier complementaire.txt</b></td>
+
+</tr>
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById("T_1").checked=true
+
+
+var colorx
+var t=0
+var tab0=""
+for(i=0;i<mapX.length;i+=5){
+if(t==0){colorx="#E4E4E4";t=1}else{colorx="white";t=0}
+tab0+='<tr>'
+tab0+='<td style="text-align:left;width:120px;background-color:'+colorx+'">'+mapX[i+3]+'<\/td>'
+tab0+='<td style="text-align:left;width:100px;background-color:'+colorx+'">'+mapX[i+4]+'<\/td>'
+tab0+='<td style="text-align:center;width:40px;background-color:'+colorx+'"><a href="'+mapX[i+4]+'/fichier_ID_CODE_NOM.txt" target="_blank" style="color:white"><img src="cercle1.jpg" style="width:13px"\/><a\/><\/td>'
+tab0+='<td style="text-align:center;width:40px;background-color:'+colorx+'"><img src="cercle1.jpg" style="width:13px" onclick="javascript:FileDataActualiste1(\'principal\',\''+mapX[i+4]+'\')" \/><\/td>'
+tab0+='<td style="text-align:center;width:40px;background-color:'+colorx+'"><img src="cercle1.jpg" style="width:13px" onclick="javascript:FileDataActualiste1(\'complementaire\',\''+mapX[i+4]+'\')" \/><\/td>'
+
+tab0+='<\/tr>'
+}
+document.write(tab0)
+</script>
+</tbody>
+</table>
+</div>
+<br>
+<iframe id="mappo" name="mappo" src="vide.html"  style="border:0;width:0px;height:0px" ></iframe>
+<iframe id="frameData" name="frameData" src="vide.html" style="border:0;width:0px;height:0px" ></iframe>
+<form action="A-MANAGER-local/transdata_rezo/makefileData2.php" name="fait" method="post">
+<textarea style="border:0;width:0px;height:0px;visibility:hidden" name="N[0]" id="N[0]"></textarea>
+<input type="text" name="R[0]" id="R[0]" style="border:0;width:0px;height:0px;visibility:hidden" />
+<input type="text" name="F[0]" id="F[0]" style="border:0;width:0px;height:0px;visibility:hidden" />
+<input type="text" name="K[0]" id="K[0]" style="border:0;width:0px;height:0px;visibility:hidden" />
+<input type="text" name="Z[0]" id="Z[0]" style="border:0;width:0px;height:0px;visibility:hidden" /> <!-- type d'enregistrement : effacement, entêtehaut, entregistrement, entêtebas -->
+</form>
+<br>
+<div id="divloading" style="position:absolute;top:-1000px;left:400px;color:gray;visibility:visible;z-index:100000"><center><img id="loading" style="background-color:white;" width=60 border="0px" src="loading.gif"><br>CHARGEMENT en COURS</center></div>
+</div>
+</body></html>

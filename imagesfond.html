@@ -1,0 +1,332 @@
+<html>
+<head>
+<script>
+transHL=top.frames.Num0.transHLecran("return transHL")
+var terme1
+var terme2
+var XXlinkhref
+
+var LFrame=transHL[0]//
+var HFrame=transHL[1]//
+
+var LFramephoto=LFrame//
+var HFramephoto=HFrame//
+var inskape=0
+
+var zici=top.frames.Num0.frames.paramcarte.zoomdepart("return z")
+
+var zoom1=1
+var zoom2=1
+var l=0
+var h=0
+
+if(zici[3]){// paramètre de calage -> imagesifond : les paramètres sont optionnels dans la fonction zoomdepart() du fichier correctifcoord.js dans le dossier carte 
+
+zoom1=zici[3]
+zoom2=zici[4]
+l=zici[5]+LFrame*(1-1*zici[3])/2
+h=zici[6]+HFrame*(1-1*zici[4])/2
+}
+
+
+
+
+
+
+
+
+var mapX=new Array()
+var opac=0
+var cptimage=0
+var Xgroupepoint=new Array
+var imagesfondselect=""
+var indicarte=0
+var indexoption=0
+var indexoption2=0
+var indexoption3=0
+var rgcarte
+var XGP=new Array()
+var XCB=new Array()
+var XMT=new Array()
+var initimagesfond=0
+var optionimagesfond=new Array()
+var indicretour=0
+
+function rien(){
+rgcarte=rgcarte
+}
+var repdata=top.frames.Num0.frames.paramcarte.transma("return mappocoord")
+DATAimagesfond=top.frames.Num0.frames.paramcarte.transDATAimagesfond("return DATAimagesfond")
+
+DATAimagesfond[DATAimagesfond.length]="transparent.png"
+
+
+
+
+var xici
+for(i=0;i<DATAimagesfond.length;i++){
+xici="'"+"../"+repdata[6]+"/imagesfond/"+DATAimagesfond[i]+"'"
+//alert(xici)
+optionimagesfond[i]='<option style="color:black" VALUE="javascript:imagesfondselect='+xici+';injectimagesfond()">'+DATAimagesfond[i]+'</option>'
+
+}
+optionimagesfond[optionimagesfond.length-1]='<option style="color:red" VALUE="javascript:indicretour=1;imagesfondselect='+xici+';injectimagesfond()">retrait fond</option>'
+
+
+function retourcarte(){
+
+ initimagesfond=0
+ indicretour=0
+}
+
+
+function injectimagesfond(){
+inskape=top.frames.Num0.frames.couches.zoom.retourneinskcape("return inskape")
+/*
+if(inskape==1 & top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").getAttributeNode("href")!=null){
+
+alert(top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").getAttributeNode("href"))
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").removeAttributeNode(top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").getAttributeNode("href"))
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").removeAttributeNode(top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").getAttributeNode("href"))
+
+var Xhref=top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().createAttribute("xlink:href")
+Xhref.nodeValue="../France ZE special Formapap/imagesfond/matricegraphiquefond.jpg"
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttributeNode(Xhref)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").getAttributeNode("xlink:href").nodeValue="../France ZE special Formapap/imagesfond/matricegraphiquefond.jpg"
+var Xhref=top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().createAttribute("xlink:href")
+Xhref.nodeValue="../France ZE special Formapap/imagesfond/matricegraphiquefond.jpg"
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttributeNode(Xhref)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").getAttributeNode("xlink:href").nodeValue="../France ZE special Formapap/imagesfond/matricegraphiquefond.jpg"
+}
+*/
+if(inskape==0){XXlinkhref="xlink:href"}else{XXlinkhref="xlink:href"}
+  opac=0
+if(initimagesfond==0){
+
+
+ initimagesfond=1 
+
+
+  var mat="matrix("+zoom1+" 0 0 "+zoom2+" "+l+" "+h+" )"
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute("transform",mat)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute("transform",mat)
+
+
+}
+
+if(cptimage==0 || cptimage==2){
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(XXlinkhref,imagesfondselect)
+setTimeout('opacimagesfond1()',100)
+}
+else{
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(XXlinkhref,imagesfondselect)
+ setTimeout('opacimagesfond2()',100)
+}
+}
+
+function opacimagesfond1(){
+opac+=0.1
+if(inskape==0){terme1="opacity"; terme2=""}else{terme1="style"; terme2="opacity:"}
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond12()',100)
+
+}
+function opacimagesfond12(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond13()',100)
+}
+
+function opacimagesfond13(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond14()',100)
+}
+function opacimagesfond14(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond15()',100)
+}
+function opacimagesfond15(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond16()',100)
+}
+
+function opacimagesfond16(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond17()',100)
+}
+function opacimagesfond17(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond18()',100)
+}
+function opacimagesfond18(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond19()',100)
+}
+function opacimagesfond19(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+setTimeout('opacimagesfond120()',100)
+
+}
+
+function opacimagesfond120(){
+opac=1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+(1-opac))
+  cptimage=1
+  if(indicretour==1){retourcarte()}
+}
+
+//----------------------------------------------------------------------
+
+
+function opacimagesfond2(){
+opac+=0.1
+if(inskape==0){terme1="opacity"; terme2=""}else{terme1="style"; terme2="opacity:"}
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond22()',100)
+}
+function opacimagesfond22(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond23()',100)
+}
+
+function opacimagesfond23(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond24()',100)
+}
+function opacimagesfond24(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond25()',100)
+}
+function opacimagesfond25(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond26()',100)
+}
+
+function opacimagesfond26(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond27()',100)
+}
+function opacimagesfond27(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond28()',100)
+}
+function opacimagesfond28(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+ setTimeout('opacimagesfond29()',100)
+}
+function opacimagesfond29(){
+opac+=0.1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+setTimeout('opacimagesfond220()',100)
+
+}
+function opacimagesfond220(){
+opac=1
+
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond2").setAttribute(terme1,terme2+opac)
+top.frames.Num0.frames.couches.zoom.document.trans.getSVGDocument().getElementById("imagesfond1").setAttribute(terme1,terme2+(1-opac))
+  cptimage=2
+   if(indicretour==1){retourcarte()}
+}
+//--------------------------------------------------------------------------------
+function change() {
+
+var site = document.menufond.choix.selectedIndex;
+{
+document.location.href=document.menufond.choix.options[site].value;
+indexoption=site
+}
+
+}
+
+
+</script>
+
+
+
+</head>
+
+<body STYLE="background-color:#e0ef00">
+
+<script>
+
+
+</script>
+<!--------------------------------------------------menufond photos--------------------------------------->
+<div style="position:absolute;top:1;left:0">
+<form NAME="menufond">
+
+<select id="choix" NAME="choix" onchange="change()";"  style="background-color:white; color:black;visibility:visible" size="1" >
+<option  VALUE="javascript:rien()">Images Fond ------------------------</option>
+<script>
+
+document.write(optionimagesfond)
+</script>
+</select>
+</form>
+</div>
+<!---------------------------------------------------------------------------------------->
+<script>
+
+
+</script>
+
+
+
+
+
+</body >
+</html>

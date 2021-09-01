@@ -1,0 +1,158 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="fr-fr"><head>
+<script>
+var fenetreouv=top.frames.Num0.transfenetre("return fenetre")
+var Xgroupepoint=new Array
+var indicarte=0
+var indexoption=0
+var indexoption2=0
+var indexoption3=0
+var rgcarte
+var XGP=new Array()
+var XCB=new Array()
+var XMT=new Array()
+var XICD=new Array()
+var XBO=new Array()
+var XTT=new Array()
+var XXBORNES1=new Array()
+var XCO=new Array()
+var XSO=new Array()
+var XXtrmmx
+var XXtitre1
+var ICDcartex
+var Xsourcefd
+var Xcolorreg
+var XTR=new Array()
+var LIBELC=new Array()
+function rien(){
+rgcarte=rgcarte
+}
+function adcarte(groupepoint,colbase,memtab,Xtitre1,ICDcarte,ABORNES1,trmmx,colorreg,sourcefd,libelc){
+XSO[XSO.length]=sourcefd
+XCO[XCO.length]=colorreg
+XTT[XTT.length]=Xtitre1
+XGP[XGP.length]=groupepoint
+XCB[XCB.length]=colbase
+XMT[XMT.length]=memtab
+XICD[XICD.length]=ICDcarte
+XBO[XBO.length]=ABORNES1
+XTR[XTR.length]=trmmx
+LIBELC[LIBELC.length]=libelc
+document.getElementById(XMT.length).firstChild.data=XMT.length+" - "+Xtitre1
+}
+function affectfdcarte(){
+top.frames.Num0.frames.couches.zam3.indicarteegal1()
+var Xsourcefd=XSO[rgcarte-1]
+Xcolorreg=XCO[rgcarte-1]
+XXtitre1=XTT[rgcarte-1]
+Xmemtab=XMT[rgcarte-1]
+Xgroupepoint=XGP[rgcarte-1] // groupepoint
+XXBORNES1=XBO[rgcarte-1]//bornes
+XXtrmmx=XTR[rgcarte-1]//minis et maxis
+Xcolbase=XCB[rgcarte-1] // palette
+ICDcartex=XICD[rgcarte-1] // ICD de la carte pour calacul dans datacarte lorsqu'on cange de validité
+top.frames.Num0.frames.couches.zam3.applyfondBORNES1enregistre(XXBORNES1,XXtrmmx,XXtitre1,Xcolorreg,Xsourcefd)
+top.frames.Num0.frames.couches.zam3.applyfondenregistre(Xcolbase,Xmemtab,Xgroupepoint,ICDcartex)
+if(top.frames.Num0.frames.couches.zatitre.document.getElementById("them2").firstChild.data==""){
+top.frames.Num0.frames.couches.zatitre.document.getElementById("them1").firstChild.data=LIBELC[rgcarte-1]
+}else{
+top.frames.Num0.frames.couches.zatitre.document.getElementById("th2").style.top=75
+top.frames.Num0.frames.couches.zatitre.document.getElementById("them2").firstChild.data=LIBELC[rgcarte-1]
+}
+//top.frames.Num0.frames.couches.zam3.indicarteegal1()
+}
+function gestlibelcarte(){
+
+top.frames.Num0.frames.couches.zatitre.document.getElementById("them2").firstChild.data=""
+}
+function gestlibelico(){
+if(indicarte==1){
+var thx2=top.frames.Num0.frames.couches.zatitre.document.getElementById("them1").firstChild.data
+top.frames.Num0.frames.couches.zatitre.document.getElementById("th2").style.top=75
+top.frames.Num0.frames.couches.zatitre.document.getElementById("them2").firstChild.data=thx2
+}else{
+}
+var libelici=top.frames.Num0.frames.datacarte.transparamH("return stocklibel1")
+top.frames.Num0.frames.couches.zatitre.document.getElementById("them1").firstChild.data=libelici
+}
+function alacarte(){
+if(fenetreouv=="cartO2"){
+//top.frames.Num0.annulz2()
+top.frames.Num0.annulsansfondx()
+}
+top.frames.Num0.frames.datacarte.indicnouvellecarte()
+top.frames.Num0.frames.couches.zam3.indicarte21()
+indicarte=1
+document.getElementById("enr").style.visibility="visible"
+top.frames.Num0.frames.couches.zam3.grilleapplycarte()
+}
+function auxicones(){
+if(fenetreouv=="cartO2"){
+top.frames.Num0.forcez2()
+}
+
+document.getElementById("enr").style.visibility="hidden"
+top.frames.Num0.frames.couches.zam3.indicarte0()
+top.frames.Num0.frames.couches.zam3.Xindana0()
+top.frames.Num0.frames.couches.zam3.mentabdefaut();
+top.frames.Num0.frames.couches.zam3.affectpointcasedefaut();
+top.frames.Num0.frames.couches.zam3.grilleapply()
+}
+function change3() {
+var site3 = document.menu3.choix3.selectedIndex;
+{
+document.location.href=document.menu3.choix3.options[site3].value;
+indexoption3=site3
+}
+document.menu3.choix3.selectedIndex=0
+}
+function change() {
+var site = document.menu.choix.selectedIndex;
+{
+document.location.href=document.menu.choix.options[site].value;
+indexoption=site
+}
+document.menu.choix.selectedIndex=0
+}
+function change2() {
+var site2 = document.menu2.choix2.selectedIndex;
+{
+document.location.href=document.menu2.choix2.options[site2].value;
+indexoption2=site2
+}
+document.menu2.choix2.selectedIndex=0
+}
+
+function appliquepalette(){
+top.frames.Num0.frames.couches.zam3.appliquecouleur()
+//if(indicarte==1){top.frames.Num0.frames.couches.zam3.grilleapplycarte()}else{top.frames.Num0.frames.couches.zam3.grilleapply()}
+}
+
+
+</script></head>
+<body style="background-color: #CCCCFF"  onkeydown="javascript:top.test(event);" >
+<div style="position: absolute; top: 2px; left: 5px;"><form  onmouseover="top.ouvHelp('appliquer')"  name="menu">
+
+<select id="choix" name="choix" onchange="change()"  onmouseover="if(document.allxxxx){top.frames.Num0.frames.couches.zoom0()}" style="background-color: white; color: black; visibility: visible;width:100px" size="1"><option value="javascript:document.getElementById('enr').style.visibility='visible';rien()">Appliquer
+&nbsp;&nbsp;&nbsp;</option><option value="javascript:auxicones();gestlibelico()">aux icônes</option><option value="javascript:alacarte();gestlibelcarte()">à la carte</option></select>
+</form></div>
+<div style="position: absolute; top: 2px; left: 160px;"><form onmouseover="top.ouvHelp('palette')" name="menu2">
+
+<select id="choix2" name="choix2" onchange="change2()"  onmouseover=";if(document.allxxxx){top.frames.Num0.frames.couches.zoom0()}" style="background-color: white; color: black; visibility: visible;width:100px" size="1"><option value="javascript:rien()" >Palette
+&nbsp;&nbsp;&nbsp;</option><option value="javascript:top.frames.Num0.frames.couches.zam3.tbase(0);appliquepalette()">5
+couleurs</option><option value="javascript:top.frames.Num0.frames.couches.zam3.tbase(1);appliquepalette()">dég
+rouge</option><option value="javascript:top.frames.Num0.frames.couches.zam3.tbase(2);appliquepalette()">dég
+marron</option></select>
+</form></div>
+<div style="position: absolute; top: 2px; left: 280px;"><form onmouseover="top.ouvHelp('fondsdecartes')" name="menu3">
+<select id="choix3" name="choix3" onchange="change3()"  onmouseover="if(document.allxxxx){top.frames.Num0.frames.couches.zoom0()}" style="width:130px;background-color: white; color: black; visibility: visible;" size="1"><option value="javascript:rien()">Fonds de cartes
+</option><option id="1" value="javascript:rgcarte=1;affectfdcarte()">&nbsp;</option><option id="2" value="javascript:rgcarte=2;affectfdcarte()">&nbsp;</option><option id="3" value="javascript:rgcarte=3;affectfdcarte()">&nbsp;</option><option id="4" value="javascript:rgcarte=4;affectfdcarte()">&nbsp;</option><option id="5" value="javascript:rgcarte=5;affectfdcarte()">&nbsp;</option><option id="6" value="javascript:rgcarte=6;affectfdcarte()">&nbsp;</option><option id="7" value="javascript:rgcarte=7;affectfdcarte()">&nbsp;</option><option id="8" value="javascript:rgcarte=8;affectfdcarte()">&nbsp;</option><option id="9" value="javascript:rgcarte=9;affectfdcarte()">&nbsp;</option><option id="10" value="javascript:rgcarte=10;affectfdcarte()">&nbsp;</option><option id="11" value="javascript:rgcarte=11;affectfdcarte()">&nbsp;</option><option id="12" value="javascript:rgcarte=12;affectfdcarte()">&nbsp;</option></select>
+</form></div>
+
+<div style="position: absolute; top:2px; left: 110px;">
+
+<input onmouseover="top.ouvHelp('enreg')" id="enr" style="visibility: hidden;" value="E" size="1" onclick="top.frames.Num0.frames.couches.zam3.transenregiscarte();document.getElementById('enr').style.visibility='hidden';" type="button"><!--/form-->
+</div>
+<script>
+</script>
+</body></html>

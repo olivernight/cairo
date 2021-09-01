@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr">
+<head>
+
+
+  <link rel="stylesheet" type="text/css" title="normal" media="screen" href="../style.css">
+<style type="text/css">
+	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
+
+body {
+	background-image: url('' );
+      	background-attachment: fixed;
+			background-repeat: repeat-x;
+			/*background-color: #E6EEF4;*/
+color:black;
+font-family:Arial;
+margin:0;
+padding:2;
+width:95%;
+
+}
+a:link {
+color:white;
+}
+
+</style>
+
+  
+  <title>cartO-Monde1-encaps.htm</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  
+  <script language="javascript">
+//---------------------------------------------------------------//initialisation sur le carte n°x
+var choixcarte=0 //N° de la carte à l'ouverture de la page. La fonction d'ouverture est située en bas de page : "top.document.getElementById('Num0').src='cartO2encapsule.htm" . Si elle n'est pas activée , elle est précédée de "//"
+//--------------------------------------------------------------------
+var ili=top.location.href
+ili=ili.indexOf("encaps",0)
+
+function azimuttexte(){
+if(ili<0){
+var bl=""
+if(document.getElementById("blabla")){}else{
+bl='<span id="blabla" style="color: white;">'
+for(i=0;i<500;i++){
+bl+="bla "
+}
+bl+="</span>"
+
+
+}
+
+if(document.getElementById("transpdiv")){}else{
+var inertextbody=document.getElementById("bod").innerHTML
+inertextbody="<span id='innertranspdiv'><img id='transp' src='../carretransparent.gif' style='width:470px;height:1px;;float:left'>"+inertextbody+"</span>"
+inertextbody+=bl
+inertextbody="<div class='textearticle'  id='transpdiv' style='position:absolute;top:100px;textalign:justify;'>"+inertextbody+"</div>"
+
+
+
+
+
+document.getElementById("bod").innerHTML=inertextbody
+document.getElementById('transp').style.height='413px';
+}
+}
+}
+
+
+function xxx(){// appellée par onload dans la balise body de la page de texte qui commande la carte
+
+carte()
+fond()
+icone()
+fi()
+encadre()
+//netoiantislash()
+//-----function indexation des métabalises aux cartes
+balayagenodes()
+choixcartela=top.frames.Num0.returnchoixcartela("return choixcartela")
+if(choixcartela!=0){if(choixcartela!=choixcarte){carteencours=0;cartajust(choixcarte)}} 
+//si la carte en cours au mement de l'ouverture de cette page est différente de 0, alors vérifier si carteeencours est égale à la première carte indéxée sur cette page. Si c'est égal, ne rien faire, si c'est différent , ouvrir la première carte de cette page
+top.frames.Num0.transchoixcartela() // actualise choixcarte dans cart02encapsule.htm dans la frames Num0 du top
+
+
+
+
+
+
+top.positioncache()
+
+
+}
+
+  </script>
+  
+  <script language="javascript" src="../metalanguage.js"></script>
+  
+  <script language="javascript">
+  </script>
+</head>
+
+
+<body id="bod"  style="font-family:arial;font-size:12px" onload="azimuttexte();setTimeout('xxx()',1000)" onscroll="top.heightscroll();"><br>           <br><span style="font-size: 11px; font-family: Arial,Helvetica,sans-serif;">
+
+</span><div style="text-align: center;"><span style="font-size: 11px; font-family: Arial,Helvetica,sans-serif;"><font style="font-family: Arial,Helvetica,sans-serif; font-weight: bold;" size="4">Comment ça marche?</font></span><br><span style="font-size: 11px; font-family: Arial,Helvetica,sans-serif;"></span></div><div style="text-align: center;"><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><br></font><div style="text-align: left;"><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Prenons
+ce document par exemple. C'est un hypertexte, c'est à dire un texte
+comportant des liens vers des objets ou des documents.</font> <font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-family: Arial,Helvetica,sans-serif;">Dans ce type d'hypertexte, </span>les liens vers les cartes et les données sont représentés par des boutons.</font><br><br><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Le bouton rouge représente le<span style="font-weight: bold;"> fond de carte vierge</span>.</font>
+
+
+
+</div><div style="text-align: center;"><div style="text-align: left;"><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Par exemple : <span id="../../ALADIN/Site-precarite.fr/rouge.png"></span><span id="Site-CBE Bethune-ARACT/rouge.png"></span><carte>4,Pr�carit� ch�mage sant�,graph1,libel0</carte>
+la France des départements</font>.<font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;"></span></font><br><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;">A l'ouverture de l'hypertexte, la carte représentée par le premier bouton rouge dans le texte est ouverte automatiquement. </span></font><br><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;">Toutes les données relatives à une carte sont positionnée</span></font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;"> </span></font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;">en dessous du bouton rouge.</span></font><br><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><br></font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-weight: bold; color: red;">Vous
+pouvez faire glisser la carte : cliquez sur le fond bleu de la carte,
+maintenez le click  en faisant glisser la carte puis relachez le click</span></font><br><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><br>Les boutons du type suivant permettent d'afficher une donnée par <span style="font-weight: bold;">des formes ponctuelles</span> sur la carte (<span style="font-weight: bold;"> rond, flèche, étoiles etc.</span>)</font>.<br><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Par exemple : <span id="../icones/bleu.png"></span><span id="../../ALADIN/Site-precarite.fr/bleu.png"></span><span id="Site-CBE Bethune-ARACT/bleu.png"></span><icone>2003,taux mortalité 2003,graph1,1,0,libel0</icone> le taux de mortalité en 2003</font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;"> (représenté </span></font><font style="font-family: Arial,Helvetica,sans-serif; font-style: italic;" size="2">ici </font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;">en 2 classes d'effectifs égaux, la valeur de séparation des deux groupe étant nommée médiane</span>)</font>.<br><br><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Cette même donnée peut être représentée par <span style="font-weight: bold;">coloriage des aires </span>avec le bouton du type suivant : <span id="../icones/vert.png"></span><span id="../../ALADIN/Site-precarite.fr/vert.png"></span><span id="Site-CBE Bethune-ARACT/vert.png"></span><fond>2003,taux mortalité 2003,marron,Q5,graph1,libel0</fond> ( <span style="font-style: italic;">le taux de mortalité est représenté </span></font><font style="font-family: Arial,Helvetica,sans-serif; font-style: italic;" size="2">ici </font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-style: italic;">en 5 classes d'effectifs égaux</span>).</font><br><br><div style="text-align: left;"><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Le bouton suivant </font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span id="../icones/violet.png"></span><span id="../../ALADIN/Site-precarite.fr/violet.png"></span><span id="violet.png"></span><span id="Site-CBE Bethune-ARACT/violet.png"></span><fi>2003,taux mortalité 2003,marron,Q5,graph1,2002,taux fécondité 2003,vert,1,0,libel0</fi> permet de <span style="font-weight: bold;">superposer un fond de carte colorié et des graphiques ponctuels</span>, comme ici , en fond, le taux de mortalité, et en ponctuels, le taux de fécondité</font><br></div></div><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><br></font><div style="text-align: justify;"><div style="text-align: left;"><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Les boutons du type suivant <span id="../icones/jaune.png"></span><span id="../../ALADIN/Site-precarite.fr/jaune.png"></span><span id="Site-CBE Bethune-ARACT/jaune.png"></span><encadre>graph1,Structure des âges (%),libel0</encadre> permettent d'afficher des <span style="font-weight: bold; font-style: italic;">données de synthèse (histogrammes, courbes, ...)</span>. </font><br></div><font style="font-family: Arial,Helvetica,sans-serif;" size="2">NB. Pour voir ces graphiques de synthèse, vous devez cliquer sur le fond de carte.</font><br></div><br><div style="text-align: justify;"><font style="font-family: Arial,Helvetica,sans-serif;" size="2">Vous pouvez aussi : <br></font><ul><li><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-weight: bold;">Agir sur la carte</span></font><font style="font-family: Arial,Helvetica,sans-serif;" size="2">  avec les boutons situés en haut à gauche du cadre de la carte.<span style="font-weight: bold;"></span></font></li><li><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-weight: bold;">Intégrer d'autres données</span> avec </font><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><span id="../icones/wikimode.png"></span></font><font style="font-family: Arial,Helvetica,sans-serif;" size="2">et les 4 menus situés sous la carte.</font></li></ul><font style="font-family: Arial,Helvetica,sans-serif;" size="2"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></font><div style="text-align: left;"><br></div></div></div></div><span style="font-size: 11px; font-family: Arial,Helvetica,sans-serif;"><br>
+
+
+<br></span>
+
+<!--font style='color: blue;' size='2'><center><span style='font-weight: bold;' onmouseover='javascript:document.getElementById('xaide').style.visibility='visible''   onmouseout='javascript:document.getElementById('xaide').style.visibility='hidden''><font size='4'>Mini aide<br></font></span></center></font--> <div id="xaide" style="border: 1px dotted rgb(0, 0, 0); position: absolute; visibility: visible; z-index: 1000; top: 943px; left: 3px;">
+<table bgcolor="yellow"><tbody><tr><td>
+<ul><li><font style="font-family: Arial,Helvetica,sans-serif;" size="1"><span style="color: navy;"></span><font size="2"><span style="color: navy;"><span style="font-weight: bold;">Pour réduire les légendes et les graphiques</span>, survolez les boutons situés dans le cadre supérieur gauche de la carte.</span></font></font></li><li><font style="font-family: Arial,Helvetica,sans-serif;" size="1"><font size="2"><span style="color: navy;"><span style="font-weight: bold;">Pour afficher de nouveau les légendes</span> : cliquez sur le bouton <span id="../icones/legende.png"></span></span></font></font></li><li><font style="font-family: Arial,Helvetica,sans-serif;" size="1"><font size="2"><span style="color: navy;"><span style="font-weight: bold;">Pour afficher de nouveau un graphique</span> : cliquez sur le bouton </span><span style="color: navy;">
+
+<span id="../../ALADIN/Site-precarite.fr/jaune.png"></span><span id="Site-CBE Bethune-ARACT/jaune.png"></span><encadre>graph3,pyramide des âges (tous salariés),libel0</encadre></span> situé dans le cadre de la carte 
+
+</font></font></li></ul><span><font size="2"><span style="font-family: Arial,Helvetica,sans-serif;"><font style="color: navy; font-family: Arial,Helvetica,sans-serif;" size="2"><span style="font-weight: bold;"><br><br>Besoins d'aide complémentaire?<br>1 - Aide contextuelle</span></font> <br style="color: navy;"></span></font></span><ul><li><span><font size="2"><span style="font-family: Arial,Helvetica,sans-serif;"><font style="color: navy;" size="1"><span style="font-style: italic;"><font size="2">Placez le curseur de la souris sur un objet (la carte, un bouton etc..), </font></span></font></span></font></span></li><li><span><font size="2"><span style="font-family: Arial,Helvetica,sans-serif;"><font style="color: navy;" size="1"><span style="font-style: italic;"><font size="2">et appuyez sur la touche majuscule (shift). </font></span></font></span></font></span></li></ul><span><font size="2"><span style="font-family: Arial,Helvetica,sans-serif;"><font style="color: navy;" size="1"><font size="2"><span style="font-weight: bold;"><br>2 - Aide complète : </span><span style="font-style: italic;">cliquez sur le bouton <span id="../icones/help.png">sur la droite de la carte<br><br><br></span></span></font></font></span>
+</font></span></td></tr></tbody></table></div>
+
+
+<br><br><br><br><br><br><br><br>
+
+
+<br><br><br><br><br><br><br><br><br><br><br></body></html>

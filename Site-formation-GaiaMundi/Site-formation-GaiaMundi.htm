@@ -1,0 +1,811 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr"><head><!--Copyleft[2005-2007] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA--><title>Altercarto/cartes et commentaires/GaïaMundi</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+	
+	<link rel="stylesheet" type="text/css" title="normal" media="screen" href="../style_gda20.css">
+	<link rel="stylesheet" type="text/css" href="../js/sddm.css">
+		 <script type="text/javascript" src="../menucontextuel_HAUT.js"></script>
+
+	<script type="text/javascript">
+
+	</script>
+	<script language="javascript" src="editpas.js"></script>
+<script language="javascript" src="REP.js"></script>
+	<script type="text/javascript" src="../js/dragable-content.js"></script>
+<script language="javascript" src="../intitulesILIADE.js"></script>
+
+
+<script language="javascript">
+// ------------------------------------------------------------------------------------------------------------------------------COULEUR DE FOND --------------------------------------------------------------------------------------
+
+var bgcolorfond="#D7D7EB"//"red"
+
+
+function transrepsite(){return repsite}
+
+
+var typeicones=1
+var tailleico=0
+var colbalse=0;
+var firsticone=0
+// functions d'ajustement de la taille des icones. Commandée par les boutons PLUx et MOIx dans CartO2encapsule.htm
+function tailleicoplus(){tailleico+=1}
+function tailleicomoins(){tailleico-=1}
+function TYPICO(a){typeicones=a}
+function boutonbal(a){
+
+if(a=="encadru"){top.frames.commande1.recscenario.enregencadre(a,typeicones,tailleico)}
+if(a=="iconu"){top.frames.commande1.recscenario.enregicones(a,typeicones,tailleico)}
+if(a=="cartu"){top.frames.commande1.recscenario.enregcarte(a)}
+if(a=="fondu"){top.frames.commande1.recscenario.enregfond(a,typeicones,tailleico)}
+if(a=="f-ico"){top.frames.commande1.recscenario.enregfico(a,typeicones,tailleico)}
+
+}
+
+
+function valbalise(b){
+//alert(b)
+document.sel.textbalise.value=b
+document.sel.textbalise.select()
+}
+
+
+
+function changeimagefond(a){}
+
+
+
+
+
+
+
+
+
+var poseditabon=0// editeur apr défaut 
+var bgcolormenu=bgcolorfond
+function transbgcolormenu(){return bgcolormenu}
+var Iliade="Iliade"
+var createurSVG="non"
+function retournecreateurSVG(){return createurSVG}
+function retourneIliade(){return Iliade}
+function retourneintitules1(){return intit}
+function retourneintitules2(){return initO1}
+var optionwiki=new Array()
+function rien(){}
+var u=0
+var objaide=""
+var premieraide=0
+
+
+function attribkey16aide(){
+top.frames.frameaide.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test3(event)")
+top.frames.commande1.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test3(event)")
+
+}
+
+
+function test(event){
+//alert(event.keyCode)
+
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert("test")
+//alert(objaide)
+document.getElementById("aide").style.visibility="visible"
+top.frames.frameaide.location.href="../aidecartecom.html?REP="+objaide
+setTimeout("attribkey16aide()",500)
+}
+
+}
+function test2(event){//évennement engendré dans le svg
+//alert(event.keyCode)
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert("test2")
+//alert(objaide)
+document.getElementById("aide").style.visibility="visible"
+top.frames.frameaide.location.href="../aidecartecom.html?REP="+objaide
+setTimeout("attribkey16aide()",500)
+}
+
+}
+function test3(event){//évennement engendré dans le svg
+//alert(event.keyCode)
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert("test3")
+//alert(objaide)
+document.getElementById("aide").style.visibility="visible"
+top.frames.frameaide.location.href="aidecartecom.html?REP="+objaide
+setTimeout("attribkey16aide()",500)
+}
+
+}
+function antitest0(event){event.stopPropagation()}
+function antitest(event){
+u=0
+top.document.getElementById('aide').style.visibility='hidden'
+window.addEventListener("keydown",test,true)
+//onKeyDown="javascript:test(event);"
+//alert(event.keyCode)
+
+
+}
+function ouvHelp(a){
+
+if(a=="Help2"){
+document.getElementById("aide").style.visibility="visible";top.frames.frameaide.location.href="aidecartecom.html?REP=Help"
+setTimeout("attribkey16aide()",500)
+}
+
+objaide=a
+//alert(a)
+
+
+
+
+}
+
+function affwikimode(){
+document.getElementById("com").style.visibility="visible"
+}
+function clowikimode(){
+document.getElementById("com").style.visibility="hidden"
+}
+
+
+
+
+var menuencaps=new Array()
+</script><script language="javascript" src="../intitulesILIADE.js"></script>
+<script id="menuencaps" language="javascript" src="menuencapsules-Site.js"></script>
+
+<script language="javascript">
+
+
+var rgmen=menuencaps.length-1
+</script>
+
+<script language="javascript" src="../parametregenraux2-17-2.js"></script>
+<script language="javascript" src="../wikiencapsulILIADE.js"></script>
+<script language="javascript">
+var initulprojet=intit[4]
+
+function retourneintit4(){ return initulprojet }
+function chgbgetcolor(a,b,c){
+
+a="background-color:"+a+";color:"+c
+b.setAttribute('style',a)
+}
+function chgcolor(a,b){
+
+a="color:"+a
+b.setAttribute('style',a)
+}
+
+var aw//=document.location.href
+/* selecteur automatique des pages hypertexte par url simple a été désactivié ici pour laisser place à la gestion des url par le menu du site
+var longx2=0
+for(i=0;i<aw.length;i++){
+if(aw.substr((aw.length-i),1,1)=="?"){longx2=i}
+}
+
+aw=aw.substr(aw.length-longx2+1,longx2,1)
+*/
+var lacible=''
+	
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    lacible=(urlvar['cible'])
+//if(urlvar['hypertext']>0){aw=(urlvar['hypertext'])}else{aw='1'}
+if(urlvar['hypertext']!=""){aw=(urlvar['hypertext'])}else{aw='1'}
+
+function valaw(){
+return aw
+}
+function BL(){ //début signal chargement top.BL()
+
+document.getElementById("divloading").style.top=400+'px' 
+top.frames.FloadingBis.location.href="../vide.htm"
+
+}
+function EL(){//fin signal chargement  top.EL()
+document.getElementById("divloading").style.top=-1000+'px'
+
+}
+function retournemenuencaps(){
+return menuencaps}
+
+var transHL=new Array()
+transHL[0]=largeurecran
+transHL[1]=hauteurecran
+function transHLecran(){
+return transHL
+}
+
+function transscrol(){
+return scrol
+}
+function scroltravail(){
+document.getElementById("Num0").scrolling="yes"
+}
+
+
+function chargemenu(){
+document.getElementById("SUJET").height=25
+document.getElementById("OTHER").height=25
+top.frames.SUJET.location.href="MENU-SUJET.htm"
+top.frames.OTHER.location.href="MENU-OTHER.htm"
+top.frames.maps.location.href="menuMapsILIADE.htm"
+top.frames.icone.location.href="menuIconesILIADE.htm"
+}
+var btemp="b1"
+function changebouton(a){
+
+var bx="bt"+a.substr(a.length-1,1)
+var ax="b"+a.substr(a.length-1,1)
+var fich=document.getElementById(bx).firstChild.nodeValue
+A="cartO-"+fich+"-encaps.htm"
+top.frames.Num0txt.location.href=A
+document.getElementById(ax).src="../boutonselect.png"
+document.getElementById(btemp).src="../bouton.png"
+btemp=ax
+}
+function changepage(a){
+//var op="option"+a.substr(a.length-1,1)var fich=document.getElementById(a).firstChild.nodeValue
+var fich=document.getElementById(a).firstChild.nodeValue
+var pas=fich.indexOf("-",0)
+fich=fich.substr((pas+1),fich.length-(pas+1))
+
+A="cartO-"+fich+"-encaps.htm"
+
+top.frames.Num0txt.location.href="../"+repsite+"/"+A
+
+}
+var optw=""
+var numerohyper=0
+var rangdoc=0
+function change_site() {
+antitest()
+var site = document.menu.popup.selectedIndex;
+{
+
+window.location.href =
+document.menu.popup.options[site].value;
+setTimeout('document.getElementById("titrecarte").innerHTML="<small>hypertexte de cartes commentées :</small> "+numerohyper+" - "+menuencaps[rangdoc]',1000)
+document.menu.popup.selectedIndex=0
+}
+}
+function rien2(){}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//module de commande pour créer les balises de méta language de textualisation
+var initmove=0
+function disable(event){
+X0=document.getElementById("commande1").width
+Y0=parseInt(divpoint.style.top)
+imag1point.width=40
+imag1point.height=40
+imagpoint.style.top=parseInt(divpoint.style.top)
+imagpoint.style.left=parseInt(document.getElementById("commande1").width)+0
+initmove=0
+}
+var trez=0
+function A2moveXY(event){
+if(initmove==1){
+
+
+if (document.all){
+//-------à faire
+
+}else{
+
+X1=-(event.clientX-X)
+Y1=-(event.clientY-Y)
+document.getElementById("commande1").height=parseInt(trez)+parseInt(Y1)
+//divpoint.style.left=X0-X1+tempx
+divpoint.style.top=Y0-Y1+tempy
+imagpoint.style.top=Y0-Y1+tempy+30-200
+imagpoint.style.left=X0-X1+tempy+0-200
+if(X0-X1+tempx<400){document.getElementById("textstatus").firstChild.data=""}
+document.getElementById("commande1").width=X0-X1+tempx
+//trez=trez0+Y1
+
+
+}
+
+}
+}
+
+function ajustcol(){
+document.getElementById('com').style.left=trucx2
+
+}
+
+function AmoveXY(event){
+
+if(initmove==0){
+initmove=1
+
+if(document.all){
+X = event.clientX;
+Y = event.clientY;
+tempx=parseInt(divpoint.style.left)
+tempy=parseInt(divpoint.style.top)
+}else{
+X = event.clientX;
+Y = event.clientY;
+tempx=0
+tempy=0
+//trez=document.getElementById("commande1").height
+
+imag1point.width=400
+imag1point.height=400
+
+trez=parseInt(document.getElementById("commande1").height)
+}
+}
+
+}
+
+
+function init2(){
+if(initialmove==0){
+indicinit2=1
+
+
+}
+}
+function initmoveXY(){initmove=1}
+function init(){}
+function initXXXXXXXXXXXX(){//fonction d'initialisation inhibée
+if(document.all){
+document.getElementById("com").attachEvent("onmousedown",AmoveXY)
+document.getElementById("com").attachEvent("onmousemove",A2moveXY)
+document.getElementById("com").attachEvent("onmouseup",disable)
+}else{
+
+//document.getElementById("fondcom").addEventListener("mousedown",AmoveXY,true)
+//document.getElementById("fondcom").addEventListener("mousemove",A2moveXY,true)
+//document.getElementById("fondcom").addEventListener("mouseup",disable,true)
+document.getElementById("imag0").addEventListener("mousedown",AmoveXY,true)
+document.getElementById("imag0").addEventListener("mousemove",A2moveXY,true)
+document.getElementById("imag0").addEventListener("mouseup",disable,true)
+}
+
+X0=document.getElementById("commande1").width//parseInt(divpoint.style.left)
+Y0=parseInt(divpoint.style.top)
+trez0=document.getElementById("commande1").height
+initmove=0
+//tempx=parseFloat(divpoint.style.left)
+
+}
+
+
+var largeurcadre0=400
+var debdblc=1
+
+function ouvferouv(){}
+function ouvferouvxxxxxxxxxxxxx(){
+if(debdblc==0){
+debdblc=1
+divpoint.style.top=divpoint0
+document.getElementById("commande1").width=commandewidth0
+document.getElementById("commande1").height=commandeheight0
+imagpoint.style.left=imagpointleft0
+imagpoint.style.top=imagpointtop0
+document.getElementById("textstatus").firstChild.data="Commandes et générateur de méta-balises pour wikini  "
+}
+X0=document.getElementById("commande1").width//parseInt(divpoint.style.left)
+//trez0=
+
+Y0=parseInt(divpoint.style.top)
+
+imag1point.width=60
+imag1point.height=40
+imagpoint.style.top=parseInt(divpoint.style.top)
+imagpoint.style.left=parseInt(document.getElementById("commande1").width)+0
+//stop()
+initmove=0
+}
+//}else{
+function ouvferfer(){}
+function ouvferferxxxxxxxxxxxxxxxxx(){
+if(debdblc==1){
+
+debdblc=0
+divpoint.style.top=hauteurecran+70
+document.getElementById("commande1").width=0
+document.getElementById("commande1").height=0
+imagpoint.style.left=5+0
+imagpoint.style.top=hauteurecran
+document.getElementById("textstatus").firstChild.data=""
+}
+X0=document.getElementById("commande1").width//parseInt(divpoint.style.left)
+//trez0=
+
+Y0=parseInt(divpoint.style.top)
+
+imag1point.width=60
+imag1point.height=40
+imagpoint.style.top=parseInt(divpoint.style.top)
+imagpoint.style.left=parseInt(document.getElementById("commande1").width)+0
+//stop()
+initmove=0
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<style type="text/css">
+
+#conteneur3 {
+     position: relative;  /*on positionne le conteneur */
+	 top:0px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1000px;
+     text-align: left;
+
+}
+#menuici {
+     position: relative;  /*on positionne la frame de menu*/
+	 top:75px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1020px;
+     text-align: left;
+
+}
+#bandeauici {
+     position: relative;  /*on positionne la frame de bandeau*/
+	 top:72px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1010px;
+     text-align: left;
+
+}
+#boxB{
+		width:110px;
+		float:left;
+		background-color:#FFF;
+		border:1px dotted #000;
+		padding:2px;
+		margin-left:2px;
+	filter:alpha(opacity=70);
+	opacity: 0.7;
+	background-image:url('haut_box.png');
+	background-repeat: repeat-x;
+	}
+</style>
+<script type="text/javascript" src="../js/drag-drop-custom.js"></script>
+<script language="javascript">//
+
+</script></head>
+<body id="bodyici" onKeyDown="javascript:test(event);" onKeyUp="javascript:antitest0(event);">
+<!--div style="position:relative;top:0px"><img width="1004px" height=100% src="../cbleu.gif"></img></div-->
+<div id="conteneur3" style="background-color:white" >
+
+
+
+<script language="javascript">//ECRITURE des entêtes de page à partir du fichier format_page.js dans le répertoire dédié au site
+
+document.write('<script id="format" language="javascript" src="../')
+var formatici=repsite+"/format_page.js"
+document.write(formatici)
+document.write('" >')
+
+</script></script>
+
+
+<script id="menuencapslocal" src="menuencapsuleslocal-Site.js" language="javascript" ></script>
+<script language="javascript">
+
+var decaleHB=+40
+
+//var Iliade=top.retourneIliade("return Iliade")
+if(Iliade=="Iliade"){
+document.write('<div onmouseover="document.getElementById(\'Num0txt\').width=largtext;agr=0;" class="texte2" style="position:absolute; top:'+(190+decaleHB)+'px; left:325px; width:679px; height:450px; background: white; border:1px dotted #000000;filter:alpha(opacity=70); opacity: 1;"><iframe  src="../cartO2encapsuleILIADE.htm"')}else{
+document.write('<div style="position: absolute; left: 325px; top:'+(190+decaleHB)+'px;"><iframe  src="../cartO2encapsule.htm"')}
+document.write(' id="Num0" name="Num0" style="border-color: white;" noresize=""  marginwidth="0" marginheight="0" frameborder="1" height="'+(hauteurecran-4)+'" scrolling="no" width="'+(largeurecran)+'"></iframe></div>')
+var largtext
+if(largeurecran>705){largtext=310+3.5*(largeurecran-705)/10}else{largtext=310}
+/*-----------------------titre au dessus de la carte----------------------------------------------*/
+document.write('<div class="texte" style="position:absolute; top:'+(150+decaleHB)+'px; left:325px; width:600px; height:20px; background: transparent; border:0px dotted #000000; z-index:100">')
+document.write('<span class="texte"><big><big><b id="titrecarte" style="opacity: 0.5;">Cartographie interactive</b></big></big>')
+document.write('</div>')
+
+
+/*-------------------- menu cartes et commentaires------------------------------*/
+document.write('<div class="texte" style="position:absolute; top:'+(150+decaleHB)+'px; left:0px; width:310px; height:20px; background: transparent; border:0px dotted #000000; opacity: 1;z-index:100">')
+
+document.write('<form  onmouseover="ouvHelp(\'menucartecom\')"  name="menu"><select  name="popup" onchange="change_site();" style="background-color: white; color: black;width:'+largtext+'px" size="1"><option value="javascript:rien2()" title="Selectionnez un hypertexte de cartes commentées">&nbsp;Cartes et Commentaires</option>')
+//alert(repsite)
+//alert(repsite.substr(5,(repsite.length)))
+document.write('<option id="option1" title="'+menuencaps[0]+'" onclick="numerohyper=1;rangdoc=0" VALUE="javascript:a=\'option1\' ;changepage(a)">1-Sommaire-'+repsite+'</option>')
+var O=""
+var rgici=1
+
+for(i=1;i<menuencaps.length;i++){
+if(listpubcartovision[i]=="1"){
+rgici+=1
+
+j=i+1
+O='<option id="option'
+O+=j
+O+='" title="'+menuencaps[i]+'" onclick="numerohyper='+(rgici)+';;rangdoc='+(i)+'" VALUE="javascript:a='
+O+="'option"+j+"'"
+O+=';changepage(a)"'
+if(i>rgmen){
+O+=' style="color:blue;font-weight:bold;font-family:arial">'}else{
+O+=' style="font-weight:bold;font-family:arial">'}
+O+=rgici
+O+="-"
+O+=menuencaps[i]
+O+='</option>'
+document.write(O)
+}
+}
+</script>
+<script language="javascript">
+for(i=0;i<optionwiki.length;i++){
+//document.write('<option id="travail" value="javascript:appeltravail2(\''+optionwiki[i]+'\')">&nbsp;'+optionwiki[i]+'</option>')
+}
+</script>
+</select></form>
+</div>
+<script language="javascript">
+var agr=0
+
+document.write('<div style="position: absolute;background-color:white ; top:'+(190+decaleHB+2)+'px;  left:190px;z-index:500">')
+</script>
+
+<a onclick="javascript:if(agr==0){document.getElementById('Num0txt').width=430;agr=1}else{document.getElementById('Num0txt').width=largtext;agr=0}" onmouseOver="ouvHelp('+/-large')" href="javascript:rien()"><b><small><font face="arial black">texte +/- large</font></small></b></a>
+</div>
+
+<div id="com" name="com"  style="position:absolute;left:600px;top:270px;visibility:hidden;z-index:1100" >
+<iframe  id="commande1" name="commande1" src="../comtravailILIADE.htm" frameborder="1" width=400 height=250 style="background-color: transparent" ></iframe>
+</div>
+
+
+
+
+
+
+<script language="javascript">
+//document.write('</div>')
+
+document.write('<div class="texte" style="position:absolute; top:'+(190+decaleHB)+'px; left:0px; width:310px; height:450px; background: white; border:1px dotted #000000;opacity: 1;z-index:100">')
+
+document.write('<iframe onmouseover="top.ouvHelp(\'hypert\')"   src="../'+repsite+'/cartO-'+menuencaps[0]+'-encaps.htm" id="Num0txt" name="Num0txt" noresize="" marginwidth="5px" marginheight="0" style="border-color: white;padding:0px" frameborder="0" height="'+(hauteurecran)+'" scrolling="yes" width="'+largtext+'"  ></iframe></div>')
+
+document.write('<div style="position: absolute; right: 0px; top: '+(hauteurecran+190+decaleHB)+'px;"><a href="COPYING GNU.txt" target="_blank" onmouseover="this.style.color=\'red\';" onmouseout="this.style.color=\'gray\'" style="color:gray"><font size="1" >Copyrleft[H.paris][2006-8][GPL]</font></a></div>')
+/* menus des graphiques de données*/
+document.write('<div  style="position: absolute; left:0px; top: '+(hauteurecran+191+decaleHB)+'px;"><a><b><font face="Arial" color=gray size="1">Menus des Graphiques de données : </font></b></a></div>')
+
+document.write('<div onmouseover="ouvHelp(\'menugraph1\')" style="position: absolute; left:0px; top: '+(hauteurecran+200+decaleHB+5)+'px;"><iframe src="" id="SUJET" name="SUJET" noresize="" marginwidth="0" marginheight="0" frameborder="0" height="0" scrolling="no" width="250"></iframe></div>')
+document.write('<div onmouseover="ouvHelp(\'menugraph2\')" style="position: absolute; left: '+260+'px; top: '+(hauteurecran+200+decaleHB+5)+'px;"><iframe src="" id="OTHER" name="OTHER" noresize="" marginwidth="0" marginheight="0" frameborder="0" height="0" scrolling="no" width="250"></iframe></div>')
+/* menus des cartes et icones ponctuels*/
+document.write('<div  style="position: absolute; left:'+(260+260)+'px; top: '+(hauteurecran+191+decaleHB)+'px;"><a><b><font face="Arial" color=gray size="1">Menus des cartes et icones ponctuels : </font></b></a></div>')
+
+document.write('<div onmouseover="ouvHelp(\'menugraph2\')" style="position: absolute; left: '+(260+260)+'px; top: '+(hauteurecran+200+decaleHB+5)+'px;opacity:0.9"><iframe src="" id="maps" name="maps" noresize="" marginwidth="0" marginheight="0" frameborder="0" height="25" scrolling="no" width="227"></iframe></div>')
+document.write('<div onmouseover="ouvHelp(\'menugraph2\')" style="position: absolute; left: '+(260+260+260)+'px; top: '+(hauteurecran+200+decaleHB+5)+'px;opacity:0.9"><iframe src="" id="icone" name="icone" noresize="" marginwidth="0" marginheight="0" frameborder="0" height="25" scrolling="no" width="227"></iframe></div>')
+
+
+/* aide*/
+document.write('<div id="aide" class="texte" style="position:absolute; top:'+(190+decaleHB)+'px; left:0px; width:310px; height:450px; background: white; border:1px dotted #000000;filter:alpha(opacity=70); opacity: 1;z-index:110;visibility:hidden"><iframe name="frameaide" id="frameaide" style="width:310px; height:450px;border:0;padding:5px" src="../vide.html"></iframe></div>')
+
+document.write('<div class="texte"  style="position:absolute;top:'+(190+decaleHB-30)+'px;left: 972px" onclick="poseditabon=0;if(Editpastemp==\'10638\'){var pasX=\'\'}else{var pasX=Editpastemp};document.getElementById(\'sais\').value=pasX;document.getElementById(\'editpas\').style.visibility=\'visible\'"><img src="editeur.png"  title="Ouvrir l\'éditeur de pages du site"></img></div>')
+
+document.write('<div class="texte"  style="position:absolute;top:'+(190+decaleHB-30)+'px;left: 942px" onclick="poseditabon=1;if(Editpastemp==\'10638\'){var pasX=\'\'}else{var pasX=Editpastemp};document.getElementById(\'sais\').value=pasX;document.getElementById(\'editpas\').style.visibility=\'visible\'"><img src="abonnement.png"  title="Ouvrir le tableau d\'abonnement du site"></img></div>')
+</script>
+ 
+<div id="editici"   style="position:absolute;top:100px;left:0px;visibility:hidden;z-index:2000">
+<iframe onmouseover="this.style.width='420px';window.frames.editla.document.getElementById('text-frame').style.width='330px'" onmouseout="this.style.width='310px'" name="editla" style="width:310px;height:600px;border:0"  src="ecrit_hypertext.html" ></iframe>
+</div>
+<!--
+<div   id="boxB" class="dragableElement" style="position:absolute;top:50px;left:200px;visibility:visible;z-index:2000">
+<img src="petit_cube.png">
+</div>                                                   top:'+(190+decaleHB)+'px; left:0px; width:310px; height:450px; 
+-->
+<script language="javascript">//id="abon"
+document.write('<div   id="abon" style="position:absolute;top:'+(190+decaleHB)+'px; left:0px;visibility:hidden;z-index:2000">')
+
+document.write('<iframe  id="abonne" onmouseover="this.style.width=\'420px\';" onmouseout="this.style.width=\'310px\'" name="abonne" style="width:310px; height:450px; border:0px " ></iframe>')
+</script>
+</div>
+
+<script language="javascript">
+
+// div de fin du conteneur
+document.write('</div>')
+</script>
+
+<div id="divloading"  style="position:absolute;top:-1000px;left:800px;color:gray;background-color:white;border:1px dotted #000;visibility:visible;"><img id="loading" style="background-color:white;left:60px;top:30px; width:60px;height:60px" border="0px" src="../loading.gif"><p style="font-family:arial;font-weight:bold">CHARGEMENT en COURS</p><br><br><br><br><br><br></div>
+<div style="position:absolute;top:-1000px">
+<iframe id="FloadingBis" name="FloadingBis" width=0 border=0 height=0 src="../vide.htm"></iframe>
+</div>
+
+
+<script language="javascript">
+</script>
+
+
+
+
+
+<script language="javascript">
+
+
+</script>
+
+
+<script language="javascript">
+
+function eventKeyframes(){
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test(event)")
+top.frames.Num0.couches.zoom.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test3(event)")
+
+}
+setTimeout('eventKeyframes()',1450)
+
+
+</script>
+<!--
+<div id="vignette" onmouseover="document.getElementById('imx1').width=200" onmouseout="document.getElementById('imx1').width=0" align="right" class="dragableElement"  style="position:absolute; left:1000px; top:200px; ; border: 1px dotted #222222; background: white; filter:alpha(opacity=70); opacity: 0.9;" >
+<dt style="color:gray"  class="texte" >Version "expert"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="A-Frame-Num0-cartO1-defautILIADE.htm" style="background-color:white" onclick=""><b style="color:blue"><small></small>&nbsp;=>&nbsp;</b></a></dt>
+<dt><img id="imx1" src="../FranceZE vignette.jpg" width=0 ></dt>
+</div>
+
+<div id="vignette2" onmouseover="document.getElementById('imx2').width=200" onmouseout="document.getElementById('imx2').width=0" class="dragableElement"  style="position:absolute; left:780px; top:200px; ; border: 1px dotted #222222; background: white; filter:alpha(opacity=70); opacity: 0.9;" ><dt style="color:gray"  class="texte" >Version "commentée"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="A-Frame-Num0-cartO2-17-ILIADE.htm" style="background-color:white" onclick=""><b style="color:blue"  ><small></small>&nbsp;=>&nbsp;</b></a></dt>
+<dt><img id="imx2" src="../cartecommentee.jpg" width=0 ></dt></div>
+-->
+<script type="text/javascript" src="../menucontextuel_BODY.js"></script>
+<script language="javascript">
+// affichage et effacement des couches en dur (nappe ou autres identidées par un id)
+function affic1(a){top.frames.Num0.couches.zoom.document.trans.getSVGDocument().getElementById(a).setAttribute('visibility' ,' visible' )}
+function effac1(a){top.frames.Num0.couches.zoom.document.trans.getSVGDocument().getElementById(a).setAttribute('visibility' ,' hidden' )}
+
+function affic1CONTOUR(a){
+if(top.frames.Num0.frames.paramcarte.retournelisteAddContoursSVG){
+var listeAddContoursSVG=top.frames.Num0.frames.paramcarte.retournelisteAddContoursSVG("return listeAddContoursSVG")
+
+top.frames.Num0.frames.datacarte.appliqueContour2(mapX[(numcarte-1)*5+4],listeAddContoursSVG[a][0],listeAddContoursSVG[a][1],listeAddContoursSVG[a][2],listeAddContoursSVG[a][3],listeAddContoursSVG[a][4],listeAddContoursSVG[a][5],listeAddContoursSVG[a][6],listeAddContoursSVG[a][7],listeAddContoursSVG[a][8])
+}
+}
+
+
+function forcevala(){var tapx=1;return tapx}
+function evennementmenucontext(){
+
+
+//page courante
+document.oncontextmenu = top.ouvrir_menu;
+document.onclick = top.fermer_menu;
+document.getElementsByTagName("body")[0].setAttribute("onmousemove","javascript:top.positionX(event,0,0)")
+
+//page hypertexte
+var valx=(top.innerWidth-parseInt(document.styleSheets[0].cssRules[2].style.getPropertyValue('width')))/2+10
+var valy=parseInt(document.getElementById("Num0txt").parentNode.style.top)+25
+
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onmousemove","javascript:top.positionX(event,"+valx+","+valy+")")
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onclick","javascript:top.fermer_menu(event)")
+var noed=document.createElement("script")
+noed.setAttribute("id","noedid")
+noed.setAttribute("language","javascript")
+top.frames.Num0txt.document.getElementsByTagName("body")[0].appendChild(noed)
+top.frames.Num0txt.document.getElementById("noedid").innerHTML="document.oncontextmenu = top.ouvrir_menu;"
+}
+//setTimeout('evennementmenucontext()',1250)
+
+
+
+
+document.write('<div id="menuici" class="texte" >')
+document.write('<iframe  name="haut" src="haut.html" width="1020px" height="30px" scrolling=no frameborder=0></iframe>')
+document.write('</div>')
+document.write('<div id="bandeauici" class="texte" >')
+document.write('<iframe name="bandeaula" width="1010px" height="80px" scrolling=no frameborder=0></iframe>')
+document.write('</div>')
+</script>
+<iframe style="width: 0px; height: 0px;" id="recscenario" name="recscenario" frameborder=0 src="../scenario.html"></iframe>
+<form name="sel"><textarea name="textbalise" id="textbalise" input="text" style="font-family:arial;font-size:9px;visibility:hidden" rows="3" cols="43" >texte des méta balises pour hypertextes de commande des cartes</textarea></form>
+<script>
+document.write('<div id="mobile2"    style="right:0px;top:10;visibility:visible;position:absolute;z-index:100000">')
+document.write('<div id="bferm" style="position:absolute; visibility:hidden;top:5px;left:6px"><img id="ferm" src="../boutonferme.gif" onmouseover="javascript:top.frames.Num0.frames.couches.disable22();top.document.getElementById(\'zam2\').height=0;this.style.visibility=\'hidden\'" style="visibility:hidden"></div>')
+document.write('<iframe  ALLOWTRANSPARENCY="true" id="zam2" src="vide.htm" width=300 height=0 style="padding:0px;" FRAMEBORDER=0 scrolling="no" name="zam2"></iframe>')
+document.write('</div>')
+</script>
+
+<script>
+var ecart=(document.width-1020)/2
+function ferm1x(){
+document.getElementById('ferm1').style.visibility='hidden';
+document.getElementById('framedataici1').style.visibility='hidden';
+document.getElementById('framedataici1').style.height='30px';
+document.getElementById('dataici1').style.top='750px';
+document.getElementById('dataici1').style.height='30px';
+document.getElementById('tabledataici1').setAttribute('style','background-color:transparent');
+window.frames.framedataici1.location.href='../affichdata.html'
+}
+function ferm2x(){
+document.getElementById('ferm2').style.visibility='hidden';
+document.getElementById('framedataici2').style.visibility='hidden';
+document.getElementById('framedataici2').style.height='30px';
+document.getElementById('dataici2').style.top='770px';
+document.getElementById('dataici2').style.height='30px';
+document.getElementById('tabledataici2').setAttribute('style','background-color:transparent');
+window.frames.framedataici2.location.href='../affichdata.html'
+}
+
+function recupbaseici(a){
+if(a==1){
+window.frames.framedataici1.recupbase(a)}else{window.frames.framedataici2.recupbase(a)}
+
+}
+function returnecart(){return ecart}
+document.write('<div id="dataici1" class="texte" style="position:absolute;top:750px;left:'+ecart+'px;z-index:100000">')
+document.write('<table id="tabledataici1" style="background_color:transparent;font-size:11px;font-weight:bold" width=100%><TR><TD>')
+//
+document.write('<div  style="position:absolute;opacity:0.8;top:0px;left:25px;visibility:visible;font-size:11px;font-weight:bold"><a href="javascript:rien()" onclick="document.getElementById(\'ferm1\').style.visibility=\'visible\';ferm2x();setTimeout(\'recupbaseici(1)\',500);" title="lorsque le tableau de données est affiché : selectionnez (CTRL+A), copier (CTRL+C) puis collage spécial au format texte dans un tableaur">Tableau principal des données de la carte en cours</a></div><div  style="position:absolute;top:0px;right:5px;visibility:hidden;font-size:11px;font-weight:bold"><a id="ferm1" href="javascript:rien()" onclick="ferm1x()">Fermer cette page</a></div><br>')
+document.write('<iframe id="framedataici1" name="framedataici1" src="../affichdata.html" width="1016px" height="30px" scrolling=no frameborder=1 style="visibility:hidden"></iframe>')
+document.write('</TD></TR></TABLE>')
+document.write('</div>')
+
+//
+document.write('<div id="dataici2" class="texte" style="position:absolute;top:770px;left:'+ecart+'px;z-index:100000">')
+document.write('<table id="tabledataici2" style="background_color:transparent;font-size:11px;font-weight:bold" width=100%><TR><TD>')
+
+document.write('<div style="position:absolute;opacity:0.8;top:0px;left:25px;visibility:visible;font-size:11px;font-weight:bold"><a href="javascript:rien()" onclick=";document.getElementById(\'ferm2\').style.visibility=\'visible\';ferm1x();setTimeout(\'recupbaseici(2)\',500);" title="lorsque le tableau de données est affiché : selectionnez (CTRL+A), copier (CTRL+C) puis collage spécial au format texte dans un tableaur">Tableau complémentaire des données de la carte en cours</a></div><div  style="position:absolute;top:0px;right:5px;visibility:hidden;font-size:11px;font-weight:bold"><a id="ferm2" href="javascript:rien()" onclick="ferm2x()">Fermer cette page</a></div><br>')
+document.write('<iframe id="framedataici2" name="framedataici2" src="../affichdata.html" width="1016px" height="30px" scrolling=no frameborder=1 style="visibility:hidden"></iframe>')
+document.write('</TD></TR></TABLE>')
+document.write('</div>')
+
+
+</script>
+<script language="javascript">
+
+function eventKeyframes(){
+top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test(event)")
+top.frames.Num0.couches.zoom.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test3(event)")
+
+}
+setTimeout('eventKeyframes()',1450)
+
+
+</script>
+</body></html>

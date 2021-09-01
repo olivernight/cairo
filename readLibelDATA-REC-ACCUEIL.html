@@ -1,0 +1,175 @@
+﻿<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+
+</script>
+</head>
+
+<body STYLE="background-color: white">
+<br><br>
+<iframe name="Num0" style="visibility:hidden" src="chimere-ReadLibelRecensement.html"></iframe>
+<iframe name="readlibelREC" style="visibility:visible" width=700 height=2000 src="vide.html"></iframe>
+
+<script language="javascript">
+
+var mapX=new Array()
+libelmap=new Array()
+var selectedrezo
+var selectedrezoTemp
+var selectedcarte
+var rezo=new Array()
+var nomrezo=new Array()
+var choix
+var ope="et"
+var fich=1
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="A-MANAGER-local/transdata_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="http://altko.org/admin_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+<script id="mapsRezo" language="javascript" ></script>
+
+
+<script type="text/javascript">
+function transmotscles(){
+return choix
+}
+
+function change_rezo(){
+
+
+var site = document.rezo.selectrezo.selectedIndex;
+selectedrezo=document.rezo.selectrezo.options[site].value;
+selectedrezoTemp=selectedrezo
+
+
+document.getElementById("mapsRezo").src=selectedrezo+"mapsILIADE.js"
+setTimeout('affichmaille()',2000)
+document.getElementById("divrezo").innerHTML="<small>Plateforme 'source':<b style='color:red'>"+nomrezo[site-1]+"</b></small>"
+}
+
+function change_maille() {
+
+var site = document.maille.selectmaille.selectedIndex;
+selectedmaille=document.maille.selectmaille.options[site].value;
+affichmenusmaps()
+
+}
+
+function change_cartes() {
+
+var site = document.cartes.selectcartes.selectedIndex;
+selectedcarte=parseInt(document.cartes.selectcartes.options[site].value);
+
+
+}
+
+var menu1=""
+var menu2=""
+function affichmenusmaps(){
+
+menu1='<option id="option0" value="javascript:rien2()">&nbsp;Cartes</option>'
+
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+if(selectedmaille==mapX[i+0]){
+menu1+='<option id="option'
+menu1+=kc
+
+
+menu1+='"    VALUE="'+i+'">'//
+menu1+=kc
+menu1+="-"
+menu1+=mapX[i+3]
+menu1+='</option>'
+}
+}
+document.getElementById("selectcartes").innerHTML=menu1
+
+}
+
+function affichmaille(){
+menumaille='<option id="option0" value="javascript:rien2()">&nbsp;Maille</option>'
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+menumaille+='<option id="option'
+menumaille+=(kc)
+
+
+menumaille+='"    VALUE="'+mapX[i+0]+'">'//
+menumaille+=(kc)
+menumaille+="-"
+menumaille+=mapX[i+3]+" : maille= "+mapX[i+0]+" - "+libelmap[(i/5)][1]
+menumaille+='</option>'
+document.getElementById("selectmaille").innerHTML=menumaille
+}
+
+}
+
+function recherche(){
+choix=document.getElementById("Xchoix").value
+
+//alert("REZO="+selectedrezo+"&cible="+mapX[selectedcarte+4]+"&numero="+fich+"&carte="+mapX[selectedcarte+3]+"&maille="+libelmap[(selectedcarte/5)][1]+"&codemaille="+mapX[selectedcarte]+"&operateurlog="+ope+"&choix="+choix)
+window.frames.readlibelREC.location.href="readLibelDATAinMaps.html?REZO="+selectedrezo+"&cible="+mapX[selectedcarte+4]+"&numero="+fich+"&carte="+mapX[selectedcarte+3]+"&maille="+libelmap[(selectedcarte/5)][1]+"&codemaille="+mapX[selectedcarte]+"&operateurlog="+ope+"&choix="+choix
+}
+
+
+//_________________________________________________________________________________________________________________________
+
+</script>
+
+
+
+
+
+
+
+<script language="javascript">
+document.write('<div id="divrezo" style="position: absolute; height: 24px; top: 0px;  width:300px"><form name="rezo"><select id="selectrezo" name="selectrezo" onchange="change_rezo()"   style="background-color: white; color: black;width:200px" size="1"><option id="optionRezo0" value="javascript:rien2()">&nbsp;REZO</option>')
+
+for(i=0;i<rezo.length;i++){
+
+document.write('<option id="optionRezo')
+document.write(i)
+
+
+document.write('"    VALUE="'+rezo[i]+'">')//
+document.write(i+1)
+document.write("-")
+document.write("plateforme : "+nomrezo[i])
+document.write('</option>')
+
+}
+document.write('</select></form></div>')
+
+
+
+
+
+
+document.write('<div id="divmaille" style="position: absolute; height: 24px; top: 25px; "><form name="maille"><select id="selectmaille" name="selectmaille" onchange="change_maille()"   style="background-color: white; color: black;width:200px" size="1">')
+
+document.write('</select></form></div>')
+
+document.write('<div id="divcartes" style="position: absolute; height: 24px; top: 52px; "><form name="cartes"><select id="selectcartes" name="selectcartes" onchange="change_cartes()"   style="background-color: white; color: black;width:200px" size="1">')
+
+document.write('</select></form></div>')
+
+document.write('<div id="divlogic" style="position: absolute; height: 24px; top: 76px; "><dt><small><small>choix du fichier de données</small></small></dt><dt><input type="radio"  id="A_1" name="A" value="1" onClick="fich=1"><small><small>Principal</small></small></input><input type="radio" id="A_2" name="A" value="2" onClick="fich=2" value="0" type="text"><small><small>Complémentaire</small></small></imput></dt></div>')
+
+
+document.write('<div id="divlogic" style="position: absolute; height: 24px; top: 126px; "><dt><small><small>Type d\'opérateur logique</small></small></dt><dt><input type="radio"  id="T_1" name="T" value="1" onClick="ope=\'et\'"><small><small>Et</small></small></input><input type="radio" id="T_2" name="T" value="2" onClick="ope=\'ou\'" value="0" type="text"><small><small>Ou</small></small></imput></dt></div>')
+
+document.write('<div id="divmotscles" style="position: absolute; height: 24px; top: 172px; "><form name="formmotscle"><input id="Xchoix" type="text" style="width:157px" value="mots-clés"></input><input type="button" onclick="recherche()" value="OK"></input></form></div>')
+document.getElementById("T_1").checked=true
+document.getElementById("A_1").checked=true
+window.frames.readlibelREC.location.href="vide.html"
+</script>
+
+</body >
+</html>

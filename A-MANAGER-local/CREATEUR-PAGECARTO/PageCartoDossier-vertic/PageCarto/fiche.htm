@@ -1,0 +1,235 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><!--
+création Cité Publique : cite.publique@wanadoo.fr
+auteur : Hervé Paris - 2009
+Licence Creative Commons : http://creativecommons.org/licenses/by-nc-sa/2.0/fr/
+-->
+
+
+<title>balisescommandes</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+<script language="javascript">
+var iSujet=""
+var tailleICO=0
+var marron="marron"
+var rouge="rouge"
+var chinois="chinois"
+var Nonchinois="Nonchinois"
+function Cfond(a,coul,quant){
+if(coul==marron){coul=2}
+if(coul=="chinois"){coul=1}
+if(coul=="rouge"){coul=3}
+if(coul=="Nonchinois"){coul=4}
+if(a==0){parent.fondefface()}else{
+a=a-1
+parent.radio2fond(a,coul,quant)// sélectionne le bouton radio est exécute les commandes afférentes
+}
+}
+function CPonctuel(a,coul,quant,tailleICO){
+if(coul==marron){coul=2}
+if(coul=="chinois"){coul=1}
+if(coul=="rouge"){coul=3}
+if(coul=="Nonchinois"){coul=4}
+if(a==0){parent.effaceIcone()}else{
+a=a-1
+parent.radio1ponctuels(a,coul,quant,tailleICO)// sélectionne le bouton radio est exécute les commandes afférentes
+}
+}
+function Cgraph(a){
+if(a==0){}else{
+a=a-1
+parent.comgraphique(a)
+}
+}
+// balise de le Fiche : récupère l'indicateur de couche ponctuel ou fond et attribue Cponctuel ou Cfond suivant le résultat
+function CData(a,coul,quant,tailleICO){
+if(parent.recupIndicCouche()==1)
+{CPonctuel(a,chinois,2,0)}// par défaut couleurs chinoises et quantile 2
+else
+{Cfond(a,rouge,5)}// par défaut : couleur marron et quantile 5
+}
+//-----------------transforme les balses issues de l'hypertexte de GaïaMundi-------------------
+function transBaliseHyperText(){
+//Icone+graph
+for(i=0;i<document.getElementsByTagName("icone").length;i++){
+var ico0=document.getElementsByTagName("icone")[i].innerHTML
+var ico=new Array()
+ico=ico0.split(",")
+//alert(ico.length)
+var gr=ico[2].replace("graph","")
+var NewBalise='<a href="javascript:CPonctuel('+(parseFloat(ico[0]-2000))+',chinois,2,'+ico[4]+');Cfond(0,0,0);Cgraph('+gr+')>'+ico[1]+'</a>'
+document.getElementsByTagName("icone")[i].innerHTML=NewBalise
+}
+// fond+graph
+for(i=0;i<document.getElementsByTagName("fond").length;i++){
+var ico0=document.getElementsByTagName("fond")[i].innerHTML
+var ico=new Array()
+ico=ico0.split(",")
+var gr=ico[4].replace("graph","")
+var Qt=ico[3].replace("Q","")
+var coulheur=ico[2]
+if(coulheur=="defaut"){coulheur=chinois}
+var NewBalise='<a href="javascript:CPonctuel(0,chinois,0,0);Cfond('+(parseFloat(ico[0]-2000))+','+coulheur+','+Qt+');Cgraph('+gr+')>'+ico[1]+'</a>'
+document.getElementsByTagName("fond")[i].innerHTML=NewBalise
+}
+//Fond+icone+graph
+// [<fi>2007,% indépendants/ensemble actifs occupés,marron,Q5,graph1,2010,% part des plus de 45 ans / ensemble Indépendents,vert,1,0,libel0</fi>] for(i=0;i<document.getElementsByTagName("fi").length;i++){
+for(i=0;i<document.getElementsByTagName("fi").length;i++){
+var ico0=document.getElementsByTagName("fi")[i].innerHTML
+var ico=new Array()
+ico=ico0.split(",")
+var gr=ico[4].replace("graph","")
+var Qt=ico[3].replace("Q","")
+var coulheur=ico[2]
+if(coulheur=="defaut"){coulheur=chinois}
+var NewBalise='<a href="javascript:CPonctuel('+(parseFloat(ico[5]-2000))+',chinois,2,'+ico[8]+');Cfond('+(parseFloat(ico[0]-2000))+','+coulheur+','+Qt+');Cgraph('+gr+')>fond : '+ico[1]+' - icone : '+ico[6]+'</a>'
+document.getElementsByTagName("fi")[i].innerHTML=NewBalise
+}
+//graph
+}
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function contour(a){
+parent.XidentContour(a)
+}
+
+function BlueBaliseContour(){
+
+for(i=0;i<document.getElementsByTagName("a").length;i++){
+if(document.getElementsByTagName("a")[i].id=="contour"){
+document.getElementsByTagName("a")[i].firstChild.style.color="blue"
+}
+}
+for(i=0;i<parent.frames.hypertexte.document.getElementsByTagName("a").length;i++){
+if(parent.frames.hypertexte.document.getElementsByTagName("a")[i].id=="contour"){
+parent.frames.hypertexte.document.getElementsByTagName("a")[i].firstChild.style.color="blue"
+}
+}
+}
+
+function ColorBaliseContour(a){
+
+var colorX
+if(a.style.color!='brown' ){a.style.color='brown';colorX='brown'}else{a.style.color='blue';colorX='blue'}
+var refcontour=a.parentNode.getAttribute("href").replace("javascript:contour(","").replace(")","")
+for(i=0;i<parent.frames.hypertexte.document.getElementsByTagName("a").length;i++){
+
+if(parent.frames.hypertexte.document.getElementsByTagName("a")[i].getAttribute("href").replace("javascript:contour(","").replace(")","")==refcontour){
+parent.frames.hypertexte.document.getElementsByTagName("a")[i].firstChild.style.color=colorX
+}
+}
+
+}
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+var NoDatx=0
+function rien(){}
+function marqueurcarte(){
+parent.transNoDatx(NoDatx)
+
+parent.marqueurcarte()
+
+}
+function calculHisto(NoDatx,iSujet){
+iSujet=parent.retourne("return iSujet")
+parent.calculHisto(NoDatx,iSujet)
+parent.forcerechOui()
+}
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------Données de la Fiche----------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------Conditions initiales----------------------
+function init(){
+//parent.NoDatXici(1) // sélectionne l'aire n° x de démarrage
+//transBaliseHyperText();// traduit les balise issue du métalanguage GaïaMundi en balise PageCarte
+//initDataFiche() // affiche les valeurs de la fiche pour la carte sélectionnée au démarrage de l'hypertexte intégré dans le module
+}
+
+
+function affichecouchenape(a){
+if(document.all){
+parent.trans.getSVGDocument().getElementById(a).setAttribute("visibility","visible")
+}else{
+parent.document.getElementById(a).setAttribute("visibility","visible")
+}
+}
+function cachecouchenape(a){
+if(document.all){
+parent.trans.getSVGDocument().getElementById(a).setAttribute("visibility","hidden")
+}else{
+parent.document.getElementById(a).setAttribute("visibility","hidden")
+}
+}
+//alert("ici")
+</script></head>
+<body style="background-color: rgb(228, 228, 228); font-family: arial; font-size: 10px; color: gray;" onload="init()">
+<hr>
+<center><b><big><span style="color: navy;" id="titreAire"></span></big></b></center>
+<hr>
+<center><b><span style="color: black;font-size:14px" id="GdTitre"></span></b></center>
+<br>xxxxxxxxxxxxxxxxxxxxxxxx
+<span  id="ContenuFiche"> </span><br>
+
+<!-- ////////////////////// début du texte de la Fiche/////////////// -->
+<!--
+deux modalités par item
+soit les item correspondant à des menus Ico-supet : alors on peut mettre des balises href et CData qui affiche la donnée sur la carte en ponctuel ou en fond selon la position du selecteur dans le module
+soit les items correspondant à des données de la base qui n'on pas de menu , : alors le texe est écrit en noir sans baslise href et CData
+exemples
+<span style="color: rgb(102, 102, 102);"><a id="xbidon" href="javascript:CData(1);Cgraph(1)">xbidon</a><br><b></span></b>
+ou 
+<span style="color: rgb(102, 102, 102);"><a id="xbidon3" href="javascript:CPonctuel(6,chinois,2,4,1);Cfond(0,0,2);Cgraph(1,0)">xbidon3</a><br>
+-->
+
+<span style="color: rgb(102, 102, 102);"><a id="xbidon" href="javascript:CData(1);Cgraph(1)">xbidon</a><br><b></span></b>
+ 
+
+
+
+<!--br>
+
+
+<span style="color: rgb(102, 102, 102);"><b><u><span>xxx </span></u></b><br>
+<b><span id="sssss"></span></b>
+ perxxx<br>
+<br>
+<br>
+<small>
+<b>Couches contour</b>
+<ul>
+<li><a href="javascript:contour(0)" id="contour"  ><span  onclick="javascript:ColorBaliseContour(this)">couche contour n°1 (indice 0 ) si elle existe</span></a></li>
+
+</ul>
+<a href="javascript:parent.EffaceTousContours(); BlueBaliseContour()" id="boitebalise"><span style="color:red"><b>Effacer tous les contours<b/></span></a>
+</small>
+<br>
+<br>
+<br>
+<br>
+<br>
+- <a href="javascript:rien()" onclick="NoDatx=1;marqueurcarte();calculHisto(NoDatx,iSujet)" style="color: blue; font-size: 9px;"> point sur l'aire n°1</a>
+
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<ul>
+<li>zone d'étude:<a href="javascript:rien()" id="nappe"  ><span  onclick="javascript:affichecouchenape('ZONAGE')">oui</span></a> / <a href="javascript:rien()" id="nappe"  ><span  onclick="javascript:cachecouchenape('ZONAGE')">non</span></a></li>
+
+</ul>
+<br-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script language="javascript" src="fiche.js?updated=1234567890"></script>
+</body></html>

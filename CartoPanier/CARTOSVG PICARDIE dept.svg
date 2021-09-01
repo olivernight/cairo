@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+[
+    <!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+
+<svg id="gene"  
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+ 
+
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+
+
+>
+
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+var brsrici="ei"
+
+
+function affichN(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGaffichN()}else{
+top.frames.Num0.frames.couches.zoom.SVGaffichN()
+}
+}
+var strokewidthpas
+var strokepas
+var opacpas
+function passon(a){
+strokepas=a.getAttribute('stroke')
+a.setAttribute('stroke','navy');
+opacpas=a.getAttribute('fill-opacity')
+a.setAttribute('fill-opacity','0.5')  
+}
+function passout(a){
+a.setAttribute('fill-opacity',opacpas)
+a.setAttribute('stroke',strokepas);
+}
+function svggeneral(){
+
+brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGgeneral()}else{
+top.frames.Num0.frames[2].indic1()
+}}
+function svgdown(a){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGdown()}else{
+top.frames.Num0.frames.couches.zoom.selxsvg();top.frames.Num0.frames.couches.zoom.rien();
+}}
+function svgclick1(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick1()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}
+}
+function svgclick2(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGclick2()}else{
+top.frames.Num0.frames.couches.zoom.valNoDatx2(NoDatx);top.frames.Num0.frames.couches.zoom.transDATA();top.frames.Num0.frames.couches.zoom.carte()
+}}
+function svgout(){
+//brsrici=document.getElementById("totalsvg").getAttribute("name")
+if(brsrici=="ei"){window.SVGout()}else{
+//top.frames.Num0.frames.couches.zoom0()
+//<image x="10" Y="10" width="300" height="300" xlink:href="fonds france contour.jpg" ></image>
+}}
+]]></script>
+
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+ <stop class="begin" offset="0" style="stop-color:#5555AA"/>
+ <stop class="end" offset="1" style="stop-color:white"/>
+</radialGradient>
+</defs>
+
+<g space="preserve" opacity="1" transform="matrix(0.3, 0, 0, 0.3, 0, 0)"  name="ns" id="totalsvg">
+
+
+
+
+
+
+	 
+	 
+
+	
+<rect y="-150" x="-150" height="800" width="800" style="fill: url(#grad1) ; fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.5; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"  transform="matrix(1, 0, 0, 1, 0, 0)" fill="#EBEFF8" id="rectmove"></rect>
+
+
+<g space="preserve" opacity="1" transform="matrix(1, 0, 0, 1, -160, -15)"   id="calageAires">
+
+
+
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond1"/>
+
+<image opacity="0" href="transparent.png" height="0" width="0" y="-60" x="0" transform="matrix(1, 0, 0, 1, 0, 0)" id="imagesfond2"/>
+
+
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="SOMME" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"  onclick="tailCarte='../800-SOMME';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer" id="1"><path stroke-width="1" stroke="gray" id="p1" d="M 198.2648956756757 61.41924324324327 L 193.45759405405406 87.05818378378387 L 220.16482702702703 106.8215351351352 L 218.5623945945946 112.69712432432442 L 197.73075081081083 102.54837837837852 L 185.9795691891892 111.09469189189196 L 175.83082054054054 133.52876756756763 L 166.2162172972973 144.2116594594595 L 170.4893745945946 146.34823783783793 L 174.22838702702703 142.60922702702715 L 180.6381227027027 144.74580540540546 L 237.25745405405405 228.6065135135136 L 250.6110702702703 236.08454054054062 L 245.8037675675676 241.42598378378386 L 255.41837297297297 244.09670756756762 L 260.7598162162162 239.82355135135143 L 326.99375135135136 244.09670756756762 L 388.92114594594597 271.45492810810816 L 392.5433189189189 279.45040594594604 L 395.86502702702705 276.57937837837846 L 398.8862864864865 267.6825318918919 L 432.22024864864864 248.90400918918925 L 477.6225405405405 243.02841837837843 L 465.33721621621623 205.1041513513514 L 491.4435351351351 155.04477837837845 L 410.8544648648649 133.52876756756763 L 364.3838810810811 124.98245405405407 L 350.4961189189189 135.1312000000001 L 342.48394594594595 132.9946216216216 L 359.0424324324324 108.42396756756767 L 342.48394594594595 96.67278918918925 L 304.55968108108107 107.35568108108117 L 260.2256756756757 72.1021351351352 L 240.9964648648649 59.81680540540549 L 198.2648956756757 61.41924324324327 198.2648956756757 61.41924324324327 "></path><title>SOMME</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="AISNE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../3100-AISNE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="2"><path stroke-width="1" stroke="gray" id="p2" d="M 674.1877675675677 170.384745945946 L 636.2635027027027 335.43544108108114 L 613.829427027027 324.7525481081082 L 573.2344324324324 348.78905675675685 L 588.724627027027 393.6572054054055 L 584.9856162162163 398.9986540540541 L 567.8929891891892 395.79378378378385 L 565.7564054054054 426.2400324324325 L 581.7807459459459 430.51318918918923 L 536.378454054054 480.1886378378379 L 485.6347135135136 432.64976756756766 L 486.703 408.07911351351356 L 470.14451891891895 404.34009729729735 L 481.1779405405405 394.0411243243244 L 463.5177837837838 373.81039459459464 L 462.4494972972973 346.93624270270277 L 477.40554594594596 317.3412913513514 L 477.6321081081081 243.02788594594603 L 465.35348648648653 205.10309729729738 L 491.45015675675677 155.0302594594595 L 582.314891891892 142.07508108108112 674.1877675675677 170.384745945946 "></path><title>AISNE</title></g>
+<g onmouseout="javascript:passout(this)" onmouseover="javascript:passon(this)" ident="1" title="OISE" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-miterlimit="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.5" fill="#EFF2F9" stroke="#7f7f7f"   onclick="tailCarte='../800-OISE';parent.cartechoisie(tailCarte);parent.document.getElementById('menucartelaX').style.display='none'" style="color:blue;cursor:pointer"  id="3"><path id="p3" d="M 250.6110702702703 236.08454054054062 L 250.61671891891893 236.081718918919 L 245.8037675675676 241.42598378378386 L 255.42567567567568 244.09012648648653 L 260.88632432432433 240.04835135135144 L 326.99375135135136 244.09670756756762 L 388.92497297297297 271.4540270270271 L 392.5487027027027 279.45645945945955 L 395.8704864864865 276.5876486486487 L 398.89021621621623 267.6793243243244 L 434.97659459459453 248.35272972972982 L 477.6321081081081 243.02788594594603 L 477.40484324324325 317.3482005405406 L 462.45756216216216 346.9408091891893 L 463.5144324324325 373.81569189189196 L 481.1794 394.0473675675676 L 471.36553513513513 403.1063513513514 L 408.2516810810811 420.02677297297305 L 333.93763243243245 396.3279297297298 L 284.13902702702705 382.2796270270271 L 254.54525945945946 391.79188648648653 L 228.7262 387.1112378378379 L 222.83763783783783 371.4084108108109 L 223.5925783783784 363.5570378378379 L 237.48355675675677 368.3886486486487 L 239.8993837837838 361.1412108108109 L 225.40447027027028 327.4707362162163 L 237.93652972972973 297.72596654054064 L 234.91672432432432 295.4611457567569 L 229.93411351351352 301.9536410810811 L 224.49852432432434 297.72596654054064 L 222.98864324324325 260.12978270270276 L 231.4439891891892 248.80567837837845 L 231.29303243243243 244.87992756756762 L 223.29061081081082 248.80567837837845 L 220.5728162162162 245.18193891891897 L 231.4439891891892 226.00637837837843 L 237.266772972973 228.60196756756767 250.6110702702703 236.08454054054062 "></path><title>OISE</title></g>
+
+
+
+</g>
+</g>
+
+
+
+
+
+
+
+
+<script><![CDATA[
+
+
+]]></script>
+
+
+</svg>

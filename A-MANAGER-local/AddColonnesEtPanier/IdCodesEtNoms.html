@@ -1,0 +1,61 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr">
+
+<html><head>
+<script language="javascript">
+
+	
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+var CIBLE=urlvar['cible']
+
+function FileDataActualiste2(){// 
+var Datas=window.frames.transitdata.document.getElementById("chargedatajs").innerHTML
+document.getElementById("trans").innerHTML=Datas
+document.trans.submit()
+}
+
+</script>
+
+</head><body>
+<form id="trans" name="trans"  action="copyDATA.php" method="post" ><textarea name="D[0]"></textarea></form>
+<iframe name="transitdata" style="visibility:hidden"></iframe>
+
+
+
+
+
+
+
+<script language="javascript">
+window.frames.transitdata.location.href="../../"+CIBLE
+</script>
+
+
+
+
+
+
+
+
+</body></html>

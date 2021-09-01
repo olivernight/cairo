@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+
+
+
+
+
+</head>
+
+<body STYLE="background-color: blue">
+
+<script language="javascript">
+var recept=window.opener.envoipopup("return envoi")
+var a
+//document.getElementById("head").firstChild.data=recept
+
+a='<form name="up"><div align="center"><center><p><textarea name="textbalise" id="textbalise" input="text" font size="2" rows="1" cols="80" wrap="off">'
+a+='""'+recept+'""'
+a+='</textarea></p></center></div></form>'
+
+document.write(a)
+</script>
+
+
+<!-- DEBUT DU SCRIPT SELECTION DE TEXTE-->
+
+
+
+
+<p align="center"><input type="button" onclick="javascript:document.up.textbalise.select();"
+style="font-family: Arial,Verdana,Helvetica;font-size: 11px; color:white ;font-weight:bold;background-color: navy;width:400px"
+value="Sélectionnez puis faite glisser vers la page wiki"> <br>
+</p>
+
+<!-- FIN DU SCRIPT SELECTION DE TEXTE-->
+</body >
+</html>

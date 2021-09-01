@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr">
+<head>
+
+<META http-equiv="Cache-Control" content="no-cache">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Expires" content="0"> 
+  
+
+  
+  <title>cartO-Sommaire-encaps.htm</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  
+  <script language="javascript">
+//---------------------------------------------------------------//initialisation sur le carte n°x
+var choixcarte=0 //N° de la carte à l'ouverture de la page. La fonction d'ouverture est située en bas de page : "top.document.getElementById('Num0').src='cartO2encapsule.htm" . Si elle n'est pas activée , elle est précédée de "//"
+//--------------------------------------------------------------------
+function xxx(){// appellée par onload dans la balise body de la page de texte qui commande la carte
+
+carte()
+fond()
+icone()
+fi()
+encadre()
+//netoiantislash()
+//-----function indexation des métabalises aux cartes
+balayagenodes()
+choixcartela=top.frames.Num0.returnchoixcartela("return choixcartela")
+if(choixcartela!=0){if(choixcartela!=choixcarte){carteencours=0;cartajust(choixcarte)}} 
+//si la carte en cours au mement de l'ouverture de cette page est différente de 0, alors vérifier si carteeencours est égale à la première carte indéxée sur cette page. Si c'est égal, ne rien faire, si c'est différent , ouvrir la première carte de cette page
+top.frames.Num0.transchoixcartela() // actualise choixcarte dans cart02encapsule.htm dans la frames Num0 du top
+}
+
+  </script>
+  
+  <script language="javascript" src="../metalanguage.js"></script>
+  
+  <script language="javascript">
+  </script>
+</head>
+
+
+<body style="background-color: rgb(255, 255, 255);font-family:arial;font-size:11px"  alink="white" link="white" vlink="white" onload="setTimeout('xxx()',1000)"><div style="text-align: center;"><font size="4"><span style="font-family: Arial; font-weight: bold;"><font style="font-family: arial; font-size: 12px;"><font size="2"><font size="3">Comm</font><font size="3">e</font></font><font size="3">nt naviguer dans GaïaMundi?</font></font></span></font><br></div>
+
+
+
+
+<div align="justify">
+<ul><li><small><font style="font-family: arial; font-size: 12px;" size="1"><small>Sélectionnez un article dans le menu ci-dessus.</small></font></small></li><li><small><font style="font-family: arial; font-size: 12px;" size="1"><small>Votre
+sélection va déclencher l'ouverture d'un article dans le présent cadran
+ainsi qu'une carte dans le second cadran ( à droite).</small></font></small></li><li><font style="font-family: arial; font-size: 12px;" size="2"><small><font size="2"><small>Lisez
+le texte et cliquez sur les boutons lorsque votre lecture vous y
+conduit. Ces boutons déclenchent l'affichage de données dans la carte,
+ou bien de nouvelles cartes<span style="font-weight: bold;">.</span></small></font></small></font><span style="font-family: Arial;"><br>
+
+ 
+
+
+</span>
+
+
+</li><span style="font-family: arial;"><span style="font-weight: bold;"><br></span></span></ul>
+</div>
+<font style="font-family: arial; font-size: 12px;" size="2"><small><font size="2"><small><span style="font-weight: bold;"></span></small></font></small></font>
+
+
+<font size="-1">
+<span style="font-family: Arial;"></span></font>
+<div style="text-align: center;"><font size="-1"><big><font color="#339999"><span style="font-family: Arial;"><span style="font-weight: bold;">1 -</span> <font style="font-weight: bold;">Sommaire</font></span></font></big><small><span style="font-family: Arial,Helvetica,sans-serif;"><br></span></small><font style="font-weight: bold;"><span style="font-family: Arial,Helvetica,sans-serif;">
+
+</span></font></font><small><font size="-1"><span style="font-family: Arial,Helvetica,sans-serif;"></span></font><font style="font-weight: bold;" size="2"><small><span style="font-family: Arial,Helvetica,sans-serif;"><br>
+
+</span></small></font></small></div>
+
+<font size="1">
+</font>
+<div style="text-align: center; background-color: yellow;">
+<div align="justify">
+<ul><li><small><font style="font-weight: bold;" size="-1"><small><span style="font-family: Arial,Helvetica,sans-serif;"><font size="-1"><small><small><b>Pour revenir à cette page, choisissez sommaire dans </b>le menu ci-dessus</small></small></font>.</span></small></font></small>
+
+  </li><li><small><b><font style="font-weight: bold;" size="-1"><small><span style="font-family: Arial,Helvetica,sans-serif;">Si
+vous avez besoins d'assistance cliquez sur le bouton d'aide [?] ou
+bien, pour une aide contextuelle, placer la souris sur le bouton ou
+l'objet que vous ne comprenez pas et appuyer sur la touche majuscule
+(shift) pour afficher l'aide ad'hoc.</span></small></font></b></small></li></ul>
+</div>
+<ul style="text-align: left;"><font size="-1"><b><br>
+  </b></font></ul>
+
+<small><font style="font-weight: bold;" size="3"><small><span style="font-family: Arial,Helvetica,sans-serif;"></span></small></font></small></div>
+
+<div style="text-align: center;"><span style="font-family: Arial;"><small><small><small style="color: black;"><font size="+1"><small><small><small><b><small><small>(Cité Publique &amp; altercarto [2016])</small></small></b></small></small></small></font></small></small></small>
+</span></div></body></html>

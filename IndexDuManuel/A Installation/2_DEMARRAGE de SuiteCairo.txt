@@ -1,0 +1,36 @@
+﻿DEMARRAGE de SuiteCairo 
+
+Fichiers de démarrage et mots de passe 
+
+Le fichier de démarrage est le fichier 
+
+index.html 
+
+Ce fichier est situé dans le dossier principal de votre plateforme SuiteCairo . 
+
+Il ouvre la page suivante : 
+
+ 
+
+Il s’agit de la page de prise de notes de vos travaux dans la plateforme. (Vous ne pouvez écrire que si 
+vous êtes en mode serveur) 
+
+ 
+
+Le lien pour ouvrir la plateforme GaïaMundi de SuiteCairo est le lien entouré de rouge 
+
+Le mot de passe qui vous sera demandé est « admin » par défaut 
+
+ 
+
+ 
+
+ 
+
+Vous pouvez aussi démarrer directement sur la plateforme avec le fichier : 
+
+ A0 PageCarto serpent encaps.html 
+
+ 
+
+

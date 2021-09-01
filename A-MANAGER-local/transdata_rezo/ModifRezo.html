@@ -1,0 +1,142 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><!--Copyleft [2006-2012] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr --><!--This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA-->
+<title>rezo.js : Ajouter une plateforme</title
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<script language="javascript" src="../../mapsILIADEmotpas.js?updated=1234567890"></script>
+<script language="javascript">
+
+    var urlvar=''
+    var mt2="xxxx"
+	var mpt2="xxxx"
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+
+if(urlvar['mpt2']){mpt2=urlvar['mpt2']}else{mpt2='xxxx'}
+
+
+var mt=""
+var idmt=0
+
+
+var aw2=window.location.href.split("?")[0]
+if(mpt2==mt2){
+mt=prompt("saisissez votre mot de passe",mt2);
+}else{mt=mpt2}
+for(i=0;i<mtpas.length;i++){
+if(mt==mtpas[i]){idmt=1}
+
+}
+var retconfirm=false
+if(idmt!=1){
+retconfirm=confirm("désolé, votre mot de passe est incorrect, voulez vous recommencer?");
+if(retconfirm==true){
+
+window.location.href=aw2
+}else{
+window.close()
+
+}
+}
+
+
+
+
+
+
+function affrezojs(){
+var textrezo="var rezo"+window.frames.Xjs.document.getElementsByTagName("body")[0].innerHTML.split(">var rezo")[1].split("</")[0]
+textrezo=textrezo.replace(/amp;/g,"").replace(/&lt;/g,"<").replace(/&gt;/g,">")
+document.getElementById("N[0]").value=textrezo
+}
+
+</script>
+</head>
+<body>
+<table width="1500px"><tr style="vertical-align : top"><td width="810px">
+<form name="formrezo" id="formrezo" method="post" action="">
+<textarea id="N[0]" name="N[0]" style="width : 800px;height : 500px"></textarea>
+<iframe id="Xjs" name="Xjs" src="rezo.js?updated=1234567890" onload="affrezojs()" style="display : none"></iframe>
+<center><input type="submit"  value="Enregister"></center>
+</form>
+</td><td width="690px">
+<div style="width : 690px; font-family : arial; font-size : 11px">
+<b><big><big>Ajouter ou enlever des plateformes auxquelles vous souhaitez accéder pour importer des données, des menus et des répertoires de cartes</big></big></b><br><br>
+<span style="color : red"><b>Attention, le contenu de ce fichier est très sensible :</b>
+<ul>
+<li>Si le formalisme n'est pas respecté, cela introduit une erreur lors de l'ouverture et les interfaces de la plateforme ne marchent pas</li>
+<li>Si l'adresse d'une plateforme connectée est inexistante ou erronnée, les interfaces de suiteCairo ne marchent pas (elles attendent une conection qui n'arrivent jamais)</li>
+
+</ul>
+</span> 
+<b><i>N'écrivez dans ce fichier que si vous êtes sûr(e) des adresses url des plateformes que vous ajoutez.</i></b>
+<br><br>
+<b><big>Architecture du fichier</big></b>
+le fichier comporte 3 sections :
+<ol> 
+<li>
+<b><big>Une première section </big></b> par défaut  comprenant les 16 premières lignes 
+<pre style="color : gray"><small>var rezoIci=window.location.href
+
+
+rezoIci=rezoIci.replace("A-MANAGER-local/transdata_rezo/transmenu.htm","")
+rezoIci=rezoIci.replace("A-MANAGER-local/transdata_DBHtml/transmenu.htm","")
+rezoIci=rezoIci.replace("readLibelDATA-REC-MODULE.html","")
+rezoIci=rezoIci.replace("readLibelDATA-REC-MODULE-MENU.html","")
+rezoIci=rezoIci.replace("bienvenueRDV.html","")
+//------------------------cette plateforme
+rezo[rezo.length]=rezoIci
+nomrezo[nomrezo.length]="this Platform : "+window.location.href.split("/")[window.location.href.split("/").length-2]
+InRezo[rezo.length-1]="pour changer le libellé de cette plateforme, allez dans le fichier A-MANAGER-local/transdata_rezo.js"
+/-------------------------------------------
+</small></pre></li>
+<li><b><big>Une deuxième  section</big></b> entre la fin de la première section et la ligne  comprenant "//------------------------Plateformes Package" (exclue)<br>
+Cette deuxième section est vide par défaut, <b><i>c'est dans cette section que vous devez ajouter les plateformes que vous souhaitez ajouter au réseau.</i></b><br>
+<br>
+Vous devez respecter le formalisme suivant : <br>
+<pre style="color : gray">
+//------------------------
+rezo[rezo.length]="<span style="color : blue">URL absolue de la plateforme en terminant par le caractère <b style="color : red"><big>/</big></b></span>"; //(par exemple : http://kcit.org/sc1/)
+nomrezo[nomrezo.length]="<span style="color : blue">Titre littéral court que vous voulez donner à la plateforme </span>"; //(par exemple : Carto Citoyenne-Tunisie)
+InRezo[rezo.length-1]="<span style="color : blue">texte de commentaire sur cette plateforme (court : une ou deux lignes) avec <b style="color : red"><big>\'</big></b> pour les guillements simples et les guillements doubles interdits</span>";
+
+//-------------------------------------------
+</pre>
+
+
+<br><br></li>
+<li>
+<b><big>Une troisième section </big></b>à partir de la ligne "//------------------------Plateformes Package" (inclue)<br>
+Cette troisième section comprend les plateformes situées dans le même répertoire que clui où est placé la plateforme que vous utilsez actuellement . <br>La liste de ces plateformes est actualisée par l'interface "BackOffice" du module scénario. Dès que vous ouvrez l'interface BackOffice à partir du module scénario, la liste des plateformes inclues est atomatiquelement actualisée. <br><i>(=> Si vous écrivez après la ligne "//------------------------Plateformes Package", ce que vous avez écrit sera systématiquement éffacé lors de l'actualisation via l"interface "BackOffice")</i></li>
+</ol>
+<br>
+NB. Ce fichier de connection réseau est le fichier dit "utilisateur".<br>
+Il complete un autre fichier de connection qui est ouvert automatiquement : le fichier de connection aux plateformes du Serpent de Mer (c.a.d. les plateformes disponibles sur la Rose des Vents)
+
+</div>
+</td></tr></table>
+<br><br><br>
+<script language="javascript">
+
+document.getElementById("formrezo").setAttribute("action","modifrezoJs.php?mpt2="+mt)
+</script>
+</body>
+</html>

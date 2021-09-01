@@ -1,0 +1,4157 @@
+﻿ 
+
+ 
+
+Fabriquer des menus de données 
+
+ 
+
+ 
+
+Fabriquer les menus d’affichage des données consiste à fabriquer à la fois des requêtes 
+dans le pseudo base de données de PageCarto, à rédiger les légendes, à paramétrer les 
+calculs opérés sur les données, à paramétrer l’affichage des graphiques, à rédiger les 
+métadonnées. Le tout d’une manière suffisamment explicite : 
+
+. pour que d’autres puissent se servir de notre travail 
+. et que les moteurs de recherche du « Serpent de Mer » puissent sélectionner 
+efficacement les métadonnées. 
+
+
+ 
+
+Trucs et procédés indispensables 
+
+ 
+
+. ATTENTION pour visualiser sur la carte le résultat de la saisie, 
+. il faut d'abord vider le cache de Firefox : ( menu « outils » de Firefox, -> choisir 
+options -> sélectionner l'onglet réseau - > cliquer sur "vider le cache 
+maintenant") ou incorporer le module complémentaire ClearCache et placer l’icône 
+dans la barre d’outils de Firefox 
+
+
+ 
+
+ 
+
+. puis recharger le module PageCarto 
+. vérifier ensuite que la ou les nouvelles lignes de menu ont bien été crées. 
+. Sélectionner successivement ces lignes de menu et vérifier que les données 
+calculées correspondent bien à ce que vous vouliez faire. 
+. Après avoir enregistré, en principe, le module de saisie est réactualisé. Par 
+prudence ( Le fonctionnement de l'actualisation varie d'un ordinateur à l'autre 
+suivant la façon dont Firefox a été paramétré), il est préférable de rafraîchir le 
+module de saisie avant de recommencer des opérations de saisie (lien rafraichir). 
+On s'assure ainsi d'avoir la correspondance entre ce qu'il y a dans le module et ce 
+qu'il y a effectivement dans les fichiers des menus. 
+
+
+ 
+
+ 
+ATTENTION : 
+Si des hypertextes font déjà référence aux données de la carte en cours de traitement, 
+vous ne devez en aucun cas insérer de nouvelles lignes de menu dans la liste existante 
+mais seulement après la dernière ligne des menus complémentaires ou des menus 
+principal si les listes des menus complémentaires sont vides. 
+Dans le cas contraire, vous détruiriez la correspondance entre les boutons de 
+l'hypertexte et les menus d’affichage des données. 
+Pour la même raison, si la liste existante est déjà en lien avec un hypertexte, 
+vous ne devez pas effacer, ni déplacer une ligne de menu existante, 
+ni en dupliquer une à l'intérieur de la liste existante 
+mais seulement après la dernière ligne des menus complémentaires ou des menus 
+principal si les listes des menus complémentaires sont vides. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\menu-donnees-images\redaction menus.jpg 
+
+
+1 - Choisir le menu de données à modifier 
+
+ 
+
+une fois sélectionné le PageCarto (ici MONDE) vous vous trouvez devant l'écran suivant: 
+
+ 
+
+ 
+
+ 
+
+. les deux premiers menus correspondent aux ponctuels (ronds) affichables sur les 
+aires de la carte et projetable aussi en fond de carte coloré.. 
+. les deux seconds correspondent aux graphiques encadrés. (histogrammes, courbes, 
+radars etc.) qui s'affichent quand on clique sur une aire de la carte. 
+
+
+ 
+
+ 
+
+Chaque paire correspond à deux fichiers de données associés à la carte : le fichier principal 
+et le fichier complémentaire. 
+
+ 
+
+. en ce qui concerne les ponctuels (ronds), les données relatives aux fichiers principal 
+et complémentaire sont regroupées dans le même menu déroulant "variables". En 
+effet les deux fichiers sont concaténés à l’ouverture de PageCarto (dans le fichier 
+résultant, les données du complémentaire sont placées après celle du principal). Il en 
+va de même pour les menus. 
+. Par suite, les menus graphiques relatifs aux deux fichiers principal et 
+complémentaire sont eux aussi regroupés dans un seul menu : le menu 
+« Graphiques ». 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Interface de fabrication des menus 
+
+Une fois le choix de menu opéré, vous trouvez un écran de ce type : 
+
+ 
+
+ 
+
+Dans l'encadré de droite, s'affiche la liste des lignes de menu déjà existantes. Si cette liste 
+est vide, c'est qu'aucune ligne de menu n'a été rédigée auparavant. 
+
+
+A - Fonctions mises en oeuvre dans la fabrication 
+
+ 
+
+fonction 1 – choix du type d'opération de saisie : 
+
+ 
+
+. insérer une nouvelle ligne de menu 
+. effacer une ligne de menu 
+. déplacer une ligne de menu 
+. dupliquer une ligne de menu 
+
+
+ 
+
+fonction 2 – Choix du type de calcul à opérer et choix du nombre de données concernées 
+par le calcul 
+
+fonction 3 – accès à la base de données aux numéros et libellés des données. 
+
+fonction 4 – saisie des cadres du formulaire 
+
+fonction 5 – réglage des seuils et autres paramètres de calcul 
+
+fonction 6 - validation intermédiaire (valider une fiche de saisie et continuer à travailler 
+avant d'enregistrer) et enregistrement des travaux réalisés. 
+
+ 
+
+ 
+
+
+
+
+B - Séquences de saisie 
+
+ 
+
+Au démarrage initial, c'est à dire lorsque la liste existante est vide, on crée la première 
+ligne avec la fonction insérer. 
+
+ 
+
+Lorsque des lignes de menu existent déjà : 
+
+ 
+
+. soit on sélectionne d'abord une ligne existante puis on choisit la fonction insérer. 
+L'insertion s'opère après la ligne sélectionnée. 
+. Soit on modifie la fiche de menu sélectionnée 
+. Ensuite, on choisit le type de calcul à opérer sur les données des fichiers pour 
+fabriquer la donner à afficher. 
+. puis on sélectionne les données concernées dans les fichiers de données via un 
+assistant de saisie automatisé qui donne accès la liste des données contenues dans 
+le fichier de base de données. 
+
+
+ 
+
+NB Certains des champs de saisie se saisissent manuellement, d'autres déclenchent un 
+assistant automatique dès qu'on clique dans le cadres. 
+les procédures de saisie dépendent en grande partie choix de type de calcul. 
+
+ 
+
+A l'occasion de la récupération des coordonnées des données dans la base de données via 
+cet assistant, différentes options sont proposées : 
+
+ 
+
+On peut récupérer les libellés des données telles qu'elles sont inscrites dans la base de 
+donnée et les modifier ensuite, ou bien, au contraire, ne pas les récupérer. Dans le cas où 
+on les récupère, les libellés récupérés sont affectés automatiquement aux champs de saisie 
+correspondant. 
+
+ 
+
+. Puis on saisie ou on modifie les différents champs de saisie dans les cadres de saisie. 
+. enfin on valide. Le bouton validation n'apparaît que lorsque tous les champs de 
+saisie ont été remplis. (NB si le bouton de validation n’apparaît pas et que tous les 
+champs de saisie sont remplis : placez vous dans un champ texte, par exemple le 
+cadre n°1 et tapez « espace »). 
+. une fois validée la saisie d'une fiche, on peut soit continuer à travailler en saisissant 
+ou en modifiant d'autres fiches, soit enregistrer. Lorsqu’on travaille sur une série de 
+menus, on gagne du temps en n’enregistrant pas, mais cela peut être risqué. 
+. 
+
+
+GESTE A FAIRE SYSTEMATIQUEMENT 
+
+ 
+
+Pour visualisez les résultats de travail après l’avoir enregistré, vous devez : 
+
+1 - Vider le cache 
+
+ 
+
+2 - vérifier que votre formulaire est bien enregistré en rafraîchissant le cadre de saisie et 
+en sélectionnant, dans la liste de droite, la ou les lignes de menu que vous venez de 
+fabriquer. 
+
+ 
+
+ 
+
+ 
+
+3 – Rafraîchir le module PageCarto et tester le menu que vous avez fabriqué 
+
+ 
+
+
+ 
+
+ 
+
+
+
+
+Graphiques Ponctuels (+ fonds colorés) 
+
+NB les informations ci dessous s'appliquent indifféremment à Ponctuel n°1 et Ponctuels n°2 
+
+ 
+
+L’interface de saisie des graphiques ponctuels ( + fonds colorés) est la suivante 
+
+
+ 
+
+
+On distingue 7 types de menus ponctuels selon le type de calcul choisi. 
+
+ 
+
+1 - valeur simple 
+
+2 - somme 
+
+3 - somme/dénominateur (%), avec le résultat en pourcentage 
+
+4 - rapport (%), donné en pourcentage 
+
+5 - différence entre deux variables / dénominateur (%), avec le résultat en pourcentage 
+
+6 - Somme/ somme (%), avec le résultat en pourcentage 
+
+7 - différence entre deux variables / somme de variables (%), avec le résultat en 
+pourcentage 
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\menu-donnees-images\selection insert2.jpg
+1 - Variable simple 
+
+ 
+
+I - créer un menu d’affichage pour une variable simple 
+
+ 
+
+Etape 1 - Sélectionner l‘emplacement du menu dans la liste de droite dans l’interface de 
+saisie. l’interface insèrera le nouveau menu graphique après la position que vous avez 
+sélectionnée. 
+
+ 
+
+Etape 2 - Cliquez insérer (une nouvelle ligne est créé dans la liste : elle n’a pas encore de 
+titre) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Etape 3 – le bouton « valeur a » est sélectionné par défaut. 
+
+ 
+
+ 
+
+ 
+
+Etape 4 –le nombre de données (carré nb de colonnes) est fixé automatiquement à 1 
+pour le bouton valeur « a » 
+
+ 
+
+Etape 5 - Cliquer sur le cadre de saisie « numérateur » pour récupérer les coordonnées 
+des données dans le fichier de données. 
+
+ 
+
+
+ 
+
+Etape 6 - Sélectionnez la donnée dans le menu déroulant 
+
+ 
+Puis vient la fenêtre suivante qui présente un menu déroulant. Celui-ci vous invite à 
+choisir la ou les données que vous souhaitez dans l'ensemble des données du fichier. 
+
+ 
+Dans tous les modes de calcul, cette fenêtre présente le choix suivant : 
+"charger le libellé long et la date ouinon" 
+
+
+
+
+
+
+
+Par défaut, c'est le oui qui est coché. 
+
+ 
+
+ATTENTION : lorsque vous êtes dans la situation où vous modifiez un formulaire est déjà 
+rempli, vous devez cocher la réponse « non » si vous ne voulez pas écraser les 
+informations existantes dans le formulaire. 
+
+ 
+
+Si vous choisissez l’option « oui », lorsque vous fermerez cette fenêtre après avoir 
+sélectionné une donnée, certains libellés de la données enregistrés dans la base de 
+données seront chargées automatiquement dans les champs de saisie du formulaire. Ces 
+libellés sont : 
+
+. Item du menu (cadre de saisie n°9) reçoit le titre de la données tel que formulé dans 
+la base de données. 
+. la source et la date de validité de la donnée sont placés dans le cadre n° 2 
+. le libellé détaillé est placé dans le cadre n° 12 
+. Le titre de la donnée sera aussi placé dans le champ dédié au titre de la légende 
+(cadre n° 1). 
+
+
+ 
+
+Dans la plupart des cas ces données sont bien présentes dans la base de données, mais il 
+faudra sans doute les modifier pour qu'elles soient adaptées à un affichage simple et 
+explicite sur la carte et dans les menus déroulants ( il faut en particulier veiller à réduire le 
+nombre de caractères du titre de la légende (champ de saisie n° 1) quitte à perdre en 
+précision concernant le sens, cette perte de sens étant compensé par le libellé long 
+(champ de saisie n° 12) qui s'affiche lorsqu'on survole la légende avec la pointe de la 
+souris). 
+
+ 
+Dans les autres options de calcul (rapport a/b en %, (a-b /c (%), etc.…), cette fonction est 
+désactivée par défaut pour les dénominateurs. Dans le cas du numérateur, l’usage de 
+cette fonction avec l’option oui il faudra de toute façon réécrire, en partie au moins, les 
+cadres 1, 2, 9 et 12. 
+
+ 
+
+Lorsqu’on est dans la situation d’insertion d’une nouvelle ligne de menu, on peut aussi 
+prendre le parti de cocher non à la proposition « charger le libellé long et la date ». On 
+devra alors saisir tous les champs à la main. 
+
+
+Préconisations pour l’option « charger le libellé long et la date » : 
+
+. dans le cas du mode de calcul par défaut « valeur a » , il est pratique de prendre 
+l'option oui 
+. dans le cas du mode de calcul (a/b)%, aussi car il suffit souvent d'ajouter 
+simplement % aux libellés automatiques pour achever la saisie 
+. dans les autres modes de calcul, il est préférable de prendre l'option non et de 
+saisir les libellés manuellement. 
+
+
+ 
+
+NB dans le cas du mode de calcul à une seul variable « valeur a » , la valeur inscrite dans 
+le cadre de saisie n° 0 ainsi que dans la case numérateur, est le n° choisi dans la base de 
+donnée suivit d'une virgule et d'un 0. 
+Etape 7 - Saisie ou modification des champs de saisie n° 1, 2, 9, et 12 
+
+
+Le libellé attribué au champ n°1 titre de la légende doit être le plus court possible pour 
+ne pas déborder du cadre la légende. (même si la lecture n'est pas complètement 
+explicite : le libellé long corrigera ce problème) 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+Le libellé attribué au champ n°2 source doit être le plus court possible et comprendre 
+aussi la date. 
+
+ 
+
+ 
+
+ 
+
+Le libellé attribué au champ n°9 Item du menu doit être suffisamment explicite pour que 
+l'on reconnaisse facilement le contenu dans les menus déroulants. (Penser en particulier 
+à toujours mettre la date de validité et la source dans le contenu du champ 9 item menu 
+si elle n'y est pas déjà dans le libellé placé automatiquement. 
+
+ 
+
+ 
+
+ 
+
+Le libellé attribué au champ n°12 libellé long doit être suffisamment explicite pour que 
+l'on dispose d'assez d'information pour comprendre la signification de la donnée, sa 
+source et sa date de validité. (dans le cas d'une donnée calculée, indiquez les sources et 
+le cas échéant l’adresse du fichier de référence) 
+
+ 
+
+ 
+
+ 
+
+Etape 8 – réglage des paramètres complémentaires : 
+
+ 
+
+Cinq options sont possibles : 
+
+ 
+
+8.0 – Ne rien faire 
+
+8.1 – Médiane forcée. 
+
+8.2 – Seuils d’apparition en fonction de la valeur d’une variable de référence dans 
+le fichier. 
+
+8.3 - Seuils d’apparition en fonction des valeurs du résultat R du calcul ( ou de la 
+valeur de la variable dans le cas de l’option « valeur a »). 
+
+8.4 - Formule de calcul de type ( K- a x R) sur le résultat R. 
+
+ 
+
+ 
+
+Voir ci-après le manuel d’usage de ces options. (paramètres complémentaires) 
+
+ 
+
+Etape 9 – Validation : 
+Une fois l'ensemble des champs saisis, cliquez sur le bouton "valider" 
+
+
+. la validation est une étape obligatoire avant de passer à une autre opération 
+de saisie 
+. tant que vous n'avez pas validé, le bouton enregistrer est désactivé. 
+
+
+ 
+
+Etape 10 - Enregistrer 
+Il n'est pas nécessaire d'enregistrer après chaque opération. Vous pouvez enregistrer 
+toutes les 10 minutes par exemples. 
+Pour revenir à la dernière version enregistrée : 
+
+ 
+
+1 - Vider le cache 
+
+2 – Cliquez sur le lien « rafraîchir le cadre » situé en haut du formulaire. 
+
+ 
+
+
+
+
+
+
+ATTENTION : ne fermez pas sans avoir enregistré, vous perdriez vous dernières 
+opérations. 
+
+ 
+
+Etape 11 – Suite des travaux : visualisez ou poursuivre la saisie 
+
+vous pouvez ensuite vous reporter sur PageCarto pour visualiser votre travail (n’oubliez 
+pas de vider le cache et de rafraîchir le module PageCarto) 
+
+ou bien vous pouvez alors passer à une autre opération de saisie de formulaires : 
+
+. insérer une nouvelle ligne de menu 
+. effacer une ligne de menu 
+. déplacer une ligne de menu 
+. dupliquer une ligne de menu 
+
+
+ 
+
+ 
+
+REMARQUES : 
+
+ 
+
+. Dans le cas de l'insertion d'une nouvelle ligne de menu, si l'un des champs est 
+vide, le bouton valider est désactivé. 
+. Dans le cas d'une modification de fiche, si vous n'avez introduit aucune 
+modification, le bouton valider est désactivé. Dans ce cas, si vous souhaitez 
+valider tout de même, il faut placer le curseur dans un des champs 1,2,9 ou 12 , 
+taper un espace ou un autre caractère, puis l'effacer. Dès lors vous pouvez 
+valider. 
+
+
+ 
+
+
+II - déplacer ou dupliquer une ligne de menu 
+
+ 
+Sélectionnez une ligne de menu dans la liste déroulante 
+Cliquez sur le lien dupliquer ou sur le lien déplacer. 
+
+ 
+
+ ou 
+
+ 
+
+Saisissez le rang de destination et cliquez sur OK 
+Dupliquer est utile pour gagner du temps, par exemple dans les cas où les libellés sont 
+proches (par exemple où il suffit de remplacer industrie par Construction etc.;.) 
+Procéder ensuite aux modifications comme indiqué précédemment. 
+
+ 
+
+III - Effacer une ligne de menu 
+
+ 
+Sélectionnez une ligne de menu dans la liste déroulante 
+Cliquez sur le lien effacer. 
+Enregistrez. 
+(si le bouton "enregistrer" est désactivé, faites une modification fictive dans une fiche : 
+par exemple insérez un espace dans un champ de saisie et effacez cet espace, puis validez 
+et enregistrez). 
+
+ 
+
+ATTENTION : NE PAS EFFACER LA DERNIERE LIGNE de la liste (BUG !) SI vous voulez 
+effacer la dernière ligne d’un menu de données, déplacez la vers un rang précédent et 
+effacez la ensuite. 
+
+
+
+ 
+
+ 
+
+ 
+
+III – Réglage des paramètres complémentaires 
+
+ 
+
+
+
+
+8.1 – Médiane forcée. 
+
+ 
+
+Par défaut, lorsqu’on affiche la données d’un menu ponctuel, PageCarto calcule la 
+médiane. Dans certains cas, on peut souhaiter afficher une partition des aires 
+géographiques autour d’un seuil choisi. Pour cela on inscrit la valeur de seuil dans la case 
+Q2 forcé. 
+
+Le réglage par défaut : 
+
+ 
+
+ 
+
+ 
+
+Donne le résultat suivant où 60,53 est la médiane 
+
+ 
+
+ 
+
+ 
+
+Le réglage avec la valeur 30 
+
+ 
+
+ 
+
+ 
+
+Donne le résultat suivant : 
+
+ 
+
+ 
+
+ 
+
+Ne pas oublier d’indiquer dans les cadres 1,9 et 12 la mention (seuil Q2 forcé) pour qu’on ne 
+confonde pas cette représentation avec une partition autour de la médiane (en anglais 
+dans l’exemple). 
+
+ 
+
+8.2 – Seuils d’apparition en fonction de la valeur d’une variable de 
+référence dans le fichier. 
+
+ 
+
+On peut vouloir observer l’affichage de notre variable les seules aires de la cartes pour 
+lesquelles une valeur « X » est comprise entre un minimum et un maximum (dans le calcul 
+les bornes sont incluses). 
+
+ 
+
+1 - On indique alors ne ° de colonne de la donnée 
+dans la case « donnée test » 
+
+Pour cela on clique sur la case « donnée teste » ; 
+Cela déclenche l’affichage du menu déroulant des 
+données du fichier. (NB le chargement des libellés 
+est inactif ici, il n’est pas nécessaire de cocher l’option non) 
+
+2 – On saisie les minimum et maximum dans les cases « seuil inférieur et « seuil 
+supérieur ». 
+
+ 
+
+Exemple : 
+
+On a au départ la population des pays arabes en 2000 : 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Si on veut afficher la population des pays arabes qui ont un GDP/personne compris entre 
+564,15 $ et 7736,57 bornes incluses 
+
+ 
+
+Avec le numéro de la donnée « GDP par capita » dans le fichier = 621 
+
+On saisit ces paramètres comme suit : 
+
+ 
+
+ 
+
+ 
+
+Ces critères ont l’effet suivant sur le calcul de variable population : 
+
+ 
+
+ 
+
+Ce qui donne la carte suivante en appliquant la variable en fond de carte coloré. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+8.3 - Seuils d’apparition en fonction des valeurs du résultat R du calcul ( ou de la valeur de 
+la variable dans le cas de l’option « valeur a »). 
+
+ 
+
+Ici on veut limiter l’affichage entre deux bornes supérieures et inférieures 
+
+
+
+
+Dans ce cas les bornes sont exclues 
+
+Si, dans notre exemple, on veut sélectionner la population comprise dans la fourchette 
+]1940785,28793237[, on inscrit les bornes comme suit : 
+
+ 
+
+ 
+
+ 
+
+On aura le résultat suivant : 
+
+ 
+
+ 
+
+ 
+
+Notons que les bornes ne sont pas comprises. 
+
+Dans ce cas de figure, on a choisi les bornes avec un écart de 1 avec des valeurs existantes 
+dans le fichier. Mais on aurait pu choisir une valeur arbitraire pour les bornes, alors la règle 
+aurait été que la légende affiche la première valeur existant dans le fichier au dessus de la 
+borne inférieure et la dernière valeur existant avant la borne supérieure. 
+
+ 
+
+8.4 - Formule de calcul de type (a x R - b) sur le résultat R avec a et b constantes 
+
+ 
+
+Les cadres de saisie sont les suivants : 
+
+. pour a, le cadre « coef » 
+. pour b, le cadre « Norme » 
+
+
+ 
+
+ 
+
+ 
+
+Exemple 1 : si on a une population en unité habitant et que l’on trouve les nombres 
+difficiles à lire, on peut diviser le résultat par 1 million, c’est dire prendre le coefficient 
+0,0000001 
+
+Soit : 
+
+ 
+
+ 
+
+Exemple 2 : si on a le salaire et qu’on veut observer les écarts à un salaire de 
+référence égal à 11,5 €: 
+
+ 
+
+ 
+
+ 
+
+Exemple 3 : si on a le pourcentage de femmes et qu’on veut observer le % d’hommes : 
+
+ 
+
+ 
+
+ 
+
+Exemple 4 : si on a la proportion de femmes et qu’on veut la proportion d’hommes : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+2 – Somme 
+
+Le procédé est identique au cas précédent « valeur simple» sauf 
+
+
+
+
+. A l’étape 3 : choix du paramètre 
+. et à l’étape 5 : saisie des colonnes de données 
+
+
+ 
+
+étape 3 : choisir « somme » 
+
+ 
+
+étape 5 – Saisir le nombre de termes de la somme dans le cadre « Nb colonne du 
+numérateur » et Cliquer sur le cadre de saisie « numérateur » pour récupérer les 
+coordonnées des données dans le fichier de données. 
+
+ 
+
+
+ 
+
+ 
+
+3 - Somme/dénominateur (%), avec le résultat 
+en pourcentage 
+
+Le procédé est identique au cas « valeur simple» sauf 
+
+. A l’étape 3 : choix du paramètre 
+. et à l’étape 5 : saisie des colonnes de données 
+
+
+ 
+
+étape 3 : choisir « somme/d (%)» 
+
+ 
+
+étape 5 – Saisir le nombre de termes de la somme dans le cadre « Nb colonne du 
+numérateur » et Cliquer sur le cadre de saisie « numérateur » pour récupérer les 
+coordonnées des données dans le fichier de données. 
+
+ 
+
+
+ 
+
+Ensuite, cliquer sur le cadre de saisie « dénominateur » pour récupérer le n° de colonne du 
+dénominateur 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+4 - Rapport (%), donné en pourcentage 
+
+Le procédé est identique au cas « valeur simple» sauf 
+
+. A l’étape 3 : choix du paramètre 
+. et à l’étape 5 : saisie des colonnes de données 
+
+
+ 
+
+étape 3 : choisir « a /b (%)» 
+
+ 
+
+étape 5 – Le cadre « Nb colonne du numérateur » est affecté de la valeur 1 
+
+Cliquer sur le cadre de saisie « numérateur » pour récupérer le numéro de colonne 
+
+ 
+
+
+ 
+
+Ensuite, cliquer sur le cadre de saisie « dénominateur » pour récupérer le n° de colonne du 
+dénominateur 
+
+ 
+
+ 
+
+ 
+
+ 
+
+5 - Différence entre deux variables / 
+dénominateur (%), avec le résultat en 
+pourcentage 
+
+ 
+
+Le procédé est identique au cas « valeur simple» sauf 
+
+. A l’étape 3 : choix du paramètre 
+. et à l’étape 5 : saisie des colonnes de données 
+
+
+ 
+
+étape 3 : choisir « a-b/d (%)» 
+
+ 
+
+étape 5 – Le cadre « Nb colonne du numérateur » est affecté de la valeur 2 
+
+Cliquer sur le cadre de saisie « numérateur » pour récupérer les coordonnées des données 
+dans le fichier de données. 
+
+ 
+
+
+ 
+
+Ensuite, cliquer sur le cadre de saisie « dénominateur » pour récupérer le n° de colonne du 
+dénominateur 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+6 - Somme/ somme (%), avec le résultat en 
+pourcentage 
+
+Le procédé est identique au cas « valeur simple» sauf 
+
+. A l’étape 3 : choix du paramètre 
+. et à l’étape 5 : saisie des colonnes de données 
+
+
+ 
+
+étape 3 : choisir « somme/somme (%)» 
+
+ 
+
+étape 5 – Saisir le nombre de termes de la somme dans le cadre « Nb colonne du 
+numérateur » et Cliquer sur le cadre de saisie « numérateur » pour récupérer les 
+coordonnées des données dans le fichier de données. 
+
+ 
+
+
+ 
+
+Ensuite, cliquer sur le cadre de saisie « dénominateur » pour récupérer les n° de colonne 
+du dénominateur 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Vous remarquerez que dans le cadre 0, les n° de colonne du numérateur et du 
+dénominateur sont séparé par un numéro fictif 10000001 comme dans l’exemple suivant : 
+
+ 
+
+Exemple : 51,52,53,54,10000001,4,5,6,7 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+7 - Différence entre deux variables / somme de 
+variables (%), avec le résultat en pourcentage 
+
+ 
+
+ 
+
+Le procédé est identique au cas « valeur simple» sauf 
+
+. A l’étape 3 : choix du paramètre 
+. et à l’étape 5 : saisie des colonnes de données 
+
+
+ 
+
+étape 3 : choisir « a-b/d (%)» 
+
+ 
+
+étape 5 – Le cadre « Nb colonne du numérateur » est affecté de la valeur 2 
+
+Cliquer sur le cadre de saisie « numérateur » pour récupérer les coordonnées des données 
+dans le fichier de données. 
+
+ 
+
+
+ 
+
+Ensuite, cliquer sur le cadre de saisie « dénominateur » pour récupérer les n° de colonne 
+du dénominateur 
+
+ 
+
+ 
+
+ 
+
+Vous remarquerez que dans le cadre 0, les n° de colonne du numérateur et du 
+dénominateur sont séparé par un numéro fictif 10000001 comme dans l’exemple suivant : 
+
+ 
+
+Exemple : 51,52,53,54,10000001,4,5,6,7 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Les Graphiques associés à la carte 
+
+ 
+
+L’interface de création des Graphiques est la suivante. Elle suit globalement la même 
+logique que l’interface des variables projetées sur la carte (ronds et fond colorés), en 
+particulier pour les fonctions « Insérer », « Effacer », « Déplacer vers », « Dupliquer vers » 
+
+ 
+
+ 
+
+ 
+
+ 
+
+On distingue quatre types de graphiques : 
+
+ 
+
+. Les histogrammes simples 
+. Les histogrammes multiples, 
+. Les Courbes 
+. Les Radars 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Les Histogrammes 
+
+On distingue deux types d’histogrammes : 
+
+ 
+
+1. les histogrammes simples, 
+
+
+ 
+
+2. les histogrammes multiples. 
+
+
+ 
+
+ 
+
+1 - Histogrammes simples 
+
+ 
+
+1 - Sélectionner l‘emplacement du menu dans la liste de droite dans l’interface de saisie. 
+l’interface insèrera le nouveau menu graphique après la position que vous avez 
+sélectionnée. 
+
+ 
+
+2 - Cliquez insérer 
+
+ 
+
+3 – le bouton de sélection du type de graphique 
+est positionné par défaut sur histogramme 
+simple 
+
+ 
+
+4 – saisissez le nombre de données de 
+l’histogramme simple (carré nb de colonnes) 
+
+ 
+
+5 – cliquez sur le bouton « valider ligne+colonnes 
+et voir tableau » 
+
+ 
+
+6 - sélectionnez les données via les menus déroulants et saisissez les noms de ligne et de 
+colonne ( les guillemets ne sont pas obligatoires , le libellé de ligne (à gauche) n’est pas 
+obligatoire) 
+
+Puis fermez le menu de données 
+
+ 
+
+ 
+
+La fermeture du tableau de saisie des données entraîne le remplissage automatique des 
+cadres de saisie concernées (cadre 0 - n° de colonne, cadre n°4 - libellés des colonnes). 
+
+ 
+
+7 – saisissiez les cadres de définition du contenu du menu : 
+
+ 
+
+cadre 1 - titre de la légende (titre contracté à moins de 50 caractères si possible) 
+
+ 
+
+cadre 2 – source et date de validité des données (moins de 40 caractères si possible) 
+
+ 
+
+cadre 9 – item menu. C’est ce libellé qui apparaît dans les menus déroulant de sélection 
+des graphiques. Il doit être court mais explicite et doit contenir au minimum le contenu de 
+la ligne 1 + le contenu de la ligne 2 
+
+ 
+
+cadre 12 – titre long. Reprend de manière explicite les éléments du cadre 9 et donnée des 
+indications complémentaires (adresse du fichier de référence etc.…) 
+
+ 
+
+
+
+
+8 – paramétrez l’affichage de l’histogramme 
+
+ 
+
+Attention, si vous oubliez de réaliser cette étape, le graphique s’affichera de manière 
+anachronique 
+
+ 
+
+Cliquez dans le cadre 11 
+
+ 
+
+Le cadre suivant s’affiche. 
+
+ 
+
+Mode absolu ou 100% 
+
+Dans PageCarto, seul le mode 
+absolu est actif pour les 
+histogrammes simples. 
+
+ 
+
+Charger les paramètres 
+
+Pa défaut, ce cadre se positionne 
+dans le cas où vous modifiez une 
+fiche existante, c’est pourquoi le 
+bouton charger les paramètres est 
+positionné sur l’option « fichier » , 
+c'est-à-dire sur l’option où le cadre 
+affiche les paramètres existants. 
+
+ 
+
+Lorsque vous créer un 
+histogramme pour la première fois 
+(fonction insérer), vous devez 
+choisir l’option standard, sinon les 
+paramètres seront erronés. 
+
+ 
+
+Paramètres d’affichage 
+
+Dans PageCarto, un seul paramètre a de l’importance : la largeur de barre . Ce réglage par 
+défaut convient dans la plupart des cas car le module histogramme s’ajuste 
+automatiquement à la fenêtre d’affichage. Le réglage peut être utile dans le cas des 
+histogrammes à deux ou trois barres pour élargir les barres. 
+
+(Il est préférable de ne pas toucher le réglage de la hauteur du graphique) 
+
+ 
+
+Règles d’affichage automatiques et implication sur la saisie des données du menu. 
+
+. Vous pouvez lire les 
+valeurs et les libellés 
+en survolant les 
+barres. 
+. L’histogramme 
+simple présente une 
+couleur différente à 
+chaque barre. Vous 
+ne pouvez pas 
+choisir les couleurs. 
+. Pour chaque barre, 
+une ligne de légende 
+est ajoutée sur la 
+droite de 
+l’histogramme. 
+. Plus il y a de barres, plus le texte des légendes doit être court, même abrégé au 
+maximum. 
+. Lorsqu’il ya un espace dans un libellé de légende, pour gagner de la place en 
+largeur, le module graphique renvoie à la ligne. Si l’on a beaucoup de barres et 
+donc beaucoup de lignes de légende, il vaut mieux contrôler le passage à la ligne, 
+
+
+
+
+
+pour éviter que la légende sorte du cadre du graphique. Une bonne technique 
+consiste à insérer des « _ » entre les mots pour réaliser des chaînes de caractères 
+insécables (ex : prof_interm_santé_social, formule hyper contractée de 
+« professions intermédiaires dans le champ de la santé, du social et de l’éducatif », 
+champ qui correspond à une nomenclature classique dans la statistique sur le 
+travail) 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Au-delà de 19 barres, le graphique change de format : 
+
+ 
+
+. il n’y a plus de 
+légende 
+
+
+ 
+
+. toutes les 
+barres sont 
+grises 
+
+
+ 
+
+. c’est un format 
+pour afficher 
+des séries 
+longues (par 
+exemple : 
+variation des 
+prix sur 30 ans) 
+
+
+ 
+
+En survolant chaque barre avec le pointeur de la souris, on peut lire dans une micro popup, 
+le libellé et la valeur de la barre. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+2 – Histogrammes Multiples 
+
+ 
+
+Les histogrammes Multiples sont les histogrammes présentant plusieurs « lignes » dans 
+chaque « colonne » (barre). 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Le procédé de fabrication est équivalent au cas de l’histogramme simple, 
+
+ sauf aux étapes 4, 6 et 8 
+
+ 
+
+étape 4 – saisissez le nombre de barres de l’histogramme simple (carré nb de colonnes) 
+ainsi que le nombre de lignes (carré nb de lignes) 
+
+ 
+
+étape 6 : récupération des coordonnées de données dans le fichier 
+
+ 
+
+Sélectionnez les données via les menus déroulants et saisissez les noms de ligne et de 
+colonne ( les guillemets ne sont pas obligatoires) , 
+
+puis fermez le menu de données 
+
+ 
+
+ 
+
+La fermeture du tableau de saisie des données entraîne le remplissage automatique des 
+cadres de saisie concernées (cadre 0 - n° de colonne, cadre n°4 - libellés des colonnes et 
+Cadre 5 - libellé de la courbe). 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+8 – paramétrez l’affichage de l’histogramme 
+
+ 
+
+Attention, si vous oubliez de réaliser cette étape, le graphique s’affichera de manière 
+anachronique. 
+
+ 
+
+Cliquez dans le cadre 11. Le cadre suivant s’affiche. 
+
+ 
+
+Mode absolu ou 100% 
+
+ 
+
+Mode absolu. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Mode 100% 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Charger les paramètres 
+
+Pa défaut, ce cadre se positionne dans le cas où vous modifiez une fiche existante, c’est 
+pourquoi le bouton charger les paramètres est positionné sur l’option « fichier » , c'est-à-
+dire sur l’option où le cadre affiche les paramètres existants. 
+
+ 
+
+Lorsque vous créer un histogramme pour la première fois (fonction insérer), vous devez 
+choisir l’option standard, sinon les paramètres seront erronés. Idem lorsque vous modifier 
+un graphique existant en le transformant en Histogramme multiple 
+
+ 
+
+Paramètres d’affichage 
+
+Dans PageCarto, un seul paramètre a de l’importance : la largeur de barre. Ce réglage par 
+défaut convient dans la plupart des cas car le module histogramme s’ajuste 
+automatiquement à la fenêtre d’affichage. Le réglage peut être utile dans le cas des 
+histogrammes à deux ou trois barres pour élargir les barres. 
+
+(Il est préférable de ne pas toucher les autres réglages) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+Graphiques COURBES 
+
+ 
+
+L’interface de définition des graphiques courbes est similaire à celle des 
+histogrammes. 
+
+ 
+
+ 
+
+ 
+
+On distingue cinq types de courbes : 
+
+ 
+
+3. Courbes simples (au maximum deux courbes sur le même graphique pour la 
+version 1.1) 
+
+
+ 
+
+4. Courbe comparée à la moyenne des valeurs sur l’ensemble de la carte 
+
+
+ 
+
+5. Courbe comparée à la moyenne pondérée des valeurs des valeurs sur 
+l’ensemble de la carte (on indique dans le menu le n° de colonne de la 
+donnée qui sert à la pondération) 
+
+
+ 
+
+6. Courbe comparée à une courbe de référence indiquée par une sélection de 
+colonnes de données dans le fichier de données 
+
+
+ 
+
+7. Courbe comparée à une courbe de référence tracée à partir de données 
+entrées manuellement dans l’interface de menu graphique. 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+
+
+
+1 - Courbes simples 
+
+ 
+
+Contenu de cette partie : 
+
+A – Une courbe simple 
+
+B - Deux courbes simples 
+
+C – option pour les données lacunaires 
+
+ 
+
+A – Une courbe simple 
+
+ 
+
+1 - Sélectionner l‘emplacement du menu 
+dans la liste de droite dans l’interface de 
+saisie. l’interface insèrera le nouveau menu 
+graphique après la position que vous avez 
+sélectionnée. 
+
+ 
+
+2 - Cliquez insérer 
+
+ 
+
+3 - Sélectionner le bouton courbe 
+
+ 
+
+4 – saisissez le nombre de données de la 
+courbe simple (carré nb de colonnes) et laissez le nb de lignes =1 
+
+ 
+
+5 – cliquez sur le bouton « valider ligne+colonnes et voir tableau » 
+
+ 
+
+6 - sélectionnez les données via les menus déroulants et saisissez les noms de ligne 
+et de colonne ( les guillemets ne sont pas obligatoires) , 
+
+puis fermez le menu de données 
+
+ 
+
+ 
+
+La fermeture du tableau de saisie des données entraîne le remplissage automatique 
+des cadres de saisie concernées (cadre 0 - n° de colonne, cadre n°4 - libellés des 
+colonnes et Cadre 5 - libellé de la courbe). 
+
+ 
+
+7 – saisissiez les cadres de définition du contenu du menu : 
+
+cadre 1 - titre de la légende (titre contracté à moins de 50 caractères si possible) 
+
+cadre 2 – source et date de validité des données (moins de 40 caractères si possible) 
+
+cadre 9 – item menu. C’est ce libellé qui apparaît dans les menus déroulant de 
+sélection des graphiques. Il doit être court mais explicite et doit contenir au minimum 
+le contenu de la ligne 1 + le contenu de la ligne 2 
+
+NB Ne rien mettre dans le cadre de saisie n° 12 
+
+ 
+
+8 – Définir l’unité en abrégé (dans l’exemple ci-dessus on a mis 000 pour milliers) 
+
+ 
+
+9 – Paramétrez le type de courbe 
+
+ 
+
+ 
+
+Les quatre premiers boutons indiquent le type de courbe. La courbe simple est la 
+première, option (0,x). Le paramètre x est fourni par la deuxième série de boutons. 
+
+Il détermine le coefficient de lissage des courbes. Lorsqu’il est positionné à 0, il n’y a 
+pas de lissage, les courbes sont anguleuses. S’il y a peu de points, il est préférable de 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+
+
+
+choisir le degré 0 ou 1 pour le lissage. Par défaut, le lissage est réglé à 2, il convient 
+dans la plupart des cas. Si la forme de la courbe ne vous convient pas, vous pouvez 
+modifier ultérieurement ce paramètre. 
+
+ 
+
+A – Deux courbes simples 
+
+ Le procédé de ne diffère du précédent, avec l’option (0,x). qu’au niveau des étapes 
+4, et 6 
+
+ 
+
+4 – saisissez le nombre de données de la courbe simple Ici vous saisissez la valeur 2 
+au lieu de 1 dans le carré du nombre de lignes (équivalent au nombre de courbes) 
+
+(..) 
+
+6 - sélectionnez les données via les menus déroulants et saisissez les noms de ligne 
+et de colonne. 
+
+Ici le tableau de données se compose de deux lignes. 
+
+ 
+
+ 
+
+ 
+
+C – option pour les données lacunaires 
+
+Pour éviter que la courbe ne présente des tracés avec des sauts lorsqu’il manque des 
+données, ont peut ajouter un paramètre qui permet un tracé de ligne discontinu. 
+
+Ce paramètre est la valeur -99999 ajoutée après le texte de l’unité dans le cadre n°8, 
+avec une virgule comme séparateur 
+
+Dans notre exemple : 
+
+Cadre n°8 sans le paramètre : 000 
+
+Carde n°8 avec le paramètre : 000,-99999 
+
+ 
+
+ 
+
+Sans le paramètre Avec le paramètre -99999 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+
+
+
+2 - Courbe comparée à la moyenne 
+
+ 
+
+NB Dans ce cas on ne peut pas comparer deux courbes à la moyenne. 
+
+ 
+
+Le procédé est équivalent au cas de la fabrication d’une courbe simple à l’exception 
+de l’étape n°9. 
+
+ 
+
+9 – Paramétrez le type de courbe 
+
+Cette fois on prend l’option (1,x) pour la première série de boutons du cadre de saisie 
+n°11 dédié aux paramètres de la courbe 
+
+ 
+
+ 
+
+ 
+
+L e choix du paramètre lissage est libre (cf exposé boutons 0 à 5 dans « courbe 
+simple ») 
+
+ 
+
+Note sur le procédé de calcul. 
+
+Pour chaque donnée de la courbe correspondant à l’aire de la carte sélectionnée pour 
+l’affichage du graphique, le point correspondant de la courbe de référence en gris est 
+la moyenne de toutes les valeurs de la données du point pour l’ensemble des aires 
+géographiques de la carte, y compris les valeurs égales à 0, et sauf les aires 
+géographiques où la données est manquante. 
+
+ 
+
+NB. A propos du nom de la courbe moyenne 
+
+Le libellé de la courbe est inscrit automatiquement dans le cadre 5 à la fin de l’étape 
+6. Lorsque vous avez saisie les cordonnées des données et les libellés des lignes et des 
+colonnes. 
+
+ 
+
+Par défaut lors de l’affichage du graphique, le nom « Mean » est donnée à la courbe 
+grise des valeurs moyennes. Vous pouvez changer le nom en procédant comme suit : 
+si le non de la courbe dans le cadre 5 est « ligne 1 », il suffit de rajouter « nom de la 
+courbe moyenne » avec une virgule comme séparateur. Ce qui donne dans le cadre 
+5 : « ligne1 », « nom de la courbe moyenne » 
+
+ 
+
+3 - Courbe comparée à la moyenne pondérée 
+par une données choisie 
+
+ 
+
+Le procédé est équivalent au cas précédent de la fabrication d’une courbe comparée 
+à une moyenne simple avec l’option (1,x). 
+
+La seule différence est l’ajout du n° de colonne de la donnée incluse dans le fichier 
+qui servira à la pondération. 
+
+On joute ce n° de colonne manuellement dans le cadre de saisie n°11, après les 
+paramètres de définition du type de courbe, avec une virgule comme séparateur. 
+
+ 
+
+Dans notre exemple 
+
+Cadre n°11 en moyenne simple : 1,0 
+
+Cadre n°11 en moyenne pondérée par une donnée choisie : 1,0,50 
+
+50 est le numéro de colonne de la donnée de pondération. 
+
+ 
+
+Note sur le procédé de calcul. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Dans ce cas les valeurs des points de la courbe de référence ( en gris) ne sont plus des 
+moyennes simple mais des moyennes pondérées par la valeur de la donnée de 
+pondération. 
+
+ 
+
+4 - Courbe comparée à une série de données 
+du fichier désignées par leurs n° de colonnes 
+
+ 
+
+NB Ici, on ne peut pas comparer deux courbes à la série de données de référence. 
+
+ 
+
+Le procédé est équivalent au cas de la fabrication d’une courbe simple à l’exception 
+de 3 points : 
+
+. à l’étape n°9. 
+. ajout manuel du nom de la courbe de référence dans le cadre n°5 
+. ajout manuel de numéros de colonnes dans le cadre n°12 
+
+
+ 
+
+étape 9 – Paramétrez le type de courbe 
+
+Cette fois on prend l’option (2,x) pour la première série de boutons du cadre de saisie 
+n°11 dédié aux paramètres de la courbe 
+
+ 
+
+Ajout manuel du nom de la courbe de référence dans le cadre n°5 
+
+Une fois que vous avez réalisé toutes étapes de fabrication de la courbe selon le 
+procédé courbe simple et étape 9 ci-dessus, vous devez ajouter le nom de la courbe 
+de référence dans le cadre n°5 en procédant comme suit : 
+
+ 
+
+Ajouter le nom de la courbe de référence entre guillemets derrière le nom de la 
+courbe simple avec une virgule comme séparateur. 
+
+ 
+
+Dans notre exemple 
+
+Cadre n°5 en courbe simple : « population » 
+
+Cadre n°5 avec ajout souhaité : « population », « nom de la courbe de référence » 
+
+ 
+
+Ajout de numéros de colonnes des données de comparaison dans le cadre n°12 
+
+Ajouter les numéros de colonne de données dans le cadre 12 avec une virgule comme 
+séparateur. 
+
+Cliquez sur le cadre 12 : le cadre de saisie suivant s’affiche. Sélectionnez les données 
+de comparaison avec les menus déroulants (il n’est pas nécessaire de remplir les 
+cadres de libellé de ligne et de colonne) 
+
+ 
+
+ 
+
+Exemple : 
+
+Cadre n°12 en courbe simple : 
+
+Cadre n°12 avec ajout des n° de données : 912,913,914,915,917 
+
+ 
+
+Dans quel cas utiliser ce procédé ? 
+
+L’usage de ce cas de figure est rare. Dans la plupart des cas, il suffit de prendre 
+l’option deux courbes simples. 
+
+Il est fait pour le cas particulier où l’on veut comparer les données étudiées avec des 
+données de comparaison qui ne sont pas dans le même fichier. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Cas où les données étudiées sont dans le fichier principal, avec les données du fichier 
+complémentaire. 
+
+Cela est possible dans PageCarto moyennant un calcul simple sur les n° de colonnes 
+des données situées dans le fichier complémentaire. En effet, à l’ouverture de 
+PageCarto les deux fichiers sont fusionnés en un seul. 
+
+Dans cette fusion les numéros du fichier complémentaire font l’objet d’une 
+translation valeur égal à : 
+
+(n° dernière donnée du fichier principal – 2+n° de la colonne dans complémentaire) 
+
+ 
+
+Saisie manuelle dans le fichier DATA-Sujet.js (cas principal) ou data-Other .js (Cas 
+complémentaire) où les données étudiées et les données de comparaison ne sont 
+pas dans le même fichier. 
+
+Exemple : 
+
+Cadre n°12 en courbe simple : 
+
+Cadre n°12 avec ajout des n° de données : 912,913,914,915,916 
+
+ 
+
+Dans le fichier .js des menus graphiques, cet ajout de données prend la forme 
+suivante : 
+
+paramHISTOX0[12]="912,913,914,915,916 " 
+
+ 
+
+Dans le cas inverse où les données étudiées sont dans le fichier complémentaire et les 
+données de comparaison dans le fichier principal, les coordonnées de comparaison 
+sont les originales, sans translation 
+
+ 
+
+Dans le cas où les données de référence pour la comparaison sont dans le même 
+fichier utiliser l’option deux courbes simples ou bien, si vous voulez la courbe de 
+référence en grisé, mettez les n° de colonnes des données de référence dans le cadre 
+n°12 avec la virgule comme séparateur. 
+
+ 
+
+ 
+
+5 - Courbe comparée à une série de données 
+dont les valeurs sont saisies manuellement 
+
+Le procédé est équivalent au cas précédant mais avec deux différences : 
+
+. cette fois on choisi l’option (3,x) pour la première série de boutons du cadre 
+de saisie n°11 dédié aux paramètres de la courbe. 
+. Au lieu des n° de colonnes des données de la courbe de référence, on saisie 
+dans le cadre 12 la série de valeur des données de cette courbe de référence 
+avec comme séparateur une virgule : 3500,38210,39900,42320 
+
+
+ 
+
+Dans quel cas utiliser ce procédé ? 
+
+Cela sert lorsque l’on veut comparer à des valeurs externes aux fichiers (par exemple 
+lorsqu’avec une carte des pays arabes, on veut pouvoir comparer une série avec les 
+données sur l’ensemble du monde) 
+
+ 
+
+Ce procédé est aussi très utile lorsque l’on veut comparer à des vraies moyennes 
+pondérées, c'est-à-dire où l’on prend comme coefficient de pondération les valeurs 
+correspondant effectivement à chaque point de la courbe et non pas un coefficient 
+de pondération unique pour l’ensemble des points comme dans le cas 3 . 
+
+ 
+
+Ce procédé est encore très utile lorsqu’on veut calculer des indicateurs complexes ou 
+lorsqu’on veut se référer à une norme théorique. 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+Graphiques RADAR 
+
+ 
+
+L’interface de définition des graphiques courbes est similaire à celle des 
+histogrammes et des courbes. 
+
+ 
+
+ 
+
+ 
+
+On distingue 9 cas de figure : 
+
+ 
+
+1. Radar simple (au maximum une série de données sur le même graphique 
+pour la version 1.1) 
+
+
+ 
+
+2. Radar en valeur absolue avec comparaison à la moyenne des valeurs sur 
+l’ensemble de la carte 
+
+
+ 
+
+3. Radar en valeur absolue avec comparaison à la moyenne pondérée sur 
+l’ensemble de la carte (on indique, dans le cadre de saisie 11, le n° de 
+colonne de la donnée qui sert à la pondération) 
+
+
+ 
+
+4. Radar en pourcentage de la moyenne standardisée sur l’ensemble de la 
+carte (on indique dans le menu le n° de colonne de la donnée qui sert à la 
+pondération) 
+
+
+ 
+
+5. Radar en pourcentage de la moyenne pondérée et standardisée des sur 
+l’ensemble de la carte (on indique, dans le cadre de saisie 11, le n° de 
+colonne de la donnée qui sert à la pondération) 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+6. Radar en valeur absolue avec comparaison à une série de données du 
+fichier dont les n° de colonnes sont intégrés dans le cadre de saisie n°5 
+
+
+ 
+
+7. Radar en pourcentage des valeurs d’une série standardisée de données du 
+fichier dont les n° de colonnes sont intégrées dans le cadre de saisie n°5 
+
+
+ 
+
+8. Radar en valeur absolue avec comparaison à une série de valeurs intégrées 
+manuellement dans le cadre de saisie n°5 
+
+
+ 
+
+9. Radar en pourcentage des valeurs d’une série standardisée de valeurs 
+intégrées manuellement dans le cadre de saisie n°5 
+
+
+ 
+
+ 
+
+ 
+
+1 – Radar simple 
+
+ 
+
+1 - Sélectionner l‘emplacement du menu dans la liste de droite dans l’interface de 
+saisie. l’interface insèrera le nouveau menu graphique après la position que vous avez 
+sélectionnée. 
+
+ 
+
+2 - Cliquez insérer 
+
+ 
+
+3 - Sélectionner le bouton radar 
+
+ 
+
+4 – saisissez le nombre de données du 
+radar (carré nb de colonnes) 
+
+ 
+
+5 – cliquez sur le bouton « valider 
+ligne+colonnes et voir tableau » 
+
+ 
+
+6 - sélectionnez les données via les menus 
+déroulants et saisissez les noms de 
+colonnes (les guillemets ne sont pas obligatoires ici, le nom de ligne non plus). 
+
+Puis fermez le menu de données. 
+
+ 
+
+ 
+
+La fermeture du tableau de saisie des données entraîne le remplissage automatique 
+des cadres de saisie concernées (cadre 0 - n° de colonne, cadre 4 - libellés des 
+colonnes). 
+
+ 
+
+7 – saisissiez les cadres de définition du contenu du menu : 
+
+cadre 1 - titre de la légende (titre contracté à moins de 50 caractères si possible) y 
+compris l’unité de mesure 
+
+cadre 2 – source et date de validité des données (moins de 40 caractères si possible) 
+
+cadre 9 – item menu. C’est ce libellé qui apparaît dans les menus déroulant de 
+sélection des graphiques. Il doit être court mais explicite et doit contenir au minimum 
+le contenu de la ligne 1 + le contenu de la ligne 2 
+
+ 
+
+8 – Paramétrez le type de radar 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Les boutons indiquent le type de radar. Le radar simple est le premier, option (0,0). 
+
+10 – validez 
+
+11 – après la validation, vous pouvez soit entreprendre la saisie d’un autre formulaire 
+de menu ou enregistrer 
+
+Dans tous les cas n’oubliez pas d’enregistrer après avoir validé votre dernier 
+formulaire, au risque de perdre tout votre travail. 
+
+. 
+
+2 – Radar en valeur absolue avec comparaison 
+à la moyenne 
+
+ 
+
+Le procédé est en tout point équivalent au 
+précédent, jusqu’à l’étape 8, 
+
+ 
+
+8 – Paramétrez le type de radar 
+
+Choisir l’option (1,0). 
+
+La moyenne est indiquée en rouge. 
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour 
+nommer la moyenne. Il faut préciser dans 
+le titre de légende (cadre 1) et dans le 
+titre de menu ( cadre 9) : « moyenne en 
+rouge » 
+
+ 
+
+3 – Radar en valeur absolue avec comparaison 
+à la moyenne pondérée 
+
+ 
+
+Le procédé est en tout point équivalent au 
+précédent y compris pour le choix de 
+l’option (1,0). 
+
+Le mode de pondération proposée ici est la 
+moyenne pondérée à partir d’une donnée 
+choisie dans le fichier. 
+
+Pour obtenir la pondération, il faut ajouter 
+le n° de colonne de la donnée de 
+pondération aux paramètres du cadre 11 
+
+ 
+
+Dans notre exemple 
+
+Cadre n°11 en moyenne simple : 1,0 
+
+Cadre n°11 en moyenne pondérée par une donnée choisie : 1,0,50 
+
+50 est le numéro de colonne de la donnée de pondération. 
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour nommer la moyenne. Il faut préciser dans 
+le titre de légende (cadre 1) et dans le titre de menu ( cadre 9) : « moyenne en 
+rouge » 
+
+ 
+
+4 – Radar en valeur absolue avec comparaison 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+à la moyenne standardisée 
+
+Le procédé est en tout point équivalent au cas n°1 du radar simple, jusqu’à l’étape 8, 
+où il faut choisir l’option (1,1). 
+
+ 
+
+ 
+
+La moyenne, en rouge, est standardisée. Les données étudiées sont représentées en 
+proportion de la moyenne standardisée. En revanche les données numériques sont 
+affichées en valeurs absolue. 
+
+ 
+
+En cas d’écart important entre la moyenne et la série de valeurs étudiée, pour une aire 
+géographique sélectionnée, le tracé peut sortir du cadre du graphique. 
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour nommer la courbe de référence. Il faut 
+préciser dans le titre de légende (cadre 1) et dans le titre de menu ( cadre 9) : 
+« référence en rouge : qu’est-ce que c’est» 
+
+Par exemple : « référence en rouge : moyenne Europe » 
+
+ 
+
+ 
+
+5 – Radar en valeur absolue avec comparaison 
+à la moyenne standardisée et pondérée 
+
+ 
+
+Le procédé est en tout point équivalent au 
+précédent y compris pour le choix de 
+l’option (1,1). 
+
+Le mode de pondération proposée ici est la 
+moyenne pondérée à partir d’une donnée 
+choisie dans le fichier. 
+
+Pour obtenir la pondération, il faut ajouter 
+le n° de colonne de la donnée de 
+pondération aux paramètres du cadre 11 
+
+ 
+
+Dans notre exemple 
+
+Cadre n°11 en moyenne simple : 1,0 
+
+Cadre n°11 en moyenne pondérée par une donnée choisie : 1,0,50 
+
+50 est le numéro de colonne de la donnée de pondération. 
+
+ 
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour nommer la courbe de référence. Il faut 
+préciser dans le titre de légende (cadre 1) et dans le titre de menu ( cadre 9) : 
+« référence en rouge : qu’est-ce que c’est» 
+
+Par exemple : « référence en rouge : moyenne Europe » 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+6 – Radar en valeur absolue avec comparaison 
+à une série de donnée du fichier 
+
+Le procédé est en tout point équivalent au cas n°1 
+du radar simple sauf : 
+
+ 
+
+ - pour l’étape 8 avec, ici, le choix de l’option (2,0) 
+
+
+- et l’ajout des n° de colonne des données de 
+comparaison contenues dans le fichier. 
+
+ 
+
+Ces n° de colonne s’inscrivent en série dans le cadre 
+de saisie n°5 avec la virgule comme séparateur 
+
+ 
+
+ 
+
+Pour saisir ces données de comparaison, cliquez sur le cadre 5 : le cadre suivant 
+s’affiche : 
+
+Sélectionnez les données de comparaison avec les menus déroulants (il n’est pas 
+nécessaire de remplir les champs de libellé de ligne et de colonnes) 
+
+ 
+
+Exemple : 
+
+Cadre n°12 en courbe simple : 
+
+Cadre n°12 avec ajout des n° de données : 32,33,35,36,37,38 
+
+ 
+
+ 
+
+Saisie manuelle dans le fichier DATA-Sujet.js (cas principal) ou data-Other .js (Cas 
+complémentaire) où les données étudiées et les données de comparaison ne sont 
+pas dans le même fichier. 
+
+Exemple : 
+
+Cadre n°12 en courbe simple : 
+
+Cadre n°12 avec ajout des n° de données : 912,913,914,915,916 
+
+Dans le fichier .js des menus graphiques, cet ajout de données prend la forme 
+suivante : 
+
+paramHISTOX0[5]="912,913,914,915,916 " 
+
+ 
+
+Lorsque les données étudiées sont dans le fichier principal, ce cas permet aussi de 
+comparer avec des données situées dans le fichier complémentaire. 
+
+ 
+
+Cela est possible dans PageCarto moyennant un calcul simple sur les n° de colonnes 
+des données situées dans le fichier complémentaire. En effet, à l’ouverture de 
+PageCarto les deux fichiers sont fusionnés en un seul. 
+
+Dans cette fusion les numéros du fichier complémentaire font l’objet d’une 
+translation valeur égal à : 
+
+(n° de la dernière donnée du fichier principal – 2+n° de la colonne de comparaison 
+dans complémentaire) 
+
+ 
+
+Dans le cas inverse où les données étudiées sont dans le fichier complémentaire et 
+les données de comparaison dans le fichier principal, les coordonnées de 
+comparaison sont les originales, sans translation 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+ 
+
+
+
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour nommer la courbe de référence. Il faut 
+préciser dans le titre de légende (cadre 1) et dans le titre de menu ( cadre 9) : 
+« référence en rouge : qu’est-ce que c’est» 
+
+Par exemple : « référence en rouge : moyenne Europe » 
+
+ 
+
+ 
+
+7 – Radar en pourcentage d’une série 
+standardisée des valeurs de données du 
+fichier 
+
+Le procédé est identique au cas précédent, y compris l’ajout des n° de colonne des 
+données de comparaison contenues dans le fichier, mais avec cette fois le choix de 
+l’option (2,1) à l’étape 8. 
+
+ 
+
+ 
+
+8 – Radar en valeur absolue avec comparaison 
+à une série de valeurs intégrées 
+manuellement 
+
+Le procédé est le même qu’au cas 6, mais cette fois avec l’option (3,0) tandis que ce 
+ne sont plus des n° de colonne de données qui sont inscrits dans le cadre 5 mais les 
+valeurs absolues de la série de données de comparaison 
+
+ 
+
+On utilise ce cas de figure lorsqu’on ne dispose pas des données adaptées dans le 
+fichier. 
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour nommer la courbe de référence. Il faut 
+préciser dans le titre de légende (cadre 1) et dans le titre de menu ( cadre 9) : 
+« référence en rouge : qu’est-ce que c’est» 
+
+Par exemple : « référence en rouge : moyenne Europe » 
+
+ 
+
+9 – Radar en pourcentage d’une série 
+standardisée de valeurs intégrées 
+manuellement 
+
+Il s’agit ici de la standardisation du cas précédent. Il suffit pour cela de prendre cette 
+fois l’ option (3,1) 
+
+ 
+
+NB il n’y a pas de rubrique spécifique pour nommer la courbe de référence. Il faut 
+préciser dans le titre de légende (cadre 1) et dans le titre de menu ( cadre 9) : 
+« référence en rouge : qu’est-ce que c’est» 
+
+Par exemple : « référence en rouge : moyenne Europe » 
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+Complément pour la fabrication ou la 
+maintenance manuelle des menus d’affichage 
+des données 
+
+ 
+
+Les fichiers contenant les informations sur les menus de données sont situés dans un sous 
+répertorie du module PageCarto. 
+
+ 
+
+A partir de GaïaMundi, le chemin d’accès est le suivant : 
+
+ 
+
+« Répertoire Racine/ Répertoire la Carte/PageCartoDossier/PageCarto/ » 
+
+ 
+
+Il ya deux paires de fichiers 
+
+ 
+
+Une paire pour associé au fichier de données « principal » 
+
+. Pour les variables (ronds et fonds colorés) : DATA-IcoSujet.js 
+. Pour les Graphiques : DATA-Sujet.js 
+
+
+ 
+
+Une paire pour associé au fichier de données « complémentaire » 
+
+. Pour les variables (ronds et fonds colorés) : DATA-IcoOther.js 
+. Pour les Graphiques : DATA-Other.js 
+
+
+ 
+
+ 
+
+Structure des fichiers. 
+
+ 
+
+Tous les fichiers sont structurés de la même manière : ils sont composés de blocks successifs de 13 
+lignes contenant les informations. Ces 13 lignes sont les éléments d’un tableau « Array() ». 
+
+ 
+
+Elles sont précédées d’une ligne de déclaration du tableau et d’une ligne d’adjonction aux 
+précédents dans un tableau global. 
+
+ 
+
+Chaque bloc est précédé d’une ligne correspondant au numéro de la ligne de menu concerné dans 
+l’interface de fabrication et dans les menus déroulant du module PageCarto. 
+
+ 
+
+Les deux paires de menus ne sont pas interchangeables car elles ont des différences qui 
+permettent de les identifier. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+ 
+
+Exemple pour le fichier de menus de variables ( ronds et surfaces colorées) liées au 
+fichier principal. 
+
+ 
+
+ 
+
+ 
+
+Notes importantes 
+
+. Les n° de colonnes des données sont toujours dans l’élément [0] 
+. Le type de calcul est déterminé par l’élément [3] 
+
+
+ Avec dans l’ordre : 
+
+ 
+
+1. Les deux premiers chiffres déterminent le type de calcul (valeur simple, somme, rapport 
+a/b, …..) 
+2. (idem) 
+3. N° de colonne de la donnée de référence tièrse pour les seuils 
+4. Seuil minimum (inclus) 
+5. Seuil maximum (inclus) 
+6. Valeur du Q2 forcé 
+7. Seuil minimum (exclu) sur le résultat 
+8. Seuil maximum (exclu) sur le résultat 
+9. Coefficient « a » dans la formule (N-a x R) appliquée au résultat R 
+10. Valeur de la norme N dans la formule précédente. 
+
+
+ 
+
+Tableau de synthèse des modes de calcul (2 premiers paramètres ci-dessus) 
+
+ 
+
+Variable simple 
+
+2,0 
+
+Somme 
+
+2,4 
+
+Somme / d (%) 
+
+2,3 
+
+a / b (%) 
+
+2,1 
+
+(a-b) / c (%) 
+
+2,2 
+
+S1 / S2 (%) 
+
+2,5 
+
+(a-b) / S2 (%) 
+
+2,6 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Exemple pour le fichier des menus Graphiques liés au fichier principal. 
+
+ 
+
+ 
+
+ 
+
+Tableau récapitulatif des principaux paramètres des Graphiques 
+
+ 
+
+Histogramme 
+simple 
+
+1,2 
+
+Paramètres Cadre 11, En vert : largeur des colonnes 
+
+ 
+
+(0,0,0,20,0,155,0,0,0,0) 
+
+ 
+
+Histogramme 
+Multiple 
+
+3,0 
+
+Paramètres Cadre 11 En vert : largeur des colonnes 
+
+ 
+
+1 - Valeur absolue 
+
+(0,-23,10,25,100,155,0,5,1000,-20) 
+
+ 
+
+2 - En 100% 
+
+(100,-23,10,25,100,155,0,5,1000,-20) 
+
+ 
+
+ 
+
+[7] = Nb lignes 
+
+[6] = Nb 
+colonnes 
+
+Courbe 
+
+3,1 
+
+Paramètres Cadre 11 
+
+ 
+
+0,x 
+
+Courbes simples 
+
+(1 ou deux courbes) 
+
+1,x 
+
+1 courbe + courbe moyenne 
+
+1,x,n°de colonne 
+
+1 courbe +moyenne pondérée par n° de colonne 
+
+2,x 
+
+1 courbe + courbe de référence dont les données 
+sont dans le fichier (série de n° de colonnes insérés 
+dans cadre 12) 
+
+3,x 
+
+1 courbe + courbe de référence dont les données 
+sont EXTERNES (série de valeurs insérées dans 
+cadre 12) 
+
+
+
+ 
+
+[6] = Nb lignes 
+
+= Nb courbes : 
+1 ou 2 pour les 
+courbes 
+simples. 
+Seulement 1 
+pour les autres 
+cas. 
+
+ 
+
+[7] = Nb 
+colonnes 
+
+=nb point de 
+chaque courbe 
+
+Radar 
+
+1,3 
+
+Paramètres Cadre 11 
+
+ 
+
+0,0 
+
+série simple 
+
+(1 seule série possible) 
+
+1,0 
+
+1 série + série moyenne simple 
+
+ affichage en valeur 
+
+1,0,n°de colonne 
+
+1 série + série moyenne pondérée par n° de colonne 
+
+Affichage en valeur 
+
+1,1 
+
+1 série + série moyenne simple 
+
+Affichage en % pourcentage de la moyenne 
+
+1,1,n°de colonne 
+
+1 série + série moyenne pondérée par n° de colonne 
+
+Affichage en % pourcentage de la moyenne pondérée 
+
+2,0 
+
+1 série + série de référence dont les données sont 
+dans le fichier (série de n° de colonnes insérés dans 
+cadre 12) affichage en valeur 
+
+2,1 
+
+Idem Affichage en % pourcentage de la référence 
+
+3,0 
+
+1 série + série de référence dont les données sont 
+EXTERNES (série de valeurs insérées dans cadre 12) 
+
+affichage en valeur 
+
+3,1 
+
+Idem Affichage en % pourcentage de la référence 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+

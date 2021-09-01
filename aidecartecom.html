@@ -1,0 +1,1696 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="fr-fr"><head>
+
+
+
+  
+  
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+
+
+  
+  
+  <script type="text/javascript">
+//* <!--
+
+var cibleX="num0"
+var cibleXtemp="num0"
+var urlvar=""
+if (window.location.search != "") {
+longueur = window.location.search.length - 1;
+data = window.location.search.substr(1,longueur);
+donnees = data.split("&");
+urlvar = new Array();
+urlvarnum = new Array();
+for (var i=0; i < donnees.length; i++) {
+position = donnees[i].indexOf("=");
+variable = donnees[i].substr(0,position);
+pos = position + 1;
+valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+while (valeur.search(/\+/) != -1)
+valeur = valeur.replace(/\+/," ");
+urlvar[variable] = valeur;
+urlvarnum[i] = valeur;
+}
+}
+//alert(urlvarnum)
+//alert(urlvar['REP'])
+//alert(urlvar['cible'])
+//si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+//-->
+  </script></head>
+<body style="background-color: rgb(255, 240, 8); direction: ltr;" onkeydown="javascript:top.test(event);" onclick="top.menuBar.hideSubMenus()">
+
+ 
+
+<div align="center"><big><b><big><big><small><font face="Arial"><a name="Help">
+Aide</a> </font></small></big></big></b></big><br>
+</div>
+<small><font face="Arial">
+
+
+<br>
+
+
+
+</font></small>
+<div align="center"><small><font face="Arial"><b>Bienvenue
+dans l'assistant</b></font></small><br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial">Vous disposer de deux
+modes d'utilisation :<br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial"><b>aide
+contextuelle</b> : placer le pointeur de la souris sur un objet
+(bouton, menu, texte ou carte) et appuyer sur la touche majuscule
+(shift).</font></small></li>
+
+
+
+  <li><small><font face="Arial"><b>aide
+par rubrique</b> : choisissez vos sujets dans le sommaire ci-dessous.</font></small></li>
+
+
+
+</ul>
+
+
+
+<div align="center"><big><font face="Arial"><b>Sommaire</b></font></big><br>
+
+
+
+</div>
+
+
+
+<div align="center"><b><small><font face="Arial"><a href="#hypert"><font color="#ff0000">Démarrer</font></a></font></small></b><br>
+
+
+
+<a href="#hypert"><small><small><small><font face="Arial"><big><big><b>Chapitre 1 -
+Hypertexte</b></big></big></font></small></small></small></a><br>
+
+
+
+<a href="#dragmap"><b><small><font face="Arial">Chapitre 2 - Carte interactive</font></small></b></a><br>
+
+
+
+<a href="#Donn%C3%A9es"><b><small><font face="Arial">Chapitre 3 -</font></small></b><small><font face="Arial"><b><big><big><small><small>
+Données</small></small></big></big></b></font></small></a><br>
+
+
+
+<a href="#semio"><small><font face="Arial"><b><big><big><small><small>Chapitre
+4 - Eléments de sémiologie</small></small></big></big></b></font></small></a><br>
+
+
+
+</div>
+
+
+
+<div align="center"><a href="aidecartecom.html#gene"><small><font face="Arial"><b>Généralités</b></font></small></a><br>
+
+
+
+<b><a href="#apropos"><small><font face="Arial">A propos</font></small></a></b><br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial"><b><big><big><small><small>
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+</small></small></big></big></b></font></small><small><font face="Arial"><b><big><big><br>
+
+
+
+</big></big></b></font></small>
+<div align="center"><small><font face="Arial"><a name="hypert"> </a></font></small><small><font face="Arial"><big><big><b><br>
+Chapitre 1 -
+Hypertexte</b></big></big></font></small><br>
+
+
+
+<small><font face="Arial"><big><big><b><font color="#993300"><u><i><small>Commande de
+l'affichage des cartes par hypertexte</small></i></u></font></b></big></big></font></small><br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial">(voir aussi<a href="#gene"> §
+Généralités</a>)<br>
+
+
+
+</font></small>
+<div align="left"><small><font face="Arial"><a name="menucartecom"><b><br>
+Menu des hypertextes</b></a>
+</font></small><br>
+
+
+
+</div>
+
+
+
+<div align="left"><img alt="" src="icones/menuhyper.jpg" height="25" width="214"><br>
+
+
+
+<small><font face="Arial">Sélectionner
+un texte dans le menu. <br>
+
+
+
+Une page
+"hypertexte" s'affiche dans le cadre de gauche. <br>
+
+
+
+Cette page contient des
+textes et des boutons liens qui commandent l'affichage des cartes et des
+données. <br>
+
+
+
+<i>(Cf. <a href="#carte">détail</a> des boutons ci-dessous). </i><br>
+
+
+
+Un hypertexte peut comprendre plusieurs cartes. Chacune d'elles est
+identifiée par un bouton rouge. Dans le texte qui suit un
+bouton rouge vous trouverez des boutons de commande de l'affichage de
+données dans cette carte. <br>
+
+
+
+Un nouveau bouton rouge indique une
+nouvelle carte et les boutons situés en dessous affichent
+les
+données dans cette nouvelle carte, et ainsi de suite. <b><br>
+
+
+
+A&nbsp;l'ouverture
+de la page hypertexte, la première carte est
+sélectionnée automatiquement et s'affiche
+directement.</b><br>
+
+
+
+Si
+vous voulez revenir en arrière dans l'hypertexte,
+sélectionnez la carte
+que vous souhaitez activer avant de sélectionner les boutons
+de données
+associés à cette carte.<br>
+
+
+
+<font color="#ff0000"><b>Donc,</b> <b>pour
+lire et
+activer l'hypertexte, il est préférable
+de suivre l'ordre d'apparition des boutons.</b> </font><br>
+
+
+
+Si vous sélectionnez un bouton de données sans
+avoir sélectionné auparavant le bouton de carte
+correspondant, un message s'affiche et vous invite
+à attendre la fin de l'affichage automatique de la carte. </font></small><br>
+
+
+
+</div>
+
+
+
+<br>
+
+
+
+<small><font face="Arial"><a name="carte"></a><br>
+<b><img style="width: 24px; height: 24px;" alt="" src="icones/rouge.png">
+&nbsp;Bouton carte</b>&nbsp;</font></small>
+
+
+
+
+
+<small><font face="Arial">
+</font></small><small><font face="Arial"><a name="fond"></a><br>
+</font></small><small><font face="Arial"><b><img alt="" src="icones/vert.png" height="24" width="24"></b></font></small><small><font face="Arial"><b> &nbsp;Bouton fond de carte</b>
+
+
+
+
+</font></small><small><font face="Arial"><a name="icones"> </a></font></small><small><font face="Arial"><b><br>
+<img alt="" src="icones/bleu.png" height="24" width="24"></b><b>
+&nbsp;Bouton icônes sur carte</b>
+
+
+
+
+<a name="fondicones"> </a><b><br>
+<img alt="" src="icones/violet.png" height="24" width="24"> &nbsp;Bouton fond + icône</b>
+
+
+
+
+<a name="encadre"> </a></font></small><small><font face="Arial"><b><br>
+<img alt="" src="icones/jaune.png" height="24" width="24"></b></font></small><small><font face="Arial"><b> &nbsp;Bouton encadré
+des graphiques de données</b>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+</font></small><br>
+
+
+
+<div align="center"><small><font face="Arial"><a name="dragmap"> </a></font></small><big><big><b><small><font face="Arial"><br>
+Chapitre 2 - Carte interactive</font></small><br>
+
+
+
+<small><small><font face="Arial"><u><font color="#993300"><i>Animation et r</i></font></u></font></small></small></b></big></big><big><big><b><small><small><font face="Arial"><u><font color="#993300"><i>é</i></font></u></font></small></small></b></big></big><big><big><b><small><small><font face="Arial"><u><font color="#993300"><i>glages
+sur la carte</i></font></u></font></small></small></b></big></big><br>
+
+
+
+<br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial"><font color="#990000"><b><big>Déplacement
+de la carte</big></b></font><br>
+
+
+
+</font><font face="Arial">Pour déplacer
+la carte, cliquez sur n'importe quel endroit de la carte et
+déplacez le pointeur de la souris en maintenant la
+sélection active (mode Drag and Drop).<br>
+
+
+
+<b>NB. Sélection des aires de la carte ou sélection de
+l'arrière plan</b></font></small>.<br>
+
+
+
+<ul>
+
+
+
+  <li><small><font face="Arial">si vous
+cliquez sur une aire de la carte, cette aire sera
+sélectionnée et cette sélection
+déclenchera l'affichage d'un <a href="#graphique">graphique
+de données,</a></font></small></li>
+
+
+
+  <li><small><font face="Arial">si vous
+sélectionnez l'arrière plan, cela annule la
+sélection en cours sur la carte (sans toutefois masquer le graphique
+s'il est affiché),</font></small></li>
+
+
+
+  <li><small><font face="Arial">pour faire
+glisser la carte il est donc plus confortable de pointer la souris sur
+l'arrière plan.</font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><font color="#990000"><big><b>Attributs
+visuels de la carte</b></big></font><br>
+
+
+
+</font></small><small><font face="Arial">La
+carte comporte trois modes d'affichage de données qui
+peuvent
+être activés seuls ou simultanément : <br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial">la coloration
+du fond de carte (Cf. <a href="#makefondcarte">appliquer
+au fond de carte</a> et aussi&nbsp;</font></small><small><font face="Arial"> <a href="aidecartecom.html#analyse">module analyse</a></font></small><small><font face="Arial">),</font></small></li>
+
+
+
+  <li><small><font face="Arial">la projection
+de figures (appelées ici icônes) ; cercles, triangle,
+flèches, étoiles ... dont vous pouvez
+gérer la dimension (Cf. ci-dessous) et la couleur (Cf. <a href="#analyse">module analyse</a>),</font></small></li>
+
+
+
+  <li><small><font face="Arial">l'affichage de
+graphiques de données (histogrammes, courbes ...)
+associés à chaque aire de la carte (Cf. <a href="#graphique">graphiques de données</a>).<br>
+
+
+
+    </font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><a name="icoplus"></a><a name="icomoins"></a></font></small><font color="#336666"><small><font face="Arial"><big><b><br>
+Gestion
+des icônes</b>
+:</big><br>
+
+
+
+</font></small></font><small><font face="Arial"><b><img alt="" src="icones/ico+.png" height="24" width="24">&nbsp;</b>
+Augmente la
+taille des icônes</font></small> <br>
+
+
+
+<small><font face="Arial"><b><img alt="" src="icones/ico-.png" height="24" width="24">
+&nbsp;</b>Diminue la taille des icônes<br>
+
+
+
+NB. Dans le cas où un fond de carte coloré est
+affiché seul (sans icône juxtaposée sur la
+carte), lorsque vous activez les boutons ci-dessus, des cercles
+apparaissent. Ils correspondent aux données
+appliquées au fond de carte coloré. Cette
+fonctionnalité permet de visualiser rapidement les grandeurs
+relatives qui sont occultées par le regroupement en classes
+de couleur dans le mode fond de carte. <br>
+
+
+
+Pour revenir au fond de carte seul, il suffit de cliquer sur le<a href="#makefondcarte"> bouton "appliquer au fond de carte"</a>.<br>
+
+
+
+<br><a name="opacicone"></a><br><span style="font-weight: bold;">Bouton "<span style="color: rgb(51, 102, 102);">opacité des icônes</span>"</span><br><img style="width: 24px; height: 24px;" alt="" src="icones/opacite_icones.png"><br></font></small><small><font face="Arial">Permet d'opacifier les icônes pour une meilleure lecture en transparence.<br></font></small><ul><li><small><span style="font-family: Arial;">cliquez pour<small> </small></span><span style="font-family: Arial;">opacifier les icônes</span></small></li><li><small><font face="Arial">cliquez une seconde fois pour revenir à la présentation initiale</font></small></li></ul><small><font face="Arial"><span style="font-weight: bold;">Bouton "<span style="color: rgb(51, 102, 102);">effacer les icônes</span>"</span><br><img style="width: 24px; height: 24px;" alt="" src="icones/efface_icones.png"><br></font></small><small><font face="Arial">Efface les sélections de données affichées sur la carte.</font></small><br><small><font face="Arial"><br>
+
+
+
+</font></small><b><small><font face="Arial"><a name="zoomplus"><b>&nbsp;</b></a></font></small></b><small><font face="Arial">&nbsp;</font></small><small><font face="Arial"><a name="zoommoins"></a></font></small><b><small><font face="Arial"><a name="raz"><b> </b></a></font></small></b><small><font face="Arial"><big><font color="#336666"><b><br>
+Fonction
+Zoom</b></font></big><br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial"><b><img alt="" src="icones/zoom_plus.png" height="24" width="24"> </b>Zoom Plus </font></small></li>
+
+
+
+  <li><small><font face="Arial"><b><img alt="" src="icones/zoom_moins.png" height="24" width="24"> </b>Zoom Moins</font></small></li>
+
+
+
+  <li><font face="Arial"><small> <b><img alt="" src="icones/taille_initiale.png" height="24" width="24"> </b>Retour à la taille initiale (zoom)
+    </small></font></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><br>
+
+
+
+</font></small>
+<div align="center"><big><big><b><small><font face="Arial"><a name="Données"></a><br>
+Chapitre
+3 - </font></small></b></big></big><small><font face="Arial"><b><big><big>Données</big></big></b></font></small><br>
+
+
+
+<big><big><b><small><small><font face="Arial"><u><font color="#993300"><i>Animation
+et r</i></font></u></font></small></small></b></big></big><big><big><b><small><small><font face="Arial"><u><font color="#993300"><i>é</i></font></u></font></small></small></b></big></big><big><big><b><small><small><font face="Arial"><u><font color="#993300"><i>glages
+sur la carte</i></font></u></font></small></small></b></big></big><br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial">Le modèle
+d'organisation des données et des cartes dans cette
+interface est le suivant : à chaque hypertexte est associée
+une ou plusieurs cartes (France des zones d'emploi, France des
+départements ...). Ces cartes sont localisées
+dans l'hypertexte par le bouton rouge. Il suffit de cliquer sur ce
+bouton pour afficher la carte vierge. A chaque carte est
+associé un ensemble de données utiles au
+thème traité dans l'hypertexte. Ces
+données sont affichées sur la carte par des
+commandes déclenchées par <a href="#hypert">les
+boutons insérés dans l'hypertexte</a>. <br>
+
+
+
+<br>
+
+
+
+Cependant, à coté de ce mode
+préprogrammé, une part d'initiative est
+laissée à l'utilisateur qui peut modifier les
+modes d'affichage et les bornes des partitions en classes.</font></small><small><font face="Arial"> (Cf. <a href="aidecartecom.html#makefondcarte">appliquer au fond de
+carte</a> et aussi&nbsp;</font></small><small><font face="Arial"> <a href="aidecartecom.html#analyse">Module
+Analyse</a></font></small><small><font face="Arial">)</font></small>.<small><font face="Arial"> <br>
+
+
+
+<br>
+
+
+
+L'utilisateur peut aussi choisir les graphiques de données
+associés aux aires géographiques de la carte au
+moyen des <a href="#menugraph1">menus de graphiques de
+données</a>.</font></small> <br>
+
+
+
+<br>
+
+
+
+<small><font face="Arial"><big><font color="#336666"><a name="legende">
+<b><br>
+Légende</b></a><b>s</b> </font></big><br>
+
+
+
+<img alt="" src="icones/legende.png" height="24" width="24"><br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial">pour afficher
+les légendes : cliquez sur le bouton</font></small></li>
+
+
+
+  <li><small><font face="Arial">pour occulter
+les légendes : survolez le bouton</font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><i><b>Libellés
+détaillés.</b></i> Pour visualiser le
+libellé détaillé de la
+donnée : placez le pointeur de la souris au dessus de la
+légende lorsqu'elle est affichée (le
+libellé détaillé est
+souvent nécessaire, car la place disponible dans la
+légende ne suffit généralement pas
+à fournir une information explicite sur la donnée).<br>
+
+
+
+<br>
+
+
+
+<big><font color="#336666"><a name="graphique">
+<b><br>
+Graphiques de
+données</b></a> </font></big></font></small><small><font face="Arial"><br>
+
+
+
+<img alt="" src="icones/jaune.png" height="24" width="24"><br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial">pour afficher
+les graphiques : cliquez sur le bouton et <u>sélectionnez
+une aire géographique</u></font></small></li>
+
+
+
+  <li><small><font face="Arial">pour occulter
+les graphiques : survolez le bouton</font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><a name="menugraph1"></a></font></small><small><font face="Arial"><a name="menugraph2"><b><br>
+Menus
+des graphiques de données</b></a></font></small><small><font face="Arial"><br>
+
+
+
+<img alt="" src="icones/menusGraph.jpg" height="52" width="222"><br>
+
+
+
+Ces deux menus vous permettent de choisir les graphiques de
+données que vous souhaitez afficher<i>
+(histogrammes, courbes ...). </i><br>
+
+
+
+Pour que les
+graphiques s'affichent, il faut avoir sélectionné
+une aire de la carte.<br>
+
+
+
+Cette présentation de données
+permet : <br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial">une analyse
+des caractéristiques du territoires<i> (en passant
+d'un
+graphique à l'autre sans changer de territoire)</i></font></small></li>
+
+
+
+  <li><small><font face="Arial">une analyse
+comparée des territoires<i> (en changeant les
+territoires sans
+changer les graphiques)</i></font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><a name="makefondcarte"><b><br>
+Bouton "<font color="#336666">appliquer les
+paramètres des icônes au <big>fond de carte</big></font>"</b></a>
+<br>
+
+
+
+<img alt="" src="vert.png" height="24" width="24"><br>ou<br></font></small><small style="font-weight: bold;"><span style="font-family: Arial;">Bouton "<span style="color: rgb(51, 102, 102);">appliquer fond</span>"<br>&nbsp;</span></small><img style="width: 24px; height: 24px;" alt="" src="icones/options.png"><small><span style="font-family: Arial;"> Cliquez sur "appliquer fond".</span></small><br><br><small><font face="Arial">
+
+
+
+Lorsque des icônes sont affichées sur la carte, vous pouvez
+souhaiter visualiser ces mêmes données sous forme
+de fond de carte coloré. Il vous suffit de cliquer sur ce
+bouton. Si les icônes étaient juxtaposées sur un
+fond de carte coloré, celui-ci est remplacé pour
+le nouveau fond coloré et les icônes sont effacées. Pour revenir à la situation
+initiale vous devez repasser par les boutons de l'hypertexte.<br>
+
+
+
+<br>
+
+
+
+L'un des intérêts de cette fonctionnalité est que
+le mode <i>fond de carte</i> est le plus
+approprié pour une analyse de l'impact d'une
+donnée sur les territoires au moyen de <u>l'outil
+de
+variation dynamique des bornes de classes</u> (Cf. </font></small><small><font face="Arial"> <a href="aidecartecom.html#analyse">Module
+Analyse</a></font></small>).<br>
+
+
+
+<small><font face="Arial"><br><a name="opacarte"></a><br><span style="font-weight: bold;">Bouton "<span style="color: rgb(51, 102, 102);">opacité de la carte</span>"</span><br>
+
+
+
+<img style="width: 24px; height: 24px;" alt="" src="icones/opacite_carte.png"><br>Permet d'opacifier le fond de carte pour une meilleure lecture des icônes juxtaposées.<br></font></small><ul><li><small><span style="font-family: Arial;">cliquez pour<small> </small></span><span style="font-family: Arial;">opacifier la carte</span></small></li><li><small><font face="Arial">cliquez une seconde fois pour revenir à la présentation initiale<i></i></font></small></li></ul>
+
+
+
+<small><font face="Arial"><a name="effacecarte"></a><br><span style="font-weight: bold;">Bouton "<span style="color: rgb(51, 102, 102);">effacer la carte</span>"</span><br><img style="width: 24px; height: 24px;" alt="" src="icones/efface_carte.png"><br>Efface les sélections de données affichées sur la carte.<br><br></font></small><small><font face="Arial"><big><b><a name="analyse"><font color="#336666"><br>
+M</font><font color="#336666">odule
+Analyse</font></a><font color="#336666">
+</font></b></big><br>
+
+<i><b><font color="#ff0000">Le module analyse est activé lorsqu'il y a au moins une donnée sur la carte.</font></b></i><br>
+
+
+
+<img alt="" src="icones/analyse.png" height="24" width="24"> &nbsp;<b>Bouton analyse</b><br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial">cliquez pour
+afficher le module.</font></small></li>
+
+
+
+  <li><small><font face="Arial">survolez pour
+refermer le module.</font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial">Lorsque le module se
+referme, ou que l'on survole le bouton analyse, il
+apparaît </font><font face="Arial">la <a href="#reglette"><b>Réglette de
+réglage des bornes de classe</b></a><big>.</big><br>
+
+
+<br>
+
+
+Fonctionnalités du module analyse :<br>ce module présente la distribution de la donnée située sur la couche active<span style="font-style: italic;">.</span><i><br>
+
+
+</i></font></small>
+<dl>
+
+
+  <dd><small><font face="Arial"><i><a name="coucheactive"></a></i></font></small></dd>
+  <dd><small><font face="Arial"><i><b>Couche active :</b> </i></font></small></dd>
+
+
+  <dd><small><font face="Arial"><i>(Lorsque seul le fond de carte est
+appliqué, la couche active est le fond de carte. Lorsque les icônes sont appliquées avec ou sans fond de carte, la couche
+active est celle des icônes).</i></font></small></dd>
+
+
+</dl>
+
+
+<small><font face="Arial">Le module est prévu pour fonctionner
+en <span style="font-weight: bold;">mode bi varié</span> (deux variables actives).<br>
+
+
+Le module présente la distribution de la donnée sous la
+forme d'une droite dans un plan (x,y). C'est la raison pour laquelle la distribution
+apparaît comme une droite en non pas sous la forme d'un nuage de
+point comme ce serait le cas en mode bi varié.&nbsp; <br>
+
+
+Le plan (x,y) est divisé en colonnes et en lignes qui correspondent aux bornes des classes choisies pour la distribution.<br><br>Le module analyse vous permet d'intervenir directement sur la carte. Vous pouvez : <br>
+
+
+</font></small>
+<ul>
+
+
+  <li><small><font face="Arial">faire varier les bornes de classes de manière dynamique en faisant <a href="#losange">glisser de gauche à droite les boutons losanges violets</a></font> </small></li>
+
+
+  <li><small><font face="Arial">changer la <a href="#palette">palette de couleur</a></font></small></li>
+
+
+  <li><small><font face="Arial">changer les <a href="#choixQ">quantiles</a> (Q2,Q3,Q4,Q5)</font></small></li>
+
+
+  <li><a href="#razana"><small><font face="Arial">effacer tout</font></small></a></li>
+
+
+  <li><small><font face="Arial"><a href="#reactiv">réactiver</a> après avoir effacé<br>
+
+
+    </font></small></li>
+
+
+  <li><small><font face="Arial"><a href="#coulcase">attribuer une couleur</a>
+à une case du tableau (cela entraîne automatiquement
+l'affectation de la couleur aux aires de la carte contenues dans la
+case du tableau)</font></small></li>
+
+
+  
+
+
+  <li><small><font face="Arial"><a href="#appliquer">appliquez</a> la configuration du tableau au fond de carte ou aux icônes</font></small></li><li><small><font face="Arial">dans le cas où les icônes sont affichées, vous pouvez choisir le mode <a href="#propX">taille proportionnelle</a> à la valeur de la donnée (représentation par grandeur et classe à la fois) ou <a href="#propX">taille constante</a> (représentation par classe seulement)</font></small></li>
+
+
+  <li><small><font face="Arial"><a href="#enreg">enregistrer</a> un fond de carte</font></small></li>
+
+
+  
+
+
+  <li><small><font face="Arial">appliquer <a href="#fondsdecartes">un fond de carte préalablement enregistré</a></font></small></li><li><small><font face="Arial"><a href="#trace">marquer</a> (pour les
+tracer) les groupes appartenant à telle ou telle classe pour
+voir si ces groupes sont conservés avec d'autres données.</font></small></li>
+
+
+</ul>
+
+
+<br>
+
+
+<small><font face="Arial">
+<a name="reglette"></a></font></small><small><font face="Arial"><br>La <b>réglette de
+réglage des bornes de classe</b> :<br>
+
+
+
+</font></small><small><font face="Arial"><img alt="" src="icones/reglette.jpeg" height="31" width="259"><br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial"><img alt="" style="border: 1px solid ;" src="Xclose.gif" height="9" width="8">
+Cliquez
+ici pour fermer la réglette.</font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial">La réglette de
+réglage des bornes de classes vous permet de modifier
+l'attribution des classes sur la carte de façon dynamique.
+Cette fonctionnalité est particulièrement utile
+pour observer de manière dynamique comment un
+phénomène représenté par
+une donnée affecte les territoires. <br>
+
+
+
+Il suffit pour cela de faire glisser les losanges
+</font></small><small><font face="Arial">violets </font></small><small><font face="Arial">numérotés&nbsp;le long de la
+réglette. <br>
+
+
+
+<a name="losange"></a><br>
+<img alt="" src="POX4.gif" height="24" width="24"> <b>Pour faire glisser</b> :
+sélectionnez, engagez un léger mouvement et, tout en
+continuant le mouvement, lâchez la sélection : le losange
+suit alors les déplacements du pointeur de la souris. Pour
+fixer la position, cliquez à l'endroit
+désiré. <i>(Essayez : c'est un coup
+à prendre !)</i><br>
+
+
+
+NB. Lorsque vous opérez le glissement les autres losanges
+disparaissent. Pour les faire réapparaître, survolez le
+bouton analyse.<br>
+
+
+<br>
+
+
+
+<b><i>Cette fonctionnalité est
+particulièrement dédiée à
+la situation où :<br>
+
+
+
+</i></b></font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial"><i>le
+f<b>ond de carte&nbsp;</b></i></font></small><small><font face="Arial"><i><b>est affiché seul</b> </i></font></small><small><font face="Arial"><i>(Cf. <a href="#appliquer">appliquez au fond</a> ou <a href="#makefondcarte">bouton
+vert</a>)&nbsp; </i></font></small></li>
+
+
+
+  <li><small><font face="Arial"><i>la <b>médiane (Q2)&nbsp;</b>a
+été choisie comme borne de classe. (Cf. <a href="#choixQ">quantiles</a>)</i></font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><a name="palette"></a><br>
+<img alt="" src="icones/palette.jpeg" height="24" width="101"> &nbsp;<b>Changer la palette de couleur</b></font></small><br>
+
+
+<small><font face="Arial">Cette fonctionnalité s'applique à la <a href="#coucheactive">couche active</a></font></small>.<br>
+
+
+<br>
+
+
+<small><font face="Arial"><b><a name="choixQ"></a><br>
+<img alt="" src="icones/choixQ.jpeg" height="24" width="63"> &nbsp; Changer les quantiles (</b>Q2,Q3,Q4,Q5)</font></small><br>
+
+
+<br>
+
+
+<small><font face="Arial"><a name="razana"></a><br>
+<img alt="" src="RAZana.gif" height="17" width="50"> Effacer le contenu du tableau.<br>
+
+
+<i>(les paramètres sont conservés : pour les appliquer à nouveau cliquez sur <a href="#reactiv">réactiver</a>)</i><br>
+
+
+</font></small><br>
+
+
+<small><font face="Arial"><a name="reactiv"></a><br>
+<img alt="" src="icones/reactiv.jpeg" height="19" width="61">réactiver après avoir effacé.<br>
+
+
+</font></small><br>
+
+
+<small><font face="Arial"><a name="coulcase"></a><br>
+<img alt="" src="icones/coulcase.jpeg" height="98" width="42"> &nbsp;<b>Attribuer
+une couleur à une case du tableau</b>.<br>
+
+
+Cette action entraîne automatiquement
+l'affectation de la couleur aux aires de la carte contenues dans la
+case du tableau.<br>
+
+
+</font></small><br>
+
+
+<small><font face="Arial"><a name="appliquer"></a><br>
+<img alt="" src="icones/appliquer.jpeg" height="23" width="99"> &nbsp;</font></small><small><font face="Arial"><b>Appliquez la configuration du tableau au fond de carte ou aux icônes</b>.</font></small><br>
+
+
+<br>
+
+
+<small><font face="Arial"><a name="propX"></a> <b>&nbsp;<br>
+Dans
+le cas où les icônes sont affichées,</b> vous pouvez choisir le mode <br>
+
+
+</font></small>
+<ul>
+
+
+  <li><small><font face="Arial"><img alt="" src="propX.gif" height="19" width="56"> <b>&nbsp;</b>ou<b>&nbsp;<img style="width: 24px; height: 24px;" alt="" src="icones/nom_prop.png"> taille
+proportionnelle</b> à la valeur de la donnée (représentation par grandeur
+et classes à la fois) </font></small></li>
+
+
+  <li><small><font face="Arial"><img alt="" src="Nonprop.gif" height="19" width="56"> &nbsp;ou <img style="width: 24px; height: 24px;" alt="" src="icones/prop_x.png"> <b>taille constante</b> (représentation par classes
+seulement)</font></small></li>
+
+
+</ul>
+
+
+<small><font face="Arial"><a name="enreg"></a><br>
+<img alt="" src="icones/enreg.jpeg" height="19" width="28"> <b>Enregistrer le fond de carte</b></font><b><font face="Arial"> en cours</font></b></small><br>
+
+
+<small><i><font face="Arial">(L'enregistrement est temporaire. Il n'est pas conservé lorsqu'on change de carte)</font></i></small>.<br>
+
+
+<small><font face="Arial"><br>
+
+
+<a name="fondsdecartes"></a><br>
+<img alt="" src="icones/fondsdecartes.jpeg" height="21" width="128"> &nbsp;<b>Appliquer un fond de carte préalablement enregistré</b></font></small><br>
+
+
+<br>
+
+
+<small><font face="Arial"><b><a name="trace"></a><br>
+<img alt="" src="icones/trace.jpeg" height="29" width="15"> &nbsp; Traçabilité des groupes appartenant à une classe<br>
+
+
+</b></font></small>
+<ul>
+
+
+  <li><small><font face="Arial"><b>marquer</b>
+(pour les tracer) les groupes appartenant à telle ou telle classe pour
+voir si ces groupes sont conservés avec d'autres données</font></small></li>
+
+
+  <li><small><font face="Arial"><b>effacer le marquage</b></font></small></li>
+
+
+</ul><a name="monovariable"></a><br><small style="font-weight: bold;"><span style="font-family: Arial;">Bouton "<span style="color: rgb(51, 102, 102);">monovarié</span>"</span></small><br><img style="width: 24px; height: 24px;" alt="" src="icones/monovarie.png"><br><small><font face="Arial"><br>
+
+
+<br>
+
+
+
+</font></small>
+<div align="center"><big><font face="Arial"><b><big><big><small><small><a name="semio"></a><br>
+Chapitre 4 - Eléments de sémiologie</small></small></big></big></b></font></big><br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial"><br>
+
+
+
+<br>
+
+
+
+</font></small>
+<div align="center"><small><font face="Arial"><br>
+
+
+
+<br>
+
+
+</font></small></div>
+
+
+<br>
+
+
+
+<br>
+
+
+
+<small><font face="Arial"><b><big><big><small><small><br>
+
+
+
+</small></small></big></big></b></font></small>
+<div align="center"><small><font face="Arial"><a name="gene"> </a></font></small><small><font face="Arial"><big><big><b><br>
+Généralités</b></big></big></font></small><br>
+
+
+
+<font color="#993300"><font face="Arial"><u><i><b>Scénario
+de rapprochement de données et hypertexte&nbsp;</b></i></u></font></font><br>
+
+
+
+</div>
+
+
+
+<small><font face="Arial"><big><big><b><br>
+
+
+
+</b></big></big></font></small><small><font face="Arial"><big><big><small><small>Les
+documents présentés
+dans cette interface de publication de données
+cartographiées sont
+qualifiés d'hypertextes car ils comportent des fonctions
+actives que ne
+comportent pas les textes classiques. Ces fonctions sont bien des
+liens, à l'instar des hypertextes que l'on trouve sur Internet et plus généralement en informatique et
+qui renvoient à la
+notion d'hypertexte comme ensemble de connaissances reliées
+entre-elles
+par un ou des shèmes.&nbsp; Mais<b> les
+hypertextes
+présentés ici se
+distinguent des hypertextes classiques&nbsp;</b>sur deux
+plans :<br>
+
+
+
+</small></small></big></big></font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial"><big><big><small><small>l'hypertexte
+est ici indissociable d'un second objet : la carte. </small></small></big></big></font></small></li>
+
+
+
+  <li><small><font face="Arial"><big><big><small><small>cet
+objet, dynamique et interactif, </small></small></big></big></font></small><small><font face="Arial"><big><big><small><small>n'est
+pas textuel au sens littéraire du terme</small></small></big></big></font></small><small><font face="Arial"><big><big><small><small>.
+Il recourre à un langage de figures graphiques.</small></small></big></big></font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><big><big><small><small>Cependant
+la carte n'en est pas moins un objet à lire, à
+interpréter et à
+commenter. De ce point de vue, comme un texte, son
+interprétation
+appelle des savoirs exogènes au texte lui-même
+(ici la
+connaissance de
+la géographie, les représentations sociales sur
+les
+thèmes abordés ...). Mais ces savoirs
+exogènes au
+support lui-même </small></small></big></big></font></small><small><font face="Arial"><big><big><small><small>et
+à son contenu formel, </small></small></big></big></font></small><small><font face="Arial"><big><big><small><small>ne
+sont pas livrés aux seuls registres
+d'interprétation&nbsp;des "lecteurs".
+Ils sont articulés entre eux ou, tout au moins,
+liés entre eux par un
+schéma qui est précisément
+l'architecture ou plutôt le scénario qui
+organise la partie proprement textuelle de l'hypertexte. On parle ainsi
+de <b>mise en scène de données</b>
+et de <b>scénarios de rapprochement de
+données</b>.&nbsp; </small></small><b><br>
+
+
+
+<br>
+
+
+
+</b><small><small><b>Une autre
+particularité de ces hypertextes</b> est qu'ils
+laissent une part active au "lecteur". Celui-ci peut en effet modifier
+les cartes, de manière simple (taille des icônes,
+zoom) ou encore de manière plus
+élaborée (via le module analyse (changer les
+classes, faire varier les bornes comme des seuils,
+colorimétrie hiérarchique ou
+associative ...)<b>.<br>
+
+
+
+<br>
+
+
+
+</b></small><small>Cette
+interface (i.e. ces hypertextes) sont en réalité la
+part publiée des
+résultats de processus de travail conduits en groupe, au
+cours desquels
+l'usage de la carte (en vidéo projection) a permis aux
+participants de
+mettre en commun des savoirs empiriques, scientifiques,
+institutionnels ... et de discuter les représentations
+activées par le
+contenu des données, leur scénarisation.<br>
+
+
+
+<br>
+
+
+
+<b>Ce procédé de travail en groupe est au
+coeur du projet Attlas de l'Anact. </b>La
+présente interface en est la
+face visible à
+l'extérieur des scènes de travail. Dans le projet
+Attlas tels processus
+de travail sont conduits, sous forme d'ateliers, dans trois types de
+configurations qui peuvent se conjuguer entre elles : <br>
+
+
+
+</small></small></big></big></font></small>
+<ul>
+
+
+
+  <li><small><small><small><font face="Arial"><big><big>des
+groupes de
+professionnels de l'intervention dans les territoires ou les
+entreprises (notamment au sein du réseau Anact)</big></big></font></small></small></small></li>
+
+
+
+  <li><small><small><small><font face="Arial"><big><big>des
+groupes d'acteurs sur un ou des territoires&nbsp;</big></big></font></small></small></small><small><font face="Arial"><big><big><small><small>(partenaires
+sociaux, collectivités, professionnels intervenants ...)</small></small></big></big></font></small></li>
+
+
+
+  <li><small><font face="Arial"><big><big><small><small>des
+acteurs de branches professionnelles (partenaires sociaux et leurs
+partenaires)</small></small></big></big></font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial"><big><big><small><small>Au
+service des acteurs impliqués dans ces configurations, le
+projet Attlas est
+avant tout une démarche d'appui à
+l'élaboration collective d'analyses
+des situations territoriales à partir d'une
+préoccupation donnée. En
+l'occurrence, la relation âge, travail, emploi, territoire.<br>
+
+
+
+</small></small></big></big></font></small><br>
+
+
+
+<br>
+
+
+
+<small><font face="Arial"><b><big><big><small><small><br>
+
+
+
+</small></small></big></big></b></font></small>
+<div align="center"><font face="Arial"><b><a name="apropos"></a><br>
+A
+propos d'Attlas</b></font><br>
+
+
+
+<font color="#993300"><font face="Arial"><u><i><b>Cadres,
+partis pris, technologie mise en oeuvre et configuration requise</b></i></u></font></font><br>
+
+
+
+</div>
+
+
+
+<br>
+
+
+
+<small><font face="Arial">Cette interface de
+publication est basée sur un noyau actif : <b>l'interface
+GaïaMundi</b> de cartographie dynamique initialement
+développée par <b>Cité Publique</b>
+<b>et augmentée dans le cadre d'un chantier de
+R&amp;D sociotechnique conduit par l'Anact</b>. Ce chantier
+de R&amp;D s'inscrit dans le <b>programme ATEON (Age Travail Emploi Observatoire National)</b> mise en oeuvre par l'<b>Anact
+avec le soutien du FSE</b>. <br>
+
+
+
+<br>
+
+
+
+Engagé au printemps 2006, ce chantier de R&amp;D Attlas
+arrive
+au printemps 2008, sur son volet technologique, au terme de sa phase de<b>
+production d'un démonstrateur</b>. Le passage
+à une phase dite d'industrialisation (i.e. de diffusion)
+nécessite de <b>finaliser le volet "socio"
+&nbsp;de la R&amp;D sociotechnique</b>.
+Cette finalisation est en cours à travers des
+expérimentations en partenariat avec des branches
+professionnelles, des acteurs engagés dans des dynamiques
+territoriales, et à travers un cycle d'ateliers associant
+non
+seulement les acteurs des chantiers d'expérimentation, mais
+des
+professionnels et des chercheurs ou encore des institutions partenaires
+de l'Anact.<br>
+
+
+
+<br>
+
+
+
+L'interface GaïaMundi est basée sur <b>une
+technologie Web</b>. Le parti pris
+de base est celui d'une <i><b>technologie client,</b></i>
+basée sur un standard
+libre, stabilisé et évolutif (<b>le
+standard W3C</b>). GaïaMundi est à
+l'origine diffusé en <b>licence libre GNU GPL,</b>
+ce qui rend le projet
+compatible avec les financements européens, qui excluent toute
+propriété
+exclusive des réalisations et qui obligent à les
+verser au domaine
+public.</font></small><br>
+
+
+
+<br>
+
+
+
+<small><font face="Arial">Outre
+l'intérêt d'être un<i><b>
+outil multi plateforme et portable</b></i>
+(c'est-à-dire qu'il fonctionne sans serveur sur un
+ordinateur
+courant), ce&nbsp; parti pris d'une technologie client repose sur
+une
+évaluation stratégique des évolutions
+technologiques sur Internet, en particulier sur le plan des
+technologies au standard W3C libre qui présentent les
+meilleures&nbsp; garanties de stabilité des versions au
+fil des
+évolutions, et qui sont en phase avec le parti pris de la
+technologie client par les grands navigateurs conformes au W3C (
+FireFox Mozilla, toute la génération geico et
+plus
+récemment Safari v3 pour Mac).<br>
+
+
+
+</font></small>
+<ul>
+
+
+
+  <li><small><font face="Arial">le langage
+utilisé dans le
+projet Attlas (noyau GaïaMundi) est le Javascript DHTML et le
+SVG
+pour la carte, et le XML pour les architectures de méta
+données</font></small></li>
+
+
+
+  <li><small><font face="Arial">le "back
+office" (interfaces de saisie,
+façonnage des données, etc.) mobilise
+des
+technologies serveur (php , ajax) </font></small></li>
+
+
+
+  <li><small><font face="Arial">l'administration
+générale (permissions, sites
+dédiés,
+échanges de données) et les fonctions
+collaboratives&nbsp;recourent aux modes Wiki (dans un premier
+temps
+une version originale du Wiki Waka) puis depuis 2008, le projet
+s'inscrit progressivement dans l'univers technologique DocuWiki.</font></small></li>
+
+
+
+</ul>
+
+
+
+<small><font face="Arial">A &nbsp;l'origine du projet, il y&nbsp;avait un risque
+d'isolement
+technologique du côté de la technologie d'affichage
+graphique.
+La seule technologie de graphisme vectoriel libre et conforme
+au
+W3C est en effet le SVG qui était en 2006 peu
+développé du fait de la concurrence du standard Flash
+(bien que d'usage libre pour l'internaute, Flash est
+néanmoins&nbsp;une technologie propriétaire,
+qui, comme
+on le voit aujourd'hui avec Apple, ne manque pas d'imposer des
+contraintes de licences lorsque les produits ont un succès
+industriel). <br>
+
+
+
+<br>
+
+
+
+Aujourd'hui, non seulement certains sites institutionnels se sont mis
+en conformité avec la réglementation
+européenne et
+ont dû adopter la technologie SVG pour être
+compatibles
+avec les financements européens (en particulier le site
+d'EuroStat), mais Apple MacIntosh vient d'adopter la norme SVG comme
+norme industrielle (sur Ipod notamment). Il résulte de ces
+ajustements que les navigateurs vont maintenant optimiser le traitement
+du SVG. Ces évolutions vont avoir pour effet que le monde
+des
+"développeurs libres" autant que le monde du
+"breveté"
+vont développer des bibliothèques de
+fonctions
+graphiques de qualité qui n'existent pas
+aujourd'hui dans
+cette technologie. <br>
+
+
+
+Déjà, après avoir
+intégré le SVG
+comme technologie par défaut (sans pluggin) dans sa version
+FireFox2, dans sa la version FireFox3, l'interface de navigation de
+Mozilla a permis de diviser par 6 le temps
+d'exécution des fonctions de calcul et d'affichage de
+GaïaMundi. Cette accélération devrait encore
+être
+plus spectaculaire avec FireFox 4 qui contiendra un
+compilateur Javascript. <br>
+
+
+
+Ajouté à cela, le
+développement du SVG au
+niveau industriel devrait permettre d'atteindre bientôt des
+performences proches de celles de la technologie Flash.</font></small><br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+<script language="javascript">
+</script>
+<div style="position: fixed; top: 15px; right: 5px;"><img src="boutonferme.gif" onmouseover="top.antitest()"><!--
+<input type="button" onclick="top.antitest()" value="fermer l'aide"></input>
+--></div>
+
+
+
+<script language="javascript">
+//alert("dans aidecartecom.htm: urlval['REP']="+urlvar['REP'])
+if(urlvar["REP"]!=""){
+setTimeout('window.location.hash="#"+urlvar["REP"]',1000)
+}
+
+
+</script>
+
+</body></html>

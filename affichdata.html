@@ -1,0 +1,123 @@
+﻿<html id="GaïMundi AlterCarto.com"><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+
+<script  language="JavaScript">
+var baseici=new Array()
+var btemp=0
+var atemp=0
+var colori
+function rien(){}
+function trace(a,b){
+if(a!=0 & b!=0){
+
+for(k=0;k<baseici[atemp].length;k++){
+//alert("i"+a+"j"+k)
+document.getElementById("i"+atemp+"j"+k).setAttribute("style","background-color:white")
+
+}
+
+
+for(k=0;k<baseici.length;k++){
+//alert("i"+a+"j"+k)
+document.getElementById("i"+k+"j"+btemp).setAttribute("style","background-color:white")
+
+}
+
+for(k=0;k<baseici[a].length;k++){
+//alert("i"+a+"j"+k)
+document.getElementById("i"+a+"j"+k).setAttribute("style","background-color:yellow")
+
+}
+
+
+for(k=0;k<baseici.length;k++){
+//alert("i"+a+"j"+k)
+document.getElementById("i"+k+"j"+b).setAttribute("style","background-color:orange")
+
+}
+atemp=a
+btemp=b
+
+}else{
+if(b==0){
+
+
+for(k=0;k<baseici[a].length;k++){
+//alert("i"+a+"j"+k)
+if(k!=btemp){
+document.getElementById("i"+atemp+"j"+k).setAttribute("style","background-color:white")
+}
+}
+for(k=0;k<baseici[a].length;k++){
+//alert("i"+a+"j"+k)
+document.getElementById("i"+a+"j"+k).setAttribute("style","background-color:yellow")
+
+}
+atemp=a
+}
+if(a==0){
+
+for(k=0;k<baseici.length;k++){
+if(k!=atemp){
+document.getElementById("i"+k+"j"+btemp).setAttribute("style","background-color:white")
+}
+}
+
+for(k=0;k<baseici.length;k++){
+//alert("i"+a+"j"+k)
+document.getElementById("i"+k+"j"+b).setAttribute("style","background-color:orange")
+
+}
+btemp=b
+}
+
+}
+
+}
+function calcultabbase(a){
+var xecart=top.returnecart("return ecart")
+
+parent.document.getElementById('framedataici'+a).style.visibility='visible';
+parent.document.getElementById('framedataici'+a).style.height='670px';
+top.document.getElementById('dataici'+a).style.top='50px'
+top.document.getElementById('dataici'+a).style.height='670px'
+top.document.getElementById('tabledataici'+a).setAttribute('style','background-color:white')
+baseici=window.frames.filedataici.transbase00("return base00")
+//alert(baseici[0])
+var tabx="<table style='font-size:9px'>"
+
+for(i=0;i<baseici.length;i++){
+tabx+="<tr>"
+
+for(j=0;j<baseici[i].length;j++){
+
+
+tabx+="<TD id='i"+i+"j"+j+"' onclick='trace("+i+","+j+")'>"+baseici[i][j]+"</TD>"// 
+}
+tabx+="</tr>"
+}
+tabx+="</table>"
+document.getElementById("tableau").innerHTML=tabx
+}
+function recupbase(a){
+//baseici=top.frames.Num0.frames.iconeencadre.transbase00("return base00")
+var mappocoord=top.frames.Num0.frames.paramcarte.transma("return mappocoord")
+
+if(a==1){var filebaseici="../"+mappocoord[6]+"/"+mappocoord[0]}else{var filebaseici="../"+mappocoord[7]+"/"+mappocoord[1]}
+
+
+window.frames.filedataici.location.href=filebaseici
+setTimeout("calcultabbase("+a+")",1300)
+}
+
+
+</script>
+
+
+</head>
+
+<div id="tableau" style="height:665px;overflow:scroll"></div>
+<iframe name="filedataici" src="vide.htm" style="visibility:hidden"></iframe>
+</body></html>

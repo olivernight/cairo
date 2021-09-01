@@ -1,0 +1,238 @@
+﻿<HTML>
+<head>
+ <TITLE>Pilote3</TITLE>
+
+<script language="javascript">
+var Ccouche
+//Ccouche=top.frames.Num0.frames.couches.frames.zoom.Ccarte("return couchecarte")
+top.frames.Num0.frames.couches.document.getElementById("zam3").style.visibility="visible"
+//top.frames.Num0.frames.couches.document.getElementById("boutonan").style.visibility="visible"
+
+
+var trdat2=new Array()
+var trdat1X=new Array()
+var trdatdimico= new Array()
+var ICD=0
+var adressDATA=""
+
+
+var im
+var imico
+var ka3=0
+
+
+var MAXTD
+var xl=1
+var xh=1
+var curs=1
+var vh=1
+var vh2=1
+var TT=""
+var INIT0=0
+var longx=0
+
+
+function rien(){
+}
+function recupICD(){
+ICD2=ICD
+return ICD2
+}
+
+
+function ECH1X(){
+top.frames.Num0.frames.datacarte.ECH1()
+ECHX=1
+
+}
+function ECH2X(){
+top.frames.Num0.frames.datacarte.ECH2()
+ECHX=2
+
+}
+function retourneech(){
+return ECHX
+}
+
+function titleX(){
+return TT
+}
+
+function longueurX1(){
+return longx
+}
+
+function transdata1(){
+
+trdat1X=top.frames.Num0.frames.analyse.transbase("return trabas")
+//var trdat1=new Array()
+//trdat1=trdat1X
+var TTI=trdat1X[0]
+TT=TTI[0]
+longx=TTI[1]
+INIT0=1
+MAXTD=0
+
+for(var i=1;i<longx-2;i++){
+var TDX=trdat1X[i]
+trdat2[i]=TDX[1]
+if(Math.abs(trdat2[i])>MAXTD){MAXTD=Math.abs(trdat2[i])}
+}
+normalise()
+}
+
+
+
+function normalise(){
+for(var i=1;i<longx;i++){
+trdatdimico[i]=trdat2[i]/MAXTD*30
+}
+}
+
+function transdata2(){
+return trdat2
+}
+
+
+
+
+//___________________________________________ TACHE DE FOND DANS l'affectation de donn�es______
+function changeXFOND(){
+transdata1() 
+
+
+top.frames.Num0.frames.couches.frames.zam3.recupdonnees2()
+var init1X=top.frames.Num0.frames.couches.frames.zam3.transINIT1("return INIT1")
+
+//if(init1X==0){ alert("pilote3");top.frames.Num0.frames.couches.frames.zam3.recupdonnees1()}
+}
+
+</script>
+
+
+
+
+
+</head>
+<!//_________________________________________________BODY__________________________________________>
+<body BGCOLOR="#FFFFFF">
+
+<script language="javascript">
+if(document.all){ 
+document.write("<div style='left:2;top:2;visibility:visible;position:absolute'>")
+}
+else{
+document.write("<div style='left:2;top:2;visibility:visible;position:absolute'>")
+}
+</script>
+<table width=100  height=0 border=0 CELLSPACING=0 CELLPADDING=0>
+<TR >
+
+<TD ALIGN=left VALIGN=top>
+
+<!-- DEBUT DU SCRIPT MENU DEROULANT -----------------OTHER DATAS-->
+<form NAME="menu3">
+<DT><select NAME="popup3"
+onChange="change_site3();" onmouseover="if(document.all){top.frames.Num0.frames.couches.zoom0()};top.frames.Num0.frames.datacarte.iconeoucadre2()" style="background-color:#EFF2F9;border:0; color:gray" size="-1">
+<option VALUE="javascript:rien()">&nbsp;Icônes &nbsp;&nbsp;&nbsp;&nbsp;</option>
+<script>
+//_______________________________________DONNEES MONDE______________________________
+var SELx1
+SELx1=top.frames.Num0.frames.tab.SEL1trans("return SEL1")
+
+
+//_______________________________________DONNEES FAORNE______________________________
+var SELx2
+SELx2=top.frames.Num0.frames.tab.SEL2trans("return SEL2")
+
+//_______________________________________DONNEES Rillieux______________________________
+var SELx3
+SELx3=top.frames.Num0.frames.tab.SEL3trans("return SEL3")
+
+//_______________________________________DONNEES Grand Lyon______________________________
+var SELx4
+SELx4=top.frames.Num0.frames.tab.SEL4trans("return SEL4")
+
+//__________________________________________________________________________________
+document.write(SELx2)
+
+
+</script>
+</select> <b><font id="colortitremenu3" face="Arial" size="3" color="#400080">&nbsp;&nbsp;<script>//document.write("other")</script></font></b></DT><DT></DT>
+
+</form>
+<script>
+
+function changeicoiciX(a){
+
+document.menu3.popup3.selectedIndex=a
+
+change_site3()
+}
+
+function change_site3() {
+top.frames.Num0.frames.couches.zam3.indicarte20()
+top.frames.Num0.frames.couches.zam3.indicmenuico2()
+top.frames.Num0.frames.datacarte.indicmenuico2()
+top.frames.Num0.frames.selectana.selectvar2()
+var site = document.menu3.popup3.selectedIndex;
+{
+window.location.href =
+document.menu3.popup3.options[site].value;
+//var ad=top.frames.Num0.frames.tab.transadress("return adressDATA")
+//adressDATA=ad
+
+//top.frames.Num0.frames.analyse.location.href=adressDATA
+ICD=0
+ka3=site
+}
+
+if(top.frames.Num0txt.location.href.indexOf("ecrit_hypertext.html",0)>=0){
+top.frames.Num0txt.activeIconeYbouton()
+}
+
+}
+
+function razselectindex(){
+document.menu3.popup3.selectedIndex=ka3
+
+}
+function execbivarie(){
+//setTimeout('top.frames.Num0.couches.zam4.alacarte()',800);
+//setTimeout('top.frames.Num0.frames.couches.zam3.cachelegfond();',2000)
+var fenetreouv=top.frames.Num0.transfenetre("return fenetre")
+if(fenetreouv=="cartO2"){
+//top.frames.Num0.annulz2()
+top.frames.Num0.forcez2()
+}
+//top.frames.Num0.frames.datacarte.indicnouvellecarte()
+top.frames.Num0.frames.couches.zam3.indicarte0()
+
+setTimeout('top.frames.Num0.frames.couches.zam3.appliquecouleur();top.frames.Num0.frames.couches.zam3.propX()',2500);
+
+
+}
+
+
+</script>
+
+</td></tr></table>
+</div>
+
+
+</div>
+
+<script language="javascript">
+//var part=parent.location.href
+//part=part.substr(part.length-10,10)
+//if(part=="cartO1.htm"){
+var topX=top.location.href
+topX=topX.indexOf("encaps.",0)
+
+if(topX>=0){top.changeIconeY()}
+//}
+</script>
+</body >
+
+</HTML>
+

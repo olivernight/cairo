@@ -1,0 +1,108 @@
+<html>
+<head>
+<script>
+var mapX=new Array()
+var opac=0
+var cptimage=0
+var DATAthemes=new Array()
+var lieuxselect=""
+var indicarte=0
+var indexoption=0
+var indexoption2=0
+var indexoption3=0
+var rgcarte
+
+var initlieux=0
+var optionlieux=new Array()
+var indicretour=0
+
+function rien(){
+rgcarte=rgcarte
+}
+function transthemesselect(){
+  return themesselect
+}
+
+
+
+var repdata=top.frames.Num0.frames.paramcarte.transma("return mappocoord")
+lieuxselect=top.frames.Num0.frames.lieux.translieuxselect("return lieuxselect")
+//alert(lieuxselect)
+</script>
+
+<script>
+
+var DATAthemesjs=lieuxselect+"/DATA-themes.js"
+var cla='<scri'
+cla+='pt src="'
+cla+=DATAthemesjs
+cla+='"></sc'
+cla+='ript>'
+
+
+var xici
+
+//optionlieux[optionlieux.length-1]='<option style="color:red" VALUE="javascript:indicretour=1;lieuxselect='+xici+';injectlieux()">retour carte</option>'
+// ci dessous combine pour src avec variable
+
+function injectimages(){
+
+top.frames.Num0.frames.images1.location.href="images1.html"
+top.frames.Num0.document.getElementById("images1").height=22
+}
+
+//--------------------------------------------------------------------------------
+function change() {
+
+var site = document.menu.choix.selectedIndex;
+{
+document.location.href=document.menu.choix.options[site].value;
+indexoption=site
+}
+
+}
+
+</script>
+
+
+
+</head>
+
+<body STYLE="background-color:#e0ef00">
+
+<script>
+
+document.write(cla)
+
+</script>
+<script>
+
+
+for(i=0;i<DATAthemes.length;i++){
+xici="'"+lieuxselect+"/"+DATAthemes[i]+"'"
+
+optionlieux[i]='<option style="color:black" VALUE="javascript:themesselect='+xici+';injectimages()">'+DATAthemes[i]+'</option>'
+
+}
+</script>
+<!--------------------------------------------------MENU themes--------------------------------------->
+<div style="position:absolute;top:1;left:0">
+<form NAME="menu">
+
+<select id="choix" NAME="choix" onchange="change()";"  style="background-color:white; color:black;visibility:visible" size="1" >
+<option  VALUE="javascript:rien()">themes------------------------</option>
+<script>
+
+document.write(optionlieux)
+</script>
+</select>
+</form>
+</div>
+
+
+
+
+
+
+</body >
+</html>

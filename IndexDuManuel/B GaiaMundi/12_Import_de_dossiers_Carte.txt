@@ -1,0 +1,200 @@
+﻿1 
+
+Import de Dossier Carte (MAJ 18ème) 
+
+ 
+
+Cette fonctionnalité présente deux intérêts : 
+
+. Elle permet de récupérer dans une plateforme distante ou située sur le même serveur que 
+votre plateforme, un dossier carte complet (avec ses données associées et menus, et avec le 
+PageCarto intégré s’il existe) et de l’intégrer à votre plateforme. 
+. Elle permet de récupérer des fichiers choisis dans un dossier carte distant ou situé dans le 
+même serveur que votre plateforme, et de transférer ces fichiers dans le dossier carte de 
+votre choix dans votre plateforme. 
+
+
+Attention, cette fonctionnalité est dangereuse, car si vous écrasez des fichiers ou un dossiers cartes 
+existants, il n’y a pas de sauvegarde des anciens fichiers ou dossiers 
+
+ 
+
+Cette fonctionnalité est insérée comme complément aux fonctionnalités de gestion des cartes dans 
+le menu édition 
+
+ 
+
+ 
+
+Mot de passe : comme toutes les fonctionnalités de SuiteCairo qui changent l’architecture des 
+données utilisateurs dans la plateforme, l’activation du transfert de Dossiers Cartes exige un mot de 
+passe. Par défaut, le mot de passe est « admin ». 
+
+Voir dans la présentation de l’interface GaïaMundi comment changer le mot de passe. 
+
+ 
+
+Une fois validé votre mot de passe, le panneau de droite affiche l’interface : 
+
+ 
+
+On retrouve gauche le même 
+module de sélection des 
+plateformes d’origine des objets 
+à importer. 
+
+A droite sont proposées deux 
+options : 
+
+Option 1 – transfert simple : 
+import du dossier choisi dans la plateforme. Si le nom du dossier carte existe déjà, l’interface vous 
+propose de donner un nouveau nom au dossier importé. Si vous conservez le nom du dossier qui 
+existe déjà, celui-ci sera écrasé par le dossier importé 
+
+Option 2 - Choix du dossier de destination dans cette plateforme ( c’est-à-dire dans la plateforme 
+sur laquelle vous travaillez en ce moment). Cette fonctionnalité est plutôt destinée à importer des 
+fichiers choisis. 
+
+ 
+
+Vous devez choisir l’option avant de sélectionner les plateformes avec les menus de gauche 
+
+Si vous choissisez l’option 2, la liste des dossiers cartes de votre plateforme s’affiche comme suit. 
+Vous devez choisir le dossier de destination de l’import de fichier dans cette liste ( par exemple ici, 
+St-etienne-IRIS-2010) : 
+
+
+2 
+
+ 
+
+ 
+
+Dans les deux options vous pouvez choisir les fichiers à importer. 
+
+ 
+
+ 
+
+La sélection des fichiers vous est proposée sous la forme de l’exemple suivant : 
+
+ 
+
+. Les premiers fichiers sont situés dans le répertoire racine du dossier carte à importer 
+. Les sous-répertoires sont notés en gris (s’ils sont vides, ils ne seront pas créés dans la copie 
+dans votre plateforme) 
+. Sur la gauche , sous les boutons de commande, vous trouverez un tableau récapitulatif des 
+coordonnées de la cartes qui seront insérés dans le registre des cartes de votre platforme 
+(fichier mapsIliade.js) si vous prenez l’option importer un nouvelle carte ou si vous donnez un 
+nouveau nom à la carte importée 
+
+
+ 
+
+ (…) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+3 
+
+Pensez en particulier à décocher les fichiers inutiles dans le dossier d’origine. 
+
+Les fichiers que vous pouvez en général considérer comme inutiles sont les suivants : 
+
+. Les fichiers de sauvegarde des versions N-x des fichiers utilisateurs de type N-x. 
+Nom_de_fichier 
+
+
+ 
+
+. les fichiers de sauvegarde de type datafiles/principal.jj-mois-année.txt ou 
+datafiles/complementaire.jj-mois-année.txt situés dans les le sous-répertoire datafiles 
+
+
+ 
+
+ 
+
+Ces fichiers sont généralement très gourmands en mémoire et ne vous sont en général d’aucune 
+utilité si vous considérez que le dossier que vous importez est valide. 
+
+ 
+
+ 
+
+Etant donné les risques d’erreurs de manipulation, deux préconisations s’imposent : 
+
+. Entraînez-vous sur une plateforme d’essai. 
+. Si vous le pouvez (serveur local ou accès ftp à votre plateforme), sauvegardez ou 
+compressez les dossiers cartes de destination lorsque vous voulez écrasez des fichiers 
+
+
+ 
+
+Compléments IMPORTANTS 
+
+ 
+
+Complément 1 – accès aux plateformes par l’interface 
+
+Pour qu’une plateforme contenant un dossier que vous voulez importer apparaisse dans le sélecteur 
+REZO de l’interface d’import des dossiers cartes, elle doit être inscrite dans la liste commune de la 
+mutuelle altercarto, ou bien vous devez l’inscrire dans les registres du serpent de mer (Menu REZO) : 
+Votre_Plateforme_ avec_MAJ_18ème /A-MANAGER-local/ transdata_rezo/rezo.js comme 
+dans l’exemple ci-dessous : 
+
+ 
+
+ 
+
+ 
+
+(Soit de la même manière dans le fichier REZOperso.js situé dans la racine www ( ou httpdocs dans le 
+cas de MAMP sous mac) si vous l’avez installé) 
+
+ATTENTION : bien respecter le protocole d’écriture de l’adresse de la plateforme cible, en 
+particulier ne pas oublier le « / » terminal 
+
+ 
+
+ 
+
+
+4 
+
+Complément 2 – Compatibilité des anciennes plateformes 
+
+Vous ne pouvez pas importer de dossiers situés dans une plateforme dans laquelle la mise à jour 
+18ème n’a pas été opérée. 
+
+Il est préférable de ne pas opérer la mise à jour 18ème sans avoir opéré les précédentes. 
+
+Cependant, si vous ne voulez pas prendre le risque, en opérant les mises à jour intermédiaires, 
+d’altérer les anciennes plateformes dans lesquelles se situent des dossiers cartes que vous voulez 
+récupérer, il suffit de copier le dossier suivant dans une plateforme mise à jour avec la 18ème : 
+
+ 
+
+Plateforme_SuiteCairo_avecMAJ_18ème /A-MANAGER-local/CopyMapFolder 
+
+ 
+
+Puis de le coller au même endroit dans l’ancienne plateforme dans laquelle vous voulez récupérer 
+des dossiers cartes ou des fichiers qu’ils contiennent : 
+
+ 
+
+Ancienne_plateforme_SuiteCairo/A-MANAGER-local/CopyMapFolder 
+
+ 
+
+

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr">
+<head>
+<!--Copyright [2005-2007] [Hervé Paris]
+hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr
+This file is part of GaïaMundi.
+GaïaMundi is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+GaïaMundi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with GaïaMundi; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA-->
+
+  
+
+  
+  <title>PROJET</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language="javascript" src="metalanguage.js"></script>
+    <script language="javascript" src="mapsILIADE.js"></script>
+  <script language="javascript">
+var inituleprojet=top.retourneintit4("return initulprojet")
+//---------------------------------------------------------------//initialisation sur le carte n°x
+//var choixcarte=0 //N° de la carte à l'ouverture de la page. La fonction d'ouverture est située en bas de page : "top.document.getElementById('Num0').src='cartO2encapsule.htm" . Si elle n'est pas activée , elle est précédée de "//"
+//--------------------------------------------------------------------
+
+//top.frames.Num0.location.href="programmeATEON.htm"
+//top.frames.Num0.scrollTo(110,56)
+var libelmap=new Array()
+
+var topX=top.location.href
+var microsite=topX.indexOf("Site-",0)
+var tipX=topX.indexOf("texte",0)
+
+libelmap=top.translibelmap("return translibelmapX")
+
+
+
+
+if(tipX>0){var nmcarte=top.frames.Num0.frames.pilote.retNUMEROcarte("return numerocarte")}else{var nmcarte=top.transnumcarte("return numcarte")}
+//alert("nmcarte="+nmcarte)
+function recherche(a){
+var j=0
+var base00=window.frames.etalon.transbase00("return base00")
+
+if(tipX<0){var fermX="fermerrecherche()";var dist="fixed;top:55px"; var decalH=0}else{
+fermX="document.getElementById(\'affinfo\').style.height=\'0px\';document.getElementById(\'affinfo\').innerHTML=\'\';window.frames.info.fermerrecherche()";
+;var dist="relative;left:10px";
+var decalH=-35
+}
+var resultici='<small><div style="background-color:gray;color:red;position:'+dist+';width:153px" onclick="'+fermX+'"><b><center>Fermer la liste <span style="background-color:white"> X</span></center></b></div></small><br/><br/>';
+if(tipX<0){resultici+='<small><span style="position: relative;top:'+(-5+decalH)+'px"><u><b><center>Résultat de la recherche</center></b></u></span></small>'}
+if(tipX>0){resultici+='<span style="position:relative;top:'+decalH+'px">'}
+for(i=1;i<base00.length-9;i++){
+var nom=base00[i][1]//document.getElementById(i).getAttribute("title")
+if(nom.toLowerCase().indexOf(a.toLowerCase(),0)>-1){
+j+=1
+resultici+='<a href="#"><span onclick="NoDatx='+i+';top.frames.Num0.frames.couches.zoom.SVGaffichNBis(NoDatx);" style="color:blue"><small><small> - '+nom+'</small></small></span></a><br/>'
+}
+}
+if(tipX>0){resultici+='</span>'}
+document.getElementById("resultats").innerHTML=resultici
+document.getElementById("resultats").setAttribute("style","width:170px;border: 1px dotted #EB3B38; background-color:white ")
+if(j>20){
+document.getElementById("resultats").setAttribute("style","width:170px;height:250px;overflow:scroll;border: 1px dotted #EB3B38; background-color:white")
+}
+//document.getElementById("divrecherche").style.right="70px"
+if(tipX>0){
+top.document.getElementById("affinfo").style.height="150px"
+top.document.getElementById("affinfo").innerHTML=resultici
+
+top.document.getElementById("affinfo").style.overflow="scroll"
+}
+}
+function fermerrecherche(){
+
+document.getElementById("rech").value=""
+document.getElementById("resultats").setAttribute("style","")
+document.getElementById("resultats").innerHTML=""
+}
+
+
+
+
+
+function xxx(){}
+  </script>
+  
+
+  
+  <script language="javascript">
+function chgbgetcolor(a,b,c){
+
+var st="background-color:"+a+";color:"+c
+b.setAttribute('style',st)
+}
+
+
+  </script>
+</head>
+
+
+<body  style="background-color: rgb(255, 255, 255);font-family: Arial;"  onmouseover="top.ouvHelp('fichcarte')" onKeyDown="javascript:top.test(event);" onclick="if(tipX<0){top.menuBar.hideSubMenus()}">
+  <script language="javascript">
+if(tipX>0){document.write( '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>')}
+</script>
+<font id="tout" onmouseover="chgbgetcolor('white',this,'navy')" onmouseout="chgbgetcolor('white',this,'gray')" style="color:gray" ><font  size="-2"><b><a name="haut"></a>
+  <script language="javascript">
+document.write( '<font style ="position:absolute; right:5">'+inituleprojet+'</font>')
+</script></b></font>
+<small><font  >
+<br><b><big><span size="1" >Carte n° : <span id="titrecarte">  <script language="javascript">
+document.write(nmcarte)
+</script></span></big>
+<br><b><span size="1" >Echelle : <span id="titrecarte">  <script language="javascript">
+document.write(libelmap[0])
+</script></span>
+<br>Maille : <span id="maille"><script language="javascript">
+document.write(libelmap[1])
+</script></span></b>
+<br><I><small><span size="-1" id="titrecartecomment"><script language="javascript">
+document.write(libelmap[2])// fiche signalétique
+</script></span></b>
+
+</small></I></span><small><I>
+<br><span >Données rattachées à la carte :
+<div id="champcommentaire" style="width:100%;height:80px;overflow:scroll;font-size:10px"></div>
+
+<script language="javascript">
+document.getElementById("champcommentaire").innerHTML=libelmap[3]// détail di contenu
+</script></span></I>
+<script language="javascript">
+var themX=libelmap[4]// contrôle
+</script>
+<span>
+</span>
+<br>
+<span style="font-family:arial;font-size:10px;font-weight: bold; color: rgb(153, 153, 255);" title="Controles effecutés par un tiers autre que les producteurs"><u>Contrôle post production</u></span><br><span id="ControleIci"></span>
+<script language="javascript">
+var control=""
+control+='<table border="1px" cellspacing="0px" style="font-family:arial;font-size:10px;text-align:center;">';
+control+='<tr style="font-weight: bold; color: rgb(153, 153, 255);"><td title=" Comparaison des données de ce fichier avec celle du fichier source : procédé par sondage"><u>/Source</u></td><td title="controle des calculs de sous totaux notés (c): recalcul/sondage parmi chaque série de sous totaux et cohérence interne aux séries de sous totaux"><u>(c) Totaux</u></td><td title="le controle de cohérence cherche à confronter autant que possible les données avec la réalité ou des représentations stabilisées: on procède par comparaison avec d\'autres sources certifiées ou avec des connaissances empiriques"><u>Cohérence</u></td></tr>';
+control+='<tr><td>'+libelmap[4][0]+'</td><td>'+libelmap[4][1]+'</td><td>'+libelmap[4][2]+'</td></tr>';
+control+='</table>'
+document.getElementById("ControleIci").innerHTML=control
+</script>
+</span>
+</small><br>
+<small><font style="font-weight: bold; color: rgb(102, 102, 102);" color="#cc0000">
+Autres informations : <br><dt id="autrescomment">
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------DEBUT DU TEXTE---------------------------------- -->
+
+<script language="javascript">
+document.write(libelmap[5])
+</script>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------- -->
+</dt><br>
+</small></font><small>Auteurs :
+<span id="authors">
+<br>
+<ul> 
+
+<li>Carte : <span id="aut1"></span></li>
+<li>Données : <span id="aut2"></span></li>
+</ul>
+<script language="javascript">
+document.getElementById("aut1").innerHTML=libelmap[6]
+document.getElementById("aut2").innerHTML=libelmap[7]
+</script>
+
+
+
+</span></small>
+</font>
+<script language="javascript">
+
+
+
+// ------------------------------------------------------------------------------------commende du chargement de la carte à l'uverture de la fueille---------------------------------------------
+//var vala=top.frames.Num0.frames.vala("return a")
+//var Iliade=top.retourneIliade("return Iliade")
+//if(Iliade=="Iliade"){
+//top.document.getElementById('Num0').src='cartO2encapsuleILIADE.htm?'+vala
+//}else{
+//top.document.getElementById('Num0').src='cartO2encapsule.htm?'+vala}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+</script>
+<script>
+
+document.write('<div id="divrecherche" style="position:absolute;top:0px;right:260px;z-index:2000;background-color:white;display:none">')
+document.write('<span style="position:absolute"> ')
+if(tipX<0){document.write('recherche<br/>')}
+document.write('<table border=0><tr><td><input id="rech" type="text" style="background-color:#EFF2F9;border:0.5px dotted gray; color:gray;width:170px" /></td><td><input type="button" onclick="recherche(document.getElementById(\'rech\').value)" value="OK"  style="width:33px;font-size:11px" /></span></td></tr>')
+document.write('<tr><td><div id="resultats"></div></td><td></td></tr></table>')
+document.write('</div>')
+
+//alert(mapX[((nmcarte-1)*5+4)])
+document.write('<div style="visibility:hidden"><iframe name="etalon" id="etalon" ></iframe></div>')//src="'+mapX[((nmcarte-1)*5+4)]+'/etalon.html"
+setTimeout("window.frames.etalon.location.href=mapX[((nmcarte-1)*5+4)]+'/etalon.html';document.getElementById('divrecherche').style.visibility='visible'",5000)
+</script>
+
+</body>
+</html>

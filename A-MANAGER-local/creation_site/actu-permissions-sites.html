@@ -1,0 +1,244 @@
+﻿<html>
+<head><title>Altercarto.com : Création de site</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+<script id="menupublicici" type="text/javascript" src="../../mapsILIADE.js"></script>
+<script type="text/javascript">
+var menuencaps=new Array()
+for(i=0;i<mapX.length;i+=5){
+menuencaps[i/5]=mapX[i+4]
+}
+    //* <!--
+	var rep=""
+	
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    rep=(urlvar['REP'])
+	var rpx=rep.substr(5,(rep.length-5))
+	var loc=""
+	var deb=0
+    //alert(urlvar['cible'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->
+	 function recuprep(){return rep}
+	 var menuREP
+	 var listeREP
+	 var rangREP
+	 function transMenu(a){
+	 menuREP=a
+menuREP=menuencaps
+	 }
+	 function transListe(a){
+	 listeREP=a
+	 }
+	 function transRang(a){
+	 rangREP=a
+	 }
+	 
+	 var retro
+function retrograd(a){
+
+if(inhib2==0){
+var retro=a.id
+retro=retro.substr(1,retro.length-1)
+rangcourant=document.getElementById("r"+retro).getAttribute("value")
+
+if(rangcourant!=""){
+document.getElementById("r"+retro).setAttribute("value","")
+document.getElementById("r"+retro).value=""
+bornerangplus-=1
+for(i=2;i<k;i++){
+if(i==retro){}else{
+
+var val=parseInt(document.getElementById("r"+i).getAttribute("value"))
+if(val>rangcourant){val-=1;document.getElementById("r"+i).setAttribute("value",val);document.getElementById("r"+i).value=val}
+
+}
+}
+}
+}
+
+}
+
+var avanti
+function upgrade(a){
+if(inhib2==0){
+avanti=a.id
+
+avanti=avanti.substr(1,avanti.length-1)
+rangcourant=document.getElementById("r"+avanti).getAttribute("value")
+
+if(rangcourant==""){bornerangplus+=1;
+document.getElementById("r"+avanti).setAttribute("value",bornerangplus)
+document.getElementById("r"+avanti).value=bornerangplus
+}
+if(rangcourant!=""){
+for(i=2;i<k;i++){
+if(i==avanti){}else{
+var val=parseInt(document.getElementById("r"+i).getAttribute("value"))
+if(val>rangcourant){val+=1;document.getElementById("r"+i).setAttribute("value",val);document.getElementById("r"+i).value=val}
+
+}
+}
+}
+}
+}
+var inhib=0
+var inhib2=0
+function compare(a){
+
+if(inhib==0){
+var arrivee=parseInt(a.value)
+
+
+avanti=a.id
+
+avanti=avanti.substr(1,avanti.length-1)
+rangcourant=parseInt(document.getElementById("r"+avanti).getAttribute("value"))
+document.getElementById("r"+avanti).setAttribute("value",arrivee)
+
+
+if(arrivee>rangcourant){//cas + : on descend ceux qui sont compris entre les deux  la borne sup incluse
+for(i=2;i<k;i++){
+if(i==avanti){}else{
+var val=parseInt(document.getElementById("r"+i).getAttribute("value"))
+
+if(val>=rangcourant & val<arrivee+1){val-=1;document.getElementById("r"+i).setAttribute("value",val);document.getElementById("r"+i).value=val}
+
+}
+}
+}
+
+if(rangcourant>arrivee){//cas - : on monte ceux qui sont compris entre les deux  la borne inf = arrivée incluse
+for(i=2;i<k;i++){
+if(i==avanti){}else{
+var val=parseInt(document.getElementById("r"+i).getAttribute("value"))
+
+if(val>=arrivee & val<rangcourant){val+=1;document.getElementById("r"+i).setAttribute("value",val);document.getElementById("r"+i).value=val}
+
+}
+}
+}
+
+
+}
+}
+var cop
+function attribcopresence(a,b){//a<->this  ;  b=1 pour coprésence 0 sinon
+cop=a.id
+
+cop=cop.substr(1,cop.length-1)
+document.getElementById("p"+cop).setAttribute("value",b)
+document.getElementById("p"+cop).value=b
+}
+	 </script>
+	
+	 <script type="text/javascript"></script>
+	 <script type="text/javascript">
+	
+	 //document.getElementById("menupublicici").src="../../menuencapsules-"+rep+".js"
+	 var vl2=0
+	 var vl1=0
+	 var exixtant
+	 var bornerangplus=1
+	 var rangcourant=0
+	var echeck=false
+	var checkencours1=""
+	var checkencours2=""
+	var colorpresence="white"
+	var copresence=0
+	var k=1 // on démarre a 1 parcequ'on saute le sommaire du site
+var visib="hidden"
+	var nomin=""
+var visici=""
+		var nomil=""
+	 function ecrittabactu(){
+	
+	 var O='<form method="post" action="actu_menu_cartes_Sites.php?REP='+rpx+'">';
+	 O+="<br><center><big><b>Liste de publication des cartes</b></big>"
+	  O+="<br><center ><span style='color:red' >ooO0 <big ><b>"+rpx+"</b></big> 0Ooo</span><br>"
+	 
+	
+	 O+='<table style="font-family:arial;font-size:11px;width:200px">'
+	 O+='<TR><TD style="border:1px dotted"><b>Liste Globale</b></TD>'
+	 O+='<TD style="border:1px dotted;display:none;width:0px"><b>Raffraichir<br>ou<br>Ajouter</b></TD>'
+	 O+='<TD style="border:1px dotted"><b>Publier</b></TD><TD style="border:1px dotted;display:none"><b>Rang</b></TD><tD>  </TD></tr>'
+	 	 O+='<TR><TD style="border:1px dotted"><b>---</b></TD><TD style="border:1px dotted;display:none"><b>--</b></TD><TD style="border:1px dotted"><b>--</b></TD><TD style="border:1px dotted;display:none"><b>1</b></TD><tD>  </TD></tr>'
+
+// on élimine le Sommaire; on le replace dans  rep par ailleurs 
+for(i=0;i<menuencaps.length;i++){
+visib="hidden"
+//if(menuencaps[i]!=("Sommaire-Site_"+rpx) & menuencaps[i].substr(0,8)!="Sommaire"){
+nm="name='N["+k+"]'";nomil="name='L["+k+"]'";nomin="name='M["+k+"]'";nrang="name='R["+k+"]'"; nap="name='P["+k+"]'";k=k+1;
+	  O+='<TR><TD style="border:1px dotted"><b><input '+nm+' type="text" style="width:100px" value="'+menuencaps[i]+'"></b></TD>';
+	  var rgla="";colorpresence="white";checkencours2="";checkencours1="";copresence=0;vl2=0;vl1=0
+	 
+	for(j=deb;j<menuREP.length;j++){ 
+	 //alert(menuREP[j]+"    "+menuencaps[i])
+		if(menuREP[j]==menuencaps[i]){
+		    
+		//nomil="name='L["+k+"]'";nomin="name='M["+k+"]'";k=k+1;
+		//if(deb==0){visici=";visibility:hidden"}
+		colorpresence="gray";
+		copresence=1
+		if(listeREP[j]==1){checkencours2="checked=true";rgla=rangREP[j] ;bornerangplus=rgla;vl2=1}else{checkencours2="";vl2=0}
+		//checkencours1="checked=true"
+		visib="visible"
+		} //else{}//nomin="";nomil="";
+			
+	} 
+	  O+='<TD style="border:1px dotted;display:none" ><center  style="background-color:'+colorpresence+'"><input id="c'+k+'" onmouseover="inhib=1;echeck=this.checked" '+checkencours1+' '+nomin+'  onclick="if(echeck==true){this.checked=false;if(parentNode.getAttribute(\'style\').search(/gray/)>0){}else{;document.getElementById(\'d'+k+'\').style.visibility=\'hidden\';document.getElementById(\'d'+k+'\').checked=false};this.value=0;if(parentNode.getAttribute(\'style\').search(/red/)>0){parentNode.setAttribute(\'style\',\'background-color:white\');attribcopresence(this,0)};if(parentNode.getAttribute(\'style\').search(/gray/)>0){}else{retrograd(this)};}else{this.checked=true;document.getElementById(\'d'+k+'\').style.visibility=\'visible\';this.value=1;if(parentNode.getAttribute(\'style\').search(/white/)>0){parentNode.setAttribute(\'style\',\'background-color:red\');attribcopresence(this,1)}};inhib2=1"     onmouseout="inhib=0;;inhib2=0;if(this.checked==true){this.value=1}else{this.value=0};" type="radio" value="'+vl1+'" style="width:20px;border:0px'+visici+'"></center></TD>';  
+
+	  O+='<TD style="border:1px dotted"><center ><input id="d'+k+'" '+checkencours2+'  '+nomil+' onclick="if(echeck==true){this.checked=false;this.value=0;retrograd(this)}else{this.checked=true;this.value=1;upgrade(this)};inhib2=1"  onmouseover="javascript:inhib=1;echeck=this.checked" onmouseout="inhib=0;inhib2=0;if(this.checked==true){this.value=1}else{this.value=0};" type="radio" value="'+vl2+'" style="width:20px;border:0px;visibility:'+visib+'"></center></TD></TD>';
+
+	  O+='<TD style="border:1px dotted;display:none"><center ><input id="r'+k+'" '+checkencours2+'  '+nrang+'  type="text" value="'+rgla+'" style="width:25px;border:1px;visibility:visible" onmousedown="existant=this.value"  onchange="compare(this)"></center></TD><tD style="border:0px dotted;display:none">xxx<input id="p'+k+'" type="text" '+nap+' value="'+copresence+'" style="width:10px;visibility:visible:"></TD></tr>';
+
+	 
+//}
+
+}	  
+	  
+	 O+='</table>'
+	 O+='</center><input type="submit" value="enregistrer"></form>'
+	 document.getElementById("tab").innerHTML=O
+	 }
+	 
+	 
+function boutonferme(){
+
+if(parent.location.href.indexOf("A0 PageCarto serpent encaps")>=0 || parent.location.href.indexOf("A0%20PageCarto%20serpent%20encaps")>=0){window.location.href="../../vide.html"}else{parent.document.getElementById('abon').style.visibility='hidden';parent.document.getElementById('abonne').style.height=0+'px'}
+
+}
+
+</script>
+
+</head>
+<body style="font-family:arial;font-size:12px" bgcolor="#FFFFFF" text="#000000">
+<div style="position:fixed;top:10px;right:10px">
+<input type="button" value="fermer cette page" onclick="boutonferme()"></input>
+</div>
+<center> Module Edition </center>';
+
+<div id="tab"></div>
+
+<div style="position:absolute;top:-500px;visibility:hidden"><iframe id="loadlist" width="0px" height="0px" frameborder=0 style="visibility:hidden" src="listeCartes.htm"></iframe></div>
+</body>
+</html>

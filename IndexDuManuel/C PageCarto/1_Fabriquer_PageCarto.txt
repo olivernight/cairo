@@ -1,0 +1,2592 @@
+﻿ 
+
+ 
+
+Le Module PageCarto 
+
+ 
+
+Presqu'un post'it ! 
+Dans vos Pages Web ou en version portable 
+
+ 
+
+PageCarto est un module de publication de cartographie statistique simple et intuitif 
+diffusé sous licence GNU GPL. 
+
+Solution attractive par son coût abordable, il est aussi un bijou d'interactivité qui permet 
+aux utilisateurs de réaliser eux-mêmes, en quelques clicks, des cartes et des scénarii avec 
+les données statistiques intégrées dans le module. 
+
+ 
+
+Conçu pour permettre aux utilisateurs d’explorer un thème délimité, chaque module 
+PageCarto comprend un panel de données utiles à cette exploration, tandis que le texte 
+déroulant propose une architecture de liens qui commandent l’affichage de cartes 
+statistiques préconstruites. 
+
+Trois propriétés font l'originalité de ce module: 
+
+ 
+
+- 
+Le couplage de la carte avec un texte déroulant dans lequel sont placés des liens 
+qui activent les cartes. Ces liens peuvent être commentés. 
+
+
+ 
+Ceci permet non seulement d'en faciliter la lecture mais aussi de construire des 
+raisonnements compréhensibles par des non experts. 
+
+
+- 
+On peut copier PageCarto sur un ordinateur ou une clé USB. Conçu en 
+
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+technologie Client, il ne nécessite aucune installation. PageCarto s'intègre 
+facilement dans les pages Web. 1 
+
+
+ 
+
+- 
+Le prix de réalisation d'un module PageCarto est très abordable et un assistant à 
+la réalisation de devis est disponible sur pagecarto.fr pour évaluer le coût des 
+projets de commande d’un module initial ou de données complémentaires 
+
+
+ 
+Différentes situations d’usage 
+
+ 
+
+Outre la publication sur le web, PageCarto est très utile dans deux types de situations : 
+
+ 
+
+- 
+l'animation des réunions de travail (partage de connaissances, diagnostic...) 
+- 
+la formation ou l'enseignement 
+
+
+Documentation et données sources 
+
+ 
+
+Chaque module PageCarto peut comprendre aussi : 
+
+ 
+
+- 
+Un mini manuel d’utilisation 
+- 
+Des éléments synthétiques sur la sémiologie et les partis pris méthodologiques, 
+- 
+Les exports de données intégrées dans le modules (fichiers .txt avec tabulation 
+pour tableur), leurs sources et dates de validité ainsi que les principales 
+nomenclatures ou des liens vers les principales définitions proposées par les 
+sites des fournisseurs des données sources. 
+- 
+L’architecture commentée des liens proposés dans le texte déroulant 
+(hypertexte), ainsi qu’une table indexée des liens, pour faciliter la navigation. 
+
+
+ 
+
+- 
+La liste indexée des menus d’affichage manuel des données disponibles dans les 
+versions avancées. (Cf. ci-après) 
+- 
+Des exemples de scénarii et quelques règles de méthode pour conduire un 
+raisonnement cartographique dynamique. 
+
+
+Des formats adaptés aux usages. 
+
+Les modules PageCarto sont fournis en quatre versions : 
+
+La version normale 
+
+Cette version « grand public » comprend : 
+
+- 
+la carte, 
+- 
+le texte déroulant, 
+- 
+les légendes 
+- 
+l’affichage des graphiques. 
+
+
+La version « pour fouiller » 
+
+Elle ajoute aux éléments précédents 
+
+- 
+Le menu déroulant des données affichables sur la carte 
+- 
+le menu déroulant des graphiques, 
+- 
+Un moteur de recherche des aires géographiques par nom 
+
+
+ 
+
+ 
+
+ 
+
+
+
+1 Le module peut s’installer sur votre serveur web par simple copier-coller. Vous pouvez aussi héberger votre module sur 
+nos serveurs. Dans les deux cas, une simple ligne de code HTML suffit à afficher le module sur l’une de vos pages Web. 
+
+
+Ainsi équipée, la version « pour fouiller » permet à l’utilisateur de construire des cartes 
+statistiques en mobilisant les données de son choix, en réglant lui même les jeux de 
+couleur et les distributions en classes, en choisissant le mode d’affichage en rond 
+proportionnel ou en fond coloré, en choisissant aussi les graphiques associés à la carte. 
+
+ 
+
+Une version Grand Format 
+
+ 
+
+Elle reprend les éléments contenus dans la version « pour fouiller » dans un format 
+agrandi (l’espace d’affichage de la carte est privilégié) destiné aux grands écrans 
+(bureau) ou à l’usage en mode plein écran. 
+
+ 
+
+Une version réduite 
+
+ 
+
+Reprenant les éléments de la version normale, cette version est destinée aux sites web 
+au format blog (intégrable dans la partie centrale de la page d’un blog). 
+
+ 
+
+Les versions « normale » et « pour fouiller » sont les plus indiquées pour un usage en 
+vidéo projection (l’affichage en mode plein écran est conseillé). 
+
+ 
+
+Version pour fouiller 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Version réduite ou normale 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+Recherche par nom 
+
+Quantiles, couleurs 
+choix d’affichage en 
+ronds ou fond 
+
+Menus déroulants 
+
+des variables et des 
+graphiques 
+
+Texte déroulant 
+
+Liens vers des 
+
+cartes pré construites 
+
+ 
+
+
+ 
+
+Fiche technique du module PageCarto 
+
+Le package PageCarto 
+
+Un répertoire unique… 
+
+ 
+
+Qui contient … 
+
+- 
+ENTRER.html = l’entrée générale donnant accès aux sommaires du package 
+(différents formats de la version, liens utiles, tableaux de données originales et 
+documentation). 
+- 
+Un accès direct à chaque format de version 
+
+
+ 
+
+ 
+
+Technologie et compatibilités 
+
+Les ordinateurs et la rapidité d’exécution 
+
+PageCarto fonctionne indifféremment sous Macintosh et Windows ou Linux. Pour la 
+plupart des ordinateurs de moins de 5 ans, l’affichage des données sur la carte est quasi 
+instantané jusqu’à 800 à 1000 aires géographiques et peut présenter léger délai pour un 
+plus grand nombre d’aires, selon la puissance de l’ordinateur. 
+
+Langages, standards et encodage 
+
+Le Module PageCarto est réalisé au standard W3C. Le module W3C est composé : 
+
+ 
+
+- 
+d’un fichier principal au format .xml 2 intégrant un module SVG pour 
+l’affichage vectoriel des cartes3 
+
+
+Le fichier xml appelle des fichiers ressources : 
+
+ 
+
+- 
+au format .js pour les bases de données, les métadonnées (Menus d’affichage 
+des données, légendes) et les additifs géographiques optionnels (couches 
+contour etc…) 
+- 
+au format .htm ou .html pour le menu déroulant et divers fichiers opérandes.4 
+
+
+
+
+2 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+
+3 xmlns="http://www.w3.org/2000/svg" 
+
+ xmlns:xlink="http://www.w3.org/1999/xlink" 
+
+ xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+
+ xmlns:dc="http://purl.org/dc/elements/1.1/" 
+
+ xmlns:cc="http://web.resource.org/cc/" 
+
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+
+
+4 <html xmlns="http://www.w3.org/1999/xhtml"> 
+
+ 
+
+Tous les fichiers sont encodés en utf-8. 
+
+Les navigateurs 
+
+Conçu pour Firefox (version 3 et plus) avec lequel il est le plus performant, PageCarto est 
+aussi compatible avec Google Chrome, Chromium, Safari et Internet Explorer 9 et+ 
+
+ 
+
+navigateurs 
+
+En local (sans connexion) 
+
+Sur serveur local ou distant 
+
+FireFox (v 3 et plus) 
+
+Safari v 5.0 et plus 
+
+Oui 
+
+Oui 
+
+Google Chrome et 
+Chromium 
+
+Non (exception de sécurité / 
+frame ascendante) 
+
+Oui 
+
+Internet Explorer 9 et 
+plus 
+
+Oui mais il faut autoriser 
+l’exécution des scripts 
+
+Oui 
+
+
+
+Taille du package 
+
+La taille du package varie de 5 Mo à 30 Mo selon le nombre d’aires géographiques et le 
+nombre de colonnes de données incorporées (par exemple, un module PageCarto avec 
+1500 colonnes de données et 1300 aires géographiques mesure 27 Mo) 
+
+Limites de perception visuelle 
+
+Au-delà de 1500 à 2000 aires géographiques, la discrimination des aires géographiques 
+et la lisibilité des symboles affichés sur la carte deviennent problématiques en affichage 
+15 pouces 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+Générer un Module PageCarto 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Ce choix déclenche l’affichage suivant dans le panneau de droite. 
+
+Il ya deux type de modules PageCarto : le module standard et le module collaboratif. 
+Dans ce chapitre, on présente d’abord le standard puis le collaboratif 
+
+ 
+
+ 
+
+ 
+
+Les modules PageCarto étant générés à partir des cartes et des données intégrées 
+dans GaïaMundi, la validation déclenche l’affichage d’un la liste des Cartes de 
+GaïaMundi dans laquelle vous devez faire votre choix : 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+
+ 
+
+La sélection d’une carte ( ici : Monde-Pays-Demo) déclenche l’affichage suivant : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Explications 
+
+PageCarto est généré à partir d’un dossier carte de GaïaMundi, c'est-à-dire à partir de : 
+
+. la carte et ses additifs (sous couches, unions, correctifs de coordonnées) 
+. les données associées à la carte (principal et complémentaire) 
+. les menus de données (pour les icones et pour les graphiques) 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Une fois généré, la fabrication du module PageCarto est entièrement indépendante 
+de la carte initiale. L‘interface de fabrication du module PageCarto permet en effet de 
+fabriquer l’hypertexte, les menus de données ainsi que l’entête du module. Tandis 
+que les document du dossier info sont fabriqués à la main ( en pf ou html). Le fichier 
+ENTRER.html qui est l’interface d’accueil du module étant lui aussi modifiée avec un 
+éditeur de fichier Html. 
+
+
+
+Physiquement le module PageCarto 
+est composé d’un répertoire nommé 
+PageCartoDossier situé dans le 
+répertoire de la carte de GaïaMundi. 
+PageCartoDossier comprend plusieurs 
+sous répertoires parmi lesquels le 
+répertoire PageCarto et son sous 
+répertoire info contiennent des 
+fichiers utilisateurs. C'est-à-dire des 
+fichiers dont le contenu est spécifique 
+à chaque module. 
+
+ 
+
+Lorsqu’on génère un module 
+PageCarto pour la première fois, 
+l’interface de génération transfère ou 
+transpose (html->js ou txt) une série 
+de fichier de la carte GaïaMundi vers 
+le répertoire PageCarto. (en vert sur 
+le graphique) et génère le module 
+cartographique de PageCarto à partir 
+du fichier svg de la carte de 
+GaîaMundi. 
+
+ 
+
+L’interface génère ensuite des fichiers 
+utilisateurs vierges (en rouge) 
+
+. Un fichier dans le répertoire 
+PageCartoDossier (fichier 
+ENTRER.html) 
+. 4 fichiers dans le répertoire 
+PageCarto qui vont recueillir le 
+contenu du module PageCarto, 
+. Trois fichiers dans le 
+répertoire info qui recueilleront les 
+informations sur les données 
+(métadonnées), les explications sur 
+le scénario de l’hypertexte, les 
+nomenclatures et définitions 
+utilisées. 
+
+
+ 
+
+L’interface génère aussi une série 
+de fichiers « standards » (en bleu) 
+qui, en principe, ne seront pas 
+modifiés par le fabriquant du 
+module. 
+
+Répertoire de la carte dans GaïaMundi 
+
+ 
+
+ 
+
+ 
+
+Fichiers de données 
+
+principal.html 
+
+complementaire.html 
+
+Menus des icones 
+
+Data-IcoSujet.js 
+
+Data-IcoOther.js 
+
+Menus des Graphiques 
+
+Data-Sujet.js 
+
+Data-Other.js 
+
+Registres des couches graphiques 
+listeLegNap.js 
+DATA-Union.js 
+
+Fichiers de couches Contour 
+listeAdditifContoursSVG.js 
+
+ 
+
+Autres fichiers nécessaires 
+
+au fonctionnement de la 
+
+carte dans GaïaMundi 
+
+ 
+
+PageCartoDossier 
+
+ENTRER.html 
+
+GRAND pour Firefox.html 
+
+Normal.html 
+
+REDUIT.html 
+
+version-pour-fouiller.html 
+
+PageCarto 
+
+Fichiers de données 
+
+principal.js 
+
+complementaire.js 
+
+Menus icones 
+
+Data-IcoSujet.js 
+
+Data-IcoOther.js 
+
+Menus Graphique 
+
+Data-Sujet.js 
+
+Data-Other.js 
+
+Registre des couches graphiques 
+listeLegNap.js 
+DATA-Union.js 
+
+Fichiers de couches Contour 
+listeAdditifContoursSVG.js 
+
+ 
+
+entete.js 
+
+hypertexte.htm 
+
+parametres.js 
+
+zoomW3C-vertic.js 
+
+ 
+
+Module-PageCarto.xml 
+
++ autres fichiers et sous 
+répertoires du package 
+
+Info 
+
+principal.txt 
+
+complementaire.txt 
+
+documentation METHODOLOGIE.pdf 
+
+documentation USAGE.pdf 
+
+fiche-exploitation.pdf 
+
+Nomenclatures-et-definitions.html 
+
+ 
+
+Ces fichiers sont appelés par des 
+liens insérés dans le fichier 
+ENTRER.html 
+
+
+ 
+
+De sorte qu’en principe, il suffit d’avoir créé une carte et de lui avoir associé des 
+données dans GaîaMundi pour générer un module PageCarto dont la production sera 
+ensuite indépendante. 
+
+ 
+
+Cependant, les processus de travail ne sont généralement pas aussi linéaires que cela 
+et il arrive souvent que l’on ait besoin d’ajouter de nouvelles données par exemple. 
+Dans ce cas, il faudra les intégrer à la carte GaïaMundi puis utiliser de nouveau 
+l’interface de génération des modules PageCarto pour actualiser les données dans le 
+module. Il faudra alors prendre bien garde de ne sélectionner que les items 
+principal.js et/ou complémentaire.js pour ne pas écraser les travaux réalisés dans les 
+fichiers utilisateurs (en rouge). 
+
+ 
+
+Il peut arriver aussi (pour les utilisateurs experts) que l’on perfectionne la carte 
+initiale dans GaïaMundi en insérant des couches graphiques ou en apportant des 
+correctifs… Il faudra alors prendre garde à n’actualiser que les fichiers concernés : 
+Module-PageCarto.xml, listeLegNap.js, DATA-Union.js ou listeAdditifContoursSVG.js 
+selon le cas. 
+
+ 
+
+Concernant les menus de données. Si l’on crée de nouveaux Menus dans la carte 
+GaïaMundi alors qu’il en existe déjà dans PageCarto, on ne peut pas les transférer 
+sans écraser ceux qui existent dans PageCarto. 
+
+ 
+
+D’une manière générale, il faut bien intégrer deux éléments contraignants : 
+
+1. le fait que le transfert est descendant de la Carte GaïaMundi vers le module 
+PageCarto 
+2. le fait que dès lors que l’on a commencé à produire des menus de données 
+dans PageCarto, les processus de fabrication dans GaïaMundi et dans 
+PageCarto sont divergents. ( il existe en réalité la possibilité de réaliser une 
+convergence en transférant manuellement des éléments de menu d’un fichier 
+de menu dans GaïaMundi vers un fichier de menu dans PageCarto et 
+réciproquement. Voir pour cela la structure assez simple des fichiers à la fin 
+du chapitre sur la fabrication de menus de données) 
+
+
+ 
+
+Tableau récapitulatif des fichiers de menu de données 
+
+ 
+
+ Fichiers de menus 
+
+fichiers de Données 
+
+Icones ( ronds…) 
+
+Graphiques 
+
+principal 
+
+ Data-IcoSujet.js 
+
+ Data-Sujet.js 
+
+complémentaire 
+
+ Data-IcoOther.js 
+
+ Data-Other.js 
+
+
+
+ 
+
+Tableau récapitulatif des fichiers de gestion de l’affichage de la carte 
+
+ 
+
+ 
+
+fichiers 
+
+définition 
+
+ 
+listeLegNap.js 
+
+
+Liste paramétrée des additifs graphiques insérés dans 
+le fichier svg standard de la carte.(*) 
+
+listeAdditifContoursSVG.js 
+
+ 
+
+Liste paramétrée de contours ajoutés à la carte (par 
+exemple limites administratives) de façon dynamique à 
+partir de fichiers de données géographiques intégrés 
+dans le dossier carte de GaîaMundi et transférés 
+automatiquement lors de la génération du module 
+PageCarto (*) 
+
+DATA-Union.js 
+
+Fichier de paramétrage des unions entre différentes 
+aires géographiques pour n’en faire qu’une seule unité 
+recevant des données ( par exemple les parties est et 
+ouest de l’Egypte séparées par le canal de suez) 
+
+
+
+(*) Pour l’affichage ou l’occultation de ces additifs, voir le chapitre fabrication de l’hypertexte 
+
+
+
+
+dans PageCarto. Voir aussi en annexe la structure de ces fichiers et la gestion manuelle des 
+paramètres d’affichage. 
+
+ 
+
+Bien entendu, lors de la création initiale du module PageCarto il faut sélectionner 
+tout les items (bouton « All » en haut du formulaire) 
+
+ 
+
+Une fois la sélection des fichiers adoptée, il reste à valider. 
+
+ 
+
+ 
+
+ 
+
+La validation entraîne la création du module et l’affichage suivant : 
+
+ 
+
+ 
+
+ 
+
+Il s’agit d’une invite à tester le module PageCarto . 
+
+Le module existe sous 4 versions d’affichage dont les caractéristiques sont présentées 
+dans le tableau suivant : 
+
+ 
+
+ Fonctionnalités 
+
+ 
+
+ 
+
+Taille 
+
+Avancées 
+
+La présence des menus de 
+données et du module de 
+réglage des quantiles et 
+des palettes de couleur 
+permet de façonner soit 
+même les cartes 
+indépendamment de choix 
+préfabriqués dans 
+l’hypertexte 
+
+Simplifiées 
+
+La composition des cartes et 
+des graphiques est déterminée 
+par l’hypertexte. On peut 
+naviguer dans l’hypertexte 
+mais on ne peut pas fabriquer 
+des cartes « personnelles » 
+
+Grand format 
+
+Maximalise la taille de la carte. 
+Destiné à la projection vidéo en mode 
+plein écran 
+
+Nb la limitation du grand format à 
+Firefox et Chrome n’est plus 
+d’actualité depuis la version V1-1 de 
+la SuiteCairo qui est compatible avec 
+IE et la plupart des navigateurs 
+
+ 
+
+ 
+
+Grand Format 
+
+ 
+
+ 
+
+Format intermédiaire 
+
+Taille adaptée à l’intégration dans 
+une page web au format classique 
+des sites à affichage sur une colonne 
+centrale. 
+
+Adapté aussi en hauteur pour un 
+affichage dans un navigateur en 
+configuration classique (avec les 
+barres de menu et de navigation du 
+navigateur) etc… 
+
+Pour fouiller 
+
+ 
+
+Normale 
+
+ 
+
+Petit format 
+
+Destiné à l’intégration dans des pages 
+web à espace restreint 
+
+ 
+
+ 
+
+Réduite 
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ Versions avancées Versions simplifiées 
+
+ avec module de gestion 
+
+ manuelle des cartes 
+
+ 
+
+ 
+
+ 
+
+Réglage éventuel du zoom initial et du 
+centrage de la carte. 
+
+ 
+
+En principe, la génération du module PageCarto produit une carte bien centrée et 
+utilisant le maximum de l’espace, sans déborder. Si l’on souhaite cependant modifier 
+le zoom initial et le centrage, on peut le faire en intervenant manuellement dans le 
+fichier zoomW3C-vertic.js situé dans le sous-répertoire PageCarto 
+
+ 
+
+Par défaut, le contenu du fichier concerné par ce réglage est le suivant : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+ 
+
+ 
+
+Régler le zoom : 
+
+On intervient sur le coefficient alpha (voir ellipse rouge). Cependant il ya deux cas de 
+figure : 
+
+. Soit la carte est plus large que haute, alors on intervient sur la valeur de 
+alphaW en modifiant le coefficient 1.35 en l’augmentant pour agrandir la 
+carte ou en le diminuant pour la réduire. 
+. Soit la carte est plus haute que large, alors on intervient sur alphaH en 
+modifiant le coefficient 1.2 
+
+
+La modification du zoom initial s’applique à toutes les versions de PageCarto 
+
+ 
+
+Régler le centrage : 
+
+Ici il faut opérer les modifications pour chaque version sur ax et/ou ay (voir ellipse 
+bleue) : 
+
+. grand format==big 
+. pour fouiller==complete 
+. normale==normal 
+. réduite==small 
+
+
+ 
+
+Pour visualiser les résultats de vos transformations : 
+
+. Videz le cache 
+. Cliquez sur le lien rafraîchir en bas à gauche de la carte sur la version de 
+PageCarto concernée par la ou les modifications que vous avez opérées 
+
+
+
+
+
+ 
+
+Liens vers les PageCarto existant dans la 
+plateforme 
+
+Un item du menu édition permet d’accéder directement aux modules PageCarto 
+existants dans la plateforme : 
+
+ 
+
+ 
+
+ 
+
+Ce choix déclenche une fonction qui va explorer l’ensemble des dossiers cartes de 
+GaïaMundi et dresser la liste des modules existants. Celle-ci est affichée dans le 
+panneau de droite sous la forme d’un menu déroulant : 
+
+ 
+
+ 
+
+La sélection d’un module PageCarto dans le menu déroulant déclenche un affichage 
+du type suivant : 
+
+ 
+
+ 
+
+Ou bien comme celui-ci, si le module est collaboratif 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+L’interface de production des PageCarto 
+
+L’interface de fabrication s’ouvre à partir de GaïaMundi de la manière suivante : 
+
+ 
+
+Menu Edition->PageCarto->Editer Hypertexte. 
+
+ 
+
+L’interface comprend cinq parties : 
+
+1. un menu déroulant qui présente les modules PageCarto déjà générés dans la 
+plateforme SuiteCairo 
+2. Le module PageCarto que l’on a sélectionné en 1 
+3. Un éditeur de texte spécialisé, dans lequel est cloné l’hypertexte du module 
+PageCarto sélectionné 
+4. Une interface de fabrication des menus de données 
+5. Une interface de fabrication de l’entête de l’hypertexte 
+
+
+ 
+
+L’ensemble est situé dans une seule page Web de façon à pouvoir circuler aisément d’une 
+partie à l’autre. 
+
+A l’ouverture l’interface est positionné en haut à gauche et on voit à l’écran les parties 1 , 
+2 et 3 
+
+Pour accéder aux parties 4 et 5, il suffit de se déplacer dans la page avec les ascenseurs 
+latéraux. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dans les chapitres suivants, on traitera successivement : 
+
+ 
+
+. La fabrication des menus de données (on travaille alors sur la partie 4 et sur la 2 pour 
+visualiser) 
+
+
+ 
+
+. L’édition et la rédaction de l’hypertexte (on travaille alors sur les parties 1 et 2) 
+
+
+ 
+
+. La réalisation de l’entête de l’hypertexte (parties 5 et 2) 
+
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+1 
+
+3 
+
+5 
+
+2 
+
+4 
+
+ 
+
+
+ 
+
+Editer et Modifier les hypertextes 
+
+Interface de travail. 
+
+ 
+
+ 
+
+ 
+
+La version du module PageCarto encapsulée dans l’interface de travail est la version « Pour 
+Fouiller », ce qui permet de configurer les données projetés sur la carte et le graphique de 
+toutes les manières possibles. 
+
+ 
+
+Le principe de fabrication d’un hypertexte consiste à insérer des balises de lien dans le 
+texte, ces balises activant les cartes et les graphiques lorsqu’on clique dessus. Ces balise de 
+lien se comportent comme de liens hypertextes, mais au lieu de charger une page web ou 
+de renvoyer sur un site, elles activent les fonctions interactives de la carte. 
+
+ 
+
+Il existe trois types de balises : 
+
+ 
+
+La balise de liens multiples. Celle-ci enregistre l’ensemble des réglages de la carte et du 
+graphique associé tels qu’ils sont au moment de la sélection et restitue ce résultat lorsqu’on 
+clique sur la balise. 
+
+ 
+
+La balise « graphique ». Celle-ci enregistre le graphique tel qu’il est réglé au moment de la 
+sélection. 
+
+ 
+
+La balise de lien géographique (qui insert des liens vers une aire donnée de la carte) Cette 
+balise enregistre le lien vers l’aire géographique sélectionnée au moment de son insertion et 
+exécute ce lien lorsqu’on clique dessus . 
+
+ 
+
+Pour fabriquer ces balises, on règle donc la carte comme on le souhaite, on sélectionne 
+l’endroit du texte où l’on veut insérer une balise. On choisit le type de balise. La sélection de 
+ce type de balise déclenche l’apparition d’un cadre de saisie qui nous invite à saisir le nom de 
+la balise de lien. La validation déclenche l’insertion du lien dans le texte. Il ne reste plus qu’à 
+enregistrer. 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+1 - Présentation de l’éditeur d’hypertexte 
+
+Pour ouvrier l’éditeur, il suffit de cliquer sur le lien rouge Modifier situé juste au dessus. 
+S’ouvre alors le cadre suivant : 
+
+ 
+
+ 
+
+ 
+
+2 - Les balises d’activation de la carte 
+
+I - Les Balises de liens multiples 
+
+ 
+
+Une balise de liens multiples comporte en réalité trois fonctions : 
+
+. Elle affiche l’état des ronds au moment de la saisie 
+. Elle affiche le fond de carte coloré au moment de la saisie 
+. Elle affiche le graphique sélectionné au moment de la série 
+
+
+ 
+
+Le procédé de fabrication d’une balise de liens multiples est le suivant : 
+
+ 
+
+A – affichage ou non d’une variable sous forme de ronds proportionnels : 
+
+. sélectionnez le bouton « ponctuel » dans PageCarto 
+. puis sélectionnez la variable dans le menu déroulant. 
+. Réglez les quantiles et la palette de couleur 
+
+
+Si vous ne voulez pas qu’il y ait de ronds dans la balise de lien, cliquez sur le lien « effacer les 
+ronds » situé en dessous de la carte 
+
+
+
+
+ 
+
+B – affichage ou non d’un fond de carte coloré. 
+
+. sélectionnez le bouton « fond de carte » dans PageCarto 
+. puis sélectionnez la variable dans le menu déroulant. 
+. Réglez les quantiles et la palette de couleur 
+
+
+Si vous ne voulez pas qu’il y ait de fond coloré dans la balise de lien, cliquez sur le lien 
+« effacer les couleurs de fonds » situé en dessous de la carte 
+
+ 
+
+C – choisir un graphique 
+
+. Sélectionnez un graphique dans le menu déroulant 
+. Laissez le en taille réduite ou agrandissez le, selon votre souhait 
+
+
+ 
+
+Ces trois étapes étant réalisées, il ne vous reste plus qu’à insérer la balise de lien dans le 
+texte. Pour cela : 
+
+Positionnez le curseur dans le texte à l’endroit désiré 
+
+Cliquez sur le bouton 
+
+ 
+
+Une invite de saisie s’affiche : 
+
+ 
+
+Vous devez saisir le libellé de la balise. Essayer de trouver une formule à la fois explicite et 
+hyper contractée pour qu’elle entre si possible dans la largeur du texte. 
+
+Dans ce cas, le lien suivant s’affiche après qu’on a validé 
+
+ 
+
+ 
+
+ 
+
+NB. Pensez à bien régler les trois niveaux : ronds, fonds et graphiques. En particulier, si 
+vous avez un graphique qui ne correspond pas à ce qu’il ya sur la carte vous devrez refaire 
+le lien. 
+
+ 
+
+II - Les balises « Graphique » 
+
+Le procédé est exactement le même que précédemment, mais la balise n’enregistre que le 
+graphique. 
+
+Cette fois le bouton est le suivant : 
+
+ 
+
+III – les balises de pointage géographique. 
+
+Là encore, le procédé est semblable. 
+
+a -Sélectionnez une aire de la carte. 
+
+b - Positionnez le curseur à l’endroit désiré dans l’hypertexte 
+
+c - Cliquez sur le bouton 
+
+ 
+
+Un lien vers l’aire géographique choisie est alors inséré dans l’hypertexte avec pour texte le 
+nom de cette aire de la carte. 
+
+Par exemple : - Egypt 
+
+Un fois l’hypertexte enregistré, lorsque vous cliquez sur le lien, il sélectionne l’aire 
+géographique indiquée (grisé et cercle de pointage bleu) et affiche le graphique encadré 
+avec les données correspondant à cette aire. 
+
+
+
+
+ 
+
+ 
+
+3 - Les couches insérées dans la carte 
+
+Il existe deux types de couches : 
+
+ 
+
+1 - des couches graphiques appelées couches nappes (elles représentent des objets ajoutés 
+à la carte, soit des formes, par exemple des régions climatiques colorées, soit des objets 
+ponctuels, comme les obstacles géographiques etc.) 
+
+Les couches nappes sont identifiées par des noms insérés dans un fichier de registre contenu 
+dans le module PageCarto : 
+
+Répertoire racine/répertoire de carte/PageCartoDossier/PageCarto/listeLegNap.js 
+
+Leur nom est accessible soit en ouvrant le fichier, soit en affichant la carte dans GaïaMundi 
+où le menu de données indique les noms de couches. 
+
+ 
+
+On peut les activer par le couple de lien afficher / effacer associé au nom de la couche. 
+
+Pour cela : 
+
+a- on place le curseur dans le texte à l’endroit où l’on veut insérer le lien couche nappe 
+
+b - on clique sur le bouton suivant : 
+
+ 
+
+c - une invite de saisie s’affiche, dans laquelle on saisit le nom exacte de la couche : 
+
+ 
+
+ 
+
+Avec avoir cliqué sur OK, la balise suivante est intégrée dans le texte : 
+
+ 
+
+ 
+
+ 
+
+On voit apparaître, dans cet exemple, les points les plus sensibles à l’élévation du niveau 
+
+de la mer à l’horizon 2050 dans un scénario médian du changement climatique. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+2 – des « couches contour ». Elles se distinguent des « couches nappe » en ce qu’elles ne 
+sont que des contours générés par l’interface cartographique à partir d’un fichier de 
+données géographique inclus dans le module PageCarto, comme dans l’exemple suivant : 
+
+ 
+
+
+
+
+ 
+
+Le procédé est le même que dans le cas des couches nappes en choisissant cette fois le 
+bouton suivant : 
+
+ 
+
+L’invite de saisie comporte ici deux séquences : 
+
+. Une première invite demande le numéro de la couche la numérotation 
+commençant à 1. La liste couches contour est disponible dans le fichier 
+
+
+Répertoire racine/répertoire de carte/PageCartoDossier/PageCarto/listeAdditifContoursSVG.js 
+ou dans le menu «Données » de la carte dans GaïaMundi 
+
+ 
+
+ 
+
+ 
+
+. Une seconde invite demande le nom que vous souhaitez donner à la couche 
+
+
+ 
+
+ 
+
+Après qu’on a validé la seconde invite, le lien suivant est inséré dans le texte : 
+
+ 
+
+ 
+
+ 
+
+4 - Les fonctions spéciales de l’éditeur Wysiwyg 
+
+I - Les fonctions « couper spécial », « copier spécial », « coller spécial » 
+
+Pour des raisons de sécurité informatique, depuis 2010 Firefox n’autorise plus la copie par 
+copier-coller de segments de texte comprenant des éléments JavaScript. Pour cette raison, 
+et en toute sécurité puisqu’on reste dans la même page, des fonctions spéciales copier coller 
+et couper collé ont été implantées dans l’éditeur de PageCarto pour permettre de façonner 
+l’hypertexte. 
+
+ 
+
+ Couper « spécial » : 
+
+sélectionnez le segment de texte à couper puis cliquez sur le bouton. 
+
+ 
+
+ Copier « spécial » : 
+
+ sélectionner le segment de texte à couper puis cliquez sur le bouton. 
+
+
+
+
+ 
+
+ Coller « spécial » : 
+
+Lorsqu’on a couper ou coller « spécial », ce bouton apparaît dans la barre d’outils , signalant 
+que des éléments sont conservés en mémoire pour être collés. 
+
+Placez le curseur à l’endroit désiré dans l’hypertexte et cliquez sur ce bouton. Le texte en 
+mémoire sera inséré dans l’hypertexte en conservant les propriétés actives des liens compris 
+dans la partie copiée ou coupée « spécial » 
+
+ 
+
+II - Les liens hypertextes 
+
+ 
+
+Vous avez le choix entre l’option « interne » qui charge la page web pointée par le lien à la 
+place de l’hypertexte ; et l’option « externe » qui ouvre le document pointé dans un nouvel 
+onglet du navigateur (préférable) 
+
+ 
+
+Pour créer un lien : 
+
+a - écrivez le texte du lien à l’endroit désiré, par exemple : site altercarto 
+
+b - Sélectionnez ensuite ce texte. 
+
+c - Puis cliquez sur le bouton choisi (ext ou int) 
+
+ 
+
+Une invite de saisie vous demande l’url sur laquelle va pointer le lien. 
+
+ 
+
+Après validation le texte que vous avez sélectionné est transformé en lien hypertexte : 
+
+site altercarto 
+
+ 
+
+III - L’insertion segment de code HTML (pour utilisateur avancé) 
+
+Placez le curseur à l’endroit désiré dans le texte. 
+
+Cliquez sur le bouton 
+
+ 
+
+Une invite de saisie vous demande le code HTML à insérer. 
+
+ 
+
+ 
+
+Après validation, le code est inséré et exécuté ce qui donne ceci dans l’exemple : 
+
+ 
+
+ 
+
+NB. Si vous insérez des attributs comprenant des guillemets, respectez l’emboîtement 
+doubles guillemets puis simples guillemets comme dans l’exemple ci-dessous. 
+
+<span onclick="alert('ici')">essai</span> 
+
+N’insérez pas de code HTML comprenant des triples emboîtements de guillemets avec des 
+antislashs. Ne faites pas de fautes de code, au risque de déstabiliser tout le jeu des balises 
+de lien vers les cartes. 
+
+ 
+
+
+
+
+5 – Visualiser les résultats de votre travail sur 
+l’hypertexte 
+
+ 
+
+Dans la plupart des cas lorsque vous aurez enregistré votre travail, le résultat n’apparaîtra 
+pas dans l’hypertexte de l’éditeur refermé ni dans le module PageCarto. La raison est que 
+vous devez d’bord « vider le cache » du navigateur et réactualiser les pages contenues dans 
+les cadres d’affichage. 
+
+ 
+
+ Rappel pour vider le cache de Firefox : 
+
+ menu « outils » de Firefox, -> choisir options -> sélectionner l'onglet réseau - > cliquer sur 
+"vider le cache maintenant" 
+
+Ou bien incorporer le module complémentaire ClearCache et placer l’icône dans la barre 
+d’outils de Firefox Pour vider le cache, il suffit alors de cliquez su ce bouton 
+
+ 
+
+Après avoir vié le cache : 
+
+Placez le curseur sur l’hypertexte compris dans l’éditeur et avec le clic droit de la souris, 
+suivez le menu « ce cadre » puis « actualiser ce cadre ». Faire de même avec l’hypertexte 
+compris dans le module PageCarto. Vous pouvez ainsi visualiser le résultat de votre travail 
+
+ 
+
+ATTENTION ; les liens contenus dans l’hypertexte de l’éditeur ne sont pas fonctionnels car 
+l’éditeur est indépendant de la carte. Pour tester les liens, vous devez cliquer sur les liens 
+de l’hypertexte contenu dans le module PageCarto ( c’est une habitude à prendre !) 
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+Modifier l’entête de l’hypertexte 
+
+Le module d’édition de l’entête de l’hypertexte est le n° 5 dans l’interface de fabrication qui 
+s’affiche avec la sélection Edition->PageCarto->Editer l’hypertexte dans GaïaMundi. 
+
+ 
+
+Pour s’y rendre, on fait glisser l’ascenseur horizontal de la fenêtre du navigateur pour que le 
+module n°5 entre dans la fenêtre d’affichage (Encadré gris) 
+
+ 
+
+ 
+
+Par défaut l’entête de l’hypertexte est ce qui apparaît dans l’ellipse bleue ci-dessous. 
+
+On active le module de modification de l’entête en cliquant sur le lien dans l’ellipse rouge. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+La sélection de ce lien déclenche l’affichage suivant : 
+
+ 
+
+ 
+
+ 
+
+Le langage du module d’édition de l’entête est le langage HTML dans sa version compatible 
+avec le xml, ce qui implique des précautions explicitées ci-dessus. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+La structure détaillée du code initial est la suivante : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Il est préférable de ne pas modifier les parties en Orange. Le plus sûr est de modifier les 
+parties bleues, en ajoutant éventuellement de nouveaux éléments dans la structure Orange 
+
+ 
+
+Voir l’exemple ci-après 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<center> 
+
+<table style='background-color:white;width:170px'> 
+
+<tr> 
+
+<td> 
+
+<center> 
+
+<img style='cursor:pointer' src='PageCarto-cadre.jpg' 
+onclick='javascript:window.open("http://pagecarto.fr")' title='lien vers pagecarto.fr' 
+width='150px'/> 
+
+<br/> 
+
+<span style='color:gray'> 
+
+<big> 
+
+<b> 
+
+ORGANISATION 
+
+<br/> 
+
+<small> 
+
+Objet du PageCarto 
+
+</small> 
+
+</b> 
+
+</big> 
+
+<b> 
+
+</b> 
+
+</span> 
+
+<br/> 
+
+<small style='color:gray'> 
+
+<b> 
+
+Cadre de production du PageCarto 
+
+<br/> 
+
+<span style='color:green'> 
+
+<b> 
+
+Date et/ou Version 
+
+</b> 
+
+</span> 
+
+</b> 
+
+</small> 
+
+</center> 
+
+</td> 
+
+</tr> 
+
+</table> 
+
+</center> 
+
+ 
+
+
+Exemple pour l’entête affiché en vignette : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dans cet exemple, on a modifié les parties bleues. On a ajouté une balise <br/> pour sauter une 
+ligne dans le texte bleu. On a ajouté une image (logo de l’UNDP) et un saut de ligne <br/> 
+
+ 
+
+Le lien vers l’image src='logo-undp.png' indique que le fichier image a été placé manuellement 
+dans le même répertoire que le fichier de définition de l’entête (entete.js), qui est placé 
+automatiquement dans le sous répertoire PageCarto du Module PageCarto. 
+
+ 
+
+ 
+
+ 
+
+
+
+<center> 
+
+<table style='background-color:white;width:170px'> 
+
+<tr> 
+
+<td> 
+
+<center> 
+
+<img style='cursor:pointer' src='PageCarto-cadre.jpg' 
+onclick='javascript:window.open("http://pagecarto.fr")' title='lien vers 
+pagecarto.fr' width='150px'/> 
+
+<br/> 
+
+<img width='50px' src='logo-undp.png' /><br/><span 
+style='color:gray'><big><b>UNDP Cairo 
+
+<br/> 
+
+<span style='color:gray'> 
+
+<big> 
+
+<b> 
+
+UNDP Cairo 
+
+<br/> 
+
+<small> 
+
+World States 
+
+<br/> 
+
+GDP Growth, indicators of health, ... 
+
+</small> 
+
+</b> 
+
+</big> 
+
+<b> 
+
+</b> 
+
+</span> 
+
+<br/> 
+
+<small style='color:gray'> 
+
+<b> 
+
+Demonstration 
+
+<br/> 
+
+<span style='color:green'> 
+
+<b> 
+
+2012 - 04- 29 
+
+</b> 
+
+</span> 
+
+</b> 
+
+</small> 
+
+</center> 
+
+</td> 
+
+</tr> 
+
+</table> 
+
+</center> 
+
+ 
+
+
+Pour vérifier que votre code HTM a bien étét pris en compte : 
+
+. Videz le cache 
+. Cliquez sur le bouton rafraîchir en dessous du cadre de saisie du code 
+
+
+ 
+
+Pour vérifier que votre code produit bien le résultat que vous escomptiez : 
+
+. Videz le cache 
+. Redémarrer l’interface de fabrication du module PageCarto avec le bouton rafraîchir 
+suivant : 
+
+
+ 
+
+. Puis sélectionnez de nouveaux votre module PageCarto dans le menu déroulant 
+
+
+Il existe une solution plus rapide avec les fonctionnalités du navigateur : 
+
+Placez le pointeur sur le cadre de l’hypertexte de travail (espace N°3) puis « clic droit », 
+choisir « ce cadre » puis « actualiser ce cadre » 
+
+Faire de même dans l’hypertexte du module PageCarto intégré dans l’interface de 
+fabrication (espace n°2). 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+Version collaborative 
+
+NB. Le mode collaboratif est fait pour réaliser les hypertextes de modules 
+PageCarto en mode collaboratif avec des participants à distance. La plateforme 
+SuiteCairo doit être située sur un serveur Web ou un serveur intranet. 
+
+ 
+
+La génération d’un module PageCarto collaboratif suit le même procédé que pour le module 
+standard. Le module collaboratif est un module standard auxquels on ajoute des fonctionnalités 
+pour pouvoir écrire l’hypertexte en mode collaboratif. 
+
+ 
+
+On a ainsi deux cas de figure : 
+
+1. Le cas où l’on génère un module collaboratif sans qu’il n’y ait déjà un module standard 
+2. Le cas où il ya déjà un module standard. 
+
+
+ 
+
+Après avoir choisi Edtion->PageCarto->Générer un PageCarto et choisi l’option « collaboratif » : 
+
+ 
+
+Puis après avoir choisi la carte avec laquelle on veut fabriquer le module PageCarto, 
+
+L’interface propose l’affichage suivant : 
+
+
+
+Retour 
+au 
+sommaire 
+
+ 
+
+
+
+
+ 
+
+ 
+
+La logique d’usage ce cette interface est la même que dans le module standard. Le seul élément 
+nouveau est la liste des participants inscrits qu’il ne faut pas écraser si le module collaboratif existe 
+déjà. 
+
+1. Lors de la génération dans le cas 1 où un module standard existe déjà il ne faut cocher que 
+la liste des participants qui se sont inscrits. L’interface génère ajoute automatiquement les 
+éléments nécessaire au fonctionnement collaboratif. 
+2. Dans le cas 2 où il n’y a pas de module standard déjà créé dans ce dossier carte, on 
+sélectionne l’ensemble des options avec le bouton « all ». 
+
+
+ 
+
+La validation entraîne la création du module et l’affichage suivant dans le panneau de droite, ce qui 
+permet de tester les réglages (zoom et centrage) du module: 
+
+ 
+
+ 
+
+ 
+
+Pour accéder au module collaboratif, il faut passer par la liste des PageCarto en procédant comme 
+suit : 
+
+. Videz le cache 
+. Edition->PageCarto->liens vers les PageCarto 
+. Choix du module que l’on vient de générer dans le menu déroulant 
+
+
+Ces opérations déclenchent l’affichage suivant : 
+
+ 
+
+ 
+
+On trouve les 4 versions standards et deux items supplémentaires : la version « Pour fouiller » en 
+mode collaboratif et l’interface de modération du PageCarto collaboratif. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Ecrire un hypertexte en mode collaboratif 
+
+L’interface collaborative se présente ci-après. Elle comporte deux parties : 
+
+ à gauche la partie cartographique du module PageCarto avec les légendes. 
+
+A droite le module de gestion de la participation à l’écriture collaborative. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Pour que les participants puissent participer : 
+
+. Ils doivent disposer de l’adresse de l’interface (copier l’adresse dans la barre d’adresse du 
+navigateur et l’envoyer aux participants) 
+. Ils doivent : 
+o se loguer s’ils sont déjà inscrit (par défaut, les login et mot de passe (hp,hp) 
+fonctionnent ) 
+o ou s’enregistrer en utilisant le bouton « créer un compte » 
+
+
+
+
+ 
+
+ 
+
+ 
+
+La validation par le bouton OK remplace l’interface d’enregistrement par le cadre suivant, qui est le 
+cadre de saisie des éléments d’hypertexte que le participant utilise pour envoyer ses contributions 
+à la rédaction de l’hypertexte. 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Le principe de fonctionnement est le suivant est très proche de celui d’un « Chat ». 
+
+ On active des cartes avec le module suivant : 
+
+ 
+
+Il permet d’afficher des variables (menu déroulant variable) en ronds proportionnels ou non, ou 
+bien en fond coloré, en sélectionnant l’un ou l’autre avec les boutons de sélection. 
+
+On peut aussi changer les palettes de couleur et les quantiles. 
+
+On peut enfin sélectionner les graphiques qui s’affichent lorsqu’on clique sur une aire de la carte. 
+
+ 
+
+Une fois réalisée la carte, on peut insérer un lien dans l’hypertexte qui activera cette composition 
+de variables et de graphique lorsqu’on cliquera sur le lien. Pour cela, il faut donner un nom au lien 
+que l’on saisit dans le formulaire ci-dessous : dans le cadre du haut à droite dénommé « Balises ». 
+
+ 
+
+Puis on clique sur le bouton « go » de ce champ de sasie 
+
+Cela entraîne l’affichage d’un segment de code dans la boite de saisie des messages 
+
+ 
+
+ 
+
+ 
+
+On peut ajouter un commentaire dans cette boite de saisie, avant ou après le code : 
+
+ 
+
+ 
+
+Puis on clique sur « envoyer » 
+
+Cette action envoie le message dans l’hypertexte. Après un temps de 0 à 1 seconde, le résultat 
+s’affiche dans l’hypertexte en dessous des contributions existantes : 
+
+ 
+
+ 
+
+Cette balise apparaît aussi sur les hypertextes des autres participants. En cliquant sur ce lien, la 
+carte que l’on a fabriquée s’affiche, y compris le graphique sélectionné au moment de la saisie dans 
+la boite de saisie « Balises » 
+
+ 
+
+ 
+
+
+
+
+On utilise le même procédé pour insérer des balises qui affichent les graphiques seuls : on 
+sélectionne un graphique, on saisit le nom du graphique dans le cadre de saisie dénommé « graph » 
+en bas à gauche. 
+
+On clique sur « go ». Un code s’affiche dans le cadre de saisie des messages. On ajoute un 
+commentaire et on envoie. 
+
+ 
+
+Deux autres possibilités d’insertion sont disponibles : 
+
+On peut insérer une balise qui pointe une aire géographique choisie. Pour cela on clique sur l’aire 
+choisie sur la carte. Ce clic sur la carte déclenche l’affichage du nom de l’aire géographique dans le 
+cadre de saisie dénommé « aire ». 
+
+ 
+
+On clique sur « go ». Cela provoque l’écriture d’un code dans la boite de saisie des messages. On 
+peut ajouter un commentaire. On clique sur « envoyer ». Au bout d’un temps inférieur à une 
+seconde, un nouveau message apparaît sur les hypertextes des participants comme dans l’exemple 
+suivant ou l’on a sélectionné l’Egypte. 
+
+ 
+
+ 
+
+ 
+
+Lorsqu’on travaille ainsi, on voit aussi arriver les messages des autres participants. Chaque nouveau 
+message s’inscrit après les précédents et le texte est positionné sur le message. 
+
+ 
+
+Lorsqu’on est en train de lire la série de message, l’arrivée d’un nouveau message nous fait perdre 
+le fil de la lecture. Afin de pouvoir lire tranquillement, on peut inhiber l’arrivée des messages avec 
+le bouton suivant : 
+
+ 
+
+ 
+
+ 
+
+Il suffit de débloquer pour que l’hypertexte soit réactualisé dans la seconde en intégrant tous les 
+messages postés pendant le temps de blocage. 
+
+ 
+
+Les verions standards du module PageCarto sdont on fabrique l’hypertexte sont acessibles par les 
+liens suivants : 
+
+ 
+
+ 
+
+Attention. Les hypertextes des versions standards ne s’actualisent pas automatiquement. Pour les 
+actualiser, il faut vider le cache et cliquer sur le lien rafraîchir situé en bas à gauche de la carte sur 
+la version standard si de nouveaux messages ont été postés depuis son ouverture. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Modérer le travail collaboratif 
+
+ 
+
+NB. Dans cette version, Le dispositif de modération est rudimentaire et ouvert (pas de mot de 
+passe). On ne peut pas suspendre l’activité « chat » pendant la modération. Il convient donc que le 
+groupe de participants choisisse le modérateur et décide du moment où celui-ci opère le travail de 
+modération. Cependant, les limites du dispositif de modération ne devraient pas poser trop de 
+problème dans la mesure où, dans ce genre de procédure de travail, il s’agit principalement de 
+réaliser une synthèse et une mise en forme finale des contributions. 
+
+ 
+
+L’interface de modération s’ouvre à partir de du panneau droit après avoir choisi le module 
+PageCarto dans la liste des liens vers les PageCarto 
+
+ 
+
+ 
+
+ 
+
+ 
+
+L’interface se présente sous la forme suivante. 
+
+Le texte affiché est l’hypertexte que l’on vient de fabriquer de manière collaborative. 
+
+ 
+
+ 
+
+On clique sur le lien « modifier » 
+
+Cette action déclenche l’ouverture du texte dans un éditeur Wysiwyg : 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Comme dans l’éditeur de l’interface de fabrication des PageCarto, pour conserver les propriétés 
+interactives des liens dans les opérations de copier/coller, il faut utiliser les fonctions 
+
+copier spécial / coller spécial activées par les boutons suivants : 
+
+ 
+
+ 
+
+ 
+
+Pour le reste, l’éditeur se comporte comme la plupart des éditeurs Wysiwyg. 
+
+ 
+
+Notons que les entêtes des messages sont des tableaux. Dans ce genre d’éditeur, pour supprimer 
+un colonne ou une ligne, on clique sur un morceau de texte de l’entête : cela active la sélectivité du 
+tableau . On choisit la cellule que l’on veut. Pour supprimer la ligne on clique sur le petit rond avec 
+une croix de la figure verticale encadré de rouge. Pour supprimer une colonne, on fait la même 
+chose avec la figure horizontale. 
+
+ 
+
+ 
+
+ 
+
+Pour supprimer le tableau tout entier, on le sélectionne avec une ligne avant et une ligne après. 
+
+ 
+
+On peut très bien récupérer le contenu d’une cellule avec copier spécial /coller spécial et supprimer 
+le tableau après. 
+
+ 
+
+Pour voir le résultat du travail dans l’interface de modération, on vide le cache puis on enregistre 
+( vider le cache avant d’enregistrer permet à la page de s’actualiser dans le module éditeur fermé. A 
+défaut : clic droit sur l’hypertexte puis choisir : ce « cadre » et enfin « actualiser ce cadre ») 
+
+ 
+
+Une fois enregistrés les travaux de modération, les hypertextes des interfaces collaboratives sont 
+actualisées automatiquement. 
+
+ 
+
+En revanche les hypertextes des versions standards doivent être réactualisées manuellement 
+avec « vider le cache – rafraîchir le module» 
+
+ 
+
+
+
+ 
+
+

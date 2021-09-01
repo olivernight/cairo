@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>RoseDesVents</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<script id="scrpt"  language="javascript" >
+
+
+
+var urlvar=""
+if (window.location.search != "") {
+longueur = window.location.search.length - 1;
+data = window.location.search.substr(1,longueur);
+donnees = data.split("&");
+urlvar = new Array();
+urlvarnum = new Array();
+for (var i=0; i < donnees.length; i++) {
+position = donnees[i].indexOf("=");
+variable = donnees[i].substr(0,position);
+pos = position + 1;
+valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+while (valeur.search(/\+/) != -1)
+valeur = valeur.replace(/\+/," ");
+urlvar[variable] = valeur;
+urlvarnum[i] = valeur;
+}
+}
+
+
+var util=urlvar['util']
+function retourneUTIL(){return util}
+
+
+var pdd // point de départ
+var specif
+
+function nb_aleatoire(nb){specif= Math.floor(Math.random() * nb)+1;} 
+nb_aleatoire(9999)
+
+var specif=1234
+
+var selectedrezo
+var selectedcarte
+var rezo=new Array()
+var nomrezo=new Array()
+
+var mapXP=new Array()//Panier
+libelmapP=new Array() //libélés des paniers
+
+
+var tempope="et"
+function returnope(){
+return tempope
+}
+function stockope(a){
+
+tempope=a
+}
+
+var tempmotcle=""
+function returnMotcles(){
+return tempmotcle
+}
+function stockmotcle(a){
+
+tempmotcle=a
+}
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script id="localWindRose" language="javascript" src="http://localhost/REZOperso.js"></script>
+<script  language="javascript" src="A-MANAGER-local/transdata_rezo/rezo.js"></script>
+
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+<script id="scrpt"  language="javascript" >
+
+
+pdd=window.location.href
+pdd=pdd.substr(0,(pdd.indexOf("LaRoseDesVents"))) 
+
+
+var rezolocal=new Array()
+var nomrezolocal=new Array()
+var selectedrezo=urlvar["selectedrezo"]
+if(urlvar['localdistant']!="distant"){
+
+for(a=0;a<rezo.length;a++){rezolocal[a]=rezo[a];nomrezolocal[a]=nomrezo[a]}
+selectedrezo=urlvar['selectedrezo']
+}else{
+var rezo=urlvar['rezolocal'].split(',');
+var nomrezo=urlvar['nomrezolocal'].split(',');
+for(a=0;a<rezo.length;a++){rezolocal[a]=rezo[a];nomrezolocal[a]=nomrezo[a]}
+}
+function retourneparam(){
+var param=new Array()
+}				
+var rg=rezo.length// dimension du réseau des plateformes implantées en local
+
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<!--script id="scrptRezoDistant" language="javascript" src="http://altko.org/admin_rezo/rezo.js"></script-->
+<script  language="javascript" >if(rezo.length-InRezo.length>0){ for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+<script id="scrpt"  language="javascript" >
+
+function change_rezo(){
+var site = document.getElementById("rezo").selectrezo.selectedIndex;
+
+if(site==1){
+window.frames.radar.location.href="bienvenueRDV-2.html"
+}else{
+selectedrezo=rezo[site-2]	
+//alert(selectedrezo+"radar.xml?REZOCIBLE="+selectedrezo+"&selectedrezo="+selectedrezo+"&pdd="+pdd+"&specif="+specif+"&util="+urlvar["util"])
+window.frames.radar.location.href=selectedrezo+"radar.xml?REZOCIBLE="+selectedrezo+"&selectedrezo="+selectedrezo+"&pdd="+pdd+"&specif="+specif+"&util="+urlvar["util"]
+}
+document.getElementById("rezo").selectrezo.selectedIndex=0
+}
+
+//_________________________________________________________________________________________________________________________
+
+
+
+</script>
+</head><body>
+
+<div id="menuRzo" style="position:absolute;top:0px;left:20px"><div id="divrezo" style="position: absolute; height: 24px;  width:300px; display:none"><form id="rezo" name="rezo"><select id="selectrezo" name="selectrezo" onchange="change_rezo()"   style="background-color: white; color: black ; width:200px" ><option id="optionRezo0" >REZO</option><option id="optionRezo0">0-Liste détaillée</option></select></form></div></div>
+<div  style="position:absolute;top:0px;left:220px"><big style="font-family: Arial; color: silver; font-weight: bold;">
+La Rose des Vents&nbsp;</big><big style="font-family: Arial; color: silver; font-weight: bold;">
+<small>La Rose des Vents&nbsp;</small></big><big style="font-family: Arial; color: silver; font-weight: bold;">
+<small><small>La Rose des Vents&nbsp;</small></small></big><big style="font-family: Arial; color: silver; font-weight: bold;">
+<small><small><small>La Rose des Vents </small></small></small></big><small style="color: silver; font-weight: bold;"><small><small>La Rose des Vents </small></small><small><small><small>La Rose des Vents </small></small></small><small><small><small>La Rose des Vents </small></small></small><a href="http://altko.org/altercarto/manuel%20Recherche%20SerpentDeMer.pdf" target="_blank" style="color:#0047FF;font-family:arial;font-size:12px;font-weight:bold">Manuel</a></div>
+<div id="divradar" style="position:absolute;top:20px;left:0px;width:100%;height:95%">
+<iframe name="radar" id="radar"  frameborder="0" height="100%" width="100%"></iframe>
+</div>
+
+
+<script>
+
+var menuRzo=''
+
+rezo[0]=pdd
+//alert("pdd="+pdd)
+nomrezo[0]="Votre plateforme"
+for(i=0;i<rezo.length;i++){
+/*
+menuRzo+='<option id="optionRezo'
+menuRzo+=i
+
+
+menuRzo+='" >'//VALUE="'+rezo[i]+'
+menuRzo+=(i+1)
+menuRzo+="-"
+menuRzo+="plateforme : "+nomrezo[i]
+menuRzo+='</option>'
+*/
+				var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","optionRezo"+i)
+				var nt1=document.createTextNode((i+1)+"-plateforme : "+nomrezo[i])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectrezo").appendChild(nouveaux0)
+}
+//menuRzo+=''
+
+
+//document.getElementById("menuRzo").innerHTML=menuRzo
+var index=0
+if(urlvar["index"]){
+index=urlvar["index"]
+document.getElementById("rezo").selectrezo.selectedIndex=index
+change_rezo()
+}else{
+index=0
+document.getElementById("rezo").selectrezo.selectedIndex=index
+}
+window.frames.radar.location.href="bienvenueRDV-2.html"
+//if(index==0){index=1}
+
+</script>
+</body></html>

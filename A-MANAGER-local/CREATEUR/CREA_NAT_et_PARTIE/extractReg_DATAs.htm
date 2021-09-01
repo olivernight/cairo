@@ -1,0 +1,144 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr">
+
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+<script language="javascript" src="../../../mapsILIADE.js"></script>
+
+<script language="javascript"> 
+var REPDESTIN=""
+var cibledestin=""
+var REPORIGINE=""
+var cibleorigine=""
+var postemp
+var postemp2
+var selectedindextemp
+var selectedindextemp2
+var maille
+function change_site() {
+
+var site = document.carte.selectcartes.selectedIndex;
+//selectrepertoires(parseInt(document.carte.selectcartes.options[site].value));
+REPORIGINE="../../../"+mapX[parseInt(document.carte.selectcartes.options[site].value)+4]+"/datafiles"
+maille=mapX[parseInt(document.carte.selectcartes.options[site].value)]
+//alert(maille)
+affichmenumaps2()
+selectedindextemp=site
+
+postemp=site
+document.carte.selectcartes.selectedIndex=postemp
+}
+
+
+function change_site2() {
+
+var site = document.carte2.selectcartes2.selectedIndex;
+REPDESTIN="../../../"+mapX[parseInt(document.carte2.selectcartes2.options[site].value)+4];
+//alert(parseInt(document.carte2.selectcartes2.options[site].value)+" n="+n+"  sel="+sel)
+selectedindextemp2=site
+
+postemp2=site
+document.carte2.selectcartes2.selectedIndex=postemp2
+}
+
+
+
+
+var menu1=""
+var menu2=""
+function affichmenusmaps(){
+menu1='<option id="option0" value="javascript:rien2()">&nbsp;Cartes</option>'
+menu2='<option id="option2" value="javascript:rien2()">&nbsp;Cartes</option>'
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+
+menu1+='<option id="option'
+menu1+=kc
+
+
+menu1+='"    VALUE="'+i+'">'//
+menu1+=kc
+menu1+="-"
+menu1+=mapX[i+3]
+menu1+='</option>'
+
+}
+document.getElementById("selectcartes").innerHTML=menu1
+//------fin menu1
+
+
+
+}
+function affichmenumaps2(){
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+if(mapX[i]==maille){
+menu2+='<option id="option2'
+menu2+=kc
+
+
+menu2+='"    VALUE="'+i+'">'//
+menu2+=kc
+menu2+="-"
+menu2+=mapX[i+3]
+menu2+='</option>'
+
+}
+}
+document.getElementById("selectcartes2").innerHTML=menu2
+}
+
+function envoi(){
+var env="txt_to_html-REG Module.php?cibledestin="+cibledestin+"&REPDESTIN="+REPDESTIN+"&cibleorigine="+cibleorigine+"&REPORIGINE="+REPORIGINE
+document.getElementById("envoi_extract").setAttribute("action",env)
+//alert(document.getElementById("envoi_extract").getAttribute("action"))
+document.getElementById("envoiX").style.visibility="visible"
+}
+</script>
+
+</head><body style="font-family:arial;font-size:11px">
+<div style="position: absolute; height: 24px; top: 84px; "><b><big>Origine<span style="color:red">.txt</span></b></big><br><br><form name="carte"><select id="selectcartes" name="selectcartes" onchange="change_site()" style="background-color: white; color: black;width:200px" size="1"></select></form>
+
+<form  name="envoi_extract" action="" method='post'>
+
+
+
+<p><font  face='Helvetica' size='2'>fichier d'origine des données</font>
+
+<ul><li><input  id='rd1' name='RD' value='principal' onclick='cibleorigine="principal.txt"' type='radio'>Principal<I><span style="color:red">.txt</span> (Sujet)</i></li>
+<li><input id='rd2' name='RD' value='complementaire' onclick='cibleorigine="complementaire.txt"' type='radio'>Complémentaire<I><span style="color:red">.txt</span> (Other)</i></li></ul>
+</p>
+<center><p><input type='button' onclick="document.getElementById('opac2').style.visibility='hidden';document.getElementById('opac1').style.visibility='visible'" value='Valider'></p></center>
+</form>
+</div>
+<div id="opac1" style="position: absolute; left:5px;top:84px;width:220px;height:200px;background-color:gray;opacity:0.5;visibility:hidden">
+
+</div>
+
+<div style="position: absolute;left:250px; top:84px "><b><big>Destination<span style="color:red">.html</span></big></b><br><br><form name="carte2"><select id="selectcartes2" name="selectcartes2" onchange="change_site2()"   style="background-color: white; color: black;width:200px;visibility:visible" size="1"></select></form>
+
+<form id="envoi_extract" name="envoi_extract" action="" method='post'>
+<p><font  face='Helvetica' size='2'>fichier de destination des données</font>
+<br>
+<ul><li><input  id='rd21' name='RD2' value='principal' onclick='cibledestin="principal.html"' type='radio'>Principal<I><span style="color:red">.html</span> (Sujet)</i></li>
+<li><input id='rd22' name='RD2' value='complementaire' onclick='cibledestin="complementaire.html"' type='radio'>Complémentaire<I><span style="color:red">.html</span> (Other)</i></li></ul>
+</p>
+<center><p><input type='button' name='valid' onclick="envoi()" value='Valider'></p></center>
+<center><p><input id="envoiX" type='submit' name='envoiX'  value='envoyer' style="visibility:hidden"></p></center>
+</form>
+
+</div>
+
+<div id="opac2" style="position: absolute;left:245px; top:84px;width:220px;height:200px;background-color:gray;opacity:0.5">
+
+</div>
+ <div style="position:absolute;top:10px;left:250px"><center><input type="button" onclick="self.location.href='extractReg_DATAs.htm'" value="Redémarrer le module d'extraction"></div>
+  <div style="position:absolute;top:10px;left:5px"><center><big style="color:blue"><b>Module d'extractions<br>"régionales" de données<br><span style="color:red">à la même maille</span><br></b></big></center></div>
+<script language="javascript"> 
+affichmenusmaps()
+</script>
+</body></html>

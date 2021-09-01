@@ -1,0 +1,15 @@
+﻿paramHISTOX0=new Array()
+paramHISTOX0[0]=new Array(3,0)
+paramHISTOX0[1]="icone variable 100"
+paramHISTOX0[2]="ESSAI"
+paramHISTOX0[3]=new Array(2,0)
+paramHISTOX0[4]=new Array()
+paramHISTOX0[5]=new Array()
+paramHISTOX0[6]=""
+paramHISTOX0[7]=""
+paramHISTOX0[8]=""
+paramHISTOX0[9]="ESSAI icone  variable 100"
+paramHISTOX0[10]=2000+menuIconeEchelle.length+1
+paramHISTOX0[11]=new Array()
+paramHISTOX0[12]="essai d'icone  variable 100"
+menuIconeEchelle[menuIconeEchelle.length]=paramHISTOX0

@@ -1,0 +1,787 @@
+﻿ 
+
+ 
+
+Créer une nouvelle carte 
+
+Configuration de travail : 
+
+ 
+Nous sommes en mode production => configurer le navigateur Firefox : 
+
+Mettre le cache à zéro pour faciliter l'actualisation des pages et des cadres lors des 
+opérations d'écriture dans les fichiers, 
+Après chaque opération d'écriture dans GaïaMundi, vider le cache 
+
+ 
+
+
+Pour cela : installer l'extension "ClearCache" ou "vider le cache" dans votre navigateur 
+Firefox : menu outils->Modules complémentaire. Puis une fois téléchargé, menu 
+affichage->barres d'outils -> personnaliser -> cliquer sur le logo de vider le cache 
+
+
+Le résultat est l’insertion du bouton « vider le cache » dans la barre de navigation 
+
+ 
+
+A cette occasion, dans ->personnaliser-> cliquez aussi sur le logo . Cela vous 
+permet d’avoir l’affichage plein écran en un seul clic. 
+
+ 
+
+Banque en ligne et dépôt local des cartes. 
+
+A chaque plateforme GaïaMundi est associé un répertoire « local » dénommé 
+« depot_cartes ». Celui-ci doit être placé au même niveau que le répertoire de la 
+suiteCairo dans l’arborescence de vos répertoires. 
+
+ 
+
+Le répertoire « depot_cartes » est le lieu de dépôt des matrices des cartes utilisées 
+pour créer une nouvelle carte dans GaïaMundi à laquelle on associera des données. 
+
+ 
+
+La procédure de création d’une nouvelle carte dans GaïaMundi consiste à importer la 
+matrice de la carte située dans le dépôt-cartes. Une même matrice peut servir à 
+générer plusieurs cartes dans GaïaMundi : c’est là l’intérêt du dépôt cartes. 
+
+ 
+
+Si la carte désirée n’est pas dans le dépôt cartes, on doit actualiser celui-ci. On 
+dispose pour cela d’une banque de cartes en ligne à partir de laquelle on peut 
+importer dans le dépôt cartes les matrices de cartes dont on a besoin. 
+
+ 
+
+C’est pourquoi l’intégration d’une nouvelle carte dans GaïaMundi comporte deux 
+phases : 
+
+ 
+Phase 1 – Actualiser le dépôt de cartes associé à votre plateforme. Vérifier si 
+vous disposez de la carte désirée dans votre dépôt de cartes. Si ce n’est pas 
+le cas, importez la carte désirée, à partir de la banque de cartes en ligne. 
+
+Phase 2 – Intégrer une nouvelle carte dans GaïaMundi. 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/integrercarte.jpg
+Phase 1 – Actualiser le dépôt de cartes 
+
+ 
+
+1 - Menu édition -> Nouvelle carte 
+
+l’interface suivante s’affiche dans le panneau de droite. C’est l’interface d’accès aux 
+cartes contenues dans le dépôt cartes associé à votre plateforme. (Dans l’exemple il 
+n’y a qu’une seule carte dans le répertoire depot_cartes : Lyon 2000-IRIS). 
+
+
+ 
+
+Vous pouvez faire une recherche par nom ou par maille (niveau de géographique de 
+découpage) 
+
+ 
+
+ 
+
+ 
+Deux cas de figure se présentent : 
+a - Soit la carte désirée se trouve dans la liste du dépôt cartes, alors passer 
+directement à la Phase 2 ci-après . 
+
+ 
+b – Soit la carte désirée n’est pas disponible dans le dépôt carte de votre plateforme, 
+vous pouvez alors ajouter au répertoire « depot_cartes », une carte importée de la 
+banque de cartes en ligne (Fonds de cartes) gérée par le réseau altercarto, et ensuite 
+passer à la phase 2. 
+
+ 
+
+Pour importer une carte à partir de la banque de carte en ligne, procéder comme suit 
+
+ 
+
+1 - Utiliser le menu déroulant situé en haut. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+1.1 - Pour vous aidez à choisir dans la liste des cartes, rendez vous sur la banque de 
+carte (lien en haut à droite) 
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+Ce lien ouvre un nouvel onglet dans lequel s’affiche l’interface de recherche dans la 
+banque de carte. Cette interface est identique à celle de votre dépôt cartes. 
+
+1.2 - Recherchez la carte désirée 
+
+1.3 - Relevez son numéro. 
+
+1.4 - Puis revenez à l’onglet de votre plateforme et sélectionnez le numéro de carte 
+dans la liste des cartes à télécharger. 
+
+ 
+1.5 - Attendez que le téléchargement se soit opéré. La fin du téléchargement vous est 
+signalée par le redémarrage du module de téléchargement. Faites alors les 
+opérations suivantes : 
+
+. vider le cache => la carte téléchargée apparaît alors dans la liste de votre 
+« depot_cartes » 
+. cliquez sur le nom de la carte et suivez la procédure pas à pas 
+
+
+NB. Dans l’interface du dépôt carte ou de la banque de cartes, vous pouvez 
+visualiser les cartes en cliquant sur le bouton qui précède les noms de cartes. 
+
+
+ 
+
+2 - Videz le cache et redémarrez GaïaMundi (Système -> Redemarrer() ) 
+
+
+ 
+Phase 2 – Intégrer une carte dans GaïaMundi 
+
+ 
+
+ 
+
+NB .Suivre les étapes en n'arrêtant pas en cours de route et en remplissant bien 
+l'ensemble des champs demandés. 
+
+ 
+
+ GaïaMundi : Menu Edition->nouvelle carte 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+NB. Vous pouvez visualiser la carte en cliquant sur le bouton qui précède le 
+nom de la carte. 
+
+
+
+
+ 
+
+ 
+
+1 - Choisissez la carte désirée dans la liste en cliquant sur le nom (ici, il n’y a qu’une 
+seule carte : Monde-pays). 
+
+Ce geste déclenche l’affichage de l’invite suivante : 
+
+ 
+
+ 
+
+ 
+
+2 - Saisissez le mot de passe de la plateforme ( par défaut, le mot de passe est admin) 
+
+ 
+
+ 
+
+La validation (OK) du mot de passe entraîne l’affichage de l’invite suivante dans le 
+panneau de droite : 
+
+ 
+
+ 
+
+3 - Saisissez le nom que vous souhaitez donner au répertoire de la carte dans 
+GaïaMundi. Attention, S’agissant d’un nom de répertoire, les caractères spéciaux sont 
+interdits (ni accents, ni virgule, ni « : », etc…). 
+
+ 
+
+Si vous mettez un nom de répertoire existant déjà, vous écraserez les données 
+contenues dans ce répertoire. 
+
+Lors de la saisie, l’interface vous signale l’existence des doublons et des caractères 
+interdits, et dans ces cas, interdit la validation (bouton grisé) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Si vous omettez de saisir le nom du répertoire et que vous survolez le bouton valider 
+
+
+
+
+avec le curseur, l’interface affiche l’alerte suivante : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Pour cet exemple, nous choisissons le nom de répertoire suivant : 
+
+ 
+
+ 
+
+ 
+
+La validation entraîne l’affichage du formulaire suivant : 
+
+ 
+
+ 
+
+5 - Saisir les informations descriptives de la carte 
+
+ 
+
+En général, le formulaire est pré-rempli, sauf deux champs : 
+
+Le nom de la carte et le contour. 
+
+Le nom de la carte est le nom qui apparaît dans le menu déroulant qui vous permet 
+de choisir les cartes dans GaïaMundi. Il est préférable de prendre le même nom que 
+celui que vous avez donné au répertoire, mais cela n’est pas obligatoire. 
+
+
+
+
+ 
+
+Le contour est le périmètre couvert par la carte. Dans le cas du monde, il va de soit 
+qu’il s’agit du Monde. Mais dans le cas d’une agglomération, il ya de nombreuses 
+définitions de l’agglomération et il est nécessaire de préciser la définition exacte du 
+contour. Dans le cas de l’agglomération de Lyon, on peut , par exemple, prendre la 
+définition administrative du Grand-Lyon à une date donnée ou avec ou sans les 
+communes disjointes. Ces précisions sont très importantes pour éviter des erreurs 
+d’interprétation. Elles sont aussi très importantes pour la sélection avec les moteurs 
+de recherche. 
+
+ 
+
+Remarques. 
+
+. Dans ces dénominations, les accents sont autorisés. 
+
+
+ 
+
+. Remarquez les deux derniers champs concernant les auteurs. Le format 
+requis pour l’écriture des auteurs est le suivant : 
+
+
+Nom du ou des auteurs : adresse e-mail ; autre nom d’auteur : adresse e-
+mail etc… 
+
+Ce format n’est pas obligatoire, mais préférable. 
+
+ 
+
+. Il peut arriver que l’on ait par l’affichage suivant dans le dernier champ : 
+
+
+undefined : undefined 
+
+Il est préférable de l’effacer et de le remplacer par votre nom et votre 
+adresse e-mail si c’est vous qui aller façonner les données. 
+
+ 
+
+. Tous les champs sont modifiables ultérieurement sauf le nom de répertoire 
+choisi au début. 
+
+
+ 
+
+6 - Validez : le bouton de validation est situé en bas du formulaire 
+
+ 
+
+La validation du formulaire entraîne le redémarrage de la plateforme. 
+
+ 
+
+Pour terminer l’opération, vous devez « vider le cache » puis redémarrer la 
+plateforme avec « Menu Edition-> Redémarrer () » 
+
+ 
+
+Puis déployez le menu déroulant des cartes en cliquant sur le bouton Cartes de la 
+plateforme. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Notre carte Monde-Pays-Demo apparaît en 30ième position. 
+
+
+
+
+ 
+
+Les cartes sont présentées par séries de 30 cartes accessibles par l’indication du type 
+suivant : 
+
+ 
+
+ 
+
+ 
+
+La sélection de la carte dans le menu déclenche l’affichage suivant : 
+
+ 
+
+ 
+
+ 
+
+Pour tester la carte, une donnée de test (1 – ESSAI icône) est disponible dans le menu 
+
+Données-> Icône X 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+De plus, en cliquant, sur une aire de la carte (dans l’exemple : la Corse), on doit voir 
+apparaître un graphique de test (histogramme à deux barres). 
+
+ 
+
+NB. Les données de test n’ont aucune signification, il s’agit en réalité des identifiants 
+numériques des aires géographiques de la carte. 
+
+ 
+
+Sur le panneau de droite, on a la fiche descriptive de la carte qui correspond pour 
+l’essentiel au formulaire que l’on a saisi dans la phase 2 de l’intégration de la carte. 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Phase 3 – Renseigner la fiche descriptive une 
+fois les données intégrées pour alimenter la 
+Rose des Vents 
+
+Une fois que l’on a fini d’intégrer les données, pour que la carte et les données soient 
+correctement indexées par les moteurs de recherche de la Rose des vents et que la 
+fiche signalétique y soit explicite, il est nécessaire de compléter la saisie réalisée dans 
+le formulaire lors de l’intégration de la carte dans GaïaMundi. 
+
+ 
+
+ Exemple de fiche signalétique dans la Rose des Vents 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Pour ouvrir le formulaire de saisie des renseignements de la fiche signalétique, on 
+choisi « Modifier fiche Carte » dans le menu Edition de GaïaMundi 
+
+ 
+
+ 
+
+ 
+
+Cette action déclenche l’affichage d’un formulaire dans le panneau de droite. 
+
+Le formulaire comprend les champs de saisie et incorpore des éléments d’aide. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+La première section du formulaire, en orange, reprend les informations saisies lors 
+de la phase 2 de l’intégration de la carte dans GaïaMundi. 
+
+En principe, il n’est pas nécessaire de les modifier. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+La deuxième section en vert a été décomposée dans cette présentation pour faciliter 
+l’explicitation des consignes de saisie. 
+
+ 
+
+ 
+
+ 
+
+Contour (échelle) détaillé (dont date de validité) 
+(ex: FRANCE entière - Découpage géographique au 01/01/2010, projection Lambert 
+93 IGN/Insee) 
+
+
+
+
+Maille (découpage) en clair avec spécificités éventuelles 
+(ex: Communes. avec arrondissements municipaux seulement pour Paris) 
+
+Taille estimative maximale des fichiers 
+(ex: 42 802 Ko) NB. Respecter la notation Ko. Dans le cas de deux fichiers, principal et 
+complémentaire, on met une seule valeur : la maximale 
+
+Cette valeur donne un indication du temps de téléchargement et du temps de calcul 
+pour al Rose des vents. C’est cette valeur qui trace le graph du radar de la rose des 
+vents 
+
+ 
+
+Thématique(s) détaillée(s) 
+(ex: Actifs ayant un emploi, sexe, Catégorie socioprofessionnelle détaillée (31 postes), 
+Secteur d'activité regroupé en 5 postes) 
+
+ 
+
+Il s’agit de donner, dans un format hyper synthétique, assez d’informations pour 
+comprendre de quoi traite le fichier. 
+
+ 
+
+Populations de référence 
+(ex: actifs de 16-64 ans en Emploi) 
+
+ 
+
+Cette information est nécessaire pour bien comprendre le sens de la donnée. Par 
+exemple, dans le cas de données issues de la Caisse d’allocations familiales, il faut 
+préciser ici « population des allocataires » 
+
+ 
+
+Si le fichier comporte plusieurs populations de références, précisez les avec un « ; » 
+comme séparateur : 
+
+Par exemple : Allocataires CAF ; salariés CLAP, habitants RP ... 
+
+ 
+
+Souvent la population de référence est associée à la source, d’où la notation « salariés 
+CLAP » (CLAP connaissance locale de l’appareil productif). La population de référence 
+dans cette source n’est pas comptée ni définie de la même manière que la population 
+des salariés dans le recensement de la population. 
+
+ 
+
+Certaines populations peuvent sembler découler de l’évidence, comme les habitants. 
+Dans ces cas, on serait tenté de considérer ce champ comme inutile. Mais en réalité, il 
+faut prendre en compte le fait que : 
+
+. d’une part les moteurs de recherche ne fonctionnent pas à l’évidence 
+. d’autre part, au cours d’un processus de travail, on peut facilement oublier ce 
+qui relève de l’évidence et faire des erreurs d’interprétation. 
+
+
+Il faut donc mieux bien renseigner ce champ. 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Lieu de sondage 
+(ex: au lieu de résidence ou au lieu de travail,... sinon vide) 
+
+Comme dans le cas précédent, attention aux évidences 
+
+Sources, avec la date de validité, la spécificité du type de sondage et/ou de secret 
+(ex: Sources : Insee, Recensements de la population 2008 RP 2008 exploitation 
+complémentaire - pas de secret - CLAP Insee 2008 - avec secret (Cf. documentation)) 
+
+Autres informations importantes 
+(ex: signalement des spécificités importantes ou des réserves sur les données ou la 
+géographie) 
+
+Par exemple : pour une carte de l’Ile de France à la maille « cantons, villes et 
+arrondissements », pour laquelle on s’attend à avoir les arrondissements de Paris : 
+« données lacunaires pour les arrondissements de Paris » 
+
+Contrôle : 
+
+On rend compte ici du travail de contrôle opéré en principe par un tiers, c'est-à-dire 
+une personne distincte de celle qui a réalisé le fichier. 
+
+Le premier type de contrôle vise à éviter les erreurs systématiques lors du façonnage 
+des fichiers (décalage de rang vertical ou horizontal). Le second contrôle confirme le 
+premier et permet aussi de contrôler les sous-totaux dont le calcul peut être source 
+d’erreurs techniques. Le dernier contrôle ne porte par sur les erreurs de fabrication 
+mais sur la source elle-même car, bien que cela soit rare, il arrive que celle-ci soit en 
+tout ou partie corrompue. En cas d’erreur détectée sur une colonne de données ou sur 
+une aire géographique, il est préférable d’éliminer le fichier ; Dans le cas contraire il 
+faudra indiquer l’erreur dans la fiche signalétique dans la rubrique « Autres 
+informations importantes » ci-avant) 
+
+L’absence de ces contrôles devrait inviter l’utilisateur des données disponibles sur la 
+rose des vents à contrôler les données par lui-même. 
+
+
+
+
+ 
+
+Contrôle 1 
+(comparaison à la source) 
+
+Indiquer le procédé : sondage, terme à terme, ou bien indiquez no ( Yes or No en 
+anglais) 
+
+ 
+
+Contrôle 2 
+(contrôle des sommes) 
+
+Il s’agit d’un contrôle par sous totaux croisés 
+
+ 
+
+Contrôle 3 
+(contrôle de cohérence) 
+
+On compare quelques données test choisies avec d’autres sources pour s’assurer de la 
+cohérence (est-ce que ça varie bien dans le même sens selon les aires géographiques, 
+est-ce que les ordres de grandeur sont cohérents ?...) 
+
+ 
+
+ 
+
+ 
+
+Sommabilité en clair 
+(ex: sommable, 
+partiellement sommable, 
+non sommable) 
+
+ 
+
+ 
+
+ 
+
+Argument 
+(ex: non sommable à cause 
+d'une clause de secret, 
+lacunaire... ou au contraire, 
+sommable car décompte 
+exhaustif....) 
+
+ 
+
+Code de sommabilité 
+(trois cas de figures codés 1 = 
+sommable - 2 = sommable 
+partiellement - 3 = NON 
+sommable. Le code est inscrit en 
+troisième terme du vecteur) 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+
+Informations aussi détaillées que possible sur le contenu du fichier. Le plus efficace 
+consiste à recopier le Libellés des colonnes de données. Pour cela, aller dans l'onglet 
+bas architecture des données, affichez les entêtes des fichiers et copiez les dans le 
+champ de saisie. 
+
+ 
+
+Ne vous préoccupez pas des balises html de début et de fin, l'interface de saisie les 
+place automatiquement. 
+Dans le cas de deux fichiers, recopier les libellés de colonne des deux fichiers en 
+introduisant les balises suivantes : <br/> <br/> <br/> (copier-coller) entre les deux 
+séries de libellés correspondant aux deux fichiers. 
+(A défaut de procéder comme ci-dessus, écrire d'autres formulations littérales utiles 
+pour les moteurs de recherche) 
+
+ 
+
+Ce champ est très important pour le fonctionnement efficace de la Rose des vents et 
+du réseau d’échange, car c’est l’information qu’il contient qui permet de rechercher 
+les fichiers qui contiennent les données recherchées par les utilisateurs. 
+
+Ces informations apparaissent dans la fiche « Détails » associée à chaque fiche 
+signalétique de fichier de données dans la Rose des vents 
+
+ 
+
+Attention, lors de l’enregistrement, l’interface procède à la normalisation des 
+données. Cela peut prendre jusqu’à 3 minutes lorsqu’on a copié des libellés de 
+colonnes en grand nombre (plus de 1000). Attendre la fin de la normalisation. Si 
+vous avez une invite de Firefox pour arrêter ou poursuivre le script, cochez la case 
+« ne plus demander » et cliquez le bouton « continuer » 
+
+ 
+
+ Exemple de fiche Détail dans la Rose des vents 
+
+ 
+
+ 
+
+
+
+
+Autres commentaires 
+(NB: si vous écrivez 'none' dans ce champ, la carte sera occultée dans le menu de 
+GaïaMundi, sans que les registres d'index soient transformés (la carte existe, elle n'est 
+simplement pas visible)) 
+
+ 
+
+Gestion de la liste des cartes 
+
+Aucune fonction de l’interface ne permet de supprimer une carte intégrée dans 
+GaïaMundi. Car enlever une carte dans la liste pourrait décaler les rangs des cartes. 
+Or c’est le rang de la carte dans la liste qui permet aux hypertextes de pointer les 
+cartes et leurs données associées. Si l’on décale le rang des cartes, les hypertextes 
+existant ne seront plus valides. 
+
+ 
+
+En revanche, il existe une fonction pour occulter l’affichage d’une carte dans la liste. 
+La carte existe mais elle n’est pas visible dans le menu. 
+
+Il faut pour cela introduire le libellé none dans le champ de saisie « Autres 
+commentaires » dans le formulaire de la fiche signalétique de la carte. 
+
+ 
+
+On peut faire réapparaître l’ensemble des cartes en redémarrant la plateforme avec 
+l’option toutes cartes du menu système 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+

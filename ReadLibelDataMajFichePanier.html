@@ -1,0 +1,545 @@
+﻿<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Gestion des Paniers</title>
+<script type="text/javascript" src="A-MANAGER-local/Controle/Saisie/saisie.js"></script>
+<script type="text/javascript" src="A-MANAGER-local/Controle/bouton_StockGestion.js"></script>
+<script type="text/javascript" >
+var base00=new Array();
+libelmapP=new Array();
+mapXP=new Array();
+
+</script>
+<script id="mapsUtil" type="text/javascript" ></script>
+<script type="text/javascript" id="insertPanierJs"></script>
+<script type="text/javascript">
+var iMapsEncours=0
+var tableNomRepPanier =new Array()
+//alert(mapXP)
+function tableNomRepertoirePanier(){
+
+for(i=0;i<mapXP.length-1;i=i+5){
+tableNomRepPanier[tableNomRepPanier.length]=mapXP[i+4].substr(0,mapXP[i+4].length)
+
+}
+}
+var TESTNOM=0
+tableNomRepertoirePanier()
+
+
+function testNom(tN){
+var message
+var idid=0
+var numcdM=""
+var cdM=0
+var codeMailleexistant=""
+for(i=0;i<tableNomRepPanier.length;i++){
+if(tableNomRepPanier[i]==tN){idid=1;numcdM=i
+if(mapXP[i*5]!=codeMaille){cdM=1;codeMailleexistant=mapXP[i*5]}
+}
+}
+if(idid==1){
+message='<span style="color:white"><b >ATTENTION : Ce Nom Existe déjà !</b><br>En le conservant, vous écraserez son contenu.</span>';
+TESTNOM=1;
+if(cdM==1){message+='<br><big style="color:yellow"><b>De plus le code maille existant n\'est pas le même : ('+codeMailleexistant+')</b></big>'}
+
+document.getElementById("nf0").value=libelmapP[numcdM][2]
+document.getElementById("nfmaille").value=codeMaille
+document.getElementById("nf1").value=libelmapP[numcdM][2]
+document.getElementById("nf2").value=libelmapP[numcdM][0]
+document.getElementById("nf3").value=libelmapP[numcdM][1]
+document.getElementById("nf4").value=libelmapP[numcdM][3]
+document.getElementById("nf5").value=libelmapP[numcdM][4]
+document.getElementById("nf6").value=libelmapP[numcdM][5]
+
+}else{
+message="<b style='color:transparent'>OK<br>Si vous le conservez vous écraserez son contenu</b>";
+TESTNOM=0
+
+document.getElementById("nf0").value=""
+document.getElementById("nfmaille").value=codeMaille
+document.getElementById("nf1").value=""
+document.getElementById("nf2").value=""
+document.getElementById("nf3").value=""
+document.getElementById("nf4").value=""
+document.getElementById("nf5").value=""
+document.getElementById("nf6").value=""
+}
+
+document.getElementById("retourTestNom").innerHTML=message
+}
+
+function selectedPanier(a){
+indicsauv=1
+fermermenudata()
+
+var message='<span style="color:white"><b >ATTENTION : Ce Nom Existe déjà !</b><br>En le conservant, vous écraserez son contenu.</span>'
+if(parseInt(mapXP[a])!=parseInt(codeMaille)){
+message+='<br><big style="color:yellow"><b>De plus le code maille existant n\'est pas le même !</b></big>'
+alert("attention : le code maille "+codeMaille+" du panier entrant n'est pas compatible avec le code du fichier existant dans le dossier sélectionné : code maille existant="+mapXP[a]);document.getElementById("nfmaille").value="XXXXXXXXX"
+
+}else{
+document.getElementById("nfmaille").value=codeMaille
+}
+document.getElementById("retourTestNom").innerHTML=message
+document.getElementById("nomrep").value=mapXP[a+4]
+document.getElementById("nf0").value=libelmapP[a/5][2]
+
+document.getElementById("nf1").value=libelmapP[a/5][2]
+document.getElementById("nf2").value=libelmapP[a/5][0]
+document.getElementById("nf3").value=libelmapP[a/5][1]
+document.getElementById("nf4").value=libelmapP[a/5][3]
+document.getElementById("nf5").value=libelmapP[a/5][4]
+document.getElementById("nf6").value=libelmapP[a/5][5]
+
+
+
+
+
+}
+
+    var urlvar=""
+    var ttcartes    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	
+	
+	
+	
+
+	
+	
+var fichierjs=""	
+var specif=urlvar["specif"]
+//alert(specif)
+var PANIER=urlvar["PANIER"]
+var PanierTravail=""
+document.getElementById("insertPanierJs").src=PANIER
+document.getElementById("mapsUtil").src="mapsILIADEPanier-"+(urlvar["util"])+".js"	
+var indicsauv=0
+
+/*
+var incr=0
+function restaureMapX(){
+incr+=1
+maXP=new Array()
+libelmapP==new Array()
+var nouveau=document.creatElement("script")
+nouveau.setAttribute("id","mapx"+incr)
+document.getElementById("mapx"+incr).src="mapsILIADEPanier-"+(urlvar["util"])+".js"	
+}
+*/
+
+
+
+
+function ouverturedata(){
+
+document.getElementById('divPanier').setAttribute("style","position:absolute;top:220px;display:bloc")
+document.getElementById('fichePanier').setAttribute("style","width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:none")
+document.getElementById('visuData').setAttribute("style","position:relative;width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:bloc")
+
+}
+function fermermenudata(){
+if(indicsauv==0){
+document.getElementById('divPanier').setAttribute("style","position:absolute;top:220px;display:none")
+document.getElementById('fichePanier').setAttribute("style","width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:bloc")
+document.getElementById('visuData').setAttribute("style","position:relative;width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:none")
+}else{
+
+document.getElementById('divPanier').setAttribute("style","position:absolute;top:220px;display:bloc")
+document.getElementById('fichePanier').setAttribute("style","width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:bloc")
+document.getElementById('visuData').setAttribute("style","position:relative;width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:none")
+}
+}
+function videdata(){
+window.frames.detaildata.location.href="vide.html"
+}
+function prepEditFormatTxt(){
+window.frames.augment.location.href="A-MANAGER-local/editPanier-Txt/Edit-StockPanier-Txt.html"
+setTimeout('editFormatTxt()',1500)
+
+}
+
+function editFormatTxt(){
+fichierjs=""
+for(i=0;i<base00.length;i++){
+
+for(j=0;j<base00[0].length-1;j++){
+
+fichierjs+=base00[i][j]+"\t"
+
+}
+fichierjs+=0+"\n"
+}
+
+window.frames.augment.document.getElementById("principalJs").innerHTML=fichierjs
+window.frames.augment.document.getElementById("specif").value=specif
+window.frames.augment.document.getElementById("nomrep").value="Z-StockPanier"
+window.frames.augment.IciSubmit()
+}
+
+function nouveau(){
+document.getElementById("nomrep").value="PANIERS-"+urlvar["util"]+"/Z-Panier-"
+document.getElementById("nf0").value=""
+document.getElementById("nfmaille").value=codeMaille
+document.getElementById("nf1").value=""
+document.getElementById("nf2").value=""
+document.getElementById("nf3").value=""
+document.getElementById("nf4").value=""
+document.getElementById("nf5").value=""
+document.getElementById("nf6").value=""
+message="<b style='color:transparent'>OK<br>Xxxxxxxxxxx xxxxxxxxxxxxxx</b>";
+document.getElementById("retourTestNom").innerHTML=message
+}
+
+function sauvePanier(){
+fermermenudata()
+indicsauv=1
+fichierjs='var codeMaille="'+codeMaille+'";\n\n'
+
+nouveau()
+
+
+for(i=0;i<base00.length;i++){
+fichierjs+='base00['+i+']=new Array('+i+',"'+base00[i][1] +'"'
+
+for(j=2;j<base00[0].length-1;j++){
+
+
+if(i==0  || i>(base00.length-8)){
+if(j==2 ){fichierjs+=',"'+base00[i][j]}else{fichierjs+='","'+base00[i][j]}
+
+
+}else{
+
+fichierjs+=','+base00[i][j]
+
+}
+}
+if(i==0 || i>(base00.length-8)){
+fichierjs+='",0);\n'
+}else{
+fichierjs+=',0);\n'
+}
+longx=i
+}
+//alert(fichierjs)
+
+document.getElementById('divPanier').setAttribute("style","position:absolute;top:220px;display:bloc")
+
+}	
+
+function choixPanierTravail(){
+
+///PanierTravail=document.getElementById("nomrep").getAttribute("value")
+window.frames.augment.location.href="A-MANAGER-local/AddColonnesEtPanierTravail/StockPanierAugmenter.html"
+setTimeout('stockPanierAugmente()',1500)
+}
+function stockPanierAugmente(){
+
+window.frames.augment.document.getElementById("nomrep").value=document.getElementById("nomrep").value
+
+window.frames.augment.document.getElementById("principalJs").innerHTML=fichierjs
+
+//window.frames.augment.document.getElementById("nf0").value=document.getElementById("nf0").value
+
+//window.frames.augment.document.getElementById("nfmaille").value=document.getElementById("nfmaille").value
+window.frames.augment.document.getElementById("nf1").value=document.getElementById("nf1").value
+//window.frames.augment.document.getElementById("nf2").value=document.getElementById("nf2").value
+//window.frames.augment.document.getElementById("nf3").value=document.getElementById("nf3").value
+//window.frames.augment.document.getElementById("nf4").value=document.getElementById("nf4").value
+//window.frames.augment.document.getElementById("nf5").value=document.getElementById("nf5").value
+//window.frames.augment.document.getElementById("nf6").value=document.getElementById("nf6").value
+window.frames.augment.document.getElementById("nf7").value=document.getElementById("nf7").value
+
+window.frames.augment.document.getElementById("nf8").value=urlvar["reporigine"]
+window.frames.augment.document.getElementById("specif").value=specif
+window.frames.augment.document.getElementById("test").value=TESTNOM
+//alert(window.frames.augment.document.getElementById("nf8").value)
+//alert(iMapsEncours)
+//alert("codeMialle="+codeMaille)
+
+var mapXP2=new Array()
+var libelmapP2=new Array()
+
+mapXP2[0]=codeMaille;
+mapXP2[1]="";
+mapXP2[2]="";
+mapXP2[3]="principal-"+specif;
+mapXP2[4]="PANIERS-"+document.getElementById("nf7").value+"/"+document.getElementById("nomrep").value;
+var echelle=document.getElementById('nf2').value;
+var maille=document.getElementById('nf3').value;
+var commentTitrecarte=document.getElementById('nf1').value;
+var commentaireschamp=document.getElementById('nf4').value;
+var theme=new Array();
+var autrescommnt="";
+var originalauthors=document.getElementById('nf5').value;
+var otherauthors=new Array();
+libelmapP2=new Array(echelle,maille,commentTitrecarte,commentaireschamp,theme,autrescommnt,originalauthors,otherauthors);
+
+//test pour savoir si le nom de répertoire est déjà existant. Si ce n'est pas le cas, c'est que c'est un nouveau répertoire => on ajoute la fiche en fin de liste
+var nouv=1
+for(z=0;z<mapXP.length;z=z+5){
+
+if(mapXP2[4]==mapXP[i][4]){nouv=0}
+}
+var rgmapx
+if(nouv==0){rgmapx=iMapsEncours}else{rgmapx=mapXP.length}
+for(a=0;a<5;a++){mapXP[rgmapx+a]=mapXP2[a]}
+libelmapP[rgmapx/5]=libelmapP2
+
+var mapsPanier=""
+
+for(z=0;z<mapXP.length/5;z++){
+
+mapsPanier+="mapXP[mapXP.length]=\""+mapXP[z*5]+"\";\n"
+mapsPanier+="mapXP[mapXP.length]=\"\";\n"
+mapsPanier+="mapXP[mapXP.length]=\"\";\n"
+mapsPanier+="mapXP[mapXP.length]=\""+mapXP[z*5+3]+"\";\n"
+mapsPanier+="mapXP[mapXP.length]=\""+mapXP[z*5+4]+"\";\n"
+mapsPanier+="var echelle=\""+libelmapP[z][0]+"\";\n"
+mapsPanier+="var maille=\""+libelmapP[z][1]+"\";\n"
+mapsPanier+="var commentTitrecarte=\""+libelmapP[z][2]+"\";\n"
+mapsPanier+="var commentaireschamp=\""+libelmapP[z][3]+"\";\n"
+mapsPanier+="var theme=new Array();\n"
+mapsPanier+="var autrescommnt=\""+libelmapP[z][5]+"\";\n"
+mapsPanier+="var originalauthors=\"ss\";\n"
+mapsPanier+="var otherauthors=new Array();\n"
+mapsPanier+="libelmapP[libelmapP.length]=new Array(echelle,maille,commentTitrecarte,commentaireschamp,theme,autrescommnt,originalauthors,otherauthors);\n\n\n"
+
+}
+alert(mapsPanier)
+window.frames.augment.document.getElementById("mapsPanier").value=mapsPanier
+
+//setTimeout('suitechoixPanierTravail()',500)
+}
+function suitechoixPanierTravail(){
+
+window.frames.augment.IciSubmit()
+setTimeout('document.getElementById("divPanier").setAttribute("style","display:none")',1000)
+
+}
+function dossierTravail(){
+window.open("A-MANAGER-local/AddColonnesEtPanierTravail/transmenu.htm?PANIER="+PANIER+"&specif="+specif+"&util="+urlvar["util"])
+}
+function dossierCarte(){
+window.open("A-MANAGER-local/AddColonnesEtPanier/transmenu.htm?PANIER="+PANIER+"&specif="+specif)
+}
+
+function visuDatacol(rep,fichierx){
+
+ouverturedata()
+//alert("readLibelDATA.html?cible="+rep+"&carte="+fichierx)
+
+window.frames.detaildata.location.href="readLibelDATA-Panier.html?cible="+rep+"&carte="+fichierx
+//document.getElementById("divdata").style.visibility="visible"
+
+}
+var cadrevoy
+var ttcartes=1
+function menuVoyage(){
+cadrevoy='<table style="width:400px;border:0px none;font-family:verdana;font-size:10px" >'
+cadrevoy+='<tr style="background-color:gray">'
+cadrevoy+='<td> </td><td> </td><td> </td><td> </td>'
+cadrevoy+='</tr>'
+var j=0
+var j2=0
+
+for(i=0; i<mapXP.length-1;i=i+5){
+var textcompose=mapXP[(i+0)]+" "+mapXP[(i+1)]+" "+mapXP[(i+2)]+" "+mapXP[(i+3)]+" "+mapXP[(i+4)]
+for(k=0;k<6;k++){textcompose+=" "+libelmapP[i/5][k]}
+if(ttcartes==1){libelmapP[i/5][5]=""}
+//if(libel(textcompose)==1 & libelmapP[i/5][5]!='none')
+{
+cadrevoy+='<tr style="font-size:10px;color:gray;font-weight:bold">'
+
+
+cadrevoy+='<td style="width:40%">'
+cadrevoy+="référence carte"
+cadrevoy+='</td>'
+cadrevoy+='<td >'
+cadrevoy+="objet"
+cadrevoy+='</td>'
+cadrevoy+='</tr>'
+cadrevoy+='<tr style="vertical-align: top" >'
+
+
+cadrevoy+='<td style="background-color:#DBDDE2">'
+cadrevoy+='<span style="color:brown"><b><big>Panier n°: </span>'+(i/5+1)+'</b></big><br>'
+cadrevoy+='<span style="color:brown"><b>Contour : </b></span><br>'+libelmapP[i/5][0]+'<br>'
+cadrevoy+='<span style="color:brown"><b>Maille : </b></span><br>'+libelmapP[i/5][1]+'   ('+mapXP[(i+0)]+')'
+
+
+
+cadrevoy+='<br><span style="color:brown"><b>Titre: </b></span><br>'+mapXP[(i+3)]
+//cadrevoy+='<span style="color:brown"><b>Répertoire: </b></span><br>'
+cadrevoy+='<br>choix : <span onclick="iMapsEncours='+(i)+';selectedPanier('+(i)+');" style="position:relative;left:0px;cursor:pointer;color:blue;font-weight:bold">'+mapXP[(i+4)]+'</span><br>'
+cadrevoy+='<dt style="color:gray">__________________</dt>'
+cadrevoy+='<span onclick=";visuDatacol(\''+mapXP[(i+4)]+'\',\''+mapXP[(i+3)]+'.html\');" style="position:relative;left:0px;cursor:pointer;color:blue;font-weight:bold"><i><small>Entêtes de colonnes</small></i></span><br><br>'
+
+cadrevoy+='</td>'
+cadrevoy+='<td style=";background-color:#F2F0FF">'
+cadrevoy+='<b>'
+cadrevoy+=libelmapP[i/5][2]
+cadrevoy+='</b>'
+cadrevoy+='<br/><i>'
+cadrevoy+=libelmapP[i/5][3]
+cadrevoy+='</i>'
+cadrevoy+='</td>'
+cadrevoy+='</tr>'
+cadrevoy+='<tr style="background-color:gray">'
+cadrevoy+='<td> </td><td> </td><td> </td><td> </td>'
+cadrevoy+='</tr>'
+}
+}
+cadrevoy+='</table>'
+}
+
+</script>
+</head>
+
+<body STYLE="background-color: white;font-size:10px;font-family:arial;">
+<br>
+<center><big><big><b>Que Souhaitez vous faire avec les données du panier?</b></big></big></center><br><br>
+<center>
+<table  STYLE="background-color: white;font-size:10px;font-family:arial;border:0.5px solid gray;">
+
+<tr align="center">
+<td width="25%">Editer <br>au Format <br>Texte <i>(pour tableur)</i><br><input type="button" value="Ok" onclick="prepEditFormatTxt()"></input><br><i><small><small>Pour sauvegarder le fichier <br>de données qui va s'ouvrir : <br>utilisez la commande "enregistrer sous"<br>dans le menu "fichier" de FireFox</small></small></i></td>
+
+<td width="25%" id="cache1" style="color:black;opacity:1">Sauvedarder <br>dans un <br>dossier de travail<br><input style="opacity:1" type="button" value="Ok" onclick="sauvePanier()"></input></td>
+
+<td width="25%"  id="cache2" style="color:black;opacity:1">ajouter <br>à un <br>dossier carte<br><input style="opacity:1"  type="button" value="Ok" onclick="dossierCarte()"></input></td>
+
+<td width="25%"  id="cache3" style="color:black;opacity:1">ajouter <br>à un <br>dossier de travail existant<br><input style="opacity:1"  type="button" value="Ok" onclick="dossierTravail()"></input></td>
+
+<tr>
+</table>
+<br><small><a  id="cache4"  style="opacity:1" href="javascript:videdata();ouverturedata()">Visualiser les listes de données existantes dans les dossier de panier</a></small>
+</center>
+<center><br><dt id="message"><dt>
+
+
+<table style="width:750px;text-align: center;"><tr><td>
+<div id="divPanier"  style="display:none">
+<!--div ><table width=100% ><tr><td><input type="button" value="Panier : Déplier/Replier" onclick="DeplierReplier()"></td><td><input type="button" value="Vider" onclick="raz()"></td><td><input type="button" value="Sauver" onclick="enregistrer()" ></td></tr></table></div-->
+<table ><tr style="text-align: center;">
+<td style="text-align: center;">
+<div id="divcadrevoyage" style="height:530px;overflow:scroll;display:bloc"></div>
+
+</td>
+
+<td style="text-align: center;">
+<div id="fichePanier" style="width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:none">
+
+<form  style="font-size:10px" Onkeyup="javascript:; var alerter=''; var inputs=new Array(document.getElementById('nomrep').value); detect(inputs,CaracteresInterdits1);" onkeypress="refuserToucheEntree(event);" name="saisie"    >
+
+<br><div style="position:relative;left:50px"><table style="text-align:center"><tr><td width="40px">&nbsp;&nbsp;<input type='button' id='sub' value="OK" onclick="choixPanierTravail()" style="display:block;visibility:visible" ></td><td width="60px">&nbsp;&nbsp;<input type='button' id='annul' value="annuler" onclick="nouveau()" style="display:block;visibility:visible"></td><td width="60px">&nbsp;&nbsp;<input type='button' value='Fermer' onclick="indicsauv=0;fermermenudata();" style="display:block;visibility:visible"></td></tr></table></div>
+<dt id="alert" style="visibility:hidden;display:block;color:transparent;font-size:12px">XX</dt>
+
+<font face='Helvetica' size'1' >Choisissez le nom du répertoire de sauvegarde du panier</font><dt id="retourTestNom"><b style='color:transparent'>OK<br>Si vous le concervez vous écrasez son contenu</b></dt>
+<input type='text' id="nomrep" style='visibility:visible;width:290px' name='R[0]' value='' disabled="disabled" onkeyUp="testNom(this.value)"><br><!-- REPERTOIRE-->
+<script language="javascript">
+document.getElementById("nomrep").value="PANIERS-"+urlvar["util"]+"/Z-Panier-"
+document.getElementById("nomrep").disabled=false
+</script>
+
+<textarea id='principalJs' type='text' style='display:none' name='M[1]' value=''></textarea>
+<div style='display:none'>
+<br><font face='Helvetica' size'1' >Choisissez le nom du panier</font>
+<input id='nf0' type='text'  name='N[0]' maxlength='40' value=''>
+</div>
+<script language="javascript">
+document.getElementById("nf0").value=""
+</script>
+
+<div style='display:bloc'>
+<br><font face='Helvetica' size'1'>Choisissez le code Maille de la carte </font>
+<input id='nfmaille' type='text'  name='E[0]' maxlength='50' value=''>
+</div>
+
+<br><font face='Helvetica' size'1' >Choisissez le nom du panier <br><i>(ie. Le nom inscrit dans la ligne du menu de recherche)</i></font><br>
+<input id='nf1' type='text'  name='N[1]' maxlength='80' value=''>
+<script language="javascript">
+document.getElementById("nf1").value=""
+</script>
+
+
+<br><font face='Helvetica' size'1'>indiquez le contour <br><i>(ex:contient européen,  France , région X...)</i></font>
+<input id='nf2' type='text'  name='N[2]' maxlength='80' value=''>
+<script language="javascript">
+document.getElementById("nf2").value=""
+</script>
+
+<br><font face='Helvetica' size'1'>indiquez la maille en clair<br><i>(ex:pays,  région , communes, zones d'emploi...)</i></font>
+<input id='nf3' type='text' onmouseout='javascript:nomrep3=this.value' name='N[3]' maxlength='40' value=''>
+<script language="javascript">
+document.getElementById("nf3").value=""
+</script>
+<br><font face='Helvetica' size'1'>inscrivez un descriptif en quelques lignes<br><i>(ex:pays,  région , communes, zones d'emploi...)</i></font>
+<textarea id='nf4' type='text'  style="width:290px" name='N[4]' value=''></textarea>
+<script language="javascript">
+document.getElementById("nf4").value=""
+</script>
+<br><font face='Helvetica' size'1'>Auteur,email<br>
+<input id='nf5' type='text' style='visibility:visible'  name='N[5]' value=''>
+
+<script language="javascript">
+document.getElementById("nf5").value=""
+</script>
+<br><div style="display:none">
+<input id='nf6' type='text' style='visibility:hidden'  name='N[6]' value=''>
+</div>
+
+<br><div style="display:none">
+<input id='nf7' type='text' style='visibility:hidden'  name='N[7]' value=''>
+</div>
+<script language="javascript">
+document.getElementById("nf7").value=urlvar["util"]
+
+</script>
+<!--input type="submit" id="submit2" value="Valider" disabled="disabled" style="display:none;"document.getElementById('divPanier').style.display='none'-->
+
+</form>
+
+</div>
+<div id="visuData" style="position:relative;width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:bloc;display:bloc"><iframe  width="295px" height="525px" name="detaildata" id="detaildata"></iframe><div>
+</td></tr></table>
+
+</div>
+</td></tr></table>
+</center>
+<script language="javascript">
+menuVoyage()
+//alert(cadrevoy)
+setTimeout('document.getElementById("divcadrevoyage").innerHTML=cadrevoy',1000)
+if(urlvar["util"]!=""){}else{
+for(i=1;i<5;i++){
+document.getElementById("cache"+i).style.display="none" 
+
+}
+document.getElementById("message").innerHTML='<table style="text-align: left; width: 545px; height: 690px;" border="0" cellpadding="2" cellspacing="2"><tbody><tr><td style="vertical-align: top; background-color: rgb(255, 252, 249);"><small><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">Peut-être devriez vous ouvrir un compte?<br><br>Vous disposerez alors de nouvelles possibilités : </span><span style="color: rgb(51, 51, 153); font-weight: bold;"></span><br style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"></small><ul><li><small><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">vous disposerez d\'un espace de travail dans lequel vous pourrez stocker vos paniers de données et de les visionner avec le module cartographique.</span></small></li><li><small><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">vous pourrez ajouter des données aux paniers existants ou en créer de nouveaux. </span></small></li></ul><small><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><br>Ceci vous permet ainsi de constituer des dossiers thématiques qui vous pouvez utiliser pour animer des réunions, préparer un cours, partager une réflexion etc...</span><br style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><br style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">Si, de plus, vous disposez d\'une plateforme GaïaMundi, vous pourrez transéférer les données stockées dans vos paniers vers des cartes installées dans votre plateforme.</span><br style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><br>La recherche de données dans le réseau <span style="color: rgb(36, 36, 110); font-style: italic;">Serpent de Mer</span> peut alors de faire de manière étalée dans le temps, en constituant progressivement des packages prèt à l\'usage.</span><br style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"> <br style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">On peut ainsi, par exemple, créer des paniers thématiques à la maille communale pour toute la France à partir des plateformes DB-ressources et mobiliser ces paniers thématiques autant que de besoin pour des géographies infra nationales etc...<br><br>Pour ouvrir un compte, il faut être adhérent.<br>Pour adhérer, téléchargez le bordereau d\'adhésion sur le site <a href="http://altercarto.fr/">altercarto.fr</a> et envoyer le par la poste à l\'adresse indiquée, avec le versement de votre cotisation. </span><br style="color: rgb(51, 51, 153); font-weight: bold;"><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;"><br>Les cotisations sont déterminées comme suit:<br></span></small><ul style="color: rgb(51, 51, 153); font-weight: bold;"><li><small><span style="font-family: Arial;">&nbsp;50 € poour les individus</span></small></li><li><small><span style="font-family: Arial;">100 € pour les organisations</span></small></li><li><small><span style="font-family: Arial;">Sont exonérés de cotisation, les enfants, les scolaires, les étudiants, les chômeurs, ou toute personne qui se considère dans une situation similaire.</span></small></li></ul><div style="text-align: center;"><small><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">Pour en savoir plus, visitez le site <a href="http://altercarto.fr">altercarto.fr</a> ou contactez nous</span></small><br><span style="font-family: Arial;"></span><a style="color: white;" href="mailto:altercarto@wanadoo.fr" target="_blank"><img alt="" src="http://altko.org/altercarto/altercarto%20at%20wanadoo%20fr.jpg" style="width: 152px; height: 17px;"></a><br><small><span style="font-family: Arial; color: rgb(51, 51, 153); font-weight: bold;">En adhérant, non seulement vous rejoignez une communauté d\'utilisateurs qui peut générer des échanges, de l\'entraide et de l\'innovation. <br><br>Mais vous pouvez aussi contribuer par vos compétence et votre curiosité, au projet de construire un accès libre et gratuit aux données publiques, au développement raisonné de leur usage, et à la construction d\'une meilleure maitrise collective de notre environnement social, économique, naturel, culturel.</span></small> </div></td></tr></tbody></table>'
+}
+</script>
+
+<iframe name="augment" style="display:none"></iframe>
+
+
+</body >
+</html>

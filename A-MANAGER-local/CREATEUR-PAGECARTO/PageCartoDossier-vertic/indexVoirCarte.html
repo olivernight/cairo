@@ -1,0 +1,218 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset=utf-8>
+    <title id="tagtitre">Voir la Carte</title>
+	<script src="redesignscenario.js"></script>
+	<script src="redesignPCcomplet.js"></script>
+    <script src="../../../parametres.js"></script>  
+
+	<script src="PageCarto/entete.js"></script>  
+    <script src="js/modernizr-1.7.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
+    
+    <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" title="html5doctor.com Reset Stylesheet" />
+    
+    <!-- in the CSS3 stylesheet you will find examples of some great new features CSS has to offer -->
+    <link rel="stylesheet" type="text/css" href="css/css3.css" media="screen" />
+    
+    <!-- general stylesheet contains some default styles, you do not need this, but it helps you keep a uniform style -->
+    <link rel="stylesheet" type="text/css" href="css/general.css" media="screen" />
+    
+    <!-- grid's will help you keep your website appealing to your users, view 52framework.com website for documentation -->
+    <link rel="stylesheet" type="text/css" href="css/grid.css" media="screen" />
+    
+    
+    <!-- the following style is for demonstartion purposes only and is not needed for anything but inspiration -->
+    <style>
+	
+
+	
+
+	
+		header {padding-top:3px; border-bottom:1px solid #ccc; padding-bottom:3px;}
+		header .logo {font-size:3.52em;}
+		header nav ul li {float:left; margin-top:12px;}
+		header nav ul li a {display:block; padding:5px 15px; border-right:1px solid #eee; font-size:1.52em; font-family:Georgia, "Times New Roman", Times, serif; text-decoration:none;}
+		header nav ul li a:hover {background-color:#eee; border-right:1px solid #ccc; text-shadow:-1px -1px 0px #fff;}
+		header nav ul li.last a {border-right:none;}
+		
+		#css3 div > div {margin:0px 0px 50px 0px; padding:6px; border:1px solid #eee;}
+		#grid div {text-align:center;  }
+		#grid div > .col {border-bottom:1px solid #ccc; padding:10px 0px; outline:1px solid #eee;}
+		
+		h2 {border-bottom:1px dashed #ccc; margin-top:15px;}
+		
+		.documentation {display:block; background-color:#eee; padding:6px 13px; font-family:Georgia, "Times New Roman", Times, serif; color:#666; text-align:right; text-shadow:-1px -1px 0px #fff;}
+		
+		footer {text-align:center; color:#666; font-size:0.9em; padding:4px 0px;}
+		
+
+	</style>
+<script id="activitem0" type="text/javascript" >
+</script>
+<script type="text/javascript" >
+var segurl=window.location.href.split("/")
+var nomcarte=segurl[segurl.length-3].replace(/%20/g," ")
+</script>
+<script type="text/javascript" src="nomcarte.js"></script>
+<script type="text/javascript" >
+
+	var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+//var carte=urlvar['carte']
+//alert(carte)
+
+var carte//=window.location.href.split("indexVoirCarte")[0]
+
+function affmenu(){}
+
+function recupitemHT(a){
+
+var fitem0="";
+var nbitem=window.frames.pc1.hypertexte.document.getElementsByTagName("a").length;
+for(i=0;i<nbitem;i++){
+var litem=window.frames.pc1.hypertexte.document.getElementsByTagName("a")[i];
+if(litem.getAttribute("name")){
+if(litem.getAttribute("name")==a){
+fitem0=litem.getAttribute("href").split("javascript:")[1];
+i=nbitem;
+}
+
+}
+
+}
+return fitem0
+}
+var marron="marron";
+var rouge="rouge";
+var chinois="chinois";
+var Nonchinois="Nonchinois";
+function lienHT(){
+var recuptfitem=new Array()
+var item=urlvar['item'];
+if(item){
+if(item!=""){//active un lien de l'hypertexte déroulant
+
+recuptfitem=recupitemHT(item).replace(/;;/g,";").split(";");
+var nouv=document.createElement("script");
+var fai='function activitem(){';
+for(z=0;z<recuptfitem.length;z++){
+if(recuptfitem[z].indexOf("=")<0){
+fai+='window.frames.pc1.hypertexte.'+recuptfitem[z]+';';
+}
+};
+fai+='window.frames.pc1.hypertexte.location.hash="#'+item+'";';
+//fai+='alert("ok");';
+fai+='}';
+
+var ei3=document.createTextNode(fai);
+
+nouv.appendChild(ei3);
+
+document.getElementsByTagName("body")[0].appendChild(nouv);
+
+
+}
+
+}
+if(window.activitem){
+
+activitem();
+}
+}
+</script>
+<script type="text/javascript">
+
+
+</script>
+
+
+</head>
+
+<body style="font-family:arial;background-color:#F9F9FA">
+<center><div id="leHeader" class="rowx" style="width:1180px;text-align:left">
+
+</div>
+
+<div width="1170px"><table style=" ;background-color:#F2EDF0;"  cellpadding="0px" cellspacing="0px"><tr><td><h2 class="width_16 col" style="background-color:TRANSPARENT;padding:5px;width:1170px;opacity:1;color:GRAY;text-align:right;border-bottom:none;height:30px;height:30px;font-size:24.99px">Voir la carte</h2></td></tr></table></div>
+<br><br>
+
+<!-- row -->
+				<script id="scriptleHeader" language="javascript" src="scriptleHeader.js"></script>
+				<script language="javascript" src="sommairesite.js?updated=1234567890"></script>
+				
+
+<a name="cadrecarte"></a>
+<b style="color:gray"><span>Carte : </span><span id="titrecarte-pc1"></span></b>
+<br><br>
+<div id="divref" style="width:600px;height:645px;border:1px solid #EEEEEE"><center>
+<a name="cadre"></a>
+<iframe onload="if(window.location.href.indexOf('index')>0 || parent.location.href.indexOf('/ca')>0){;if(largeframe){this.style.width=largeframe+'px';document.getElementById('divref').style.width=largediv+'px'};if(window.DesigninitPCcomplet){DesigninitPCcomplet(this);lienHT()}}" src="" id="pc1" name="pc1" style="border: 0px none ; width: 600px; height: 645px; background-color: white;" scrolling="no" frameborder="0">
+</iframe>
+</center></div>
+<br><br>
+	<div style="font-size:11px;font-family:arial" >(CC by-sa) généré par Cité Publique & Altercarto | mutuelle de données<br><a id="webmast" href="">Contact altercarto</a></li>
+	<br>
+	
+	</div>
+<center>
+<script type="text/javascript">
+/*alert(carte)
+
+var nomcarte=carte.split("/PageCartoDossier")[0]//.split("sc1/")[1].split("/")[1]
+nomcarte=nomcarte.split("/")
+nomcarte=nomcarte[nomcarte.length-1]
+*/
+
+document.getElementById("titrecarte-pc1").innerHTML=nomcarte
+document.getElementById("tagtitre").innerHTML=nomcarte
+//carte=carte.split("version-pour-fouiller")[0]+"PageCarto/Module-PageCarto.xml?format=normal&item="
+carte="PageCarto/Module-PageCarto.xml?format=normal&item="
+
+window.frames.pc1.location.href=carte
+window.location.href="#cadre"
+
+
+
+
+
+</script>
+<script language="javascript">	
+document.getElementById("webmast").setAttribute("href","mailto:altercarto@wanadoo.fr")
+
+</script>
+
+</body >
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+<script  language="javascript" >
+//alert("debut vide_insert.js")
+    var urlvar=""
+var repdistant=""
+var plateformedistante=""
+
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+repdistant=urlvar['repdistant'];
+
+plateformedistante=urlvar['plateformedistante']
+
+</script>
+
+</head>
+
+<body STYLE="background-color: transparent">
+<script id="downl" language="javascript" onload="recupmapx()" ></script>
+<script  language="javascript" >
+//alert(plateformedistante+"/mapsILIADE.js")
+//window.open(plateformedistante+repdistant+"/mapsILIADE.js")
+//document.write('<script id="downl" language="javascript" onload="recupmapx()" src="'+(plateformedistante+repdistant)+'\/mapsILIADE.js"><\/script>')
+var nouveau=document.createElement("script")
+nouveau.setAttribute("src",plateformedistante+"/mapsILIADE.js")
+nouveau.setAttribute("onload","recupmapx()")
+document.getElementsByTagName("body")[0].appendChild(nouveau)
+</script>
+
+<script  language="javascript" >
+function recupmapx(){
+
+for(i=0;i<mapX.length;i+=5){
+if(mapX[i+4]==repdistant){
+//var icimapx=new Array(mapX[i+0],mapX[i+1],mapX[i+2],mapX[i+3],mapX[i+4],sommableEchelle[i/5],libelmap[i/5])
+parent.recupmapx(i)
+}
+}
+}
+
+</script>
+</body >
+</html>

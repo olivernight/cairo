@@ -1,0 +1,516 @@
+<HTML>
+
+<HEAD>
+   <TITLE>Presentation</TITLE>
+   <META NAME=GENERATOR CONTENT="Claris Home Page 3.0">
+   <X-CLARIS-WINDOW TOP=23 BOTTOM=493 LEFT=1 RIGHT=977>
+   <X-CLARIS-TAGVIEW MODE=minimal>
+
+
+<script id="chargef" language="javascript" >
+var Tablepass= new Array(10,21,24,36,6,7,26,37,17,18,16,19,15,14,7,12,11,13,186,20,40)
+var Xlinks
+var E=-1
+var E1
+var D=-1
+var D1
+var transfert="datalogo.htm"
+var NoDat=0
+var initSUJET=0
+var initdim=0
+var indicini=0
+var largDATA
+var stopDATA0
+var Nclas
+var synthClasX 
+var xa
+var inter=""
+var stopDATA0=0
+var largDATA=new Array()
+var showhide=0
+var borne=0
+var AZE=""
+var base = new Array()
+var w = new Array()
+var histouinon=1
+var initdir=0
+var NoDatx=0
+var rangClas
+var rangcommentClas
+var selx=1
+//table de passage entre le monde et la sélection FAORNE
+
+function zoompos(){
+}
+
+if(histouinon==1){
+Xlinks=188
+}else{
+Xlinks=document.links.length
+}
+
+function RXXED(){
+//alert("red")
+W=top.frames.Num0.frames.couches.zoom.top.frames.Num0.frames.pilote.transdata2("return trdat2")
+base=W
+initSUJET=0
+}
+
+
+
+function razbas(){
+var razstop=base.length
+//alert(razstop)
+//for(var i=0;i=razstop ;i++){
+//base[i]=""
+//}
+}
+
+
+
+
+function essai(){
+//alert("essai")
+}
+
+function actu(){
+AZE=""
+AZE+=top.frames.Num0.frames.couches.zoom.outerHTML
+borne=0
+}
+
+
+
+function transDATA(){ }
+function rien5(){
+if(histouinon==1){if(NoDatx==0){NoDat=0}else{NoDat=Tablepass[NoDatx-1]}}else{NoDat=NoDatx}
+
+initSUJET+=1
+initdim+=1
+datax=base[NoDat].donnees.split(',')
+
+return datax
+indicini=1
+}
+
+
+function titreDATA(){
+var titreD=base[0].donnees.split(',')
+//var titreD=titreD0[0]
+return titreD
+}
+
+function indichide(){
+
+showhide=1
+}
+function indicshow(){
+
+showhide=0
+top.frames.Num0.frames.couches.dim()
+}
+
+
+function hdata(){ //------------------------------------CALCUL des dim-------------------------------
+for(var i=0;(datax[i]>-10000000);i++){
+var stopDATA0=i
+xa=stopDATA0
+
+}
+
+var Xstop=1
+if(stopDATA0>5){Xstop=1.8}
+var largo0
+if(stopDATA0<4){largo0=4}else{largo0=stopDATA0}
+largDATA[0]=30*(largo0+1)+22+15;
+if(showhide==1){largDATA[1]=187}else{largDATA[1]=(187+48*largo0/Xstop+37+45)};
+//alert(largDATA[0])
+//alert(largDATA[1])
+if(document.all){
+if(histouinon==0){if(NoDat==0){}else{
+largDATA[0]=top.frames.Num0.frames.pilote.Lzam2transfert()
+largDATA[1]=top.frames.Num0.frames.pilote.Hzam2transfert()
+}
+}
+}else{if(NoDat==0){
+largDATA[0]=top.frames.Num0.frames.pilote.Lzam2transfert()
+largDATA[1]=top.frames.Num0.frames.pilote.Hzam2transfert()
+}else{
+if(histouinon==0){
+largDATA[0]=top.frames.Num0.frames.pilote.Lzam2transfert()
+largDATA[1]=top.frames.Num0.frames.pilote.Hzam2transfert()
+}else
+{}
+}
+}
+return largDATA
+}
+
+
+
+function IMAX(){
+if(indicini<3){
+var inter=base[1].donnees.split(',')
+var Maxinter=base[1].donnees.split(',')
+for(var i=1;i<Xlinks ;i++){
+inter=base[i].donnees.split(',')
+
+for( var j=1;j<(xa+1);j++){
+var T=inter[j]
+if(parseFloat(T)>parseFloat(Maxinter[j])){Maxinter[j]=T}
+}
+}
+}
+indicini+=1
+return Maxinter
+}
+
+
+function IMIN(){
+var AXter
+
+if(indicini<2){
+hdata()
+
+
+
+var Mininter=base[1].donnees.split(',')
+
+
+for(var k=1;k<(xa+1);k++){
+var Xstp=0
+//if(Mininter[k]==-99999){
+for(i=1;i<Xlinks;i++){
+
+AXter=base[i].donnees.split(',')
+
+if(AXter[k]==-99999){}else{Mininter[k]=AXter[k];i=Xlinks}
+
+}
+
+//}
+}
+
+
+
+
+
+for(var i=1;i<Xlinks;i++){
+
+inter=base[i].donnees.split(',')
+
+
+for( var j=1;j<(xa+1);j++){
+var T=inter[j]
+
+if(parseFloat(T)<parseFloat(Mininter[j])){
+if(T==-99999){}else{Mininter[j]=T}
+
+}
+}
+}
+}
+indicini+=1
+return Mininter
+}
+
+
+
+//nom des classes, moyennes, quantiles etc.
+//-----------------------------------------------------------------------
+
+
+function synthClas(){
+if(histouinon==1){
+rangClas=188
+}else{
+rangClas=Xlinks
+}
+
+D+=1
+D1=rangClas+D+1
+synthClasX=base[D1].donnees.split(',')
+
+return synthClasX
+}
+
+function initD(){
+D=-1
+}
+
+//commenaires sur les classes--------------------------------------------------------
+
+function commentClas(){
+if(histouinon==1){
+rangcommentClas=188
+}else{
+rangcommentClas=Xlinks
+}
+E+=1
+E1=rangcommentClas+xa+E+1
+commentClasX=base[E1].donnees
+
+return commentClasX
+}
+
+function initE(){
+E=-1
+}
+
+function recupadres0(){
+fichier0=top.frames.Num0.frames.pilote.FICHIERzero("return ADRESSfichier0")
+histouinon=top.frames.Num0.frames.pilote.histoON("return histog")
+
+if(histouinon==1){
+Xlinks=188
+}else{
+Xlinks=document.links.length
+}
+if(histouinon==0){initdir=1}
+}
+//-----------------------------------------------------------------------
+function rien(){
+}
+
+function transfertMAP(){
+transfert="histo.htm"
+}
+//----------------------------------------------fonction carte()-----------------
+function selectarea0(){
+selx=0
+}
+
+function selectarea1(){
+selx=1
+}
+
+
+
+function carte(){
+if(selx==0){rien();selx=1}else{
+//transDATA()
+if (NoDat ==0){
+if(document.all){
+transfert="datalogo.htm"
+if(histouinon==0){initdir=0}
+}else{
+if(histouinon==0){
+
+transfert="../"+fichier0;initdir=0}
+else{
+
+transfert=fichier0
+initSUJET=2
+
+}
+}
+}
+else{
+if(histouinon==1){transfert="histo.htm"}else{
+
+fich=base[NoDat].donnees.split(',');
+
+if (initdir==1){transfert="../"+fich[1]}
+else{
+transfert=fich[1]}
+
+
+}
+initdir=0
+}
+
+top.frames.Num0.frames.couches.indic0()
+top.frames.Num0.frames.couches.hidelegend2()
+if(document.all){
+if(initdim>1){top.frames.Num0.frames.couches.dim()}
+top.frames.Num0.frames.couches.frames.zam2.location.href=transfert
+indicini=1
+}else{
+if(initdim>0){top.frames.Num0.frames.couches.dim()}
+top.frames.Num0.frames.couches.frames.zam2.location.href=transfert
+indicini=1
+}
+} //fin de if selx
+}
+
+top.frames.Num0.document.getElementById("tab").style.visibility="hidden"
+top.frames.Num0.document.getElementById("variable2").style.visibility="hidden"
+
+
+</script>
+
+</HEAD>
+<BODY BGCOLOR="#FFCC99" LINK="#000000"  >
+<DIV style="position:absolute;top:-20;left:0"><P><MAP id="map1" NAME="map1" >
+   
+ <AREA id=1 SHAPE=circle COORDS="0,0,0"  >
+</MAP><IMG id="imagecarte" ALLOWTRANSPARENCY="true" USEMAP="#map1" SRC="Q3.gif" WIDTH=100 HEIGHT=150 ALIGN=top ></P></DIV>
+<DIV style="position:absolute;top:30;left:30">
+<PRE><FONT FACE="Arial Black"><A NAME=hautpresentation></A></FONT><FONT SIZE="+2" FACE="Franklin Gothic Medium"><B>Anact</B></FONT><BR><FONT SIZE="+1" FACE="Century Gothic" COLOR="#006666"><B>Les territoires du travail et de l'emploi</B></FONT><BR><FONT FACE="Arial"><TABLE BORDER=0 CELLSPACING=1 WIDTH=750 HEIGHT="13%">
+   <TR>
+
+      <TD VALIGN=top WIDTH=81>
+         <P><IMG SRC="0-logo.jpg" WIDTH=83 HEIGHT=55 ALIGN=bottom><FONT FACE="Arial">
+<TABLE BORDER=1 BGCOLOR="#FFFFCC" CELLSPACING=0 WIDTH=79>
+            <TR>
+               <TD WIDTH=79 BGCOLOR="#FFFFCC">
+                  <P></P>
+               </TD>
+            </TR>
+            <TR>
+               <TD ALIGN=center WIDTH=79>
+                  <P><A HREF="http://perso.wanadoo.fr/altercarto/index.htm" Target="_blank"><FONT FACE="Arial Narrow"><B>Accueil</B></FONT></A></P>
+               </TD>
+            </TR>
+            <TR>
+               <TD WIDTH=79 BGCOLOR="#FFFFCC">
+                  <CENTER><A HREF="http://perso.wanadoo.fr/altercarto/servicescarto.htm" Target="_blank"><FONT FACE="Arial Narrow"><B>Services</B></FONT></A></CENTER>
+               </TD>
+            </TR>
+            <TR>
+               <TD WIDTH=79 BGCOLOR="#FFFFCC">
+                  <CENTER><A HREF="http://perso.wanadoo.fr/altercarto/produits.htm" Target="_blank"><FONT FACE="Arial Narrow"><B>Produits</B></FONT></A></CENTER>
+               </TD>
+            </TR>
+            <TR>
+               <TD WIDTH=79 BGCOLOR="#FFFFCC">
+                  <CENTER><A HREF="http://perso.wanadoo.fr/altercarto/commander.htm" Target="_blank"><FONT FACE="Arial Narrow"><B>Devis
+                  commandes</B></FONT></A></CENTER>
+               </TD>
+            </TR>
+            <TR>
+               <TD WIDTH=79>
+                  <CENTER><A HREF="http://perso.wanadoo.fr/altercarto/tarifs.htm" Target="_blank"><FONT FACE="Arial Narrow"><B>Formules
+                  tarifaire</B></FONT></A><FONT FACE="Arial Narrow"><B>s</B></FONT></CENTER>
+               </TD>
+            </TR>
+            <TR>
+               <TD WIDTH=79>
+                  <CENTER><A HREF="http://perso.wanadoo.fr/altercarto/plandusite_altercarto.htm"  Target="_blank"><FONT FACE="Arial Narrow"><B>Plan
+                  du site</B></FONT></A></CENTER>
+               </TD>
+            </TR>
+            <TR>
+               <TD WIDTH=79 BGCOLOR="#FFFFCC">
+                  <CENTER><A HREF="mailto:altercarto@wanadoo.fr"><FONT SIZE="-1" FACE="Arial Narrow" COLOR="#0000CC"><B></B></FONT></A></CENTER>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <CENTER>&nbsp;</CENTER>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P>&nbsp;</P>
+                  
+                  <P></P>
+               </TD>
+            </TR>
+         </TABLE>
+          </FONT></P>
+      </TD>
+      <TD VALIGN=top WIDTH=500>
+         <DT><FONT SIZE="+3" FACE="Arial Black" COLOR="#006666">R</FONT><FONT SIZE="+2" FACE="Arial Black" COLOR="#006666">égion Nord Pas de Calais</FONT></DT><dt><FONT SIZE="+2" FACE="Arial Black" COLOR="#006666">Contenu</FONT></dt>
+         
+         <BLOCKQUOTE><FONT FACE="Arial"><B>Cette présentantion comporte deux parties</B>.</FONT>
+            
+            
+            <UL>
+               <LI><FONT FACE="Arial" color="#006666"><B>à l'échelle de la planète : </B></FONT><FONT FACE="Arial" color="black">un jeu de cartes et de données réalisées à partir du rapport 2001 de la Banque Mondiale sur le Développement Humain (HDI)</FONT></LI>
+	 </UL><UL>
+               
+               <LI><FONT FACE="Arial" color="#006666"><B>à l'échelle d'une sélection de pays du pourtour méditérannéen :</B></FONT> <FONT FACE="Arial" color="black">les données résultant d'une étude réalisée par l'auteur des cartes pour la FAO (bureau du Caire /région FAORNE) sur les changements dans les pratiques alimentaires dans les pays de cette région au cours de 4 dernières décennies du XXème siècle.(H.Paris sous la direction de F. Hachem). Les données originales sont extraites de la base de données FAOSTAT</FONT></LI>
+            </UL>
+         </BLOCKQUOTE>
+         
+         <P ALIGN=right><FONT FACE="Arial"></FONT></P>
+         
+         <P ALIGN=center><FONT FACE="Arial"><TABLE BORDER=0 BGCOLOR="#996633" WIDTH=300>
+            <TR>
+               <TD WIDTH=300 BGCOLOR="#CC3300">
+                  <P ALIGN=right><FONT SIZE="+1" FACE="Arial" COLOR="#FFFFCC"><B></B></FONT></P>
+               </TD>
+            </TR>
+         </TABLE>
+          </FONT></P>
+         
+         <DL>
+            <DD><P ALIGN=right><FONT FACE="Arial"></FONT></P></DD>
+         </DL>
+         
+         <PRE ALIGN=right><FONT FACE="Arial">         </FONT></PRE>
+         
+         <P ALIGN=center><FONT FACE="Arial"><TABLE BORDER=0 BGCOLOR="#996633" WIDTH=300>
+            <TR>
+               <TD WIDTH=300 BGCOLOR="#CC3300">
+                  <P ALIGN=right><FONT SIZE="+1" FACE="Arial" COLOR="#FFFFCC"><B></B></FONT></P>
+               </TD>
+            </TR>
+         </TABLE>
+          </FONT></P>
+         
+         <P ALIGN=center><FONT FACE="Arial" COLOR="#FFFF00">.</FONT><FONT FACE="Arial" COLOR="#FFCC00">....</FONT><FONT FACE="Arial"></FONT></P>
+         
+         <P ALIGN=right></P>
+      </TD>
+   </TR>
+</TABLE>
+
+
+
+
+
+ </FONT></PRE>
+
+<P ALIGN=right>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><!-- estat javascript debut --> <SCRIPT LANGUAGE=javascript>function sp(_serial,_page) {
+
+
+document.write('<a href="http://www.wanadoo.fr/Pages_Per'+
+
+
+'so/estat/bin/pwpestat_stat.cgi"><img src'+
+
+
+'="http://perso.estat.com/cgi-bin/perso/'
+
+
++_serial+'?'
+
+
++'&n='+Math.round (Math.random () * 1000000000000000)
+
+
++'&page='+escape(_page.length?_page:document.title)
+
+
++'&referer='+escape(document.referrer)+'" BORDER=0></A>')
+
+
+}
+
+
+sp("312012176980", "NomDeVotrePage")</SCRIPT> <!-- eStat Javascript Fin --></P>
+
+<P></P>
+</DIV>
+</BODY>
+</HTML>

@@ -1,0 +1,1663 @@
+﻿
+<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+<script language="javascript" >
+var editOk=0
+var tailCarte="none"
+var CarteMaille=""
+var NOMCARTE=""
+var transbasTemp=new Array()
+var testTableExiste=0
+var tablePAS=new Array()
+var CarteCodeM="";
+var Atemp=""
+var mapXP=new Array()//Panier
+libelmapP=new Array() //libélés des paniers
+var mapXPY=new Array()//Panier
+libelmapPY=new Array() //libélés des paniers
+var DataUnion=new Array()
+</script>
+<script language="javascript" src="tablespassage/tablepass.js"></script>
+<script language="javascript" src="TESTtable.js"></script>
+<script language="javascript" src="mapsILIADEPanier.js"></script>
+<script language="javascript" src="CartoPanier/mapsILIADECartoPanier.js"></script>
+
+<script type="text/javascript" id="InsertDataUnion"  ></script>
+
+<script type="text/javascript">
+
+var PageIci=window.location.href.split("readLibelDATAinMaps.html?")
+
+var Key16Status=0
+function KS(event){
+if (event.keyCode == 16 ) {Key16Status=1}else{Key16Status=0}
+}
+function NKS(event){
+Key16Status=0
+}
+var etatcheck=0
+function recupcheck(a){
+if(a.checked){etatcheck=1}else{etatcheck=0}
+
+}
+function thisselected(a){
+document.getElementById('exp').style.visibility='hidden';document.getElementById('extrait').style.visibility='hidden'
+if(etatcheck==1){a.checked=0;etatcheck=0}else{a.checked=1;etatcheck=1}
+}
+
+function checkAll(){
+document.getElementById('exp').style.visibility='hidden';document.getElementById('extrait').style.visibility='hidden'
+for(i=0;i<document.getElementsByTagName("input").length;i++){
+if( document.getElementsByTagName("input")[i].id.indexOf("Data")==0){document.getElementsByTagName("input")[i].checked=true}
+}
+}
+function checkRaz(){
+document.getElementById('exp').style.visibility='hidden';document.getElementById('extrait').style.visibility='hidden'
+for(i=0;i<document.getElementsByTagName("input").length;i++){
+if( document.getElementsByTagName("input")[i].id.indexOf("Data")==0){document.getElementsByTagName("input")[i].checked=false}
+}
+}
+
+var BASstockPanierTemp2=new Array()
+var stockPanierTemp2= new Array()
+
+function checkVal(){
+
+Xcalcul()
+var nbxx=0
+for(k=0;k<document.getElementsByTagName("input").length;k++){
+if(document.getElementsByTagName("input")[k].id.indexOf("Data")==0){
+if(document.getElementsByTagName("input")[k].checked==true){nbxx=1}
+}
+}
+if(nbxx==0){
+document.getElementById('extrait').style.visibility='hidden'
+document.getElementById('exp').style.visibility='hidden'
+alert("Hum! Aucune données du panier n'est sélectionnée!")
+}else{
+
+BASstockPanierTemp2=new Array()
+stockPanierTemp2= new Array()
+
+// trois premières colonnes des deux sous fichiers
+for(a=0;a<stockPanierTemp.length;a++){
+var trois= new Array()
+trois[0]=stockPanierTemp[a][0]
+trois[1]=stockPanierTemp[a][1]
+trois[2]=stockPanierTemp[a][2]
+stockPanierTemp2[a]=trois
+}
+for(a=0;a<BASstockPanierTemp.length;a++){
+var trois= new Array()
+trois[0]=BASstockPanierTemp[a][0]
+trois[1]=BASstockPanierTemp[a][1]
+trois[2]=BASstockPanierTemp[a][2]
+BASstockPanierTemp2[a]=trois
+}
+
+
+var tabcolIci=new Array()
+var j=-1
+for(k=0;k<document.getElementsByTagName("input").length;k++){
+if(document.getElementsByTagName("input")[k].id.indexOf("Data")==0){
+j=j+1
+
+if(document.getElementsByTagName("input")[k].checked==true){
+for(a=0;a<stockPanierTemp.length;a++){
+var trois= new Array()
+trois=stockPanierTemp2[a]
+trois[trois.length]=stockPanierTemp[a][j+3]
+stockPanierTemp2[a]=trois
+}
+for(a=0;a<BASstockPanierTemp.length;a++){
+var trois= new Array()
+trois=BASstockPanierTemp2[a]
+trois[trois.length]=BASstockPanierTemp[a][j+3]
+BASstockPanierTemp2[a]=trois
+}
+
+}
+}
+}
+stockPanierTemp=stockPanierTemp2
+BASstockPanierTemp=BASstockPanierTemp2
+calcultableauBase()
+}
+Xcalculed()
+}
+
+
+function variableCalcul(a){
+if(document.getElementById('denomin').checked==true){
+document.getElementById('TAdenomin').innerHTML=a;
+document.getElementById('TAdenomin').value=a}
+if(document.getElementById('numer').checked==true){
+document.getElementById('TAnumer').innerHTML=a;
+document.getElementById('TAnumer').value=a}
+}
+var baseCalcul0=new Array()
+var baseCalcul1=new Array()
+var baseCalcul2=new Array()
+var baseCalcul3=new Array()
+var paramCalcul=new Array()
+var rangDataCalcul
+var boutonPanier=0
+function envoiPercent(){
+
+if(boutonPanier==0){
+ouvrecarte()
+}
+cl=document.getElementById('TAnumer').value
+rangDataCalcul=cl+"/"
+var tbcol=new Array(0,1,2,cl)
+window.frames.filedata.recuptranslim(4)
+window.frames.filedata.recuptranstabcol(tbcol)
+window.frames.filedata.initDimDataTabCol()
+var transbasNUM=window.frames.filedata.extract_data()
+
+				if(testTableExiste==1){
+				calculTable(transbasNUM)
+				transbasNUM=transbasTemp
+				}
+				
+cl=document.getElementById('TAdenomin').value
+rangDataCalcul+=cl
+var tbcol=new Array(0,1,2,cl)
+window.frames.filedata.recuptranslim(4)
+window.frames.filedata.recuptranstabcol(tbcol)
+window.frames.filedata.initDimDataTabCol()
+var transbasDENOM=window.frames.filedata.extract_data()
+				if(testTableExiste==1){
+				calculTable(transbasDENOM)
+				transbasDENOM=transbasTemp
+				}
+				
+var transbas= new Array()
+for (i=0;i<transbasNUM.length;i++){
+transbas[i]=new Array()
+transbas[i][0]=transbasNUM[i][0]
+baseCalcul0[i]=transbasNUM[i][0]
+transbas[i][1]=transbasNUM[i][1]
+baseCalcul1[i]=transbasNUM[i][1]
+transbas[i][2]=transbasNUM[i][2]
+baseCalcul2[i]=transbasNUM[i][2]
+if(i==0){transbas[0][3]=document.getElementById("Llong").value;baseCalcul3[i]=transbas[0][3]}//transbasNUM[0][3]
+if(i<transbasNUM.length-9 & i>0){
+
+if(transbasNUM[i][3]==-99999 || transbasDENOM[i][3]==-99999  || transbasDENOM[i][3]==0){transbas[i][3]=-99999;baseCalcul3[i]=transbas[i][3]}else{
+transbas[i][3]=parseInt(100*10*(transbasNUM[i][3]/transbasDENOM[i][3]))/10
+baseCalcul3[i]=transbas[i][3]
+}
+}
+}
+transbas[transbasNUM.length-9][3]=-99999
+baseCalcul3[transbasNUM.length-9]=-99999
+transbas[transbasNUM.length-8][3]=0
+baseCalcul3[transbasNUM.length-8]=0
+transbas[transbasNUM.length-7][3]=document.getElementById("Lcourt").value//court
+baseCalcul3[transbasNUM.length-7]=document.getElementById("Lcourt").value//court
+transbas[transbasNUM.length-6][3]=document.getElementById("Llong").value//long
+baseCalcul3[transbasNUM.length-6]=document.getElementById("Llong").value//long
+transbas[transbasNUM.length-5][3]=document.getElementById("SourceEtValid").value//source et date
+baseCalcul3[transbasNUM.length-5]=document.getElementById("SourceEtValid").value//source et date
+transbas[transbasNUM.length-4][3]="-99999"//
+baseCalcul3[transbasNUM.length-4]="-99999"
+transbas[transbasNUM.length-3][3]="-99999"//
+baseCalcul3[transbasNUM.length-3]="-99999"
+transbas[transbasNUM.length-2][3]="-99999"//
+baseCalcul3[transbasNUM.length-2]="-99999"
+transbas[transbasNUM.length-1][3]=document.getElementById("Lcourt").value//court
+baseCalcul3[transbasNUM.length-1]=document.getElementById("Lcourt").value//court
+
+var param=new Array(document.getElementById("Lcourt").value,transbas[transbas.length-5][3],transbas[transbas.length-6][3])
+
+
+paraCalcul=param
+if(boutonPanier==0){
+window.frames.carte.recupBase00(transbas,param,0)
+}
+}
+var indicCalcul=0
+function transpanierXpercent(){
+if(document.getElementById("codeMaille")){document.getElementById('exp').style.visibility='hidden'};document.getElementById('extrait').style.visibility='hidden'
+
+boutonPanier=1
+envoiPercent()
+boutonPanier=0
+if(document.getElementById(urlvar["REZO"]+urlvar["cible"]+" n°"+rangDataCalcul)){}else{
+
+
+if(document.getElementById("panier").innerHTML==""){
+
+var indicmaille=1
+
+var creatici0=document.createElement("dt")
+creatici0.setAttribute("id","codeMaille")
+creatici0.setAttribute("title",codeMaille)
+
+var creatici1=document.createElement("br")
+
+
+var creaticiall=document.createElement("input")
+creaticiall.setAttribute("type","button")
+creaticiall.setAttribute("value","all")
+creaticiall.setAttribute("onclick","checkAll()")
+
+var creaticiraz=document.createElement("input")
+creaticiraz.setAttribute("type","button")
+creaticiraz.setAttribute("value","raz")
+creaticiraz.setAttribute("onclick","checkRaz()")
+
+var creaticival=document.createElement("input")
+creaticival.setAttribute("type","button")
+creaticival.setAttribute("value","Valider")
+creaticival.setAttribute("onclick","document.getElementById('exp').style.visibility='visible';document.getElementById('extrait').style.visibility='visible';checkVal()")
+
+var creaticivid=document.createElement("input")
+creaticivid.setAttribute("type","button")
+creaticivid.setAttribute("value","Vider")
+creaticivid.setAttribute("onclick","raz();effacecolorlibelPanier()")
+
+
+var creaticiexp=document.createElement("input")
+creaticiexp.setAttribute("type","button")
+creaticiexp.setAttribute("value","Export")
+creaticiexp.setAttribute("onclick","sauver()")
+creaticiexp.setAttribute("id","exp")
+creaticiexp.setAttribute("style","visibility:hidden")
+}
+
+
+var AjoutPan=""
+var rangData=rangDataCalcul
+var libelData=paraCalcul[0]
+AjoutPan+='<input type="radio" name="Data'+rangData+'" id="Data'+rangData+'"   onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)" style="cursor:pointer" width="10px" value="1"></input>'
+AjoutPan+='&nbsp;&nbsp;<label id="Qlabel'+(rangData)+'_1" for="Q'+(rangData)+'"><b style="color:red">'+rangData+'</b> :<b> '+libelData+'</b></label></dt><br><small><small><i>('+(urlvar["REZO"]+urlvar["cible"])+' n°'+rangData+')</i></small></small>'
+var creatici=document.createElement("dt")
+creatici.setAttribute("id",urlvar["REZO"]+urlvar["cible"]+" n°"+rangData)
+indicCalcul=1
+
+
+if(document.getElementById("codeMaille")){
+
+ajoutStockPanier(baseCalcul0,baseCalcul1,baseCalcul2,baseCalcul3)
+}else{
+
+ajoutStockPanier(baseCalcul0,baseCalcul1,baseCalcul2,baseCalcul3)
+
+
+document.getElementById("panier").appendChild(creatici0)
+
+document.getElementById("codeMaille" ).innerHTML='<u><b>CodeMaille : '+codeMaille+'</b></u>'
+var creatici1=document.createElement("br")
+document.getElementById("panier").appendChild(creaticiall)
+document.getElementById("panier").appendChild(creaticiraz)
+document.getElementById("panier").appendChild(creaticival)
+document.getElementById("panier").appendChild(creaticivid)
+document.getElementById("panier").appendChild(creaticiexp)
+document.getElementById("panier").appendChild(creatici1)
+
+
+}
+
+document.getElementById("panier").appendChild(creatici)
+document.getElementById(urlvar["REZO"]+urlvar["cible"]+" n°"+rangData).innerHTML=AjoutPan
+document.getElementById("Data"+rangData).checked=true
+
+
+}
+
+}
+
+
+
+
+var mappocoord=new Array()
+var init1=0
+var LLx
+var lignelibel
+var rezoIci
+var specif
+var cibleX="num0"
+	var cibleXtemp="num0"
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+	
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	var CodeSommable=0
+	if(urlvar['CodeSommable']){
+	if(urlvar['CodeSommable']>0){CodeSommable=urlvar['CodeSommable']}
+	}
+
+document.getElementById("InsertDataUnion").src=urlvar["REZO"]+urlvar["cible"]+"/"+"DATA-Union.js"
+
+var Xcodemaille=urlvar['codemaille']+""
+var Xcodemaille2=""
+var specif=urlvar["specif"]
+var pdd=urlvar["pdd"]
+pdd=pdd.replace("readLibelDATA-REC-MODULE.html","")
+//alert(pdd+" "+specif)
+var ope=urlvar["operateurlog"]
+var motcle=urlvar["choix"]//
+var REZO=urlvar["REZO"]
+
+var OKITotal=0
+var OKI=new Array()
+
+</script>
+<script id="mappocoord" name="mappocoord" type="text/javascript"></script>
+<script type="text/javascript">
+
+var Xcazx=urlvar["REZO"]+urlvar["cible"]+'/DATA-mappocoord.js' 
+var xcaz='<script  type="text/javascript" src="'+Xcazx+'"><\/script>'
+document.write(xcaz)
+var tipX=-1
+var test
+function differelibel(){
+init1=0
+setTimeout('libel(urlvar["cible"])',500)
+}
+
+
+
+
+
+var longLigne=0
+var BASstockPanierTemp=new Array()
+var stockPanierTemp= new Array()
+
+
+//
+function ajoutStockPanier(colonne0,colonne1,colonne2,colonneData){
+
+if(stockPanierTemp.length>0){//teste si il existe déjà des données dans le panier
+
+//alert("injection suivante")
+longLigne=stockPanierTemp[0].length
+
+
+			for(i=0;i<colonneData.length-9;i++){
+			stockPanierTemp[i][stockPanierTemp[i].length]=colonneData[i]
+			}
+			for(i=0;i<10;i++){
+			BASstockPanierTemp[i][BASstockPanierTemp[i].length]=colonneData[colonne0.length-9+i]
+			}
+}else{// première injection de donnée
+//alert("première injection de données")
+for(i=0;i<colonne0.length-9;i++){
+var aj=new Array()
+aj[0]=colonne0[i];
+aj[1]=colonne1[i];
+aj[2]=colonne2[i];
+aj[3]=colonneData[i]
+stockPanierTemp[i]=aj
+}
+for(i=0;i<10;i++){// stockage des ligne de terminaison
+var aj=new Array()
+aj[0]=colonne0[colonne0.length-9+i];
+aj[1]=colonne1[colonne0.length-9+i];
+aj[2]=colonne2[colonne0.length-9+i];
+aj[3]=colonneData[colonne0.length-9+i]
+BASstockPanierTemp[i]=aj
+}
+}
+indicCalcul=0
+}
+
+
+
+
+
+function ToutPanier(){
+
+for(i=3;i<lignelibel[0].length-1;i++){       
+libelDataIci=lignelibel[0][i]+" ("+lignelibel[2][i]+")"
+ajoutepanier(i,libelDataIci)
+}
+Xcalculed()
+}
+
+
+
+
+var colon0=new Array()
+var colon1=new Array()
+var colon2=new Array()
+
+
+var sourceData=urlvar["REZO"]+urlvar["cible"]
+var deja=0
+var codeMaille=urlvar['codemaille']
+var codeMailleTemp=""
+var initpanier=0
+function ajoutepanier(rangData,libelData){
+
+if(initpanier==0){codeMailleTemp=codeMaille;initpanier=1}
+
+var testconfirm=1
+				if(codeMailleTemp!=codeMaille){
+				if(confirm("Attention, vous avez changé de maille géographique!            Cliquez sur OK si vous voulez effacer le panier existant et stocker vos données suous la nouvelle maille.             Cliquez sur ANNULER pour conserver le panier existant ( pour réactiver le panier vous devrez sélectionner une carte à la maille précédente)")){testconfirm=1;raz();effacecolorlibelPanier();initpanier=0;ajoutepanier(rangData,libelData)}else{testconfirm=0}
+				}
+		if(testconfirm==1){
+		if(document.getElementById("codeMaille")){
+		document.getElementById('exp').style.visibility='hidden'
+		};
+
+document.getElementById('extrait').style.visibility='hidden'
+
+if(Key16Status==0){
+
+var indicmaille=1
+var AjoutPan=""
+if(document.getElementById("panier").innerHTML==""){
+var creatici0=document.createElement("dt")
+creatici0.setAttribute("id","codeMaille")
+creatici0.setAttribute("title",codeMaille)
+
+var creatici1=document.createElement("br")
+
+var creaticiall=document.createElement("input")
+creaticiall.setAttribute("type","button")
+creaticiall.setAttribute("value","all")
+creaticiall.setAttribute("onclick","checkAll()")
+
+var creaticiraz=document.createElement("input")
+creaticiraz.setAttribute("type","button")
+creaticiraz.setAttribute("value","raz")
+creaticiraz.setAttribute("onclick","checkRaz()")
+
+var creaticival=document.createElement("input")
+creaticival.setAttribute("type","button")
+creaticival.setAttribute("value","Valider")
+creaticival.setAttribute("onclick","document.getElementById('exp').style.visibility='visible';document.getElementById('extrait').style.visibility='visible';checkVal()")
+
+var creaticivid=document.createElement("input")
+creaticivid.setAttribute("type","button")
+creaticivid.setAttribute("value","Vider")
+creaticivid.setAttribute("onclick","raz();effacecolorlibelPanier()")
+
+
+var creaticiexp=document.createElement("input")
+creaticiexp.setAttribute("type","button")
+creaticiexp.setAttribute("value","Export")
+creaticiexp.setAttribute("onclick","sauver()")
+creaticiexp.setAttribute("id","exp")
+creaticiexp.setAttribute("style","visibility:hidden")
+
+}
+
+AjoutPan+='<input type="radio" name="Data'+rangData+'" id="Data'+rangData+'"   onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)" style="cursor:pointer" width="10px" value="1"></input>'
+AjoutPan+='&nbsp;&nbsp;<small><label id="Qlabel'+(rangData)+'_1" for="Q'+(rangData)+'"><b style="color:red">'+rangData+'</b> :<b> '+libelData+'</b></label></dt><br><small><i>('+(urlvar["REZO"]+urlvar["cible"])+' n°'+rangData+')</i></small></small>'
+var creatici=document.createElement("dt")
+creatici.setAttribute("id",urlvar["REZO"]+urlvar["cible"]+" n°"+rangData)
+
+	if(document.getElementById("codeMaille")){
+	if(document.getElementById("codeMaille").title!=codeMaille){
+	alert("Vous avez changé de maille. Vous ne pouvez pas cumuler les données de ce fichier avec les données déjà placées dans le panier");
+	indicmaille=0
+	}
+	}
+if(indicmaille==1){
+
+var tabcolIci=new Array()
+// appel de la colonne de donnée de rang = rangData plus les trois premières colonnes de la base
+
+tabcolIci[0]=0
+colon0=appelColonne(tabcolIci,1)
+tabcolIci[0]=1
+colon1=appelColonne(tabcolIci,1)
+tabcolIci[0]=2
+colon2=appelColonne(tabcolIci,1)
+tabcolIci[0]=rangData
+colonData=appelColonne(tabcolIci,1)
+
+
+				if(testTableExiste==1){
+				tabcolIci=new Array(0,1,2,rangData)
+				var colonData4=appelColonne(tabcolIci,4)
+				calculTable(colonData4)
+				colonData4=transbasTemp
+				colon0=new Array();colon1=new Array();colon2=new Array();colonData=new Array()
+				for(c=0;c<colonData4.length;c++){
+				colon0[colon0.length]=colonData4[c][0]
+				colon1[colon1.length]=colonData4[c][1]
+				colon2[colon2.length]=colonData4[c][2]
+				colonData[colonData.length]=colonData4[c][3]
+				}
+				}
+
+if(document.getElementById(urlvar["REZO"]+urlvar["cible"]+" n°"+rangData)){}else{
+
+
+
+if(document.getElementById("codeMaille")){
+
+ajoutStockPanier(colon0,colon1,colon2,colonData)
+}else{
+
+ajoutStockPanier(colon0,colon1,colon2,colonData)
+document.getElementById("panier").appendChild(creatici0)
+
+
+
+document.getElementById("codeMaille" ).innerHTML='<u><b>CodeMaille : '+codeMaille+' : '+CarteMaille+'</b></u>'
+var creatici1=document.createElement("br")
+document.getElementById("panier").appendChild(creaticiall)
+document.getElementById("panier").appendChild(creaticiraz)
+document.getElementById("panier").appendChild(creaticival)
+document.getElementById("panier").appendChild(creaticivid)
+document.getElementById("panier").appendChild(creaticiexp)
+document.getElementById("panier").appendChild(creatici1)
+
+}
+
+}
+
+document.getElementById("panier").appendChild(creatici)
+document.getElementById(urlvar["REZO"]+urlvar["cible"]+" n°"+rangData).innerHTML=AjoutPan
+
+}
+}else{variableCalcul(rangData)}
+document.getElementById("Data"+rangData).checked=true
+}
+}
+
+function appelColonne(a,dim){
+//envoi paramètres dim et liste de colonnes
+window.frames.filedata.recuptranslim(dim)
+window.frames.filedata.recuptranstabcol(a)
+//formatage array de la colone
+window.frames.filedata.initDimDataTabCol()
+//appel de la colone
+var colone= window.frames.filedata.extract_data()
+return colone
+}
+
+function envoi(cl){
+
+
+//alert("IdClickPanier="+IdClickPanier)
+
+if(IdClickPanier==0 ){
+
+if(Key16Status==0){
+document.getElementById("tabcalcul").style.display="none"
+ouvrecarte()
+var tbcol=new Array(0,1,2,cl)
+window.frames.filedata.recuptranslim(4)
+window.frames.filedata.recuptranstabcol(tbcol)
+window.frames.filedata.initDimDataTabCol()
+var transbas=window.frames.filedata.extract_data()
+
+var param=new Array(transbas[0][3],transbas[transbas.length-5][3],transbas[transbas.length-6][3])
+
+				
+				
+				if(testTableExiste==1){
+				calculTable(transbas)
+				transbas=transbasTemp
+				}
+
+window.frames.carte.recupBase00(transbas,param,cl)
+}else{variableCalcul(cl)}
+}
+IdClickPanier=0
+}
+
+function effacecolorlibelPanier(){
+for(i=3;i<lignelibel[0].length-1;i++){document.getElementById("tr"+i).setAttribute("style","background-color:transparent")}
+
+}
+function colorlibelPanier(a){
+if(Key16Status==0){
+document.getElementById(a).setAttribute("style","background-color:#FFEE6F")
+}
+}
+function OnOffselectlibel(a){
+if(Key16Status==0){
+if(Atemp!=""){document.getElementById(Atemp).setAttribute("style","border:0px solid gray;font-size:9px;width:95%")}
+document.getElementById(a).setAttribute("style","border:3px solid gray;font-size:9px;width:98%")
+Atemp=a
+}
+}
+var IdClickPanier=0
+function changeinit(a){init1=1;ope=a[0];motcle=a[1].replace(/"/g,'')} // déclenché par parent
+var aze=0
+var VarGraph=0
+var ValVarGraph=0
+function libel(cible){ //affichage des entêtes de colonne du fichier de données
+
+Atemp=""
+menudata=""
+window.document.getElementById("ici").innerHTML=""
+cibleX=cible
+
+
+if(init1==0){//récupère les entêtes de colone dans le fichier de données
+lignelibel=new Array() 
+
+
+window.frames.filedata.rgappel(0)
+LLx=window.frames.filedata.longueurdata("return longa")+8
+
+var chemin=urlvar['REZO']+urlvar['cible']
+
+chargecarte(urlvar['REZO'],urlvar['cible'])
+
+lignelibel[0]=window.frames.filedata.transbas00de0("return lignelabel")
+
+//libellé long
+window.frames.filedata.rgappel(LLx-6)
+lignelibel[1]=window.frames.filedata.transbas00de0("return lignelabel")
+
+
+//source
+window.frames.filedata.rgappel(LLx-5)
+lignelibel[2]=window.frames.filedata.transbas00de0("return lignelabel")
+
+
+//validité
+window.frames.filedata.rgappel(LLx-4)
+lignelibel[3]=window.frames.filedata.transbas00de0("return lignelabel")
+
+
+
+
+init1=1
+
+}else{
+if(clickCarte>0){
+window.frames.carte.fondefface()
+window.frames.carte.effaceIcone()
+}
+}
+
+for(i=3;i<lignelibel[0].length-1;i++){
+lignelibel[0][i]=lignelibel[0][i].replace(/©/g,"(c)")
+lignelibel[1][i]=lignelibel[1][i].replace(/©/g,"(c)")
+lignelibel[2][i]=lignelibel[2][i].replace(/©/g,"(c)")
+if(lignelibel[1][i]==-99999){lignelibel[1][i]=""}
+if(lignelibel[2][i]==-99999){lignelibel[2][i]=""}
+if(lignelibel[3][i]==-99999){lignelibel[3][i]=""}
+
+OKITotal=0
+OKI=new Array()
+if(motcle=="" || motcle=="Aucun-mots-clés"){OKITotal=1}else{
+aze+=1
+	var motc1=motcle.split(" ")
+
+
+	var stopmot=motc1.length
+	   OKITotal=1
+	   var kr=0
+	for(r=0;r<stopmot;r++){
+	OKI[r]=0
+ 
+var motc=motc1[r].toLowerCase()
+if(motc!=""){
+					// supression des doublons d'espace dans le texte
+					lignelibel[0][i]=lignelibel[0][i].replace(/  /g," ")
+					lignelibel[1][i]=lignelibel[1][i].replace(/  /g," ")
+					lignelibel[2][i]=lignelibel[2][i].replace(/  /g," ")
+					lignelibel[3][i]=lignelibel[3][i].replace(/  /g," ")
+			
+			var lignelib0=lignelibel[0][i]
+			var lignelib1=lignelibel[1][i]
+			var lignelib2=lignelibel[2][i]
+			var lignelib3=lignelibel[3][i]
+			
+				// chainage de la chaine recherchée par "_" si elle existe dans le texte
+			if(motc.indexOf("_")>0){
+			var motcX=motc.replace("!","")
+					var Xchaine=motcX.split("_")
+					
+					var Zchaine=Xchaine[0]
+					for(a=1;a<Xchaine.length;a++){ Zchaine+=" "+Xchaine[a]}
+
+					Zchaine=Zchaine.replace(/([.?*+^$[\]\\(){}-])/g,"\\$1")
+					var ZZchaine = new RegExp(Zchaine, "g");
+
+
+					lignelib0=lignelib0.toLowerCase().replace(ZZchaine,motcX)
+					lignelib1=lignelib1.toLowerCase().replace(ZZchaine,motcX)
+					lignelib2=lignelib2.toLowerCase().replace(ZZchaine,motcX)
+					lignelib3=lignelib3.toLowerCase().replace(ZZchaine,motcX)
+				
+			}
+
+
+if(motc.indexOf("!")<0){
+if(lignelib0.toLowerCase().indexOf(motc)>-1 || lignelib1.toLowerCase().indexOf(motc)>-1 || lignelib2.toLowerCase().indexOf(motc)>-1 || lignelib3.toLowerCase().indexOf(motc)>-1 ){
+
+if(ope=="ou"){OKI[r]=1;OKITotal=1;kr=1}//r=stopmot
+if(ope=="et"){OKI[r]=1;OKITotal=OKITotal*OKI[r]}
+}else{
+if(ope=="ou"){OKI[r]=0;if(kr==1){OKITotal=1}else{OKITotal=0}}
+if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+}
+
+
+
+
+}else{
+// cas de sauf !
+motc=motc.replace("!","")
+if(lignelib0.toLowerCase().indexOf(motc)>-1 || lignelib1.toLowerCase().indexOf(motc)>-1 || lignelib2.toLowerCase().indexOf(motc)>-1 || lignelib3.toLowerCase().indexOf(motc)>-1 ){
+if(ope=="ou"){OKITotal=0}
+if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+
+}else{
+if(ope=="ou"){OKI[r]=1;OKITotal=OKITotal*OKI[r];}//r=stopmot
+if(ope=="et"){OKI[r]=1;OKITota=OKITotal*OKI[r]}
+}
+}
+
+}
+}
+
+}
+
+//affiche les entêtes en liste 
+if(OKITotal==1){
+menudata+='<dt>'
+var libelDataIci=lignelibel[0][i]+" ("+lignelibel[2][i]+")"
+libelDataIci=libelDataIci.replace(/'/g,"`")
+menudata+='<table id="tablibel'+i+'" style="border:0px solid gray;font-size:9px;width:95%;cursor:pointer"><tr id="tr'+i+'"  ><td onmouseover="this.setAttribute(\'style\',\'background-color:#99AFCF\')"  onmouseout="this.setAttribute(\'style\',\'background-color:transparent\')"  onclick="OnOffselectlibel(\'tablibel'+i+'\');envoi('+i+');" title="'+lignelibel[0][i].replace(/©/g,"(c)")+'" ><label id="Qlabel'+(i)+'_1" for="Q'+(i)+'"><b style="color:red">'+i+'</b> libellé court :<b> '+lignelibel[0][i].replace(/©/g,"(c)")+'</b></label></dt>'
+menudata+='<dt><label id="QlabelLong'+(i)+'_1" for="Qlong'+(i)+'">libellé long :<i> '+lignelibel[1][i].replace(/©/g,"(c)")+'</i></label></dt>'
+menudata+='<dt><label id="QlabelSourceetDate'+(i)+'_1" for="Qlong'+(i)+'">Source :<i> '+lignelibel[2][i]+'</i><br>Date :<b> '+lignelibel[3][i]+'</b></label></dt><img src="bleu.png" style="width:15px;cursor:pointer" ondrag="VarGraph=1;ValVarGraph='+i+'" onmouseup="VarGraph=0" onclick="OnOffselectlibel(\'tablibel'+i+'\');envoi('+i+');" /><i><b>Carte</b></i> &nbsp;&nbsp;<img id=="Data'+(i)+'" onclick="javascript:IdClickPanier=1;fermerCarte();colorlibelPanier(\'tr'+i+'\');ajoutepanier('+i+',\''+libelDataIci+'\');fermerCarte();ouvPanier()" style="cursor:pointer" width="15px" src="cir_0.jpg"  onmouseover=""  ></img>&nbsp;&nbsp;<i><b>Panier</b></i></td></tr></table><br>'
+}
+
+}
+ 
+
+
+document.getElementById("ici").innerHTML=menudata
+
+if(lignelibel.length){}else{
+
+differelibel()
+}
+
+
+}
+
+document.write('<br><br>')
+
+document.write('<div style="position:absolute;width:340px;height:640px;overflow:scroll"><p id="ici" style="font-family:arial;font-size:10">Si les données ne s\'affichent pas au bout de quelques secondes, cliquez de nouveau sur le fichier que vous avez choisi.</p></div>')
+document.write('<div id="divdata" style="position:fixed;top:10px;left:10px;visibility:hidden"><iframe id="filedata"  name="filedata"   height=0 onload="javascript:libel(urlvar[\'cible\']);parent.Xloaded()"></iframe></div>')
+
+document.write('<div style="position:fixed;top:-2px;left:0px;visibility:visible"><table width=100%><tr><td style="font-family:arial;font-size:11px;background-color:white"><center>Données du fichier <span id="fich" style="color:red"></span>  dans le répertoire <span style="color:red">'+urlvar["cible"]+'</span> associé à la carte <span style="color:red">'+urlvar["carte"]+'</span><br><br> </center></td></tr></table></div>')
+
+
+
+function chargefichier(){
+window.frames.filedata.location.href=urlvar["cible"]+'/'+mappocoord[urlvar["numero"]-1]//principal.html
+window.document.getElementById("fich").innerHTML=mappocoord[urlvar["numero"]-1]//"principal.html"
+}
+
+
+function ouvPanier(){document.getElementById("panier").style.display="block"}
+function DeplierReplier(){
+if(document.getElementById("panier").style.display=="none"){document.getElementById("panier").style.display="block"}else{document.getElementById("panier").style.display="none"}
+}
+function DeplierReplier2(){
+if(document.getElementById("tabcalcul").style.display=="none"){document.getElementById("tabcalcul").style.display="block"}else{document.getElementById("tabcalcul").style.display="none"}
+}
+function raz(){
+document.getElementById("panier").innerHTML=""
+stockPanierTemp=new Array()
+BASstockPanierTemp=new Array()
+longLigne=0
+}
+var fichierjs=""
+var fichiertxt=""
+function sauvePanier(){
+var longx=0
+fichierjs='var codeMaille="'+document.getElementById("codeMaille").title+'";\n\n'
+fichiertxt=""
+var stockPanierTempX=stockPanierTemp
+				//Ligne 0
+					fichierjs+='base00['+0+']=new Array('+0+',"'+stockPanierTemp[0][1] 
+					for(j=2;j<stockPanierTemp[0].length;j++){
+					fichierjs+='","'+stockPanierTemp[0][j]
+					}
+					fichierjs+='",0);\n'
+					
+					for(i=1;i<stockPanierTemp.length;i++){//
+
+					stockPanierTempX[i][1]='"'+stockPanierTempX[i][1]+'"'
+					fichierjs+='base00['+i+']=new Array('+stockPanierTempX[i].join()+",0);\n"
+					longx=i
+					}
+
+fichierjs=fichierjs.replace(/""/g,'"').replace(/"""/g,'"')
+
+
+for(i=0;i<9;i++){
+fichierjs+='base00['+(i+longx+1)+']=new Array('+(i+longx+1)+',"'+BASstockPanierTemp[i][1]
+for(j=2;j<BASstockPanierTemp[0].length;j++){
+if(BASstockPanierTemp[i][j]==""){BASstockPanierTemp[i][j]="-99999"}
+fichierjs+='","'+BASstockPanierTemp[i][j]
+}
+fichierjs+='",0);\n'
+}
+
+}
+var initSauveP=0
+function sauver(){
+window.frames.frameStockPanier.location.href='ReadLibelDATAStockPanier.html'
+parent.frames.GestionPanier.location.href="loading.html"
+parent.ouvrcadre('divGestionPanier')
+sauvePanier()
+setTimeout('sauver2()',2000)
+}
+//
+function sauver2(){
+if(initSauveP==0){
+window.frames.frameStockPanier.document.getElementById('origine').value=REZO+urlvar["cible"] // utilisateur
+window.frames.frameStockPanier.document.getElementById('util').value=urlvar["util"] // utilisateur
+window.frames.frameStockPanier.document.getElementById('REZO').value=REZO // réseau sélectionné
+window.frames.frameStockPanier.document.getElementById('pdd').value=pdd // point de départ
+window.frames.frameStockPanier.document.getElementById('specif').value=specif
+window.frames.frameStockPanier.document.getElementById('principalJS').innerHTML=fichierjs
+window.frames.frameStockPanier.IciSubmit()//fichier dans la frame :ReadLibelDATAStockPanier.html
+
+}
+
+}
+
+var tableNomRepPanier =new Array()
+
+function tableNomRepertoirePanier(){
+
+for(i=0;i<mapXP.length-1;i=i+5){
+tableNomRepPanier[tableNomRepPanier.length]=mapXP[i+4].substr(0,mapXP[i+4].length)
+
+}
+}
+
+tableNomRepertoirePanier()
+function testNom(tN){
+var message
+var idid=0
+for(i=0;i<tableNomRepPanier.length;i++){
+if(tableNomRepPanier[i]==tN){idid=1}
+}
+if(idid==1){message='<span style="color:white"><b >ATTENTION : Ce Nom Existe déjà !</b><br>En le conservant, vous écraserez son contenu.</span>'}else{message="<b style='color:transparent'>OK<br>Si vous le conservez vous écraserez son contenu</b>"}
+document.getElementById("retourTestNom").innerHTML=message
+}
+function fermerCarte(){
+document.getElementById("divCarte").style.display="none"
+document.getElementById('nomcarte').style.display='none';
+
+}
+function ouvrecarte(){
+
+if(indicSup3100==1 & clickCarte<1){alert("Hum! Il semble que vous n'avez pas choisi une carte...")}else{
+if(CarteCodeMTEMP==CarteCodeM || carteInDossier==1 ){
+document.getElementById("divCarte").setAttribute("style","position:fixed;top:30px;left:355px;display:block")
+
+NOMCARTE+=" "
+//if(NOMCARTE.indexOf("-")>0){
+NOMCARTE=NOMCARTE.replace("358-","").replace("800-","").replace("3100-","").replace("4100-","").replace("../","")
+if(NOMCARTE=="RA"){NOMCARTE="Rhône Alpes"}
+if(CarteMaille=="commune"){var xma=" <small><i>("+CarteMaille+")</i></small>"}else{var xma=""}
+document.getElementById("nomcarte").innerHTML=NOMCARTE+xma
+document.getElementById('nomcarte').style.display='block';
+//}
+}else{alert("Vous avez changé de maille. Vous devez donc choisir une nouvelle carte")}
+}
+}
+
+var indicSup3100=0
+var clickCarte=0
+var carteInDossier=0
+var testIfSpecialMap=0
+function chargecarte(a,b){
+//a= la plateforme 
+//b= la carte
+testIfSpecialMap=0
+	for(i=0;i<mapXPY.length;i=i+5){// Teste si le nom de la carte sélectionnée comporte la racine d'une carte speciale intégrée dans le dosier CartoPanier.
+	var mapselected=b.replace("_","-")
+	var mapInCartoPanier=mapXPY[i+3].replace("-Module-PageCarto-Panier","")+"-Module-PageCarto-Panier"
+	var mapInCartoPanier2=mapXPY[i+3].replace("358-","").replace("800-","").replace("3100-","").replace("_","-").replace("-Module-PageCarto-Panier","")
+	if(mapselected.indexOf(mapInCartoPanier2)>=0){testIfSpecialMap=1;i=mapXPY.length}
+	}
+				
+indicSup3100=0
+var tailCarte
+if(testIfSpecialMap==1){// Cas de figure où le nom de la carte sélectionnée comporte la racine d'une carte speciale intégrée dans le dosier CartoPanier.
+NOMCARTE=urlvar["carte"].split(":")[0];carteInDossier=1;
+document.getElementById('chois').style.visibility='visible'
+document.getElementById('ferm').style.visibility='hidden'
+Xloading()
+carteInDossier=1;
+document.getElementById('menucartela0').style.display='block'
+document.getElementById('menucartelaX').style.display='none'
+//alert(PageIci[0]+"/CartoPanier/"+tailCarte.replace("../","")+"-Module-PageCarto-Panier.xml?cible="+urlvar["REZO"]+urlvar["cible"]+"/")
+window.frames.carte.location.href=PageIci[0]+"/CartoPanier/"+mapInCartoPanier+".xml?cible="+urlvar["REZO"]+urlvar["cible"]+"/"
+
+}else{
+if(LLx > 800 & LLx < 3101){tailCarte="3100";NOMCARTE=urlvar["carte"].split(":")[0];carteInDossier=1;cartechoisie2(tailCarte)}//
+if(LLx < 801 & LLx>358){tailCarte="800";NOMCARTE=urlvar["carte"].split(":")[0];carteInDossier=1;cartechoisie2(tailCarte)}//
+if(LLx < 359){tailCarte="358";NOMCARTE=urlvar["carte"].split(":")[0];carteInDossier=1;cartechoisie2(tailCarte)}//
+if(LLx > 3101){
+indicSup3100=1
+document.getElementById('menucartela0').style.display='block'
+}
+}
+chemin=a+b
+
+if(urlvar["cible"].indexOf("PANIERS-")>=0){
+
+var chem=mappocoord[11].split("/")
+
+var cibleDataCarte=mappocoord[11].replace(chem[chem.length-1],"")
+window.frames.carte.location.href=PageIci[0]+"/CartoPanier/"+tailCarte.replace("../","")+"-Module-PageCarto-Panier.xml?cible="+mappocoord[11]+"/&dossierpanier="+urlvar["cible"]
+}else{}
+
+}
+
+
+function transRecupDataUnion(){
+window.frames.carte.recupDataUnion(DataUnion)
+}
+
+
+var CarteCodeMTEMP
+var CarteCodeMaille=new Array();
+function cartechoisie(tailCarte){
+NOMCARTE=tailCarte
+CarteCodeMTEMP=CarteCodeM
+selectTablePass(Xcodemaille2,CarteCodeM, tailCarte) // la fonction est dans le fichier TESTtable.js
+
+
+// le passage à la suite se fait par la function cartechoisie2(tailCarte) insérée dans la function recupTable(a) dans le fichier TESTtable.js. Elle s'exécute après le téléchargementd e la table de passage ou directement dans le cas normal 
+
+}
+
+function cartechoisie2(tailCarte){
+if(tailCarte!="none"){
+clickCarte+=1
+{
+document.getElementById('chois').style.visibility='visible'
+document.getElementById('ferm').style.visibility='hidden'
+document.getElementById('menucartela0').style.display='block'
+document.getElementById('menucartelaX').style.display='none'
+Xloading()
+//alert(PageIci[0]+"/CartoPanier/"+tailCarte.replace("../","")+"-Module-PageCarto-Panier.xml?cible="+urlvar["REZO"]+urlvar["cible"]+"/")
+window.frames.carte.location.href=PageIci[0]+"/CartoPanier/"+tailCarte.replace("../","")+"-Module-PageCarto-Panier.xml?cible="+urlvar["REZO"]+urlvar["cible"]+"/"
+}
+}
+}
+var initc=0
+function Xloading(){
+initc=1
+document.getElementById("divloading").style.display="block"
+}
+function Xloaded(){
+document.getElementById("divloading").style.display="none"
+if(initc==1){
+
+ouvrecarte()
+}
+}
+var trok=0
+var tri1=""
+var tri2=""
+var tri3=""
+
+function Xcalcul(){
+document.getElementById('menucartelaX').style.display='none';document.getElementById('ferm').style.visibility='hidden';document.getElementById('chois').style.visibility='visible'
+document.getElementById("divloading2").style.display="block"
+}
+
+function Xcalculed(){
+document.getElementById("divloading2").style.display="none"
+}
+var tableauBase
+var creatTab=0
+function extraire1(){
+
+
+if(document.getElementById("extraireA").style.display=="none"){
+
+window.frames.tabX.location.href="vide.html"
+
+if(creatTab==0){
+creatTab=1
+var tableau=tableauBase
+document.getElementById("aires").innerHTML=tableau
+razradios()
+
+}
+if(trok==1){
+tri1=document.getElementById("namecontent").value
+tri2=document.getElementById("codeleft").value
+tri3=document.getElementById("codecontent").value
+}else{tri1="",tri2="";tri3="";}
+
+for(i=1;i<colon0.length-9;i++){
+var dispici
+if(trok==1){
+dispici="none"
+
+
+var colox1=colon1[i]+""
+var colox2=colon2[i]+""
+if(tri1!="" & colox1.toLowerCase().indexOf(tri1.toLowerCase())>=0){dispici="block"}
+var tri2long=tri2.length
+if(tri2!="" & colox2.toLowerCase().substr(0,tri2long)==tri2){dispici="block"}
+if(tri3!="" & colox2.toLowerCase().indexOf(tri3.toLowerCase())>=0){dispici="block"}
+if(tri1=="" & tri2=="" & tri3==""){dispici="block"}
+}else{dispici="block"}
+
+document.getElementById("trx"+i).style.display=dispici
+document.getElementById("extraireA").style.display="block";
+document.getElementById("extraireB").style.display="none"
+
+}
+
+
+
+}else{
+document.getElementById("extraireA").style.display="none"
+}
+Xcalculed()
+//
+
+
+}
+function calcultableauBase(){
+
+tableauBase="<table style='font-family:arial;font-size:11px'>"
+tableauBase+="<tr><td></td><td>rang</td><td>nom</td><td>Code</td></tr>"
+for(i=1;i<colon0.length-9;i++){
+
+tableauBase+="<tr id='trx"+i+"' style='display:block'><td><input type='radio' id='rad"+i+"'  onmouseover='overcontrolCheck(this)' onclick='controlCheck(this);overcontrolCheck(this)'></td><td>"+colon0[i]+"</td><td>"+colon1[i]+"</td><td>"+colon2[i]+"</td></tr>"
+
+
+}
+tableauBase+="</table>"
+
+}
+function extraire1xxxx(){
+
+
+if(document.getElementById("extraireA").style.display=="none"){
+
+window.frames.tabX.location.href="vide.html"
+document.getElementById("extraireA").style.display="block";
+document.getElementById("extraireB").style.display="none"
+var tableau="<table style='font-family:arial;font-size:11px'>"
+tableau+="<tr><td></td><td>rang</td><td>nom</td><td>Code</td></tr>"
+for(i=1;i<colon0.length-9;i++){
+var dispici
+if(trok==1){
+dispici="none"
+tri1=document.getElementById("namecontent").value
+tri2=document.getElementById("codeleft").value
+tri3=document.getElementById("codecontent").value
+
+var colox1=colon1[i]+""
+var colox2=colon2[i]+""
+if(tri1!="" & colox1.toLowerCase().indexOf(tri1.toLowerCase())>=0){dispici="block"}
+var tri2long=tri2.length
+if(tri2!="" & colox2.toLowerCase().substr(0,tri2long)==tri2){dispici="block"}
+if(tri3!="" & colox2.toLowerCase().indexOf(tri3.toLowerCase())>=0){dispici="block"}
+if(tri1=="" & tri2=="" & tri3==""){dispici="block"}
+}else{tri1="",tri2="";tri3="";dispici="block"}
+
+tableau+="<tr id='trx"+i+"' style='display:"+dispici+"'><td><input type='radio' id='rad"+i+"'  onmouseover='overcontrolCheck(this)' onclick='controlCheck(this);overcontrolCheck(this)'></td><td>"+colon0[i]+"</td><td>"+colon1[i]+"</td><td>"+colon2[i]+"</td></tr>"
+
+
+}
+tableau+="</table>"
+document.getElementById("aires").innerHTML=tableau
+razradios()
+
+}else{document.getElementById("aires").innerHTML="";document.getElementById("extraireA").style.display="none"}
+Xcalculed()
+testCheckedTab()
+//
+}
+function testCheckedTab(){
+Xedit(0)
+	 for(g=1;g<colon0.length-9;g++){
+	 if(document.getElementById("rad"+g).checked==true){Xedit(1);g=colon0.length}
+	 }
+}
+function Xedit(a){
+editOk=a
+if(a==0){var opcit=0.2}else{opcit=1}
+document.getElementById("tableau").style.opacity=opcit
+}
+	 var etatcheck
+	 function overcontrolCheck(a){
+	 etatcheck=a.checked
+	 }
+	 function controlCheck(a){
+	 
+	 a.checked="checked"
+	 if(etatcheck==true){a.checked=false}else{a.checked="checked"}
+	 testCheckedTab()
+	 }
+	 function razradios(){
+	 Xedit(0)
+	 for(i=1;i<colon0.length-9;i++){
+	 document.getElementById("rad"+i).checked=false
+	 } 
+	 }
+	 function allradios(){
+	 Xedit(1)
+	 for(i=1;i<colon0.length-9;i++){
+	 if(document.getElementById("trx"+i).style.display=="block"){
+	 document.getElementById("rad"+i).checked=true
+	 }
+	 } 
+	 }
+	 function creertableau(){
+	 var tableauX="<table style='font-family:arial;font-size:9px'>"
+	  tableauX+="<tr>"
+	 for(j=0;j<stockPanierTemp[0].length;j++){
+	 
+	 tableauX+="<td>"+stockPanierTemp[0][j]+"</td>"
+	 }
+	 
+	 tableauX+="</tr>"
+	 for(i=1;i<colon0.length-9;i++){
+if(document.getElementById("trx"+i).style.display=="block"){
+	 if(document.getElementById("rad"+i).checked==true){
+	 tableauX+="<tr>"
+	 
+	 tableauX+="<td>"
+	 
+	 tableauX+=stockPanierTemp[i].join().replace(/,/g,"</td><td>").replace(/\./g,",").replace(/-99999/g,"")
+	 
+	 
+	 tableauX+="</td>"
+	
+	 tableauX+="</tr>"
+	 }
+} 
+	 } 
+	 tableau+="</table>"
+
+	 window.frames.tabX.document.getElementsByTagName("body")[0].innerHTML=tableauX
+	 document.getElementById("extraireA").style.display="none"
+	 document.getElementById("extraireB").style.display="block"
+	 Xcalculed()
+	 }
+	 
+	 function triok(){
+	 trok=1
+	 document.getElementById("extraireA").style.display="none"
+	 Xcalcul()
+setTimeout(';extraire1();trok=0',100);
+
+	 }
+	 function fermertableau(){
+	 document.getElementById("extraireA").style.display="block"
+	 document.getElementById("extraireB").style.display="none"
+	 }
+</script>
+</head>
+
+<body STYLE=";background-color:#E8E8FF;font-family:arial"    onkeydown="KS(event)" onkeyup="NKS(event)">
+<div id="divloading" style="position:absolute;left:370px ;top:70px;z-index:5000;display:none;text-align: center;"><br><br><br><big style="font-family: Arial; color: rgb(153, 153, 153);"><big><span
+style="font-weight: bold;">Téléchargement de la carte en cours</span></big></big><br><br><img style="width: 208px; height: 13px;" alt=""
+src="loadingAnimation.gif"><br><big style="font-family: Arial; color: rgb(153, 153, 153);"><span
+style="font-weight: bold;">Attendez la fin<br>puis cliquez sur une donnée<br>de la liste</span></big></div>
+<div id="divloading2" style="position:absolute;left:370px ;top:70px;z-index:5000;display:none;text-align: center;"><br><br><br><table style="background-color:white;border:1px solid gray"><tr><td><center><big style="font-family: Arial; color: rgb(153, 153, 153);"><big><span
+style="font-weight: bold;">Calcul en cours</span></big></big><br><br><img style="width: 208px; height: 13px;" alt=""
+src="loadingAnimation.gif"><br><big style="font-family: Arial; color: rgb(153, 153, 153);"><span
+style="font-weight: bold;">Merci de patienter</span></big></center></td></tr></table></div>
+<script type="text/javascript">
+
+</script>
+<div  style="position:fixed;top:32px;left:595px;"><div ><table width=100% ><tr><td><input type="button" value="Panier : Déplier/Replier" onclick="DeplierReplier()" style="font-size:11px"></td><td><input id="extrait" style="visibility:hidden;font-size:11px" type="button" value="Extraire : Déplier/replier" onclick="Xcalcul();setTimeout('extraire1()',100);" ></td></tr>
+<!-- début module extraction sélective -->
+<tr><td>
+
+
+
+
+</td><td></td></tr>
+<!-- fin module extraction selective-->
+</table>
+
+<div id="extraireA" style="width:310px; height:595px;border:1px solid red;display:none">
+<center><table style="font-size:10px;font-family:arial">
+<tr><td>
+<center><small>
+Pour activer les critères : cliquez sur OK <br>(Opérateur logique : ou)
+</small></center>
+</td></tr>
+
+</table></center>
+<table style="font-size:10px;font-family:arial">
+<tr><td>
+Nom contient<br>
+<input id="namecontent" type="text" value="" style="width:80px">
+</td><td>
+Début code<br>
+<input id="codeleft" type="text" value="" style="width:80px">
+</td><td>
+Code contient<br>
+<input id="codecontent" type="text" value="" style="width:80px">
+</td><td>
+ <br>
+<input id="triOk" type="button" onclick="triok()" value="OK" >
+</td></tr>
+
+</table>
+<table><tr><td>
+<input id="tableau" type="button" value="éditer" style="opacity:0.2" onclick="if(editOk==1){Xcalcul();setTimeout('creertableau()',100)}" >
+</td><td>
+<input id="toutlibel" type="button" value="tous" onclick="allradios()" >
+</td><td>
+<input id="razlibel" type="button" value="RAZ" onclick="razradios()" >
+</td></tr></table>
+<div id="aires" style="width:308px; height:490px;border:1px solid green;overflow:scroll;display:block">
+
+</div>
+
+</div>
+<div id="extraireB" style="width:310px; height:595px;border:1px solid red;display:none">
+<center><table><tr><td>
+<center>
+<input  type="button" value="Fermer" onclick="fermertableau()" ><br>
+<span style="font-family:arial;font-size:9px">Cliquez dans le cadre puis "Ctrl A" et "Ctrl C" pour copier le tableau.</span>
+</center>
+
+</td></tr></table></center>
+<div id="tableauX" style="width:308px; height:553px;border:1px solid green;;display:block;">
+<iframe id="tabX" name="tabX" style="width:300px; height:550px;border:0px solid violet;display:block"></iframe>
+</div>
+</div>
+</div>
+<div id="tablePassage" style="width:308px; height:553px;border:1px solid green;display:none">
+<iframe id="tabpassage" name="tabpassage" style="width:300px; height:550px;border:0px solid violet;display:none"></iframe>
+</div>
+
+
+<div id="panier" style="width:300px;height:600px;display:none;border:5px solid gray;background-color:#668ABD;overflow:scroll;font-size:11px"></div>
+
+</div>
+
+<div id="divPanier"  style="position:fixed;top:32px;left:595px;display:none">
+
+<div id="fichePanier" style="width:300px;height:530px;border:5px solid gray;background-color:#375A82;overflow:block">
+
+</div></div>
+<div id="divCarte"  style="position:fixed;top:30px;left:355px;display:none">
+<div id="ficheCarte" style="width:540px;height:657px;border:1px solid gray;background-color:#375A82;overflow:bloc">
+<td valign="top">
+<iframe id="carte" name="carte" onload="Xloaded()" style="border: 0px solid black ; width: 540px; height: 657px; background-color: white;"  scrolling="no" frameborder="no"></iframe> 
+</td>
+</div>
+</div>
+<iframe id="frameStockPanier" name="frameStockPanier" style="display:none" ></iframe>
+
+<div id="divCalcul"  style="position:fixed;top:32px;left:-5px;display:bloc">
+&nbsp;&nbsp;&nbsp;&nbsp;<input style="display:none" type="button" value="Tout dans le Panier" onclick="Xcalcul(); setTimeout('ToutPanier()',100)">
+<div id="divCalcul"  style="position:fixed;top:32px;left:145px;display:bloc">
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Déplier/replier calcul %" onclick="DeplierReplier2()">
+
+<table id="tabcalcul" style="font-size:9px;text-align:center;display:none;border:0.5px solid gray;background-color:white">
+<tr><td>
+Calcul de pourcentage
+</td></tr>
+<tr><td>
+
+<table style="font-size:10px;width:100%;text-align:center">
+<tr><td>Numérateur</td><td>Dénominateur</td></tr>
+<tr><td><textarea id="TAnumer" style="width:90px;height:20px"></textarea></td><td><textarea id="TAdenomin" style="width:90px;height:20px"></textarea></td></tr>
+<tr><td><input name="numer" id="numer"  onclick="document.getElementById('denomin').checked=false" type="radio"></td><td><input name="denomin" id="denomin" onclick="document.getElementById('numer').checked=false" type="radio"></td></tr>
+</table>
+
+</td></tr>
+
+<tr><td>
+libélé court<br>
+<textarea  rows="10" cols="20" id="Lcourt" style="height:40px;"></textarea>   
+</td></tr>
+<tr><td>
+Source et date<br>
+<textarea rows="10" cols="20"   id="SourceEtValid" style="height:40px"></textarea>
+</td></tr>
+<tr><td>
+Libélé long<br>
+<textarea rows="10" cols="20"   id="Llong" style="height:40px"></textarea>
+</td></tr>
+<tr><td>
+
+<input type="button" onclick="envoiPercent()" value="Vers carte">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="transpanierXpercent()" value="vers Panier">
+</td></tr>
+</table>
+
+</div>
+<!-- DIV du choix de carte pour les sources de donénes > 3100-->
+
+<table><tr><td>
+<div id="menucartela0" style="display:none;position:fixed;top:34px;left:362px;;width:220px;background-color:white;border:1px solid black;z-index:10000">
+
+<b><span id="chois" onclick="document.getElementById('menucartelaX').style.display='block';this.style.visibility='hidden';document.getElementById('ferm').style.visibility='visible'" style="cursor:pointer;font-size:11px;color:blue;visibility:hidden">Choisissez une carte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b><b><span id="ferm" style="color:blue;cursor:pointer;font-size:11px" onclick="document.getElementById('menucartelaX').style.display='none';this.style.visibility='hidden';document.getElementById('chois').style.visibility='visible'">(Fermer)</span></b></span><br>
+
+<div   id="menucartelaX"  style="width:220px;height:520px;overflow:scroll;">
+</div>
+
+</div>
+</td><td>
+<div id="nomcarte" style="position :absolute ;top:92px;left:390px;width:250px; height:15px;border:0px solid green;;font-size:11px;font-weight:bold;color:green;font-family:arial;display:none;text-align:left">
+
+</div>
+</td></tr></table>
+
+<script language="javascript">
+
+var menucartela2=new Array()
+
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-RA\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="rhône ain loire isère savoie haute savoie drome ardèche"><b><u>Région Rhône Alpes</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG RA dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-LORRAINE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Lorraine Meurthe-et-Moselle Meuse Moselle Vosges " ><b><u>Région Lorraine</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG LORRAINE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-PICARDIE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Picardie Aisne Oise Somme "><b><u>Région Picardie</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG PICARDIE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-BRETAGNE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Bretagne Côtes-d\'Armor Finistère Ille-et-Vilaine Morbihan "><b><u>Région Bretagne</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG BRETAGNE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-BASSE-NORMANDIE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Calvados Manche Orne "><b><u>Région Basse Normandie</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG BASSE NORMANDIE dep.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-NORD-PAS-de-CALAIS\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Nord-Pas-de-Calais Nord Pas-de-Calais "><b><u>Région Nord Pas de Calais</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG NORD PAS de CALAIS dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-AQUITAINE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Dordogne Gironde Landes Lot-et-Garonne Pyrénées-Atlantiques"><b><u>Région Aquitaine</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG AQUITAINE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-ILE-DE-FRANCE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Ile-de-France Paris Seine-et-Marne Yvelines Essonne Hauts-de-Seine Seine-Saint-Denis Val-de-Marne Val-d\'Oise "><b><u>Région Ile de France</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG ILE de FRANCE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-ALSACE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Bas-Rhin Haut-Rhin"><b><u>Région Alsace</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG ALSACE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-AUVERGNE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Allier Cantal Haute-Loire Puy-de-Dôme "><b><u>Région Auvergne</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG AUVERGNE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-BOURGOGNE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Bourgogne Côte-d\'Or Nièvre Saône-et-Loire Yonne "><b><u>Région Bourgogne</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG BOURGOGNE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-CENTRE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Centre Cher Eure-et-Loir Indre Indre-et-Loire Loir-et-Cher Loiret "><b><u>Région Centre</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG CENTRE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-CHAMPAGNE-ARDENNES\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Champagne-Ardenne Ardennes Aube Marne Haute-Marne "><b><u>Région Champagne Ardennes</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG CHAMPAGNE ARDENNES dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'800-CORSE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Haute Corse Haute Corse-du-Sud Haute-Haute Corse "><b><u>Région Haute Corse</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG CORSE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-FRANCHE-COMTE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Franche-Comté Doubs Jura Haute-Saône Territoire de Belfort "><b><u>Région Franche Comté</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG FRANCHE COMTE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-HAUTE-NORMANDIE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Haute-Normandie Eure Seine-Maritime "><b><u>Région Haute Normandie</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG HAUTE NORMANDIE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-LANGUEDOC-ROUSSILLON\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Languedoc-Roussillon Aude Gard Hérault Lozère Pyrénées-Orientales "><b><u>Région Languedoc Roussillon</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG LANGUEDOC ROUSSILLON dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-MIDI-PYRENEE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Midi-Pyrénées Ariège Aveyron Haute-Garonne Gers Lot Hautes-Pyrénées Tarn Tarn-et-Garonne "><b><u>Région Midi Pyrénées</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG MIDI PYRENEES dept" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'800-LIMOUSIN\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Limousin Corrèze Creuse Haute-Vienne "><b><u>Région Limousin</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG LIMOUSIN dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-PACA\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Provence-Alpes-Côte-d\'Azur Alpes-de-Haute-Provence Hautes-Alpes Alpes-Maritimes Bouches-du-Rhône Var Vaucluse "><b><u>Région Provence Alpes Côtes d Azur</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG PACA dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-PAYS-DE-LA-LOIRE\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Pays de la Loire Loire-Atlantique Maine-et-Loire Mayenne Sarthe Vendée "><b><u>Région Pays de la Loire</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG PAYS DE LA LOIRE dept.svg" style="width:150px;height:150px"></embed></center>'
+menucartela2[menucartela2.length]='<center>Maille : commune.<br><br><span onclick="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'3100-POITOU-CHARENTES\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer" title="Poitou-Charentes Charente Charente-Maritime Deux-Sèvres Vienne "><b><u>Région Poitou Charentes</b></u></span><br>Départements<br><embed onmouseover="CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\'" src="CartoPanier/CARTOSVG POITOU CHARENTES dept.svg" style="width:150px;height:150px"></embed></center>'
+
+
+var rechNM=""
+function envoiNM(){
+rechNM=document.getElementById("tousNom").value.toLowerCase()
+//alert(rechNM)
+
+}
+var mailleDATA=urlvar["maille"].replace("arrondissements","").replace("arrondissement","").replace("municipaux","")
+
+function afflistecartePanier(tous){// tous==0 -> filtre actif
+
+var lici=0
+for(a=0;a<Xcodemaille.length;a++){
+if(Xcodemaille.substr(a,1)=="0"){}else{lici=a;a=Xcodemaille.length}
+}
+Xcodemaille2=Xcodemaille.substr(lici,Xcodemaille.length-lici)
+
+var det="block"
+
+var menucartela=''
+menucartela+=''
+menucartela+='<span style="font-size:9px">'
+menucartela+='<center><div style="position:fixed;background-color:white;width:203px"><form><input id="tous2" style="position:relative;top:4px" type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\''+mailleDATA+'\';codeMaille=Xcodemaille;CarteCodeM=Xcodemaille2;tailCarte=\'none\';selectTablePass(codeMailleTemp,CarteCodeM, tailCarte);afflistecartePanier(0)">'+mailleDATA+' ';
+menucartela+='<dt style="position:relative;top:-5px" >____________<dt>';
+menucartela+='<dt  ><small>autres mailles</small><dt>';
+menucartela+='<span id="detail" style="display:'+det+'">' 
+var nbparl=1
+menucartela+='<input id="tous1" type="radio" name="TOUS" onclick="fermerCarte();afflistecartePanier(1)"> tous ';
+
+var irisX='<input id="tous4"  style="position:relative;top:4px" type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\'IRIS\';codeMaille=\'00007\';CarteCodeM=\'7\';tailCarte=\'none\';selectTablePass(Xcodemaille2,CarteCodeM, tailCarte);afflistecartePanier(4)"> IRIS '
+var communeX='<input id="tous5"  style="position:relative;top:4px" type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\'commune\';codeMaille=\'00011\';CarteCodeM=\'11\';tailCarte=\'none\';selectTablePass(Xcodemaille2,CarteCodeM, tailCarte);afflistecartePanier(5)"> Communes '
+var cantonX='<input id="tous3"   style="position:relative;top:4px"style="position:relative;top:4px"  type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\'canton\';codeMaille=\'00015\';CarteCodeM=\'15\';tailCarte=\'none\';selectTablePass(Xcodemaille2,CarteCodeM, tailCarte);afflistecartePanier(3)"> Cantons '
+var ZE9X='<input id="tous9" style="position:relative;top:4px"  type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\'ZE90\';codeMaille=\'00040\';CarteCodeM=\'40\';tailCarte=\'none\';selectTablePass(Xcodemaille2,CarteCodeM, tailCarte);afflistecartePanier(9)"> ZE90 '
+var departX='<input id="tous7" style="position:relative;top:4px"  type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\'Département\';codeMaille=\'00020\';CarteCodeM=\'20\';tailCarte=\'none\';selectTablePass(Xcodemaille2,CarteCodeM, tailCarte);afflistecartePanier(7)"> Départ '
+var regionX='<input id="tous8" style="position:relative;top:4px"  type="radio" name="TOUS"  onclick="fermerCarte();CarteMaille=\'Région\';codeMaille=\'00030\';CarteCodeM=\'30\';tailCarte=\'none\';selectTablePass(Xcodemaille2,CarteCodeM, tailCarte);afflistecartePanier(8)"> Région '
+
+
+					if(Xcodemaille2=="15"){// Cantons
+					if(CodeSommable==3){menucartela+='<br/><span style="color:red"><small>Ces données ne sont pas sommables ; ce qui interdit un changement d\'échelle. Voir la documentation des données.</small></span>'} else{
+					if(CodeSommable==2){menucartela+='<br/><span style="color:orange"><small><u>Ces données ne sont que patiellement sommables ; tout changement d\'échelle nécessite une grande prudence. Voir la documentation des données.</u></small></span>'}								
+					menucartela+=departX
+								nbparl+=1 ;if(nbparl>=3){ menucartela+='<br>';nbparl=0} 
+					menucartela+=regionX	
+								nbparl+=1 ; if(nbparl>=3){ menucartela+='<br>';nbparl=0}			
+					}
+					}
+
+			if(nbparl>=3){ menucartela+='<br>';nbparl=0}
+
+					if(Xcodemaille2=="7"){// IRIS
+											
+					}
+
+			if(nbparl>=3){ menucartela+='<br>';nbparl=0}
+
+					if(Xcodemaille2=="11"){// communes
+					if(CodeSommable==3){menucartela+='<br/><span style="color:red"><small>Ces données ne sont pas sommables ; ce qui interdit un changement d\'échelle. Voir la documentation des données.</small></span>'} else{
+					if(CodeSommable==2){menucartela+='<br/><span style="color:orange"><small><u>Ces données ne sont que patiellement sommables ; tout changement d\'échelle nécessite une grande vigilence. Voir la documentation des données.</u></small></span><br/>'}
+					menucartela+=cantonX
+								nbparl+=1 ;if(nbparl>=3){ menucartela+='<br>';nbparl=0}
+					menucartela+=departX
+								nbparl+=1 ;if(nbparl>=3){ menucartela+='<br>';nbparl=0} 
+					menucartela+=regionX	
+								nbparl+=1 ; if(nbparl>=3){ menucartela+='<br>';nbparl=0}
+					}
+					}
+
+
+
+
+menucartela+='<span style="display:none"  Autres <input id="tous6" style="position:relative;top:4px"  type="radio" name="TOUS"  onclick="fermerCarte();afflistecartePanier(6)"></span>'
+menucartela+='</span>' 
+menucartela+='<br><u>recherche par fragment de nom</u><dt style="color:gray;font-weight:bold"  ></dt><dt><u title="recherche simple : mieux vaut mettre des fragments de nom. les nom composés sont généralement séparéspar un tiret \'-\'">Règles derecherche</u></dt><br><input style="position:relative;top:-5px"  type="button" value="0"   title="vide le cadre de saisie"  onclick="document.getElementById(\'tousNom\').value=\'\'" ><textarea id="tousNom" style="width:120px;height:25px"></textarea><input style="position:relative;top:-5px"  type="button" value="OK"  onclick="envoiNM();afflistecartePanier('+tous+')" title="Sélectionne par nom dans la liste déterminée par les boutons ci-dessus">';
+menucartela+='</form></span></div></center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+
+
+
+
+//alert(Xcodemaille2)
+if(((Xcodemaille2=="11" & (tous==0)) || tous==5 || tous==1 ) ){
+
+for (l=0;l<menucartela2.length;l++){
+var filtreRechNM=1
+if(rechNM==""){filtreRechNM=1}else{if(menucartela2[l].toLowerCase().indexOf(rechNM)>=0){filtreRechNM=1}else{filtreRechNM=0}}
+if(filtreRechNM==1){
+menucartela+=menucartela2[l]
+}
+}
+}
+var outsider=0
+var outsider2=0
+var valtest=-99999
+if(tous==1){outsider=1}
+if(tous==0){valtest=Xcodemaille2 }
+if(tous==3){valtest="15"}//cantons
+if(tous==4){valtest="7"}//iris
+if(tous==5){valtest="11"}//communes
+if(tous==7){valtest="20"}//Départements
+if(tous==8){valtest="30"}//Régions
+if(tous==9){valtest="40"}//ZE90
+if(tous==6){outsider2=1}// autres
+
+
+
+for(i=0;i<mapXPY.length;i=i+5){
+var Tcodemaille=mapXPY[i]+""
+var Tcodemaille2=""
+var lici=0
+for(a=0;a<Tcodemaille.length;a++){if(Tcodemaille.substr(a,1)=="0"){}else{lici=a;a=Tcodemaille.length}}
+Tcodemaille2=Tcodemaille.substr(lici,Tcodemaille.length-lici)
+
+var filtreRechNM=1
+if(rechNM==""){filtreRechNM=1}else{if(mapXPY[i+3].toLowerCase().indexOf(rechNM)>=0 || libelmapPY[i/5][0].toLowerCase().indexOf(rechNM)>=0){filtreRechNM=1}else{filtreRechNM=0}}
+
+var filtre=1
+
+				if(valtest==Tcodemaille2){filtre=0}
+				
+				
+				if(outsider==1){filtre=0} // toujours en fin de liste de sélection
+
+
+if(filtre==0 & filtreRechNM==1){
+{
+
+menucartela+='<br>Carte n°<span style="color:red;font-weight:bold"> '+(i/5+1)+'</span><br><b><u>Pourtour</u></b> :'+libelmapPY[i/5][0]+'<br><b><u>maille</u></b> : '+libelmapPY[i/5][1]+'<br><span onclick="CarteMaille=\''+libelmapPY[i/5][1]+'\';codeMaille=\''+Tcodemaille+'\';CarteCodeM=\''+Tcodemaille2+'\';tailCarte=\''+mapXPY[i+3]+'\';cartechoisie(tailCarte);document.getElementById(\'menucartelaX\').style.display=\'none\'" style="color:blue;cursor:pointer"><u>affichier cette carte ('+mapXPY[i+3]+')</u></span><br><br>'
+}
+
+}
+}
+menucartela+='</span>'
+document.getElementById("menucartelaX").innerHTML=menucartela
+document.getElementById("tousNom").value=rechNM
+if(tous==1){document.getElementById("tous1").checked=true}
+if(tous==0){document.getElementById("tous2").checked=true}
+if(tous==3){document.getElementById("tous3").checked=true}
+if(tous==4){document.getElementById("tous4").checked=true}
+if(tous==5){document.getElementById("tous5").checked=true}
+if(tous==6){document.getElementById("tous6").checked=true}
+if(tous==7){document.getElementById("tous7").checked=true}
+if(tous==8){document.getElementById("tous8").checked=true}
+if(tous==9){document.getElementById("tous9").checked=true}
+}
+afflistecartePanier(0)
+window.frames.frameStockPanier.location.href="ReadLibelDATAStockPanier.html"
+setTimeout("chargefichier()",1000)
+
+//*******************************************************************************************
+//*******************************************************************************************
+//*******************************************************************************************
+//*******************************************************************************************
+var VecteurGraph=3
+var paramHISTOX0=new Array()
+var menuSujet=new Array()
+var menu=new Array()
+function retourneMenu(){// 
+
+paramHISTOX0=new Array()
+paramHISTOX0[0]=new Array(VecteurGraph)
+paramHISTOX0[1]=""
+paramHISTOX0[2]=""
+paramHISTOX0[3]=new Array(1,3)
+paramHISTOX0[4]=new Array("")
+paramHISTOX0[5]=new Array("")
+paramHISTOX0[6]="1"
+paramHISTOX0[7]="1"
+paramHISTOX0[8]=new Array("","")
+paramHISTOX0[9]=""
+paramHISTOX0[10]=0+menuSujet.length+1
+paramHISTOX0[11]=new Array(3,1)
+paramHISTOX0[12]=""
+menuSujet[menuSujet.length]=paramHISTOX0
+
+menu=menuSujet[0]
+return menu
+}
+
+var AreaSelect=5
+function Xgraph(area){
+window.frames.graph.location.href="../GRAPH-RdV/radar.xml"
+AreaSelect=area
+} 
+function Xgraph2(area){
+window.frames.graph.location.href="GRAPH-RdV/radar.xml"
+AreaSelect=area
+} 
+var transBasGraph=new Array()
+var tbcolg=new Array()
+
+function recupDataInFile(a){
+transBasGraph=new Array()
+
+tbcolg=new Array(0,1,2,a)
+window.frames.filedata.recuptranslim(4)
+window.frames.filedata.recuptranstabcol(tbcolg)
+window.frames.filedata.initDimDataTabCol()
+transBasGraph=window.frames.filedata.extract_data()
+//alert(transBasGraph[AreaSelect])
+XBaseCol(transBasGraph)
+}
+var baseCol=new Array()
+function XBaseCol(transBasGraphXX){
+baseCol=new Array()
+var iSujet=0
+for(b=3;b<tbcolg.length;b++){
+
+var k=0
+var sommeCol=0
+					for(a=1;a<transBasGraphXX.length-9;a++){			
+						if(transBasGraphXX[a][b]!=-99999 ){
+						k=k+1
+						sommeCol+=transBasGraphXX[a][b]
+						}
+					}
+				    baseCol[baseCol.length]=parseInt(100*sommeCol/k)/100
+	 }
+}
+function retourneBaseCol(){return baseCol}
+
+
+
+function formeVecteurDataGraph(){
+
+							base0ici=new Array()
+							base0ici[base0ici.length]="Graphique ici"
+							//for(s=0;s<menuSujet[iSujet][4].length;s++){
+							//base0ici[base0ici.length]=menuSujet[iSujet][4][s]
+							//}
+							
+									base0ici[base0ici.length]=lignelibel[0][VecteurGraph]
+									recupDataInFile(VecteurGraph)
+									
+							base0ici[base0ici.length]="Ce fichier"
+							base0ici[base0ici.length]="............"
+							return base0ici
+}
+
+function transDATAGraph(){
+var datax=new Array()
+datax[0]=AreaSelect
+for(z=3;z<4;z++){
+datax[datax.length]=transBasGraph[AreaSelect][z]
+}
+datax[datax.length]=transBasGraph[AreaSelect][1]
+return datax
+}
+
+function XVecteurGraph(v){
+VecteurGraph=v
+Xgraph2(AreaSelect)
+}
+function RAZVecteurGraph(){
+
+}
+
+
+
+document.write('<div id="divchoix2" style="position:fixed;bottom:2px;left:0px;border:1px solid gray;height:18px;width:330px;visibility:visible;background-color:white"><table sthle="height:18px"><tr><td><span id="chois2" onclick="document.getElementById(\'divchoix2\').style.height=\'350px\';this.style.visibility=\'hidden\';document.getElementById(\'ferm2\').style.visibility=\'visible\'" style="cursor:pointer;font-size:11px;color:blue;visibility:visible">(Dépliez le graphique) </span><textarea id="insertVarGraph" name="insertVarGraph" onmouseover="if(VarGraph==1){this.value=ValVarGraph;XVecteurGraph(ValVarGraph);VarGraph=0}"  style="width:100px;height:19px"></textarea><span id="ferm2" style="color:blue;cursor:pointer;font-size:11px;visibility:hidden" onclick="document.getElementById(\'divchoix2\').style.height=\'18px\';this.style.visibility=\'hidden\';document.getElementById(\'chois2\').style.visibility=\'visible\'"><span style="color:transparent">--</span>(Fermer)</span></td></tr></table><iframe style="border:0px solid gray;height:330px;width:329px" id="graph" name="graph" src=""></ifrane></div>')
+</script>
+</body ></html>

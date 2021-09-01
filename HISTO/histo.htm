@@ -1,0 +1,449 @@
+<html id="GaïaMundi AlterCarto.com">
+<head>
+<title>Histogramme</title>
+
+
+<script language=JavaScript><!--
+
+var point=0
+var nav,calk; // nav sert à s'adapter au Navigateur et calk sert à Netscape
+var textes="0ABCDEFGHIJKLM"; // pour puiser des caractères à placer sous barres
+var maxsup=0;
+var maxinf=0;
+var DATArecept=0;
+var Nclasrecept
+var p;
+var Coef10=1;
+var sign=1
+var maxval0=0
+var minval0=0
+var MinX
+var MaxX
+var SynClasrecept
+var stopquart=" "
+var TITRED
+var commentClasRecept=""
+var vis=""
+//reception des données et calcul du facteur d'échelle de l'histograme
+//-----------------------------------------------------------------------
+
+//reception et décomposition des données+fixation de la borne "nombre de données"
+TITRED= top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.titreDATA("return titreD")
+MinX=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.IMIN("return Mininter")
+MaxX=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.IMAX("return Maxinter")
+
+
+//alert(MaxX)
+DATArecept=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.transDATA("return datax")
+
+for(var i=1;(DATArecept[i]>-100000);i++){
+var stopDATA=i
+var HStop=stopDATA
+if(stopDATA>5){HStop=2}
+
+if(DATArecept[i]!=-99999){
+
+//coeficient d'échelle (recherche du max et du min de l'histo puis de leur Int|valeurs| majorée au décile supérieur)
+//__________________________________________________________________________________________________________________
+if(DATArecept[i]<0){sign=-1}else{sign=1}
+
+if(DATArecept[i]*sign<1){p=1/10}else{p=10};
+if(DATArecept[i]==0){Coef10=1}
+else{
+for(J=0;parseInt(DATArecept[i]*sign/Coef10)<1;J++){
+Coef10*=p
+
+}
+}
+var sup=(parseInt((DATArecept[i]/Coef10/p)+1*sign))*Coef10*p;
+//alert(sup)
+if(sup>=0){
+if(sup>maxsup){maxsup=sup; maxval0=DATArecept[i]}
+}else{
+if(sup<maxinf){maxinf=sup; minval0=DATArecept[i]}
+}
+//fin de coefficient d'échelle (fin de la boucle en j)
+}
+
+}
+//fin de la boucle en i
+if(maxsup==0 & maxinf==0){maxsup=90}
+
+var Coefech=90/(maxsup-maxinf)
+//-------------------------------------------------------------FIXATION DES ECHELLEs au CAS par CAS
+
+if(TITRED[0]=="Life expectancy/birth"){Coefech=1; maxsup=90}
+//-------------------------------------------------------------------------------------------------
+maxinf=(-1)*maxinf*Coefech+2
+maxsup=maxsup*Coefech+2
+
+
+for(var i=0;i<stopDATA-1;i++){
+}
+
+function hidedetail(){
+top.frames.Num0.frames.couches.disable22a()
+top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.indichide()
+}
+
+function showdetail(){
+
+//top.frames.Num0.frames.couches.hidelegend2bis()
+top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.indicshow()
+
+}
+
+
+function init()
+{
+if (navigator.appName=="Netscape")
+  { nav="NE"; calk=document.getElementById('his'); }
+    else nav="IE";
+}
+
+
+
+function histo(){
+
+
+/**** ch est une chaine qui va recevoir toutes les commandes HTML permettant de dessiner
+  l'Histo.. en utilisant les Données et les images des couleurs des barres..************/
+var ch="";
+ch+='<table><TR>'
+//ch+='<TD>'
+
+//ch+='</TD>'
+var largo
+if(stopDATA<4){largo=4}else{largo=stopDATA}
+
+
+ch+='<TD>'
+ch+='<Table width='+(31*largo+30+10)+' height=120  bgcolor="#FFE0CC" cellpadding=5 cellspacing=0';
+// si navigateur est IExplorer alors on ajoute un fond au tableau sinon rien..
+if (nav=="IE") ch+=' background="fond_ma.gif"';
+//------------------------------------------------------------------------------------TITRES
+ch+=' border=1><TR><TD>';
+ch+='<table  height=100% border=0 cellpadding=0 cellspacing=0 >';
+ch+='<tr height=10><td colspan='+largo+1+' HEIGHT=5 align=center>';
+ch+='<font face="Arial" size=-1 color="black"><b>';
+ch+='&nbsp;&nbsp;'+DATArecept[stopDATA+1]+'</B></FONT></td>'
+ch+='</TR>'
+
+ch+='<tr height=10><td colspan='+largo+1+' HEIGHT=5 align=center>';
+ch+='<font face="Arial" size=-1 color="navy"><b>';
+ch+='&nbsp;&nbsp;'+TITRED[0]+'</B></FONT></td>'
+ch+='</TR>'
+
+ch+='<tr height=10><td colspan='+largo+1+' HEIGHT=5 align=center>';
+ch+='<font face="Arial" size=-2 color="navy"><b>';
+ch+='&nbsp;&nbsp;'+TITRED[stopDATA+1]+'</B></FONT></td>'
+ch+='</TR>'
+
+ch+='<TR height='+maxsup+'>';
+ch+='<td width=10% valign=bottom  ></TD>'
+for (var i=1;i<stopDATA+1;i++)
+  { //--------------------------------------------------dessin des barres
+var Hbar=DATArecept[i]*Coefech
+var Oborder=1
+if(Hbar<0){Hbar=0;Oborder=0}
+if(DATArecept[i]==-99999){Hbar=0;Oborder=0}
+if(DATArecept[i]==0){Hbar=0;Oborder=0}
+if(DATArecept[i]==0){vis="hidden"}else{vis="visible"}
+
+var borneplus2=stopDATA+1
+commentClasrecept=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.commentClas("return commentClasX")
+
+if(i==borneplus2-1){top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.initE()}
+
+if(document.allxxxx){
+if(Hbar==0 || DATArecept[i]==0){ch+='<td width=10% valign=bottom ></TD>'}else{
+   ch+='<td width=10% valign=bottom >';
+   ch+='<div height='+Hbar+' style="visibility:'+vis+'"><img src="h_'+i+'.gif" width=28 border='+Oborder+'  height='+Hbar+' onmousedown="showdetail()" onmouseover="hidedetail()" title="'+commentClasrecept+'"></div></TD>';
+}
+}else{
+   ch+='<td width=10% valign=bottom >';
+   ch+='<div height='+Hbar+' style="visibility:'+vis+'"><img src="h_'+i+'.gif" width=28 border='+Oborder+'  height='+Hbar+' onmousedown="showdetail()" onmouseover="hidedetail()" title="'+commentClasrecept+'"></div></TD>';
+}
+
+
+  }
+ch+='</TR><TR height='+maxinf+'>'
+ch+='<td width=10% valign=bottom></TD>'
+for (var i=1;i<stopDATA+1;i++)
+  { //----------------------------------------------------------------------------dessin des barres
+  var Hbar=-1*DATArecept[i]*Coefech
+var Oborder=1
+if(Hbar<0){Hbar=0;Oborder=0}
+if(DATArecept[i]==-99999){Hbar=0;Oborder=0}
+if(DATArecept[i]==0){Hbar=0;Oborder=0}
+if(DATArecept[i]==0){vis="hidden"}else{vis="visible"}
+var borneplus2=stopDATA+1
+commentClasrecept=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.commentClas("return commentClasX")
+if(i==borneplus2-1){top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.initE()}
+if(document.allxxxx){
+if(Hbar==0 || DATArecept[i]==0){ch+='<td width=10% valign=bottom ></TD>'}else{
+   ch+='<td width=10% valign=top >';
+   ch+='<div height='+Hbar+' style="visibility:'+vis+'"><img src="h_'+i+'.gif" width=28 border='+Oborder+'  height='+Hbar+' onmousedown="showdetail()" onmouseover="hidedetail()" title="'+commentClasrecept+'"></div></TD>';
+}
+}else{
+   ch+='<td width=10% valign=top >';
+   ch+='<div height='+Hbar+' style="visibility:'+vis+'"><img src="h_'+i+'.gif" width=28 border='+Oborder+'  height='+Hbar+' onmousedown="showdetail()" onmouseover="hidedetail()" title="'+commentClasrecept+'"></div></TD>';
+}
+}
+
+ch+='</TR><TR>'; //</table></TD></TABLE>';
+//------------------------------------------------------------------------------textes sous barres
+ch+='<td><table cellpadding=0  width=30>'
+
+//ch+='<Tr><td align=center HEIGHT=5  ><font face="Arial" size=-2 color="navy" align=center><B>clas</B></font></td></tr>'
+
+ch+='<TR><td align=center HEIGHT=5  ><font face="Arial" size=-2 color="navy" align=center >value</B></font></td></tr><TR><td align=center HEIGHT=5 ><font face="Arial" size=-2 color="navy" align=center> Mean</B></font></td></tr></table></td>'
+
+for ( var i=1;i<stopDATA+1;i++)
+  { 
+var borneplus=stopDATA+1
+var affichval
+var ndcolor="navy"
+if(DATArecept[i]==-99999){ndcolor="red";affichval="nd"}else{affichval=DATArecept[i]}
+SynClasrecept=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.synthClas("return synthClasX[i]")
+if(i==borneplus-1){top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.initD()}
+    ch+='<td><table cellpadding=0 >'
+
+//ch+='<Tr><td align=center><font face="Arial" size=-2 color="navy" align=center><B>'+textes.charAt(i)+'</B></font></td></tr>'
+
+ch+='<TR><td align=center><font face="Arial" style="font-size:9px" color='+ndcolor+' align=center><B>'+affichval+'</B></font></td></tr></tr><TR><td align=center><font face="Arial" size=-2 color="navy" align=center><B>'+SynClasrecept[1]+'</B></font></td></tr></table></td>';
+  }
+
+
+
+
+
+ch+='</TR></table></td></table>'
+ch+='</TD>'
+ch+='</TR></table>'
+//______________________________________SECOND TABLEAU : DETAIL DONNES_____________________
+//__________________________________________________________________________________________
+//__________________________________________________________________________________________
+ch+='<table  border=0 cellpadding=3 cellspacing=0><TR>'
+ch+='<TD HEIGHT=5>'
+var zsx
+if(stopDATA==4){zsx=1}else{zsx=0}
+ch+='<table width='+(31*largo+zsx*15+30+10)+' height= '+(80+53*(HStop-1))+'  border=1 cellpadding=5 cellspacing=0  bgcolor="#FFE0CC"><TR>'
+
+//(48*HStop+38)
+
+ch+='<TD HEIGHT=5>'
+ch+='<table  border=0 cellpadding=0 cellspacing=0>'
+
+
+
+for(var i=1;i<borneplus;i++)
+{
+SynClasrecept=top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.synthClas("return synthClasX[i]")
+if(i==borneplus-1){top.frames.Num0.frames.couches.zam2.top.frames.Num0.frames.couches.zoom.initD()}
+//ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080">'
+ch+='<TABLE border=0 cellpadding=0 cellspacing=0>'
+
+//_____________________titre_______________
+if(i==1){
+ch+='<TR>'
+ch+='<TD HEIGHT=5 align=center>'
+ch+='<P><FONT SIZE="-1" FACE="Arial"  COLOR="#400080"><b>Position</b></FONT></P>'
+ch+='</TD>'
+ch+='</TR>'
+}
+//____________________________________
+
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><b><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><img src="h_'+i+'.gif" width=10  height=10 border=1 ALIGN=bottom>&nbsp;&nbsp; '+SynClasrecept[0]+'</FONT></b></P>'
+ch+='</TD>'
+ch+='</TR>'
+//---------( '+textes.charAt(i)+' :)
+
+
+//_________________if(i==1){début if stopDATA>5 ___________________
+if(stopDATA<6){
+
+if(i==1){
+ch+='<TR HEIGHT=0>'
+ch+='<TD align=center HEIGHT=0>'
+ch+='<P><FONT SIZE=-4 FACE="Arial" COLOR="#400080">min | Q3 | Q2 | Q1 | Max </FONT></P>'
+ch+='</TD>'
+ch+='</TR>'
+}
+
+ch+='<TR HEIGHT=0>'
+ch+='<TD align=center  HEIGHT=0>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080" >('+MinX[i]+'  ;  '+SynClasrecept[2]+' ;    '+SynClasrecept[3]+'  ;   '+SynClasrecept[4]+'   ;  '+MaxX[i]+')</FONT></P>'
+ch+='</TD>'
+ch+='</TR>'
+//ch+='<TR>'
+ch+='<TD>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080">'
+
+//-------------------------------------------------------------------
+ch+='<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>'
+
+ch+='<TR>'
+ch+='<TD  HEIGHT=5>'
+
+//ch+='<Table >'
+
+
+//ch+='</TD>'//-------------------------XXXXXX mettre ou non????
+//ch+='</TR>'//-------------------------XXXXXX mettre ou non????
+
+
+
+//ch+='<TR HEIGHT=5>'
+//ch+='<TD HEIGHT=5>'
+//ch+='<P HEIGHT=5></P>'
+//ch+='</TD>'
+ch+='<TD width=30  HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" HEIGHT=5 FACE="Arial" COLOR="#400080"></FONT></P>'
+ch+='</TD>'
+
+
+//---------------------------------------premier intervalle
+
+if (parseFloat(DATArecept[i])<=parseFloat(SynClasrecept[2])){
+if (DATArecept[i]==-99999){
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q4.gif" WIDTH='+105*(SynClasrecept[2]-MinX[i])/(MaxX[i]-MinX[i])+' HEIGHT=7 ALIGN=center></FONT></P>'
+ch+='</TD>'
+}
+else{
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q4.gif" WIDTH='+105*(DATArecept[i]-MinX[i])/(MaxX[i]-MinX[i])+' HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="pointeur.gif" WIDTH=5 HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q4.gif" WIDTH='+105*(SynClasrecept[2]-DATArecept[i])/(MaxX[i]-MinX[i])+' HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+}
+
+point=1
+
+
+}
+else{
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q4.gif" WIDTH='+105*(SynClasrecept[2]-MinX[i])/(MaxX[i]-MinX[i])+' HEIGHT=7 ALIGN=center></FONT></P>'
+ch+='</TD>'
+}
+
+
+//---------------2ème intervalle
+
+if (parseFloat(DATArecept[i])<=parseFloat(SynClasrecept[3]) & parseFloat(DATArecept[i])>parseFloat(SynClasrecept[2])){
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q3.gif" WIDTH='+105*(parseFloat(DATArecept[i])-parseFloat(SynClasrecept[2]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="pointeur.gif" WIDTH=5 HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q3.gif" WIDTH='+105*(parseFloat(SynClasrecept[3])-parseFloat(DATArecept[i]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+point=2
+}
+else{
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q3.gif" WIDTH='+105*(parseFloat(SynClasrecept[3])-parseFloat(SynClasrecept[2]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+}
+
+
+//-----------3ème intervalle
+
+if (parseFloat(DATArecept[i])<=parseFloat(SynClasrecept[4]) & parseFloat(DATArecept[i])>parseFloat(SynClasrecept[3])){
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q2.gif" WIDTH='+105*(parseFloat(DATArecept[i])-parseFloat(SynClasrecept[3]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="pointeur.gif" WIDTH=5 HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q2.gif" WIDTH='+105*(parseFloat(SynClasrecept[4])-parseFloat(DATArecept[i]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+point=2
+}
+else{
+
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q2.gif" WIDTH='+105*(parseFloat(SynClasrecept[4])-parseFloat(SynClasrecept[3]))/(MaxX[i]-MinX[i])+' HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+}
+
+//-----------------quatrième intervalle
+
+
+if (parseFloat(DATArecept[i])>parseFloat(SynClasrecept[4])){
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q1.gif" WIDTH='+105*(parseFloat(DATArecept[i])-parseFloat(SynClasrecept[4]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="pointeur.gif" WIDTH=5 HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q1.gif" WIDTH='+105*(parseFloat(MaxX[i])-parseFloat(DATArecept[i]))/(MaxX[i]-MinX[i])+' HEIGHT=7  ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+point=2
+}
+else{
+
+
+ch+='<TD HEIGHT=5>'
+ch+='<P><FONT SIZE="-2" FACE="Arial" COLOR="#400080"><IMG SRC="Q1.gif" WIDTH='+105*(parseFloat(MaxX[i])-parseFloat(SynClasrecept[4]))/(MaxX[i]-MinX[i])+' HEIGHT=7 ALIGN=bottom></FONT></P>'
+ch+='</TD>'
+}
+ch+='</TR>'
+ch+='</TABLE>'
+
+
+
+
+//_________________________________________fin du if stopdata>5______________
+}
+//ch+='</FONT></P>'
+ch+='</TD>'
+ch+='</TR>'
+ch+='</TABLE>'
+ch+='</FONT></P>'
+}
+ch+='</table>'
+ch+='</TD></TR></table>'
+ch+='</TD></TR></table>'
+
+if ( nav=="IE") his.innerHTML=ch; // pour IExplorer ..
+else  // pour Netscape..
+       {
+document.getElementById('his').innerHTML=ch
+        //calk.document.open();
+        //calk.document.write(ch);
+        //calk.document.close();
+       }
+}
+//-->
+</script>
+</head>
+<body onLoad="init();histo();" STYLE="background-color: transparent" >
+<font face="Verdana,Arial" size=-2 color=blue>
+<b></B></font>
+</font>
+<!--***** le calque de l'Histogramme **** -->
+<div id="his" style="position:absolute;left:0;top:0;width:300;height:160">
+</div>
+
+</body>
+</html>  

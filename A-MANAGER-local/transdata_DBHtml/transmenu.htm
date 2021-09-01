@@ -1,0 +1,765 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr">
+
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+</head><body STYLE="font-family:arial;">
+<script language="javascript">
+document.write('<script language="javascript" src="../../tablespassage/tablepass.js?alea'+Math.random()+'"><\/script>')
+document.write('<script language="javascript" src="../../mapsILIADE.js?alea'+Math.random()+'"><\/script>')
+
+</script>
+<script language="javascript">
+var MAPICI=mapX
+var LIBELICI=libelmap
+mapX=new Array()
+libelmap=new Array()
+var selectedrezo
+var selectedrezoTemp
+var rezo=new Array()
+var nomrezo=new Array()
+</script>
+<script id="mapsRezo" onload="affichmaille()" language="javascript" ></script>
+<script language="javascript" >
+
+var indictable="zerotable"
+var menucumul=new Array()
+var menutransTEMP=new Array()
+var CumulMenuTransfert=new Array()
+var CumulDataToTransfert=new Array()
+var lignDataToTransfert=new Array("z","w")
+var initx=0
+var init=0
+var selectedindextemp2=0
+var selectedindextemp=0
+var postemp=0
+var postemp2=0
+function init1(){init=1}
+function init0(){init=0}
+var rg=0
+var sel=1
+var sel2=1
+var n
+var repcarte
+var repcarte2
+var mapsorig
+
+
+function BL(){ //début signal chargement top.BL()
+
+document.getElementById("divloading").style.top=200+'px'
+top.frames.FloadingBis.location.href="vide.htm" //introduit une interruption dans le cycle firefox et permet ainsi de forcer l'affichage du signal de téléchargement
+
+}
+function EL(){//fin signal chargement  top.EL()
+
+document.getElementById("divloading").style.top=-1000+'px'
+//menuBar.hideSubMenus()
+}
+
+
+function retournemapsorig(){return mapsorig}
+
+function initmenus(){
+document.carte2.selectcartes2.selectedIndex=0
+document.carte.selectcartes.selectedIndex=0
+window.frames.menusdonnees.framedataorigine.location.href="../../vide.htm"
+
+}
+
+
+function selectrepertoires(a){
+if(a==1){a=0}
+
+repcarte=mapX[a+4]
+
+if(mapX[a+4].split("/").length==2){// cas des platerformes chemin/sc1/
+repcarte=mapX[a+4].split("/")[1]
+selectedrezoTemp=selectedrezoTemp+mapX[a+4].split("/")[0]+"/"
+
+}
+
+
+
+var fich="vide_insertjs.html?sel="+sel+"&rep="+repcarte+"&maps="+repcarte+"&rezo="+selectedrezoTemp
+mapsorig=mapX[a+4]
+
+window.frames.menusdonnees.location.href=fich
+}
+
+function selectrepertoires2(a){// ouverture de vide_add_insertjs.html fichier de commande de l'adjonction des données à transférer
+//alert("a="+a)
+repcarte2=MAPICI[((a-1)+4)]
+
+var fich2="vide_add_insertjs.html?sel="+sel+"&rep="+repcarte2+"&maps="+MAPICI[a+4]+"&Xtable="+indictable
+
+window.frames.menusdonnees2.location.href=fich2
+}
+/*
+function trans_n_sel(nx1,selx1){
+nx=nx1
+selx2=selx1
+}
+*/
+var selectedmaille=""
+var selectedmaille2=""
+function change_maille() {
+
+var site = document.maille.selectmaille.selectedIndex;
+selectedmaille=document.maille.selectmaille.options[site].value;
+document.getElementById("R_1").checked=false
+document.getElementById("R_2").checked=false
+window.frames.menusdonnees.location.href="vide.html"
+affichmenusmaps()
+}
+function change_maille2() {
+
+var site = document.maille2.selectmaille2.selectedIndex;
+selectedmaille2=document.maille2.selectmaille2.options[site].value;
+affichmenusmaps2()
+}
+function change_site() {
+
+var site = document.carte.selectcartes.selectedIndex;
+
+selectrepertoires(parseInt(document.carte.selectcartes.options[site].value));
+selectedindextemp=site
+
+postemp=site
+document.carte.selectcartes.selectedIndex=postemp
+document.getElementById("R_1").checked=false
+document.getElementById("R_2").checked=false
+}
+
+function initX(){// déclenché par bouton radio : remet à zero les opérations en cours et positionne le type de menu 
+
+if(init==1){
+alert("attention si vous n'avez pas sauvegardé votre travail en cours, il sera perdu ")
+}
+document.carte.selectcartes.selectedIndex=0
+window.frames.menusdonnees.location.href="../../vide.htm"
+document.getElementById("ulencours").innerHTML=''
+CumulMenuTransfert=new Array()
+initx=0
+}
+function initX2(){
+
+
+document.getElementById("ulencours").innerHTML=''
+CumulMenuTransfert=new Array()
+initx=0
+}
+
+
+
+function change_site2() {
+
+var site = document.carte2.selectcartes2.selectedIndex;
+
+selectrepertoires2(document.carte2.selectcartes2.options[site].getAttribute("value"));
+selectedindextemp2=site
+
+postemp2=site
+document.carte2.selectcartes2.selectedIndex=postemp2
+}
+
+
+
+
+function change_site3() {
+
+var site = document.table.selecttable.selectedIndex;
+indictable=document.table.selecttable.options[site].value;
+document.table.selecttable.selectedIndex=site
+}
+
+
+function transDataToTransfert(){return CumulDataToTransfert}
+function transMenuTransfert(){return CumulMenuTransfert}
+function transcomptedesdoublons(){return comptedesdoublons}
+function addMenuTransfert(menutrans){menutransTEMP=menutrans}
+function addMenuTransfertFINAL(menutransTEMP){CumulMenuTransfert[CumulMenuTransfert.length]=menutransTEMP}
+
+
+var comptedesdoublons=new Array()
+
+
+function AddDataToTransfert(DataTabCol){
+//alert("DataTabCol="+DataTabCol)
+if(initx==0){
+for(h=0;h<DataTabCol[0].length;h++){comptedesdoublons[comptedesdoublons.length]=-1}
+CumulDataToTransfert=DataTabCol
+menucumul[menucumul.length]=menutransTEMP
+addMenuTransfertFINAL(menutransTEMP)
+
+;initx=1
+
+}else{
+var b0=comptedesdoublons.length
+for(h=0;h<DataTabCol[0].length;h++){comptedesdoublons[comptedesdoublons.length]=-1}
+for(i=0;i<CumulDataToTransfert.length;i++){
+
+
+var lignDataToTransfert=CumulDataToTransfert[i]
+
+var lignDataTabCol=DataTabCol[i]
+
+if(i==0){// cas de la ligne des libellé : on cherche les doublons
+//alert("lignDataTabCol="+lignDataTabCol+"   lignDataToTransfert="+lignDataToTransfert )
+for(k=0;k<lignDataTabCol.length;k++){
+var rg1=""
+var rg2=""
+for(s=0;s<lignDataToTransfert.length;s++){//boucle de recherche d'un doublons de lignDataTabCol[j] sur lignDataToTransfert
+//alert("k="+k+"   s="+s)
+if(lignDataToTransfert[s]==lignDataTabCol[k]){indicboublon=1;rg1=s;reg2=k;comptedesdoublons[b0+k]=s}
+}
+}
+
+}
+
+//cas général : on traite les doublons repérés dans la ligne des libéllés
+for(j=0;j<lignDataTabCol.length;j++){
+/* 
+var indicboublon=0
+
+réduction des doublons
+on lit dans la ligne 0 si on a un doublon entre les liblellés déja cumulés pris dans lignDataToTransfert[0]  au rang j et les nouveaux pris dans DataTabCol[0] au rang rg2. Si oui on compare les valeurs des rangs j et rg2 ligne par ligne var lignDataToTransfertTEST=CumulDataToTransfert[k]  et var lignDataTabCol=DataTabCol[k] avec un indice k pour la ligne. Si au moins une valeur est différente , alors on maintient les deux. Sinon, on met un drapeau indicdoublon=1. AU moment de la concaténnation des segments de ligne, on saute le rang rg2 de lignDataTabCol et  on met j à la place de la valeur du rang rg2 dans menutransTEMP et ôte 1 (-1) à la valeur contenue dans tous les rangs suivants de menutransTEMP ------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+//-------------------------------------------------- fin de réduction de doublons ----------------------------------------------------------------------*/
+//if(i==0){alert(comptedesdoublons[b0+j])}
+if(comptedesdoublons[b0+j]==-1){
+lignDataToTransfert[lignDataToTransfert.length]=lignDataTabCol[j]
+}
+}
+
+//alert(lignDataToTransfert)
+CumulDataToTransfert[i]=lignDataToTransfert
+
+}
+
+addMenuTransfertFINAL(menutransTEMP)
+}
+//alert(CumulMenuTransfert)
+//alert(CumulDataToTransfert[0]) // test ligne des libellés
+}
+
+var Id="";var Valu="";var Onclk="";var Txt="";var idSelect=""
+
+function creatOption(Id,Valu,Onclk,Txt,idSelect){
+
+				var nouveaux0=document.createElement("option")
+				if(Valu!=""){nouveaux0.setAttribute("value",Valu)}
+				if(Id!=""){nouveaux0.setAttribute("id",Id)}
+				if(Onclk!=""){nouveaux0.setAttribute("onclick",Onclk)}
+				var nt1=document.createTextNode(Txt)
+				nouveaux0.appendChild(nt1)
+				document.getElementById(idSelect).appendChild(nouveaux0)
+}
+
+
+var menu1=""
+var menu2=""
+function affichmenusmaps(){
+document.getElementById("selectcartes").innerHTML=""
+menu1='<option id="option0" value="javascript:rien2()">&nbsp;Cartes</option>'
+
+				/*var nouveaux0=document.createElement("option")
+				nouveaux0.setAttribute("value","javascript:rien2()")
+				nouveaux0.setAttribute("id","option0")
+				
+				var nt1=document.createTextNode(" Cartes")
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcartes").appendChild(nouveaux0)
+				*/
+				// variables(Id,Valu,Onclk,Txt,idSelect)
+				creatOption("option0","javascript:rien2()",""," Cartes","selectcartes")
+
+
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+if(selectedmaille==mapX[i+0]){
+menu1+='<option id="option'
+menu1+=kc
+
+
+menu1+='"    VALUE="'+i+'">'//
+menu1+=kc
+menu1+="-"
+menu1+=mapX[i+4]
+menu1+='</option>'
+
+				/*var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","option"+kc)
+				nouveaux0.setAttribute("value",i)
+				var nt1=document.createTextNode(kc+'-'+mapX[i+4])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcartes").appendChild(nouveaux0)*/
+				
+				// variables(Id,Valu,Onclk,Txt,idSelect)
+				creatOption("option"+kc,i,"",kc+'-'+mapX[i+4],"selectcartes")
+
+
+}
+}
+//document.getElementById("selectcartes").innerHTML=menu1
+//------fin menu1
+}
+function affichmenusmaps2(){
+document.getElementById("selectcartes2").innerHTML=""
+menu2='<option id="option2" value="javascript:rien2()">&nbsp;Cartes</option>'
+				
+				/*var nouveaux0=document.createElement("option")
+				nouveaux0.setAttribute("value","javascript:rien2()")
+				nouveaux0.setAttribute("id","option20")
+				
+				var nt1=document.createTextNode(" Cartes")
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcartes2").appendChild(nouveaux0)*/
+				
+				
+								// variables(Id,Valu,Onclk,Txt,idSelect)
+				creatOption("option20","javascript:rien2()",""," Cartes","selectcartes2")
+
+var kc=0
+for(i=0;i<MAPICI.length;i=i+5){
+kc+=1
+if(selectedmaille2==MAPICI[i]){
+menu2+='<option id="option2'
+menu2+=kc
+
+
+menu2+='"    VALUE="'+i+'">'//
+menu2+=kc
+menu2+="-"
+menu2+=MAPICI[i+4]
+menu2+='</option>'
+
+				/*var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","option2"+kc)
+				nouveaux0.setAttribute("value",i)
+				var nt1=document.createTextNode(kc+'-'+MAPICI[i+4])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcartes2").appendChild(nouveaux0)*/
+				
+				// variables(Id,Valu,Onclk,Txt,idSelect)
+				creatOption("option2"+kc,(i+1),"",kc+'-'+MAPICI[i+4],"selectcartes2")
+}
+
+}
+//document.getElementById("selectcartes2").innerHTML=menu2
+
+}
+
+function change_rezo(){
+
+mapX=new Array()
+
+var site = document.rezo.selectrezo.selectedIndex;
+selectedrezo=document.rezo.selectrezo.options[site].value;
+selectedrezoTemp=selectedrezo
+//alert(selectedrezo)
+document.getElementById("mapsRezo").src=selectedrezo+"mapsILIADE.js?updated=1234567890"
+//setTimeout('affichmaille()',2000)
+document.getElementById("divrezo").innerHTML="<small>Plateforme 'source':<b style='color:red'>"+nomrezo[site-1]+"</b></small>"
+}
+
+function affichmaille(){
+
+document.getElementById("selectmaille").innerHTML=""
+menumaille='<option id="option0" value="javascript:rien2()">&nbsp;Maille</option>'
+
+				// variables(Id,Valu,Onclk,Txt,idSelect)
+				creatOption("optionM0","javascript:rien2()",""," Maille","selectmaille")
+				
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+menumaille+='<option id="optionM'
+menumaille+=(kc)
+
+
+menumaille+='"    VALUE="'+mapX[i+0]+'">'//
+menumaille+=(kc)
+menumaille+="-"
+var lelibel=""
+if(libelmap[(i/5)]){lelibel=" - "+libelmap[(i/5)][1]}
+menumaille+=mapX[i+4]+" : maille= "+mapX[i+0]+lelibel//" - "+libelmap[(i/5)][1]
+menumaille+='</option>'
+				/*var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","optionM"+kc)
+				nouveaux0.setAttribute("value",mapX[i+0])
+				var nt1=document.createTextNode(kc+'-'+mapX[i+4]+" : maille= "+mapX[i+0]+" - "+libelmap[(i/5)][1])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectmaille").appendChild(nouveaux0)
+				*/
+				if(mapX[i+0]==""){mapX[i+0]=1}
+				creatOption("optionM"+kc,mapX[i+0],"",kc+'-'+mapX[i+4]+" : maille= "+mapX[i+0]+lelibel,"selectmaille")//" - "+libelmap[(i/5)][1],"selectmaille")
+}
+//document.getElementById("selectmaille").innerHTML=menumaille
+}
+
+function affichmaille2(){
+
+
+document.getElementById("selectmaille2").innerHTML=""
+menumaille='<option id="optionM20" value="javascript:rien2()">&nbsp;Maille</option>'
+				/*
+				var nouveaux0=document.createElement("option")
+				nouveaux0.setAttribute("value","javascript:rien2()")
+				nouveaux0.setAttribute("id","optionM20")
+				
+				var nt1=document.createTextNode(" Maille")
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectmaille2").appendChild(nouveaux0)
+				*/
+				creatOption("optionM20","javascript:rien2()",""," Maille","selectmaille2")
+var kc=0
+for(i=0;i<MAPICI.length;i=i+5){
+kc+=1
+menumaille+='<option id="optionM2'
+menumaille+=(kc)
+
+
+menumaille+='"    VALUE="'+MAPICI[i+0]+'">'//
+menumaille+=(kc)
+menumaille+="-"
+menumaille+=MAPICI[i+4]+" : maille= "+MAPICI[i+0]+" - "+LIBELICI[(i/5)][1]
+menumaille+='</option>'
+				/*
+				var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","optionM2"+kc)
+				nouveaux0.setAttribute("value",MAPICI[i+0])
+				var nt1=document.createTextNode(kc+'-'+MAPICI[i+4]+" : maille= "+MAPICI[i+0]+" - "+LIBELICI[(i/5)][1])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectmaille2").appendChild(nouveaux0)
+				*/
+				creatOption("optionM2"+kc,MAPICI[i+0],"",kc+'-'+MAPICI[i+4]+" : maille= "+MAPICI[i+0]+" - "+LIBELICI[(i/5)][1],"selectmaille2")
+}
+//document.getElementById("selectmaille2").innerHTML=menumaille
+}
+
+
+</script>
+
+
+
+
+
+
+<script language="javascript">
+function chargeorigine(b){
+window.frames.menusdonnees.chargefichier(sel,b,selectedindextemp)
+}
+
+
+
+
+
+</script>
+
+<!--
+<div style="position:fixed;top:15px;right:5px">
+<input type="button" value="arbres" onclick="top.frames.trees.location.href='trees.htm'"><span style="color:white">...</span><input type="button" value="plan" onclick="top.selectOnglet('center',2);top.frames.trees.location.href='archi.htm'"><span style="color:white">...</span><input type="button" value=" init transfert menus" onclick="top.frames.editMenu.location.href='transmenu.htm'">
+</div>
+-->
+<!--br><br><br><br><br><br>
+<center>
+TRAVAUX EN COURS <br>
+pour un module de transfet de menu et données d'une carte à l'autre
+</center-->
+<span style=" display:none" id="iciScriptSRC"></span>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="../transdata_rezo/rezo.js?updated=1234567890"></script>
+<script id="localWindRose" language="javascript" src="http://localhost/REZOperso.js?updated=1234567890"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="http://altko.org/admin_rezo/rezo.js?updated=1234567890"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+
+
+
+
+
+<script language="javascript">
+
+
+
+
+
+
+
+</script>
+<script language="javascript">
+
+document.write('<b>TRANSFERT de <span style="color:blue">Colonnes de Données</span> en Réseau</b>')
+document.write('<span style="position:absolute;top:30px;left:0px">')
+document.write('<div style="position:absolute;top:0px;left:310px"><center><input type="button" onclick="self.location.href=\'transmenu.htm\'" value="Redémarrer le module transfert"></div>')
+
+
+document.write('<div id="divrezo" style="position: absolute; height: 24px; top: 0px;  width:300px"><form name="rezo"><select id="selectrezo" name="selectrezo" onchange="change_rezo()"   style="background-color: white; color: black;width:200px" size="1"><option id="optionRezo0" value="javascript:rien2()">&nbsp;REZO</option>')
+
+for(i=0;i<rezo.length;i++){
+
+document.write('<option id="optionRezo')
+document.write(i)
+
+
+document.write('"    VALUE="'+rezo[i]+'">')//
+document.write(i+1)
+document.write("-")
+document.write("plateforme : "+nomrezo[i])
+document.write('</option>')
+
+}
+document.write('</select></form></div>')
+
+
+
+
+
+
+document.write('<div style="position: absolute; height: 24px; top: 25px; "><form name="maille"><select id="selectmaille" name="selectmaille" onchange="change_maille()"   style="background-color: white; color: black;width:200px" size="1">')
+
+document.write('</select></form></div>')
+
+document.write('<div style="position: absolute; height: 24px; top: 25px;left:310px "><form name="maille2"><select id="selectmaille2" name="selectmaille2" onchange="change_maille2()"   style="background-color: white; color: black;width:200px;visibility:hidden" size="1">')
+
+document.write('</select></form></div>')
+
+document.write('<div  id="cacheselectmaille2" style="position: absolute; height: 24px; top: 25px;left:310px ;opacity:0.5;visibility:visible"><form name="cachemaille2"><select  style="background-color: white; color: black;width:200px" size="1"><option id="optionx20" value="javascript:rien2()">&nbsp;Maille</option>')
+
+document.write('</select></form></div>')
+
+
+
+
+
+document.write('<div id="divfermer" style="position: absolute;  top: 44px;visibility:hidden "><dt><small><small>Type de menus</small></small></dt><input type="radio"  id="T_1" name="T" value="1" onClick="sel=1;initX()"><small><small>icones</small></small></input><input type="radio" id="T_2" name="T" value="2" onClick="sel=2;initX()" value="0" type="text"><small><small>graph</small></small></imput></div>')
+
+document.write('<div style="position: absolute; height: 24px; top: 50px; "><form name="carte"><select id="selectcartes" name="selectcartes" onchange="change_site()" onmouseoverx="document.carte.selectcartes.selectedIndex=0" onmouseoutx="document.carte.selectcartes.selectedIndex=postemp"  style="background-color: white; color: black;width:200px" size="1">')
+// ici options
+document.write('</select></form></div>')
+
+document.write('<div id="divfermer" style="position: absolute;  top: 75px;width:200px "><dt><small><small>Choix du fichier de données</small></small></dt><dt><input type="radio"  id="R_1" name="R" value="1" onClick="chargeorigine(1)"><small><small>Principal</small></small></input><input type="radio" id="R_2" name="R" value="2" onClick="chargeorigine(2)" value="0" type="text"><small><small>Complémentaire</small></small></imput></dt></div>')
+
+document.write('<div id="divmenudonnees" style="position: absolute;  top: 120px; "><left><dt><b>Source</b></dt></left><iframe id="menusdonnees" name="menusdonnees" width=297 height=320 frameborder=1></iframe></div>')
+document.write('<div id="divmenudonnees2" style="position: absolute; left:310px; top: 120px; "><center><dt><b>Destination</b></dt></center><iframe id="menusdonnees2" name="menusdonnees2" width=200 height=150 frameborder=1></iframe></div>')
+document.getElementById("T_1").checked=true
+
+
+document.write('<div id="divencours" style="position: absolute;width:300px; height:300px; left:120px; top: 310px;background-color:gray;overflow:scroll ;visibility:hidden"><center><b>Méta données en cours de transfert</b></center><ul id="ulencours"></ul></div>')
+//--------------------------------------------------------------------------------------volet adjonction de données--------------------------------------------------------
+document.write('<div style="position: absolute;left:310px; top:84px;visibility:visible "><form ><select   style="background-color: white; width:200px;opacity:0.5" size="1">')
+
+document.write('<option >cartes de destination</option>')
+document.write('</select></form></div>')
+
+
+
+
+
+
+document.write('<div style="position: absolute;left:310px; top:84px "><form name="carte2"><select id="selectcartes2" name="selectcartes2" onchange="change_site2()"   style="background-color: white; color: black;width:200px;visibility:hidden" size="1">')
+//ici option2
+document.write('</select></form></div>')
+
+
+document.write('<div style="position: absolute;left:310px; top: 54px; "><form ><select   style="background-color: white; color: black;width:200px;visibility:visible ;opacity:0.5" size="1"><option  VALUE="zerotable" >Sans Table de Passage</option></select></form></div>')
+
+document.write('<div style="position: absolute;left:310px; top: 54px; "><form name="table"><select id="selecttable" name="selecttable" onchange="change_site3()"   style="background-color: white; color: black;width:200px;visibility:hidden" size="1"><option id="pastable" VALUE="zerotable" >Sans Table de Passage</option>')
+//ici table
+
+var kc=0
+for(i=0;i<titre.length;i++){
+kc+=1
+document.write('<option id="titre')
+document.write(kc)
+
+
+document.write('"    VALUE="'+titre[i]+'">')//
+document.write(kc)
+document.write("-")
+document.write(titre[i])
+document.write('</option>')
+
+}
+document.write('</select></form></div>')
+document.write('<div style="position: absolute;left:125px; top: 327px; "><input id="valid" type="button" value="validez" onclick="transfertValid(this)" style="visibility:hidden"></div>')
+
+
+function transfertValid(a){
+document.getElementById("selectcartes2").style.visibility="visible"
+document.getElementById("selecttable").style.visibility="visible"
+document.getElementById("selectcartes").style.visibility="hidden"
+document.getElementById("selectmaille").style.visibility="hidden"
+document.getElementById("cacheselectmaille2").style.visibility="hidden"
+document.getElementById("selectmaille2").style.visibility="visible"
+document.getElementById("divmenudonnees").style.visibility="hidden"
+//document.getElementById("divmenudonnees2").style.visibility="hidden"
+//a.style.visibility="hidden"
+}
+var indicacturezo=0
+
+
+
+</script>
+<script language="javascript">
+
+
+
+//1 - identifier les plateformes sc1/
+var resoSC1=new Array()
+var rezoDesSc1=new Array()
+
+function detecteSC1(){
+for(i=0;i<rezo.length;i++){
+if(rezo[i].split("sc1")[1]=="/"){
+resoSC1[resoSC1.length]=rezo[i]
+}
+}
+}
+
+function balaieRezoSC1(){
+
+for(ksc1=0;ksc1<resoSC1.length;ksc1+=1){
+		var nouveau=document.createElement("iframe")
+		nouveau.setAttribute("id","SC1maps_"+ksc1)
+		nouveau.setAttribute("name","SC1maps_"+ksc1)
+		document.getElementById("iciScriptSRC").appendChild(nouveau)
+		}
+document.getElementById("SC1maps_0").src="recupMapXdesSC1.html?lacible="+resoSC1[0]+"mapsILIADE.js&rang="+0		
+}
+
+
+
+
+detecteSC1()
+//alert(resoSC1)
+balaieRezoSC1()
+
+
+var bisrezo=new Array()
+var bisInRezo=new Array()
+var bisnomrezo=new Array()
+var k=0
+var ksc1=0
+
+
+function ajouteMapsdesSc1(a){
+rezoDesSc1[rezoDesSc1.length]=a
+//alert(rezoDesSc1)
+
+}
+function rangSC1suivant(a){
+
+if(a==(resoSC1.length-1)){
+
+//alert("fin")
+reconstruitRezo()
+
+}else{
+a=parseInt(a)+1
+//alert(a+"    "+resoSC1[a])
+document.getElementById("SC1maps_"+a).src="recupMapXdesSC1.html?lacible="+resoSC1[a]+"mapsILIADE.js&rang="+a
+
+}
+}
+function reconstruitRezo(){
+//alert("rezo.length = "+rezo.length+"   "+rezo[17])
+for(i=0;i<rezo.length;i++){//reconstruction de rezo sans les plateformes sc1
+if(rezo[i].split("sc1")[1]=="/"){}else{
+bisrezo[bisrezo.length]=rezo[i]
+bisInRezo[bisrezo.length-1]=InRezo[i]
+bisnomrezo[bisrezo.length-1]=nomrezo[i]
+}
+}
+//alert("rezoDesSc1.length = "+rezoDesSc1.length)
+for(i=0;i<rezoDesSc1.length;i++){
+
+bisrezo[bisrezo.length]=rezoDesSc1[i]
+bisInRezo[bisrezo.length-1]=rezoDesSc1[i]
+bisnomrezo[bisrezo.length-1]=rezoDesSc1[i]
+
+
+}
+//for(i=0;i<bisrezo.length;i++){alert("rang="+i+"    "+bisrezo[i])}
+rezo=bisrezo
+InRezo=bisInRezo
+nomrezo=bisnomrezo
+var inselectrezo='<option id="optionRezo0" value="javascript:rien2()">&nbsp;REZO</option>'
+for(i=0;i<rezo.length;i++){
+
+inselectrezo+='<option id="optionRezo'
+inselectrezo+=i
+
+
+inselectrezo+='"    VALUE="'+rezo[i]+'">'//
+inselectrezo+=i+1
+inselectrezo+="-"
+inselectrezo+="plateforme : "+nomrezo[i]
+inselectrezo+='</option>'
+
+}
+
+document.getElementById("selectrezo").innerHTML=inselectrezo
+
+indicacturezo=1
+}
+function repetaffm(){
+//if(mapX.length){
+if(indicacturezo==1){
+
+affichmaille();affichmaille2()// affiche le menu maille de la plateforme courante , c'est à dire  la plateforme du fichier destination
+}else{setTimeout('repetaffm()',500)}
+}
+repetaffm()
+
+</script>
+
+</span>
+
+<div id="divloading" style="position:absolute;top:-1000px;left:400px;color:gray;visibility:visible;z-index:100000"><center><img id="loading" style="background-color:white;" width=60 border="0px" src="../../loading.gif"><br>CHARGEMENT en COURS</center></div>
+</div>
+
+</body >
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

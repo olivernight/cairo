@@ -1,0 +1,342 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+<script  language="javascript" >
+var base00=new Array()
+var dateici=Math.random()
+
+</script>
+<script id="insert" language="javascript" ></script>
+
+<script  language="javascript" >
+var moduleRezo="rezo"
+function indicRezo(){
+return moduleRezo
+}
+var mappocoord=new Array()
+var menuIconeEchelle=new Array()
+var menuIconeSup=new Array()
+
+var menuSujet=new Array()
+var menuOther=new Array()
+
+var OK1=0
+var OK2=0
+var kch=0
+function OkChargemenusjs1(){OK1=1; if(OK1==1 & OK2==1){affichemenusdata()}}//indic chargement menu1
+function OkChargemenusjs2(){OK2=1; if(OK1==1 & OK2==1){affichemenusdata()}}//indic chargement menu2
+function OkChargedataOrigine(){extraitdata()}//indic chargement menu2
+</script>
+<script id="srcmappocoord" language="javascript" ></script>
+<script id="menuprincipal" onload="setTimeout('kch+=1',200)" language="javascript" ></script>
+<script id="menucomplementaire" onload="setTimeout('kch+=1',200)" language="javascript" ></script>
+<script  language="javascript" >
+//alert("debut vide_insert.js")
+var kcharge
+if(document.all){kcharge=4}else{kcharge=2}
+function repetaffm(){
+if( kch==kcharge){
+kch+=1
+
+affichemenusdata()
+}else{if(kch<kcharge){setTimeout('repetaffm()',500)}}
+}
+function repetaffm2(){
+if( kch==kcharge){
+kch+=1
+affichemenusdata()
+
+
+}else{if(kch<kcharge){setTimeout('repetaffm2()',500)}}
+}
+
+
+
+
+    var urlvar=""
+var Rezo
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    //alert(urlvar['REP'])
+    //alert(urlvar['cible'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->	
+	Rezo=urlvar['rezo']
+	//alert(Rezo)
+var raz=0
+function razer(){
+raz=1
+}
+
+var menuX=new Array()
+var sel=urlvar['sel']
+var DataTabCol=new Array()// table des donénes récupérées
+var repdataorigine=new Array()//répertoir où est situé le fichier d'origine
+var  menuatransferer=new Array()
+var filedataorigine=new Array()
+var maps=urlvar['maps']
+var lim
+var tabcol
+var filedataOrigSansSuf
+/*
+var xhr_object = null; 
+	 
+	if(window.XMLHttpRequest) // Firefox 
+	   {xhr_object = new XMLHttpRequest();} 
+	else{ if(window.ActiveXObject) // Internet Explorer 
+	   {xhr_object = new ActiveXObject("Microsoft.XMLHTTP"); }
+	else { // XMLHttpRequest non supporté par le navigateur 
+	   alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest..."); 
+	   //return; 
+	}} 
+	 
+
+function JAVArequest(){
+xhr_object.open("GET",Rezo+"A-MANAGER-local/transdata_rezo/datatransit.js", true); 
+ 
+xhr_object.onreadystatechange = function() { 
+if(xhr_object.readyState == 4) alert(" résultat="+xhr_object.responseText); 
+} 
+ 
+xhr_object.send(null); 
+}
+
+*/
+var RangIndicSommDenom=""
+var Kden=0
+
+var initici=0
+var ntemp
+function extraitMetaData(sel,n,i){//récupérer les éléments de menu
+RangIndicSommDenom=""
+
+menuatransferer=new Array()
+
+parent.init1()
+if(raz==1){
+raz=0
+parent.init0()
+parent.initX2()
+}
+//récupérer le répertoire de dépot du fichier de données
+if(sel==1){//cas icones
+if(n==1){menuatransferer=menuIconeEchelle[i];repdataorigine=mappocoord[6];filedataorigine=mappocoord[0]}else{;menuatransferer=menuIconeSup[i];repdataorigine=mappocoord[7];filedataorigine=mappocoord[1]}
+
+
+}else{// cas graphs
+if(n==1){menuatransferer=menuSujet[i];repdataorigine=mappocoord[6];filedataorigine=mappocoord[0]}else{menuatransferer=menuOther[i];repdataorigine=mappocoord[7];filedataorigine=mappocoord[1]}
+
+}
+//alert(menuatransferer)
+
+
+if(menuatransferer[3][0]==2 & menuatransferer[3][1]==0){lim=1}else{lim=menuatransferer[0].length}
+tabcol=menuatransferer[0]
+
+
+var tb2=tabcol.join(",")
+if(tb2.indexOf("10000001,")>0){// Cas des sommes au dénominateur : on enlève l'indicateur 10000001 de tabcol, on réduit la dimensionlim de 1, on place un indicateur dans le vecteur 12 du menu. Cet indicateur sera détecté dans vide_add_insertjs.html pour recopposer le menu final
+for(x=0;x<tabcol.length;x++){
+if(tabcol[x]==10000001){RangIndicSommDenom=x;parent.recupIndicSommeDenom(x)}
+}
+lim=lim-1
+var tb2=tb2.replace("10000001,","")
+
+tabcol=tb2.split(",")
+menuatransferer[0]=tabcol
+
+
+menuatransferer[12]+="@@SomDenom@@"+RangIndicSommDenom
+}
+
+
+parent.BL()
+
+if(initici==0){ntemp=n}
+if(initici==0 || n!=ntemp){
+ntemp=n
+initici=1
+filedataOrigSansSuf=filedataorigine.substr(0,filedataorigine.length-5)
+window.frames.frameop.location.href=Rezo+"A-MANAGER-local/transdata_rezo/date_actuelle_serveur.php"
+setTimeout('DEBUcopyData()',500)
+}else{extraitdata()}
+}
+function DEBUcopyData(){
+
+window.frames.frameop.location.href="DEBUcopyDATA.html?REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf+"&REZO="+Rezo
+
+
+}
+function DEBUcopyDataPHP(){
+
+window.frames.frameop.location.href=Rezo+"A-MANAGER-local/transdata_rezo/DEBUcopyDATA.php?dateencours="+dateici+"&REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf
+setTimeout("copyData()",1000)
+
+}
+function copyData(){
+//alert("la")
+window.frames.frameop.location.href=Rezo+"A-MANAGER-local/transdata_rezo/copyDATA.php?cible="+repdataorigine+"/"+filedataorigine+"&dateencours="+dateici+"&REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf
+
+recupDataX()
+}
+
+function message1(){
+alert("un autre utilisateur est en cours de téléchargement, attendez quelques secondes et cliquez sur OK")
+setTimeout("DEBUcopyData()",2000)
+}
+function message2(reste){
+alert("Une autre opération de transfert a commnencé ou a échoué depuis "+reste+" minutes : elle va être annulée pour exécuter votre commande ")
+setTimeout("DEBUcopyDataPHP()",2000)
+}
+
+function recupDataX(){
+
+setTimeout('window.frames.framedataorigine.location.href="RecupDATA.html?cible="+Rezo+repdataorigine+"/"+filedataOrigSansSuf+".js&REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf+"&REZO="+Rezo',5000)
+}
+function alertX(a,b){
+alert(a+"            "+b)
+}
+
+function extraitdata(){
+var enc=parent.document.getElementById("ulencours").innerHTML
+enc+='<li title="'+menuatransferer[12]+'"><span style="font-weight:bold;color:blue">'+menuatransferer[9]+'</span><br><span style="font-size:9px"><i>carte : '+maps+' ; répertoire='+repdataorigine+' ; fichier='+filedataorigine+'</i></span></li>'
+parent.document.getElementById("ulencours").innerHTML=enc
+
+
+
+window.frames.framedataorigine.recuptranstabcol(tabcol)//a,lim
+
+window.frames.framedataorigine.recuptranslim(lim)
+window.frames.framedataorigine.initDimDataTabCol()
+DataTabCol=window.frames.framedataorigine.extract_data("return DataTabCol")
+
+parent.addMenuTransfert(menuatransferer)
+parent.AddDataToTransfert(DataTabCol)
+parent.EL()
+}	 
+	 
+	 
+function renvoiVARjs(){
+ return menuX
+	 }
+
+
+	
+
+var repcarte
+function selectrepertoires(){
+repcarte=urlvar['rep']
+
+
+document.getElementById("srcmappocoord").src=Rezo+repcarte+"/DATA-mappocoord.js?updated=1234567890"
+
+setTimeout('chargemenusdata()',1000)
+}
+function chargemenusdata(){ 
+//alert(Rezo)
+
+if(sel==1){//cas icones
+
+document.getElementById("menuprincipal").src=Rezo+repcarte+"/DATA-IcoSujet.js?updated=1234567890"
+document.getElementById("menucomplementaire").src=Rezo+repcarte+"/DATA-IcoOther.js?updated=1234567890"
+
+}else{// cas graphs
+document.getElementById("menuprincipal").src=Rezo+repcarte+"/DATA-Sujet.js?updated=1234567890"
+document.getElementById("menucomplementaire").src=Rezo+repcarte+"/DATA-Other.js?updated=1234567890"
+}
+repetaffm()
+repetaffm2()
+}
+	 
+	 var indexselec=0
+	 function indexsel(y){indexselec=y;}
+	 
+function choixDeLaVariable(selectca){
+
+if(selectca==1){
+var site = document.xform.selectcartes.selectedIndex;
+var n=document.xform.selectcartes.value
+}else{
+var site = document.yform.selectcartes2.selectedIndex;
+var n=document.yform.selectcartes2.value
+}
+
+
+var idsel=site-1;
+extraitMetaData(sel,n,idsel);parent.document.getElementById('valid').style.visibility='visible'
+}	 
+var Id="";var Valu="";var Onclk="";var Txt="";var idSelect=""
+
+function creatOption(Id,Valu,Onclk,Txt,idSelect){
+				var nouveaux0=document.createElement("option")
+				if(Valu!=""){nouveaux0.setAttribute("value",Valu)}
+				if(Id!=""){nouveaux0.setAttribute("id",Id)}
+				if(Onclk!=""){nouveaux0.setAttribute("onclick",Onclk)}
+				var nt1=document.createTextNode(Txt)
+				nouveaux0.appendChild(nt1)
+				document.getElementById(idSelect).appendChild(nouveaux0)
+}
+function alkch(){alert(kch)}
+function affichemenusdata(){ //rep= répertoire de carte; sel =1 -> icones et sel=2 -> graphs ;
+//setTimeout("alkch()",2000)
+var NomMenu=""
+var menu=""
+
+for(n=1;n<3;n++){
+
+var menuX=new Array()
+if(sel==1){//cas icones
+if(n==1){menuX=menuIconeEchelle;NomMenu="icones principal"}else{menuX=menuIconeSup;NomMenu="icones complémentaire"}
+}else{// cas graphs
+if(n==1){menuX=menuSujet;NomMenu="graph principal"}else{menuX=menuOther;NomMenu="graph complémentaire"}
+}
+if(n==1){var dex="selectcartes"}
+if(n==2){var dex="selectcartes2"}
+
+creatOption("option0",n,"","  "+NomMenu,dex)
+var kc=0
+for(i=0;i<menuX.length;i=i+1){
+kc+=1
+creatOption("option"+kc,n,"",kc+" - "+menuX[i][9],dex)
+}
+}
+}
+
+</script>
+</head>
+
+<body STYLE="font-family:arial;background-color: #DDCFF8"><script  language="javascript" >
+document.write('<div id="divmenuprincipal" style="position: absolute; left: 0px; top: 2px; "><form name="xform"><select name="selectcartes" id="selectcartes" onchange="choixDeLaVariable(1)"  style="background-color: white; color: black;width:200px" size="1"></select></form></div>')
+document.write('<div id="divmenucomplementaire" style="position: absolute; left: 0px;  top: 32px; "><form name="yform"><select name="selectcartes2" id="selectcartes2" id="selectcartes" onchange="choixDeLaVariable(2)"  style="background-color: white; color: black;width:200px" size="1"></select></form></div>')
+
+
+document.write('<div id="divdataorigine" style="position: absolute; left: 0px; top: 2px; "><iframe onload=""  width=0 height=0 frameborder=0 id="framedataorigine" name="framedataorigine" ></iframe></div>')
+document.write('<div id="divop" style="position: absolute; left: 0px; top: 2px;visibility:hidden "><iframe onload=""  width=0 height=0 frameborder=0 id="frameop" name="frameop" style="visibility:hidden "></iframe></div>')
+
+
+
+selectrepertoires()
+</script>
+<div style="visibility:hidden"><iframe name="effaceCopyData"></iframe></div>
+</body >
+</html>

@@ -1,0 +1,79 @@
+ï»¿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script language="javascript">
+document.write('<FORM ACTION="MANAGER_createur-id-NAT.php3" METHOD=POST><table><TR><TD id="deb0"></TD></TR><TR><TD><P><FONT SIZE="-1"><INPUT TYPE=submit NAME=submit VALUE="enregistrer"></TD></TR><TR><TD id="deb"></TD></TR></TABLE></FORM>')
+var base0 = new Array()
+
+var repert="NAT" //repertoire où se trouve le fichier "SVG-extrait-region.js"  dans lequel sont écrit les résultats de l'extraction
+function Nouvelle(a){
+this.donnees=a;
+//alert("nouvelle")
+}
+
+function ajouter(a){
+base0[base0.length]=new Nouvelle(a)
+}
+
+</script>
+
+<script language="javascript" src="NAT/DATA-SVG2.js"></script>
+
+
+<script language="javascript">
+var separateur="\t"
+var k=1
+var valtemp=""
+for(i=0;i<base0.length;i++){ // boucle sur l'ensemble de la base 
+var lign0=base0[i].donnees.split(',') //traitement de la base ligne par ligne
+a=lign0[0] // extrait de la ligne la première données qui est sous la forme code-nom
+var XID //variable où est logée le code qui va être isolé  du nom
+var XNOM
+var indexm //position du tiret dans la variable a
+
+
+XID=""
+XNOM=""
+//---------------------------------------------------------------------------------
+for(j=0;a.substr(j,1)!="-";j++){ //isolement du code
+XID+=a.substr(j,1);
+indexm=j
+}
+for(j=(indexm+2);j<a.length;j++){
+XNOM+=a.substr(j,1)
+
+}
+
+//------------------------------------------------------------------------------------
+var val=XNOM+separateur+XID
+if(val!=valtemp){
+valtemp=val
+//document.write(k+" "+val)
+var nINPUT=document.createElement("INPUT")
+document.getElementById("deb").appendChild(nINPUT)
+nINPUT.setAttribute("TYPE","text")
+nINPUT.setAttribute("id",k)
+nINPUT.setAttribute("value",k+separateur+val)
+var nm="N["+k+"]"
+document.getElementById(k).setAttribute("name",nm)
+k+=1
+}
+
+
+}
+
+
+
+</script>
+
+
+</head>
+
+<body STYLE="background-color: transparent">
+
+
+
+
+</body >
+</html>

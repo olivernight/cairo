@@ -1,0 +1,19 @@
+﻿Vider le Cache avec Google Chrome 
+
+4 
+
+5 
+
+ 
+
+L’action 3 déclenche l’ouverture de onglet Paramètres de google et du choix suivant 
+
+Les étapes 1, 2 et 3 peuvent être exécutées directement avec le raccourci clavier : Ctrl+Maj+Suppr 
+
+ 
+
+ 
+
+ 
+
+

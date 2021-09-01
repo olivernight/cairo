@@ -1,0 +1,19 @@
+Réglage des cadres et azimuts
+____________________________________________________________________________
+1 - regler d'abord la taille de la carte
+
+dans section1
+ligne 211 et suivantes		if(essaiBLANC==1){
+				
+Wsvg=550;
+
+				Hsvg=265
+;
+				}
+__________________________________________________________________________
+2 - puis régler la hauteur de la frame à l'intérieur de Normal-Blanc.html
+
+Ce réglage se fait dans la section4
+
+ligne 376 : /*reglage frame*/		parent.document.getElementsByTagName("iframe")[0].style.height=(Hsvg+130)+"px"
+ligne 379 : /*reglage div0*/		parent.document.getElementById("div0").style.height=(Hsvg+130)+"px"

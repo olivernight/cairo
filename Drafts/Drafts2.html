@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <title>Scénarios (SuiteCairo)</title>
+
+<script language='javascript' src='../mapsILIADE.js?updated=1234567890'></script>
+
+  <script language="javascript">
+   var onglet=0 // affiche tous les onglets sinon affiche l'onglet passé en url
+   var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+//alert(urlvar['onglet']) 
+var modif=0
+if(urlvar['modif']){modif=urlvar['modif']}else{modif=0}
+
+if(urlvar['onglet']){onglet=urlvar['onglet']}
+ 
+function affmenu(){
+// modifie la fonction d'appel du fichier de contour chargeDataContourJS() qui est dans section2.js dans le cas où elle n'a pas été mise à jour
+var nouveaux0=document.createElement("script")			
+nouveaux0.setAttribute("id","XchargeDataContourJS")							
+var xtxtici='var chemx=window.location.href.split("Module")[0];function chargeDataContourJS(Contour){;Gcoord0=new Array();Gcoord02=new Array();xcontour=Contour;base02 = new Array();datahistomulti = new Array();window.frames.frameContour.location.href=chemx+"/contourXML.html?Cont="+Contour+"&alea="+Math.random()};function distancelog(){palico=palicotemp0;pal=palicotemp0;cat=caticotemp0;dernierecouche=1;applicLog()} '			
+var nt1=document.createTextNode(xtxtici)				
+nouveaux0.appendChild(nt1)
+window.frames.framediv.document.getElementsByTagName("body")[0].appendChild(nouveaux0);
+
+  }
+
+var opac=0.3
+  var initpop=0
+  var a
+  var b
+  function popupX(page,var1,var2) {
+initpop=1
+document.open(page,var1,var2)
+pop=document.open(page,var1,var2)
+}
+  
+  function popuBdeCartesVierges(a,b){
+
+if(initpop==1){
+pop.close()
+}
+popupX(a+'.html?cible='+b,a,'width=750,height=600,top=100px,left=30px,toolbar=0,menuBar=0,scrollbars=0,resizable=1')
+//pop.blur()
+}
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx module drag and drop xxxxxxxxxxxxxxxxxxxxxxxxx
+
+var DEF=1
+var initialized=false
+var XY0=0
+var X
+var Y
+var CX=530//785
+var CY=1//5
+var X1=0;
+var Y1=0;
+var xobjet="dragin"
+var CXdragin=530
+var CYdragin=1
+var CXother=525
+var CYother=370
+var CYdragTemp=CY
+
+
+var indicresize=0
+function outresize(){
+setTimeout('indicresize=0;;',200)
+}
+function Xmove(xobjet){
+
+
+if(xobjet=="dragin"){
+//document.getElementById("imgresize").src="movehand.jpg"
+CX=CXdragin
+CY=CYdragin
+}
+if(xobjet=="resizable"){
+//document.getElementById("imgresize").src="resizeplus.jpg"
+CX=CXother
+CY=CYother
+}
+}
+function Xmove2(){
+/*
+document.getElementById(xobjet).addEventListener("mousemove",moveZoomBox,true)
+document.getElementById(xobjet).addEventListener("mousedown",initXY,true)
+document.getElementById(xobjet).addEventListener("mouseup",disable,true)
+*/
+}
+var adif=0
+var X1temp=0
+function moveZoomBox(event){ 
+//-----------------------------------------------------------------cas FireFox
+
+if(XY0==1){
+if(initialized==true){
+X1=-(event.clientX-X)
+Y1=-(event.clientY-Y)
+var reg=new RegExp("[ ,;]+", "g");
+if(xobjet=="dragin"){
+
+var zootop=parseInt(document.getElementById(xobjet).style.top)
+var zooleft=parseInt(document.getElementById(xobjet).style.left)
+
+
+document.getElementById(xobjet).style.top=((CY-Y1))+"px"
+document.getElementById(xobjet).style.left=((CX-X1))+"px"
+}
+if(xobjet=="resizable"){
+X1temp=X1
+adif=(CX-X1)
+if((CX-X1)>=300  ){
+document.getElementById("dragin").style.width=((adif))+"px"
+document.getElementById("tabdrag").style.width=((adif))+"px"
+document.getElementById("Xmodif").style.width=((adif-10))+"px"
+for(i=0;i<window.frames.Xmodif.document.getElementsByTagName("iframe").length;i++){
+window.frames.Xmodif.document.getElementsByTagName("iframe")[i].width=((adif-20))+"px"
+}
+}
+for(i=0;i<window.frames.Xmodif.document.getElementsByTagName("iframe").length;i++){
+window.frames.Xmodif.document.getElementsByTagName("iframe")[i].height=((CY-50-Y1))+"px"
+}
+if((CY-Y1+CYdragTemp)<500 ){
+//document.getElementById("resizable").innerHTML=CY-Y1+CYdragTemp
+//document.getElementById("Xmodif").style.height=((CY-Y1))+"px"
+}
+}
+}
+}//fin de if XY0
+document.getElementById(xobjet).addEventListener("mouseup",disable,true)
+//return false;
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx disable xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function disable(event){
+//------------------------------------------------------------------------------cas FireFox----------------------------------------------------
+
+XY0=0
+if(XY0==0){
+initialized=false;
+CX=CX-X1
+CY=CY-Y1
+X1=0
+Y1=0
+}//fin du if XY==0 
+if(xobjet=="dragin"){
+CXdragin=CX
+CYdragin=CY
+CYdragTemp=CY
+}else{
+CXother=CX
+CYother=CY
+}
+}
+
+function initXY(event){
+
+XY0=1
+if(XY0==1){
+if(DEF==1 & initialized==false){
+X = event.clientX;
+Y = event.clientY;
+initialized=true;
+}
+}
+}
+// fin du module drag and drop de la carte
+var listerepvalide=new Array()
+var listerepCollab=new Array()
+var doscarte
+var divF
+var frameD
+
+
+
+function affInDivF(a){
+//WFD.location.href=a
+doscarte=document.getElementById('o'+a).innerHTML.replace(a+"-","")
+val2carteencours(doscarte)
+WFD.location.href="../"+doscarte+"/PageCartoDossier/PageCarto/Module-PageCarto.xml?format=complete"
+divF.style.display="block"
+document.getElementById("rad2").checked="1"
+}
+function fermDivF(){
+divF.style.display="none"
+}
+
+function plie(){document.getElementById('SdC').style.display='none'}
+function deplie(){document.getElementById('SdC').style.display='inline'}
+
+
+
+
+
+
+var liencarte
+var testCollab=0
+
+function rien(){}
+
+
+function appelcarte(k,l){
+liencarte='<b><big>Versions du module <span style="color:green">'+mapX[k]+'</span></big>'
+liencarte+='<ul><li>'
+liencarte+='<a href="'+mapX[k]+'/PageCartoDossier/Normal.html" target="_blank">Normale</a>'
+liencarte+='</li><li>'
+liencarte+='<a href="'+mapX[k]+'/PageCartoDossier/version-pour-fouiller.html" target="_blank">Pour fouiller</a>'
+liencarte+='</li><li>'
+liencarte+='<a href="'+mapX[k]+'/PageCartoDossier/REDUIT.html" target="_blank">Réduite</a>'
+liencarte+='</li><li>'
+liencarte+='<a href="'+mapX[k]+'/PageCartoDossier/GRAND pour Firefox.html" target="_blank">Grande</a> (pour Firefox ou W3C standard)'
+testCollab=0
+setTimeout('appelcarte2('+k+','+l+')',250)
+}
+
+function appelcarte2(k,l){
+if(listerepCollab[(l-1)]!="vide"){testCollab=1}else{;}
+if(testCollab==1){
+liencarte+='</li><li>'
+liencarte+='<a href="'+mapX[k]+'/PageCartoDossier/version-pour-fouiller-COLLAB.html" target="_blank">Pour fouiller en Collaboratif</a>'
+
+		liencarte+='<ul>'
+		liencarte+='<li>'
+		liencarte+='<a href="'+mapX[k]+'/Moderation.htm" target="_blank">Modération du PageCarto Collaboratif</a>'
+		liencarte+='</li>'
+		liencarte+='</ul>'
+
+
+liencarte+='</li>'
+}
+liencarte+='</ul></b>'
+document.getElementById('liens').innerHTML=liencarte
+}
+
+function changecarte(){
+var carte = document.menucarte.selectcarte.selectedIndex;
+if(carte>0){
+//appelcarte(document.getElementById("o"+carte).value,carte)
+
+affInDivF(carte)
+document.menucarte.selectcarte.selectedIndex=0
+}
+numerocarte=carte+1
+}
+
+
+function affichemenu(){
+
+for(i=0;i<mapX.length;i=i+5){
+if(window.frames[(i/5)*2+2].recuptitrepage("return titrepage")!=""){
+listerepvalide[listerepvalide.length]=(i+5)
+listerepCollab[listerepCollab.length]=window.frames[(i/5)*2+1+2].recupliste("return titrepage")[0]
+}
+
+}
+				var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","option0")
+				
+				var nt1=document.createTextNode("choisissez un module PageCarto")
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcarte").appendChild(nouveaux0)
+for(i=0;i<listerepvalide.length;i=i+1){
+				var nouveaux0=document.createElement("option")
+				
+				nouveaux0.setAttribute("id","o"+(i+1))
+				nouveaux0.setAttribute("value",listerepvalide[i])
+				var nt1=document.createTextNode((i+1)+'-'+mapX[listerepvalide[i]-1])
+				nouveaux0.appendChild(nt1)
+				document.getElementById("selectcarte").appendChild(nouveaux0)
+}
+
+document.getElementById('liens').innerHTML=""
+}
+
+var carteencours
+function retcarteencours(){
+return carteencours
+}
+var numerocarte=0
+function testNumeroCarte(a){
+numerocarte=0
+
+for(i=0;i<listerepvalide.length;i=i+1){
+var nomcartemenu=mapX[listerepvalide[i]-1]
+
+if(nomcartemenu==a.replace(/%20/g," ")){numerocarte=i+1; i=listerepvalide.length}
+
+
+}
+return numerocarte
+}
+function valcarteencours(){
+carteencours=WFD.location.href
+var CC=carteencours.replace("/PageCartoDossier/PageCarto/Module-PageCarto.xml?format=complete","")
+var longC=CC.split("/").length
+CC=CC.split("/")[longC-1].replace(/%20/g," ")
+testNumeroCarte(CC)
+
+afftitrecarte(numerocarte+"-"+CC)
+document.getElementById("rad2").checked="1"
+
+}
+function val2carteencours(a){
+carteencours=a
+testNumeroCarte(carteencours)
+afftitrecarte(numerocarte+"-"+carteencours)
+document.getElementById("rad2").checked="1"
+}
+function afftitrecarte(tt){
+//alert(tt)
+
+if(tt=="0-about:blank"){tt="<br>"}
+document.getElementById("nmcarte").innerHTML=tt
+if(tt.length>20){
+document.getElementById("nmcarte").innerHTML="<small>"+tt+"</small>"
+}
+if(tt.length>30){
+document.getElementById("nmcarte").innerHTML="<small><small>"+tt+"</small></small>"
+}
+}
+var blockvisu=0
+function initblockvisu(){
+document.getElementById("cad2").checked="1"
+blockvisu=0
+}
+function visublock12(){
+document.getElementById("cad1").checked="1"
+blockvisu=1
+var astyle=document.getElementById("dragin").getAttribute("style").replace("z-index: 12000","z-index: 10000").replace("z-index: 0","z-index: 10000").replace("opacity: "+opac,"opacity: 1")//.replace("none","block")
+var bstyle=document.getElementById("divf").getAttribute("style").replace("z-index: 12000","z-index: 10000").replace("z-index: 0","z-index: 12000").replace("opacity: "+opac,"opacity: 1")//.replace("none","block")
+document.getElementById("dragin").setAttribute("style",astyle)
+document.getElementById("divf").setAttribute("style",bstyle)
+}
+function visublock21(){
+document.getElementById("cad3").checked="1"
+blockvisu=1
+var astyle=document.getElementById("dragin").getAttribute("style").replace("z-index: 12000","z-index: 10000").replace("z-index: 10000","z-index: 12000").replace("z-index: 0","z-index: 12000").replace("opacity: "+opac,"opacity: 1")//.replace("none","block")
+var bstyle=document.getElementById("divf").getAttribute("style").replace("z-index: 12000","z-index: 10000").replace("z-index: 0","z-index: 10000").replace("opacity: "+opac,"opacity: 1")//.replace("none","block")
+document.getElementById("dragin").setAttribute("style",astyle)
+document.getElementById("divf").setAttribute("style",bstyle)
+}
+function Zindex2(a){
+/**/
+if(blockvisu==0){
+var astyle=document.getElementById("dragin").getAttribute("style").replace("z-index: 0","z-index: 10000").replace("opacity: "+a,"opacity: 1")
+var bstyle=document.getElementById("divf").getAttribute("style").replace("z-index: 10000","z-index: 0").replace("opacity: 1","opacity: "+a)
+
+document.getElementById("dragin").setAttribute("style",astyle)
+document.getElementById("divf").setAttribute("style",bstyle)
+}
+}
+function Zindex1(a){
+/**/
+if(blockvisu==0){
+var astyle=document.getElementById("divf").getAttribute("style").replace("z-index: 0","z-index: 10000").replace("opacity: "+a,"opacity: 1")
+var bstyle=document.getElementById("dragin").getAttribute("style").replace("z-index: 10000","z-index: 0").replace("opacity: 1","opacity: "+a)
+document.getElementById("divf").setAttribute("style",astyle)
+document.getElementById("dragin").setAttribute("style",bstyle)
+}
+}
+function Xzindex1(){
+
+Zindex1(opac)
+}
+
+function ouvrboitebalise(){
+window.frames.framediv.document.getElementById("divbalise").setAttribute("style","position:absolute;bottom:600px;right:215px;display:block;z-index:6000")
+window.frames.framediv.activeDraft()
+window.frames.framediv.boitebalise()
+}
+function fermboitebalise(){
+window.frames.framediv.document.getElementById("divbalise").setAttribute("style","position:absolute;bottom:500px;right:215px;display:none;z-index:6000")
+}
+var PageIci=window.location.href.split("?")[0]
+var aleatoire = Math.random();
+function posithaut(){window.location.hash="#haut"}
+  </script>
+
+</head><body style="font-family:arial">
+<span id="bandeauTexte"><table cellpadding="0" cellspacing="0"><tbody><tr>
+
+<td width="10px"></td><td width="10px"></td><td><img src="SIGNATURE MAIL.png" style="width: 110px"></td><td width="10px"></td><td><img src="ANACT LOGO.jpg" style="width: 70px"></td><td width="10px"></td><td style="vertical-align:top"><span style="color:#548DD4;font-size:36px;cursor:pointer" onclick="window.open('http://188.165.251.203/cairo/spip.php?article8')">PageCarto</span><br><span style="color:gray;font-size:22px">Interface de Scénarisation</span></td><td width="10px"></td><td><br><br><img src="redem.jpg" style="cursor: pointer" onclick="aleatoire = Math.random();window.location.href=PageIci+'?rd='+aleatoire+'&amp;modif='+modif+'&onglet='+onglet" title="redémarrer le module scénarisation"> </td></tr></tbody></table></span>
+<script language='javascript' src='bandeautexte.js'></script>
+
+<hr>
+<a name="haut">
+
+
+
+<div   id="dragin"  style="position : absolute ;opacity: 1;top:1px; left : 535px; cursor:none;width:525px;height:0px;z-index: 10000" onmouseover="xobjet='dragin';Xmove(xobjet);valcarteencours()"    onclick="{Xmove2();indicresize=0}" >
+<table id="tabdrag" onmouseover="Zindex2(opac)" style="border:3px solid gray;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px; background-color:#DFE8F2;font-family:arial;width:525px"><tr><td >
+<span  style="display:none">
+<span><b><big>Sélecteur</big></b></span>
+
+<form name="menucarte"><select name="selectcarte" id="selectcarte" onchange="changecarte()"></select></form>
+<span id="liens"><big><big><b style="color:gray">Recherche en Cours</b></big></big></span>
+</span>
+<dt style="font-family:arial;font-size:18px" ><b><span id="nmcarte"><br></span><table><tr><td><small style="color:navy">Scénarios: <a href="javascript:deplie()"  style="color:blue">déplier</a> / <a href="javascript:plie()"  style="color:blue">replier</a></small></b></td></tr><tr   style="display:none"><td>
+<small><small><small><i>Boite à Balise : <input name="Rad" id="rad1" type="radio" onclick="ouvrboitebalise()"> ouvrir <input name="Rad" id="rad2" type="radio" onclick="fermboitebalise()" checked> fermer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visibilité des cadres : <input name="cad" id="cad1" type="radio" onclick="visublock12()" checked> ensemble 1/2 <input name="cad" id="cad3" type="radio" onclick="visublock21()" > ensemble 2/1 <input name="cad" id="cad2" type="radio" onclick="initblockvisu();Zindex1(opac)"> alternative</i></small></small></small>
+
+</td></tr></table>
+
+<small><small><b>
+<center id="SdC" style="display:inline" ><iframe id="Xmodif" name="Xmodif"  src="" frameborder="0" scrolling="no" style="width:513px;height:350px;border:0px solid gray"></iframe></center>
+
+</b></small></small>
+
+</dt>
+</td></tr>
+<!--tr><td id="resizable" style="height:20px;text-align:right" onmouseover="xobjet='resizable';Xmove(xobjet)" onclick="Xmove2();indicresize=1" onmouseoutxx="document.getElementById(xobjet).addEventListener('mouseup',disable,true)" ></td></tr-->
+ 
+</table>
+</div>
+
+
+<div id="divf" onmouseover="Zindex1(opac)" style=" position : absolute  ;opacity: 1;top:100px;width:745px;height:500px;display:none;z-index: 0;">
+<table ><tr><td>
+<iframe id="framediv" name="framediv" style="border: 0px none ; width: 735px; height: 670px; background-color: white; border:1px solid gray" scrolling="no" frameborder="0" src="" frameborder="0"></iframe>
+</td><td style="vertical-align:top"><img style="cursor : pointer; border : 1px solid gray" width="20px" src="Fermer.jpg" onclick="fermDivF()"></td></tr></table>
+</div>
+
+
+<script language="javascript">
+
+
+
+
+divF=document.getElementById("divf")
+frameD=document.getElementById("framediv")
+WFD=window.frames.framediv
+
+
+Xmove(xobjet)
+Xmove2()
+</script>
+<script language='javascript' >
+
+
+for(i=0;i<mapX.length;i=i+5){
+document.write('<span style="display:none"><iframe style="display:none" name="testPageCarto'+(i/5)+'" src="../recupJS.html?lacible='+mapX[i+4]+'/PageCartoDossier/PageCarto/entete.js" "></iframe><br></span>')
+document.write('<span style="display:none"><iframe style="display:none" name="testCollab'+(i/5)+'" src="../recupJS.html?lacible='+mapX[i+4]+'/PageCartoDossier/listeaide.js" "></iframe><br></span>')
+}
+function largeTexte(){
+
+for(i=0;i<window.frames.Xmodif.document.getElementsByTagName("iframe").length;i++){
+window.frames.Xmodif.document.getElementsByTagName("iframe")[i].width="500px"
+
+window.frames.Xmodif.document.getElementsByTagName("iframe")[i].height="350px"
+
+window.frames.Xmodif.frames[i].document.getElementsByTagName("body")[0].setAttribute("style","font-family:arial;font-size:11px")
+}
+}
+
+</script>
+<script language='javascript' >
+window.frames.Xmodif.location.href="../A0%20Suivi%20de%20chantier/SUIVI%20DE%20CHANTIER/SaisieMAJ-CP/MENUchantier.html?modif="+modif+"&onglet="+onglet
+
+setTimeout('affichemenu();largeTexte()',5000)
+setTimeout('largeTexte()',10000)
+setTimeout('largeTexte()',15000)
+//document.getElementById("rad2").checked="1"
+//document.getElementById("cad2").checked="1"
+visublock21()
+
+</script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body></html>

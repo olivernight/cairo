@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+
+
+
+
+
+<script>
+//alert("ici vide.htm")
+</script>
+
+</head>
+
+<body STYLE="background-color: transparent">
+<center>
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; color: gray;"><font size="2"><b>Arbre des données&nbsp; et des cartes du site</b></font></span>
+<script language="javascript">
+var H=top.document.getElementById("trees").height-70
+document.write('<iframe id="util" name="util" src="../arbre/local_test_makearbre.php" style="width:96%;height:'+H+'" frameborder=0></iframe>')
+</script>
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; color: gray;"><font size="2"><b>Arbre de partage des données&nbsp; et des cartes (entrepôt)</b></font></span>
+<script language="javascript">
+document.write('<iframe id="depot" name="depot" src="../depot/local_test_utilisateur.php" style="width:96%;height:'+H+'" frameborder=0></iframe>')
+</script>
+</center>
+<div style="position:fixed;top:15px;right:5px">
+<input type="button" value="arbres" onclick="top.frames.trees.location.href='trees.htm'"><span style="color:white">...</span><input type="button" value="plan" onclick="top.frames.trees.location.href='archi.htm'"><span style="color:white">...</span><input type="button" value="transfert menus" onclick="top.selectOnglet('east',2);top.frames.editMenu.location.href='transmenu.htm'">
+</div>
+</body >
+</html>

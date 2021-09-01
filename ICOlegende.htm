@@ -1,0 +1,104 @@
+﻿<html>
+<head>
+<title>Untitled Document</title>
+
+<script language="javascript" >
+
+
+var titrem
+var titrem2
+var left0=10
+var height0=35
+
+
+if(document.all){
+divx1='<div id="t1" style="position:absolute;left:1;top:11">' //image fonf
+divx2='<div id="t2" style="position:absolute;left:3;top:10">' // titre icone
+divx3='<div id="t3" style="position:absolute;left:10;top:35">' //icone
+divx4='<div id="t4" style="position:absolute;left:15;top:40">' //effectifs
+divx5='<div id="t4" style="position:absolute;left:90;top:30">'
+}else{
+
+divx1='<div id="t1" style="position:absolute;left:0;top:0">'
+divx2='<div id="t2" style="position:absolute;left:3;top:10">'
+divx3='<div id="t3" style="position:absolute;left:10;top:35">'
+divx4='<div id="t4" style="position:absolute;left:15;top:40">'
+divx5='<div id="t4" style="position:absolute;left:90;top:30">'
+}
+function centreico(){
+document.getElementById("t3").style.left=40-document.images[1].width/2
+document.getElementById("t3").style.top=65-document.images[1].height/2
+
+}
+
+
+//var TITREmap= top.frames.Num0.frames.pilote.transfertTitremap("return Titremap")
+TITREmap="titre Icône"
+titrem='<dt><b><FONT id="ICOtitre" SIZE=2 FACE="Arial" COLOR="#400080">'+TITREmap+'</FONT></b></dt>'
+
+</script>
+
+</head>
+<body STYLE="background-color: transparent">
+
+<script language="javascript" >
+//-----------------------------------------------------------------------------------------image de fond de l'encadré------------------------------------------
+//document.write(divx1)
+</script>
+<table width=100 height=100 border=0 cellpadding=0 cellspacing=0>
+<TR><TD >
+<img src="carretransparent.gif" width=1 height=1 border=0>
+</TD></TR>
+</table>
+
+</DIV>
+
+<script language="javascript" >document.write(divx2)</script>
+<table  height=10 border=1 cellpadding=0 cellspacing=0>
+<TR height=10><TD height=10 border=0 bgcolor="#400099">
+<script language="javascript" >
+//-----------------------------------------------------------------------------------------Titre icone-------------------------------------------
+document.write(titrem)
+document.getElementById("ICOtitre").style.color="white"
+
+</script>
+</TD></TR>
+
+</table>
+</DIV>
+
+
+<script language="javascript" >
+//--------------------------------------------------------------------------------------------Icone ------------------------------------------
+document.write(divx3)
+//var tailleinit=top.frames.Num0.frames.tab.recuptaille0("return taille0")
+
+</script>
+<table width=800 height=100% border=0 cellpadding=0 cellspacing=0>
+<TR><TD>
+<img src="carretransparent.gif" width=0 height=0 border=0>
+</TD></TR>
+</table>
+</div>
+
+<script language="javascript" >
+document.write(divx4)
+
+
+</script>
+<! -----------------------------------------------effectifs------------>
+<table width=50 height=50 border=0 cellpadding=0 cellspacing=0> 
+<TR><TD >
+<center><b><p><FONT id="ICOtaille" SIZE=4 FACE="Arial" COLOR="#400080">0</FONT></p></b></center>
+</TD></TR>
+</table>
+</div>
+
+
+
+
+
+
+</body >
+</html>
+

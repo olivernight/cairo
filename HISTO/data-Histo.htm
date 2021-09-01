@@ -1,0 +1,85 @@
+﻿<html id="GaïaMundi AlterCarto.com">
+<head>
+<title>Untitled Document</title>
+
+<script  id="chargedatajs" language="JavaScript"  >
+var transparamreg=new Array()
+var paramHisto=new Array()
+paramHisto=top.frames.Num0.frames.datacarte.recupparamHisto()
+var colonx=paramHisto[0]
+var titrex=paramHisto[1]
+var sourcex=paramHisto[2]
+var iconetypex=paramHisto[3]
+
+var base0 = new Array()
+var trabas=new Array()
+
+
+function transparametrereglage(){
+var wxc=paramHisto[11]
+for(i=0;i<10;i++){transparamreg[i]=wxc[i]}
+transparamreg[10]=paramHisto[4]
+return transparamreg
+}
+//_______________________bloc de paramètres de l'histogramme________________________________
+
+//var colonx=new Array(44,45,46,47,48) // n° des colonnes de données de l'histogramme dans la Base de donnée iconeencadre
+
+
+
+var LLx=top.frames.Num0.frames.iconeencadre.longueurdata("return longa")// position =id de l'érea "ensemble"
+
+//var titrex="Enfants/âges"
+//var sourcex="(sources:CAF 2003)"
+//à faire : indicateurs pour différentier les histo.htm et histo2.htm 
+//var iconetypex=new Array(1,2) //1er = type histo ; 2ème =1 type Histo.htm ou =2 type histo2.htm
+//___________________________________________________________________________________________
+
+top.frames.Num0.frames.iconeencadre.recuptypeiconeencadre()
+
+function transsourcex(){
+return sourcex
+}
+
+function transiconetypex(){
+return iconetypex
+}
+
+function transtitrex(){
+return titrex
+}
+
+function transLLx(){
+return LLx
+}
+
+function transcolonx(){
+return colonx
+}
+top.frames.Num0.frames.iconeencadre.calculbaseselct()
+
+function recupbaseinit(){
+
+
+base0=top.frames.Num0.frames.iconeencadre.transbase0("return trabas0") // va chercher dans frames.iconeencadre la partie selectionnées de la base
+
+top.frames.Num0.frames.pilote.changeXFOND()
+}
+
+function transbase(){
+var trabas=base0
+return trabas
+}
+
+
+
+
+
+</script>
+
+</head>
+
+<body>
+
+</body >
+</html>

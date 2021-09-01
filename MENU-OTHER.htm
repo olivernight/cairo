@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language="javascript">
+var tipX=top.location.href
+tipX=tipX.indexOf("Site-",0)
+function retourneICD(){
+return ICD
+}
+</script>
+</head>
+
+<body STYLE="background-color: transparent"  onkeydown="javascript:if(tipX<0){top.test(event)}else{top.test3(event)}">
+<script language="javascript">
+var SELX
+SELX=top.frames.Num0.frames.datacarte.returnmenu1("return SEL")
+//alert(SELX)
+function changemenugraph2(a){
+
+//top.rediminfocarte()
+document.menu3.popup3.selectedIndex=a
+top.frames.Num0.pilote.change_site3()
+
+}
+//var ICD=top.frames.Num0.frames.pilote.returnICD("return ICD0")
+</script>
+
+<script  language="javascript" >
+document.write(SELX);
+
+
+//top.frames.Num0.frames.couches.location.href="carte.htm"; //l'ouverture de carte.htm enclenche l'ouvertre de coucheXX.htm
+
+</script>
+
+<script language="javascript">
+
+document.menu3.popup3.selectedIndex=0
+top.frames.Num0.frames.pilote.razselectindex(101)
+var topX=top.location.href
+topX=topX.indexOf("encaps.",0)
+if(topX>0){top.changeGraph2()}
+
+</script>
+
+</body >
+</html>

@@ -1,0 +1,389 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+<script id="insert" language="javascript" ></script>
+<script  language="javascript" >
+//alert("vide_insert.js")
+var dateici=Math.random()
+var mappocoord=new Array()
+var menuIconeEchelle=new Array()
+var menuIconeSup=new Array()
+
+var menuSujet=new Array()
+var menuOther=new Array()
+
+var OK1=0
+var OK2=0
+function OkChargemenusjs1(){OK1=1; if(OK1==1 & OK2==1){affichemenusdata()}}//indic chargement menu1
+function OkChargemenusjs2(){OK2=1; if(OK1==1 & OK2==1){affichemenusdata()}}//indic chargement menu2
+function OkChargedataOrigine(){libel()}//indic chargement menu
+</script>
+<script id="srcmappocoord" language="javascript" ></script>
+<script id="menuprincipal" onload="OkChargemenusjs1()" language="javascript" ></script>
+<script id="menucomplementaire" onload="OkChargemenusjs2()" language="javascript" ></script>
+<script  language="javascript" >
+//alert("debut vide_insert.js")
+    var urlvar=""
+var Rezo
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    //alert(urlvar['REP'])
+    //alert(urlvar['cible'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->	
+	Rezo=urlvar['rezo']
+	//alert(Rezo +"   dans vide_inserjs.js")
+var raz=0
+function razer(){
+raz=1
+}
+var SEL
+var Fichier
+var indexselectX=""
+var menuX=new Array()
+var sel=urlvar['sel']
+var DataTabCol=new Array()// table des donénes récupérées
+var repdataorigine=new Array()//répertoir où est situé le fichier d'origine
+var  menuatransferer=new Array()
+var filedataorigine=new Array()
+var maps=urlvar['maps']
+var lim
+var tabcol
+
+f=1
+function chargefichier(sel,f,indexselec){
+//alert("sel="+sel+"   f="+f+"   indexselec="+indexselec)
+SEL=sel
+Fichier=f
+indexselectX=indexselec
+parent.init1()
+if(raz==1){
+raz=0
+parent.init0()
+parent.initX2()
+}
+parent.BL()
+if(sel==1){//cas icones
+if(f==1){menuatransferer=menuIconeEchelle[i];repdataorigine=mappocoord[6];filedataorigine=mappocoord[0]}else{menuatransferer=menuIconeSup[i];repdataorigine=mappocoord[7];filedataorigine=mappocoord[1]}
+
+}else{// cas graphs
+if(f==1){menuatransferer=menuSujet[i];repdataorigine=mappocoord[6];filedataorigine=mappocoord[0]}else{menuatransferer=menuOther[i];repdataorigine=mappocoord[7];filedataorigine=mappocoord[1]}
+
+}
+
+filedataOrigSansSuf=filedataorigine.substr(0,filedataorigine.length-5)
+
+window.frames.frameop.location.href=Rezo+"A-MANAGER-local/transdata_DBHtml/date_actuelle_serveur.php"
+setTimeout('DEBUcopyData()',500)
+}
+
+
+function chargelesdonneesAdditives(){
+//filedataOrigSansSuf=filedataorigine.substr(0,filedataorigine.length-5)
+setTimeout('window.frames.framedataorigine.location.href="RecupDATA.html?cible="+urlvar["PANIER"]',200)
+}
+
+function DEBUcopyData(){
+
+window.frames.frameop.location.href="DEBUcopyDATA.html?REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf+"&REZO="+Rezo
+
+
+}
+function DEBUcopyDataPHP(){
+
+window.frames.frameop.location.href=Rezo+"A-MANAGER-local/transdata_DBHtml/DEBUcopyDATA.php?dateencours="+dateici+"&REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf
+
+setTimeout("copyData()",1000)
+}
+function copyData(){
+
+window.frames.frameop.location.href=Rezo+"A-MANAGER-local/transdata_DBHtml/copyDATA.php?cible="+repdataorigine+"/"+filedataorigine+"&dateencours="+dateici+"&REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf
+
+recupDataX()
+}
+
+function message1(){
+//window.frames.framedataorigine.location.href="../../vide.html"
+alert("un autre utilisateur est en cours de télééchargement, attendez quelques secondes et cliquez sur OK")
+//window.frames.framedataorigine.document.getElementById("fichierJS").src="../../"+repdataorigine+"/"+filedataOrigSansSuf+".js"
+setTimeout("DEBUcopyData()",2000)
+}
+function message2(reste){
+//window.frames.framedataorigine.location.href="../../vide.html"
+alert("Une autre opération de transfert a commnencé ou a échoué depuis "+reste+" minutes : elle va être annulée pour exécuter votre commande ")//window.frames.framedataorigine.document.getElementById("fichierJS").src="../../"+repdataorigine+"/"+filedataOrigSansSuf+".js"
+setTimeout("DEBUcopyDataPHP()",2000)
+}
+
+
+function recupDataX(){
+setTimeout('window.frames.framedataorigine.location.href="RecupDATA.html?cible="+Rezo+repdataorigine+"/"+filedataOrigSansSuf+".js&REP0="+repdataorigine+"&fichierO="+filedataOrigSansSuf+"&REZO="+Rezo',5000)
+//setTimeout('window.frames.effaceCopyData.location.href=Rezo+"A-MANAGER-local/transdata_DBHtml/effaceCopyData.php"',20000)
+}
+
+
+
+
+function extraitMetaData(sel,n,i){//récupérer les éléments de menu
+
+parent.init1()
+if(raz==1){
+raz=0
+parent.init0()
+parent.initX2()
+}
+//récupérer le répertoire de dépot du fichier de données
+if(sel==1){//cas icones
+if(n==1){menuatransferer=menuIconeEchelle[i];repdataorigine=mappocoord[6];filedataorigine=mappocoord[0]}else{menuatransferer=menuIconeSup[i];repdataorigine=mappocoord[7];filedataorigine=mappocoord[1]}
+
+
+}else{// cas graphs
+if(n==1){menuatransferer=menuSujet[i];repdataorigine=mappocoord[6];filedataorigine=mappocoord[0]}else{menuatransferer=menuOther[i];repdataorigine=mappocoord[7];filedataorigine=mappocoord[1]}
+
+}
+//alert(repdataorigine+"/"+filedataorigine)
+//document.getElementById("framedataorigine").setAttribute("onload","OkChargedataOrigine()")
+
+var actu=window.frames.framedataorigine.location.href
+if(actu.indexOf(repdataorigine+"/"+filedataorigine)>=0){extraitdata()}else{
+
+window.frames.framedataorigine.location.href=Rezo+"/"+repdataorigine+"/"+filedataorigine
+}
+// ouvrir le fichier de donnée dans la frame divdataorigine framedataorigine
+
+if(menuatransferer[3][0]==2 & menuatransferer[3][1]==0){lim=1}else{lim=menuatransferer[0].length}
+//aller chercher les données dans le fichier et con,stituer le tableau des données à transférer
+//alert(lim)
+//alert(menuatransferer)
+//_________________________________________________________________________________________________________
+tabcol=menuatransferer[0]
+//_________________________________________________________________________________________________________
+
+//setTimeout('extraitdata()',3000)
+}
+
+function selectiondata(){
+tabcol=menuatransferer[0]
+
+extraitdata()
+}
+function extraitdata(){
+/*
+var enc=parent.document.getElementById("ulencours").innerHTML
+enc+='<li title="'+menuatransferer[12]+'"><span style="font-weight:bold;color:blue">'+menuatransferer[9]+'</span><br><span style="font-size:9px"><i>carte : '+maps+' ; répertoire='+repdataorigine+' ; fichier='+filedataorigine+'</i></span></li>'
+parent.document.getElementById("ulencours").innerHTML=enc
+*/
+
+lim=tabcol.length
+window.frames.framedataorigine.recuptranstabcol(tabcol)//a,lim
+window.frames.framedataorigine.recuptranslim(lim)
+window.frames.framedataorigine.initDimDataTabCol()
+DataTabCol=window.frames.framedataorigine.extract_data("return DataTabCol")
+
+//parent.trans_n_sel(n,sel)
+//alert(menuatransferer)
+parent.addMenuTransfert(menuatransferer)
+parent.AddDataToTransfert(DataTabCol)
+
+}	 
+	 
+	 
+function renvoiVARjs(){
+ return menuX
+	 }
+
+
+	
+
+var repcarte
+function selectrepertoires(){
+repcarte=urlvar['rep']
+//alert( repcarte  +"dans vide_insertjs.js")
+
+document.getElementById("srcmappocoord").src=Rezo+"/"+repcarte+"/DATA-mappocoord.js"
+ //var xvar='<script id="srcmappocoord" language="javascript" src="'+Rezo+'/'+repcarte+'/DATA-mappocoord.js" ><\/script>'
+	// document.write(xvar)
+//setTimeout('chargemenusdata()',1000)
+}
+function chargemenusdata(){ }
+function chargemenusdataxx(){ 
+//alert(Rezo)
+if(sel==1){//cas icones
+//document.getElementById("menuprincipal").src=Rezo+"/"+repcarte+"/DATA-IcoSujet.js"
+ var xvar='<script id="menuprincipal" language="javascript" src="'+Rezo+'/'+repcarte+'/DATA-IcoSujet.js" ><\/script>'
+	 document.write(xvar)
+//document.getElementById("menucomplementaire").src=Rezo+"/"+repcarte+"/DATA-IcoOther.js"
+ var xvar='<script id="menucomplementaire" language="javascript" src="'+Rezo+'/'+repcarte+'/DATA-IcoOther.js" ><\/script>'
+	 document.write(xvar)
+}else{// cas graphs
+//document.getElementById("menuprincipal").src=Rezo+"/"+repcarte+"/DATA-Sujet.js"
+ var xvar='<script id="menuprincipal" language="javascript" src="'+Rezo+'/'+repcarte+'/DATA-Sujet.js" ><\/script>'
+	 document.write(xvar)
+//document.getElementById("menucomplementaire").src=Rezo+"/"+repcarte+"/DATA-Other.js"
+ var xvar='<script id="menucomplementaire" language="javascript" src="'+Rezo+'/'+repcarte+'/DATA-Other.js" ><\/script>'
+	 document.write(xvar)
+}
+//setTimeout('affichemenusdata()',2500)
+	 }
+	 
+	 var indexselec=0
+	 function indexsel(y){indexselec=y;}
+	 var LLx
+	 var menudata
+	 var cible
+	 var cibleX
+	 var lignelibel
+	 var etatcheck
+	 function overcontrolCheck(a){
+	 etatcheck=a.checked
+	 }
+	 function controlCheck(a){
+	 //alert(a.checked)
+	 a.checked="checked"
+	 if(etatcheck==true){a.checked=false}else{a.checked="checked"}
+	 }
+	 function razradios(){
+	 for(i=3;i<lignelibel.length-1;i++){
+	 document.getElementById("Q"+(i)+"_1").checked=false
+	 } 
+	 }
+	  function allradios(){
+	 for(i=3;i<lignelibel.length-1;i++){
+	 document.getElementById("Q"+(i)+"_1").checked=true
+	 } 
+	 }
+	 function valideSelection(){
+	 tabcol=new Array()
+	 for(i=3;i<lignelibel.length-1;i++){
+	 if(document.getElementById("Q"+(i)+"_1").checked==true){tabcol[tabcol.length]=i}
+	 } 
+	 
+	 extraitdata()
+	 parent.transfertValid()
+	 }
+	 
+	 
+	 
+function libel(){ //cible        affichage des entêtes de colonne du fichier de données
+menudata=""
+
+cibleX=cible
+
+//document.getElementById(cibleXtemp).setAttribute("style","background-color:white")
+//document.getElementById("divfiledata").setAttribute("style","position:fixed;top:100;right:40;visibility:visible")
+//document.getElementById("divfiledata2").setAttribute("style","position:fixed;top:110;right:32;visibility:visible")
+
+//if(init1==0){//récupère les entêtes de colone dans le fichier de données
+
+
+
+window.frames.framedataorigine.rgappel(0)
+LLx=window.frames.framedataorigine.longueurdata("return longa")+8
+lignelibel=window.frames.framedataorigine.transbas00de0("return lignelabel")
+
+//init1=1
+
+//}
+
+for(i=3;i<lignelibel.length-1;i++){//affiche les entêtes en liste 
+menudata+='<dt>'
+menudata+='<INPUT id="Q'+(i)+'_1" TYPE = "RADIO" NAME ="Q'+i+'" VALUE = "'+i+'" onmouseover="overcontrolCheck(this)" onclick="controlCheck(this)">'
+menudata+='<label id="Qlabel'+(i)+'_1" for="Q'+(i)+'" style="font-size:9px"><b style="color:red">'+i+'</b> - '+lignelibel[i]+'</label></dt>'
+}
+
+
+document.getElementById("divmenu").innerHTML=""
+document.getElementById("divmenu").innerHTML=menudata
+
+//menudata+='<div id="divfermer" style="position:fixed;top:50;right:0;visibility:visible"><input type="button" name="datafermer" onclick="javascript:parent.fermermenudata()" value="fermer"></input></div>'
+
+allradios()	
+parent.EL() 
+}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+function affichemenusdata(){ //rep= répertoire de carte; sel =1 -> icones et sel=2 -> graphs ;
+
+var NomMenu=""
+var menu=""
+
+for(n=1;n<3;n++){
+
+var menuX=new Array()
+if(sel==1){//cas icones
+if(n==1){menuX=menuIconeEchelle;NomMenu="icones principal"}else{menuX=menuIconeSup;NomMenu="icones complémentaire"}
+}else{// cas graphs
+if(n==1){menuX=menuSujet;NomMenu="graph principal"}else{menuX=menuOther;NomMenu="graph complémentaire"}
+}
+libel()
+/*
+menu='<select id="selectcartes" onchange="var idsel=indexselec;extraitMetaData('+sel+','+n+',idsel);parent.document.getElementById(\'valid\').style.visibility=\'visible\'"  style="background-color: white; color: black;width:200px" size="1"><option id="option0" value="javascript:rien2()">&nbsp;'+NomMenu+'</option>'
+var kc=0
+for(i=0;i<menuX.length;i=i+1){
+kc+=1
+menu+='<option id="option'
+menu+=kc
+
+menu+='" title="'+menuX[i][12]+'"  onmouseover="javascript:indexsel(this.value)"  VALUE="'+i+'">'//onclick="extraitMetaData('+sel+','+n+','+i+')" 
+menu+=kc
+menu+="-"
+menu+=menuX[i][9]
+menu+='</option>'
+
+
+}
+menu+='</select>'
+*/
+
+if(n==1){var dest="divmenuprincipal"}else{var dest="divmenucomplementaire"}
+document.getElementById(dest).innerHTML=""
+document.getElementById(dest).innerHTML=menudata
+}
+}
+
+</script>
+</head>
+
+<body STYLE="font-family:arial;background-color: gray"><script  language="javascript" >
+document.write('<div id="divmenu" style="position: absolute; left: 0px; top: 2px; visibility:visible"><i><br><br><br><small>Cadre d\'affichage des entêtes des colonnes de données de la base, afin de sélection.</small></i></div>')
+
+document.write('<div id="raz" style="position: absolute; left: 230px; top: 2px; visibility:visible"><input type="button" value="RAZ" onclick="razradios()"></input></div>')
+document.write('<div id="all" style="position: absolute; left: 230px; top: 25px; visibility:visible"><input type="button" value="All" onclick="allradios()"></input></div>')
+document.write('<div id="OK" style="position: absolute; left: 230px; top: 55px; visibility:visible"><input type="button" value="OK" onclick="valideSelection()"></input></div>')
+
+document.write('<div id="divdataorigine" style="position: absolute; left: 0px; top: 2px; "><iframe onload=""  width=0 height=0 frameborder=0 id="framedataorigine" name="framedataorigine" ></iframe></div>')
+document.write('<div id="divop" style="position: absolute; left: 0px; top: 2px;visibility:hidden "><iframe onload=""  width=0 height=0 frameborder=0 id="frameop" name="frameop" style="visibility:hidden "></iframe></div>')
+//document.write('<div id="divdatadestin" style="position: absolute; left: 0px;  top: 32px; ">xxx</div>')
+
+
+//selectrepertoires()
+chargelesdonneesAdditives()
+</script>
+<div style="visibility:hidden"><iframe name="effaceCopyData"></iframe></div>
+
+</body >
+</html>

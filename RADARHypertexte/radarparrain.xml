@@ -1,0 +1,210 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="html balise" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <title>SVG incorporé dans un fichier XHTML</title>
+   <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8"  />
+   <script id="scrpt"  language="javascript" ><![CDATA[
+
+   var coul=new Array()
+var axescote=new Array()
+var libelaxe=new Array()
+   
+   var Xradar=''
+var nbf=""
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    Xradar=(urlvar['radar'])
+	nbf=urlvar['nbf']
+
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+
+]]></script>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+
+
+
+
+]]></script>
+</head>
+  <body  style="font-family:arial;font-size:11px" >
+
+
+
+<div style="position:absolute;top:0px;left:0px">
+<table style="border:0px dotted black;background-color:transparent">
+<tr><td style="background-color:yellow">
+<center><b id="titre">
+
+</b></center>
+</td></tr>
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+
+]]></script>
+<tr><td>
+<svg id="bouton2" 
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+     width="300"
+   height="300"
+   >
+    <metadata
+     id="metadata7">
+    <rdf:RDF>
+
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+<stop class="begin" offset="0.5" style="stop-color:green"/>
+
+<stop class="end" offset="1" style="stop-color:red"/>
+</radialGradient>
+</defs>
+<g>
+<!--clipPath id="chemindecoupe">
+<circle  cx="65" cy="65" r="55" />
+</clipPath-->
+<defs>
+<g opacity="0" >
+<g id="ensemble" >
+<g stroke="black" stroke-width="0.5px"><path id="p0" d=""></path></g>
+  <ellipse rx="10" ry="10"  onclick="javascript:NoDatx=id;svgclick2()" cy="0" cx="0" stroke-opacity="1" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1px" stroke="none" fill-rule="evenodd" fill-opacity="0.2" fill="gray" id="c0"></ellipse>
+
+
+</g> 
+</g> 
+</defs>
+<g >
+ <use id="userond1" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+ <use id="userond2" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+  <use id="userond3" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+   <use id="userond4" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+    <use id="userond5" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	 <use id="userond6" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	  <use id="userond7" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	   <use id="userond8" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+	    <use id="userond9" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 <use id="userond10" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" > </text>
+		 
+		 
+		  <g id="radTot" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.1" stroke-width="1px"><path id="p2" d=""></path></g>
+		 <g id="rad" stroke="black" fill="blue" fill-opacity="0.2" stroke-width="0.5px"><path id="p1" d=""></path></g>
+</g>		 
+</g>
+</svg> 
+</td></tr></table>
+</div>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+function calculradar(){
+var nbaxes=libelaxe.length
+retrait=carre*retrait/100
+document.getElementById("titre").innerHTML=titre
+document.getElementById("bouton2").setAttribute("width",carre)
+document.getElementById("bouton2").setAttribute("height",carre-15)
+var rad=""
+var radTot=""
+var rad0=""
+var rad0Tot=""
+var rayon=carre/2-retrait*carre/300
+var dd="M 0 0 "+rayon+" 0"
+document.getElementById("p0").setAttribute("d",dd)
+document.getElementById("c0").setAttribute("cx",rayon)
+var angle0=360/nbaxes
+var angle=-angle0-90
+for(i=1;i<nbaxes+1;i++){
+
+angle+=angle0
+var a = 3.1416 * (angle) / 180 
+
+
+
+var tr=Math.cos(a)+" "+Math.sin(a)+" "+(-Math.sin(a))+" "+Math.cos(a)+" "+(carre/2)+" "+(carre/2) // rotation
+document.getElementById("userond"+i).setAttribute("transform","matrix("+tr+")")
+document.getElementById("userond"+i).setAttribute("opacity",0.5)
+
+
+
+var tr="matrix(1 0 0 1 "+(carre/2+rayon*Math.cos(a))+" "+(carre/2+rayon*Math.sin(a))+")"
+document.getElementById("texte"+i).setAttribute("transform",tr)
+
+document.getElementById("texte"+i).firstChild.nodeValue=libelaxe[i-1]
+document.getElementById("texte"+i).setAttribute("style","stroke:black;stroke-width:0px;fill:"+coul[i-1]+";font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texte"+i).setAttribute("font-size",parseInt(11*carre/300))
+var ML
+if(i==1){ML="M"}else{ML="L"}
+rad+=ML+" "+((carre/2)+rayon*Math.cos(a)/5*axescote[i-1])+" "+((carre/2)+rayon*Math.sin(a)/5*axescote[i-1])+" "
+if(i==1){rad0=" "+((carre/2)+rayon*Math.cos(a)/5*axescote[i-1])+" "+((carre/2)+rayon*Math.sin(a)/5*axescote[i-1])}
+
+if(i==1){ML="M"}else{ML="L"}
+radTot+=ML+" "+((carre/2)+rayon*Math.cos(a))+" "+((carre/2)+rayon*Math.sin(a))+" "
+if(i==1){rad0Tot=" "+((carre/2)+rayon*Math.cos(a))+" "+((carre/2)+rayon*Math.sin(a))}
+
+}
+rad+=rad0
+document.getElementById("p1").setAttribute("d",rad)
+radTot+=rad0Tot
+document.getElementById("p2").setAttribute("d",radTot)
+
+//alert("ici radarparrain")
+//dimension du cadre du radar
+carre=parseFloat(carre)
+parent.document.getElementById("tabcadre"+nbf).setAttribute("width",(carre+10)+"px")
+parent.document.getElementById("divcadre"+nbf).style.width=(carre+10)+"px"
+parent.document.getElementById("cadre"+nbf).style.width=(carre+10)+"px"
+parent.document.getElementById("cadre"+nbf).setAttribute("height",carre)
+}
+]]></script>
+   <script id="scrptrad"  language="javascript"  ></script>
+   <script id="scrpt"  language="javascript" ><![CDATA[
+
+document.getElementById("scrptrad").src=Xradar
+setTimeout('calculradar()',1000)
+]]></script>
+</body >
+</html>

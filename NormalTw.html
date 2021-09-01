@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>Normal</title>  
+
+<script type="text/javascript" >
+function dimdocu(){
+//window.frames.docici.document.getElementById("textcomment").style.height="520px"
+}
+function affmenu(itm,omd1){
+parent.parent.affmenu(itm,omd1) }
+
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    var lacible=(urlvar['cible'])
+
+document.write('<center><div style="position:absolute;top:0px;width:98%;"><iframe style="border: 0px solid transparent ; width: 910px; height: 680px; background-color: white;" src="'+lacible+'/PageCarto/Module-PageCarto-Complet.html" scrolling="no" frameborder="0"></iframe> </div> </center>')
+
+function xclose(){
+docu(0)
+}
+function docu(a){
+
+if(a==1){
+document.getElementById("divdocici").style.display="block"
+//document.getElementById("carte").style.display="none"
+}else{
+//document.getElementById("carte").style.display="block"
+document.getElementById("divdocici").style.display="none"
+}
+}
+</script>
+</head>
+<body>
+<div id="divdocici" style="position:absolute;top:0px;left:13px;width:545px;display:none;">
+	<iframe id="docici" name="docici" onload="dimdocu()" style="width: 540px; height: 620px; background-color: transparent;"  scrolling="no" frameborder="0"></iframe> 
+</div> 
+<script type="text/javascript" >
+function docutweet(carte){
+
+window.frames.docici.location.href="PNUD2014/"+carte+"/PageCartoDossier/comment.html"
+docu(1)
+}
+</script>
+
+</body>
+</html>

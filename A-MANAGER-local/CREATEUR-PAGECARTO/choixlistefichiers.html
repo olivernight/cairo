@@ -1,0 +1,324 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+	<!-- <meta http-equiv="Content-type" content="text/html; charset=utf-8">  -->
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<link rel=stylesheet type='text/css' href='style.css'>
+
+
+	<script language="JavaScript">
+var listeAddContoursSVG= new Array()
+
+var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    var REP=urlvar['REP']
+	var MODELE=urlvar["MODELE"]
+	var fromgeojson=0
+//document.write('<script language="javascript" id="listecontours" src="../../'+REP+'/listeAdditifContoursSVG.js">')
+
+</script>
+<!--script  language="JavaScript" src="../../PB 6/azimut.js"></script-->
+<span id="transazimutgeojson" style="display:none"></span>
+
+
+
+<script language="JavaScript">    
+function chargeazimitfromgeojson(){}
+var nouv = document.createElement("script")
+nouv.setAttribute("language","javascript")
+nouv.setAttribute("src","../../"+REP+"/azimut.js")
+document.getElementById("transazimutgeojson").appendChild(nouv)
+
+
+
+
+</script>
+
+
+
+	<title>            Génération de Modules PageCarto(2)</title>
+</style>
+</head>
+
+<body style="font-family:arial;font-size:13px">
+<iframe src="" style="display:none" onload="affichelistefichier()" id="PARAM" name="PARAM"></iframe>
+<script language="JavaScript">
+	/*
+	function openpopup(popurl, w, h) {
+		window.open(popurl,'','width='+w+',height='+h);
+	}
+	
+	*/
+
+
+var nouveau=document.createElement("script")
+nouveau.setAttribute("language","javascript")
+nouveau.setAttribute("src","../../"+REP+"/listeAdditifContoursSVG.js?updated=1234567890")
+document.getElementsByTagName("body")[0].appendChild(nouveau)
+var FicheEtTexte=1
+var DonneesDeSynthese=0
+var SomTab=0
+var visiontotal=0
+
+						var nouveau=document.createElement("script")
+						nouveau.setAttribute("language","javascript")
+						nouveau.setAttribute("src","../../"+REP+"/PageCartoDossier/PageCarto/parametres.js?updated=1234567890")
+						document.getElementsByTagName("body")[0].appendChild(nouveau)
+
+
+	window.frames.PARAM.location.href="../../"+REP+"/PARAMCARTEazimut.html"
+	if(window.location.href.indexOf("sc1")>0){
+	var chem="../sc1"+window.location.href.split("A-MANAGER-local")[0].split("/sc1")[1]+REP+"/";
+	}else{
+	var chem=window.location.href.split("A-MANAGER-local")[0]+REP+"/";
+	}
+	
+	var typ=""
+	if (MODELE==1){typ="Modèle horizontal";}
+	if (MODELE==2){typ="Modèle vertictal";}
+	if (MODELE==3){typ="Modèle collaboratif (vertical)";}
+document.write('<div style="position:absolute;top:0px;left:35%"><center><input type="button" value="fermer"  onclick="top.selectOnglet(\'east\',1);ferme()"> </input><input type="button" value="all"  onclick="xall()"></input> <input type="button" value="RAZ"  onclick="raz()"></input><br>')
+document.write('<a name="haut"></a><b><BIG>Génération de Modules PageCarto(étape 2)<br>dossier carte : <span style="color:blue">'+REP+'</span></big></b><br><span style="color:green">'+typ+'</span></center></div><br><br><br><br><br><table><tr><td><dt id="divlistefichiers" style="display:block"></dt></td><td width=2 style="background-color:#E4E4E4"> </td><td style="vertical-align:top" id="divlistefichiers2"> </td></tr></table><center><dt id="boutonlistefichiers" style="display:block"></dt></center>')
+document.write('')
+document.write('')
+
+
+var j=0
+var B=new Array()
+var C=new Array()
+var D=new Array()
+var X=""
+var Z=""
+function valider(){
+Z=document.getElementById("geojsonfrom").value
+
+X=document.getElementById("azimut").value
+for(i=1;i<(12+listeAddContoursSVG.length);i++){
+
+if(document.getElementById("b"+i).checked){
+B[j]=document.getElementById("s"+i).innerHTML
+j+=1
+}
+}
+if(document.getElementById("c1").checked){
+C[0]="1"//hypertexte
+}
+if(document.getElementById("c2").checked){
+C[1]="1"//fichiers du package
+}
+if(document.getElementById("c3").checked){
+C[2]="1"//fichiers entete.js du module
+}
+if(document.getElementById("c4").checked){
+C[3]="1"//fichiers du dossier info (sauf principal.txt et complementaire.txt qui sont générés selon le choix de sélection fait pour principal.js et complementaire.js)
+}
+if(document.getElementById("c5").checked){
+C[4]="1"//fichier de paramètres utilisateurs (concerne l'azimut des couches,les filtres pour les données de synthèse et les filtre pour les sommes des histogrammes)
+}
+if(document.getElementById("c6").checked){
+C[5]="1"//fichier de zoom et centrage de la carte 
+}
+
+	if(MODELE==3){//cas Collab
+	if(document.getElementById("d1").checked){
+	D[0]="1"//registre des participants
+	}
+
+	window.location.href="FabricModulePageCarto.php?LISTE="+B+"&PACK="+C+"&CARTE="+REP+"&MODELE="+MODELE+"&COLLAB="+D+"&AZIMUT="+X+"&FROMGEOJSON="+Z
+}else{//cas standard et vertical simple
+window.location.href="FabricModulePageCarto.php?LISTE="+B+"&PACK="+C+"&CARTE="+REP+"&MODELE="+MODELE+"&COLLAB="+D+"&AZIMUT="+X+"&FT="+FicheEtTexte+"&SY="+DonneesDeSynthese+"&ST="+SomTab+"&TT="+visiontotal+"&CHEM="+chem+"&FROMGEOJSON="+Z
+}
+}
+
+function raz(){
+
+	for(i=1;i<(12+listeAddContoursSVG.length);i++){
+	document.getElementById("b"+i).checked=0
+	}
+	document.getElementById("c1").checked=0
+	document.getElementById("c2").checked=0
+	document.getElementById("c3").checked=0
+	document.getElementById("c4").checked=0
+	document.getElementById("c5").checked=0
+	document.getElementById("c6").checked=0
+		if(MODELE==3){//cas Collab	
+		document.getElementById("d1").checked=0
+		}
+}
+function xall(){
+//alert("MODELE="+MODELE+"   listeAddContoursSVG.length="+listeAddContoursSVG.length)
+	for(i=1;i<(12+listeAddContoursSVG.length);i++){
+	
+	document.getElementById("b"+i).checked=1
+	
+	}
+	document.getElementById("c1").checked=1 // hypertexte
+	document.getElementById("c2").checked=1
+	document.getElementById("c3").checked=1  // entete
+	document.getElementById("c4").checked=1
+	document.getElementById("c5").checked=1
+	document.getElementById("c6").checked=1
+		if(MODELE==3){//cas Collab
+		document.getElementById("d1").checked=1
+		}
+}
+var etatcheck=0
+function recupcheck(a){
+if(a.checked){etatcheck=1}else{etatcheck=0}
+
+}
+function thisselected(a){
+
+if(etatcheck==1){a.checked=0;etatcheck=0}else{a.checked=1;etatcheck=1}
+}
+
+function ferme(){
+setTimeout("window.location.href='vide.htm'",100)
+}
+	
+
+	var tabliste=""
+	
+	function affichelistefichier(){
+	tabliste=""	
+	tabliste+='<b><big>Module PageCarto</big></b><br/>'
+	tabliste+='<table style="font-size:9px;font-family:arial"><tr><td>'
+	
+tabliste+='<span style="display:none"><input type="text" id="geojsonfrom" name="Z[0]" title="FromeGeojson" value="'+fromgeojson+'"></input></span>'	
+tabliste+='<span style="display:none"><input type="text" id="azimut" name="X[0]" title="MaxMin - azimut"></input></span>'
+tabliste+='<b>Fichier cartographiques</b><br>'
+tabliste+='<input type="radio" name="B[0]" id="b1" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s1">Module-PageCarto.xml</span></input><br>'
+tabliste+='<span style="display:none"><input type="radio" name="B[1]" id="b2" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s2">CARTOSVG-IE.svg</span></input><br></span>'
+tabliste+='</td><tr><tr><td>'
+tabliste+='<b>Fichiers de données <br>(attention : calcul à partir de la <br/>source html du dossier carte parent)</b><br>'
+tabliste+='<input type="radio" name="B[2]" id="b3" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s3">principal.js</span></input><br>'
+tabliste+='<input type="radio" name="B[3]" id="b4" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s4">complementaire.js</span></input><br>'
+tabliste+='</td><tr><tr><td>'
+tabliste+='<b>Menus de données</b><br>'
+tabliste+='<input type="radio" name="B[4]" id="b5" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s5">DATA-IcoSujet.js</span></input><br>'
+tabliste+='<input type="radio" name="B[5]" id="b6" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s6">DATA-IcoOther.js</span></input><br>'
+tabliste+='<input type="radio" name="B[6]" id="b7" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s7">DATA-Sujet.js</span></input><br>'
+tabliste+='<input type="radio" name="B[7]" id="b8" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s8">DATA-Other.js</span></input><br>'
+tabliste+='</td><tr><tr><td>'
+tabliste+='<b>Registre des couches graphiques</b><br>'
+tabliste+='<input type="radio" name="B[8]" id="b9" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s9">listeLegNap.js</span></input><br>'
+tabliste+='<input type="radio" name="B[9]" id="b10" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s10">DATA-Union.js</span></input><br>'
+tabliste+='</td><tr><tr><td>'
+tabliste+='<b>Fichiers de couches Contour</b><br>'
+tabliste+='<i>Registre des couches :</i><br>'
+tabliste+='<input type="radio" name="B[10]" id="b11" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s11">listeAdditifContoursSVG.js</span></input><br><br>'
+	
+
+	for(i=0;i<listeAddContoursSVG.length;i++){
+	tabliste+='<input type="radio" name="B['+(11+i)+']" id="b'+(12+i)+'" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s'+(12+i)+'">'+listeAddContoursSVG[i][0]+'</span></input><br>'
+	}
+	
+
+
+
+	
+
+		
+tabliste+='-----------------------------------<br>'
+tabliste+='<b>HYPERTEXTE VIERGE <i style="color:red"><br>(Vous écrasez l\'hypertexte s\'il existe) :</i></b><br>'
+tabliste+='<input type="radio" name="C[0]" id="c1" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span>initialisez l\'hypertexte</span></input><br><br>'
+tabliste+='-----------------------------------<br>'
+tabliste+='<b>PACKAGE de base </b><br>'
+tabliste+='<input type="radio" name="C[1]" id="c2" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span>tous les fichiers du package<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(sauf liste ci-dessous)</span></input><br>'	
+tabliste+='-----------------------------------<br>'
+tabliste+='<br><input type="radio" name="C[2]" id="c3" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span>entete de l\'hypertexte<br><span style="color:red"><i>Vous écrasez l\'entête si elle existe</i></span></span></input>'
+tabliste+='<br><input type="radio" name="C[3]" id="c4" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span>documents du dossier d\'info<br><span style="color:red"><i>Vous écrasez les documents s\'ils existent</i></span></span></input>'	
+tabliste+='<br><input type="radio" name="C[4]" id="c5" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span>Fichier de paramètres utilisateur <br>(azimut couches et filtres divers)<br><span style="color:red"><i>Vous écrasez ce fichier s\'il existe</i></span></span></input>'
+tabliste+='<br><input style="display:bloc" type="radio" name="C[5]" id="c6" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span>Fichier de zoom et centrage de la carte<br><span style="color:red"><i>Vous écrasez ce fichier s\'il existe</i></span></span></input>'
+tabliste+='</td></tr></table>'
+//-------------------------------------------------------------------------------------------//
+
+var tabliste2=''
+// Fiche et Texte *************************
+tabliste2+='<big><b>Fiche et/ou Texte</b></big><br>'
+tabliste2+='<table style="text-align:center;font-size:9px">'
+tabliste2+='<tr><td>Texte</td><td> </td><td>Texte et Fiche</td><td> </td><td>Fiche</td></tr>'
+tabliste2+='<tr><td><input type="radio" id="TetF1" name="TetF" onclick="FicheEtTexte=1"></td><td> </td><td><input type="radio" id="TetF2" name="TetF" onclick="FicheEtTexte=2"></td><td> </td><td><input type="radio" id="TetF3" name="TetF" onclick="FicheEtTexte=3"></td></tr>'
+tabliste2+='</table><hr>'
+// Module de Synthèse *************************
+tabliste2+='<big><b>Module de Synthèse</b></big><br>'
+tabliste2+='<table style="text-align:center;font-size:9px">'
+tabliste2+='<tr><td>non</td><td> </td><td>oui</td></tr>'
+tabliste2+='<tr><td><input type="radio" id="synt0" name="synt" onclick="DonneesDeSynthese=0"></td><td> </td><td><input type="radio" id="synt1" name="synt" onclick="DonneesDeSynthese=1"></td></tr>'
+tabliste2+='</table><hr>'
+// Affichage Somme dans les Histogrammes simples *************************
+tabliste2+='<big><b>Affichage Somme des Histo simples</b></big><br>'
+tabliste2+='<table style="text-align:center;font-size:9px">'
+tabliste2+='<tr><td>non</td><td> </td><td>oui</td></tr>'
+tabliste2+='<tr><td><input type="radio" id="SomT0" name="SomT" onclick="SomTab=0"></td><td> </td><td><input type="radio" id="SomT1" name="SomT" onclick="SomTab=1"></td></tr>'
+tabliste2+='</table><hr>'
+
+// Affichage Total dans un encadré *************************
+tabliste2+='<big><b>Affichage du total dans un encadré</b></big><br>'
+tabliste2+='<table style="text-align:center;font-size:9px">'
+tabliste2+='<tr><td>non</td><td> </td><td>oui</td></tr>'
+tabliste2+='<tr><td><input type="radio" id="TotT0" name="TotT" onclick="visiontotal=0"></td><td> </td><td><input type="radio" id="TotT1" name="TotT" onclick="visiontotal=1"></td></tr>'
+tabliste2+='</table><hr>'
+//*****************************************
+if(MODELE==3){
+
+tabliste2='<big><b>Additif Collaboratif</b></big><br>'
+
+tabliste2+='<table style="font-size:9px;font-family:arial"><tr><td>'
+tabliste2+='<b>Données utilisateurs</b><br>'
+tabliste2+='<input type="radio" name="D[0]" id="d1" onmouseover="javascript:recupcheck(this)" onclick="javascript:thisselected(this)"><span id="s5">registre des participants</span></input><br>'
+
+tabliste2+='</td></tr></table>'
+}
+
+
+var boutontabliste='<br><input type="button"	value="Valider" onclick="javascript:valider()"></input><br><br>'
+
+	document.getElementById("divlistefichiers").innerHTML=tabliste
+	document.getElementById("divlistefichiers2").innerHTML=tabliste2
+	document.getElementById("boutonlistefichiers").innerHTML=boutontabliste
+	raz()
+	
+	document.getElementById("TetF"+FicheEtTexte).checked=true
+	document.getElementById("synt"+DonneesDeSynthese).checked=true
+	document.getElementById("SomT"+SomTab).checked=true
+	document.getElementById("TotT"+visiontotal).checked=true
+	var MXMN=window.frames.PARAM.retourneMaxMin()
+
+	document.getElementById("azimut").value=MXMN.join()
+	
+	}	
+	 
+	//setTimeout('affichelistefichier()',3000)	
+
+
+	</script>
+
+
+	
+</body>
+</html>

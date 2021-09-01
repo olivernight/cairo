@@ -1,0 +1,208 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr">
+
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+	#commandes{
+		position:fixed;
+		top:15px;
+		left:5px;
+		border:1px dotted #FFF;
+		background-color: gray;
+		margin-bottom:5px;
+		padding:2px;
+		font-weight:bold;
+		font-size: 12px;
+		text-align:center;
+		color: #ffffff;
+	}
+</style>
+<script language="javascript" src="mapsILIADE.js?updated=1234567890"></script>
+
+
+<script language="javascript">
+var larg=top.document.getElementById("trees").width
+var toutescartes=top.transTTCARTES("return toutescartes")
+var docw=''
+var j=1
+var j2=0
+function affichtab(){
+for(i=0;i<mapX.length;i=i+5){
+//j=j+1
+
+if(toutescartes!=''){ // cas toutes cartes
+
+if(j==1){docw+=('<table ><TR style="vertical-align: top"><TD bgcolor="#e4f8e4">')}else{docw+=('<td><dt style="color:white">......</dt>   </TD><TD bgcolor="#e4f8e4">')}
+docw+=('<table border=0 width="'+(larg/2-50)+'"')
+
+docw+=('<tr><TD>')
+docw+=('<b><big><big>carte -'+(i/5+1)+' :<big> '+mapX[i+3]+'.</big></big></big></b>')
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b><big style="color:gray"><i>Répertoire associé :<big> '+mapX[i+4]+'.</i></big></big></b>')		
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b><big><big>Contour :</b> '+libelmap[i/5][0]+'   ; <b>  maille : '+mapX[i+0]+' - </b>'+libelmap[i/5][1]+'</big></big> ')
+		docw+=('</TD></TR><tr><TD>')
+docw+=(''+libelmap[i/5][2]+' ')
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<div onmouseover="javascript:this.style.height=\'100px\';"  onmouseout="javascript:this.style.height=\'35px\';this.scrollTop=0"  style="height:35px;width:100%;overflow:scroll;cursor:pointer"><span style="color:blue">Champs des données rattachées à la carte :</span> '+libelmap[i/5][3]+'</div> ')
+		docw+=('</td><tr><TD><tr><TD>')
+docw+=('<b>Contrôles :</b>')
+
+/*
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<UL>')
+		var thici=libelmap[i/5][4]
+for(k=0;k<thici.length;k=k+2){docw+=('<li>'+thici[k]+' ; sources:'+thici[k+1]+'.</li>')}
+docw+=('</UL>')
+*/
+var control=""
+docw+=('<table border="1px" cellspacing="0px" style="font-family:arial;font-size:10px;text-align:center;">');
+docw+=('<tr style="font-weight: bold; color: rgb(153, 153, 255);"><td title=" Comparaison des données de ce fichier avec celle du fichier source : procédé par sondage"><u>/Source</u></td><td title="controle des calculs de sous totaux notés (c): recalcul/sondage parmi chaque série de sous totaux et cohérence interne aux séries de sous totaux"><u>(c) Totaux</u></td><td title="le controle de cohérence cherche à confronter autant que possible les données avec la réalité ou des représentations stabilisées: on procède par comparaison avec d\'autres sources certifiées ou avec des connaissances empiriques"><u>Cohérence</u></td></tr>');
+docw+=('<tr><td>'+libelmap[i/5][4][0]+'</td><td>'+libelmap[i/5][4][1]+'</td><td>'+libelmap[i/5][4][2]+'</td></tr>');
+docw+=('</table>')
+//document.getElementById("ControleIci").innerHTML=control
+
+
+
+
+
+		docw+=('</td><tr><TD><tr><TD>')		
+docw+=('<b>Compléments : <br></b>'+libelmap[i/5][5]+' .')
+docw+=('<br><br><b>Voir le contenu des fichiers : </b>')
+
+docw+=('<UL>')
+var Ax=mapX[i+3].replace(/'/g,' ')
+docw+=('<li style="color:blue;;cursor:pointer" onclick="ouvremenudata(\''+mapX[i+4]+'\',\''+Ax+'\','+0+','+j+')">Fichier principal</li>')
+docw+=('<li style="color:blue;;cursor:pointer" onclick="ouvremenudata(\''+mapX[i+4]+'\',\''+Ax+'\','+1+','+j+')">Fichier complémentaire</li>')
+docw+=('</UL>')	
+
+
+
+
+		
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b>Auteurs : </b><br><ul><li>Carte : <span id="aut1">'+libelmap[i/5][6]+'</span></li><li>Données : <span id="aut2">'+libelmap[i/5][7]+'</span></li></ul>')
+
+		docw+=('</TD></TR>')
+docw+=('</Table>')
+
+if(j==1){docw+=('</TD>');j=0}else{docw+=('</TD></TR></Table><br><br>');j=1}
+}else{// cas où des cartes sont non pas publiées ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+if(libelmap[i/5][5]!="none"){
+			j2=j2+1
+if(j==1){docw+=('<table ><TR style="vertical-align: top"><TD bgcolor="#e4f8e4">')}else{docw+=('<td><dt style="color:white">......</dt>   </TD><TD bgcolor="#e4f8e4">')}
+docw+=('<table border=0 width="'+(larg/2-50)+'"')
+
+docw+=('<tr><TD>')
+docw+=('<b><big><big>carte n° '+j2+'- <I> (Index interne : '+(i/5+1)+')</i> :<big> '+mapX[i+3]+'.</big></big></big></b>')
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b><big style="color:gray"><i>Répertoire associé :<big> '+mapX[i+4]+'.</i></big></big></b>')		
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b><big><big>Contour :</b> '+libelmap[i/5][0]+'   ; <b>  maille : '+mapX[i+0]+' - </b>'+libelmap[i/5][1]+'</big></big> ')
+		docw+=('</TD></TR><tr><TD>')
+docw+=(''+libelmap[i/5][2]+' ')
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<div onmouseover="javascript:this.style.height=\'100px\';"  onmouseout="javascript:this.style.height=\'35px\';this.scrollTop=0"  style="height:35px;width:100%;overflow:scroll;cursor:pointer"><span style="color:blue">Champs des données rattachées à la carte :</span> '+libelmap[i/5][3]+'</div> ')
+		docw+=('</td><tr><TD><tr><TD>')
+docw+=('<b>Contrôles :</b>')
+
+/*
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<UL>')
+		var thici=libelmap[i/5][4]
+for(k=0;k<thici.length;k=k+2){docw+=('<li>'+thici[k]+' ; sources:'+thici[k+1]+'.</li>')}
+docw+=('</UL>')
+*/
+
+docw+=('<table border="1px" cellspacing="0px" style="font-family:arial;font-size:10px;text-align:center;">');
+docw+=('<tr style="font-weight: bold; color: rgb(153, 153, 255);"><td title=" Comparaison des données de ce fichier avec celle du fichier source : procédé par sondage"><u>/Source</u></td><td title="controle des calculs de sous totaux notés (c): recalcul/sondage parmi chaque série de sous totaux et cohérence interne aux séries de sous totaux"><u>(c) Totaux</u></td><td title="le controle de cohérence cherche à confronter autant que possible les données avec la réalité ou des représentations stabilisées: on procède par comparaison avec d\'autres sources certifiées ou avec des connaissances empiriques"><u>Cohérence</u></td></tr>');
+docw+=('<tr><td>'+libelmap[i/5][4][0]+'</td><td>'+libelmap[i/5][4][1]+'</td><td>'+libelmap[i/5][4][2]+'</td></tr>');
+docw+=('</table>')
+//document.getElementById("ControleIci").innerHTML=control
+
+
+
+
+
+		docw+=('</td><tr><TD><tr><TD>')		
+docw+=('<b>Compléments : <br></b>'+libelmap[i/5][5]+' .')
+docw+=('<br><br><b>Voir le contenu des fichiers : </b>')
+
+docw+=('<UL>')
+var Ax=mapX[i+3].replace(/'/g,' ')
+docw+=('<li style="color:blue;;cursor:pointer" onclick="ouvremenudata(\''+mapX[i+4]+'\',\''+Ax+'\','+0+','+j+')">Fichier principal</li>')
+docw+=('<li style="color:blue;;cursor:pointer" onclick="ouvremenudata(\''+mapX[i+4]+'\',\''+Ax+'\','+1+','+j+')">Fichier complémentaire</li>')
+docw+=('</UL>')	
+
+
+
+		
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b>Auteurs : </b><br><ul><li>Carte : <span id="aut1">'+libelmap[i/5][6]+'</span></li><li>Données : <span id="aut2">'+libelmap[i/5][7]+'</span></li></ul>')
+
+		docw+=('</TD></TR>')
+docw+=('</Table>')
+if(j==1){docw+=('</TD>');j=0}else{docw+=('</TD></TR></Table><br><br>');j=1}
+}//fin du test sur parametre de publication
+
+}// fin du if else toutescartes
+}// fin de boucle for
+
+document.getElementById("tabici").innerHTML=docw
+}// fin de fonction
+
+
+function fermermenudata(){
+document.getElementById("divdata").style.visibility="hidden"
+}
+function ouvremenudata(rep,titre,numero,gd){
+
+window.frames.detaildata.location.href="readLibelDATA.html?cible="+rep+"&carte="+titre+"&numero="+numero
+document.getElementById("divdata").style.visibility="visible"
+
+if(gd==1){
+document.getElementById("divdata").setAttribute("style","position:fixed;top:10px;right:10px")
+}else{
+document.getElementById("divdata").setAttribute("style","position:fixed;top:10px;left:10px")
+
+}
+}
+</script>
+</head>
+
+<body STYLE="background-color: transparent;font-size:9px;font-family:verdana" onload="javascript:affichtab()" onclick="javascript:top.menuBar.hideSubMenus()">
+<div id="commandes" >
+<script language="javascript">
+if(toutescartes!=''){
+//document.write('<input id="modif" type="button" value="Modifier" onclick="window.location.href=\'archi_saisie.htm\'"  style="visibility:visible">')
+}
+
+</script>
+
+</div>
+
+<center><br><br><br><br><span id="tabici">
+
+
+</span>
+
+</center>
+<div style="position:fixed;top:15px;right:5px">
+
+<!--input type="button" value="arbres" onclick="top.frames.trees.location.href='trees.htm'" --><span style="color:white">...</span>
+<script language="javascript">
+if(toutescartes!=''){
+//document.write('<input type="button" value="architecture" onclick="top.frames.trees.location.href=\'archi.htm\'">')
+}
+
+</script>
+<span style="color:white">...</span><!-- input type="button" value="transfert menus" onclick="top.selectOnglet('east',2);top.frames.editMenu.location.href='transmenu.htm'" -->
+</div>
+<div id="divdata" style="position:fixed;top:10px;left:10px;visibility:hidden"><iframe  width="300px" height="300px" name="detaildata" id="detaildata"></iframe></div>
+<script language="javascript"></script>
+</body >
+</html>

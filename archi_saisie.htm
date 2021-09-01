@@ -1,0 +1,231 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr">
+
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	#commandes{
+		position:fixed;
+		top:15px;
+		left:5px;
+		width:190px;
+		height:30px;
+		border:1px dotted #FFF;
+		background-color: gray;
+		margin-bottom:5px;
+		padding:2px;
+		font-weight:bold;
+		font-size: 12px;
+		text-align:center;
+		color: #ffffff;
+	}
+
+</style>
+<script type="text/javascript" src="A-MANAGER-local/Controle/Saisie/saisie.js"></script>
+<script language="javascript" src="mapsILIADE.js?updated=1234567890"></script>
+
+
+<script language="javascript">
+var larg=top.document.getElementById("trees").width
+function ajoutertheme(th,n){
+var noeudmaps=document.createElement("li")
+document.getElementById("ul"+n).appendChild(noeudmaps)
+var txtnode='<i><b>thème '+(th+1)+'</b></i><br><textarea name="t'+n+'['+th+']" style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'"></textarea> ; <br><b><i>sources:</i></b><br><textarea name="s'+n+'['+th+']"  style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1 onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'"></textarea>'
+document.getElementById("ul"+n).childNodes[th].innerHTML=txtnode
+}
+
+function supprimertheme(th,n){
+var liste=document.getElementById("ul"+n)
+var der=liste.lastChild
+liste.removeChild(der)
+}
+
+function ajouterauteur(th,n){
+var noeudmaps=document.createElement("li")
+document.getElementById("au"+n).appendChild(noeudmaps)
+var txtnode='<i><b>Auteur '+(th+1)+'</b></i><br><textarea name="a'+n+'['+th+']" style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'"></textarea> ; <br><b><i>mail:</i></b><br><textarea name="l'+n+'['+th+']" id="l'+n+'['+th+']" style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1 onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'"></textarea>'
+document.getElementById("au"+n).childNodes[th].innerHTML=txtnode
+}
+
+function supprimerauteur(th,n){
+var liste=document.getElementById("au"+n)
+var der=liste.lastChild
+liste.removeChild(der)
+}
+
+function valider(){
+for(i=0;i<mapX.length;i=i+5){
+var Th=""
+var cn=document.getElementById("ul"+i/5)
+if(cn.childNodes.length>0){
+for(j=0;j<cn.childNodes.length;j++){
+if(j>0){Th+=','}
+Th+='"'+document.getElementById("ul"+i/5).childNodes[j].childNodes[2].value+'"'    //innerHTML+'"'
+Th+=',"'+document.getElementById("ul"+i/5).childNodes[j].childNodes[7].value+'"'    //innerHTML+'"'
+}
+}
+document.getElementById('J['+(i/5)+']').value=Th   // thème        innerHTML=Th   // thème
+var Ah=""
+var an=document.getElementById("au"+i/5)
+
+if(an.childNodes.length>0){
+for(j=0;j<an.childNodes.length;j++){
+if(j>0){Ah+=','}
+Ah+='"'+document.getElementById("au"+i/5).childNodes[j].childNodes[2].value+'"'    //innerHTML+'"'
+Ah+=',"'+document.getElementById("au"+i/5).childNodes[j].childNodes[7].value+'"'   //innerHTML+'"'
+
+}
+}
+
+document.getElementById('L['+(i/5)+']').value=Ah   // auteurs
+
+}
+document.getElementById("boutonreg").style.visibility="visible"
+//document.getElementById("valid").style.visibility="hidden"
+}
+
+
+var docw=''
+j=0
+function affichtab(){
+for(i=0;i<mapX.length;i=i+5){
+j=j+1
+if(j==1){docw+=('<table ><TR style="vertical-align: top"><TD bgcolor="#e4f8e4">')}else{docw+=('<td><dt style="color:white">......</dt>   </TD><TD bgcolor="#e4f8e4">')}
+docw+=('<table border=0 width="'+(larg/2-50)+'"')
+
+docw+=('<tr><TD>')
+//trois premiers paramètres de maps
+docw+=('<br><textarea name="A['+(i/5)+']" style="visibility:hidden;height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0"  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+mapX[i+0]+'</textarea>')	
+docw+=('<br><textarea name="B['+(i/5)+']" style="visibility:hidden;height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0"  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+mapX[i+1]+'</textarea>')	
+docw+=('<br><textarea name="C['+(i/5)+']" style="visibility:hidden;height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0"  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+mapX[i+2]+'</textarea>')	
+//nom de la carte
+
+docw+=('<b><big><big>carte -'+(i/5+1)+' :<br><big><textarea name="D['+(i/5)+']" style="height:20px;width:'+(larg/2-60)+'px;font-weight:bold;font-size:14px;font-family:arial;background-color: white;border:0" rows=1>'+mapX[i+3]+'</textarea></big></big></big></b>')
+		
+//répertoire	
+		
+docw+=('<br><textarea name="E['+(i/5)+']" style="visibility:hidden;height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0"  onmouseout="javascript:this.style.height=\'20px\'">'+mapX[i+4]+'</textarea>')			
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b><big style="color:gray"><i>Répertoire associé :<big> '+mapX[i+4]+'.</i></big></big></b>')		
+		docw+=('</TD></TR><tr><TD>')
+		//contour var echelle
+docw+=('<b><big><big>Contour :<br> <textarea name="F['+(i/5)+']" style="height:20px;width:'+(larg/2-60)+'px;font-weight:bold;font-size:12px;font-family:arial;background-color: white;border:0" rows=1>'+libelmap[i/5][0]+'</textarea>')
+ 		//maille var maile
+docw+=('<br>  maille : '+mapX[i+0]+' -<br><textarea name="G['+(i/5)+']" style="height:20px;width:'+(larg/2-60)+'px;font-weight:bold;font-size:12px;font-family:arial;background-color: white;border:0" rows=1>'+libelmap[i/5][1]+'</textarea></big></big> ')
+		docw+=('</TD></TR><tr><TD>')
+		//commentaire var commentTitrecarte
+docw+=('<br><textarea name="H['+(i/5)+']" style="height:100px;width:'+(larg/2-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1>'+libelmap[i/5][2]+'</textarea>')
+		docw+=('</TD></TR><tr><TD>')
+		//champs des données var commentaireschamp
+docw+=('<b>Champs des données rattachées à la carte :</b> <br><br><textarea name="I['+(i/5)+']" style="height:100px;width:'+(larg/2-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1>'+libelmap[i/5][3]+'</textarea>')
+		docw+=('<tr><TD><tr><TD>')
+docw+=('<b>thèmes :</b>')
+
+
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<UL id="ul'+(i/5)+'" >')
+		var thici=libelmap[i/5][4]
+for(k=0;k<thici.length;k=k+2){docw+=('<li ><i><b>thème '+(k/2+1)+'</b></i><br><textarea name="t'+(i/5)+'['+k+']" style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+thici[k]+'</textarea> ; <br><b><i>sources:</i></b><br><textarea name="name="s'+(i/5)+'['+k+']" " style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1 onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+thici[k+1]+'</textarea>.</li>')}
+docw+=('</UL><br><a href="javascript:var th=document.getElementById(\'ul'+(i/5)+'\').childNodes.length;ajoutertheme(th,'+(i/5)+')">Ajouter un thème</a><br><a href="javascript:var th=document.getElementById(\'ul'+(i/5)+'\').childNodes.length;supprimertheme(th,'+(i/5)+')">supprimer le dernier thème</a>')
+//boite de synthèse thème variable thème
+		docw+=('<br><span style="visibility:hidden"><textarea id="J['+(i/5)+']" name="J['+(i/5)+']" style="height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0"></textarea></span>')
+		
+		docw+=('<tr><TD><tr><TD>')
+	//compléments var autrescommnt		
+docw+=('<b>Compléments : </b>')
+docw+=('<br><textarea name="K['+(i/5)+']" style="height:20px;width:'+(larg/2-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0"  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+libelmap[i/5][5]+'</textarea>')
+
+docw+=('<br><b>Voir le contenu des fichiers : </b>')
+
+docw+=('<UL>')
+var Ax=mapX[i+3].replace(/'/g,' ')
+docw+=('<li style="color:blue;" onclick="ouvremenudata(\''+mapX[i+4]+'\',\''+Ax+'\','+0+','+j+')">Fichier principal</li>')
+docw+=('<li style="color:blue;" onclick="ouvremenudata(\''+mapX[i+4]+'\',\''+Ax+'\','+1+','+j+')">Fichier complémentaire</li>')
+docw+=('</UL>')	
+
+
+
+		
+		docw+=('</TD></TR><tr><TD>')
+docw+=('<b>Auteurs : </b>:')
+docw+=('<UL id="au'+(i/5)+'" >')
+				var Athici=libelmap[i/5][6]
+			
+for(k=0;k<Athici.length;k=k+2){
+//alert(Athici[k])
+docw+=('<li ><i><b>Auteur '+(k/2+1)+'</b></i><br><textarea name="a'+(i/5)+'['+k+']" style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1  onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'">'+Athici[k]+'</textarea> ; <br><b><i>mail:</i></b><br><textarea name="s'+(i/5)+'['+k+']" style="height:20px;width:'+(larg/3-60)+'px;font-size:12px;font-family:arial;background-color: white;border:0" rows=1 onmouseover="javascript:this.style.height=\'100px\'" onmouseout="javascript:this.style.height=\'20px\'" >'+Athici[k+1]+'</textarea>.</li>')}
+
+
+docw+=('</UL><br><a href="javascript:var th=document.getElementById(\'au'+(i/5)+'\').childNodes.length;ajouterauteur(th,'+(i/5)+')">Ajouter un auteur</a><br><a href="javascript:var th=document.getElementById(\'au'+(i/5)+'\').childNodes.length;supprimerauteur(th,'+(i/5)+')">supprimer le dernier auteur</a>')
+	// boite de synthèse AUteurs var 
+		docw+=('<br><span style="visibility:hidden"><textarea id="L['+(i/5)+']" name="L['+(i/5)+']" style="height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0"></textarea></span>')
+		//
+		docw+=('</TD></TR><tr ><TD >')
+		/*
+		On a laissé de coté la tableau des autres auteurs 
+*/
+				var Athici=libelmap[i/5][7]
+				var icix=""
+for(k=0;k<Athici.length;k=k+2){
+if(k>0){icix+=','}
+icix+=('"'+Athici[k]+'","'+Athici[k+1]+'"')
+}
+	// boite de synthèse AUteurs var otherauthors
+docw+=('<br><span style="visibility:hidden"><textarea id="M['+(i/5)+']" name="M['+(i/5)+']" style="height:0px;width:0px;font-size:12px;font-family:arial;background-color: white;border:0">'+icix+'</textarea></span>')
+		docw+=('</TD></TR>')
+docw+=('</Table>')
+if(j==1){docw+=('</TD>')}else{docw+=('</TD></TR></Table><br><br>');j=0}
+
+
+}
+document.getElementById("tabici").innerHTML=docw
+document.getElementById("divalert").style.visibility="hidden"
+}
+
+
+function fermermenudata(){
+document.getElementById("divdata").style.visibility="hidden"
+}
+function ouvremenudata(rep,titre,numero,gd){
+
+window.frames.detaildata.location.href="readLibelDATA.html?cible="+rep+"&carte="+titre+"&numero="+numero
+document.getElementById("divdata").style.visibility="visible"
+
+if(gd==1){
+document.getElementById("divdata").setAttribute("style","position:fixed;top:10px;right:10px")
+}else{
+document.getElementById("divdata").setAttribute("style","position:fixed;top:10px;left:10px")
+
+}
+}
+
+</script>
+</head>
+
+<body STYLE="background-color: transparent;font-size:9px;font-family:arial" onload="javascript:affichtab()" onclick="javascript:top.menuBar.hideSubMenus()" onkeypress="refuserToucheEntree(event);">
+
+<div id="divalert" style="position:absolute;top:100px;left:200px;visibility:visible"><center><big><big><big><b>Veuillez patienter <br>pendant le chargement des données,<br>s'il vous plait<br><br><i>Cela peut prendre un certain temps</i></big></big></big></b></center></div>
+<form  method="post" action="A-MANAGER-local/manager-maps/maps-detail.php">
+
+<center><br><br><br><br><span id="tabici">
+
+
+</span>
+
+</div>
+</center>
+
+<div id="commandes" >
+<input id="valid" type="button" value="valider" onclick="valider()"  style="visibility:visible"><span style="color:gray">...</span><input id="boutonreg" type="submit" value="Enregistrer" style="visibility:hidden" ><span style="color:gray"> </span>
+</div>
+</form>
+
+
+<div style="position:fixed;top:15px;right:5px">
+<input type="button" value="arbres" onclick="top.frames.trees.location.href='trees.htm'"><span style="color:white">...</span><input type="button" value="plan" onclick="top.frames.trees.location.href='archi.htm'"><span style="color:white">...</span><input type="button" value="transfert menus" onclick="top.selectOnglet('east',2);top.frames.trees.location.href='transmenu.htm'">
+</div>
+<div id="divdata" style="position:fixed;top:10px;left:10px;visibility:hidden"><iframe  width="300px" height="300px" name="detaildata" id="detaildata"></iframe></div>
+<script language="javascript"></script>
+</body >
+</html>

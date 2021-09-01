@@ -1,0 +1,651 @@
+﻿ 
+
+Intégration de données dans une carte 
+
+ 
+
+Configuration de travail : 
+
+ 
+Nous sommes en mode production => configurer le navigateur Firefox : 
+
+mettre le cache à zero pour faciliter l'actualisation des pages et des cadres lors des 
+opérations d'écriture dans les fichiers, 
+Après chaque opération d'écriture dans GaïaMundi, vider le cache 
+
+ ( Pour cela : installer l'extension "ClearCache" ou "vider le cache" dans votre 
+navigateur Firefox : menu outils->Modules complémentaire. Puis une fois téléchargé, 
+menu affichage->barres d'outils -> personnaliser -> cliquer sur le logo de vider le 
+cache) 
+
+ 
+
+A cette occasion, dans ->personnaliser-> cliquez aussi sur le logo . 
+
+Cela vous permet d’avoir l’affichage plein écran en un seul clic. 
+
+ 
+
+ 
+
+1 Récupérer le fichier matrice de données de 
+la carte 
+
+Menu Edition->gestion des DONNEES-> Fichiers de données 
+
+ 
+
+. sélectionner le bouton violet dans la colonne "Matrice de tableau de 
+données" et dans la ligne correspondant à la carte 
+
+
+
+
+Retour au sommaire 
+
+ 
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/matriceData.jpg
+
+Ce geste entraîne l’affichage du fichier de la matrice de données dans un 
+nouvel onglet du navigateur : 
+
+ 
+
+. enregistrer sous (dans un dossier de travail) Il s’agit d’un fichier au format 
+texte unicode .txt avec comme séparateur la tabulation, et encodé en utf-8. 
+
+
+2 Explication du format des fichiers de 
+données et de l'architecture des données 
+Une fois enregistré, le fichier peut être ouvert avec un tableau (OpenOffic , Excell,…). 
+Il comprend trois colonnes (Dans GaïaMundi on utilise la numérotation partant de 
+zéro : 0,1,2… tandis que dans les tableurs, la numérotation commence à 1) 
+
+. colonne 1 du tableur : identifiant numérique des aires de la carte appelé 
+« idcarte ». 
+. Colonne 2 du tableur : nom de l’aire géographique (ici le champ nom comprend 
+aussi le code ISO 3166-3 du pays) appelé « Libel » 
+. Colonne 3 du tableur : le code numérique d’identification appelé « codeINSEE » 
+(dans GaïaMundi, par analogie avec le fonctionnement classique des Bases de 
+données, ce code est la clé primaire qui permet le rapprochement des données 
+géographiques de la carte et des données statistiques des fichiers de données) 
+
+
+Ce fichier matrice de données est la table de passage entre les données et la carte. 
+
+Chaque ligne correspond à une aire géographique dessinée sur la carte. Certaines 
+entités géographiques (ici les pays) sont composées de plusieurs aires géographiques, 
+comme le Canada par exemple. Une seule d’entre elles recevra des données (celle qui 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/hautfichiertxt.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/basfichiertxt.jpg
+dispose d’un codeINSEE existant réellement. Dans l’exemple, les autres aires associées 
+à l’entité Canada ont des codeINSEE atypiques. Elles seront reliés automatiquement 
+au codeINSEE de référence de l’entité Canada par une fonction d’union géographique 
+intégrée dans le package de la carte. 
+
+Dans l’exemple ci-dessous, on a intégré deux colonnes de données correspondant à 
+deux variables. 
+
+ 
+
+------------------------------- 
+----------- suite des lignes ------------ 
+------------------------------- 
+
+
+Les fichiers matrice de données présentent 9 lignes additionnelles après les aires 
+géographiques : Ces 9 dernières lignes doivent être renseignées de la manière 
+suivante lorsqu’on intègre des données. 
+Dans les deux lignes vertes vous mettez respectivement -9999 et 0 dans les colonnes 
+de données 
+Dans les lignes bleues, vous placez la valeur -99999 dans les colonnes de données 
+Dans les lignes jaunes, vous placez successivement : 
+
+. le libellé court ou condensé, 
+. le libellé long y compris la date et la source, 
+. la source de la donnée, sa date de validité. 
+. et enfin en dernière ligne le libellé court traduit ou non dans une autre 
+langue 
+
+
+ 
+
+Remarques 
+
+ 
+
+1. la valeur -99999 signifie que la case est vide ( et non pas égale à zéro) 
+2. les informations contenues dans les lignes jaunes (métadonnées) sont très 
+précieuses, parce que ce sont ces informations qui donnent sens à la 
+donnée. Elles sont aussi précieuses d’un point de vue technique car elles 
+servent à la fabrication automatique des menus et des légendes, ainsi 
+qu'aux moteurs de recherche de la Rose des Vents 
+3. lorsque vous remplissez le tableau de données, il n'est pas nécessaire de 
+mettre -99999 dans les cases vides, GaïaMundi le fera automatiquement. 
+
+
+
+
+
+
+
+ 
+
+2bis - Spécifications pour le format des 
+libellés de variables 
+
+Au moins pour l’entête de colonne, le libellé d’une variable doit comprendre au 
+moins : 
+
+. Le libellé précis de la variable, 
+. la date de validité de la donnée, 
+. la source synthétique. 
+. 
+
+
+Cependant la formulation idéale est la suivante : 
+
+ 
+
+Date - critère 1 X critère 2 X critère 3…. – pop ref : définition – Source : la source 
+
+ 
+
+Les critères correspondent aux croisements constitutifs de la variable. 
+
+La définition de la population de référence doit comprendre la caractéristique de la 
+population et le lieu de sondage si celui-ci n’est pas évident dans la définition. Par 
+exemple, il est d’usage de considérer que le terme habitant renvoie au sondage au 
+lieu de résidence, mais dans le cas de la catégorie socioprofessionnelle, il est 
+nécessaire de préciser si l’on parle de la population au lieu de résidence ou au lieu de 
+travail. 
+
+ 
+
+Exemple : 
+
+2012 – Femmes X ouvrier X moins de 30 ans – pop ref : actifs au lieu de travail – Insee 
+RP 
+
+Ce qui signifie en clair : Nombre de femmes ouvrières de moins de 30 ans dans la 
+population active mesurée au lieu de travail, la source étant le recensement de la 
+population par l’INSEE. 
+
+ 
+
+Insistons sur l’importance de spécifier clairement ces informations, en particulier le 
+lieu de sondage dans la définition de la population de référence. 
+
+ 
+
+Soulignons aussi l’importance de l’ordre dans lequel ces informations apparaissent 
+ainsi que l’importance des signes séparateur « - » et « X » : cet ordre et ces signes 
+facilitent considérablement la lecture des menus déroulants. 
+
+ 
+
+Pour spécifier les tranches d’âges, les tranche de revenus etc.. éviter d’utiliser les 
+signes « < » et « > » . Il est préférable d’écrire en clair ou en notation scientifique, 
+par exemple [0 ;25[ pour dire de 0 à 24 ans inclus ou [0 ;25] pour dire de 0 à 25 ans 
+inclus. 
+
+ 
+
+3 Collage des données dans la matrice 
+
+ 
+
+1. Classer les 3 colonnes de la matrice en fonction du codeINSEE (Colonne 3) 
+2. Classer les données en fonction du codeINSEE (Colonne 3) 
+3. Coller les données dans la matrice 
+4. établir la correspondance des codeINSEE 
+5. Reclasser l'ensemble en fonction de l'identifiant carte (colonne 1) 
+6. Vérifier que la notation ne comprend pas d’espace séparateur pour les 
+milliers 
+
+
+
+
+
+
+
+7. Enregistrer au format xls pour conserver la trace des fonctions et calculs que 
+vous avez utilisé pour établir la correspondance des donénes avec la matrice 
+de la carte 
+8. « Enregister sous » au format .txt 
+9. Fermer le tableur (sous windows, si vous laissez Excel, l'intégration dans 
+GaïaMundi échouera) 
+10. Ouvrir le fichier .txt avec bloc-notes ou un autre éditeur (NotePad++ ....) 
+11. Remplacer les virgules par des points dans toute la partie numérique du 
+fichier 
+12. convertir au format utf-8 sans BOM avec NotePad++ ou enregistrer sous 
+format utf-8 avec BlocNote sous windows ou tout autre éditeur de texte. 
+
+
+Synthèse des spécifications de format des données 
+
+. format des nombres standard 
+. dans la partie numérique, remplacer les virgules (,) par des points (.) 
+. dans la partie numérique, pas de signe % 
+. pas d'espace séparateur pour les milliers 
+. Sauf cas particulier, réduire à 2 le nombre de décimales. 
+
+
+3 bis - Procédure générale de façonnage 
+manuel des fichiers de données associées à 
+une carte 
+
+ 
+
+ 
+
+Dans le cas où il ya beaucoup d’aires géographiques atypiques, c'est-à-dire où il a 
+beaucoup d’îles, ou lorsqu’on a beaucoup d’entités subdivisées en plusieurs aires 
+géographiques (comme le Canada par exemple, ou l’Egypte qui est en deux parties 
+séparée par le canal de Suez), le travail de façonnage des fichiers de données est 
+considérablement alourdi par l’étape de mise en correspondance des codeINSEE. 
+
+De la même façon, lorsque les sources de données sont lacunaires pour certaines 
+aires géographiques (c’est un cas fréquent), la mise en correspondance est 
+fastidieuse et sujette à erreurs. 
+
+ 
+
+De la même façon, quand on dispose de données sur une plus grande échelle (les 
+Etats du Monde par exemple) et que l’on veut seulement extraire les données pour 
+une carte rassemblant seulement quelques unes des aires ( par exemple une région 
+du monde) 
+
+ 
+
+Pour cela il est possible d’utiliser une méthode plus rapide, qui évite le travail 
+fastidieux de mise en correspondance des codeiNSEE. 
+
+On peut en effet fabriquer un fichier de données ex nihilo sans tenir compte de 
+l’ordre des aires dans la matrice et qui peut être lacunaire ou au contraire 
+excédentaire en ligne de données. Il existe en effet une option de normalisation des 
+données dans le processus d’intégration de données décrit au §4 ci-après. 
+
+Dans ce cas cependant, le fichier façonné à la main doit respecter strictement la 
+configuration du fichier de standard, c'est-à-dire : 
+
+. La première ligne doit contenir pour les colonnes 1, 2 et 3 du tableur les 
+libellés suivant « idcarte » « Libel » « CodeINSEE » puis les libellés des 
+variables. 
+. Les numéros « idcartes » doivent se suivre à partir de 1 pour la ligne 2 
+jusqu’à la fin avec un pas de 1 à chaque ligne. 
+
+
+
+
+
+
+
+. Les 9 dernières lignes doivent être remplies selon les modalités décrites ci-
+avant. 
+. Les spécifications de format de données décrites ci-avant doivent être 
+respectées. 
+. Le fichier doit être enregistré au format .txt en utf-8 (sans BOM de 
+préférence) 
+
+
+ 
+
+4 Intégration des données dans GaïaMundi 
+
+GaïaMundi : Menu Edition -> gestion des DONNEES -> intégration de données 
+
+ATTENTION : la fonction intégration de données écrase les données existantes 
+dans le fichier que vous choisissez d’intégrer (voir le paragraphe « REMARQUES 
+IMPORTANTES » à la fin de cette section sur la sauvegarde et la récupération 
+des fichiers de données écrasées) 
+
+Le choix intégration de données dans le menu Edition-> Gestion de données 
+déclenche l’affichage d’une liste du type suivant dans le panneau de droite : 
+
+ 
+
+Sélectionnez la carte dans laquelle vous voulez intégrer des données en cliquant 
+sur le lien bleu correspondant à votre choix. 
+
+Cette action déclenche l’affichage de l’interface d’intégration des fichiers de 
+données : 
+
+ 
+
+Choisissez « Option de base ». Ce choix déclenche l’affichage suivant : 
+
+
+
+
+
+
+ 
+
+. Avec le bouton « Parcourir », sélectionner le fichier .txt des données que 
+vous avez fabriqué (Cf § précédent) 
+. choisir de créer le fichier principal ou complémentaire (si c'est la première 
+intégration de données dans la carte: choisir principal) 
+. validez 
+
+
+La validation déclenche l’affichage suivant (dans l’exemple, on a choisi l’option 
+principal) : 
+
+ 
+
+. Sélectionner l'option étalonner dans le cas où vous avez fabriqué un fichier 
+qui ne concorde pas avec la matrice et/ou si l’écart de nombre signalé dans 
+l’interface ci-dessus est différent de 0 (dans le cas où vous avez fabriqué le 
+
+
+
+
+
+
+
+fichier sans utiliser la matrice, et si les valeurs des « codes Insee » sont les 
+bonnes, GaïaMundi recréera les lignes manquantes en mettant -99999 à la 
+place des valeurs de données. Dans le cas où votre fichier provient d'une 
+source avec plus de lignes, GaïaMundi élimine les lignes dont les 
+« codesINSEE» ne correspondent pas à la matrice) 
+. vider le cache ( ) 
+. choisir l'onglet architecture de données, en bas de la pane centrale. Vérifier 
+que les données sont bien intégrées en cliquant sur lien principal (ou 
+complémentaire si vous avez choisi l’option complémentaire) dans la fiche 
+descriptive de votre carte. (ici la carte n°30 Monde-Pays-Demo). Une 
+popup apparaît dans lequel vous avez la liste des données intégrées, c'est-
+à-dire la liste des entêtes de colonne des variables de la colonne 4 à la 
+dernière dans le tableur) 
+
+
+ 
+
+REMARQUES IMPORTANTES sur la conservation et la récupération de données 
+
+Lorsque vous intégrez des données selon ce procédé, le fichier de données .txt 
+original que vous avez façonné est cloné et conservé dans un sous répertorie du 
+répertoire de carte de votre plateforme 
+
+Par exemple si vous avez fabriqué un fichier de données à partir de la matrice et que 
+vous l’avez appelé « données-essi.txt ». Lors de l’intégration de données dans la carte 
+Monde-Pays-Demo dont le répertoire a le même nom, le fichier original est cloné 
+sous le nom principal.txt si vous avez choisi l’option principal ou complémentaire.txt 
+si vous avez choisi l’option complémentaire. Le clone est placé dans le répertoire 
+Monde-Pays-Demo/datafiles/ 
+
+Si il existait déjà un fichier princuipal.txt (ou un complementaire.txt), dans le sous 
+répertoire datafiles/, ce fichier est lui-même cloné dans ce sous-répertoire avec le 
+nom jj-mm-aa-principal.txt ( ou complementaire). 
+
+De sorte que si l’on veut revenir à la version précédente il suffit d’appliquer la 
+procédure d’intégration de donnée à ce fichier cloné. 
+
+
+
+
+
+
+Il existe d’autres procédés pour revenir à la version précédente : voir le chapitre 
+restauration des données utilisateurs. 
+
+5 Fabrication des menus 
+
+ 
+
+GaïaMundi : Menu Edition->gestion des DONNEES->Menus de données 
+
+Se reporter à la section du manuel dédiée à cette question 
+
+6 Tester l'affichage des données 
+
+ 
+
+GaïaMundi : 
+Menu Cartes->Nom_de_la_carte 
+Menu Données - > Ponctuels et Graphiques -> IconeX et Graphiques 1 
+
+6 Ajouter des données : procédé 1 
+
+Ajouter des colonnes au fichier texte, et reprendre la procédure au niveau 4 ci-dessus 
+
+7 Ajouter des colonnes à partir d’un nouveau 
+fichier texte : procédé 2 
+
+vider le cache ( ) 
+
+choisir un fichier dont vous voulez récupérer les colonnes de données et les ajouter 
+au fichier principal ou complémentaire déjà intégré dans votre carte. 
+
+ 
+
+Procéder comme au $ 4 intégration de données. 
+
+GaïaMundi : Menu Edition -> gestion des DONNEES -> intégration de données 
+
+Le choix intégration de données dans le menu Edition-> Gestion de données 
+déclenche l’affichage d’une liste du type suivant dans le panneau de droite : 
+
+ 
+
+Sélectionnez la carte dans laquelle vous voulez intégrer des données en cliquant 
+sur le lien bleu correspondant à votre choix. 
+
+
+
+
+
+
+Cette action déclenche l’affichage de l’interface d’intégration des fichiers de 
+données : 
+
+ 
+
+ 
+
+Choisissez Ajouter des colonnes au fichier existant 
+
+ 
+
+Pour éviter les risques d’erreur de correspondance, la fonction étalonnage des 
+fichiers est automatiquement déclenchée. La correspondance des codeINSEE se fait 
+automatiquement. 
+
+ 
+
+7 Ajouter des données à partir d’une autre 
+carte ou de la Rose des Vents : procédé 3 
+
+ 
+Procéder par transfert de sélections de données issues d'une autre carte (ou de la 
+Rose des Vents) 
+Attention : le transfert de colonnes de données ou de menus de données d'une carte 
+à l'autre ne réactualise pas la base de données initiale en fichier txt dans le sous 
+répertoire /datafiles/. Aussi est-il nécessaire de régénérer un fichier .txt après les 
+transferts d'une carte à l'autre (Edition->Gestion des données->Edition des fichiers de 
+données->option synchroniser les données) 
+Deux solutions : 
+1 - transfert de données issues d'une autre carte de votre plateforme ou d'une 
+plateforme inscrite dans le réseau accessible via la Rose des Vents 
+2 - transfert de (menus + données) issus d'une autre carte de votre plateforme ou 
+d'une plateforme inscrite dans le réseau (cela suppose que des menus existent dans 
+d'autres cartes) 
+
+ 
+
+Solution 1 
+
+Transfert de colonnes de données à partir d’une autre carte. 
+
+_______________________________________________________ 
+
+ 
+Il est préférable d'avoir visité les plateformes disponibles avec la Rose des vents pour 
+savoir précisément quelles données on veut transférer dans sa carte 
+
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/transfert1.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/transfert2.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/transfert3.jpg
+Dans GaïaMundi : 
+
+menu édition -> Gestion des Données-> transfert de données DBHTML 
+Cette sélection de fonction déclenche l’affichage de l’interface suivante dans le 
+panneau de droite. 
+
+
+Choisir une plateforme dans le menu REZO. Le libellé « cette plateforme « 
+correspond à votre plateforme. 
+Choisir un dossier carte dans le menu maille (si vous choisissez une carte à la maille 
+IRIS, seule les cartes à la maille IRIS apparaîtront dans le menu Cartes) 
+Choisissez la carte dans le menu Cartes 
+Puis choisissez principal ou complémentaire (principal seulement dans le cas des 
+dossiers DB-ressources du réseau mutualisé ) 
+Cela déclenche le téléchargement du fichier de données . Si vous téléchargez un 
+fichier sur une plateforme distante (en ligne), cela peut prendre du temps ( certains 
+fichiers à l'IRIS ou à la commune pèsent plus de 60 Mo) 
+A la fin du téléchargement, vous avez l'affichage suivant : 
+
+ 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/transfert4.jpg
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/transfert5.jpg 
+Selectionnez les données que vous voulez importer 
+cliquez sur OK -> cela rend actif les menus de droite ( sélection du fichier de 
+destination dans votre plateforme) 
+Comme précédemment, vous choisissez d'abord une carte à la maille adaptée (IRIS 
+dans cet exemple) 
+Seules les cartes à cette maille s'afficheront dans le menu Cartes de destination 
+Si vous passez d'un maille du fichier source à une maille différente dans le fichier de 
+destination, vous devez choisir la table de passage adh'oc avant de choisir la carte 
+dans le menu carte de destination. 
+Une fois la carte de destination sélectionnée, vous avez le choix entre l'affectation 
+des données au fichier principal ou complémentaire : 
+Le choix de l'un ou de l'autre déclenche le calcul de la correspondance des aires 
+géographiques et l’ajout des données du fichier d’origine au fichier de destination 
+ainsi que et la mise au format de transfert (cela peut prendre quelques fractions de 
+minutes) 
+
+
+ 
+Une fois le calcul terminé, une dernière étape vous est proposée : tranférer les 
+données et leur méta données dans le fichier de votre carte. 
+
+ 
+
+
+
+
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/3%20Donnees/Images%20integrer%20des%20donnees/transfert6.jpg 
+Cette opération recrée le fichier de destination à partir des données calculées. 
+
+
+Une fois le transfert terminé, l’interface de transfert est réinitialisée. 
+
+ 
+
+Pour vérifier que le transfert a bien été effectué: 
+
+. vider le cache 
+. vérifier leur existence en cliquant sur l'onglet du bas "architecture de 
+données" puis en vous rendant dans la fiche descriptive de votre carte et en 
+cliquant sur le lien principal ou complémentaire selon le choix que vous avez 
+fait avant. Vérifiez que les dernières données sont bien celles que vous avez 
+importées. (Si cela n'est pas le cas, videz de nouveau le cache et recliquez 
+sur le lien principal ou complémentaire) 
+
+
+ 
+Les données sont maintenant exploitables pour réaliser des requêtes ( menus 
+d'affichage) 
+
+
+ 
+
+ 
+Solution 2 
+
+Transfert de menus et de leurs données associées. 
+
+________________________________________________________ 
+
+ 
+Dans GaïaMundi : menu édition -> Gestion des Données-> transfert de menus REZO 
+
+
+Procédez ensuite comme pour la solution 1 ci-dessus 
+
+ 
+
+La différence est que dans ce cas vous ne choisissez pas des données dans une liste 
+mais des items de menu de données dans un menu déroulant correspondant à la liste 
+des menus déroulant disponible dans la carte d’origine. 
+
+ 
+
+Pour chaque menu sélectionné pour être transféré, l’interface va extraire les 
+colonnes de données associées. Par exemple, pour un menu de données 
+correspondant à un pourcentage, l’interface récupère les spécifications du menu de 
+données ainsi que la colonne du numérateur et la colonne du dénominateur. Ide 
+pour les menus graphiques 
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+7 Gestion des échelles et des mailles dans les 
+opérations de transfert de données et de 
+menus de données 
+
+ 
+
+. tables de passage : voir les mises à jour spéciales pour les tables de passage 
+correspondant aux cartes mise en ligne sur la banque altercarto. 
+. Chaque fois qu’altercarto produit une carte qui peut être emboîtée dans 
+une autre existante dans la banque de cartes en ligne, la table de passage 
+est mise en ligne sur le site des mises à jour applicatives dans un patch 
+spécial. 
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+

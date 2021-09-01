@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><!--Copyleft [2005-2010] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr --><!--This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA-->
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script language="javascript">
+var modele=1 // 1-> standard et 2 -> vertical
+
+function valider(){
+window.location.href="selection.repertoire.php?MODELE="+modele
+}
+
+
+
+</script>
+</head><body style="font-family:arial;font-size:11px">
+<center>
+<br/>
+<b><big>Choisir le modèle de PageCarto</big></b>
+<br/>
+<br/>
+<table><tr><td>
+<!-- input name="rad" id="stand" type="radio" onclick="modele=1;document.getElementById('valid').style.display='block'" ><span style="" >Horizontal</span></input -->
+<br/>
+<input name="rad" id="vertic" type="radio" onclick="modele=2;document.getElementById('valid').style.display='block'" ><span style="" >Standard</span></input>
+<!--br/>
+<input name="rad" id="pano" type="radio" onclick="modele=4;document.getElementById('valid').style.display='block'" ><span style="color : red" >LYON PANORAMA 2010 </span></input-->
+<br/>
+<input name="rad" id="article" type="radio" onclick="modele=5;document.getElementById('valid').style.display='block'" ><span style="" >Article (- BLANC) </span></input>
+<!--br/>
+<input name="rad" id="collab" type="radio" onclick="modele=3;document.getElementById('valid').style.display='block'" ><span style="" >Collaboratif </span></input-->
+<br/>
+<input name="rad" id="InPage" type="radio" onclick="modele=6;document.getElementById('valid').style.display='block'" ><span style="" >In Page (- SANS) </span></input>
+</td></tr></table>
+
+<br/><br/>
+<input type="button" onclick="valider()" id="valid"  style="display:none" value="valider"></input>
+
+<script language="javascript">
+var modele=1 // 1-> standard et 2 -> vertical
+
+//document.getElementById("stand").checked=1
+
+
+
+</script>
+
+</body></html>

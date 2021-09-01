@@ -1,0 +1,164 @@
+﻿<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+
+</script>
+</head>
+
+<body STYLE="background-color: white;font-family:arial;font-size:12px">
+<center><b><big>Module de recherche dans les <span style="color:blue">menus de données</span> du réseau Gaïamundi</big></b></center>
+<iframe name="Num0" style="visibility:hidden" src="chimere-ReadLibelRecensement.html"></iframe>
+<div id="divmodule" style="position: absolute;top: 75px; left:150px; width:950px"><iframe name="MailleEtCarte" style="visibility:visible;border:0px solid" width=100% height=2200 src="vide.html"></iframe></div>
+<div id="NOMREZO" style="position: absolute; height: 24px; top: 40px; left:450px; width:300px"></div>
+<div id="rafraich" style="position: absolute; height: 24px; top: 50px; left:990px; "><input type="button" onclick="PointDeDepart()" value="Retour au point de départ"></input></div>
+<script language="javascript">
+var selectedrezo
+var selectedcarte
+var rezo=new Array()
+var nomrezo=new Array()
+
+</script>
+
+
+<script language="javascript" >
+var pdd // point de départ
+var urlvar=""
+if (window.location.search != "") {
+longueur = window.location.search.length - 1;
+data = window.location.search.substr(1,longueur);
+donnees = data.split("&");
+urlvar = new Array();
+urlvarnum = new Array();
+for (var i=0; i < donnees.length; i++) {
+position = donnees[i].indexOf("=");
+variable = donnees[i].substr(0,position);
+pos = position + 1;
+valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+while (valeur.search(/\+/) != -1)
+valeur = valeur.replace(/\+/," ");
+urlvar[variable] = valeur;
+urlvarnum[i] = valeur;
+}
+}
+
+if(urlvar['pdd']){pdd=urlvar['pdd']}else{pdd=window.location.href; }
+var rezolocal=new Array()
+var nomrezolocal=new Array()
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" id="local" src="A-MANAGER-local/transdata_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+<script language="javascript" >
+
+//alert(window.location.href.substr(0,(window.location.href.indexOf("?")+4)))
+var selectedrezo=urlvar["selectedrezo"]
+
+if(urlvar['localdistant']!="distant"){
+rezo[0]=window.location.href.substr(0,(window.location.href.indexOf("/read")))+"/"
+for(a=0;a<rezo.length;a++){rezolocal[a]=rezo[a];nomrezolocal[a]=nomrezo[a]
+
+//alert("rezo="+rezo)
+}
+if(selectedrezo){}else{
+//window.location.href.replace("readLibelDATA-REC-MODULE-MENU.html","")
+}
+//selectedrezo=selectedrezo.replace("?index="+urlvar["index"],"")
+selectedrezo=window.location.href.substr(0,(window.location.href.indexOf("/read")))+"/"
+//alert("selectedrezo="+selectedrezo)
+}else{
+
+var rezo=urlvar['rezolocal'].split(',');
+var nomrezo=urlvar['nomrezolocal'].split(',');
+for(a=0;a<rezo.length;a++){rezolocal[a]=rezo[a];nomrezolocal[a]=nomrezo[a]}
+//rg=0;
+}
+//alert("selectedrezo="+selectedrezo)
+window.frames.MailleEtCarte.location.href="readLibelDATA-MailleEtCarte-MENU.html?selectedrezo="+selectedrezo+"&pdd="+pdd
+
+var rg=rezo.length// dimension du réseau des plateformes implantées en local
+//alert(rezo)
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="http://altko.org/admin_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+<script id="mapsRezoxxxx" language="javascript" ></script>
+
+
+<script type="text/javascript">
+function PointDeDepart(){
+if(pdd.indexOf("index=","")<0){pdd+="?index=1"}
+window.location.href=pdd
+
+}
+
+function change_rezo(){
+
+var site = document.rezo.selectrezo.selectedIndex;
+if(site!=0){
+selectedrezo=document.rezo.selectrezo.options[site].value;
+selectedrezo=selectedrezo.replace("readLibelDATA-REC-MODULE-MENU.html","")
+//alert(" change selectedrezo="+selectedrezo+"               ?index="+urlvar["index"])
+selectedrezo=selectedrezo.replace("?index="+site,"")
+if(site<rg+1){
+
+if(urlvar['localdistant']!="distant"){
+
+window.frames.MailleEtCarte.location.href="readLibelDATA-MailleEtCarte-MENU.html?selectedrezo="+selectedrezo+"&nomrezolocal="+nomrezolocal+"&rezolocal="+rezolocal+"&pdd="+pdd
+}else{
+window.location.href=selectedrezo+"readLibelDATA-REC-MODULE-MENU.html?index="+site+"&nomrezolocal="+nomrezolocal+"&rezolocal="+rezolocal+"&pdd="+pdd//?selectedrezo="+selectedrezo
+}
+}else{
+//alert("selectedrezo="+selectedrezo)
+window.location.href=selectedrezo+"readLibelDATA-REC-MODULE-MENU.html?localdistant=distant&selectedrezo="+selectedrezo+"&rezolocal="+rezolocal+"&nomrezolocal="+nomrezolocal+"&index="+(site)+"&pdd="+pdd
+}
+
+
+
+}
+document.rezo.selectrezo.selectedIndex=site
+var index=site-1
+
+document.getElementById("NOMREZO").innerHTML="<small>Plateforme :<span style='color:red'><br>"+nomrezo[index]+"<br><b >"+rezo[index]+"</b></span></small>"
+}
+
+
+
+//_________________________________________________________________________________________________________________________
+
+</script>
+
+
+
+
+
+
+
+<script language="javascript">
+document.write('<div id="divrezo" style="position: absolute; height: 24px; top: 50px; left:151px; width:300px"><form name="rezo"><select id="selectrezo" name="selectrezo" onchange="change_rezo()"   style="background-color: white; color: black;width:200px" size="1"><option id="optionRezo0" value="">&nbsp;REZO</option>')
+
+for(i=0;i<rezo.length;i++){
+
+document.write('<option id="optionRezo')
+document.write(i)
+
+
+document.write('"    VALUE="'+rezo[i]+'">')//
+document.write(i+1)
+document.write("-")
+document.write("plateforme : "+nomrezo[i])
+document.write('</option>')
+
+}
+document.write('</select></form></div>')
+//
+if(urlvar["index"]){index=urlvar["index"]}else{var index=0}
+document.rezo.selectrezo.selectedIndex=0
+
+if(index==0){index=1}
+
+document.getElementById("NOMREZO").innerHTML="<small>Plateforme :<span style='color:red'><br>"+nomrezo[index-1]+"<br><b >"+selectedrezo+"</b></span></small>"
+//if(urlvar['localdistant']!="distant"){window.frames.MailleEtCarte.location.href="vide.html"}
+</script>
+
+</body >
+</html>

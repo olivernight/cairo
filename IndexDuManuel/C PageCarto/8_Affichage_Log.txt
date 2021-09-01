@@ -1,0 +1,46 @@
+﻿Affichage des ronds proportionnel en mode logarithme (MAJ 16ème) 
+
+L’intérêt du mode d’affichage proportionnel en mode logarithme est de mieux visualiser les valeurs 
+intermédiaires lorsque les écarts sont très important entre les valeurs supérieures et inférieures. 
+
+ 
+
+Lors de la MAJ 15ème, un affichage automatique en mode log avait été introduit lorsque les tailles 
+minimales et maximales des ronds présentaient un écart important. Mais cette affectation 
+automatique quelque peu autoritaire était de plus problématique puisqu’on ne pouvait pas la 
+désactiver à volonté. Cette nouvelle fonctionnalité vient corriger ces problèmes. 
+
+ 
+
+1 – choisir l’affichage proportionnel en mode Log ou non. 
+
+L’affichage d’une variable du menu Variable en mode log s’opère en sélectionnant le bouton radio 
+dans la légende. 
+
+ 
+
+Lorsque le bouton log est sélectionné, le terme radius=Log(Value) est ajouté à la légende 
+
+ 
+
+2 - Forcer l’affichage d’une variable en mode Log 
+
+ 
+
+ 
+
+Pour qu’une variable de menu s’affiche automatiquement en mode Log : 
+
+ 
+
+Il faut ajouter le terme log(R) au titre de la légende en respectant la casse. 
+
+Le terme log(R) ne s’affichera pas dans la légende (il est occulté) , en revanche, le bouton log sera 
+sélectionné et le terme radius=Log(Value) sera ajouté à la légende. 
+
+Si l’on décoche le bouton radio, ce terme disparaît de la légende, les ronds s’affichent en mode 
+proportionnel simple et réciproquement. 
+
+ 
+
+

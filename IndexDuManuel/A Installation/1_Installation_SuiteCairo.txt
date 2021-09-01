@@ -1,0 +1,325 @@
+﻿ 
+
+Installation 
+
+
+Installation en local sur votre ordinateur 
+
+ 
+A - Mode consultation seul 
+
+ 
+Dans le mode consultation seul, vous pouvez consulter toutes les cartes, données , 
+hypertextes, mais vous ne pouvez pas écrire. 
+
+. Télécharger votre version Suite Cairo 
+Dézipper le fichier quelque part dans votre ordinateur ou sur un support 
+amovible type clé USB 
+Allez dans le répertoire que vous venez de dézipper et cliquez sur le fichier 
+"index.html". Vous êtes maintenant dans l’univers Suite Cairo 
+Passer la page d'acceuil en suivant le lien : 
+. "GaïaMundi" Suite including "PageCarto" and "la Rose des Vents" 
+Par défaut, le mot de passe est "admin". Vous êtes maintenant dans la 
+plateforme Suite Cairo 
+enregistrez l’adresse dans le marque page ou bien dans la barre 
+personnelle de Firefox pour retrouver facilement le lien 
+
+
+ 
+Astuce de confort : dans l'onglet Système, vous avez quatre fonctions Redemarrer() 
+(1) (2) (3). Celles-ci vous proposent des configurations d'affichage différentes. Avant 
+d'enregistrer votre adresse dans le marque-page ou la barre personnelle, redémarrer 
+avec l'une de ces options, cela permettra que le mot de passe soit enregistré et vous 
+évitera de le taper à chaque fois. 
+
+ 
+
+ 
+B - Installation complète en local : installer un serveur local 
+
+ Télécharger et installer un serveur local : 
+
+. sur PC/windows : wampserver voir ci-après le paramétrage de WAMP 
+o placer les deux répertoires de SuiteCairo (le répertoire de Suite Caio et le 
+répertoire Depot_cartes) dans le sous répertoire www de WAMP 
+
+
+. sur Macintosh Mamp voir ci-après le paramétrage de MAMP 
+o placer les deux répertoires de SuiteCairo (le répertoire de Suite Caior et 
+le répertoire Depot_cartes) dans le sous répertoire httpdocs de MAMP 
+
+
+. sous Linux installer un serveur LAMP correspondant à votre distribution Linux 
+o placer les deux répertoires de SuiteCairo (le répertoire de Suite Caior et 
+le répertoire Depot_cartes) dans le sous répertoire wwww de votre 
+version de LAMP 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+-
+-
+-
+-
+-
+
+- 
+
+
+ 
+
+
+ 
+WAMP sur PC sous 
+Windows 
+
+ 
+MAMP sur MAC avec un OS 
+MAC 
+
+ 
+LAMP sous Linux 
+
+pour un usage courant 
+
+traitement des erreurs 
+Par défaut les plateformes 
+WampServer sont placées en 
+mode développement. C'est 
+à dire qu'elles signalent 
+toutes les erreurs de codes 
+dans les pages qui 
+s'affichent. De plus 
+l'encodage des pages n'est 
+pas utf-8. 
+error_reporting = E_ALL & 
+~E_DEPRECATED 
+display_errors = Off 
+_______________________ 
+
+ 
+à propos du Charset 
+
+Dans httpd.conf (module 
+apache) 
+ajouter AddDefaultCharset 
+UTF-8 
+en créant une nouvelle ligne 
+dans ce fichier 
+_______________________ 
+
+A propos de la gestion des 
+Guillements (quote) par PHP 
+: dans php.ini s'assurer que : 
+magic_quotes_gpc est à off 
+
+ 
+
+ 
+_______________________ 
+Extension ZIP de PHP 
+S'assurer que l'extension 
+php_zip de PHP est activée 
+(pour que les fonctions 
+automatisées de mise à jour 
+et de téléchargement des 
+cartes issues de la banque de 
+carte fonctionne. A défaut 
+ces fonctions peuvent être 
+mise en oeuvre 
+manuellement) 
+
+traitement des erreurs 
+Par défaut MAMP est 
+paramétré en mode 
+production. Il n'y a a pas à 
+régler les paramètres 
+d'affichage des erreurs 
+
+
+ 
+
+
+ 
+
+ 
+
+___________________ 
+
+A propos de de la gestion des 
+Guillements par PHP : dans 
+php.ini s'assurer que : 
+magic_quotes_gpc est à off 
+
+
+ 
+
+___________________ 
+Extension ZIP de PHP 
+S'assurer que l'extension 
+php_zip de PHP est activée ( 
+pour que les fonctions 
+automatisées de mise à jour 
+et de téléchargement des 
+cartes issues de la banque de 
+carte fonctionne. A défaut 
+ces fonctions peuvent être 
+mise en oeuvre 
+manuellement) 
+
+traitement des erreurs 
+En principe, par défaut LAMP 
+est paramétré en mode 
+production. Il n'y a pas à 
+régler les paramètres 
+d'affichage des erreurs 
+
+
+ 
+
+ 
+
+ 
+
+___________________ 
+
+A propos de la gestion des 
+Guillemets par PHP : dans 
+php.ini s'assurer que : 
+magic_quotes_gpc est à off 
+
+ 
+
+ 
+___________________ 
+Extension ZIP de PHP 
+S'assurer que l'extension 
+php_zip de PHP est activée ( 
+pour que les fonctions 
+automatisées de mise à jour 
+et de téléchargement des 
+cartes issues de la banque de 
+carte fonctionne. A défaut 
+ces fonctions peuvent être 
+mise en oeuvre 
+manuellement) 
+
+Pour un usage avancé 
+(Fabrication des gros 
+fichiers) 
+
+max_execution_time = 1024 
+max_input_time = 1024 
+memory_limit = 1024M 
+upload_max_filesize = 100M 
+post_max_size = 100M 
+
+max_file_uploads = 200 
+
+max_input_vars = 100000 
+
+Si ces paramètres existent 
+dans php.ini, mettre les 
+valeurs suivantes 
+memory_limit = 1024M 
+upload_max_filesize = 100M 
+post_max_size = 100M 
+
+max_file_uploads = 200 
+
+max_input_vars = 100000 
+
+ 
+
+ 
+
+max_execution_time = 1024 
+max_input_time = 1024 
+memory_limit = 1024M 
+upload_max_filesize = 100M 
+post_max_size = 100M 
+
+max_file_uploads = 200 
+
+max_input_vars = 100000 
+
+
+
+ 
+Sur PC, lorsque vous démarrez votre serveur (Wamp ) veillez à ce qu'aucune 
+application ou logiciel ne bloque le port 80 (par exemple, dans le cas de Skype : 
+fermez Skype s’il est ouvert, démarrez votre serveur, puis redémarrez Skype après si 
+vous en avez l’utilité, idem avec QuickTime sur PC) 
+
+ 
+
+ 
+
+
+
+
+-
+-
+-
+-
+-
+-
+- 
+
+
+Installation sur un serveur distant. 
+
+ 
+Serveur linux 
+Placez le répertoire principal de GaïaMundi dans le répertoire www . 
+Assurez vous que le propriétaire de GaïaMundi soit celui qui possède les fichiers 
+crée par PHP dans GaïaMundi pour que PHP puisse gérer les permissions. 
+De préférence utilisez un compte utilisateur www.data 
+
+ 
+Attribuer les permissions d'écriture et de lecture à tout le répertoire et à ses sous 
+répertoires pour l'utilisateur public www.data, idem pour le répertorie Depot_Carte 
+qui doit être déposé au même niveau dans le www que le répertorie de la suite Caïro 
+
+Installation sur un serveur local en réseau. 
+
+ 
+Télécharger WampServer 
+Installez WampServer sur votre ordinateur 
+Assurez vous que le serveur apache est configuré pour fonctionner en ligne. (voir le 
+mini-guide) 
+Idem avec WAMP sur Mac ou LAMP sur linux 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+

@@ -1,0 +1,593 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="html balise" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <title>SVG incorporé dans un fichier XHTML</title>
+   <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8"  />
+   <script id="scrpt"  language="javascript" ><![CDATA[
+   
+function AjoutBaliseTitre(IdDeOu,IdBaliseTitre){
+var nouveauTitre=document.createElementNS(svgns,"title")
+nouveauTitre.setAttribute("id",IdBaliseTitre)//"TitreAire"+(i+1)
+document.getElementById(IdDeOu).appendChild(nouveauTitre)//(i+1)
+var nouveauText=document.createTextNode(" ")
+document.getElementById(IdBaliseTitre).appendChild(nouveauText)
+}
+
+function changeInBaliseTitre(IdBaliseTitre,Texte){
+var nt1=document.createTextNode(Texte)
+var nt2=document.getElementById(IdBaliseTitre).firstChild
+document.getElementById(IdBaliseTitre).replaceChild(nt1,nt2)
+}
+  
+   
+   
+   var dim=new Array()
+   dim=parent.recupDim("return Xdim")
+var carre= dim[0]
+var retrait=dim[1]
+parent.document.getElementById('zam2').width=carre+"px"
+parent.document.getElementById('zam2').height=carre+"px"//
+
+
+
+var svgns = "http://www.w3.org/2000/svg";
+var coul=new Array("navy","brown","green","yellow")
+var axescote=new Array()
+var axescoteref=new Array()
+var libelaxe=new Array()
+]]></script>
+   <!--script id="scrpt"  language="javascript" src="xcommandesgraph.js" ></script-->
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+var paramreg=new Array()
+var libel=new Array()
+var DATArecept=new Array()
+var TITRED=new Array()
+var commentClasrecept=new Array()
+var baseColIci=new Array()
+var menu=new Array()
+
+DATArecept=parent.transDATA("return datax")
+commentClasrecept=parent.returnBasede0("return base0ici")
+baseColIci=parent.retourneBaseCol("return baseCol")
+menu=parent.retourneMenu("return menu")					
+					
+					
+					
+TITRED=commentClasrecept
+for(i=1;i<commentClasrecept.length-2;i++){
+libel[libel.length]=commentClasrecept[i]
+}
+
+for(i=1;(DATArecept[i]>-1000000000);i++){
+if(DATArecept[i]>10){DATArecept[i]=parseInt(DATArecept[i]*10)/10}
+if(DATArecept[i]>100){DATArecept[i]=parseInt(DATArecept[i])}
+}
+
+var maxsup=-1000000000
+var maxinf=1000000000
+var stopDATA
+
+var men8=menu[8][0].split(",")
+var indic99999=0
+for(i=0;(DATArecept[i]>-1000000000);i++){
+if(DATArecept[i]==0 & men8[men8.length-1]==-99999){
+indic99999=1
+DATArecept[i]=-99999
+}
+}
+//if(indic99999==1){menu[8][0]=menu[8][0]}
+
+						for(i=1;(DATArecept[i]>-1000000000);i++){
+						stopDATA=i
+							if(DATArecept[i]!=-99999){
+							if(DATArecept[i]>maxsup){maxsup=DATArecept[i]}
+							if(DATArecept[i]<maxinf){maxinf=DATArecept[i]}
+							}
+						}
+
+						for(i=0;i<baseColIci.length;i++){
+							if(baseColIci[i]!=-99999){
+							if(baseColIci[i]>maxsup){maxsup=parseFloat(baseColIci[i])}
+							if(baseColIci[i]<maxinf){maxinf=parseFloat(baseColIci[i])}
+							}
+						}
+
+if(maxinf>0){maxinf=0}
+if(maxsup<0){maxsup=0}
+var MAX=maxsup
+var MIN=maxinf
+
+		retrait=40
+
+		var hauteurCadre=carre-2*retrait-10
+		var decalvertic=35
+		var bas=hauteurCadre+decalvertic
+
+		var decalorigine=15
+		var carreajust=carre-retrait-40
+
+
+if(maxsup==0 & maxinf==0){maxsup=hauteurCadre}
+var Coefech=(hauteurCadre)/(parseFloat(maxsup)+Math.abs(parseFloat(maxinf)))
+
+maxsup=maxsup*Coefech
+maxinf=maxinf*Coefech
+
+		var zero=bas-Math.abs(maxinf)
+
+var som=0
+var valx=new Array()
+var valxref=new Array()
+
+					for(i=1;i<stopDATA+1;i++){
+					var affichval
+					if(parseInt(DATArecept[i])==-99999){affichval="nd"}else{affichval=DATArecept[i];som+=parseFloat(DATArecept[i]);}
+					libelaxe[i-1]=commentClasrecept[i]
+					//if(parseInt(DATArecept[i])==-99999 ){axescote[i-1]=0}else{axescote[i-1]=DATArecept[i]*Coefech;}
+					if(parseInt(DATArecept[i])==-99999 ){axescote[i-1]=-99999}else{axescote[i-1]=DATArecept[i]*Coefech;}
+
+					
+					valx[i-1]=affichval
+
+					}
+	
+					for(i=0;i<baseColIci.length;i++){
+					var affichvalref
+					if(parseInt(baseColIci[i])==-99999){affichvalref="nd"}else{affichvalref=baseColIci[i]}
+					if(parseInt(baseColIci[i])==-99999){axescoteref[i]=0}else{axescoteref[i]=baseColIci[i]*Coefech;}
+					valxref[i]=affichvalref
+					}
+					
+						
+var titre="<span style='font-weight:bold;font-size:11px;color:navy'>"+DATArecept[stopDATA+1]+"</span><br/><span style='font-size:10px;'><b>"+menu[1]+"</b><br/><i><small>"+menu[2]+" </small></i></span>";
+var nbaxes=menu[7]
+
+
+]]></script>
+</head>
+  <body  style="font-family:arial;font-size:11px;" >
+
+
+
+<div id="table" style="position:absolute;top:0px;left:0px">
+<table style="border:1px dotted black;background-color:white;line-height:90%">
+<tr ><td style="background-color:#ABABD5">
+<center><span id="titre">
+
+</span></center>
+</td></tr>
+
+<tr id="htable"><td><div style="position:relative;top:-15px">
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+document.getElementById("table").style.width=carre+"px"
+document.getElementById("titre").innerHTML=titre
+]]></script>
+
+<svg id="bouton2" name="bouton2"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+
+   >
+    <metadata
+     id="metadata7">
+    <rdf:RDF>
+
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+<stop class="begin" offset="0.5" style="stop-color:green"/>
+
+<stop class="end" offset="1" style="stop-color:red"/>
+</radialGradient>
+</defs>
+<g>
+
+<defs>
+<g opacity="0" >
+<g id="ensemble" >
+
+</g> 
+</g> 
+</defs>
+<rect x="0" y="0" width="80" height="80" id="rectmove" style=" fill: #E4E4E4 ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"   ></rect>
+<g transform="matrix(1 0 0 1 0 0)" id="espacecourbe">
+
+ <g id="g1"><use id="userond1" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB1">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg1"></rect></g>
+ <g id="g2"><use id="userond2" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB2">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg2"></rect></g>
+  <g id="g3"><use id="userond3" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB3">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg3"></rect></g>
+   <g id="g4"><use id="userond4" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB4">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg4"></rect></g>
+    <g id="g5"><use id="userond5" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB5">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg5"></rect></g>
+	 <g id="g6"><use id="userond6" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB6">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg6"></rect></g>
+	  <g id="g7"><use id="userond7" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB7">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg7"></rect></g>
+	   <g id="g8"><use id="userond8" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB8">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg8"></rect></g>
+	    <g id="g9"><use id="userond9" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB9">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg9"></rect></g>
+		 <g id="g10"><use id="userond10" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB10">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg10"></rect></g>
+		 
+		 
+		  <g id="g11"><use id="userond11" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte11"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB11">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg11"></rect></g>
+ <g id="g12"><use id="userond12" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte12"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB12">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg12"></rect></g>
+  <g id="g13"><use id="userond13" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte13"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB13">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg13"></rect></g>
+   <g id="g14"><use id="userond14" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte14"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB14">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg14"></rect></g>
+    <g id="g15"><use id="userond15" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte15"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB15">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg15"></rect></g>
+	 <g id="g16"><use id="userond16" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte16"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB16">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg16"></rect></g>
+	  <g id="g17"><use id="userond17" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte17"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB17">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg17"></rect></g>
+	   <g id="g18"><use id="userond18" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte18"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB18">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg18"></rect></g>
+	    <g id="g19"><use id="userond19" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte19"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB19">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg19"></rect></g>
+		 <g id="g20"><use id="userond20" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte20"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB20">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg20"></rect></g>
+
+		  <g id="radTot" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.7" stroke-width="1px"><path id="pTot" d=""></path></g>
+		 <g id="rad1" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p1" d=""></path></g>	
+		 <g id="rad2" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p2" d=""></path></g>		 
+		 <g id="rad3" stroke="gray" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p3" d=""></path></g>			 
+		 <g id="rad4" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p4" d=""></path></g>			 
+		 <g id="rad5" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p5" d=""></path></g>			 
+		 <g id="rad6" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p6" d=""></path></g>			 
+		 <g id="rad7" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p7" d=""></path></g>			 
+		 			 
+		 <g id="radref" stroke="red" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p3" d=""></path></g>
+		 
+<g><text style="stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:left;opacity:1" font-size="9"  x="10" y="10" id="valSup">sup</text></g>
+<g><text style="stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:left;opacity:1" font-size="9"  x="0" y="0" id="valInf">inf</text></g>
+<g><text style="stroke:black;stroke-width:0px;fill:black;font-family:Arial;text-anchor:left;opacity:1" font-size="9"  x="0" y="0" id="valZero">zéro</text></g>
+
+</g>		 
+</g>
+</svg> 
+</div>
+</td></tr></table>
+</div>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+document.getElementById("bouton2").setAttribute("width",carre)
+document.getElementById("bouton2").setAttribute("height",parseInt(carre)-15)
+
+			function NomCourbes(z,couli,Nmc){ //z= n° de courbe; couli = couleur de la courbe; Nmc= nom courbe
+
+			document.getElementById("texteB"+z).setAttribute("style","stroke:black;stroke-width:0px;fill:"+couli+";font-family:Arial;text-anchor:left;opacity:1")
+			if(parseInt(14*carreajust/carre)<9){var tail=9}else{var tail=parseInt(15*carreajust/carre)}
+			document.getElementById("texteB"+z).setAttribute("font-size",tail)
+			
+
+			var tr="matrix(1 0 0 1 "+(decalorigine+carreajust+10)+" "+(decalvertic+z*10)+")"//positionnement des items de légende
+			document.getElementById("texteB"+z).setAttribute("transform",tr)//
+			//document.getElementById("texteB"+z).setAttribute("title",Nmc)
+			document.getElementById("texteB"+z).firstChild.nodeValue=Nmc
+
+AjoutBaliseTitre("texteB"+z,"TitretexteB"+z)
+changeInBaliseTitre("TitretexteB"+z,Nmc)
+			
+			document.getElementById("carreleg"+z).setAttribute("style"," fill: "+couli+" ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;")
+			document.getElementById("carreleg"+z).setAttribute("x",(decalorigine+carreajust+5))
+			document.getElementById("carreleg"+z).setAttribute("y",(decalvertic+(z-1)*10+5))
+
+			}
+
+
+
+var rad=""
+var radref=""
+var radTot=""
+var rad0=""
+var rad0ref=""
+var rad0Tot=""
+
+
+var angle0=360/nbaxes
+var angle=-angle0-90
+
+var indicebezier=0
+if(menu[11][1]){
+if(menu[11][1]==1){indicebezier=0.15}
+if(menu[11][1]==2){indicebezier=0.35}
+if(menu[11][1]==3){indicebezier=0.5}
+if(menu[11][1]==4){indicebezier=0.75}
+if(menu[11][1]==5){indicebezier=1}
+}
+
+document.getElementById("rectmove").setAttribute("width",(carreajust))
+document.getElementById("rectmove").setAttribute("height",(hauteurCadre))
+document.getElementById("rectmove").setAttribute("x",(decalorigine))
+document.getElementById("rectmove").setAttribute("y",decalvertic)
+var ixtemp
+var iytemp
+var nblignes=(parseInt(menu[6])+1)
+var nbcolonnes=parseInt(menu[7])
+// ------------------------------------------------------------------TRACER les COURBES
+for(j=1;j<nblignes;j++){
+rad=""
+
+var deb=(1+(j-1)*nbcolonnes)
+var fin=(j*nbcolonnes+1)
+var k=0
+
+for(i=deb;i<fin;i++){//
+k=k+1
+var a=1
+var bezier=0
+if(menu[11][1]>0 & menu[11][1]<6){bezier=1}
+if(bezier==1){
+// --- BEZIER avec partage du point de contrôle
+var ML
+
+var ix=(carreajust/(nbaxes-1))/2
+if(k==1 & axescote[i-1]!=-99999 || (k>1 & axescote[i-1]!=-99999 & axescote[i-2]==-99999 )){
+iy=(axescote[i]-axescote[i-1])/2
+iytemp=iy
+var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+var y1=(zero-axescote[i-1])
+var cx=x1+ix*indicebezier
+var cy=y1
+var x2=x1+ix
+var y2=y1-iy
+rad+="M "+x1+" "+y1+" "//
+rad+="Q "+cx+"  "+cy+" "+x2+"  "+y2+" "
+}else{
+if( axescote[i]!=-99999 & axescote[i-1]!=-99999){
+iy=iytemp
+var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+var y2=(zero-axescote[i-1])
+var cx=x2-ix*indicebezier
+var cy=y2
+rad+="Q"+" "+cx+"  "+cy+" "+x2+"  "+y2+" "
+if(k<nbcolonnes){
+iy=(axescote[i]-axescote[i-1])/2
+iytemp=iy
+var cx=x2+ix*indicebezier
+var cy=y2
+var x3=x2+ix
+var y3=y2-iy
+rad+="Q"+" "+cx+"  "+cy+" "+x3+"  "+y3+" "
+}
+}
+}
+
+}else{//Fin de bezier
+//--------------------------------------
+
+//------------------BON simple
+
+					var ML
+					if(k==1 & axescote[i-1]!=-99999 || (k>1 & axescote[i-1]!=-99999 & axescote[i-2]==-99999 )){
+					
+					ML="M"
+					rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "//
+					
+					}else{
+					if( axescote[i]!=-99999 & axescote[i-1]!=-99999){
+					ML="L"
+					rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "//
+					}
+					}
+
+					//rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "//
+
+}
+//---------------------------
+
+					if(j==1){// coordonnées de la ligne du zero
+								if(k==1){ML="M"}else{ML="L"}
+								radTot+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero)+" "//
+
+
+					}
+
+
+}
+document.getElementById("p"+j).setAttribute("d",rad)
+document.getElementById("rad"+j).setAttribute("stroke",coul[j-1])
+
+
+
+NomCourbes(j,coul[j-1],menu[5][j-1])
+}
+// affichage de la ligne du zero
+document.getElementById("pTot").setAttribute("d",radTot)
+			var k=0
+			for(i=1;i<nbcolonnes+1;i++){// coordonnées de la courbe de référence
+													if(bezier==1){
+													k=k+1
+										// --- BEZIER avec partage du point de contrôle
+										var ML
+										var ix=(carreajust/(nbaxes-1))/2
+										if(k==1 & axescoteref[i-1]!=-99999 || (k>1 & axescoteref[i-1]!=-99999 & axescoteref[i-2]==-99999 )){				
+										iy=(axescoteref[i]-axescoteref[i-1])/2
+										iytemp=iy
+										var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+										var y1=(zero-axescoteref[i-1])
+										var cx=x1+ix*indicebezier
+										var cy=y1
+										var x2=x1+ix
+										var y2=y1-iy
+										radref+="M "+x1+" "+y1+" "//
+										radref+="Q "+cx+"  "+cy+" "+x2+"  "+y2+" "
+										}else{
+										if( axescoteref[i]!=-99999 & axescoteref[i-1]!=-99999){
+										iy=iytemp
+										var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+										var y2=(zero-axescoteref[i-1])
+										var cx=x2-ix*indicebezier
+										var cy=y2
+										radref+="Q"+" "+cx+"  "+cy+" "+x2+"  "+y2+" "
+										if(k<nbcolonnes){
+										iy=(axescoteref[i]-axescoteref[i-1])/2
+										iytemp=iy
+										var cx=x2+ix*indicebezier
+										var cy=y2
+										var x3=x2+ix
+										var y3=y2-iy
+										radref+="Q"+" "+cx+"  "+cy+" "+x3+"  "+y3+" "
+										}
+										}
+										}
+
+										}else{//Fin de bezier
+			
+										if(i==1){ML="M"}else{ML="L"}
+										radref+=ML+" "+(carreajust/(nbaxes-1)*(i-1)+decalorigine)+" "+(zero-axescoteref[i-1])+" "
+										}
+										}
+										
+			// affichage de la courve de référence
+			document.getElementById("p3").setAttribute("d",radref)
+
+//------------------------------------------------------------------------------------libellé des axes et origine	
+var unit="("+menu[8][0].replace(",-99999","")+")"
+var valMAXici=MAX
+if(MAX==0){unit="";valMAXici=""}
+			document.getElementById("valSup").firstChild.nodeValue=valMAXici+" "+unit
+			document.getElementById("valSup").setAttribute("x",(decalorigine-5))
+			document.getElementById("valSup").setAttribute("y",decalvertic-5)
+
+if(MIN<0){
+			document.getElementById("valInf").firstChild.nodeValue=MIN
+			document.getElementById("valInf").setAttribute("x",(decalorigine-5))
+			document.getElementById("valInf").setAttribute("y",(zero-maxinf+0))
+	}	
+var unit2=""
+var decalzero=0	
+var valzeroici=0
+if(MIN>=0){decalzero=0}
+
+if(MAX==0 & MIN!=0){valzeroici=0;unit2="("+menu[8][0].replace(",-99999","")+")";decalzero=-10}
+				
+			document.getElementById("valZero").firstChild.nodeValue=valzeroici+" "+unit2
+			document.getElementById("valZero").setAttribute("x",(decalorigine-5))
+			document.getElementById("valZero").setAttribute("y",zero+decalzero)
+
+
+
+
+// ------------------------------------------------------------------------------------fin de TRACER les COURBES
+
+//intercartivité textuelle des courbes	-----------------------------------------------------------------------	
+var xcolor="gray"
+var zcolor="transparent"
+var ray=carreajust/(nbaxes-1)/2
+if(ray<8){ray=8}
+// -- COURBES générale ------------------------
+for(j=1;j<nblignes;j++){
+rad=""
+
+var deb=(1+(j-1)*nbcolonnes)
+var fin=(j*nbcolonnes+1)
+var k=0
+
+for(i=deb;i<fin;i++){//
+k=k+1
+
+if(k==1){
+var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+var y1=(zero-axescote[i-1])
+var nouveau0=document.createElementNS(svgns,"circle")
+nouveau0.setAttribute("cx",x1)
+nouveau0.setAttribute("cy",y1)
+nouveau0.setAttribute("fill","transparent")
+nouveau0.setAttribute("fill-opacity","0.5")
+nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+nouveau0.setAttribute("r",ray)
+//nouveau0.setAttribute("title","xxx")//menu[5][j-1]+" - "+menu[4][k-1]+" : "+valx[i-1]
+document.getElementById("espacecourbe").appendChild(nouveau0)
+
+nouveau0.setAttribute("id","Rond"+i)
+AjoutBaliseTitre("Rond"+i,"TitreRond"+i)
+changeInBaliseTitre("TitreRond"+i,menu[5][j-1]+" - "+menu[4][k-1]+" : "+valx[i-1])
+}else{
+var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+var y2=(zero-axescote[i-1])
+
+var nouveau0=document.createElementNS(svgns,"circle")
+nouveau0.setAttribute("cx",x2)
+nouveau0.setAttribute("cy",y2)
+nouveau0.setAttribute("fill","transparent")
+nouveau0.setAttribute("fill-opacity","0.5")
+nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+nouveau0.setAttribute("r",ray)
+//nouveau0.setAttribute("title","yyy")//menu[5][j-1]+" - "+menu[4][k-1]+" : "+valx[i-1]
+
+document.getElementById("espacecourbe").appendChild(nouveau0)
+
+nouveau0.setAttribute("id","Rond"+i)
+AjoutBaliseTitre("Rond"+i,"TitreRond"+i)
+changeInBaliseTitre("TitreRond"+i,menu[5][j-1]+" - "+menu[4][k-1]+" : "+valx[i-1])
+}
+}
+}
+			// -- COURBES de référence ------------------------
+			for(j=1;j<2;j++){
+			rad=""
+			
+			var deb=(1+(j-1)*(axescoteref.length-1))
+			var fin=(j*(axescoteref.length-1)+1)
+			
+			var k=0
+			for(i=deb;i<fin+1;i++){//
+			k=k+1
+
+			if(k==1){
+			var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+			var y1=(zero-axescoteref[i-1])
+			var nouveau0=document.createElementNS(svgns,"circle")
+			nouveau0.setAttribute("cx",x1)
+			nouveau0.setAttribute("cy",y1)
+			nouveau0.setAttribute("fill","transparent")
+			nouveau0.setAttribute("fill-opacity","0.5")
+			nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+			nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+			nouveau0.setAttribute("r",ray)
+			//nouveau0.setAttribute("title",menu[5][1]+" - "+menu[4][k-1]+" : "+valxref[i-1])
+			document.getElementById("espacecourbe").appendChild(nouveau0)
+			
+nouveau0.setAttribute("id","Rondref"+i)
+AjoutBaliseTitre("Rondref"+i,"TitreRondref"+i)
+changeInBaliseTitre("TitreRondref"+i,menu[5][1]+" - "+menu[4][k-1]+" : "+valxref[i-1])
+			}else{
+			var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+			var y2=(zero-axescoteref[i-1])
+
+			var nouveau0=document.createElementNS(svgns,"circle")
+			nouveau0.setAttribute("cx",x2)
+			nouveau0.setAttribute("cy",y2)
+			nouveau0.setAttribute("fill","transparent")
+			nouveau0.setAttribute("fill-opacity","0.5")
+			nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+			nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+			nouveau0.setAttribute("r",ray)
+			//nouveau0.setAttribute("title",menu[5][1]+" - "+menu[4][k-1]+" : "+valxref[i-1])
+			document.getElementById("espacecourbe").appendChild(nouveau0)
+			
+nouveau0.setAttribute("id","Rondref"+i)
+AjoutBaliseTitre("Rondref"+i,"TitreRondref"+i)
+changeInBaliseTitre("TitreRondref"+i,menu[5][1]+" - "+menu[4][k-1]+" : "+valxref[i-1])
+			}
+			}
+			}
+if(menu[5].length==1){
+if(menu[11][0]==1){NomCourbes((menu[5].length+1),"gray","Mean")}
+}else{NomCourbes((menu[5].length),"gray",menu[5][1])}
+if(menu[11][0]>0){NomCourbes((menu[5].length),"gray",menu[5][1])}
+// fin de l'interactivité textuelle des courbes -------------------------------------------------------------------	
+parent.document.getElementById('zam2').height=parseInt(carre)-15//+30
+
+
+]]></script>
+</body >
+</html>

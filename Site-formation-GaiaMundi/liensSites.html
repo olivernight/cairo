@@ -1,0 +1,63 @@
+﻿<html>
+<head><title>Altercarto.fr : liste Sites</title><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+	 <script language="javascript" src="editpas.js"></script>
+	 <script type="text/javascript">
+	 var liensSites=new Array();var rangliste=new Array(); 
+var listpubcartovision=new Array();
+	 function motdepasse(){
+	 }
+	 
+	 
+	 var Editpastemp="10638"
+function testpas(a,j){
+var k=0;
+for(i=0;i<Editpasici.length;i++){
+if(a==Editpasici[i] || a==Editpastemp){
+Editpastemp=a;
+open("../../"+selectici+"/index.html")
+k=1;
+document.getElementById('editpas').style.visibility='hidden'
+}
+}
+if(k==0){alert("désolé, votre mot de passe n'est pas valide. Renouvelez votre saisie");}
+}
+var rgx=0
+var selectici=''
+	 document.write('<div id="editpas" class="texte" style="position:absolute;opacity:1;border:2px solid; top:45px; left:10px;visibility:hidden;background-color:#0B6DA0;width:200px;z-index:1000;padding:5px">')
+document.write('<form><center><b>Saisissez votre <br>mot de passe<br><input id="sais" type="texte" value="" ><br><input type="button" onclick="testpas(document.getElementById(\'sais\').value);" value="valider"></input>.....<input type="button" value="annuler" onclick="document.getElementById(\'editpas\').style.visibility=\'hidden\'"</center></form>')
+document.write('</div>')
+	 	 </script>
+	 <script id="" type="text/javascript" src="../A-MANAGER-local/creation_site/liensSites.js"></script>
+	 </head><body style="font-family:arial;font-size:12px">
+	 <center>
+	<big>Les sites du réseau</big>
+	  
+	  <center><table border=0>
+	  <script type="text/javascript">
+	 var tabici=""
+ for(i=1;i<liensSites.length;i++){
+	 if(listpubcartovision[i]==1){
+	 tabici+='<tr><td>'
+	 if(liensSites[i].indexOf("travail",0)>0 || liensSites[i].indexOf("Travail",0)>0 || liensSites[i].indexOf("TRAVAIL",0)>0){
+	  //tabici+='<a href="#" onclick="selectici=\''+liensSites[i]+'\';rgx='+i+';document.getElementById(\'editpas\').style.visibility=\'visible\'" style="color:red;">'+liensSites[i]+'</a><br></td></tr>'	
+	 }else{
+	 tabici+='<a href="../'+liensSites[i]+'/index.html" target="_blank"><small>'+liensSites[i]+'</small></a><br></td></tr>'	
+	 } 
+	 tabici+=''
+	 }
+	 }
+	 document.write(tabici)
+	 document.write('<tr><td><dt>-----------------</dt></td></tr>')
+	 document.write('<tr><td><a href="../A0 serpent encaps.html" target="_blank" style="font-family:arial;font-size:11px"><big><b>plateforme GaïaMundi</b></big></a></td></tr>')
+	 	 //document.write('<tr><td><dt>-----------------</dt></td></tr>')
+	 document.write('<tr><td><a href="../A-Frame-Num0-cartO1-defautILIADE.htm" target="_blank" style="font-family:arial;font-size:11px"><big><b>Noyeau GaïaMundi</b></big></a></td></tr>')
+	 	 	 //document.write('<tr><td><dt>-----------------</dt></td></tr>')
+	 document.write('<tr><td><a href="http://www.citepublique.fr" target="_blank" style="font-family:arial;font-size:11px"><big><b>Site de Cité Publique</b></big></a></td></tr>')
+	  </script>
+	</table></center>
+	 
+	 
+	 
+	 
+	 </body></html>

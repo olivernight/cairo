@@ -1,0 +1,82 @@
+﻿<html>
+<head>
+
+
+
+
+</head>
+
+<body style="font-size:8px">
+<br><br><br>xxxx vvvvvvvvvvvv  vvvvvvvvvvvvvvvvv  vvvvvvvvvvvvvvv  vvvvvvvvvvvvvvvv vvvvvvvvvvvvvvvv vvvvvvvvvv vvvvvvvvvv vvvv  vvvvvvvvvvvv<br><br>
+<style type="text/css">
+.lecontent {
+font-size:8px;
+font-family:arial;
+text-align:justify;
+
+}
+.bodyla {
+font-size:8px;
+font-family:arial;
+text-align:justify;
+
+}
+a:link {  color:red; text-decoration:none ;} a:visited {  color:#0000A0; text-decoration:none ;} a:hover { font-weight:bold; color:#E00000; text-decoration:underline; } a:active { font-weight:bold; color:#E00000; text-decoration:underline ;} a:focus { font-weight:bold; color:#00E000; text-decoration:underline :}
+</style>
+<script language="javascript">
+//document.getElementsByTagName("body")[0].setAttribute("class","bodyla")
+var chinois="chinois";
+var marron="marron";
+var rouge="rouge";
+var Nonchinois="Nonchinois";
+function CPonctuel(a,b,c,d,e){
+window.frames[0].frames.hypertexte.CPonctuel(a,b,c,d,e);
+};
+function Cfond(a,b,c){
+window.frames[0].frames.hypertexte.Cfond(a,b,c);
+};
+function Cgraph(a,b){
+window.frames[0].frames.hypertexte.Cgraph(a,b);
+copygraph();
+};
+
+
+function chargehypert(){
+
+}
+function reduitH(){}; function grossiH(){}
+function libelhistomultiover2(){}; function libelhistomultiout(){}
+function copygraph(){
+
+var hist=window.frames[1].document.getElementById("innerhisto").outerHTML;
+
+hist=hist.replace(/title/g,'style="font-size:10px" title')
+document.getElementById("histla").innerHTML=hist;
+
+document.getElementById("innerhisto").style.display="block";
+document.getElementById("commandeTialleHisto").style.display="none";
+var letop=document.getElementById("imgfloat").offsetTop;
+document.getElementById("innerhisto").style.top=(letop+250)+"px";
+document.getElementById("commandeTialleHisto").parentNode.parentNode.parentNode.parentNode.style.display="none";
+
+
+/**/
+};
+function recupcontent(){
+
+var recup=window.frames.module.document.getElementsByTagName("body")[0].innerHTML
+
+document.getElementById("content").innerHTML=recup
+window.frames.module.document.getElementsByTagName("body")[0].innerHTML=""
+}
+
+</script>
+
+
+<iframe style="display:none" name="module" id="module" src="Normal-BLANC.html?cesure=à petite échelle&regl=7&posgraph=2000" onload="setTimeout('recupcontent()',3000)"></iframe>
+<span id="content" class="lecontent"></div>
+
+
+
+</body >
+</html>

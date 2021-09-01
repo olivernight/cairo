@@ -1,0 +1,266 @@
+﻿<HTML>
+<head>
+ <TITLE>contours</TITLE>
+ <script  id="chargecontour" language="JavaScript" onload="/*initcalcul()*/"></script>
+
+
+<script language="javascript">
+
+transHL=top.frames.Num0.transHLecran("return transHL")
+var zX=top.frames.Num0.frames.couches.retournezX("return zX")
+
+var HFrame=(transHL[1])/zX*0.9//505;
+var LFrame=(transHL[0]+20)/zX+20*(zX)//838;
+//alert(LFrame+"   "+HFrame)
+var MaxMin=top.frames.Num0.frames.paramcarte.retourneMaxMin("return MaxMin")
+var minx=MaxMin[0]
+var miny=MaxMin[1]
+var maxx=MaxMin[2]
+var maxy=MaxMin[3]
+var Rep
+var Contour
+var Couleur
+var Epaisseur
+var tx
+var ty
+var rx
+var ry
+var x
+var y
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+Rep=(urlvar['rep'])
+Contour=(urlvar['contour'])
+Couleur=(urlvar['couleur'])
+Epaisseur=(urlvar['epaisseur'])
+tx=(urlvar['tx'])
+ty=(urlvar['ty'])
+x=(urlvar['x'])
+y=(urlvar['y'])
+rx=(urlvar['rx'])
+ry=(urlvar['ry'])
+document.getElementById("chargecontour").src=Rep+"/"+Contour
+var Gcoord0=new Array()
+var Gcoord02=new Array()
+
+
+var base02 = new Array()
+var datahistomulti = new Array
+var Ax2
+var Bx2
+var Cx2
+var Dx2
+function boucleline(){
+}
+
+
+
+function Nouvelle2(a){
+this.donnees=a;
+//alert("nouvelle")
+}
+function ajouter(a){
+
+base02[base02.length]=new Nouvelle2(a)
+}
+function ajouter2(a){
+
+base02[base02.length]=new Nouvelle2(a)
+}
+
+function transbase2(){
+
+var trabas2=base02
+
+return trabas2
+}
+
+//alert(parent.document.getElementById("trans").width)
+//-------------------------------------------------------------------CALCUL LIGNE SVG------------------------------------------------------------------------
+
+var XID2=1
+var XNOM2=""
+//-----------------------------------------------------------------------------------------
+function IDetNOM2(){
+var a=L002
+var indexm2
+XID2=""
+XNOM2=""
+for(i=0;a[i]!="-";i++){
+
+XID2+=a[i];
+indexm2=i
+}
+for(i=(indexm2+2);i<a.length;i++){
+XNOM2+=a[i]
+
+}
+//alert("ici")
+}
+;
+//------------calcul
+
+var lign02=new Array()
+var L002=new Array()
+//IDetNOM2()
+var GCOO2=new Array()
+//alert(L002)
+var titreencours
+
+function calculcoord3XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX(){
+
+var j=0 // rang horizontal dans une ligne GCOO
+var k=0
+for(l=0;l<base02.length;l++){// boucle sur les ligne de la base base0 des coordonnées originales de la carte
+
+var lign2=base02[l].donnees.split(',')
+//alert("lign2[0]=  "+lign2[0])
+
+
+//if(l==base02.length-1){
+if(lign2[0]!=titreencours ){
+
+GCOO2[0]=1 //XID2;
+GCOO2[j+1]=titreencours   //  "x"+k    // XNOM2;
+titreencours=lign2[0];
+Gcoord02[k]=GCOO2;
+GCOO2=new Array()
+j=0
+k=k+1}
+//else{
+j=j+1
+
+//GCOO2[j]=(((LFrame)-0.7*(maxx-minx)*(LFrame)/2/(maxy-miny))/2+0.7*(parseFloat(lign2[1])-minx)*(LFrame)/2/(maxy-miny))
+//GCOO2[j+1]=((HFrame)-parseFloat(lign2[2]-miny)*(LFrame)/2/(maxy-miny))
+
+//if(j<3){alert(GCOO2[j])}
+
+//GCOO2[j]=(((LFrame)-0.7*(maxx-minx)*(LFrame)/2/(maxy-miny))/2+0.7*(parseFloat(lign2[1])-minx)*(LFrame)/2/(maxy-miny))+40
+//GCOO2[j+1]=((HFrame)-(parseFloat(lign2[2])-miny)*(LFrame)/2/(maxy-miny)-40)
+
+//GCOO2[j]=(parseFloat(lign2[1])-minx)/0.034720050866058956*LFrame/100+(maxx-minx)*(LFrame)/2/(maxy-miny)/2-87
+
+//GCOO2[j]=(parseFloat(lign2[1])-(maxx+minx)/2)/0.034720050866058956*LFrame/100
+/*
+GCOO2[j]=(parseFloat(lign2[1]))/0.034720050866058956/100
+0.7*(vec1coord[v][l]-CentreX)*coefHL+Wsvg/2+ecartbordX
+//+(maxx+minx)/2/0.034720050866058956*LFrame/100   //(maxx-minx)*(LFrame)/2/(maxy-miny)//(LFrame-(maxx-minx))/2//(LFrame))/2+(maxx-minx)*(LFrame)/2/(maxy-miny)/2
+//-0.7*(maxx-minx)*(LFrame)/2/(maxy-miny)//+5//+(maxx+minx)/0.034720050866058956*LFrame/100/2//+(maxx-minx)*(LFrame)/(maxy-miny)/2-87
+GCOO2[j+1]=((520)-parseFloat(lign2[2]-miny)*(625)/2/(maxy-miny))-80
+
+GCOO2[j]=((LFrame)-(maxx-minx)*(LFrame+80)/2/(maxy-miny))/2+0.7*(parseFloat(lign2[1])-minx)*(LFrame+80)/2/(maxy-miny)+200-2.5
+GCOO2[j+1]=((HFrame)-(parseFloat(lign2[2])-miny)*(LFrame+80)/2/(maxy-miny)-80*HFrame/HFrame0)+3
+*/
+
+GCOO2[j]=((LFrame)-(maxx-minx)*(LFrame)/2/(maxy-miny))/2+(parseFloat(lign2[1])-minx)*(LFrame)/2/(maxy-miny)-40-1
+GCOO2[j+1]=((HFrame)-(parseFloat(lign2[2])-miny)*(LFrame)/2/(maxy-miny)/0.7)-100/2+5.3
+//alert(lign2[1]+"  "+ lign2[2]+"        "+GCOO2[j]+"   "+GCOO2[j+1])
+j=j+1
+
+
+//}
+}
+GCOO2[0]=1 //XID2;
+GCOO2[j+1]=titreencours   //  "x"+k    // XNOM2;
+Gcoord02[k]=GCOO2;
+
+}
+function calculcoord2(){
+
+var j=0 // rang horizontal dans une ligne GCOO
+var k=0
+for(l=0;l<base02.length;l++){// boucle sur les ligne de la base base0 des coordonnées originales de la carte
+
+var lign2=base02[l].donnees.split(',')
+//alert("lign2[0]=  "+lign2[0])
+
+
+//if(l==base02.length-1){
+if(lign2[0]!=titreencours ){
+
+GCOO2[0]=1 //XID2;
+GCOO2[j+1]=titreencours   //  "x"+k    // XNOM2;
+titreencours=lign2[0];
+Gcoord02[k]=GCOO2;
+GCOO2=new Array()
+j=0
+k=k+1}
+//else{
+j=j+1
+
+GCOO2[j]=((LFrame)-(maxx-minx)*(LFrame)/2/(maxy-miny))/2+(parseFloat(lign2[1])-minx)*(LFrame)/2/(maxy-miny)
+GCOO2[j+1]=((HFrame)-parseFloat(lign2[2]-miny)*(LFrame)/2/(maxy-miny))
+//if(j<3){alert(GCOO2[j])}
+
+
+
+
+
+
+
+j=j+1
+
+
+//}
+}
+GCOO2[0]=1 //XID2;
+GCOO2[j+1]=titreencours   //  "x"+k    // XNOM2;
+Gcoord02[k]=GCOO2;
+
+}
+
+
+function initcalcul(){
+lign02=base02[0].donnees.split(',')
+L002=lign02[0]
+//IDetNOM2()
+GCOO2=new Array()
+//alert(L002)
+titreencours=L002
+
+calculcoord2()
+
+top.frames.Num0.frames.couches.zoom.tracelignes2(Contour,Couleur,Epaisseur,tx,rx,ry,ty,x,y)
+}
+
+function retourneGcoord02(){
+return Gcoord02
+}
+
+
+
+setTimeout('initcalcul()',2000)
+
+
+
+//alert(Gcoord0.length)
+
+
+</script>
+<body BGCOLOR="#FFFFFF" >
+
+
+
+
+
+</body >
+</HTML>

@@ -1,0 +1,73 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr">
+<head>
+
+
+  
+<script language='javascript' src='REP.js'></script>
+
+<script language='javascript' >
+var DocOuDiscus 
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+  
+	
+
+	if(urlvar['radx']){DocOuDiscus=(urlvar['radx'])}else{DocOuDiscus=0}//1-> documents et 0-> discussion
+	function radioX(a){
+	window.location.href=window.location.href.split("?")[0]+"?radx="+a
+	}
+function retourneRadx(){return DocOuDiscus}
+</script>
+  
+  <title>Modération discussions</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+</head>
+
+
+<body style="background-color: transparent;font-family:arial" > 
+<center>
+<div >
+<table><tr><td>
+<!--img src="http://altko.org/gaiamundi-dev/bandeau.jpg"  border=0 -->
+
+<dt style="font-size:18px;color:gray"><b>Modération des discussions</b></dt>
+<dt style="font-size:12px;color:black"><input type="radio" id="Rad_0" name="Rad" onclick="radioX(0)">discussion</dt>
+<!-- dt style="font-size:12px;color:black"><input type="radio" id="Rad_1" name="Rad" onclick="radioX(1)">documents</dt -->
+</dt>
+
+
+<iframe src="MENUchantier.html" style="border: 0px none ; background-color: transparent;" width="785" height="550"></iframe>
+</td></tr></table>
+
+</div></center>
+<script language='javascript' >
+
+document.getElementById("Rad_"+DocOuDiscus).checked="true"
+
+</script>
+<br></body></html>

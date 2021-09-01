@@ -1,0 +1,147 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<SCRIPT LANGUAGE="JavaScript" src="intitulesILIADE.js"></SCRIPT>
+<script language="javascript" src="parametregenraux0.js"></script>
+<script language="javascript">
+var Iliade="Iliade"
+var createurSVG="non"
+function retournecreateurSVG(){return createurSVG}
+function retourneIliade(){return Iliade}
+function retourneintitules1(){return intit}
+function retourneintitules2(){return initO1}
+var u=0
+var objaide=""
+function test(event){
+//alert(event.keyCode)
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert(objaide)
+document.getElementById("divaide").style.visibility="visible";
+top.frames.frameaide.location.href="aidecartecom.html?REP="+objaide
+
+}
+
+}
+
+function test2(event){//évennement engendré dans le svg
+//alert(event.keyCode)
+//alert("test2")
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert(objaide)
+document.getElementById("divaide").style.visibility="visible";
+top.frames.frameaide.location.href="../aidecartecom.html?REP="+objaide
+
+}
+
+}
+function test3(event){
+//alert(event.keyCode)
+if  (event.keyCode == 16 ) { //e.which
+
+u = 16
+//alert(objaide)
+document.getElementById("divaide").style.visibility="visible";
+top.frames.frameaide.location.href="aidecartecom.html?REP="+objaide
+
+}
+
+}
+function antitest0(event){
+//alert("antitest0")
+event.stopPropagation()}
+
+
+function ouvHelp(a){
+
+if(a=="Help2"){
+
+document.getElementById("divaide").style.visibility="visible";
+top.frames.frameaide.location.href="aidecartecom.html?REP=Help"
+
+}
+
+objaide=a
+//alert(a)
+//top.frames.frameaide.location.href="aidecartecom.html#"+a
+
+
+
+}
+
+function antitest(event){// 
+u=0
+top.document.getElementById('divaide').style.visibility='hidden'
+window.addEventListener("keydown",test,true)
+//onKeyDown="javascript:test(event);"
+//alert("antitest")
+//selectOnglet('west',1)
+
+}
+
+function antitestretourtop(){
+//alert("retourtop")
+//event.stopPropagation()
+u=0
+//top.document.getElementById('aide').style.visibility='hidden'
+top.addEventListener("keydown",test,true)
+}
+</script>
+
+
+</head>
+
+<body BGCOLOR="#F2F4FF"  onKeyDown="javascript:test(event);" onKeyUp="javascript:antitest0(event);">
+
+<script
+  language="JavaScript1.2">
+function BL(){ //début signal chargement top.BL()
+
+document.getElementById("divloading").style.top=200+'px' 
+top.frames.FloadingBis.location.href="vide.htm"
+
+}
+function EL(){//fin signal chargement  top.EL()
+document.getElementById("divloading").style.top=-1000+'px'
+
+}
+var repsite=''
+function transrepsite(){return repsite}
+function changeimagefond(a){
+if(top.frames.Num0.imagesfond.document.menufond){
+top.frames.Num0.imagesfond.document.menufond.choix.selectedIndex=a
+top.frames.Num0.imagesfond.change()
+}
+}
+
+function transrepsite(){repsite="HYPERTEXTES-tous";return repsite}// ert à inhiber un processus dans carte.htm (ligne 273) en rapport avec les édition de page des autres interfaces: HYPERTEXTES-tous est la valeur d'inhibition
+
+var correctwidth=800 
+var correctheight=600
+//if (screen.width!=correctwidth || screen.height!=correctheight){document.write("<B><UL>Ce site est optimis&eacute pour une r&eacute;solution "+correctwidth+"x"+correctheight+". Votre  r&eacute;solution actuelle est "+screen.width+"x"+screen.height+".</UL></B>")}
+//alert("voulez vous continuer?")
+//-->
+</script>
+<script language="javascript">
+document.write('<div style="position:absolute;left:120;top:10"><table border=1><tr><td><iFRAME SRC="cartO1.htm" id="Num0" NAME="Num0"   width='+(largeurecran+230)+' height=620 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0 ></iFRAME></td></tr></table></P></DIV>')
+</script>
+<div id="divloading" style="position:absolute;top:-1000px;left:400px;color:gray;visibility:visible"><center><img id="loading" style="background-color:white;" width=60 border="0px" src="loading.gif"><br>CHARGEMENT en COURS</center></div>
+
+<iframe id="FloadingBis" name="FloadingBis" width=0 frameborder=0 height=0 src="vide.htm"></iframe>
+<script language="javascript">
+document.write('<div id="divaide" style="position:relative;top:100px;left:50px;width:250px;height:'+(hauteurecran-15)+'px;visibility:hidden"><iframe id="frameaide" name="frameaide" style="border:0.5px dotted black" width="250px" height="'+(hauteurecran-15)+'px"  ></iframe></div>')
+
+function eventKeyframes(){
+top.frames.Num0.document.getElementsByTagName("body")[0].setAttribute("onkeydown","javascript:top.test2(event)")
+
+//top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onmouseover","javascript:top.ouvHelp('hypert')")
+//top.frames.Num0txt.document.getElementsByTagName("body")[0].setAttribute("onmouseout","javascript:top.antitestretourtop(event)")
+//top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("totalsvg").setAttribute("onclick","javascript:onkeydown='top.test(event)'")
+}
+setTimeout('eventKeyframes()',2000)
+</script>
+</body >
+</html>

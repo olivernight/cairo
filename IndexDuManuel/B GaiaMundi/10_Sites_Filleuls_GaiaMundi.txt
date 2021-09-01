@@ -1,0 +1,1325 @@
+﻿ 
+
+Sites Filleuls 
+
+¤ F11 : permet de passer en plein écran. 
+
+ 
+
+1 - Création d'un nouveau site 
+
+Edition->Gestion des sites->Créer un nouveau site. 
+
+ 
+
+ 
+
+ 
+
+Ce choix ouvre l’invite suivante dans le panneau de droite 
+
+ 
+
+Inscrire le nom du nouveau site filleul. Valider. 
+
+ 
+
+. Attention : pas de caractères spéciaux pour l'écriture du nom, utiliser uniquement les 
+lettres (sans accent) ou des chiffres. De préférence, le nombre de caractères ne doit pas 
+excéder la case 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Après la validation, le site est ouvert dans un nouvel onglet ave l’appellation : 
+
+"Site – Manuel utilisation". 
+
+ 
+
+NB. tous les fichiers de « Site-Manuel utilisation » sont placés dans un répertoire "Manuel 
+utilisation" situé dans le répertoire racine de GaïaMundi. 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Pour vérifier que le site apparaît bien dans la liste des sites de la plateforme 
+
+ Vider le cache maintenant. 
+
+Edition->Gestion des sites->Liens vers les sites. 
+
+ 
+
+ 
+
+ 
+
+Si l’on clique sur ce lien, le site s’ouvre sur la page d’accueil du site 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+2 - Modifier la Page d’accueil 
+
+ 
+
+¤ est le bouton d’ouverture d’un éditeur. Il permet de modifier le texte de la page. 
+
+ 
+
+L’appel de l’éditeur entraîne l’affiche d’une invite de saisie d’un mot de passe ; 
+
+ 
+
+ 
+
+Par défaut, le mot de passe des sites filleuls est « cartoici » 
+
+On peut modifier le mot de passe en ouvrant le fichier editpas.js situé dans le répertoire du 
+site (dans le exemple : le répertoire est nommé « Site-Manuel utilisation ») 
+
+Le contenu du fichier editpas.js est le suivant : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+La validation déclenche l’ouverture de l’éditeur : 
+
+ 
+
+ 
+
+ 
+
+Le bloc "accueil" peut être modifié à la manière d'un traitement de texte. La palette en haut à 
+gauche permet de choisir la police, le type de police, la mise en page, etc. 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+3 - Les Onglets Liens et info : 
+
+Actualiser l’information commune à tous les 
+sites à partir du Site-0 
+
+ 
+
+Onglets Liens 
+
+Aller dans l'onglet "Liens" 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+et cliquer sur 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+. Les trois blocs du haut ne sont pas modifiables, ce sont les infos concernant la plateforme, 
+mises à jour par le Webmestre. 
+
+Le bloc qui se trouve en dessous est modifiable. 
+
+Pour ajouter un bloc modifiable, il suffit de sélectionner le bloc du bas (faire glisser la souris 
+sur tout le bloc en prenant la ligne d’au dessus et la ligne d’en dessous pour encadrer le bloc 
+
+dans la sélection) puis le copier / coller après le bloc du bas ou avant selon que l’on veut 
+mettre les blocs les plus actuels devant ou derrière. 
+
+ 
+
+ 
+
+Onglet Infos 
+
+L’actualisation de la page infos ne peut se faire à partir du site filleul 
+
+ 
+
+Comme les trois premiers blocs de la page liens, le contenu de la page infos est commun à 
+tous les sites filleuls. 
+
+ 
+
+Activer le Site-0 
+
+ 
+
+Le contenu des trois premiers blocs de la page liens et de la page infos peut être modifié en 
+activant un site caché : le Site-0 
+
+Pour activer le Site-0 ouvrez n’importe quel site de la liste des « liens vers les sites » 
+
+Dans l’adresse affichée dans la barre d’adresse, remplacer le nom du site par 0 
+
+Par exemple si l’adresse de la page d’accueil du site que vous avez ouvert est : 
+
+http://localhost/SuiteCairo-V1-1-Candidate-UNDP/Site-formation-GaiaMundi/index.html 
+
+Remplacez formation-GaiaMundi par 0 
+
+Ce qui donne : 
+
+http://localhost/SuiteCairo-V1-1-Candidate-UNDP/Site-0/index.html 
+
+ 
+
+Dans le Site-0, les onglets infos et liens sont modifiables. Les modifications opérées sont 
+publiées sur tous les sites filleuls 
+
+
+
+
+ 
+
+ 
+
+Dans la page infos du Site-0, les blocs ont une dimension prédéfinie. On ne peut pas la 
+modifier. En revanche, on peut écrire un texte de la longueur que l'on veut, quand le texte 
+dépasse la hauteur du bloc, l'ascenseur sur la droite le fait défiler automatiquement. 
+
+ 
+
+ 
+
+4 - Création et modification des Onglets 
+
+ 
+
+Dans tous les onglets sauf l’onglet Cartes, après avoir cliqué sur, on peut : 
+
+. Créer un nouvel onglet, 
+. Modifier un onglet existant. 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+Lorsqu’on crée un onglet, il faut saisir le nom de l’onglet dans les deux champs de saisie à 
+droite du bouton enregistrer.(Mettre le même nom dans les deux champs) 
+
+ 
+
+ 
+
+. Le nom de l’onglet ne doit pas comprendre de caractères spéciaux, (pas d’accent, de 
+virgule, etc…) ni de tiret « - » 
+
+ 
+
+. Les hypertextes ne peuvent être crées ou modifiés qu’à partir de l'onglet "Cartes". 
+
+Ne pas tenter de les créer ou de les modifier à partir des autres onglets (l’affichage de cette 
+possibilité est un Bug) 
+
+ 
+
+Gestion des Cartes et des hypertextes 
+
+A partir de l’onglet Cartes, on peut faire deux type d’opérations sur les cartes et les données : 
+
+ 
+
+1 Afficher des données sur les cartes de manière libre, sans utiliser l’hypertexte 
+
+
+ 
+
+2 Travailler avec les hypertextes : 
+. Naviguer dans les hypertextes et leurs cartes associées 
+. Créer un fichier hypertexte. 
+. Modifier un fichier hypertexte créé dans ce site. 
+
+
+ 
+
+
+
+
+ 
+
+1 - Afficher des données sur les cartes sans 
+utiliser l’hypertexte 
+
+ 
+
+ 
+
+A - Autoriser l’accès aux cartes et à leurs données associées 
+
+ 
+
+Lorsque le site est généré par la plateforme GaïaMundi, il n’y a aucune carte disponible dans le 
+site. L’accès aux cartes et à leurs données associées est attribué par la plateforme GaïaMundi. 
+Ceci permet à des utilisateurs de travail de travailler sur des sites indépendamment les uns des 
+autres. 
+
+L’attribution de droit d’accès aux cartes et à leurs données s’opère comme suit : 
+
+ 
+
+ 
+
+ 
+
+Ce choix déclenche l’affichage suivant dans le panneau de droite de la plateforme 
+
+ 
+
+ 
+
+On choisit le site auxquelles ont veut attribuer des droits d’accès (dans notre exemple on 
+choisit Site-Manuel Utilisation). Ce choix déclenche l’invite suivante. On sasit le mot de passe 
+administrateur de la plateforme ( par défaut : admin) 
+
+ 
+
+ 
+
+ 
+
+
+
+
+La validation déclenche l’affichage suivant dans le panneau de droite : 
+
+Il s’agit de la liste des cartes insérées dans la plateforme. En cochant ou en décochant les 
+boutons de sélection, on attribue au site sélectionné les droits d’accès aux cartes et à leurs 
+données associées. 
+
+ 
+
+ 
+
+ 
+
+On enregistre la sélection par le bouton « enregistrer » situé en bas de la liste. 
+
+ 
+
+On vide le cache 
+
+Dans le navigateur, on retourne sur l’onglet du site filleul ( dans l’exemple le « Site-Manuel 
+Utilisation ») 
+
+On clique sur l’onglet Cartes du site pour actualiser les pages et ainsi prendre en compte les 
+autorisations d’accès aux cartes que l’on vient d’attribuer. 
+
+On peut maintenant accéder aux cartes directement par le site. 
+
+ 
+
+B - Afficher les cartes et les données 
+
+ 
+
+On accède directement aux cartes et à la gestion de l’affichage des données par le bouton 
+
+
+Celui-ci déclenche l’ouverture du module suivant dans lequel on a un menu déroulant avec la 
+liste des cartes pour lesquelles l’accès est autorisé. 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Lorsqu’on sélectionne une carte, (ici la carte Arab-countries-DEMO), on obtient l’affichage 
+suivant : 
+
+Trois éléments sont apparus : 
+
+. La carte 
+. Un nouveau module de gestion de la carte (rectangle gris) 
+. Les menus en dessous de la carte 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+Menu Graphique 1 Menu Graphique 2 Menu Cartes Menu des Icones 
+
+ Graphiques associés à la carte affichée cartes autorisées de la carte affichée 
+
+ 
+
+ 
+
+NB pour ouvrir le moule de gestion des cartes : cliquer sur 
+
+Pour le fermer : survolez W avec le pointer 
+
+ 
+
+Le module de gestion de la carte vous permet d’afficher une variable (deuxième menu 
+déroulant) 
+
+Par défaut une variable s’affiche sous forme d’icône, en palette 5 couleurs et quantile 2 
+(médiane : 50% des aires géographiques sont rouges, et les 50% restante sont jaunes) 
+
+
+
+
+ 
+
+Vous pouvez changer cet affichage avec le module de gestion des cartes : 
+
+ 
+
+Si l’on souhaite un affichage de la variable en fond de carte coloré, il faut transposer la variable 
+vers le fonds de carte avec le bouton « appliquer au fond ». 
+
+ 
+
+On peut alors régler la palette de couleur du fond coloré et les quantiles. On peut ensuite 
+afficher une nouvelle variable sous forme d’icones. Et régler les quantiles, les couleurs et la 
+taille des icones. 
+
+ 
+
+Une fois qu’une variable est affichée sous forme d’icône, on ne peut plus accéder aux réglages 
+du fond coloré existant. En effet, pour accéder au fond coloré, il faut nécessairement passer 
+par l’affichage sous forme d’icône puis appliquer au fond et régler avant d’afficher une 
+nouvelle icône (la gestion des couches fond et icône n’est pas séparée) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Une fois que vous avez affiché une carte avec le module, vous avez accès aux menus de 
+données associés à la carte. 
+
+Vous pouvez fermer le module (il suffit de survoler le bouton avec le pointeur). Vous 
+pouvez travailler directement avec les menus de données en utilisant l’affichage par défaut en 
+deux quantiles et palette 5 couleurs. 
+
+Vous n’avez besoins d’ouvrir le module de gestion des cartes que lorsque vous voulez changer 
+la palette de couleur ou les quantiles. 
+
+ 
+
+ 
+
+Pour transposer une variable des icones vers le fond de carte coloré, cliquez sur le bouton vert 
+au dessus de la carte 
+
+
+
+Transposer une variable 
+affichée en icône vers le fond 
+de carte coloré 
+
+Choix d’une carte 
+
+Choisir la palette de 
+couleurs 
+
+Choix d’une 
+variable icone 
+
+Choix de l’icône (rond, 
+flèche, étoile, triangle) 
+
+Quantile 2 à 5 
+
+Taille de l’icone 
+
+
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3aabfe2b.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_3858f1f8.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_m3878acfd.png
+http://ns34984.ovh.net/gaiamundi-dev/IndexDuManuel/1%20Mini%20Guides/lexique-images/Lexique%20et%20mini%20guide%20OO1_html_4ceea14c.png 
+
+
+ 
+
+Ces deux boutons permettent d’agrandir ou réduire la taille des Icones. 
+
+ 
+
+ 
+
+Lorsqu’on survole ce bouton, les graphiques encadrés se referment. Pour les faire 
+réapparaître, cliquez sur une aire de la carte 
+
+ 
+
+ 
+
+Cliquer sur ce bouton ouvre le module analyse. Le survoler laisse place à la réglette de 
+variation des seuils de classe fixés automatiquement par les quantiles 
+
+Pour fermer la réglette de variation des seuils, cliquez sur 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Ces trois boutons permettent de zoomer + et – et de revenir à la taille initiale. 
+
+ 
+
+ 
+
+Cliquer sur ce bouton affiche la légende des variables, le survoler referme les légendes. 
+
+ 
+
+ 
+
+ 
+
+Ce bouton affiche l’aide en ligne dans le panneau de l’hypertexte. L’aide est contextuelle. 
+C'est-à-dire qu’elle vous fournit l’information sur l’objet que vous pointez avec la souris. Pour 
+cela, cliquez sur ce bouton, placez le pointeur sur un objet, par exemple le bouton vert, et 
+tapez sur la touche majuscule puis relâchez là. 
+
+Pour fermer l’aide, survolez le bouton en haut à droite de l’aide. 
+
+ 
+
+ 
+
+Ce bouton n’est utile que dans le cas où l’on a importé sur le site un hypertexte créé avec la 
+plateforme et qui utilise le mode bi-varié. Dans ce cas le bouton permet de revenir au mode 
+mono varié. Ne pas l’utiliser en dehors de ce cas. 
+
+ 
+
+ 
+
+
+
+Variation manuelle des seuils de classe 
+
+. Afficher une variable sous forme d’icone (Q2, palette 5 
+couleurs) 
+. Appliquer au fond 
+. Survolez le bouton avec la pointe de la souris : la réglette 
+s’affiche sur la carte 
+. Faites glisser le bouton n°4 vers la gauche ou la droite. 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+1 – Travailler avec les hypertextes 
+
+ 
+
+A - Naviguer dans les hypertextes 
+
+ 
+
+Principe de fonctionnement de l’hypertexte 
+
+L’hypertexte contient du texte et des boutons de couleurs. Les boutons de couleurs 
+contiennent des liens qui activent l’affichage de cartes, de données sur els cartes et de 
+graphiques qui s’affichent lorsqu’on clique sur une aire de la carte. 
+
+A l’ouverture du site, l’hypertexte Sommaire est affiché. 
+
+ 
+
+ 
+
+ 
+
+On change d’hypertexte au moyen du menu déroulant « Cartes et Commentaires » situé au 
+dessus du cadre de l’hypertexte courant. 
+
+ 
+
+ 
+
+On peut trouver cinq types de boutons insérés dans les hypertextes: 
+
+ 
+
+Les rouges : ils activent une carte et ses données associées. L’ouverture d'un hypertexte 
+déclenche le chargement et l’affichage de la carte pointée par le premier bouton rouge inséré 
+dans l’hypertexte, ainsi que les données associées à cette carte, et les menus déroulant 
+permettant d’afficher ces données sur la carte. 
+
+ 
+
+Les bleus : ils activent l’affichage d’un variable sous forme d’icône (rond, flèche, triangle, 
+étoile) proportionnels à la valeur de la variable pour chaque aire géographique. Leur couleur 
+est déterminé par une classification des aires géographique par quantiles. Ils activent aussi un 
+graphique encadré. 
+
+ 
+
+Les verts : ils activent l’affichage d’une variable sous forme de fond de carte coloré selon 
+une classification des aires géographiques par quantiles. Ils activement aussi un graphique 
+encadré. 
+
+ 
+
+Les violets : ils cumulent les fonctions des boutons bleus et verts, c'est-à-dire qu’ils 
+affichent une variable en icones, une variable en fond de carte coloré et un graphique. 
+
+ 
+
+Les jaunes : ils affichent un graphique seul sans changer les variables affichées sur la carte. 
+(histogrammes simples, histogrammes multiples, courbes, radars) 
+
+ 
+
+ 
+
+ 
+
+Exemple d’hypertexte 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Vue d’ensemble du site lorsqu’on a cliqué sur le bouton violet et sélectionné le pays Algérie 
+
+ 
+
+ 
+
+ 
+
+Lorsque l’hypertexte est activé, les menus de données correspondant à la carte affichée sont 
+actifs et l’on peut aussi afficher des données et des graphiques sur les cartes au moyen de ces 
+menus ou au moyen du module de gestion des cartes . 
+
+ 
+
+B - Importer un hypertexte créé sur la plateforme 
+
+ 
+
+La première possibilité pour disposer d’un hypertexte sur le site consiste à importer un 
+hypertexte crée sur la plateforme. 
+
+On utilise pour cela une interface d’abonnement aux hypertextes dont l’ouverture est 
+déclenchée par le bouton « A renversé » 
+
+ 
+
+ L’interface d’abonnement permet de gérer l’abonnement aux hypertextes de la plateforme, 
+mais elle permet aussi de gérer la publication non seulement des hypertextes mais aussi des 
+onglets. 
+
+ 
+
+Lorsqu’on clique sur le « A renversé » l’interface s’ouvre dans le cadre de l’hypertexte et 
+propsoe trois choix : 
+
+ 
+
+ 
+
+ 
+
+Le choix « liste plateforme » concerne l’abonnement aux hypertextes de la plateforme et leur 
+publication ou non sur le site. 
+
+ 
+
+
+
+
+ 
+
+ 
+
+L’interface propose la liste des tous les hypertextes existants sur la plateforme. (dans cet 
+exemple, il n’y en a qu’un seul). 
+
+Pour abonner le site à un hypertexte, il suffit de cocher le bouton de sélection situé dans la 
+colonne « rafraichir ou ajouter » 
+
+ 
+
+La première fois que l’on sélectionne un texte, la case du tableau de sélection prend la couleur 
+rouge. 
+
+Si l’on veut que l’hypertexte apparaisse dans le menu « Cartes et Commentaires » de sélection 
+des hypertextes sur le site, il faut autoriser la publication en cochant le bouton de sélection 
+dans la colonne publier 
+
+ 
+
+Puis on vide le cache et on enregistre. 
+
+L’enregistrement déclenche la réinitialisation du site 
+
+Si vous oubliez de vider le cache, la modification n’apparaît pas dans le menu déroulant 
+« cartes et commentaires ». Dans ce cas, vider le cache et cliquez sur l’onglet « Cartes » pour 
+actualiser la liste des hypertextes. 
+
+ 
+
+Pour comprendre le logique de l’abonnement, ré-ouvrons l’interface « A renversé » 
+
+ 
+
+ 
+
+La case « rafraîchir ou Ajouter » est maintenant grisée et décochée. Le grisé signifie que 
+l’hypertexte est bien chargé dans le site. Cependant il peut avoir été modifié sur la plateforme. 
+Si vous voulez actualiser la version qui est sur votre site, cocher la case grise. 
+
+ 
+
+C - Cloner un hypertexte 
+
+Pour fabriquer un hypertexte, une méthode consiste à cloner un hypertexte existant : 
+
+Pour cela on utilise la fonction édition activée par le bouton 
+
+ 
+
+ 
+
+
+
+
+ 
+
+On fait le choix « créer ou cloner un hypertexte » 
+
+Puis on choisit le fichier que l’on désire cloner dans le menu déroulant « Fichiers à Cloner ». 
+
+La liste du menu déroulant comporte deux types d’hypertexte : 
+
+. D’abord les hypertextes importés à partir de la plateforme 
+. Ensuite la liste des hypertextes créés sur le site. 
+
+
+Pour distinguer les deux types d’hypertextes, le premier des hypertextes crées sur le site 
+apparait en bleu 
+
+Cette séparation est rendue nécessaire par le fait que les hypertextes importés peuvent être 
+actualisés. Aussi, si l’on veut pouvoir les transformer sans que notre travail ne soit écrasé par 
+l’actualisation, on a adopté le principe suivant : on ne peut pas modifier un hypertexte 
+importé, pour le modifier, il faut d’abord le cloner . Il prend alors le statut d’un hypertexte 
+créé sur le site et apparaît dans la liste des hypertextes crées sur le site qui commence à partir 
+du premier marqué en bleu dans le menu déroulant.. 
+
+ 
+
+ 
+
+Dans notre exemple on choisi de cloner l’hypertexte que nous avions importé nommé 
+« DocDeTravail » 
+
+Lorsqu’on le sélectionne dans le menu déroulant, il apparaît dans l’éditeur 
+
+On peut déjà le transformer en ajoutant du texte par exemple. Voir ci-après pour ajouter des 
+données et des cartes. 
+
+ 
+
+ 
+
+ 
+
+Cependant il faut bien prendre garde de lui donner un nouveau nom. 
+
+
+
+
+Dans l’exemple nous avons choisi « nouveau doc de travail ». Il faut saisir le nom dans les deux 
+champs de saisie. 
+
+ 
+
+ 
+
+ 
+
+L’enregistrement déclenche l’affichage de l’hypertexte cloné ( et éventuellement transformé) 
+
+L’ouverture de l’hypertexte déclenche l’ouverture de la première carte qu’il contient. 
+
+(Dans notre exemple, nous avons ajouté le texte vvvv au moment du clonage) 
+
+Cependant le nouvel hypertexte n’apparaît pas encore sur la liste déroulante « Cartes et 
+Commentaires » 
+
+Pour cela il faut vider le cache et cliquer sur l’onglet « Cartes » pour actualiser la liste des 
+hypertextes. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+D - Créer un hypertexte 
+
+La procédure de création d’un hypertexte est la même que pour le clonage sauf que l’on ne 
+choisit pas d’hypertexte à cloner. 
+
+ 
+
+A l’ouverture de l’interface d’édition, on saisie directement le nom du nouvel 
+hypertexte dans les champs de saisie situés à coté du bouton « enregistrer » en bas de 
+l’éditeur. Puis on enregistre. 
+
+ 
+
+
+
+
+ 
+
+ 
+
+L’enregistrement déclenche l’affichage de l’hypertexte à la place de l’éditeur. 
+
+ 
+
+Cependant le nouvel hypertexte n’apparaît pas encore sur la liste déroulante « Cartes et 
+Commentaires » 
+
+Pour cela il faut vider le cache et cliquer sur l’onglet « Cartes » pour actualiser la liste des 
+hypertextes. 
+
+ 
+
+E - Modifier un hypertexte créé dans le site ou le clone d’un texte importé 
+
+ 
+
+Pour modifier un hypertexte on utilise l’éditeur en adoptant cette fois l’option 
+« Modifier un fichier hypertexte créé ici ». 
+
+ 
+
+Le menu déroulant se nomme maintenant liste des « Fichiers modifiables » dans laquelle 
+n’apparaissent plus les fichiers originaux des fichiers importés de la plateforme. Seuls 
+apparaissent les hypertextes clonés ou les hypertextes créés ici. 
+
+ 
+
+Pour modifier un fichier, on le sélectionne dans la liste. Son contenu apparaît alors dans 
+l’éditeur. Et son nom est directement inscrit dans les champs de saisie du nom à coté du 
+bouton « enregistrer » situé en bas de l’éditeur. 
+
+ 
+
+F - Insérer des cartes et des données dans un hypertexte 
+
+Les procédés indiqués ici s’appliquent aussi bien à la création qu’à la modification des 
+hypertextes. 
+
+Une fois l’hypertexte ouvert dans l’éditeur, on choisi une carte : 
+
+. si c’est la première ouverture de carte, on utilise le module 
+. sinon, on utilise le menu « Cartes » situé en dessus de l’espace d’affichage des cartes. 
+
+
+ 
+
+Dès qu’une carte est affichée, le bouton rouge situé en haut de l’éditeur contient les 
+coordonnées de la carte, tandis que le bouton jaune contient le graphique associé à la carte à 
+son ouverture, soit le premier graphique de la liste Graphique N°1 
+
+ 
+
+Si l’on change la carte affichée, le bouton rouge contient les coordonnées de la nouvelle carte 
+et le bouton jaune le premier graphique de la nouvelle liste graphique N°1 
+
+ 
+
+Si l’on change le graphique, le bouton jaune contient les coordonnées du nouveau graphique. 
+
+On peut ainsi énoncer le principe suivant : le bouton contient les éléments affichés sur la carte 
+
+ 
+
+Le rouge contient la carte affichée. 
+
+ 
+
+
+
+
+Le bleu s’affiche s’il y a des icones sur la carte ( rond, flèche, étoile, radar). Il contient les 
+coordonnées de la variable et les réglages effectués sur celle-ci : taille des icones, couleurs, 
+quantiles. Il contient aussi le graphique sélectionné à ce moment sur le carte. 
+
+ 
+
+ Le vert s’affiche s’il ya un fond coloré sur la carte. Il contient les coordonnées de la 
+variable et les réglages effectués sur celle-ci : couleurs, quantiles. Il contient aussi le graphique 
+sélectionné à ce moment sur le carte. 
+
+ 
+
+le violet s’affiche s’il ya à la fois des icones et un fond coloré. Il contient les coordonnées 
+des variables et des réglages des icones et du fond . Il contient aussi les coordonnées du 
+graphique sélectionné à ce moment. 
+
+ 
+
+Le jaune contient les coordonné du graphique sélectionné à ce moempent. (histogrammes 
+simples, histogrammes multiples, courbes, radars) 
+
+ 
+
+Une séquence d’hypertexte, ou segment de scénario, commence toujours par un bouton 
+rouge. Les boutons bleus, verts , violets et jaunes qui suivent un bouton rouge appelle les 
+données associée à la carte pointée par le bouton rouge. On peut enchaîner plusieurs 
+segments de scénario sur un même hypertexte en changeant de carte à chaque fois. Lorsqu’on 
+navigue dans l’hypertexte, l’interface de l’hypertexte identifie à quelle carte est rattaché un 
+bouton de donnée ou de graphique. On peut donc remonter dans le texte sans 
+nécessairement passer par le bouton carte. 
+
+ 
+
+ 
+
+Pour insérer les boutons dans l’hypertexte, on procède comme suit : 
+
+. Placer le curseur dans l’hypertexte ouvert dans l’éditeur, 
+. Puis cliquer sur le bouton désiré choisi parmi les boutons affichés en haut de 
+l’éditeur. 
+. Ce geste place le bouton à l’endroit sélectionné dans le texte. On note ensuite à 
+droite du bouton à quoi il correspond (libellé du bouton). 
+. Puis on change les réglages de la carte et ainsi de suite. 
+
+
+ 
+
+Dans l’exemple ci-dessous, il y a une carte affichée avec une seule variable projetée en font 
+coloré et un graphique sélectionné 
+
+C’est pourquoi il n’y a que trois boutons : le rouge pour la carte, le vert pour la variable en fond 
+coloré et le jaune pour le graphique. 
+
+ 
+
+NB. Il y a toujours un graphique associé, même s’il n’est pas visible. C’est pourquoi il faut bien 
+penser à choisir un graphique en cohérence avec les données affichées. 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Une fois le travail achevé, on enregistre. L’enregistrement déclenche l’affichage de 
+l’hypertexte à la place de l’éditeur. La carte correspondant au premier bouton rouge trouvé 
+dans le texte est affichée automatiquement à l’ouverture de l’hypertexte. 
+
+On peut maintenant l’utiliser en cliquant sur les boutons (il n’est pas nécessaire de cliquer sur 
+le premier bouton rouge puisque la carte correspondante est affichée automatiquement à 
+l’ouverture de l’hypertexte). 
+
+ 
+
+ 
+
+Cependant le contenu nouvel hypertexte n’apparaît pas encore. Il faut actualiser l’hypertexte. 
+Pour cela il faut vider le cache et cliquer sur l’onglet « Cartes ». on peut aussi vider le cache et 
+cliquer droit sur l’hypertexte, choisir « ce cadre » puis « actualiser ce cadre » 
+
+ 
+
+ 
+
+Compléments 
+
+5 - Liens directs vers les hypertextes de la 
+plateforme 
+
+ 
+
+Si votre plateforme est située sur un serveur Internet ou Intranet il peut être utile de disposer 
+de liens adressant directement les hypertextes des sites plutôt que de passer par l’ouverture 
+du site puis la sélection manuelle de l’hypertexte désiré. 
+
+L’adressage direct des hypertextes consiste à adresser le site en envoyant en paramètre url les 
+éléments suivants 
+
+ 
+
+. Ordre d’ouverture sur l’Onglet des Cartes. 
+. Le nom de l’hypertexte en respectant la casse (majuscules et minuscules) 
+
+
+
+
+
+ 
+
+Par exemple, pour un site situé sur votre serveur local , si l’on veut adresser l’hypertexte 
+dénommé « essai Ici 2 », l’adresse sera : 
+
+ 
+
+http://localhost/SuiteCairo-V1-1-Candidate-UNDP/Site-Manuel%20Utilisation/Site-
+Manuel%20Utilisation.htm?cible=page-Cartes-Site.htm&hypertext=essai Ici 2 
+
+ 
+
+ 
+
+ 
+
+ 
+
+On a donc : 
+
+. Format d’ouverture . cible=page-Cartes-Site.htm 
+. Le nom de l’hypertexte . hypertext=essai Ici 2 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+Divers paramétrages manuels 
+
+ 
+
+A propos des onglets liens et infos 
+
+L’onglet infos ne peut pas être désactivé. 
+
+L’onglet liens peut être occulté. 
+
+On utilise pour cela l interface d’abonnement aux hypertextes dont l’ouverture est 
+déclenchée par le bouton « A renversé » 
+
+ 
+
+ 
+
+ 
+
+Puis en choisissant l’option « liste onglets/site » et en décochant l’avis de publication. 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+Personnalisation du site filleul 
+
+Rappel : Pour visualiser les modifications indiquées ci-après : videz le cache et cliquez sur 
+l’onglet « Cartes » 
+
+ 
+
+Ouvrez le Fichier « format_page.js » dans un éditeur de texte. 
+
+ 
+
+1 - Logo et position du titre du site 
+
+Si l’on veut introduire un logo comme dans l’exemple ci-dessous 
+
+ 
+
+ 
+
+ 
+
+Se reporter aux lignes 56 à 68 
+
+ 
+
+ 
+
+ 
+
+Placer le fichier image du logo dans le répertoire du site (dans l’exemple anact.gif) 
+
+Par défaut, le code de l’image est <img src= " transparent.gif " style= "position : absolute ; top 
+
+
+
+
+20px ; ">, il est maintenant <img src="anact.gif" style="position:absolute; width:50px; 
+top:20px;"> 
+
+Du fait que l’on à introduit une image de 50px de large, il faut décaler la position initiale du 
+titre et du sous-titre de 70px (lignes 60 et 66) 
+
+Le titre est le nom du répertoire représenté par la variable « repsite » de sorte que si l’on veut 
+mette un nouveau titre manuellement, il faut remplacer '+repsite+' par le texte du titre désiré. 
+
+On peut aussi changer le sous-titre (ligne 67) 
+
+ 
+
+2 - Contacts et mentions légales 
+
+ 
+
+Modifier les libellés dans les lignes 70 à 72 
+
+ 
+
+3 - Changer le bandeau 
+
+ 
+
+Le bandeau est inséré dans une frame <iframe name="bandeaula" width="1010px" 
+height="80px" scrolling=no frameborder=0></iframe> via le fichier bandeau.html qui appelle 
+une image nommée bandeau.jpg 
+
+Le p lus pour changer le bandeau consiste créer un image bandeau.jpeg de taille 1110 x 80 
+pixels et de la substituer à l’image badeau.jpeg existante. 
+
+ 
+
+4 - Changer les couleurs du site 
+
+Trois paramètres de couleur (arrière pla, fond du carré central, arrière plan du bandeau si 
+celui-ci comporte des parties transparentes) et 1 paramètre d’opacité vous permettent de 
+personnaliser votre site. 
+
+ 
+
+ 
+
+On peut aussi inhiber complètement les titres, sous-titres, contact et mension légales en 
+mettant non au lieu de oui ligne 51 
+
+ 
+
+ 
+
+ 
+
+5 - Couleur du trait d’encadrement 
+
+On peut modifier la couleur et l’épaisseur du trait d’encadrement ligne 24 
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr"><head><!--Copyright [2005-2007] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA--><title>Altercarto/cartes et commentaires/GaïaMundi</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+	<script language="javascript" src="editpas.js"></script>
+	<script language="javascript" src="REP.js"></script>
+	<link rel="stylesheet" type="text/css" title="normal" media="screen" href="../style_gda20.css">
+	<link rel="stylesheet" type="text/css" href="../js/sddm.css">
+	<script type="text/javascript" src="../itemMenuSiteTous.js"></script>
+	<script type="text/javascript" src="ItemMenu.js"></script>
+<script language='javascript' >
+  var lacible=''
+	
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+//lacible=(urlvar['cible'])
+	lacible="page-Accueil-Site.htm"
+ 	var radical=lacible
+	radical=radical.replace(/page-/g,'')
+	radical=radical.replace(/-Site.htm/g,'')
+
+</script>
+
+
+
+
+<script language="javascript">
+// ------------------------------------------------------------------------------------------------------------------------------COULEUR DE FOND --------------------------------------------------------------------------------------
+
+var poseditabon=0
+var bgcolorfond="#D7D7EB"//"red"
+
+//récupération du nom de répertoire=racine du titre du fichier
+
+function transrepsite(){return repsite}
+
+var bgcolormenu=bgcolorfond
+function transbgcolormenu(){return bgcolormenu}
+var Iliade="Iliade"
+
+
+function attribselectmode(){
+
+window.frames.editla.selectmode(1)
+window.frames.editla.document.getElementById("T_2").checked=true
+for(i=0;i<ItemMenu.length;i++){
+
+if(ItemMenu[i]==radical){
+top.frames.editla.document.formenu.lamenu.selectedIndex=i
+top.frames.editla.encapsval(radical)
+top.frames.editla.frameFICHIER.location.href=lacible
+setTimeout('top.frames.editla.insertTextToModifici()',2500)
+}
+
+}
+}
+
+
+</script>
+<style type="text/css">
+
+#conteneur3 {
+     position: relative;  /*on positionne le conteneur */
+	 top:0px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1000px;
+     text-align: left;
+
+}
+#menuici {
+     position: relative;  /*on positionne la frame de menu*/
+	 top:75px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1020px;
+     text-align: left;
+
+}
+#bandeauici {
+     position: relative;  /*on positionne la frame de bandeau*/
+	 top:72px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1010px;
+     text-align: left;
+
+}
+</style>
+<script language="javascript">//
+
+</script></head>
+<body id="bodyici" >
+<!--div style="position:relative;top:0px"><img width="1004px" height=100% src="../cbleu.gif"></img></div-->
+<div id="conteneur3" style="background-color:white" >
+
+
+
+
+<script id="format" language="javascript" src="format_page.js" ></script>
+<div  style="position:absolute;top:190px;left:-10px">
+<script language="javascript">
+document.write('<iframe id="frametexte" name="frametexte" src="'+lacible+'"   style="padding:10px;width:995px;height:605px;border:0"></iframe>')
+</script>
+</div>
+<script language="javascript">
+document.write('<div class="texte"  style="position:absolute;top:200px;left: 972px;z-index:100" onclick="attribselectmode();if(Editpastemp==\'10638\'){var pasX=\'\'}else{var pasX=Editpastemp};document.getElementById(\'sais\').value=pasX;document.getElementById(\'editpas\').style.visibility=\'visible\'"><img src="editeur.png"  title="Ouvrir l\'éditeur de pages du site"></img></div>')
+</script>
+<div id="editici" style="position:absolute;top:0px;left:-20px;visibility:hidden;z-index:2000">
+<iframe  name="editla" width=1040 border=0 height=830 src="ecrit_hypertext.html" ></iframe>
+</div>
+
+
+
+</div>
+<script language="javascript">
+
+
+
+
+
+</script>
+
+
+<script language="javascript">
+
+
+
+</script>
+
+
+
+
+
+<script language="javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+document.write('<div id="menuici" class="texte" >')
+document.write('<iframe src="haut.html" width="1020px" height="30px" scrolling=no frameborder=0></iframe>')
+document.write('</div>')
+document.write('<div id="bandeauici" class="texte" >')
+document.write('<iframe name="bandeaula" width="1010px" height="80px" scrolling=no frameborder=0></iframe>')
+document.write('</div>')
+</script>
+
+
+</body></html>

@@ -1,0 +1,171 @@
+﻿<html>
+<head>
+
+<script language="javascript">
+var motcle=""
+			
+function spa(str){
+str=str.replace(/[ÈÉÊËèéêë]/g,"e");
+str=str.replace(/[ÀÁÂÃÄÅàáâãäå]/g,"a");
+str=str.replace(/[ÌÍÎÏìíî]/g,"i");
+str=str.replace(/[ÒÓÔÕØðñòóõøô]/g,"o");
+str=str.replace(/[ÙÚÛÜùúû]/g,"u");
+str=str.replace(/[!':/?#]/g,"");
+str=str.replace(/\//g," ");
+str=str.replace(/\,/g,"");
+str=str.replace(/ç/g,"c");
+return str
+}		
+	function recherche(){
+				motcle=document.getElementById("Xchoix").value;
+				motcle=spa(motcle);
+				motcle=motcle.toLowerCase();
+				motcle=motcle.replace(/  /g," ");
+					motcle=motcle.replace(/  /g," ");
+						motcle=motcle.replace(/  /g," ");
+							motcle=motcle.replace(/  /g," ");
+				motcle=motcle.replace(/ /g,"@x@");
+				//alert(motcle)
+				
+				window.restau.location.href="sauv_restau.php?control=1&motscles="+motcle
+				}
+				function recherche2(textcompose,a){ //affichage des entêtes de colonne du fichier de données
+				motcle=document.getElementById("Xchoix").value
+				lignelibel=new Array()
+				lignelibel[0]=textcompose
+				menudata=""
+
+				lignelibel[0]=lignelibel[0].replace(/©/g,"(c)")
+				// supression des doublons d'espace dans le texte
+				lignelibel[0]=lignelibel[0].replace(/  /g," ")
+				var lignelib0=lignelibel[0]				
+
+				OKITotal=0
+				OKI=new Array()									
+
+				if(motcle=="" || motcle=="Aucun-mots-clés"){OKITotal=0}else{
+				aze+=1
+				var motc1=motcle.split(" ")
+
+
+				var stopmot=motc1.length
+				OKITotal=1
+				var kr=0
+	for(r=0;r<stopmot;r++){
+	
+				OKI[r]=0
+				 
+				var motc=motc1[r].toLowerCase()
+				if(motc!=""){
+
+							
+								// chainage de la chaine recherchée par "_" si elle existe dans le texte
+							if(motc.indexOf("_")>0){
+							
+							var motcX=motc.replace("!","")
+									var Xchaine=motcX.split("_")
+									
+									var Zchaine=Xchaine[0]
+									for(z=1;z<Xchaine.length;z++){ Zchaine+=" "+Xchaine[z]}
+
+									Zchaine=Zchaine.replace(/([.?*+^$[\]\\(){}-])/g,"\\$1")
+									var ZZchaine = new RegExp(Zchaine, "g");
+//alert("ZZchaine="+ZZchaine+"    motcX="+motcX)
+
+									lignelib0=lignelib0.toLowerCase().replace(ZZchaine,motcX)
+
+								
+							}
+
+
+				if(motc.indexOf("!")<0){
+				
+				if(lignelib0.toLowerCase().indexOf(motc)>-1){
+
+				if(ope=="ou"){OKI[r]=1;OKITotal=1;kr=1}//r=stopmot
+				if(ope=="et"){OKI[r]=1;OKITotal=OKITotal*OKI[r]}
+				}else{
+				if(ope=="ou"){OKI[r]=0;if(kr==1){OKITotal=1}else{OKITotal=0}}
+				if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+				}
+
+
+
+
+				}else{
+				
+				// cas de sauf !
+				motc=motc.replace("!","")
+				if(lignelib0.toLowerCase().indexOf(motc)>-1  ){
+				if(ope=="ou"){OKITotal=0}
+				if(ope=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+
+				}else{
+				if(ope=="ou"){OKI[r]=1;OKITotal=OKITotal*OKI[r];}//r=stopmot
+				if(ope=="et"){OKI[r]=1;OKITota=OKITotal*OKI[r]}
+				}
+				}
+
+				}
+				}
+
+				}
+				Xloaded("divsearching")
+				//affiche les entêtes en liste 
+				if(OKITotal>=1){
+
+				if(libelmapC[a/5][5]!="none"){
+				
+var listici=document.getElementById("result_"+traceMapx[a/5][2]).innerHTML
+var tt=libelmapC[a/5][2].replace(/'/g," ").replace(/<br\/>/g,' - ')
+
+document.getElementById("result_"+traceMapx[a/5][2]).innerHTML=listici+"<span style='color:gray;cursor:pointer' onmouseout='this.style.color=\"gray\"' onmouseover='this.style.color=\"navy\"' onclick='xn="+traceMapx[a/5][3]+";xmap="+(traceMapx[a/5][1]+1)+";xcharge(\""+rezo[traceMapx[a/5][2]]+"\")' title='"+tt+"'> <b>fichier n°"+(traceMapx[a/5][1]+1)+"</b> - "+mapXC[a+4]+"</span><br>"
+				}
+
+				}
+
+/*
+				document.getElementById("ici").innerHTML=menudata
+
+				if(lignelibel.length){}else{
+
+				differelibel()
+				}
+*/
+
+				}
+
+
+</script>
+
+</head>
+
+<body style="margin-left:50px;margin-top:0px;font-family:arial;font-size:10px;">>
+<center><h3>Restauration des fichiers de données utilisateur</h3></center><!--/ Sauvegarde de fichiers de données sensibles-->
+<br>
+
+<!--big>Filtre</big>
+<br>
+Inscrivez les mots clés séparés par une virgule sans tenir compte de la casse.
+<br>
+Pr exemple, le nom du dossier carte suivi du mot pagecarto si vous voulez voir seulement les fichier utilisateurs du "dossiercarte/PageCartoDossier/PageCarto"
+<br>
+<input id="mtcles" name="mtcles" type="text"  style="font-size:10px;height:20px;width:250px"></input><input type="button" value="OK" style="font-size:10px;height:22px;width:40px"></input-->
+
+<div style="font-size:26px;color:gray;font-family:arial">Filtre</div><br>
+<br>
+<br>
+<i>Pour chaque mot clé, les conditions s'ajoutent (opérateur logique 'et')</i><br>
+<i>Si vous ne saisissez pas de mots clé, la liste comprendra tous les fichiers utilisateurs restaurables</i><br>
+<!--div id="divlogic" style="height: 24px; font-family:arial ;font-size:14px"><small><small>Opérateur logique : </small></small><input type="radio"  id="T_1" name="T" value="1" onClick="ope='et'" /><small><small>Et</small></small><input type="radio" id="T_2" name="T" value="2" onClick="ope='ou'" value="0" type="text" /><small><small>Ou</small></small></div-->
+
+
+<div id="divmotscles"  style="z-index :4000; height: 24px;font-family:arial ; color: rgb(153, 153, 255)"><br/><input  id="Xchoix" type="text" style="width:252px" value=""></input><input type="button" onclick="recherche()" value="OK"></input><br/><br/><small><small><b><u title="Insérez les mots clés séparés par un espace. Pour former une chaine de mots, reliez les avec le tiret bas '_'.  Pour indiquer 'sauf' : placez '!' devant le mot clé ou la chaîne_de_mots" style="cursor:pointer ;font-size:10px">Règles de la recherche </u></b></small></small></div>
+<br><br>
+<center></center>
+<br>
+
+<iframe name="restau" id="restau" src="" style="width:100%;height:500px; border:0px"></iframe>
+<!--   sauv_restau.php?control=1  -->
+</body >
+</html>

@@ -1,0 +1,332 @@
+﻿1 
+
+ 
+
+ 
+
+
+2 
+
+ 
+
+ 
+
+A – Ouverture et ergonomie 
+
+Le Module scénario s’ouvre à partir du menu édition de SuiteCairo. 
+
+ 
+
+L’intérêt de ce module est de permettre de créer des scénarios hypertextes à 
+partir des hypertextes des modules PageCarto existant dans la plateforme 
+SuiteCairo. 
+
+ 
+
+On peut ainsi réutiliser autant que de besoin les travaux thématiques réalisés 
+dans chaque module PageCarti et faire des scénarios mixant les ressources 
+des différents PageCarto. 
+
+ (Approches multi-scalaires, multithématiques, comparaison avec d’autres 
+régions ou villes…) 
+
+ 
+
+ 
+
+Le module scénario permet deux modalités d’usages : 
+
+. La publication ou l’animation via un vidéo projecteur 
+. L’écriture de scénarios 
+
+
+ 
+
+Pour une adaptation souple aux écrans et surtout aux vidéoprojecteurs, le module Scénario propose 
+une ergonomie interactive : 
+
+. Le module comporte deux espaces : l’espace carte et l’espace scénario. 
+. L’espace scénario est déplaçable à volonté ( Drag and Drop). 
+. Lorsqu’on clique sur un lien du scénario vers une carte, cela déclenche l’ouverture de 
+l’espace carte. 
+. Lorsqu’on survole l’espace carte avec la souris, l’espace scénario est occulté ( visible en 
+filigrane)et placé en arrière-plan. ET vice versa, lorsque la souris survole l’espace scénario. 
+
+
+ 
+
+ 
+
+ 
+
+On peut choisir de verrouiller en mode visualisation des deux espaces simultanément avec le bouton 
+« ensemble » du mode de visibilité des cadres : 
+
+ 
+
+ 
+
+
+3 
+
+ 
+
+ 
+
+En mode ensemble ou en mode alternatif, il est préférable de décaler l’espace Scénario vers la droite 
+de façon à ce qu’il dépasse toujours en tout ou partie l’espace de la carte 
+
+ 
+
+
+4 
+
+2 
+
+1 
+
+3 
+
+4 
+
+B – Créer un scénario 
+
+Déplier (1) puis Modifier (2) 
+
+ 
+
+Après avoir cliqué sur Modifié, l’écran suivant apparaît : choisissez l’option nouveau (3) pour créer 
+un nouveau scénario 
+
+ 
+
+Cette action génère un nouveau document dans le module d’écriture. 
+
+Vous pouvez commencer à travailler dedans, et enregister à la fin : vous devrez donner un 
+nom au document. Ce nom de scénario ne doit comprendre aucun accent ni caractère 
+spécial (., ! etc…)1 
+
+1 Attention, dans la version initiale du module scénario (V0), il n’y a pas de contrôle. Si vous mettez un accent ou un 
+caractère spécial, le module ne retrouvera pas votre document de scénario. (voir en fin de ce manuel comment corriger 
+manuellement un tel incident) 
+
+ 
+
+Dans cet exemple on a choisi le nom « essai » puis on enregistre (4). 
+
+ 
+
+ 
+
+ 
+
+Cette action fait apparaître un nouvel onglet avec le nom de scénario que vous avez choisi. ( ici essai) 
+
+ 
+
+ 
+
+ 
+
+Par défaut, il existe deux scénarios : le Doc1 et le Doc 2 
+
+ 
+
+
+5 
+
+5 
+
+6 
+
+7 
+
+C – Modifier (écrire) un scénario 
+
+Ouvrier le scénario en mode écriture : procéder comme pour créer un scénario mais au lieu de 
+choisir « nouveau » à l’étape 3, choisir le nom du scénario. 
+
+Puis modifier le texte existant (5) 
+
+ 
+
+Ouvrir une carte 
+
+ 
+
+ 
+
+Le choix de la carte déclenche l’ouverture du module PageCarto. Si la carte recouvre le sélecteur : 
+faites glisser le sélecteur vers la droite ( drag and drop) 
+
+ 
+
+Choisissez un lien hypertexte et faite le glisser dans le scénario (6) préalablement ouvert en mode 
+écriture (voir ci-dessus) 
+
+ 
+
+ 
+
+ 
+
+Puis enregistrez (7) 
+
+ 
+
+ 
+
+
+6 
+
+8 
+
+9 
+
+10 
+
+ 
+
+Vous pouvez faire glisser autant de liens que vous le souhaitez. Vous pouvez aussi les commenter. 
+
+Vous pouvez aussi changer de carte et poursuivre votre scénario avec la nouvelle carte. 
+
+ 
+
+Attention, pour ne pas vous perdre, lorsque vous démarrer un travail avec une nouvelle carte, 
+pensez bien à inscrire le nom de la carte avant les liens que vous incorporez au scénario. 
+
+ 
+
+Ainsi vous pouvez mobiliser facilement l’ensemble de vous ressources intégrés dans les PageCarto de 
+votre plateforme pour réaliser des scénarios à façon. 
+
+ 
+
+Création manuelle de liens à incorporer dans votre scénario. 
+
+Si les liens déjà incorporés dans vos modules PageCarto ne vous suffisent pas pour réaliser votre 
+scénario, vous pouvez dessiner une nouvelle carte avec les menus du module PageCarto (8). 
+
+ 
+
+ 
+
+ 
+
+Pour intégrer cette nouvelle mouture de la carte dans votre scénario, cliquez sur le bouton « ouvrir » 
+
+ 
+
+ 
+
+ 
+
+Pour afficher le module « boite balise » qui vous fournit le lien à faire glisser dans votre scénario. 
+
+ 
+
+ 
+
+ 
+
+Puis renommez le lien comme vous le souhaitez. 
+
+ 
+
+Dans la Boite à Balises : 
+
+. Balise type donne le lien qui coorespond à ce qu’il ya sur la carte, graphique compris 
+. Balise graph donne le lien pour le graphique en cours dans la carte 
+. Balise lien vers aire donne le lien vers l’aire de la carte sélectionnée s’il y en a une. 
+
+
+ 
+
+
+7 
+
+11 
+
+10 
+
+D – Gérer manuellement la liste des scénarios et les 
+erreurs éventuelles de nommage des scénarios 
+
+ 
+
+Les fichiers de scénario sont placés dans le dossier suivant à partir du répertoire racine de 
+SuiteCairo : 
+
+« A0 Suivi de chantier\SUIVI DE CHANTIER\SaisieMAJ-CP\MENUAIDE\filesaide » 
+
+Par exemple « essai » (10) 
+
+ 
+
+ 
+
+ 
+
+Dans le même dossier, se trouve aussi le fichier de registre des scénarios : listeaide.js (11) 
+
+ 
+
+ 
+
+ 
+
+Pour supprimer un scénario : 
+
+. supprimer le fichier qui porte son nom (Attention ne pas altérer les autres fichiers) 
+. Supprimer la ligne correspondante dans le fichier listeaide.js 
+
+
+ 
+
+ 
+
+
+8 
+
+E – Gérer manuellement la gestion des mots de passe 
+pour le mode écriture. 
+
+ 
+
+Lorsqu’on ouvre le module scénario à partir du menu édition de SuiteCairo, l’URL du module 
+scénario reçoit le paramètre modif=3 qui permet d’accéder au mode écriture de scénario sans mot 
+de passe. 
+
+A - Si l’on met le paramètre modif=1 dans l’URL du module scénario, un mot de passe sera demandé 
+lorsqu’on clique sur Modifier 
+
+A.1 - Si l’internaute propose un mot de passe enregistré sur la liste des mots de passes (Cf ci-
+dessous), alors le module s’ouvre en mode écriture. 
+
+A.1.1 Si sans avoir fermé le module, l’internaute, après avoir enregistré son 
+travail, veut de nouveau passer en mode écriture, le mot de passe ne lui sera pas 
+redemandé . 
+
+ A.2 - Si l’internaute renonce à fournir un mot de passe, le module reste ouvert mais le mode 
+écriture est occulté (- on ne voit plus le lien Modifier) 
+
+B - SI l’on met le paramètre modif=0 ou pas de paramètre, le bouton modifier est occulté (on ne peut 
+pas écrire) 
+
+ 
+
+Les mots de passes sont inscrits dans un registre nommé motpas.js situé à l’adresse : 
+
+A0 Suivi de chantier/SUIVI DE CHANTIER/SaisieMAJ-CP/ à partir du répertoire racine de 
+SuiteCairo 
+
+ 
+
+ 
+
+ 
+
+ 
+
+

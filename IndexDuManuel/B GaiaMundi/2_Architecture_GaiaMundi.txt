@@ -1,0 +1,421 @@
+﻿Principes généraux de l’architecture 
+GaïaMundi. 
+
+ 
+
+1 - Les entités « Cartes et Données » et les 
+MétaDonnées 
+
+L’architecture est d’abord organisée autour du principe suivant : toutes des données 
+géo-référencées intégrées dans GaïaMundi sont stockées dans un dossier carte (la clé de 
+voûte de l’architecture est donc la carte et sa maille géographique et l’entité de base est 
+le bloc « carte + ses données associées ». Sur le plan de l’architecture physique, cette 
+entité de base carte + données correspond à un répertoire carte ou Dossier carte. 
+
+Sur le plan fonctionnel, dans GaïaMundi, lorsque l’on sélectionne une carte dans le menu 
+cartes, l’interface sélectionne le dossier carte correspondant, affiche la carte située dans 
+le dossier et charge les données associées à cette carte. 
+
+Une même carte peut ainsi se répéter plusieurs fois avec des données associées 
+différentes ; à chaque répétition on aura une entité différente, c’est à dire un dossier 
+carte différent. 
+
+Une première raison à ce modèle d’architecture : On constitue des blocs 
+« carte+données » pour répondre à une problématique donnée. On ne collecte donc pas 
+systématiquement des données mais seulement celles qui ont une utilité pour étudier la 
+problématique choisie. 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\images-docs\dossier-carte.jpg
+
+On peut cependant constituer des « cartes stock », c’est à dire des blocs cartes+données 
+associées dans lesquelles ont accumule des données qui serviront plusieurs fois. Par 
+exemple, pour la France des départements, on peut stocker un certain nombre de 
+données du recensement général de la population qui serviront souvent aux groupes 
+d’utilisateurs du réseau. 
+
+Cette politique de stockage est rendue possible par un jeu de fonctionnalités qui 
+permettent de transférer des données d’une carte à l’autre si elles ont le même dessin 
+ou la même maille et, moyennant des tables de passage, ont peut aussi transférer les 
+données vers des cartes dont les mailles sont emboîtées ( passage par exemple de la 
+commune au département, à la région ou bien en suivant d’autres voies : regroupement 
+par districts, cantons etc., ou encore passage vers un extrait de carte) 
+
+Pour faciliter le passage d’une maille à l’autre on conseille de privilégier l’intégration de 
+données sommables dans les fichiers de données associées aux cartes. (pas de données 
+en %, en ligne, pas de données pondérées,….). 
+
+Les calculs sur les données sont autant que possible réalisés par l’interface qui comporte 
+pour cela des fonctions de calcul paramétrables (les possibilités de calculs disponibles 
+automatisés restent cependant limitées et il faut parfois calculer des données avant de 
+les intégrer dans GaïaMundi. 
+
+Pour faciliter la conception des blocs « cartes+données », les concepteurs de GaïaMundi 
+ont prévu deux fichiers de données associées à chaque carte et suggèrent que les 
+utilisateurs placent les données du thème qu’ils étudient dans le premier (A sur le 
+schéma) et réservent le second (B sur le schéma) à des données de contextualisation 
+(données sur la population, caractéristiques des territoires etc…). Mais rien n’oblige 
+cependant à suivre cette recommandation. 
+
+Cependant, l’entité (carte + données sources) ne suffit pas à alimenter GaïaMundi. Pour 
+qu’une donnée s’affiche sur la carte, il faut ajouter des éléments intermédiaires : 
+
+. Un dispositif de sélection des données à afficher (menus déroulants) 
+. Les sources et les dates de validité des données sources 
+. Les libellés constitutifs de la légende (Les libellés détaillés et synthétiques des 
+données) 
+
+
+Dans GaïaMundi, ces éléments sont rassemblés dans des fichiers associés aux fichiers de 
+données sources du dossier carte. On les nomme les fichiers de menus. Dans ces fichiers 
+de menus, on trouve non seulement les éléments intermédiaires ci-dessus, mais aussi les 
+coordonnées des données sources dans les fichiers sources du bloc « carte+données ». 
+Ainsi une ligne de menu de sélection des données à afficher sur une carte renvoie-t-elle 
+non seulement à la ou aux données sources nécessaires à son calcul, mais aussi aux 
+éléments intermédiaires permettant d’afficher la légende (source, libellé synthétique, 
+libellé détaillé, date de validité, thème de classification le cas échéant) 
+
+Cet ensemble (coordonnées des données sources+ éléments intermédiaires d’affichage) 
+constitue la deuxième entité de base de l’architecture GaïaMundi : ses MétaDonnées. 
+
+En pratique, l’utilisateur courant de GaïaMundi (c.a.d. celui qui utilise l’interface en 
+consultation ou qui fabrique des hypertextes) peut se limiter à traiter seulement des 
+métadonnées. Par exemple, lorsqu’elles existent, ce sont les métadonnées que l’on 
+transfert d’une carte à une autre, la « machine » s’occupant seule de transférer les 
+colonnes de données sources et de façonner les bases de données internes dans les 
+dossiers cartes. L’intérêt du transférer les métadonnées plutôt que les données est que 
+
+
+
+
+cela permet une économie de la réutilisation et que cela limite aussi les risque d’erreur. 
+
+Cependant l’utilisateur peut aussi accéder aux données directement lorsque les 
+métadonnées disponibles ne correspondent pas à ses besoins. L’utilisateur devient alors 
+producteur de métadonnées 
+
+Remarquons qu’un dossier carte est par conséquent une entité évolutive puisque les 
+utilisateurs peuvent introduire de nouvelles données et métadonnées issues d’autres 
+dossiers cartes. (ils ne peuvent pas en supprimer). 
+
+GaïaMundi propose deux types de métadonnées : 
+
+. Celles qui seront représentées, après calcul, par des Icônes ponctuelles 
+(cercles, flèches triangles, étoiles,…) qui seront affichées sur chaque aire de la 
+carte. Ou qui seront représentées par des fonds de carte coloriés. 
+. Celles qui sont représentées par des graphiques de données (histogrammes, 
+courbes, camemberts, radars,…). 
+
+
+Des données aux indicateurs. 
+
+En réalité, le façonnage des métadonnées n’est pas seulement une opération technique. 
+C’est avant tout un processus réflexif qui permet de passer de fabriquer des indicateurs 
+en utilisant des données. 
+
+Sur le plan fonctionnel (interface utilisateur), à chaque type de métadonnée correspond 
+un type de menu déroulant : Menus icônes et Menus Graphiques 
+
+Sur le plan physique, à chaque type de métadonnées correspond une paire de fichiers de 
+menus dans le dossier carte (Cf. Schéma). 
+
+NB . Un paramétrage de l’affichage des données Icônes ponctuelles et fonds de carte 
+coloriés (couleur, quantiles,…) est donné par défaut. Il peut être modifié manuellement 
+une fois la donnée affichée. Ces paramètres ne sont donc pas des éléments constitutifs 
+des métadonnées, mais des paramètres utilisateurs. On verra cependant qu’en mode 
+hypertexte, ce paramétrage est enregistré dans les « méta balises » de commande des 
+cartes, dont ils sont des éléments constitutifs). 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\images-docs\scenario.jpg 
+
+
+2 – Les hypertextes, les « métabalises de 
+commande de carte » et la scénarisation de 
+données 
+
+ 
+
+ 
+
+Deuxième déterminant de l’architecture de GaïaMundi, l’édition des hypertextes dans 
+lesquels sont insérés des « méta balises » qui permettent d’afficher des cartes préréglées 
+lorsqu’on clique sur ces méta balises. Les métabalises sont représentées par des boutons 
+insérés dans le fil du texte. 
+
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\images-docs\entites.jpg
+Un hypertexte constitue un scénario qui peut être constitué d’une ou de plusieurs 
+séquences de scénario successives. 
+
+Sur le plan pratique, une séquence de scénario commence toujours par un bouton 
+d’ouverture de carte, dit « bouton carte ». Cliquer sur un bouton carte revient à 
+sélectionner un dossier carte avec le menu déroulant cartes : la carte s’affiche et les 
+« méta données » associées sont chargées dans GaïaMundi. 
+
+Les Boutons « Méta Balises de commande des cartes » comprennent les informations 
+nécessaires à l’affichage de cartes, d’icônes ponctuelles, de fonds de cartes colorés, et de 
+graphiques de données. 
+
+Ces informations sont : 
+
+. Les méta données (==sélection d’un item dans le menu Icônes et dans le menu 
+Graphique) 
+. Les paramètres d’affichage des Icônes et des fonds de cartes (palette de couleur, 
+quantiles, type d’icône, taille des icônes) 
+
+
+On peut dresser le schéma récapitulatif des principales entités et de leurs 
+interdépendances : 
+
+ 
+
+
+ 
+
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\images-docs\fonctions-entites.jpg
+3 - Principales fonctions du back office 
+
+Le back office comporte quatre classes de fonctions 
+
+1 - Les fonctions de construction et de gestion des entités de bases. 
+
+(dossier carte + méta données ) + (hypertextes + méta baises de commande des 
+cartes) + (transfert de données et de métadonnées) 
+
+2 - Les fonctions de gestion du réseau de site associés (génération des sites, 
+actualisation et permissions) 
+
+3 - Les fonctions de maintenance (sauvegarde et restauration des données 
+sensibles) 
+
+4 – la génération de modules PageCarto 
+
+ 
+
+4 - Les fonctions de construction et de gestion 
+des entités de bases. 
+
+(dossier carte + méta données) et (hypertextes + métabalises de commande des cartes) + 
+(transfert de données et de métadonnées). 
+
+ 
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\images-docs\fonctions-rezo.jpg
+5 - Les fonctions de gestion du réseau 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+ 
+
+ 
+
+Accès à l’ensemble du réseau des plateformes via la Rose des Vents et l’interface 
+d’échange de données « Serpent de Mer » 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Plateforme SuiteCairo 
+
+Edition des Modules PageCarto 
+
+ 
+
+
+ 
+
+ 
+
+6 - Les fonctions de sauvegarde et de 
+restauration 
+
+ 
+
+Avant de décrire le schéma fonctionnel des fonctions de sauvegarde et de restauration, il 
+est nécessaire de fournir encore quelques éléments l’architecture de GaïaMundi en 
+identifiant en particulier les différents types de données sensibles. 
+
+ 
+
+L’une des caractéristiques de GaïaMundi et de pouvoir fonctionner (pour la partie 
+consultation) sans recours à une base de données. Cette caractéristique a pour 
+conséquence que les liens structurels entre les différentes composante du réseau sont 
+enregistrés dans des fichiers de coordination nommés ici « registre de coordination ». 
+Ces registres sont bien entendu évolutifs et il convient par conséquent de les sécuriser. 
+
+Ces registres sont de trois types : 
+
+. Les registres réseau (ou système): ceux-ci contiennent toutes les informations 
+sur les composantes du réseau et en particulier les tables des sites (nom des 
+sites, état des permissions et des statut de publication) 
+. les registres de ressources : ceux-ci contiennent en particulier les tables des 
+dossiers carte (nom des dossiers, statut dans la liste partagée etc… ) 
+. et les registres données des groupes utilisateurs : 
+
+
+Via ces registres, on sait à tout moment quels sont les différentes pièces évolutives du 
+puzzle et où elles se trouvent, quel est leur statut etc… On sait par conséquent les 
+sécuriser elles aussi. 
+
+ 
+
+Deux procédures ont été mises en place pour assurer la sécurité : 
+
+. Une procédure de sauvegarde automatique en continu de tout document 
+nouvellement crée ou concerné par une opération de modification, de 
+déplacement, de re nommage etc. En même temps que cette sauvegarde est 
+opérée, si les registres concernés ont eux aussi été modifiés, la version 
+précédente des registre est elle aussi automatiquement sauvegardée. 
+
+
+Cette procédure de sauvegarde en continu conserve six versions précédentes au 
+maximum. 
+
+. Une procédure manuelle qui peut concerner tout ou partie des différents types 
+de registres et des différents types de documents utilisateurs (un choix d’option 
+est proposé par l’interface) . Dans cette procédure on peut sauvegarder jusqu’à 
+trois versions successives de chaque document 
+
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+
+C:\Users\hp\Documents\GAIAMUNDI-DEV\DOCUMENTS MANUELS\images-docs\sauve.jpg 
+
+
+ 
+
+Ces deux procédures ne sont pas redondantes. C’est à dire que les trois versions 
+sauvegardées manuellement (procédure n°2) ne sont pas écrasés par les sauvegardes 
+automatiques en continu (procédure n°1). et réciproquement. La procédure n° 1 n’écrase 
+pas les documents sauvegardés par la procédure n° 2. 
+
+Une interface de restauration permet de remplacer tout document par n’importe 
+laquelle de ses versions sauvegardées. 
+
+ 
+
+Attention : 
+
+ 
+
+lorsqu’on exécute une opération de restauration, la version encours avant 
+restauration est perdue ! Il ne faut donc exécuter une restauration que si l’on 
+est sûr que la version en cours est corrompue ou qu’elle ne contient pas 
+d’information que l’on ne peut trouver ailleurs. 
+
+ 
+
+Afin d’éviter les risques d’erreurs inhérents à toute manipulation globale, on ne 
+peut restaurer les documents que 1 par 1. 
+
+ 
+
+Sauvegarde serveur 
+
+ 
+
+NB par ailleurs, l’administrateur serveur doit mettre en oeuvre des scripts de 
+sauvegarde de l’ensemble de l’interface GaïaMundi. 
+
+ 
+
+Il est recommandé de procéder à deux sauvegardes globales par jour : l’une à la 
+mi-journée, l’autre au cours de la nuit ; en conservant toujours au moins 3 ou 4 
+versions successives, (car les utilisateurs peuvent parfois ne se rendre compte 
+d’erreurs ou d’accidents que quelques heures ou parfois quelques jours après 
+qu’elle se soit produite) 
+
+ 
+
+De même qu’il est recommandé aussi de toujours conserver une version j-
+8,.(une semaine en arrière) 
+
+ 
+
+
+
+
+ 
+
+

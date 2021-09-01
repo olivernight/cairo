@@ -1,0 +1,81 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script language="javascript">
+var cible=""
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+	cible=urlvar['cartecible']
+var rep=urlvar['repcible']
+var modif
+if(urlvar['modif']){modif=urlvar['modif']}else{modif=""}
+	
+	function affichecomment(){
+	
+	if(window.onglets.rien){document.getElementById("onglets").style.display="block"}
+	
+	}
+	
+	function affichezmail(){
+	document.getElementById("divzmail").style.display="block"
+	}
+	function chargecarte(){
+	
+	window.framecarte.location.href=cible
+	window.onglets.location.href=rep+"/SaisieMAJ-CP/MENUchantier.html?modif="+modif
+	setTimeout('affichecomment()',2000)
+	
+	//http://altko.org/PageCartoGM/PageCarto
+	/*var typmodule=0
+	if(cible.indexOf("Allege",0)>0){typemodule=" version Standard ";var refcarte=cible.replace("Module-PageCarto-Allege.html","")}
+	if(cible.indexOf("Complet",0)>0){typemodule=" version Avancée ";var refcarte=cible.replace("Module-PageCarto-Complet.html","")}
+	refcarte=refcarte.replace("http://altko.org/PageCartoGM/PageCarto","")
+	refcarte=refcarte.replace("../","")
+	refcarte=refcarte.replace("/","")
+	window.zmail.location.href="http://altko.org/PageCartoGM/PageCarto/newsletter/contacthaiku.php?carte=Haiku Carto sur altercarto.fr : "+refcarte+" / "+typemodule
+	setTimeout('affichezmail()',2000)*/
+	}
+</script>
+
+
+
+</head>
+
+<body STYLE="background-color: transparent" onload="setTimeout('chargecarte()',0)">
+<center>
+<!--div style="z-index:2000;border: 0px none ; position: relative; top: 0px;left:-250px"><img style="opacity: 0.2; width: 200px" alt="" src="monde.png"></div>
+<div style="z-index:2001;border: 0px none ; position: relative; top: -102px; left: -255px;"><img style="opacity: 0.9; width: 200px" alt="" src="monde.png"></div>
+<div style="z-index:1000;border: 0px none ; position: relative; top: -50px; left:240px;height: 150px; margin-left: 18px; width: 257px;"><img style="width: 272px; " src="PageCarto.jpg"></div-->
+<div style="z-index:2000;border: 0px none ; position: relative; top: 0px; left: 0px;">
+<iframe name="framecarte" id="framecarte" frameborder="0" style="width:760px;height:670px;border:0px;overflow:none;background-color:white" ></iframe>
+</div>
+<div style="z-index:2000;border: 0px none ; position: relative; top: -100px; left: 10px;">
+<iframe name="onglets" id="onglets" frameborder="0" style="width:750px;height:470px;border:0px;overflow:none;background-color:white;display:none" ></iframe>
+</div>
+<!--div id="divzmail" style="z-index:2000;border: 0px none ; position: relative; top: -90px; left: 10px;;display:none;font-family:arial">
+<b>Contactez nous</b><br>
+<iframe name="zmail" id="zmail" frameborder="0" style="width:500;height:470;border:0px solid black;overflow:none;background-color:white" src="tele.html"></iframe>
+</div-->
+</center>
+</body >
+</html>

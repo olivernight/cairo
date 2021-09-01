@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<SCRIPT LANGUAGE="JavaScript" src="intitulesILIADE.js"></SCRIPT>
+<script language="javascript" src="parametregenraux0.js"></script>
+<script language="javascript">
+var Iliade="Iliade"
+var createurSVG="oui"
+function retournecreateurSVG(){return createurSVG}
+function retourneIliade(){return Iliade}
+function retourneintitules1(){return intit}
+function retourneintitules2(){return initO1}
+var innerSVGx
+var contenusvg="contenu du svg"
+function ouvHelp(){}
+function EL(){}
+function BL(){}
+var repsite=''
+function transrepsite(){return repsite}
+function determinerep(a){
+document.getElementById("inrepdiv").style.visibility="hidden"
+document.getElementById("submit").style.visibility="hidden"
+document.getElementById("creasvg").style.visibility="visible"
+document.getElementById("textar1").value=""
+document.getElementById("textar1").style.visibility="hidden";
+document.getElementById("textar1").cols=1;
+document.getElementById("affich").style.visibility="hidden";
+document.getElementById("redu").style.visibility="hidden"
+document.getElementById("inrep").value=a
+}
+function recupSVG(){
+document.getElementById("creasvg").style.visibility="hidden"
+innerSVGx=top.frames.Num0.frames.couches.zoom.document.getElementById("trans").getSVGDocument().getElementById("totalsvg").cloneNode(true)
+document.getElementById("essaiici").appendChild(innerSVGx)
+contenusvg=document.getElementById("essaiici").innerHTML
+document.getElementById("textar1").value=contenusvg
+document.getElementById("essaiici").innerHTML=""
+document.getElementById("textar1").style.visibility="visible";
+document.getElementById("textar1").cols=98;
+document.getElementById("submit").style.visibility="visible"
+document.getElementById("inrepdiv").style.visibility="visible"
+document.getElementById("affich").style.visibility="hidden";
+document.getElementById("redu").style.visibility="visible";
+}
+</script>
+
+
+</head>
+
+<body BGCOLOR="#F2F4FF">
+
+<script
+  language="JavaScript1.2">
+<!--
+
+
+var correctwidth=800 
+var correctheight=600
+//if (screen.width!=correctwidth || screen.height!=correctheight){document.write("<B><UL>Ce site est optimis&eacute pour une r&eacute;solution "+correctwidth+"x"+correctheight+". Votre  r&eacute;solution actuelle est "+screen.width+"x"+screen.height+".</UL></B>")}
+//alert("voulez vous continuer?")
+//-->
+</script>
+<script language="javascript">
+document.write('<div style="position:absolute;left:120;top:10"><table border=1><tr><td><iFRAME SRC="cartO1.htm" id="Num0" NAME="Num0"   width='+(largeurecran+230)+' height=620 NORESIZE SCROLLING="no" MARGINWIDTH=0 MARGINHEIGHT=0 FRAMEBORDER=0 ></iFRAME></td></tr></table></P></DIV>')
+document.write('<form  method="post" action="clonecartephp.php" name="saisie1"><div style="position:fixed;top:62;left:10;visibility:hidden"><input id="submit" type="submit"  name="submit" value="enregister" title="enregistre les données dans le fichier xxx.svg"></div><div style="position:absolute;top:62;left:235;visibility:visible"><span id="textar"><span>')
+					var noeudmaps=document.createElement("textarea")
+					noeudmaps.setAttribute("name","N[0]")
+					noeudmaps.setAttribute("id","textar1")
+					noeudmaps.setAttribute("rows",32)
+					noeudmaps.setAttribute("cols",98)
+					noeudmaps.setAttribute("style","visibility:visible;opacity:0.7")
+					document.getElementById("textar").appendChild(noeudmaps)
+document.write('</div><div id="inrepdiv" style="position:absolute;top:102;left:10;visibility:visible">in folder :<dt><input id="inrep" size="10" type="text" value="" name="N[1]"></input></dt></div></form>')
+
+</script>
+<p id="creasvg" style="visibility:hidden" onclick="javascript:recupSVG()"><b style="color:blue">Créateur svg</b></p>
+<p id="essaiici" ></p>
+<!--
+<embed id="essaiX" name="essaiX" SRC='essaisvg.svg' WIDTH='500' HEIGHT='500' ALIGN=top   WMODE="transparent"></embed>
+-->
+<div id="redu" style="position:absolute;top:132;left:10;visibility:hidden">
+<p  style="color:blue" onclick="javascript:document.getElementById('textar1').style.visibility='hidden';document.getElementById('textar1').cols=1;document.getElementById('affich').style.visibility='visible';document.getElementById('redu').style.visibility='hidden'">réduire</p>
+</div>
+<div id="affich" style="position:absolute;top:132;left:10;visibility:hidden">
+<p  style="color:blue" onclick="javascript:document.getElementById('textar1').style.visibility='visible';document.getElementById('textar1').cols=98;document.getElementById('redu').style.visibility='visible';document.getElementById('affich').style.visibility='hidden'">afficher</p>
+</div>
+</body >
+</html>

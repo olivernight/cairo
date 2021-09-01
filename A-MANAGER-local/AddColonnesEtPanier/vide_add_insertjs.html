@@ -1,0 +1,376 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script language="javascript" >
+var tablePAS=new Array()
+</script>
+
+<script  language="javascript" >
+var existetablepassage=0
+var mappocoord=new Array()
+var menuIconeEchelle=new Array()
+var menuIconeSup=new Array()
+
+var menuSujet=new Array()
+var menuOther=new Array()
+
+</script>
+
+<script id="insert" language="javascript" ></script>
+<!--script id="srcmappocoord" language="javascript" ></script>
+<script id="menuprincipal" language="javascript" ></script>
+<script id="menucomplementaire" language="javascript" ></script>
+<script id="table-pas" language="javascript" ></script-->
+<script  language="javascript" >
+//alert("debut vide_insert.js")
+    var urlvar=""
+
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+    //alert(urlvar['REP'])
+    //alert(urlvar['cible'])
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->	
+	 
+	// alert(urlvar["Xtable"])
+	 if(urlvar["Xtable"]=="zerotable"){
+	 existetablepassage=0
+	 }else{
+	 existetablepassage=1
+	 //document.getElementById("insertXtable").src="../../tablespassage/tables/"+urlvar["Xtable"]+".js"
+	 var uvar=urlvar["Xtable"]
+	 var xvar='<script id="insertXtable" language="javascript" src="../../tablespassage/tables/'+uvar+'.js" ><\/script>'
+	 document.write(xvar)
+	 //'<script id="insertXtable" language="javascript" ><\/script>'
+	 }
+	 
+var textemenu1=""
+var textemenu2=""
+var menuX=new Array()
+var sel=urlvar['sel']
+
+/*-------------------------------------------------------chargement de la table de passage-----------------------------------------
+var srctablepas=urlvar['Xtable']
+if(srctablepas){document.getElementById("table-pas").src=srctablepas+".js"}
+-------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+var DataTabCol=new Array()// table des donénes récupérées
+
+
+var dataToAdd=parent.transDataToTransfert("return CumulDataToTransfert")
+//alert("dans vide_add_insertjs.js dataToAdd="+dataToAdd)
+var  menuatransferer=parent.transMenuTransfert("return CumulMenuTransfert")
+//alert(menuatransferer)
+
+var indicvide=0
+var base
+var maps=urlvar['maps']
+
+var mapsorigine=parent.retournemapsorig("return mapsorig")
+
+var lim
+var tabcol
+var destin
+var repdestin
+var cibledestin
+var ciblemenu
+var princip=0 
+function principcompl(a){
+princip=a
+parent.BL()
+if( princip==1){
+
+repdestin=mappocoord[6];cibledestin=mappocoord[0];destin=mappocoord[6]+"/"+mappocoord[0]
+//if(sel==1){ciblemenu="DATA-IcoSujet.js"}else{ciblemenu="DATA-Sujet.js"}
+}else{
+
+repdestin=mappocoord[7];cibledestin=mappocoord[1];destin=mappocoord[7]+"/"+mappocoord[1]
+//if(sel==1){ciblemenu="DATA-IcoOther.js"}else{ciblemenu="DATA-Other.js"}
+}
+
+document.getElementById("adddata").setAttribute('action','ADD_menu_MANAGER.php?REP='+repcarte+'&cible='+ciblemenu+'&REPDESTIN='+repdestin+'&cibledestin='+cibledestin)
+
+window.frames.frameEtalondestin.location.href="../../"+repdestin+"/etalon.html"
+var aicila="../../"+destin
+setTimeout('window.frames.framedatadestin.location.href="'+aicila+'"',500)
+//setTimeout('chargedatadestininit()',0) -> l'appel est maintenant déchenché par le fichier de données : le commande est située dans enteteDTAbas.js
+
+}	
+var orig=new Array() 
+
+var larg=0
+function chargedatadestininit(){//l'appel est maintenant déchenché par le fichier de données : le commande est située dans enteteDTAbas.js
+
+document.getElementById("Ninputs").innerHTML=""
+document.getElementById("adjonction").innerHTML=""
+
+//alert(tablePAS[0])
+
+
+base=window.frames.framedatadestin.transbase00("return base00")
+
+
+
+setTimeout('chargedatadestininitSuite()',5000)
+}
+
+function chargedatadestininitSuite(){
+
+orig=parent.frames.menusdonnees.framedataorigine.transbase00("return base00")
+setTimeout('chargedatadestininitSuite2()',5000)
+}
+var indexOrg=new Array()
+function chargedatadestininitSuite2(){
+
+for(w=0;w<orig.length;w++){
+var NomAssociation=""+orig[w][2]+""
+
+indexOrg[NomAssociation]=orig[w][0]
+//if(w<10){alert("NomAssociation="+NomAssociation+"   indexOrg[NomAssociation] = "+indexOrg[NomAssociation])}
+} // création d'un tableau associatif pour les reqettes dans orig
+
+larg=base[0].length-1 //dimension horizontale du tableau de données destin avant adjonction de donénes
+
+if(larg<0){// cas du fichier de destination vide : on prend comme base le fichier étalon.html situé dans le répertoire de destination 
+indicvide=1;
+//base=orig
+base=window.frames.frameEtalondestin.transbase00("return base00")
+
+
+if(maps==mapsorigine){
+alert("le fichier de destination est vide ! étant donné qu'on se situe dans le même dossier carte, la structure du fichier d'origine va être transposée dans le fichier de destination")}else{
+alert("le fichier de destination vide est ! on le crée à partir du fichier étalon")
+
+}
+}
+
+var lignbase0=base[0]
+//normalisation des n° de colonnes dans les menus à transférer
+
+if(indicvide==1){larg=3}
+var k=larg
+var xk
+var KX
+var kz=0 // compte les colonnes effectives sans double compte : nb de colonnes effectives = nb de valeurs -1 dans comptedouble
+//var comptedouble=parent.transcomptedesdoublons("return comptedesdoublons")
+
+//écriture des données+ données adjointes
+var datx=""
+
+
+for(d=0;d<base.length;d++){// 	on démarre par une boucle  sur les lignes de labase de destination
+var lignbase=base[d]
+var bornelignbase
+
+//façonnage des lignes à transférer ----------------------------------------------------------------------------------------------------------------------------------
+
+
+if(indicvide==0){bornelignbase=lignbase.length-1}else{bornelignbase=3}
+datx+='base00['+d+']=new Array('+d+',"'+lignbase[1]+'"'  
+
+				if(d==0 ){//ligne des libéllé entête de colonne
+				//façonnage de la partie de la ligne de DESTNATION à conserver (colonnes jusqu'à bornelignbase)
+						for(l=2;l<bornelignbase;l++){datx+=',"'+lignbase[l]+'"'}
+						var ligndataToAdd=dataToAdd[0]
+						var largDatatoAdd=ligndataToAdd.length
+						//AJOUT des données à transférer
+						for(m=0;m<ligndataToAdd.length;m++){datx+=',"'+ligndataToAdd[m]+'"'}
+
+				}else{// les autres lignes
+
+						//façonnage de la partie  à conserver  des autres lignes
+						if(d>=base.length-7){ //dont façonnage de la partie  à conserver  du bloc des lignes du bas
+
+							for(l=2;l<bornelignbase;l++){datx+=',"'+lignbase[l]+'"'}
+						}else{// dont façonnage de la partie  à conserver  des lignes de données proprement dites
+							for(l=2;l<bornelignbase;l++){datx+=','+lignbase[l]}
+						}
+
+						//AJOUT des données à transférer dans chacune des autres lignes ----------------------------------------------------------------------------------------------------------------------------------------------------
+						// ---------------------------------------------------Introduction des tables de réduction d'échelle--------------------------------------------------
+
+						
+						if(d<base.length-7){// test sur d < orig.length-7
+								if(existetablepassage==0){//PAS de TABLE DE PASSAGE - regroupements
+var okligneegale=0
+										
+												for(z=1;z<orig.length-7;z++){// boucle sur les lignes du fichier d'ORIGINE pour tester si la clé de la ligne de destination en cours existe dans le fichier origine
+														var lignorig=orig[z]	
+														
+														if(parseInt(lignorig[2],10)==parseInt(lignbase[2],10)){ // cas d'équivalence des clés origine et destination
+																okligneegale=1
+																var ligndataToAdd=dataToAdd[z]
+																for(m=0;m<ligndataToAdd.length;m++){datx+=','+ligndataToAdd[m]}
+
+																z=orig.length // arrête la boucle sur lorsqu'il ya correspondances entre les clés de destination et d'origine
+														}
+
+												}// boucle sur les lignes du fichier d'ORIGINE pour tester si la clé
+if(okligneegale==0){for(m=0;m<largDatatoAdd;m++){datx+=",-99999"}}				
+
+								}else{
+								/*CAS d'une TABLE DE PASSAGE  - 
+								(le module doit retourner  soit la variable okligneegale=1 après avoir claculé la valeur  de ligndataToAdd dans le cas où lil ya correspondance entre lla clé de rang 0 de la table et le code insee de data destination, soit retourner la valeur okligneegale=0)
+								
+
+								
+								*/
+								// -------------------------------------------------------------------------------------------------------------
+								//test présence de clé destination dans la table : le test sort un paramètre qui peut prendre trois positions : cas général hors regroupements, cas particulier 1, cas particulier 2  ; soit, respectivement var castable=0, 1 ou 2
+								//--------------------------------------------------------------------------------------------------------------
+								
+var oKligne=0
+								for(t=0;t<tablePAS.length;t++){
+										//si une des clés de rang 0 de la table de passage trouve son équivalent dans la ligne de destination  courante
+										if(parseInt(lignbase[2],10)==parseInt(tablePAS[t][0],10)){ 
+oKligne=1
+
+										
+														var ligndataToAdd0=dataToAdd[0]
+														for(m=0;m<ligndataToAdd0.length;m++){
+																var ligndataToAddCAS2=0  
+																for(h=1;h<tablePAS[t].length;h++){
+												
+																		var rangIdCarteOrig=indexOrg[""+tablePAS[t][h]+""]// adressage par le tableau associatif
+																		
+																		if(dataToAdd[rangIdCarteOrig]){
+																		if(dataToAdd[rangIdCarteOrig][m]!=-99999){ligndataToAddCAS2+=dataToAdd[rangIdCarteOrig][m]}
+																		}
+
+																		
+																}
+																datx+=','+ligndataToAddCAS2;
+																
+														}
+										t=tablePAS.length				
+										}
+								}
+if(oKligne==0){for(m=0;m<largDatatoAdd;m++){datx+=",-99999"}}
+										
+									
+										
+								}// FIN du CAS d'une TABLE DE PASSAGE  - regroupements 
+						} //test sur orig.length-7
+						if(d>=base.length-7){ 
+						
+						var z1=(orig.length-(base.length-d))
+						var ligndataToAdd=dataToAdd[z1]
+						
+						for(m=0;m<ligndataToAdd.length;m++){datx+=',"'+ligndataToAdd[m]+'"'}
+						}
+
+
+}
+datx+=",0);\n"
+
+}
+
+document.getElementById("adjonction").innerHTML=datx
+document.getElementById("boutonenreg").style.visibility="visible"
+parent.EL()
+}	 
+function renvoiVARjs(){
+ return menuX
+	 }
+
+function affichemenusdata(){ //rep= répertoire de carte; sel =1 -> icones et sel=2 -> graphs ;
+if(sel==1){textemenu1="Menu Icones n°1 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fichier principal)";textemenu2="Menu Icones n°2 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fichier complémentaire)"}
+else{textemenu1="Menu Graph n°1 <br>(fichier principal)";textemenu2="Menu Graph n°2 <br>(fichier complémentaire)"}
+var NomMenu=""
+var menu=""
+
+for(n=1;n<3;n++){
+
+if(n==1){var dest="x1";menu=textemenu1}else{var dest="x2";menu=textemenu2}
+document.getElementById(dest).innerHTML=""
+document.getElementById(dest).innerHTML=menu
+
+
+}
+}
+
+	
+
+var repcarte
+function selectrepertoires(){
+repcarte=urlvar['rep']
+
+
+//document.getElementById("srcmappocoord").src="../../"+repcarte+"/DATA-mappocoord.js"
+ var xvar='<script id="srcmappocoord" language="javascript" src="../../'+repcarte+'/DATA-mappocoord.js" ><\/script>'
+	 document.write(xvar)
+setTimeout('chargemenusdata()',500)
+}
+function chargemenusdata(){} 
+function chargemenusdataxxxxxxx(){ 
+//alert("sel="+sel)
+if(sel==1){//cas icones
+//document.getElementById("menuprincipal").src="../../"+repcarte+"/DATA-IcoSujet.js"
+ var xvar='<script id="menuprincipal" language="javascript" src="../../'+repcarte+'/DATA-IcoSujet.js" ><\/script>'
+	 document.write(xvar)
+//document.getElementById("menucomplementaire").src="../../"+repcarte+"/DATA-IcoOther.js"
+ var xvar='<script id="menucomplementaire" language="javascript" src="../../'+repcarte+'/DATA-IcoOther.js" ><\/script>'
+	 document.write(xvar)
+
+}else{// cas graphs
+//document.getElementById("menuprincipal").src="../../"+repcarte+"/DATA-Sujet.js"
+ var xvar='<script id="menuprincipal" language="javascript" src="../../'+repcarte+'/DATA-Sujet.js" ><\/script>'
+	 document.write(xvar)
+//document.getElementById("menucomplementaire").src="../../"+repcarte+"/DATA-Other.js"
+ var xvar='<script id="menucomplementaire" language="javascript" src="../../'+repcarte+'/DATA-Other.js" ><\/script>'
+	 document.write(xvar)
+
+}
+setTimeout('affichemenusdata()',1000)
+	 }
+	 
+	 function raze(){
+	 
+	 //setTimeout('parent.document.carte2.selectcartes2.selectedIndex=0',1000)
+	 // setTimeout('parent.frames.menusdonnees.razer()',1000)
+	 }
+</script>
+</head>
+
+<body STYLE="font-family:arial;background-color: gray"><script  language="javascript" >
+
+document.write('<div id="divmenuprincipal" style="position: absolute; left: 0px; top: 2px; "><input type="radio"  id="T_1" name="T" value="1" onClick="principcompl(1)"><span style="font-size:10px" id="x1"> principal</span></input></div>')
+document.write('<div id="divmenucomplementaire" style="position: absolute; left: 0px;  top: 42px; "><input type="radio" id="T_2" name="T" value="2" onClick="principcompl(2)" ><span  style="font-size:10px" id="x2"> complémentaire</span></imput></div>')
+document.write('<form id="adddata" name="addata"   method="post" action="" >')
+document.write('<div id="boutonenreg" style="position: absolute; left: 0px;  top: 100px; visibility:hidden"><center><input  type="submit"  value="transférer les méta données" onclick="raze()"></input></center></div>')
+
+document.write('<div id="divdatadestin" style="position: absolute; left: 0px; top: 2px; "><iframe width=0 height=0 frameborder=0 id="framedatadestin" name="framedatadestin" ></iframe></div>')
+document.write('<div id="divdEtalondestin" style="position: absolute; left: 0px; top: 2px; "><iframe width=0 height=0 frameborder=0 id="frameEtalondestin" name="frameEtalondestin" ></iframe></div>')
+
+
+document.write('<div  style="position: absolute; left: 0px; top: -2500px;visibility:hidden" ><span id="Ninputs" name="Ninputs" ></span></div>')
+document.write('<div  style="position: absolute; left: 0px; top: -2500px;visibility:hidden" ><textarea id="adjonction" name="A[0]" rows="20"></textarea></div>')
+document.write('</form>')
+
+selectrepertoires()
+
+</script>
+
+<div id="afftest" style="position:absolute;top10px;left;10px" > </div>
+
+
+</body >
+</html>

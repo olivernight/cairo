@@ -1,0 +1,119 @@
+<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+<script language="javascript" >
+var tablePAS=new Array();
+</script>
+
+<script language="javascript" >
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+	
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+var Xtable=urlvar['Xtable']
+
+var tailCarte=urlvar['tailCarte']
+
+
+
+function renvoiTableDePassage(){
+
+parent.recupNomsTable(NomsTable)
+parent.recupTable(tablePAS,tailCarte)
+
+
+}
+function recupNoms1(){
+
+window.frames.etalon.location.href="tablespassage/tables/"+EtalonNomsDESTIN // variable située dans la table de passage
+
+}
+
+var indexOrg=new Array()
+var NomsTable=new Array()
+var EtalIci=new Array()
+var NomOrg=new Array()
+var NomAssociation
+function recupNoms2(){
+
+indexOrg=new Array()
+NomOrg=new Array()
+NomsTable=new Array()
+
+var EtalIci=window.frames.etalon.retourneBase00("return base00")
+			for(v=1;v<EtalIci.length-9;v++){
+			
+			NomAssociation=EtalIci[v][2]// nomAssociation=codeInsee
+			NomOrg[NomAssociation]=EtalIci[v][1]
+			//if (v<5){alert(NomAssociation+"   "+NomOrg[NomAssociation])}
+			}
+
+			for(w=0;w<tablePAS.length;w++){
+			NonAssociation=tablePAS[w][0]//.replace(/ /g,"")
+			//alert(NonAssociation)
+			//if (w<5){alert(NomAssociation);alert(NomOrg[NomAssociation])}
+			if(NomOrg[parseInt(tablePAS[w][0])]){
+			NomsTable[w]=NomOrg[tablePAS[w][0]]
+			}else{
+			NomsTable[w]="XXXXXXXX"
+			}
+			
+			
+			}
+
+/*
+			for(v=0;v<EtalIci.length;v++){
+			var NomAssociation=""+EtalIci[v][2]+""// nomAssociation=codeInsee
+			indexOrg[NomAssociation]=parseInt(EtalIci[v][0],10)
+			}
+			
+			
+			for(w=0;w<tablePAS.length;w++){
+			NomsTable[NomsTable.length]=""
+			}
+			
+
+			for(w=0;w<tablePAS.length;w++){	
+			var inde	
+			inde=indexOrg[parseInt(tablePAS[w][0],10)]
+			
+			if(EtalIci[inde][1]){NomsTable[w]=EtalIci[inde][1]}else{NomsTable[w]="non dispo"}
+			//inde//w//
+			}
+*/
+
+renvoiTableDePassage()
+}
+</script>
+</head>
+
+<body>
+<iframe name="etalon" ></iframe>
+<script language="javascript" id="chargeIci" onload="recupNoms1()"></script>
+<script language="javascript" >
+
+document.getElementById("chargeIci").src="tablespassage/tables/"+Xtable+".js"
+
+</script>
+
+</body></html>

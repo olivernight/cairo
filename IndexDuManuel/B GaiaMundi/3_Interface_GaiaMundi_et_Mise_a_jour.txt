@@ -1,0 +1,804 @@
+﻿ 
+
+ 
+
+Présentation de l'interface GaïaMundi 
+
+ 
+
+ 
+
+ 
+
+L’interface GaïaMundi comporte trois espaces représentés par trois panneaux, une barre 
+de menus, et des boutons de commande. 
+
+ 
+
+ 
+
+Ergonomie des 3 panneaux 
+
+Les panneaux peuvent s’ouvrir et se refermer avec les boutons et on peut régler leur 
+largeur (élargir ou réduire) avec les poignées. 
+
+ 
+
+Par défaut, à l’ouverture, la taille des panneaux est ajustée en fonction de la taille de 
+l’écran, avec comme principe de maximaliser la taille de la carte, tout en conservant la 
+lisibilité des panneaux gauche et droite. 
+
+Le panneau de gauche comporte de plus une fonction "slide" activée par le bouton de 
+gauche, lorsque le volet est fermé. 
+
+ 
+
+L’ouverture et la fermeture du panneau gauche redimensionne automatiquement la 
+carte dans ses dimensions maximales. 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+Chaque panneau comporte deux sous panneaux activables par les onglets situés en bas 
+des panneaux. 
+
+ 
+
+ 
+
+ 
+
+Le panneau de gauche et ses sous-panneaux (Accueil et Guide d’aide) constituent 
+l’espace de documentation et d’assistance. Il accueille aussi un module d’affichage de 
+listes de boutons cliquables correspondant à chaque item de menu, avec de plus un 
+moteur de recherche pour trier les items de menus associées à une carte quand la liste 
+est importante (ce dispositif constitue une alternative au menu de données déroulants 
+peu pratiques0 quand ils sont très long). 
+
+ 
+
+Le panneau central et ses sous-panneaux (Affichage des cartes et Architecture des 
+données) constituent l’espace de publication des cartes et de l’architecture des cartes 
+et données (cartes + données). 
+
+ 
+
+Le panneau de droite et ses sous-panneaux (Cartes commentées et Menus et données) 
+constituent l’espace d’édition ou espace technique (de textes, d’hypertextes, de 
+données, de menus de données, de sites filleuls …). 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Barre de menus, dispositifs de mise à 
+jour, de sauvegarde et de restauration 
+
+ 
+
+1 - Menu Cartes 
+
+ 
+
+ 
+
+En survolant chaque item du menu Cartes, on peut lire le nom du répertoire physique 
+dans lequel sont placés les fichiers du « dossier Cartes » (le nom des répertoires peut 
+différer du nom de la carte) 
+
+ 
+
+2 - Menu Données 
+
+Pour que ce menu soit actif, il faut qu’une carte soit affichée. 
+
+ 
+
+ 
+
+ 
+
+Le menu de données comprend dans un premier temps 3 sous menus 
+
+ 
+
+
+
+
+1 - Les menus « ponctuels » 
+
+Dans un premier temps, seul le menu Icône X apparaît dans les menus ponctuels 
+
+Ce sont les menus d’affichage des données sous forme d’icones (ronds flèches, triangles, 
+étoiles). Les items de menu s’affichent par séries de 30. Les séries 2,3 etc.., si elles 
+existent, s’activent en survolant les libellés suite(1), suite ( 2) etc. situés en haut de la 
+première liste ; 
+
+ 
+
+Les items bleus correspondent au fichier de données principal. Les verts au fichier 
+complémentaire. Le verts (il n’y en a pas dans l’exemple) apparaissent après les bleus. 
+
+ 
+
+ 
+
+ 
+
+Si la carte présente des couches graphiques additionnelles, celles-ci apparaissent au 
+menu ponctuel. Pour activer une couche graphique on la sélectionne dans le menu. Pour 
+la faire disparaître, on reclique sur la même ligne de menu. Pour effacer toutes les 
+couches on clique sur le lien rouge « cacher les couches ». 
+
+ 
+
+Lorsqu’une donnée est déjà affichée avec le menu Icône X, un quatrième menu apparaît 
+dans la liste des menus de données : le menu Icône Y qui présent la même liste que le 
+menu ponctuel icône X. Ce menu sert à afficher des données en mode bi varié dans le 
+module analyse (Cf. plous loin) 
+
+ 
+
+ 
+
+ 
+
+2 Les menus graphiques (Graphique 1 et Graphique 2) 
+
+Ils fonctionnent de la même manière que le menu ponctuels Icône X ci-dessus. 
+
+Ils présentent la liste de graphique réalisés respectivement avec les données du fichier 
+de données principal et du fichier complémentaire. 
+
+(une fois la sélection du graphique effectuée, pour l’afficher, il faut cliquer sur une aire 
+de la carte) 
+
+ 
+
+3 - Menu Documentation 
+
+Le menu documentation renvoie à une application incorporée : l’index des manuels, qui 
+comporte des dossiers thématiques avec un moteur de recherche qui permet de 
+chercher dans chaque sous dossier (pas globalement). 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+4 - Menu Edition 
+
+ 
+
+ 
+
+ 
+
+1 – Modifier Hypertexte 
+
+ 
+
+ 
+
+Les trois sous menus activent l’éditeur Wysiwyg (le résultat sera équivalent à ce que l’on 
+voit lorsqu’on l’écrit) qui permet de façonner les textes de commentaire de carte et 
+d’insérer des boutons d’activation des cartes dans le texte. 
+
+ 
+
+2 – Gestion des Données 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Intégration de données 
+
+Ce menu donne accès à l’interface d’intégration de données à partir de formats de 
+fichiers .txt générés à partir de tableurs type Open Office ou Excel 
+
+(Voir plus loin) 
+
+ 
+
+Éditons des fichiers de données 
+
+Renvoie à une interface qui permet d’extraire sous forme de tableau au format .txt les 
+fichiers de données intégrées dans les cartes. 
+
+Cette interface permet notamment d’extraire la matrice de données de chaque carte 
+pour façonner les fichiers de données manuellement. 
+
+Elle permet aussi d’actualiser les versions txt des fichiers de données des cartes lorsque 
+les données intégrées dans les cartes ont été importée par d’autres procédés que 
+l’intégration manuelle. 
+
+(Voir plus loin) 
+
+ 
+
+Menu de données 
+
+Renvoie à l’interface de fabrication des menus de données. Les menus de données sont 
+les requêtes, comprenant des fonctions de calcul, qui permettent d’afficher les données 
+sur les cartes. On les appelle les menus de données. Ces menus comprennent non 
+seulement la requête et ses éventuels calculs, mais aussi les métadonnées qui 
+permettent de fabriquer automatiquement les légendes des données et des graphiques. 
+
+(Voir plus loin) 
+
+ 
+
+Transfert de Menus REZO 
+
+Renvoie à l’interface de transfert de menus de données et leurs données associées, 
+d’une carte vers une carte de votre plateforme, que la carte d’origine soit dans la même 
+plateforme ou dans une plateforme différente, en local (sur votre ordinateur), ou en 
+réseau distant (Intranet ou Web) 
+
+(Voir plus loin) 
+
+ 
+
+Transfert de données DBHTML 
+
+Renvoie à l’interface de transfert données, d’une carte vers une carte de votre 
+plateforme, que la carte d’origine soit dans la même plateforme ou dans une plateforme 
+différente, en local (sur votre ordinateur), ou en réseau distant (Intranet ou Web) 
+
+(Voir plus loin) 
+
+ 
+
+Transfert de données PANIER 
+
+Renvoie à l’interface de transfert de menus de données, de dossier spéciaux appelés 
+Paniers vers une carte de votre plateforme. Les dossiers Paniers sont des répertoires 
+comprenant les données récupérées sur d’autres plateformes via l’interface la Rose des 
+Vents et stockées dans votre plateforme. Cette fonctionnalité de la Rose des Vents est 
+plus lourde que les transferts me Menu REZO et transfert de données DBHTML. Elle n’a 
+d’intérêt que lorsque l’on veut récupérer des données pour pouvoir travailler 
+ultérieurement dans des situations où l’on n’a pas accès à une connexion internet. 
+
+(Voir manuel de la Rose des Vents) 
+
+ 
+
+Recherche de Menus 
+
+Renvoie à une interface de recherche de menus dans les plateformes du réseau local ou 
+distant. On utilise cette interface avant d’utiliser la fonction transfert de Menus REZO 
+
+ 
+
+Tables de passage/mailles 
+
+Renvoie à une interface de fabrication et d’intégration de tables de passage entre 
+différentes mailles géographiques. Par exemple entre Département et Région. 
+
+Le stables de passage sont utilisées lors des transferts de données et de menus de 
+données présentés ci-avant. 
+
+
+
+
+ 
+
+3 - Rose des vents 
+
+ 
+
+ 
+
+ 
+
+Renvoie à l’interface la Rose des vents : dispositif de recherche et de visualisation des 
+données sources contenu dans les plateformes SuiteCairo connectées en réseau local ou 
+distant 
+
+. Rose des Vents (Web) donne accès à l’ensemble des plateformes en réseau 
+local, y compris votre plateforme, et aux plateformes connectées sur le Web 
+. Rose des Vents (Self) ne donne accès qu’aux plateformes locales aux quelles 
+votre plateforme est connectée, y compris à la votre. 
+
+
+ 
+
+4 - Nouvelle Carte 
+
+ 
+
+ 
+
+ 
+
+Renvoie à l’interface d’intégration d’un carte importée du répertoire depot_cartes (votre 
+dépôt local de cartes) associé à votre plateforme ou directement de la banque de carte 
+en ligne. L’exécution de cette interface crée un répertoire pour la nouvelle carte dans 
+l’architecture de la votre plateforme et y dépose l’ensemble des fichiers permettant de 
+rendre opérationnelle cette carte. A la fin de la procédure, la nouvelle carte figure dans 
+le menu Carte et vous pouvez travailler avec : l’afficher, intégrer des données, fabriquer 
+des menus. 
+
+Lorsque vous importer une carte à partir de la banque de carte, elle est aussi stockée 
+dans votre dépôt de carte local. 
+
+Au cours de cette procédure vous devez nommer la carte et le répertoire physique dans 
+lequel sont déposés les fichiers. 
+
+(Voir plus loin) 
+
+ 
+
+Modifier fiche carte 
+
+Renvoie à un formulaire de renseignement complémentaire sur la carte et sur son 
+contenu en données. Ce formulaire est très important pour reinsigner les infoirmation 
+nécessaires à la recherche de données et de métadonnées dans le réseau ( Rose des 
+Vents). 
+
+(Voir plus loin) 
+
+ 
+
+5 – PageCarto 
+
+ 
+
+ 
+
+ 
+
+Interfaces de fabrication des Modules PageCarto 
+
+ 
+
+Générer PageCarto 
+
+Permet de générer un module PageCarto à partir d’un dossier Carte de la plateforme. 
+
+ 
+
+Editer l’hypertexte 
+
+Permet non seulement d’éditer l’hypertexte du module PageCarto mais aussi de 
+fabriquer des menus de données propres au Module PageCarto, et de fabriquer les 
+entêtes (intégration de logos et texte d’accueil). 
+
+ 
+
+ 
+
+
+
+
+Liens vers les PageCarto 
+
+Affiche la liste des PageCarto existant dans la plateforme et permet de les afficher. 
+
+(Voir plus loin) 
+
+ 
+
+6 – Gestion des Sites 
+
+ 
+
+ 
+
+ 
+
+Cette série de menus permet d’administrer la création de sites « filleuls » destinés soit à 
+la publication de résultats de travaux réalisés sur la plateforme, soit à la production de 
+travaux sur les cartes et les hypertextes pour des groupes de travail autonomes qui 
+utilisant les ressources en cartes et en données existants sur la plateforme. 
+
+Créer un Nouveau Site 
+
+Permet de créer un site filleul 
+
+ 
+
+Actualiser hypertextes partagés 
+
+Permet d’abonner les sites filleuls à des hypertextes fabriqués sur la plateforme. 
+
+ 
+
+Liens vers les Sites 
+
+Dresse la liste des liens vers les sites filleuls 
+
+ 
+
+Sites admis à la publication 
+
+Gère la publication ou non des sites filleuls dans le réseau. La liste des sites admis à la 
+publication est en effet reproduite sur chacun des sites filleuls, ce qui permet aux 
+internautes de naviguer d’un site à l’autre. Les sites non admis à la publication sont 
+fonctionnels mais invisible sur ces listes. Cette invisibilité permet à des groupes de 
+travailler en back office. 
+
+NB. Dans cette version de la suiteCairo, les sites dont le nom contient le mot « travail » 
+sont placés automatiquement en mode invisible. 
+
+ 
+
+Accès aux cartes sur les Sites 
+
+Pour fonctionner un site filleuls doit avoir accès à des cartes et des données. Cette 
+interface permet d’attribuer des droits d’accès pour chaque site aux cartes et aux 
+données. 
+
+ 
+
+6 – Sauvegarde et restaure 
+
+ 
+
+ 
+
+Dispositif de sauvegarde globale des fichiers utilisateurs et dispositif de restauration des 
+fichiers un par un. 
+
+Il existe deux procédés de sauvegarde coexistant parallèlement : 
+
+ 
+
+1. Le procédé de sauvegarde courante 
+
+
+ 
+
+Chaque opération d’écriture de données ou d’informations dans un hypertexte … 
+réalisée par l’utilisateur déclenche une sauvegarde de la version courante du fichier 
+concerné sous la forme : « N-4.nom_de_fichier.extension ». 
+
+ S’il existe déjà une version N-4, celle-ci devient N-5 etc jusqu’à N-9. On a donc au 
+maximum les six versions précédentes en mémoire. 
+
+Il en va de même pour la création de cartes ou de sites etc.. où les registres des 
+cartes, des sites, des hypertextes etc… sont sauvegardés automatiquement selon le 
+même procédé de nommage. 
+
+
+
+
+L’interface « Sauvegarde et restaure » dresse la liste des fichiers sauvegardé (classée 
+par nom et par date), et permet de restaurer les fichiers un à un. 
+
+ 
+
+ 
+
+ 
+
+2. le procédé de sauvegarde globale 
+
+
+L’interface permet de sauvegarder l’ensemble ou des fichiers utilisateurs ou des 
+ensemble choisis de fichiers (registres, menus, données…) sous la forme suivante : 
+« N-1.nom_de_fichier.extension » 
+
+S’il existe déjà une version N-1, celle-ci devient N-2 etc. jusqu’à N-3. On a donc au 
+maximum les trois versions précédentes en mémoire. 
+
+L’interface « Sauvegarde et restaure » dresse la liste des fichiers sauvegardé (classée 
+par nom et par date), et permet de restaurer les fichiers un à un. 
+
+ 
+
+ 
+
+ 
+
+NB dans cette version, le module de sélection des sous répertoires à sauvegarder est 
+défaillant lorsqu’on sélectionne plusieurs sous répertoires Il vaut mieux faire le choix 
+d’une sauvegarde globale ou le choix de sauvegarde d’un seul sous répertoire ou type 
+de fichier à la fois. 
+
+ 
+
+
+
+
+ 
+
+ 
+
+5 - Menu Système 
+
+ 
+
+ 
+
+Redemarrer () : redémarre dans la configuration actuelle 
+
+Redemarrer (1) : redémarre en fermant de panneau de droite 
+
+Redemarrer (2) : redémarre avec les trois panneaux 
+
+Configuration de production. C’est dans cette configuration que l’on 
+peut le plus agrandir le panneau de droite avec les poignées de 
+redimensionnement. 
+
+Redemarrer (3) : redémarre en fermant le panneau de gauche 
+
+ 
+
+. de préférence, ne pas utiliser les commandes de navigation historique de la barre de navigation du 
+navigateur car, dans GaïaMundi, un simple opération comme « afficher une carte », par exemple, mobilise en 
+arrière plan plusieurs séquences de chargements de fichiers successifs que la gestion des historiques 
+n’enregistre pas. De ce fait en revenant en arrière avec le navigateur, vous pouvez avoir l’impression que vous 
+êtes bien revenu à la position précédente, alors que les fichiers en arrière plan sont en réalité désorganisés. Ce 
+qui peut provoquer des erreurs si vous procédez à une opération d‘écriture après avoir utilisé ces 
+fonctionnalités du navigateur. 
+
+ 
+
+ 
+
+Mises à jour : accès à la plateforme web de téléchargement des mises à jour . 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+A l’ouverture, la partie haute de l’interface de gestion des mises à jour dresse la liste des 
+Mise à jour déjà réalisées depuis la mise en service de la plateforme. 
+
+ 
+
+La partie basse de l’interface dresse la liste des mises à jour déjà téléchargées à partir du 
+site de Mise à Jour. 
+
+ 
+
+ 
+
+ 
+
+(physiquement, une mise à jour téléchargée est un répertoire créé dans le répertoire 
+Racine de GaïaMundi. Ce répertoire contient une fonction d’exécution de la mise à jour 
+qui sera activée lorsque vous appliquerez la Mise à jour) 
+
+ 
+
+Les mises à jour disponibles sur le site de Mises à Jour sont accessibles via le menu 
+déroulant situé en dessous du titre Mise à jour prêtes à l’exécution. 
+
+ 
+
+En principe, les mises à jour sont classées par ordre de dates sur le site. 
+
+ Vous devez respectez l’ordre de dates dans l’exécution des mises à jour. Vérifiez 
+attententivement les dates au cas où il y aurait des inversions. (vérifier aussi bien votre 
+liste de mise à jour téléchargée que la liste du site) 
+
+En cas d’erreur dans l’ordre d’exécution ou en cas d’oubli d’une mise à jour, voir à la fin 
+de cette section la procédure à suivre. 
+
+Si vous avez du retard dans les mises à jour, exécutez toutes les mises à jour 
+rétroactives manquantes, sauf si il ya des mises à jour récapitulatives. Dans ce cas la 
+période de dates couverte par la mise à jour récapitulative est précisée dans le nom de la 
+mise à jour). 
+
+Avant de télécharger les mises à jour, il est prudent de se rendre sur le site de mise à jour 
+pour consulter le contenu des mises à jour et vérifier le bon ordre des dates. Le lien vers 
+le site de mise à jour « Consultez le site de Mise à jour » est donné en haut de 
+l’interface. 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Le bouton précédant le nom de la mise à jour ouvre une fenêtre d’information sur le 
+contenu de la mise à jour. Il s’agit en général d’informations formelles, cependant si des 
+mesures particulières doivent être prises par les utilisateurs, c’est dans cette fenêtre 
+qu’elles sont indiquées. Il est donc plus que prudent de consulter systématiquement ces 
+informations. 
+
+ 
+
+Exemple de fenêtre d’information sur une mise à jour : 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+Gestion des erreurs de manipulation dans les mises à jour. 
+
+ 
+
+En cas d’erreur dans l’ordre d’exécution ou en cas d’oubli d’une mise à jour, il faut 
+recommencer à partir de la mise à jour qui précède l’erreur. Cependant comme tout ou 
+partie des mises à jour a été exécutée, les mises à jour téléchargées n’apparaissent plus 
+dans la liste des mises à jour exécutables. 
+
+Il faut faire une opération manuelle pour nettoyer la liste des mises à jour exécutées. 
+
+Pour cela ouvrir le fichier MAJlog.js situé dans le répertoire racine de la plateforme 
+
+Celui-ci se présente comme suit. : 
+
+ 
+
+ 
+
+Il faut alors supprimer les mises à jour exécutées en remontant en s’arrêtant à la Mise à 
+jour précédant l’incident. 
+
+ EN principe, si vous ne les avez pas supprimées, les mises à jour sont toujours dans le 
+répertoire Racine de la plateforme. 
+
+videz le cache et relancer l’interface de mise à jour à partir du menu Edition de 
+GaïaMundi 
+
+vous devez maintenant voir la liste des mises à jour exécutables en bas de l’interface. 
+
+Si vous ne les avez pas téléchargées dans le bon ordre, elles apparaissent en ordre 
+décalé. Repérer les mises à jour manquantes et téléchargez-les. Observez bien l’ordre 
+des dates pour les exécuter. 
+
+ 
+
+SI vous ne vous y retrouvez pas, supprimez tous les dossiers de mise à jour dans le 
+répertoire racine et recommencez le téléchargement à partir de l’incident. 
+
+Les répertoires de mise à jour se reconnaissent par le fait que leur nom commence 
+toujours par « A0-ModuleMAJ- » 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+Remarque pour les utilisateurs avancés 
+
+ 
+
+Lors de l’exécution de la mise à jour, vous l’interface affiche l’architecture de la mise à 
+jour. 
+
+Les fichiers concernés par la mise à jour sont tous cochés. 
+
+Après avoir lu la fenêtre d’information sur le site de mise à jour, vous pouvez décider de 
+ne pas écraser un fichier concerné par la mise à jour. Dans ce cas, décochez-le. Attention, 
+il s’agit d’une procédure risquée. Mieux vaut vous renseigner auprès de l’équipe de 
+développement en vous adressant à l’adresse suitecairo@orange.fr 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+

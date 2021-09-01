@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>Normal</title>
+
+</head>
+<body>
+
+<script language="javascript">
+function docu(a){
+document.getElementById("afdocu").style.display="block"
+
+
+}
+
+function xclose(){
+document.getElementById("afdocu").style.display="none"
+
+}
+
+function affmenu(){}
+
+
+
+function reglezam2(){
+if(window.frames.lafr.document.getElementById("zam2")){
+window.frames.lafr.document.getElementById("zam2").setAttribute("width","285px")
+window.frames.lafr.document.getElementById("zam2").setAttribute("height","285px")
+
+
+
+
+setTimeout('window.frames.lafr.zam2.document.getElementById("table").setAttribute("width","285px")',1000)
+
+setTimeout('window.frames.lafr.EtatHisto()',1000)
+setTimeout('window.frames.lafr.document.getElementById("innerhisto").firstChild.firstChild.style.display="none"',1600)
+setTimeout('window.frames.lafr.document.getElementById("innerhisto").style.left="520px"',1600)
+}else{setTimeout('reglezam2()',100)}
+
+
+}
+function Sans(){
+if(window.frames.lafr.document.getElementById("rectmove")){
+window.frames.lafr.document.getElementById("rectmove").style.fill="white"
+window.frames.lafr.document.getElementById("rectmove").style.stroke="white"
+setTimeout('Sans2()',1400)
+}else{setTimeout('Sans()',50)}
+
+}
+function Sans2(){
+window.frames.lafr.document.getElementById("hypertexte").setAttribute("width","275px")
+window.frames.lafr.document.getElementById("hypertexte").setAttribute("height","355px")
+window.frames.lafr.hypertexte.document.getElementsByTagName("body")[0].style.backgroundColor="white"
+
+var tdlength=window.frames.lafr.hypertexte.document.getElementsByTagName("td").length
+for(i=0;i<tdlength;i++){
+window.frames.lafr.hypertexte.document.getElementsByTagName("td")[i].style.backgroundColor="white"
+}
+window.frames.lafr.hypertexte.document.getElementsByTagName("body")[0].style.fontFamily="Century Gothic, Helvetica, sans-serif"
+window.frames.lafr.hypertexte.document.getElementsByTagName("body")[0].style.fontSize="11px"
+
+var tbllength=window.frames.lafr.hypertexte.document.getElementsByTagName("table").length
+
+for(i=0;i<tbllength;i++){
+window.frames.lafr.hypertexte.document.getElementsByTagName("table")[i].style.backgroundColor="white"
+window.frames.lafr.hypertexte.document.getElementsByTagName("table")[i].style.width="240px"
+}
+
+
+
+
+
+}
+
+</script>
+<center>
+<br>
+<div style="position:absolute;top:0px;width:98%">
+
+<iframe id="lafr" name="lafr" style="border: 0px none ; width: 846px; height: 670px; background-color: white;" src="PageCarto/Module-PageCarto-Allege.html" frameborder="0" onload="setTimeout('Sans()',0)"></iframe> 
+
+</div> 
+
+<div id="afdocu" style="display:none;position:absolute ; width:843px ;"><iframe id="docula" name="docula" style="border: 0px none ; width: 846px; height: 670px; "frameborder="0" src="comment.html" ></iframe></div> 
+</center>
+</body>
+</html>

@@ -1,0 +1,345 @@
+﻿ 
+
+ 
+
+Compléments pour PageCarto 
+
+Paramètres et fonctions spéciales 
+
+Deux fonctionnalités additionnelles sont présentées ici : 
+
+ 
+
+. Le Module de synthèse 
+. L’Affichage des Sommes sur les graphiques histogrammes simples 
+
+
+Par défaut, ces deux fonctions sont inhibées en raison du fait qu’il est nécessaire de 
+réaliser un travail de paramétrage préalable. 
+
+Le module de synthèse 
+
+ 
+
+ 
+
+Le module de synthèse se présente sous la forme d’un encadré qui se superpose à la 
+partie haute de l’hypertexte et qui affiche la valeur des variables affichées en rond ou 
+en fond de carte coloré, pour l’ensemble cumulé des aires de la carte. 
+
+ 
+
+ 
+
+ 
+
+Ronds seulement Ronds et fonds coloré 
+
+ 
+
+Retour au sommaire 
+
+ 
+
+
+
+
+ 
+
+Si la variable résulte d’un rapport entre deux variables ou d’une comparaison en % ou 
+non, le module de synthèse fournit aussi la valeur des variables du numérateur et du 
+dénominateur pour l’ensemble cumulé des aires de al carte. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Pourcentage (Ronds seulement) valeur simple (ronds) 
+
+ écart à la moyenne (fonds coloré) 
+
+ 
+
+ occulte le module. Pour l’activer de nouveau : rafraichir PageCarto 
+
+ replie le module. La barre de commande se positionne en haut de l’hypertexte 
+
+ déplie le module lorsqu’il est replié 
+
+ 
+
+ 
+
+ 
+
+L’activation du module de synthèse se fait à la main en changeant le paramètre 
+suivant dans le fichier parametres.js situé dans le dossier PageCarto 
+
+ 
+
+ 
+
+Le problème est que le module de synthèse n’a pas de signification lorsque les 
+données ne sont pas sommables 
+
+Il faut alors repérer les données non sommables dans le fichier et constituer un 
+vercteur de n° de données pour lesquelles le module de synthèse affichera le 
+message « nd » si ces variables sont prises en compte dans le calcul de la variable 
+affichée sur la carte. 
+
+Il faut réaliser ce vecteur pour les données du fichier principal (données Sujet) et pour 
+le fichier complémentaire s’il y en a un (données Other) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+De la même manière, pour que le module de synthèse soiyt valide, il ne doit pas y 
+avoir de double compte des aires géographiques. Ce risque apparaît lorsqu’il ya des 
+encadrés. Comme dans l’exemple ci-dessous. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Il faut alors regarder en détail les fichiers de données pour voir si les lignes 
+correspondant aux dessins inclus dans les encadrés ont des données ou sont vide 
+(lignes où toutes les données ont la valeur -99999) 
+
+ 
+
+ 
+
+ 
+
+Dans l’exemple ci-dessus les encadrés 1 et 2 ont bien la valeur -99999 pour valeur des 
+données. 
+
+ 
+
+Si ce n’avait pas été le cas, il aurait fallu introduire une exception sur les aires n°1 et 
+n°2 en plaçant ces numéros dans le vecteur prévu à cet effet comme indiqué ci-
+dessous. 
+
+ 
+
+ 
+
+A ces conditions, le calcul sur les aires cumulées est correct. 
+
+ 
+
+L’affichage de la somme sur les graphiques Histogrammes Simples 
+
+L’affichage de la somme dans les graphiques histogrammes simple se présente sous 
+la forme suivante. Cependant, dans de nombreux cas, comme dans l’exemple ci-
+dessous, cette somme n’a pas de signification. Il faut alors inhiber la fonction 
+d’affichage de la somme sur le graphique 
+
+ 
+
+
+
+
+ 
+
+Pour inhiber la fonction d’affichage de la somme sur le graphique, on se reporte dans 
+l’interface de fabrication des menus graphiques et pour le graphique considéré, on 
+introduit le sigle ( !) dans le champ « 12 – libellé long » 
+
+Si l’un des champs de saisie du formulaire relatif au graphique concerné comprend le 
+sigle %, l’affichage de la somme sera inhibé automatiquement même sans ajouter le 
+sigle ( !) 
+
+ 
+
+ 
+
+ 
+
+(n’oublier pas de vider le cache et de rafraichir PageCarto pour voir le résultat) 
+
+ 
+
+Par défaut, la fonction somme est complètement inhibée car on a forcé à 0 la 
+variable qui déclenche l’affichage de la somme si elle n’est pas égale à 0 
+
+ 
+
+ 
+
+ 
+
+Pour activer la fonction affichage de la somme, supprimer la ligne indiquée dans le 
+fichier parametres.js situé dans le répertoire PageCarto. 
+
+ 
+
+ 
+
+Réglage de l’affichage de données à 
+l’ouverture du module PageCarto 
+
+Par défaut, à l’ouverture, le module PageCarto pointe sur une aire géographique 
+arbitrairement choisie : la n°5 et n’affiche aucune données. 
+
+On peut changer ces conditions de démarrage en intervenant de manière manuelle 
+dans le fichier hypertexte.js situé dans le sous répertoire PageCarto. 
+
+ 
+
+Il faut intervenir dans la fonction init() de la manière suivante : 
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+Par défaut la fonction init() est écrite comme suit 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Le chiffre 5 à la ligne 418 indique l’aire sélectionnée au départ. 
+
+La ligne 425 déclenche l’affichage du graphique n°1 pour l’aire sélectionnée 
+
+(Le graphique n°1 est le premier dans le menu des graphiques de la version pour 
+fouiller). 
+
+ 
+
+Pour pointer sur une autre aire géographique, il suffit de changer le 5 en un autre 
+numéro choisi. Pour cela il faut ouvrir le fichier principal.js dans un éditeur et relever 
+le n° correspondant à l’aire choisie 
+
+Par exemple le n° pour la Lybie est le n°11 
+
+ 
+
+ 
+
+Pour changer le graphique, il suffit de choisir le n° dans le menu graphique de la 
+version pour fouiller et le substituer à la valeur 1 dans la ligne 425 
+
+ 
+
+Plutôt que d’afficher un graphique seul, on peut désirer afficher des données sur la 
+carte 
+
+On insère alors une ligne du type suivant en ligne 126 
+
+setTimeout('CPonctuel(2,chinois,1,2);Cfond(60,rouge,5);Cgraph(1,0)',2000) 
+
+ 
+
+CPonctuel(2,chinois,1,2) se traduit par : 
+
+Affichage de ronds , variable n°2, palette 5 couleurs ;quantile 1 ; taille des ronds 
+agrandie deux fois) 
+
+Cfond(60,rouge,5) se traduit par : 
+
+Affichage en fond coloré ; variable 60 ; palette dégradés rouges ; quantiles 5) 
+
+ 
+
+Les numéros de variable sont les numéros dans le menu variable de la version pour 
+fouiller. 
+
+ 
+
+Cgraph (1,0) se traduit par 
+
+Affichage du graphique n°1, en format réduit 
+
+ 
+
+ 
+
+On peut enfin régler l’ascenseur de l’hypertexte pour le positionner à un endroit 
+choisi en introduisant la fonction suivante après la précédente insertion ( ligne 427) 
+window.scrollTo(0,x) il faut procéder à tâtons pour trouver la bonne valeur x du scroll 
+vertical.. 
+
+Pour voir les résultat de vos transformations dans la fonction init() : vider le cache et 
+rafraîchissez le module avec le lien rafraichir en bas à gauche de la carte. 
+
+
+
+
+ 
+
+Ce qui donnerait dans ce cas : 
+
+ 
+
+ 
+
+ 
+
+NB à travers cet exemple, on découvre la syntaxe des fonctions de commande des 
+cartes. Ce sont ces fonctions qui sont incorporées dans les balises de lien multiples 
+insérées dans l’hypertexte. Dans l’hypertexte, les balises regroupent toujours les trois 
+fonctions: réglage des ronds, réglage du fond, réglage du graphique. 
+
+ 
+
+Il ya toujours un graphique actif pour la carte soit toujours réactive lorsqu’on clique 
+sur une aire. 
+
+Pour n’afficher que le fond, il suffit de mettre le n° de la variable de CPonctuel à 0 
+
+Par exemple CPonctuel(0,chinois,1,2) 
+
+Idem pour qu’il n’y ait pas de fond affiché : Cfond(0,rouge,5) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+

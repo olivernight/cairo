@@ -1,0 +1,302 @@
+﻿<html><head>
+<script language="javascript" src="autodiag0-sauvegarde_fichiers/check_to_html/resultat/listeutilisateurs.js"></script>
+<script language="javascript">
+
+var coordutilici=top.transcoordutil("return coordutil") //coordonnées + déja inscrit
+
+var Qici=top.retourneQ("return Q")
+
+var deb
+var validenreg=0
+var arret
+var voscoord=new Array()
+var stockdatasencours=new Array()
+var lgstock=new Array()
+//----------------------------------------------------------------checkliste
+var coul
+var logtext=new Array()
+function checklist0(){// décelnché par onload dans la balise <body>
+stockdatasencours=new Array()
+
+checklistex() // récupère les paramètres epermettantd e créer la tchekliste
+
+
+
+ecritform() // écrit les paramètres dans le formulaire avant transfert vers fichier php décriture de la tchekliste
+
+}
+
+
+var ecritquestionX=""
+var ecritthemeX=""
+var ecrittablogX=""
+var ecritmenuencapsX=""
+var etatdesboxX=new Array()
+var tabgauch=new Array()
+var tabdroit=new Array()
+var tabcorb=new Array()
+var tabcoulpostit=new Array()
+
+
+function checklistex(){
+//alert(deb+"   "+arret+"   "+coul)
+lgstock=new Array()
+
+ecritthemeX=parent.ecrittheme("return ecritthemeX")// recup thèmes en clair
+document.getElementById("T[1]").value=ecritthemeX
+ecritquestionX=parent.ecritquestion("return ecritquestionX")// récup questions en clair
+document.getElementById("T[2]").value=ecritquestionX
+ecrittablogX=parent.ecrittablog("return ecrittablogX")// récupe menuencapsule en clair
+document.getElementById("T[3]").value=ecrittablogX
+ecritmenuencapsX=parent.ecritmenuencaps("return ecrittablogX")// récup tablelogique en calir
+document.getElementById("T[4]").value=ecritmenuencapsX
+etatdesboxX=parent.etatdesbox("return etatdesboxX")
+tabgauch=etatdesboxX[0]
+document.getElementById("T[5]").value=tabgauch
+tabdroit=etatdesboxX[1]
+document.getElementById("T[6]").value=tabdroit
+tabcorb=etatdesboxX[2]
+document.getElementById("T[7]").value=tabcorb
+
+document.getElementById("T[8]").value=parent.document.getElementsByTagName("body")[0].innerHTML
+//alert(document.getElementById("T[8]").value)
+document.getElementById("T[9]").value=Qici
+//alert(document.getElementById("T[9]").value)
+tabcoulpostit=parent.tabcoulpostit("return stockcouleurpostit")
+document.getElementById("T[10]").value=tabcoulpostit
+}
+
+function checklistexXXXXXXXXXXXXXXX(deb,arret,coul){
+
+for(i=deb;i<arret;i++){
+lgstock=new Array()
+if(top.document.getElementById("graphique1").getSVGDocument().getElementById("rectfond"+i).getAttribute("name")!="zero"){
+//alert("icicici  "+validenreg)
+lgstock[0]=top.document.getElementById("graphique1").getSVGDocument().getElementById("rectfond"+i).getAttribute("name")// N° question clé
+lgstock[1]=top.document.getElementById("graphique1").getSVGDocument().getElementById("interf"+i).firstChild.nodeValue // score
+lgstock[2]=coul// couleur
+lgstock[3]=""// réservé pseudo
+lgstock[4]=""// réservé mot depasse
+lgstock[5]=""// réservé adresse mail
+lgstock[6]=""// réservé (=1 enregiste les coordonnées utilisateurs sinon rien (commande exécuté dans check.php))
+lgstock[7]=""//recevra plus loin le rang dans où sera stoccké la valeur tot dela boucle sur stocjdatasencours executée dans php
+lgstock[8]=""// recevra l'indicateur 1 si l'utilisateur a repris des travaux en cours
+lgstock[9]=""//réservé pour le liens vers le cas
+lgstock[10]=""// réservé pour le liens les sources d'information sur le sujet du point clé
+
+//ON PEUT EN RAJOUTER SI NECESSAIRE, LES PARAMERTRE DE DECALAGE SONT PREVUS 
+
+lgstock[lgstock.length]=""// DIVERS en réserve pour liens etc..
+lgstock[lgstock.length]=""// DIVERS en réserve pour liens etc..
+
+//--------------------------------------------------------------------
+var tot=lgstock.length+12+1
+lgstock[lgstock.length]=tot //accueille la longueur d'un élément de stckdatasencours qui donnera, dans check.php, la serie mapX pour paramétrer les fonctions de l'entête du résultat
+lgstock[7]=lgstock.length//rang ou est stockée la longueur d'un élément k de stckdatasencours
+var intermed=lgstock.length //décompte intermédiaire pour caler la boucle suivante
+lgstock[lgstock.length-2]=intermed
+//alert("intermed="+intermed)
+var varici=lgstock[0]
+
+if(varici>100){varici=parseInt(lgstock[0])-100}
+for(fg=0;fg<12;fg++){ // balayage des zones d'écriture dans le tableau de questions répondues 
+lgstock[intermed+fg]=" "
+lgstock[intermed+fg]=top.frames.commentaires1.document.getElementById("Qrep"+varici+"_"+fg).firstChild.data
+}
+logtextX(varici)
+stockdatasencours[stockdatasencours.length]=lgstock
+}
+}
+}
+
+
+var tt=0
+function logtextX(varici){
+var Xtxt
+var xc=varici
+var bt=top.frames.versions.document.getElementById(xc).childNodes.length
+for(d=0;d<bt;d++){
+
+if(top.frames.versions.document.getElementById(xc).childNodes[d].nodeName=="#text"){
+Xtxt=new Array(0,"")
+if(Xtxt==""){alert("vide")}else{
+//Xtxt[0]=xc
+logtext[tt]=xc
+tt+=1
+//Xtxt[1]="<br>"+top.frames.versions.document.getElementById(xc).childNodes[d].data+"<br>"
+logtext[tt]="<br>"+top.frames.versions.document.getElementById(xc).childNodes[d].data+"<br>"
+tt+=1
+}
+}
+}
+}
+
+function ecritform(){
+
+}
+
+function effectsubmit(){
+//
+}
+function effectsubmit2(){
+
+}
+var lgstock
+function senregistrer(){
+
+checkoblig();// vérifie le contenu des boites de saisie des coordonnées
+voscoord=new Array()
+voscoord[0]=document.getElementById("F[1]").value
+voscoord[1]=document.getElementById("F[2]").value
+voscoord[2]=document.getElementById("F[3]").value
+var Okenreg=0
+//test : vérifier que l'utilisateeur n'existe pas déjà
+if(coordutilici[2]==1){Okenreg=1}else{
+for(j=0;j<util.length;j++){
+if(util[j][0]==voscoord[0]){alert("cet Identifiant existe déjà. Si c'est vous qui l'avez enregistré lors d'un viste précédente, alors retournez à la page d'accueil d'Iliade et cliquez sur le bouton reprendre, sinon choisissez un autre identifiant. Vous pouvez aussi éditer vos travaux sans vous enregistrer, mais ceux-ci ne seront pas sauvegardés sur le serveur ");j=util.length}else{Okenreg=1}
+}
+}
+var dejasinscrit=top.recupdejainscrit("return dejainscrit") // in dicateur qui dit que l'on est déjà inscrit
+if(Okenreg==1 & coordutilici[2]==0){
+util[util.length]=voscoord //ajout à la lite des utilisateur en mémoire dans la page courante
+}
+// affectation des données utilusateur dans les cases dispoibles de stockdatasencours[0] pour faire ce quon en veut (dans la page locale si on a besoin)
+ //lgstock=stockdatasencours[0]
+
+lgstock[6]=Okenreg
+if(coordutilici[2]==1){lgstock[8]=1}else{lgstock[8]=0}
+lgstock[3]=voscoord[0]
+lgstock[4]=voscoord[1]
+lgstock[5]=voscoord[2]
+stockdatasencours[0]=lgstock
+// affectation aux input avant transfert check.php
+
+document.getElementById("input3").value=lgstock[3]
+document.getElementById("input4").value=lgstock[4]
+document.getElementById("input5").value=lgstock[5]
+document.getElementById("input6").value=lgstock[6]
+document.getElementById("input8").value=lgstock[8]
+}
+
+var pseudonul=1
+var mdpnul=1
+var admailnul=1
+
+function rechercherutil(a,b,c){
+if(a=="Votre identifiant" || a==""){pseudonul=1}else{pseudonul=0}
+if(b=="Votre mot de passe" || b==""){mdpnul=1}else{mdpnul=0}
+if(c=="Votre adresse mail" || c==""){admailnul=1}else{admailnul=0}
+if(mdpnul==1){alert("votre mot de passe est éronné ou manquant. Il vous faut recommencer")
+}else{
+
+for(i=0;i<util.length;i++){
+voscoord=new Array()
+voscoord=util[i]
+if(voscoord[1]==b){document.getElementById("F[1]").value=voscoord[0];document.getElementById("F[1]").value=voscoord[1];document.getElementById("F[1]").value=voscoord[2];}
+}
+}
+}
+function checkoblig() {
+  if (document.getElementById("F[1]").value == "" || document.getElementById("F[1]").value == "Votre identifiant") {
+    var p=" votre identifiant";
+  }else{var p=""}
+ if (document.getElementById("F[2]").value == '' || document.getElementById("F[2]").value == 'Votre mot de passe') {
+    var mp="votre mot de passe";
+  }else{mp=""}
+   if (document.getElementById("F[3]").value == '' || document.getElementById("F[3]").value == 'Votre adresse mail') {
+    var ad="votre adresse mail";
+  }else{ad=""}
+  if( p!="" || mp!="" || ad!=""){
+  document.getElementById('editerchecklist').style.visibility="hidden";
+  alert("merci d'indiquer :"+p+"  "+mp+"   "+ad);
+  return false}else{ return true}
+}
+function opaccoord(a){
+document.getElementById('F[1]').style.opacity=a
+document.getElementById('F[2]').style.opacity=a
+document.getElementById('F[3]').style.opacity=a
+
+}
+//---------------------------------------------------------------fin du module checkliste
+</script></head><body style="background-color: transparent;" onload="checklist0()">
+<DT id="debut0"></DT>
+<form id="debut" name="debut" onclick="effectsubmit()" action="autodiag0-sauvegarde_fichiers/check_to_html/check2.php" method="post">
+
+<!-- variables de transfert vers php pour créer la chekliste xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<input type="text" id="input0"  name="N[0]" style="visibility:hidden"  value="" ></input><!--              -->
+<input type="text" id="input1"  name="N[1]" style="visibility:hidden"  value="" ></input><!--              -->
+<input type="text" id="input2"  name="N[2]" style="visibility:hidden"  value="" ></input><!--              -->
+<input type="text" id="input3"  name="N[3]" style="visibility:hidden"  value="" ></input><!--  PSEUDO  -->
+<input type="text" id="input4"  name="N[4]" style="visibility:hidden"  value="" ></input><!--   MOT DE PASSE -->
+<input type="text" id="input5"  name="N[5]" style="visibility:hidden"  value="" ></input><!--    ADRESSE MAIL   -->
+<input type="text" id="input6"  name="N[6]" style="visibility:hidden"  value="" ></input><!--    (=1 enregiste les coordonnées utilisateurs sinon rien (commande exécuté dans check.php))         -->
+<input type="text" id="input7"  name="N[7]" style="visibility:hidden"  value="" ></input><!--              -->
+<input type="text" id="input8"  name="N[8]" style="visibility:hidden"  value="" ></input><!--    recevra l'indicateur 1 si l'utilisateur a repris des travaux en cours       -->
+<input type="text" id="input9"  name="N[9]" style="visibility:hidden"  value="" ></input><!--              -->
+<!--<input type="text" id="input10"  name="n[10]" style="visibility:hidden"  value="" ></input>              -->
+
+
+<input type="text" id="T[1]"  name="T[1]" style="visibility:hidden"  value="" ></input><!--         ecritquestionX          -->
+<input type="text" id="T[2]"  name="T[2]" style="visibility:hidden"  value="" ></input><!--         ecritthemeX               -->
+<input type="text" id="T[3]"  name="T[3]" style="visibility:hidden"  value="" ></input><!--         ecrittablogX              -->
+<input type="text" id="T[4]"  name="T[4]" style="visibility:hidden"  value="" ></input><!--         ecritmenuencapsX    -->
+<input type="text" id="T[5]"  name="T[5]" style="visibility:hidden"  value="" ></input><!--         tabgauch                    -->
+<input type="text" id="T[6]"  name="T[6]" style="visibility:hidden"  value="" ></input><!--          tabdroit                     -->
+<input type="text" id="T[7]"  name="T[7]" style="visibility:hidden"  value="" ></input><!--          tabcorb                      -->
+<TEXTAREA id="T[8]"   name="T[8]" rows=10 COLS=40 style="visibility:hidden"  value=""  ></TEXTAREA><!--          premier innerHTML                     -->
+<TEXTAREA id="T[9]"   name="T[9]" rows=10 COLS=40 style="visibility:hidden"  value=""  ></TEXTAREA><!--          second innerHTML                     -->
+<input type="text" id="T[10]"  name="T[10]" style="visibility:hidden"  value="" ></input><!--          tabcoulpostit                      -->
+<div id="tcheck" style="position:absolute; visibility:visible;top:173px;left:5px">
+<input type="submit" id="editerchecklist"  name="submit"  onclick="javascript:effectsubmit2()" value="Editer CheckListe" ></input>
+</div>
+
+
+
+<!-- FIN de "variables de transfert vers php pour créer la chekliste"  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+</form>
+<div id="DIVcoord" style="position:absolute; visibility:visible;top:5px;left:5px" >
+
+<form id="enreg" name="enreg"  action="ici.php" method="post">
+<table border=0><tr><td>
+<DT ><span style="font-family:arial;font-size:11"><input type="radio" id="F[0]" name="F[0]" onclick="document.getElementById('F[5]').style.visibility='visible';document.getElementById('F[4]').style.visibility='visible';document.getElementById('editerchecklist').style.visibility='hidden';opaccoord(1)" value="0" >enregistrer</input></span></DT>
+<DT style="font-family:arial;font-size:11"><input type="radio" id="F[0]" name="F[0]" checked="checked" onclick="document.getElementById('F[5]').style.visibility='hidden';document.getElementById('F[4]').style.visibility='hidden';document.getElementById('editerchecklist').style.visibility='visible';opaccoord(0.5)" value="0" >ne pas enregister</DT>
+
+
+<script language="javascript">
+var A=""
+var XXici
+A+='<DT><input type="text" id="F[1]"  name="F[1]" value="'
+if(coordutilici[0]==""){XXici="Votre identifiant"}else{XXici=coordutilici[0]}
+//alert(XXici)
+A+=XXici
+A+='" maxlength="30" size= 15 ></input></DT>'
+
+
+A+='<DT><input type="text" id="F[2]"  name="F[2]" value="'
+if(coordutilici[1]==""){XXici="Votre mot de passe"}else{XXici=coordutilici[1]}
+A+=(XXici)
+A+='" maxlength="30" size= 15></input></DT>'
+
+A+='<DT><input type="text" id="F[3]"  name="F[3]" value="Votre adresse mail" maxlength="30" size= 15  ></input></DT>'
+
+document.write(A)
+</script>
+
+<DT><input type="reset" id="F[4]"  name="F[4]" style="visibility:hidden" onclick="document.getElementById('editerchecklist').style.visibility='visible';document.getElementById('F[5]').style.visibility='hidden'" value="effacer" ></input></DT>
+<DT><input type="button" id="F[5]"  name="F[5]" style="visibility:hidden" onclick="document.getElementById('editerchecklist').style.visibility='visible';senregistrer()" value="enregistrer" ></input></DT>
+</div >
+
+</td></tr></table>
+</form>
+<div id="bferm" style="position:absolute; visibility:visible;top:0px;right:0px">
+<img src="boutonferme.gif" onmouseover="javascript:top.document.getElementById('divcheck').style.visibility='hidden'" title="Fermer menu Check liste">
+</div>
+<script language="javascript">
+document.getElementById('F[1]').style.opacity=0.5
+document.getElementById('F[2]').style.opacity=0.5
+document.getElementById('F[3]').style.opacity=0.5
+</script>
+</font>
+
+</body></html>

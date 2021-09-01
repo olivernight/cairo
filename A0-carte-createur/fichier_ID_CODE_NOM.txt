@@ -1,0 +1,23 @@
+idcarte	libel	codeINSEE
+1	Centre	BF013
+2	Boucle du Mouhoun	BF046
+3	Cascades	BF047
+4	Centre-Est	BF048
+5	Centre-Nord	BF049
+6	Centre-Ouest	BF050
+7	Centre-Sud	BF051
+8	Est	BF052
+9	Hauts-Bassins	BF053
+10	Nord	BF054
+11	Plateau Central	BF055
+12	Sahel	BF056
+13	Sud-Ouest	BF057
+14	RIEN	99999
+15	ensemble	0
+16	libel	codeINSEE
+17	-99999	-99999
+18	-99999	-99999
+19	-99999	-99999
+20	-99999	-99999
+21	-99999	-99999
+22	libel	codeINSEE

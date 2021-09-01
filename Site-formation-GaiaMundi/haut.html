@@ -1,0 +1,88 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr"><head><!--Copyright [2005-2007] [Hervé Paris] hpdb@wanadoo.fr - altercarto@wanadoo.fr - cite.publique@wanadoo.fr This file is part of GaïaMundi. GaïaMundi is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. GaïaMundi is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with GaïaMundi; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA--><title>cartes et commentaires/GaïaMundi</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+	
+	<link rel="stylesheet" type="text/css" title="normal" media="screen" href="../style_gda20.css">
+<script language="javascript" src="REP.js"></script>
+<script language="javascript">
+if(top.transbgcolormenu){
+var bgcolormenuici=top.transbgcolormenu("return bgcolormenu")
+}else{bgcolormenuici="black"}
+
+
+</script>
+
+<style type="text/css">
+
+#conteneur3 {
+     position: relative;  /*on positionne le conteneur */
+	 top:0px;
+     margin-left: auto;
+     margin-right: auto;
+     width: 1000px;
+     text-align: left;
+
+}
+
+</style>
+<script language="javascript" src="../itemMenuSiteTous.js" ></script>
+
+<script language="javascript">
+var Xpage=parent.location.href
+
+</script>
+</head>
+<body style="background-color: transparent;font-family:arial" >
+<!--/:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::menu::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::/-->
+
+<script language="javascript">
+
+document.write('<div  style="position:absolute; top:0px;left:-15px;border:0px solid #fff; opacity: 1;"><table style="opacity:0.5"><tr style="height:'+(window.innerHeight-30)+'"><td width=100%></td></tr></table></div>')
+</script>
+
+
+<script language="javascript">
+
+var idceltemp="cel0"
+
+var opcourant=0.8
+document.write('<div  style="position:absolute; top:0px;left:5px;border:1px solid #fff; opacity: 1;font-family:arial"><table padding=0 cellspacing=0 bgcolor="'+bgcolormenuici+'" style="width:1010px;height:20px;opacity: 1;"><tr  style="height:auto;"><TD><table bgcolor="'+bgcolormenuici+'" style="width:1010px;height:20px;"><tr style="height:auto;border:1px solid #fff; opacity: 1;background-color:white;">')
+var rg=0
+for(i=0;i<ItemMenu.length;i++){//boucle / cellules du menu=boutons
+
+rg+=1
+if(LienItemMenu[i]=="" || LienItemMenu[i]=="#"){LienItemMenu[i]=parent.location.href}
+document.write('<td id="cel'+i+'" onclick="if(\''+Xtarget[i]+'\'==\'_top\'){parent.location.href=(\''+LienItemMenu[i]+'?cible=page-'+ItemMenu[i]+'-Site.htm\')}else{self.open(\''+LienItemMenu[i]+'\')};document.getElementById(idceltemp).style.opacity=0.8;this.style.opacity=0.2;opcourant=0.2;idceltemp=\'cel'+i+'\'" onmouseover="opcourant=this.style.opacity;this.style.opacity=0.5" onmouseout="this.style.opacity=opcourant" width="100px" style=";background-image:url(../haut_box.png);opacity:0.8;"><center><span style="opacity:0.7;font-size:11px">')
+
+if(Xpage.search(ItemMenu[i])>0){document.getElementById(idceltemp).style.opacity=0.8;document.getElementById('cel'+i).style.opacity=0.2;opcourant=0.2;idceltemp='cel'+i}
+//------------contenu de la cellule bouto
+document.write('<b style="color:black">'+ItemMenu[i]+'</b>')
+//------------
+document.write('</span></center></td>')
+
+
+}//fin du menu
+</script>
+<script language="javascript" src="ItemMenu.js" ></script>
+<script language="javascript">
+
+for(i=rg;i<ItemMenu.length;i++){//boucle / cellules du menu=boutons
+if(listpagevision[i]==1){
+
+if(LienItemMenu[i]=="" || LienItemMenu[i]=="#"){LienItemMenu[i]=parent.location.href}
+document.write('<td id="cel'+(i)+'" onclick="if(\''+Xtarget[i]+'\'==\'_top\'){parent.location.href=(\''+LienItemMenu[i]+'?cible=page-'+ItemMenu[i]+'-Site.htm\')}else{parent.open(\''+LienItemMenu[i]+'\')};document.getElementById(idceltemp).style.opacity=0.8;this.style.opacity=0.2;opcourant=0.2;idceltemp=\'cel'+i+'\'" onmouseover="opcourant=this.style.opacity;this.style.opacity=0.5" onmouseout="this.style.opacity=opcourant" width="100px" style=";background-image:url(../haut_box.png);opacity:0.8;"><center><span style="opacity:0.7;font-size:11px">')
+if(Xpage.search(ItemMenu[i])>0){document.getElementById(idceltemp).style.opacity=0.8;document.getElementById('cel'+i).style.opacity=0.2;opcourant=0.2;idceltemp='cel'+i;}
+//------------contenu de la cellule bouto
+document.write('<b style="color:black">'+ItemMenu[i]+'</b>')
+//------------
+document.write('</span></center></td>')
+}
+
+}//fin du menu
+document.write('<td  style="text-align:right;background-image:url(cbleu.gif);opacity:1">&nbsp;</td></tr></table></td></tr></table></div>')
+
+top.frames.bandeaula.location.href="bandeau.html"
+</script>
+
+
+</body></html>

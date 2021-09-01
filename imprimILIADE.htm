@@ -1,0 +1,156 @@
+﻿<html><head>
+
+<script language="javascript" src="autodiag0-sauvegarde_fichiers/MAJquestionsetthemes/questions.js"></script>
+<script language="javascript" src="autodiag0-sauvegarde_fichiers/MAJquestionsetthemes/themes.js"></script>
+<script language="javascript">
+var Qip=parent.retourneipQ("return Q")
+var etatdesboxip =parent.retourneipbox("return etatdesboxX")
+var goch=etatdesboxip[0]
+var drouat=etatdesboxip[1]
+var corbail=etatdesboxip[2]
+var couleurboxip=parent.retourneipcoul("return stockcouleurpostit")
+/**/
+
+
+
+parent.document.getElementById("conteneur").style.opacity=0.3
+parent.document.getElementById("ip").style.visibility="visible"
+var textip=""
+ function ecritimprim(tab,c){
+ var som=0
+for(i=0;i<tab.length;i++){som+=tab[i]}
+if(som==0){
+var cat
+if(c==1){cat='"à réfléchir"'}
+if(c==2){cat='"à engager"'}
+if(c==3){cat='"à classer"'}
+textip+="<I>NB. Il n'y a aucun point de repère dans la catégorie "+cat+"</i><BR>"
+
+
+}else{
+ textip+="<center><table class='textex'><tr><TD width='600px'>"
+ // gauche --> à réfléchir 
+ if(c==1){textip+="<br><br><center><b style='font-size:30px;color:gray;'>I -  Les points \"à réfléchir\"</b></center><br><br>"}
+ if(c==2){textip+="<br><br><center><b style='font-size:30px;color:gray'>II - Les points \"à engager\"</b></center><br><br>"}
+ if(c==3){textip+="<br><br><center><b style='font-size:30px;color:gray'>III - Les points restant à classer</b></center><br><br>"}
+ for(i=1;i<tab.length;i++){
+ if(tab[i]!=0){
+textip+="<b style='padding:10px;font-size:30px;color:#2EABEF'>Point de repère n°"+i+"</b>"
+textip+='<br>'
+a=couleurboxip[i]
+
+if(a==1){a="orange";b="à prendre en compte si possible"}
+if(a==2){a="green";b="important"}
+if(a==3){a="blue";b="très important"}
+if(a==4){a="gray";b=" non classé"}
+if(a==5 || a==0){a="gray";b=" non classé"}
+textip+="<br><b style='padding:10px;font-size:18px'>"+titre[i-1]+"</b>"
+textip+="<br><i style='padding:10px'>Degré d'importance : <span style='color:"+a+"'>"+b+"</span></i><br>"
+textip+='<br><div style="padding:10px">'
+textip+=theme[i-1]
+textip+='</div><br>'
+ 
+ }
+
+ }
+
+ 
+ // droite --> à engager
+ 
+ // corbeille --> en attente
+ textip+='</td></tr></table></center>'
+ }
+ }
+ function questX(){
+ textip+='<br><br><br><center> vvvvvvvvvvvvvvvvvvvvv</center><br><br>'
+  textip+="<center><table class='textex'><tr><TD width='600px'>"
+  textip+='<center><b style="font-size:30px;color:gray">Vos réponses au questionnaire"</b></center><br><br>'
+  textip+='<span style="font-size:11px">'
+
+  for(i=1;i<Qip.length;i++){
+  var rep
+  if(Qip[i]==1){rep="Oui"}
+  if(Qip[i]==2){rep="Non"}
+  if(Qip[i]!=1 & Qip[i]!=2){rep="Sans réponse"}
+  //alert("reponse à la question n°"+i+"="+Qip[i]+"  ->rep="+rep)
+    textip+='<b>'+rep+'</b> à la question n°'+i+'<i><br><span style="padding:20px">'+question[i-1]+'</span></i><br>'
+	}
+  textip+='</span>'
+ textip+='</td></tr></table></center>'
+ }
+ 
+  function autresPR(){
+ textip+='<br><br><br><center> vvvvvvvvvvvvvvvvvvvvv</center><br><br>'
+  textip+="<center><table class='textex'><tr><TD width='600px'>"
+  textip+='<center><b style="font-size:30px;color:gray">les autres points de repères que vous auriez pu voir apparaître</b></center><br><br>'
+  textip+='<span style="font-size:11px">'
+
+  for(i=1;i<goch.length;i++){
+  var rep
+  if(goch[i]==0 & drouat[i]==0 & corbail[i]==0){
+  
+    textip+='<br><br><b style="font-size:15px;color:gray">Point de repère n°'+i+'<i></b><br><span style="padding:20px">'+theme[i-1]+'</span></i><br>'
+	} }
+  textip+='</span>'
+ textip+='</td></tr></table></center>'
+
+}
+function ecritentete(){
+  textip+="<center><table class='textex'><tr><TD width='600px'>"
+textip+="<br><br><center><b style='font-size:30px;color:black;'><img src='anact.jpg'><img src='europe.jpg'></b></center><br>"
+textip+="<center><b style='font-size:20px;color:black;'>Plateforme Gestion des âges de l'Anact</b></center><br>"
+textip+="<center><b style='font-size:30px;color:black;'>Iliade</b></center><br>"
+textip+="<center><b style='font-size:20px;color:black;'>Bilan de votre visite</b></center><br><br>"
+ textip+='</td></tr></table></center>'
+}
+function printici(){
+ textip+='<div style="position:fixed;top:10px;right:10px;"><img onclick="javascript:print()" src="icones/print.png"></div>'
+}
+</script>
+<style type="text/css">
+.textex {
+color:#000000;
+background-color:transparent;
+font-family:arial;
+font-size:12px;
+padding-right:0px;
+/*line-height:15px;*/
+opacity:0.9;
+}
+
+.textex a:link{
+color:#0000ff;
+background-color:transparent;
+text-decoration:none;
+border-bottom: dotted 1px #0000ff;
+}
+.textex a:visited{
+color:#0000ff;
+background-color:transparent;
+text-decoration:none;
+border-bottom: dotted 1px #0000ff;
+}
+.textex a:hover{
+color:#0000ff;
+background-color:transparent;
+border-bottom: solid 2px #0000ff;
+}
+.textex a:active{
+color:#FF33CC;
+background-color:transparent;
+text-decoration:none;
+}
+</style>
+</head><body style="background-color: transparent;" >
+<div id="textaimprimer" class="textex" ></div>
+<script language="javascript">
+ecritentete()
+ecritimprim(goch,1)
+ ecritimprim(drouat,2)
+ ecritimprim(corbail,3)
+ questX()
+ autresPR()
+ printici()
+ document.getElementById("textaimprimer").innerHTML+=textip
+ </script>
+</body></html>

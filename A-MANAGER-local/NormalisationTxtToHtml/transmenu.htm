@@ -1,0 +1,50 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr">
+<head>
+
+
+<script language="javascript" >
+    var urlvar=""
+
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+var origine=""
+var REPERTOIREICI=urlvar['REP']    // répertoire d'intégration des données
+var PrincComp=urlvar['PC']   // fichier principal==1 ou complémentaire==2
+origine="../../"+REPERTOIREICI+"/"+PrincComp
+if(	PrincComp=="principal.html"){ PrincComp=1}else
+								{ PrincComp=2}
+
+function moduleVide_add_insertjs(){
+window.frames.ModuleV_add_insert.location.href="vide_add_insertjs.html?PC="+PrincComp+"&REP="+REPERTOIREICI
+
+}
+</script>
+</span>
+
+<div id="divloading" style="position:absolute;top:100px;left:50px;color:gray;display:block;z-index:100000;font-family:arial"><center><img id="loading" style="background-color:white;" width=60 border="0px" src="../../loading.gif"><br>Normalisation en cours<br>Merci de patienter</center></div>
+</div>
+<iframe  style="display:none" name="ModuleV_add_insert"></iframe>
+<iframe id="framedataorigine" name="framedataorigine"  style="display:none" onload="moduleVide_add_insertjs()"></iframe>
+<script language="javascript" >
+window.frames.framedataorigine.location.href=origine
+</script>
+</body >
+</html>

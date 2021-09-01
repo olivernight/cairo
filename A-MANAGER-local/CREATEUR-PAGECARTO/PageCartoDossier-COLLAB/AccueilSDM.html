@@ -1,0 +1,228 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+  <script type="text/javascript">
+var listUtil=new Array()
+  </script>
+  <script id="mappocoord" name="mappocoord" type="text/javascript"
+ src="A-MANAGER-local/Utilisateurs/listeUtil.js"></script>
+  <script type="text/javascript">
+
+    var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+    //alert(urlvarnum)
+
+     //si l'adresse de départ est "http://www.mapage.com/index.htm?nom=dupond&prenom=jean&age=50+ans", alors urlvar['nom'] vaut 'dupond', urlvar['prenom'] vaut 'jean', et urlvar['age'] vaut '50 ans'
+     //-->
+
+var util=""
+var indicValidTestCoord=0
+function testCompte(){
+document.getElementById('mesloginadh').innerHTML=""
+document.getElementById('mesmo2pasadh').innerHTML=""
+
+a=document.getElementById('loginadh').value
+b=document.getElementById('mo2pasadh').value
+var testa=1
+var testb=1
+for(i=0;i<listUtil.length;i++)
+{
+if(a==listUtil[i][0]){testa=0}
+if(b==listUtil[i][1]){testb=0}
+}
+if(testa==1){document.getElementById('mesloginadh').innerHTML="login inexistant"}
+if(testb==1 & testa==0){document.getElementById('mesmo2pasadh').innerHTML="mot de passe érroné"}
+if(testa==1 || testb==1){indicValidTestCoord=0}else{
+util=a
+indicValidTestCoord=1;
+poursuivre()}
+
+}
+
+function enregistreCompte(){
+document.getElementById('messageenreg').innerHTML=""
+a=document.getElementById('login').value
+//test sur le login ( stop s'il existe déjà)
+var testa=1
+var testc1=1
+var testc2=1
+for(i=0;i<listUtil.length;i++)
+{
+if(a==listUtil[i][0]){testa=0}
+}
+if(testa==1){
+b=document.getElementById('mo2pas').value
+c=document.getElementById('adresmail').value
+if(a!="" &  b!=""  & c!="" ){
+//test sur la conformité de l'adresse
+var ctab=c.split('@')
+if(ctab.length==2){
+if(ctab[1].indexOf(".")>0){}else{var testc2=0}
+}else{testc1=0}
+if( testc1==0 || testc2==0){document.getElementById('messageenreg').innerHTML="adresse non conforme"
+}else{
+util=a
+indicValidTestCoord=1
+InscriptListeDiscutant(a,b,c)
+
+}
+}else{
+document.getElementById('messageenreg').innerHTML="Coordonées incomplètes"
+}
+}else{document.getElementById('messageenreg').innerHTML="Ce login existe déjà!"}
+}
+
+function InscriptListeDiscutant(a,b,c){
+
+//window.frames.execCompte.location.href="A-MANAGER-local/Utilisateurs-DISCUSSION/creaCompte.php?util="+a+"&mp="+b+"&ad="+c
+
+
+}
+
+
+function poursuivre(){
+if(indicValidTestCoord==1)
+{
+// avec compte valide 
+window.location.href="readLibelDATA-REC-MODULE.html?util="+util
+}else{
+// sans compte
+window.location.href="readLibelDATA-REC-MODULE.html?util="
+}
+}
+
+  </script>
+  <script type="text/javascript">
+
+  </script>
+  <title>AccueilSDM2</title>
+</head>
+<body style="background-color: white; font-family: arial;">
+<div style="text-align: center; color: rgb(102, 0, 204);"><big
+ style="font-weight: bold; color: rgb(102, 102, 204);"><big>Bienvenue
+dans le monde du
+Serpent de Mer
+</big></big><br>
+</div>
+<br>
+
+<center>
+<span id="visit">
+<br>
+<span id="adh" style="display:bloc"><span style="font-weight: bold;">Vos coordonnées</span>
+<table style="font-family: arial; font-size: 11px; text-align: center;">
+  <tbody>
+    <tr>
+      <td style="color: red; font-weight: bold;" id="mesloginadh"><br>
+      </td>
+      <td style="color: red; font-weight: bold;" id="mesmo2pasadh"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>Login<br>
+      <input id="loginadh" style="width: 150px;" type="text"> </td>
+      <td>Mot de passe<br>
+      <input id="mo2pasadh" style="width: 150px;" type="text"> </td>
+    </tr>
+  </tbody>
+</table>
+<input value="OK" onclick="testCompte()" type="button"><br>
+<br>
+<table style="font-family: arial; font-size: 11px; text-align: center;">
+  <tbody>
+    <tr>
+      <td> <input value="Créer un Compte"
+ onclick="document.getElementById('adh').style.display='none';document.getElementById('enreg').setAttribute('style','bloc')"
+ type="button"></td>
+      <td  style="display:none"> <input value="Poursuivre sans compte"
+ onclick="indicValidTestCoord=0;poursuivre()" type="button"></td>
+    </tr>
+  </tbody>
+</table>
+</span>
+<!-- ///////////////////////////////////////////////////// fin d'adhérent //////////-->
+<!-- /////////////////////////////////////////////////////enregistrement //////////-->
+<span id="enreg" style="display:none"><span style="font-weight: bold;">Enregistrez
+vous</span>
+<table style="font-family: arial; font-size: 11px; text-align: center;">
+  <tbody>
+    <tr>
+      <td style="color: red; font-weight: bold;" id="messageenreg"><br>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+<span id="visit">
+<table>
+  <tbody>
+    <tr>
+      <td>
+      <div style="text-align: center;"><small>Login</small><br>
+      </div>
+      <input id="login" style="width: 150px;" type="text"> <br>
+      </td>
+      <td>
+      <div style="text-align: center;"><small>Mot de passe</small><br>
+      </div>
+      <input id="mo2pas" style="width: 150px;" type="text"> <br>
+      </td>
+      <td>
+      <div style="text-align: center;"><small>Adresse mail</small><br>
+      </div>
+      <input id="adresmail" style="width: 150px;" type="text"> <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<input value="OK" onclick="enregistreCompte()" type="button"><br>
+<br>
+<table style="font-family: arial; font-size: 11px; text-align: center;">
+  <tbody>
+    <tr>
+      <td> <input value="Revenir en arrière"
+ onclick="document.getElementById('adh').setAttribute('style','bloc');document.getElementById('enreg').style.display='none'"
+ type="button"><br>
+      </td>
+      <td  style="display:none"> <input value="Poursuivre sans compte"
+ onclick="indicValidTestCoord=0;poursuivre()" type="button"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</span>
+<!-- ///////////////////////////////////////////////////// fin d'enregistrement //////////--><br>
+<br>
+</span>
+</span>
+</center>
+<script type="text/javascript">
+
+
+</script>
+<iframe id="execCompte" name="execCompte" style="display: none;"></iframe>
+</body>
+</html>

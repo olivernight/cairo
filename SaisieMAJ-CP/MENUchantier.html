@@ -1,0 +1,112 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="MENUAIDE/filesaide/listeaide.js?updated=1234567890"></script>
+<link rel="stylesheet" href="MENUAIDE/tbcss/demos.css" media="screen" type="text/css">	
+	<script type="text/javascript">
+	var paneactive=parent.returnpane()
+var sousrep='MENUAIDE/'
+var onglet=1 // =1 affichage  des onglets en popup dans l'éditeur paramètre d'url. Sinon =0	
+
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+
+
+var modif
+if(urlvar['modif']){modif=urlvar['modif']}else{modif=0}
+
+function rien(){}
+</script>
+<style type="text/css">
+	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
+	h3{
+		margin-top:40px;
+	}
+
+		/* SLIDER CSS */
+		#valueOfRedSlider,#valueOfGreenSlider,#valueOfBlueSlider{
+			width:50px;
+			float:left;
+		}
+		#redSlider,#greenSlider,#blueSlider{
+			width:200px;
+			height:20px;
+			float:left;
+			margin-right:5px;
+		
+		}
+		#sliderInputDiv{
+			width:30px;
+			height:20px;
+		}
+		
+		.clear{
+			clear:both;
+	
+		}	
+		.ver_slider{
+			height:230px;
+			width:30px;
+			float:left;
+		}
+		#ver_slide1,#ver_slide2,#ver_slide3{
+			width:30px;
+			height:200px;
+			margin-bottom:3px;
+		}
+
+#box2{
+		width:520px;
+	
+		float:left;
+		background-color:#FFF;
+		
+
+	filter:alpha(opacity=70);
+	opacity: 0.7;
+	background-image:url('MENUAIDE/haut_box.png');
+	background-repeat: repeat-x;
+	}
+	</style>	
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="MENUAIDE/tbcss/tab-view.css">
+<script type="text/javascript" src="MENUAIDE/js/dhtml-suite-for-applications-without-comments.js"></script>
+
+
+<link rel="stylesheet" type="text/css" title="normal" media="screen" href="MENUAIDE/tbcss/style.css">
+<script type="text/javascript" src="MENUAIDE/js/dragable-contentMODIF.js"></script>
+<script type="text/javascript" src="MENUAIDE/js/menuaide.js?updated=1234567890"></script>
+
+</head>
+<body>
+<script type="text/javascript" >
+if(modif==1){//MENUAIDE/MODIFaide.html?onglet=0&pane='+paneactive+'
+document.write('<div style="position : fixed; top:5px;left:5px"><a id="xmod" href="MENUAIDE/MODIFaide.html?onglet=0&pane=0">Modifier</a></div>')
+}
+
+
+forcepane(paneactive)
+</script>
+
+</body></html>

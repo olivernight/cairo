@@ -1,0 +1,402 @@
+﻿ 
+
+ 
+
+Les Plateformes GaïaMundi 
+
+ 
+
+Une application et une démarche 
+
+ 
+
+GaïaMundi est une application Web de cartographie statistique, diffusée sous licence GNU 
+GPL. Elle est spécialement destinée au travail collaboratif et ses concepteurs se sont attachés à 
+rendre l’usage des résultats du travail aussi accessibles que possible à des usagers non experts 
+en statistique ou en cartographie. 
+
+Conçu pour faciliter aussi bien le raisonnement sur les données cartographiées que pour 
+faciliter le travail plus technique réalisé en back office (façonnage des fichiers de données et 
+des cartes,….), GaïaMundi privilégie le raisonnement intuitif par une interactivité puissante, 
+une ergonomie et une sémiologie spécialement adaptées. 
+
+GaïaMundi est à la fois : 
+
+. Le support d’une démarche de rapprochement raisonné de données localisées 
+spécialement conçue pour soutenir des procédés de travail tels que des démarches 
+d’enquête collaborative, des diagnostics partagés, des chantiers d’exploration et de 
+fouille de données, … en soutien à des actions de démocratie participative tout autant 
+que pour équiper des professionnels. 
+. une application web collaborative en cartographie de données statistique qui peut 
+être connectée à un réseau de plateforme de ressources et qui produit elle-même un 
+réseau de sites filleuls associés. La aussi la visée est tout autant la démocratisation de 
+l’accès à la donnée (volet démocratisation de l’OpenData) en proposant des formes 
+raisonnées et partagées de l’accèssibilité, que l’optimisation du travail professionnel. 
+
+
+ 
+
+Que peut-on faire avec GaïaMundi ? 
+
+Façonner des cartes interactives 
+En mobilisant de larges répertoires de données en quelques clics, 
+Travailler à différentes échelles (tables de passage…) 
+Insérer de nouvelles données et de nouvelles cartes , 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+-
+-
+-
+-
+
+-
+-
+-
+-
+Accéder à des ressources partagées : banque de cartes, silo de données localisées, réseau de 
+plateformes GaiaMundi... 
+
+ 
+Régler les cartes pour visualiser les phénomènes en introduisant du mouvement 
+Susciter le raisonnement par des procédés intuitifs et une sémiologie adaptée, 
+Proposer des modalités d’analyse bi-variées, tracer les occurrences significatives pour 
+
+ un raisonnement. 
+
+ 
+
+Des ressources disponibles en ligne 
+
+Un ensemble de ressources sont disponibles en ligne sur le site http://gaiamundi.fr 
+Notamment les mises à jour de l’application, la banque de carte, les manuels et autres 
+documents d’information ou de méthodologie, les données partagées dans le réseau des 
+utilisateurs de GaïaMundi. (Sur ces deux deniers aspects, voir ci-après la Rose des Vents, le 
+Serpent de Mer et le site http://altercarto.fr). 
+
+ 
+
+Eléments techniques 
+
+Technologie client et technologie serveur 
+
+ 
+
+Techniquement, GaïaMundi est un site Web portable, entièrement contenu ans un répertoire 
+de fichiers (dossier). Il peut s’utiliser en mode publication par simple copier-coller dans un 
+répertoire de votre ordinateur. Ou bien être utilisé en mode production et administration 
+(écriture des hypertextes, intégration de données, génération de sites filleuls, administration 
+etc…), et doit dans ce cas être déposé, là aussi par simple copier-coller, sur un serveur web 
+équipé d’une distribution apache et php5, soit en local, sur votre ordinateur, soit distant sur un 
+serveur web en ligne. 
+
+ 
+
+Le noyau de l’application utilisé pour la publication est conçu en technologie client1 . Il n’y a 
+pas de bases de données installées dans un serveur (SQL MySQL etcc.), ni pour les données et 
+les cartes, ni pour les textes déroulants (hypertextes), ni pour l’application. C’est cette 
+spécificité technique qui rend possible son installation en mode publication par simple copier-
+coller sur n’importe quel ordinateur et qui facilite par exemple son usage en animation de 
+groupes de travail. 
+
+Les interfaces de production et administration, qui nécessitent un serveur local ou distant, 
+sont réalisées en technologie serveur2 
+
+ 
+
+Les Utilités 
+
+Des situations d’usage et des modes d’usage. 
+
+ 
+
+GaïaMundi est conçu pour supporter trois modes d’usages : 
+
+1 - le mode publication 
+
+En Mode publication, sur les sites de la plateforme auxquels ils ont accès, les utilisateurs 
+peuvent : 
+
+ 
+
+- 
+Afficher des cartes (en liste ouverte ou restreinte), afficher les données disponibles 
+
+
+
+
+1 Langages HTML Javascript, svg : c'est-à-dire que c’est votre ordinateur qui travaille et non pas un serveur. 
+
+2 Langage php : c’est le serveur qui exécute vos consignes et qui génère des pages html, du svg ou du code javascript. Dans GaïaMundi, la 
+génération des ces pages et codes se fait en dur et non pas en dynamique, c'est-à-dire que tout ce qui est produit est réutilisable en mode 
+publication, avec ou sans serveur, après la fermeture des interfaces de production. 
+
+
+sur ces cartes, régler les cartes à leur convenance, 
+- 
+Lire des hypertextes de commentaires de cartes (en affichant les cartes au fur et à 
+mesure de la lecture du texte) 
+
+
+ 
+
+En mode publication : 
+
+ 
+
+- 
+la plateforme peut être en accès ouvert ou restreint. 
+- 
+Chaque site Filleul peut être en accès restreint ou ouvert. Il peut être visible ou 
+invisible aux autres membres du réseau 
+
+
+2 - le mode production 
+
+Le mode production concerne les membres de groupes de travail disposant de droits d’accès à 
+tout ou partie des sites du réseau. 
+
+ 
+
+En mode production : 
+
+ 
+
+- 
+les membres de groupes peuvent enregistrer sous forme d’hypertexte les travaux 
+qu’ils réalisent avec les fonctionnalités du mode publication. 
+
+
+ 
+
+- 
+Ils peuvent créer des documents de travail "hypertexte de cartes et commentaires", 
+les publier ou non sur les sites filleuls auxquels ils ont accès. Les différents groupes 
+disposent, via des procédures d’abonnement, de permissions étendues ou restreintes 
+aux stocks de cartes et données ainsi qu’aux hypertextes situés sur la plateforme. 
+
+
+ 
+
+- 
+Ils peuvent cloner les hypertextes et les modifier ou les compléter. 
+
+
+ 
+
+ 
+
+3 - le mode administration de plateforme 3 
+
+ 
+
+En mode administration de plateforme, les membres du groupe peuvent : 
+
+ 
+
+- 
+intégrer de nouvelles cartes (Cf Banque de cartes du réseau) 
+- 
+intégrer de nouvelles données 
+- 
+fabriquer menus et légendes pour des icones ponctuels ou des graphiques associés à 
+la carte 
+- 
+transférer des données d’une carte à une autre, 
+- 
+créer de nouveaux sites filleuls … 
+
+
+ 
+
+L’équipe d’administration de plateforme a en charge : 
+
+ 
+
+- 
+la gestion des permissions d’accès dans le réseau (mode publication, production et 
+administration du réseau de sites filleuls) 
+- 
+la gestion des rapports avec les responsables du support technique (serveur Internet 
+ou réseau Intranet). 
+- 
+la politique de rédaction sur les supports collectifs du réseau (pages infos réseau et 
+pages liens du réseau) et sur le site de publication "Texte et Notes". 
+
+
+ 
+
+Il existe aussi un mode administration générale, ou qui donne à la personne ou aux personnes 
+qui en ont la charge des droits étendus, en particulier ceux de suspension de la publication 
+d’entités cartes et données (inaccessibilité dans le réseau). 
+
+ 
+
+
+
+3 Le mode administration de plateforme concerne en principe un groupe restreint de personnes. Dans l’esprit des concepteurs de 
+GaïaMundi, ce groupe gagne à être composé d’un représentant au moins par groupe de travail en charge d’un site filleul, ainsi que de 
+l’équipe de la structure support du réseau s’il y en a une. 
+
+ 
+
+
+GaïaMundi est conçu pour soutenir différentes situations d’usage : 
+
+1 - Animation 
+
+GaïaMundi a été spécialement conçu comme support d’animation de groupes dans différentes 
+situations : 
+
+ 
+
+- 
+élaboration collective de diagnostics 
+- 
+accompagnement du dialogue social territorial 
+- 
+débat public et démocratie participative 
+- 
+problématisation de la décision 
+
+
+ 
+
+L’ergonomie, la sémiologie et l’interactivité de GaïaMundi ont été conçues pour soutenir le 
+travail collaboratif entre de groupes d’acteurs aux savoirs et connaissances souvent 
+hétérogènes, en leur permettant non seulement de rechercher un accord sur les 
+problématiques et les enjeux mais en progressant dans leur analyse collective et en 
+construisant une capacité collective a appréhender la complexité. 
+
+Dans ces scènes d’animation, fortement stimulées par le jeu graphique des cartes et 
+l’interactivité, les savoirs scientifiques et empiriques des participants se libèrent, se 
+confrontent, se complètent et donnent du sens à la représentation cartographique des 
+données, permettant de saisir les contextes et les enjeux des territoires d’une manière 
+partageable. 
+
+ 
+
+GaïaMundi facilite à la fois la découverte, l’échange et la reconnaissance des points de vue 
+variés, le raisonnement collectif, la capitalisation des résultats et leur valorisation ultérieure. 
+
+ 
+
+Orienté vers l’animation et le partage, GaïaMundi se veut un outil au service d’une 
+modernisation de l’action publique et/ou privée qui reposerait sur la montée en compétence 
+collective d’acteurs d’horizons diversifiés et aux postures et savoirs hétérogènes. 
+
+ 
+
+Dans cette mesure, si GaïaMundi n’est pas conçu comme outil d’aide à la décision, il peu 
+contribuer à instruire la décision en apportant en particulier : 
+
+ 
+
+- 
+une aide à la problématisation sans laquelle des acteurs hétérogènes dans un monde 
+incertain ne peuvent agir de conserve 
+- 
+une démarche de scénarisation qui conduit les acteurs à partager non seulement le 
+diagnostic mais la compréhension de la dynamique qui le soustend et par conséquent 
+son caractère prédictif. 
+
+
+ 
+
+2 - Travail collaboratif à distance 
+
+ 
+
+La configuration de GaïaMundi peut permettre de poursuivre ou de construire un tel travail 
+collaboratif à distance. 
+
+ 
+
+3 – Publication 
+
+ 
+
+En soit, à travers ses sites filleuls générés en quelques cliques (voir ci-après), GaïaMundi est un 
+espace de publication Extranet ou Intranet, dont la portée peut être graduée : cercles 
+restreints des acteurs que l’on souhaite associer à la réflexion, partenaires ou compétences 
+spécialisées à qui l’on demande de contribuer, publics cibles ou grand public... selon les 
+objectifs des utilisateurs. 
+
+Le fonctionnement en réseau de diffusion dans les sites filleuls de lka plateforme, présente 
+aussi l’intérêt de capitaliser en réseau les démarches d’analyse cartographique, et par 
+conséquent, en comparant démarches et résultats, de construire peu à peu un horizon de 
+référence pour une compétence collective à appréhender la complexité. 
+
+ 
+
+
+
+
+La diffusion vers des publics profanes est en ce sens un des objectifs facilités par le projet 
+GaïaMundi. En jouant sur un équilibre dynamique entre la mise à contribution réflexive de 
+l’internaute (interactivité des cartes, possibilité de jouer, de tester les hypothèses ...) et un 
+cadre d’analyse scénarisé, on permet aux profanes de "voir" les processus à l’oeuvre et par là 
+même de comprendre les interdépendances entre des facteurs variés, et de se forger un point 
+de vue sur des sujets de débat dont ils sont habituellement écartés. 
+
+ 
+
+Les connaissances et les savoirs diffusés présentent ainsi l’avantage d’être plus facilement 
+appropriables. Ils le sont d’autant plus que les auteurs et les membres des groupes 
+d »utilisateurs confrontent des savoirs empiriques et scientifiques, institutionnels ou 
+techniques, en les contextualisant, permettant ainsi aux internautes qui consultent les 
+résultats de ce travail, de se forger une compétence à comprendre les enjeux des territoires et 
+à les discuter. 
+
+ 
+
+4- "Bureautique" individuelle ou en réseau. 
+
+ 
+
+Moyennant une certaine habitude du raisonnement cartographique, GaïaMundi peut devenir 
+un outil bureautique courant. Soit sur des postes individuels (l’installation ne pose aucun 
+problème), soit en réseau (il suffit de dédier un ordinateur du réseau Intranet ou Extranet à la 
+fonction d’accueil de la plateforme, et de générer autant de sites filleuls que l’on veut). 
+
+ 
+
+5- Mutualisation des ressources 
+
+ 
+
+Outre le partage en réseau local, les différents réseaux GaïaMundi partagent des ressources 
+communes téléchargeables : banques de fonds de cartes, plateformes de données publiques 
+directement injectables dans les cartes sur les plateformes des utilisateurs, ainsi que les liens 
+avec les plateformes qui se sont rendues visibles aux autres (Cf § Serpent de Mer). 
+
+ 
+
+6 - Recherche et investigation dans les cartes et les données 
+
+ 
+
+Satisfaire sa curiosité, tester une hypothèse, laisser libre court à un raisonnement dans les 
+données. C’est l’un des intérêts de GaïaMundi que de permettre cela, "à temps perdu" ou dans 
+le cadre d’un programme de travail établi. L’interface allégée "noyau Gaïamundi" est 
+particulièrement pratique pour ce type d’activité. Après avoir fouillé, testé et découvert des 
+pistes fructueuses, l’usage de la plateforme globale est d’autant plus performant puisqu’on a 
+déjà une idée précise des directions à prendre dans l’univers des données. (Voir aussi le § Rose 
+des Vents) 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+

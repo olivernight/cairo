@@ -1,0 +1,151 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr">
+<head>
+<script language='javascript' >
+
+
+
+  </script>
+<script language='javascript' src='REP.js?updated=1234567890'></script>
+<script language='javascript' src='../../../mapsILIADE.js?updated=1234567890'></script>
+  
+  <title>Editeur Articles</title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language='javascript' >
+
+
+var ici=window.location.href
+var Xcarte
+function appelmanagerico(){
+window.frames.managerICOSujet.location.href="../selection.repertoireMENUS.php?carte="+Xcarte
+}
+
+
+function appelcarte(k){
+window.frames.pagecarto.location.href="../../../"+liste[k]+"/PageCartoDossier-BLANC/PageCarto/Module-PageCarto.xml?format=complete"
+Xcarte=liste[k]
+listejs[0]="../../../../../../"+liste[k]+"/PageCartoDossier-BLANC/PageCarto/hypertexte.htm?alea="+Math.random();
+window.frames.edithypertexte.location.href="SaisieMAJ-CP/MENUchantier.html?LISTEJS="+listejs[0]
+window.frames.editTitre.location.href="editTitres.html?LISTEJS="+liste[k]
+document.getElementById('editTitre').style.visibility='hidden'
+document.getElementById('editTitreComment').style.visibility='hidden'
+
+appelmanagerico()
+
+}
+function changecarte(){
+document.getElementById('modifentete').style.display='block'
+var carte = document.menucarte.selectcarte.selectedIndex;
+if(carte>0){
+appelcarte(carte-1)
+}
+}
+
+
+</script>
+</head>
+
+
+<body style="background-color: transparent;font-family:arial" > 
+
+<div >
+<table><tr><td>
+<!--img src="http://altko.org/gaiamundi-dev/bandeau.jpg"  border=0 -->
+<table><tr><td>
+<dt style="font-size:18px;color:gray">
+<b>PageCarto Editeur de CartoArticles&nbsp;&nbsp;&nbsp;</b>
+</td><td>
+<form name="menucarte">
+<select name="selectcarte" id="selectcarte" onchange="changecarte()">
+<option >Choisissez un module PageCarto</option>
+</select>
+</form></td><td>
+   <input type="button" value="rafraichir" onclick="window.location.href=ici">
+</td></tr></table>
+
+
+</dt>
+
+</dt>
+
+<table><tr><td>
+<iframe name="pagecarto" src="" style="border: 0px none ; width: 800px; height: 670px; background-color: white;"></iframe>
+</td><td>
+<iframe name="edithypertexte" src="" style="border: 0px none ; background-color: transparent;" width="530" height="670"></iframe>
+</td><td>  </td><td>
+    <span id="modifentete" style="color:blue;cursor:pointer;display:none;font-size:11px" onclick=" document.getElementById('editTitre').style.visibility='visible';document.getElementById('editTitreComment').style.visibility='visible'">       Modifier l'entête du module</span>
+<iframe name="editTitre" id="editTitre" src="" style="border: 0px none; background-color: transparent;visibility:none" width="350" height="330"></iframe>
+<br>
+<span id="editTitreComment" style="visibility:hidden">
+PRECAUTIONS : <br><small><small><i>
+<ul>
+<li>écrire en language html/xml : <u>fermer les balises</u>. <br>Par exemple : &lt;br/&gt;</li>
+<li>pour les attributs n'utiliser que des <u>guillements simples ( ' ) et à l'intérieur des doubles ( " ) sans antislash.</u><br/> Ex : onclick='javascript:window.open("http://pargecarto.fr")' </li>
+<li>les sauts de lignes manuels sont éffacés par l'interface. Pour enegistrer un saut de ligne, mettre la balise &lt;br/&gt;</li>
+<li>actualisez les cadres après avoir enregistré</li>
+</ul>
+</i></small></small>
+</span>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+</td></tr></table>
+
+</div>
+<div id="divtest" style="display:none"></div>
+<br>
+
+<script language='javascript' >
+var menu='<option value="">choisir un dossier PageCarto</option>'
+var liste=new Array()
+var listejs=new Array()
+var listeid=new Array()
+var tabtest=""
+
+var chem=window.location.href.replace("A-MANAGER-local/CREATEUR-PAGECARTO/Onglet-PageCarto-Hypertexte-BLANC/onglets.htm","")
+
+for(i=0;i<mapX.length;i=i+5){
+listeid[i/5]=""
+var nouveaux0=document.createElement("script")
+nouveaux0.setAttribute("id","test"+(i/5+3))
+nouveaux0.setAttribute("src",chem+mapX[i+4]+"/PageCartoDossier-BLANC/PageCarto/azimut.js?updated=1234567890")
+nouveaux0.setAttribute("onload","listeid["+(i/5)+"]=1")
+document.getElementById("divtest").appendChild(nouveaux0)
+}
+
+function affichemenu(){
+
+
+for(i=0;i<mapX.length;i=i+5){
+
+if(listeid[i/5]==1){
+
+liste[liste.length]=mapX[i+4]
+
+var nouveaux0=document.createElement("option")
+nouveaux0.setAttribute("value",mapX[i+4])
+var nt1=document.createTextNode((i/5+1)+'-'+mapX[i+3]+'(  répertoire : '+mapX[i+4])
+nouveaux0.appendChild(nt1)
+document.getElementById("selectcarte").appendChild(nouveaux0)
+
+
+}
+}
+
+}
+
+setTimeout('affichemenu()',3000)
+
+
+  </script>
+  <p id="decalprincipal"></p>
+  <div id="managerIco"><iframe id="managerICOSujet" name="managerICOSujet" style="width:700px;height:750px;border:1px solid gray" scrolling="no"></iframe></div>
+
+  <script language='javascript' >
+  
+  
+  </script>
+  <br></body></html>

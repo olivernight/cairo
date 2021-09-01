@@ -1,0 +1,358 @@
+﻿<html>
+<head><meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+    var urlvar=""
+    var ttcartes
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	
+	var selectedrezo=urlvar["selectedrezo"]
+
+</script>
+</head>
+
+<body STYLE="background-color: white" >
+<br><br>
+<!--iframe name="Num0" style="visibility:hidden" src="chimere-ReadLibelRecensement.html"></iframe-->
+<div style="position:absolute;left:0px ;top:390px"><iframe name="readlibelREC" style="visibility:visible;background-color:#E8E8FF;border:0px solid" width=925 height=1700 src="vide.html"></iframe></div>
+<script language="javascript">
+var xtop=0
+if(document.all){var xtop=-40;var xleft=240}else{var xtop=-40;var xleft=240}
+document.write('<div id="cadrevoyageIn" style="visibility: visible;position:relative ;top: '+xtop+'px;left:'+xleft+'px ;; width: 1200px;text-align:left">Critères</div>')
+</script>
+<div id="cadrevoyage" style="position: relative; top: -40px; width: 680px; left: 240px; overflow-y: scroll; height: 302px; visibility: visible;text-align:left"><small>Résultat
+</small>
+<br></div>
+<script language="javascript">
+var selectedmaille
+var mapX=new Array()
+libelmap=new Array()
+var selectedrezo
+var selectedrezoTemp
+var selectedcarte
+var rezo=new Array()
+var nomrezo=new Array()
+var choix
+var ope="et"
+var fich=1
+</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="A-MANAGER-local/transdata_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+<script language="javascript">if(typeof(InRezo)=='undefined'){var InRezo=new Array(); for(i=0;i<rezo.length;i++){InRezo[rezo.length]="Summary not available"}}</script>
+<script language="javascript" src="http://altko.org/admin_rezo/rezo.js"></script>
+<script  language="javascript" >if(rezo.length-InRezo.length>0){for(i=0;i<rezo.length;i++){InRezo[InRezo.length]="Summary not available"}}</script>
+<script id="mapsRezo" language="javascript" ></script>
+
+
+<script type="text/javascript">
+
+/*
+function change_rezo(){
+
+
+var site = document.rezo.selectrezo.selectedIndex;
+selectedrezo=document.rezo.selectrezo.options[site].value;
+selectedrezoTemp=selectedrezo
+
+
+document.getElementById("mapsRezo").src=selectedrezo+"mapsILIADE.js"
+setTimeout('affichmaille()',2000)
+document.getElementById("divrezo").innerHTML="<small>Plateforme 'source':<b style='color:red'>"+nomrezo[site-1]+"</b></small>"
+}
+*/
+
+function videcadre(){window.frames.readlibelREC.location.href="vide.html"}
+function change_maille() {
+videcadre()
+var site = document.maille.selectmaille.selectedIndex;
+selectedmaille=document.maille.selectmaille.options[site].value;
+affichmenusmaps()
+
+}
+
+function change_cartes() {
+videcadre()
+var site = document.cartes.selectcartes.selectedIndex;
+selectedcarte=parseInt(document.cartes.selectcartes.options[site].value);
+recherche()
+}
+function selectionCarte2(){
+for(k=1;k<document.getElementById("selectcartes").options.length;k=k+1){
+if(document.getElementById("selectcartes").options[k].value==selectedcarte){
+document.cartes.selectcartes.selectedIndex=k
+}
+}
+}
+var menu1=""
+var menu2=""
+function affichmenusmaps(){
+
+menu1='<option id="option0" value="javascript:rien2()">&nbsp;Cartes</option>'
+
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+if(selectedmaille==mapX[i+0]){
+menu1+='<option id="option'
+menu1+=kc
+
+
+menu1+='"    VALUE="'+i+'">'//
+menu1+=kc
+menu1+="-"
+menu1+=mapX[i+3]
+menu1+='</option>'
+}
+}
+document.getElementById("selectcartes").innerHTML=menu1
+
+}
+
+function affichmaille(){
+menumaille='<option id="option0" value="javascript:rien2()">&nbsp;Maille</option>'
+var kc=0
+for(i=0;i<mapX.length;i=i+5){
+kc+=1
+menumaille+='<option id="option'
+menumaille+=(kc)
+
+
+menumaille+='"    VALUE="'+mapX[i+0]+'">'//
+menumaille+=(kc)
+menumaille+="-"
+menumaille+=mapX[i+3]+" : maille= "+mapX[i+0]+" - "+libelmap[(i/5)][1]
+menumaille+='</option>'
+document.getElementById("selectmaille").innerHTML=menumaille
+}
+
+}
+
+var repTemp=""
+var fichTemp=""
+
+function recherche(){
+choix=document.getElementById("Xchoix").value
+
+if(repTemp==mapX[selectedcarte+4] & fichTemp==fich){
+var criteres=new Array(ope,'"'+choix+'"')
+//alert(mapX[selectedcarte+4])
+window.frames.readlibelREC.changeinit(criteres)
+window.frames.readlibelREC.libel(mapX[selectedcarte+4])
+
+}else{
+//alert("REZO="+selectedrezo+"&cible="+mapX[selectedcarte+4]+"&numero="+fich+"&carte="+mapX[selectedcarte+3]+"&maille="+libelmap[(selectedcarte/5)][1]+"&codemaille="+mapX[selectedcarte]+"&operateurlog="+ope+"&choix="+choix)
+window.frames.readlibelREC.location.href="readLibelDATAinMaps-MENU.html?REZO="+selectedrezo+"&cible="+mapX[selectedcarte+4]+"&numero="+fich+"&carte="+mapX[selectedcarte+3]+"&maille="+libelmap[(selectedcarte/5)][1]+"&codemaille="+mapX[selectedcarte]+"&operateurlog="+ope+"&choix="+choix
+}
+repTemp=mapX[selectedcarte+4] ;
+fichTemp=fich
+}
+var racine=""
+var ope1="et"
+var motcle="Aucun-mots-clés"
+function libel(textcompose){ 
+//alert(init1)
+menudata=""
+OKITotal=0
+OKI=new Array()
+if(motcle=="" || motcle=="Aucun-mots-clés"){OKITotal=1}else{
+var motc1=motcle.split(" ")
+var stopmot=motc1.length
+for(r=0;r<stopmot;r++){
+OKI[r]=0
+OKITotal=1
+var motc=motc1[r].toLowerCase()
+if(textcompose.toLowerCase().indexOf(motc)>-1 ){
+if(ope1=="ou"){OKI[r]=1;OKITotal=OKITotal*OKI[r];r=stopmot}
+if(ope1=="et"){OKI[r]=1;OKITotal=OKITotal*OKI[r]}
+}else{
+if(ope1=="ou"){OKITotal=0}
+if(ope1=="et"){OKI[r]=0;OKITotal=OKITotal*OKI[r];r=stopmot}
+}
+}
+}
+return OKITotal
+}
+
+function menuVoyage(){
+var cadrevoy='<table style="width:660px;border:0px none;font-family:verdana;font-size:10px" >'
+cadrevoy+='<tr style="background-color:gray">'
+cadrevoy+='<td> </td><td> </td><td> </td><td> </td>'
+cadrevoy+='</tr>'
+var j=0
+var j2=0
+//for(i=mapX.length-5;i>=0;i=i-5){
+for(i=0; i<mapX.length-1;i=i+5){
+var textcompose=mapX[(i+0)]+" "+mapX[(i+1)]+" "+mapX[(i+2)]+" "+mapX[(i+3)]+" "+mapX[(i+4)]
+for(k=0;k<6;k++){textcompose+=" "+libelmap[i/5][k]}
+if(ttcartes==1){libelmap[i/5][5]=""}
+if(libel(textcompose)==1 & libelmap[i/5][5]!='none'){
+cadrevoy+='<tr style="font-size:10px;color:gray;font-weight:bold">'
+//cadrevoy+='<td style="width:10%;vertical-align: top">'
+//cadrevoy+="contour"
+//cadrevoy+='</td>'
+//cadrevoy+='<td style="width:10%">'
+//cadrevoy+="contour et maille"
+//cadrevoy+='</td>'
+cadrevoy+='<td style="width:20%">'
+cadrevoy+="référence carte"
+cadrevoy+='</td>'
+cadrevoy+='<td >'
+cadrevoy+="objet"
+cadrevoy+='</td>'
+cadrevoy+='</tr>'
+cadrevoy+='<tr style="vertical-align: top" >'
+//cadrevoy+='<td style="background-color:#DBDDE2">'
+//cadrevoy+=libelmap[i/5][0]
+//cadrevoy+='</td>'
+//cadrevoy+='<td style="background-color:#F2F0FF">'
+
+//cadrevoy+='</td>'
+cadrevoy+='<td style="background-color:#DBDDE2">'
+cadrevoy+='<span style="color:brown"><b>Contour : </b></span><br>'+libelmap[i/5][0]+'<br>'
+cadrevoy+='<span style="color:brown"><b>Maille : </b></span><br>'+libelmap[i/5][1]+'   ('+mapX[(i+0)]+')'
+
+cadrevoy+='<br><br><span style="color:brown"><b><big>Carte n°: </span>'+(i/5+1)+'</b></big>'
+cadrevoy+='<br><span style="color:brown"><b>Titre: </b></span><br>'+mapX[(i+3)]
+cadrevoy+='<br><span style="color:brown"><b>Répertoire: </b></span><br>'
+cadrevoy+='<span onclick="selectedcarte='+(i)+';selectedmaille=\''+mapX[(i+0)]+'\';document.maille.selectmaille.selectedIndex='+(i/5+1)+';affichmenusmaps();selectionCarte2();;if(repTemp==mapX['+(i+4)+'] & fichTemp==fich){}else{videcadre()};recherche()" style="position:relative;left:0px;cursor:pointer;color:blue;font-weight:bold">'+mapX[(i+4)]+'</span><br><br>'
+
+//cadrevoy+='<span onclick="selectedcarte='+i+';selectedmaille=\''+mapX[(i+0)]+'\';affichmenusmaps();setTimeout(\'document.cartes.selectcartes.selectedIndex='+(i/5)+'\',10);if(repTemp==mapX['+(i+4)+'] & fichTemp==fich){}else{videcadre()};recherche()" style="position:relative;left:0px;cursor:pointer;color:blue;font-weight:bold">'+mapX[(i+4)]+'</span><br><br>'
+
+//cadrevoy+=Rechercher
+
+
+
+
+/*
+cadrevoy+='<br><ul><li>'
+
+
+
+cadrevoy+="<a href='A0-encaps-pageCarto.html?cartecible=../"+mapX[(i+4)]+"/Module-PageCarto-Allege.html&repcible=../"+mapX[(i+4)]+"&modif=0'  target='_blank'>version_normale.</a><br/>"
+cadrevoy+="<a href='#' onclick='javascript:document.getElementById(\"sp2"+i+"\").style.display=\"block\"' title='Cliquer puis sélectionnez avec CTRL+A et copier avec CTRL+C'><i>Le_code.</i></a><div id='sp2"+i+"' style='display:none' onmouseover ='this.style.display=\"block\"' onmouseout ='this.style.display=\"none\"'><textarea>   <iframe frameborder='0' style=\"width:760px;height:670px;border:0px;overflow:none;background-color:white\" src=\""+(racine+mapX[(i+4)])+"/Module-PageCarto-Allege.html\"></iframe>  </textarea></div> <br/><br/>"
+
+cadrevoy+='</li><li>'
+
+cadrevoy+="<a href='A0-encaps-pageCarto.html?cartecible=../"+mapX[(i+4)]+"/Module-PageCarto-Complet.html&repcible=../"+mapX[(i+4)]+"&modif=0' target='_blank'>version_avancée.</a><br/>"
+cadrevoy+="<a href='#' onclick='javascript:document.getElementById(\"sp1"+i+"\").style.display=\"block\"' title='Cliquer puis sélectionnez avec CTRL+A et copier avec CTRL+C'><i>Le_code.</i></a><div id='sp1"+i+"' style='display:none' onmouseover ='this.style.display=\"block\"' onmouseout ='this.style.display=\"none\"'><textarea>   <iframe frameborder='0' style=\"width:760px;height:670px;border:0px;overflow:none;background-color:white\" src=\""+(racine+mapX[(i+4)])+"/Module-PageCarto-Complet.html\"></iframe>  </textarea></div> "
+
+
+cadrevoy+="<br/><br/>"
+
+
+cadrevoy+='</li></ul>'
+*/
+cadrevoy+='</td>'
+cadrevoy+='<td style=";background-color:#F2F0FF">'
+cadrevoy+='<b>'
+cadrevoy+=libelmap[i/5][2]
+cadrevoy+='</b>'
+cadrevoy+='<br/><i>'
+cadrevoy+=libelmap[i/5][3]
+cadrevoy+='</i>'
+cadrevoy+='</td>'
+cadrevoy+='</tr>'
+cadrevoy+='<tr style="background-color:gray">'
+cadrevoy+='<td> </td><td> </td><td> </td><td> </td>'
+cadrevoy+='</tr>'
+}
+}
+cadrevoy+='</table>'
+//cadrevoy+='</select></form></div>'
+//cadrevoy+='<div id="conservMotcle" style="position: absolute; top: 5px;left:210px "><small><small>Conserver<br>la requète</small></small><br><input type="radio" id="B_1" name="B" value="0" onClick="cons=0"><small><small>Non</small></small></input><br><input type="radio" id="B_2" name="B" value="1" onClick="cons=1" value="0" type="text"><small><small>Oui</small></small></imput></div>'
+//cadrevoy+='</select></form></div>'
+//cadrevoy+='<div id="divlogic" style="position: absolute; top: 58px; ;left:0px "><dt><input type="radio" id="A_1" name="A" value="1" onClick="fich=1;vide()"><small><small>Icone Principal</small></small></input><input type="radio" id="A_2" name="A" value="2" onClick="fich=2;vide()" value="0" type="text"><small><small>Icone Complémentaire</small></small></imput></dt><dt><input type="radio" id="A_3" name="A" value="0" onClick="fich=3;vide()"><small><small style="color:blue">Graphique Principal</small></small></input><input type="radio" id="A_4" name="A" value="4" onClick="fich=4;vide()" value="0" type="text"><small><small style="color:blue">Graphique Complémentaire</small></small></imput></dt></div>'position: absolute; top: '+(document.getElementById("cadrevoyage").offsetTop-45)+'px;;left:'+(document.getElementById("cadrevoyage").offsetLeft+13)+'pxposition: absolute; top: '+(document.getElementById("cadrevoyage").offsetTop-25)+'px;;left:'+(document.getElementById("cadrevoyage").offsetLeft+18)+'px
+var cadrevoy2='<dt id="divlogic1" style=";z-index:10000 "><dt><input type="radio" id="H_1" name="H" value="1" onClick="ope1=\'et\'"><small><small style="font-family:verdana;font-size:10px;color:gray">Et </small></small></input><input type="radio" id="H_2" name="H" value="2" onClick="ope1=\'ou\'" value="0" type="text"><small><small style="font-family:verdana;font-size:10px;color:gray">Ou </small></small></imput><span name="formmotscle"><input onkeyPress="quelle_touche(event);" id="Xchoix2" type="text" style="width:220px;border:1px solid gray;color:gray; font-family:verdana;font-size:10px;" value="Aucun-mots-clés"></input><input type="button" onclick="motcle=document.getElementById(\'Xchoix2\').value;menuVoyage()" value="OK" style="color:gray; font-family:verdana;font-size:10px;"></input></dt><dt>'
+cadrevoy2+='<small style="font-family:verdana;font-size:10px;color:gray"><b>Recherche de Cartes : inscrivez vos mots clés en les séparant par un espace.         </b><br/></small></dt></dt>'
+
+document.getElementById("cadrevoyageIn").innerHTML=cadrevoy2
+document.getElementById("cadrevoyage").innerHTML=cadrevoy
+document.getElementById("Xchoix2").value=motcle
+if(ope1=="et"){var HX=1}else{var HX=2}
+document.getElementById("H_"+HX).checked=true 
+document.getElementById("cadrevoyageIn").style.visibility="visible"
+
+}
+
+//_________________________________________________________________________________________________________________________
+
+</script>
+
+
+
+
+
+
+
+<script language="javascript">
+/*
+document.write('<div id="divrezo" style="position: absolute; height: 24px; top: 0px;  width:300px"><form name="rezo"><select id="selectrezo" name="selectrezo" onchange="change_rezo()"   style="background-color: white; color: black;width:200px" size="1"><option id="optionRezo0" value="javascript:rien2()">&nbsp;REZO</option>')
+
+for(i=0;i<rezo.length;i++){
+
+document.write('<option id="optionRezo')
+document.write(i)
+
+
+document.write('"    VALUE="'+rezo[i]+'">')//
+document.write(i+1)
+document.write("-")
+document.write("plateforme : "+nomrezo[i])
+document.write('</option>')
+
+}
+document.write('</select></form></div>')
+
+
+*/
+
+   function quelle_touche(evenement)
+   {
+       var touche = window.event ? evenement.keyCode : evenement.which;
+       if(touche==13){recherche()}
+   }
+
+
+document.write('<div id="divmaille" style="position: absolute; height: 24px; top: 50px;left:5px "><form name="maille"><select id="selectmaille" name="selectmaille" onchange="change_maille()"   style="background-color: white; color: black;width:200px" size="1">')
+
+document.write('</select></form></div>')
+
+document.write('<div id="divcartes" style="position: absolute; height: 24px; top: 77px;;left:5px  "><form name="cartes"><select id="selectcartes" name="selectcartes" onchange="change_cartes()"   style="background-color: white; color: black;width:200px" size="1">')
+
+document.write('</select></form></div>')
+
+document.write('<div id="divlogic" style="position: absolute; height: 24px; top: 131px; ;left:5px ;font-family:arial"><small><dt><input type="radio"  id="A_1" name="A" value="1" onClick="fich=1;videcadre()"><small><small>Icone Principal</small></small></input><input type="radio" id="A_2" name="A" value="2" onClick="fich=2;videcadre()" value="0" type="text"><small><small>Icone Complémentaire</small></small></imput></dt><dt><input type="radio"  id="A_3" name="A" value="0" onClick="fich=3;videcadre()"><small><small style="color:blue">Graph. Principal</small></small></input><input type="radio" id="A_4" name="A" value="4" onClick="fich=4;videcadre()" value="0" type="text"><small><small style="color:blue">Graph. Complément.</small></small></imput></dt></small></div>')
+
+
+document.write('<div id="divlogic" style="position: absolute; height: 24px; top: 181px;;left:5px  "><dt><small><small>Type d\'opérateur logique</small></small></dt><dt><input type="radio"  id="T_1" name="T" value="1" onClick="ope=\'et\'"><small><small>Et</small></small></input><input type="radio" id="T_2" name="T" value="2" onClick="ope=\'ou\'" value="0" type="text"><small><small>Ou</small></small></imput></dt></div>')
+
+document.write('<div id="divmotscles" style="position: absolute; height: 24px; top: 257px;;left:5px  "><span name="formmotscle"><input onkeyPress="quelle_touche(event);" id="Xchoix" type="text" style="width:200px" value="Aucun-mots-clés"></input><br><span style="position:relative;left:160"><input type="button" onclick="recherche()" value="OK"></input></span><br><small><i>inscrivez vos mots clés <br/>en les séparant par un espace, <br><span style="color:red"><b>puis cliquez sur OK</b></span></i></small></span></div>')
+document.getElementById("T_1").checked=true
+document.getElementById("A_1").checked=true
+window.frames.readlibelREC.location.href="vide.html"
+document.getElementById("mapsRezo").src=selectedrezo+"/mapsILIADE.js"//selectedrezo+
+document.getElementById("selectmaille").innerHTML=""
+document.getElementById("selectcartes").innerHTML=""
+
+setTimeout('affichmaille();menuVoyage()',2000)
+</script>
+
+</body >
+</html>

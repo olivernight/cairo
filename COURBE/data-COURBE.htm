@@ -1,0 +1,109 @@
+﻿<html id="GaïaMundi AlterCarto.com">
+<head>
+<title>Untitled Document</title>
+
+<script  id="chargedatajs" language="JavaScript"  >
+var vala=top.frames.Num0.frames.vala("return a")
+var tipX=top.location.href
+tipX=tipX.indexOf("Site",0)
+var paramHisto=new Array()
+paramHisto=top.frames.Num0.frames.datacarte.recupparamHisto()
+var colonx=paramHisto[0]
+var titrex=paramHisto[1]
+var soustitrex=paramHisto[2]
+var iconetypex=paramHisto[3]
+var categ=paramHisto[4]
+var courbnom=paramHisto[5]
+
+
+
+var base0 = new Array()
+var trabas=new Array()
+
+//_______________________bloc de paramètres de l'histogramme________________________________
+
+//var colonx=new Array(141,142,143,144,145,146) // n° des colonnes de données de l'histogramme dans la Base de donnée iconeencadre
+var LLx=top.frames.Num0.frames.iconeencadre.longueurdata("return longa") //position de l'area "ensemble" dans le tableau
+//var titrex="chômage 90-99 ,2,3,150,Insee-90-99,15-24,25-49,50+,,,,,,&nbsp;,,chômage 90,chômage 99"
+
+var titrex=paramHisto[1]+paramHisto[2]+","+paramHisto[6]+","+paramHisto[7]+",150,"+paramHisto[8]+","
+for(i=0;i<categ.length;i++){titrex+=categ[i]+","}
+for(i=0;i<categ.length;i++){titrex+=","}
+for(i=0;i<courbnom.length;i++){titrex+=","+courbnom[i]}
+
+
+
+
+
+addressDATAx="COURBE/courbeDETAIL.htm"
+
+
+
+top.frames.Num0.frames.iconeencadre.recuptypehistomulti()
+var transparamreg=new Array()
+
+
+
+top.frames.Num0.frames.iconeencadre.recuptypehistomulti()
+
+
+
+function transiconetypex(){
+return iconetypex
+}
+
+function transsoustitrex(){
+return soustitrex
+}
+function transaddressDATAx(){
+return addressDATAx
+}
+
+function transtitrex(){
+return titrex
+}
+
+function transLLx(){
+return LLx
+}
+
+function transcolonx(){
+return colonx
+}
+top.frames.Num0.frames.iconeencadre.calculbaseselct()
+
+function recupbaseinit(){
+
+
+base0=top.frames.Num0.frames.iconeencadre.transbase0("return trabas0")
+
+top.frames.Num0.frames.pilote.changeXFOND()
+}
+
+function transbase(){
+
+var trabas=base0
+//alert(trabas.length)
+//alert(trabas[trabas.length-1].donnees.split(','))
+return trabas
+}
+
+function numdata(){
+//numdatax=top.frames.Num0.frames.couches.zam2.numix("return numx")
+if(vala==1 || tipX>0){numdatax=top.frames.zam2.numix("return numx")}else{numdatax=top.frames.Num0.frames.couches.zam2.numix("return numx")}
+datahistoMULTI=base0[numdatax]//.donnees.split(',')
+
+return datahistoMULTI
+}
+
+
+
+
+</script>
+
+</head>
+
+<body>
+
+</body >
+</html>

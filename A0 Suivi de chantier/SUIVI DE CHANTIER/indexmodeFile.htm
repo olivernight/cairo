@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type"><title>FILE MODE</title>
+
+
+
+<script language="javascript">
+
+				var initpop=0
+
+				function popupX(page,var1,var2) {
+				initpop=1
+				document.open(page,var1,var2)
+				pop=document.open(page,var1,var2)
+				}
+				function popuaideMENUSDATA(a){
+				if(initpop==1){
+				pop.close()
+				}
+				popupX('../../MANUELS/'+a+'.html',a,'width=750,height=550,top=100px,left=30px,toolbar=0,menuBar=1,scrollbars=1,resizable=1')
+				window.blur()
+				}
+				function populien(){
+				if(initpop==1){
+				pop.close()
+				}
+				popupX('lien2.htm','liens','width=350,height=250,top=200px,left=630px,toolbar=0,menuBar=1,scrollbars=1,resizable=1')
+				window.blur()
+				}
+
+
+var rezoIci=window.location.href
+var rezo=new Array()
+var nomrezo=new Array()
+var InRezo=new Array()
+rezoIci=rezoIci.replace("A-MANAGER-local/transdata_rezo/transmenu.htm","")
+rezoIci=rezoIci.replace("A-MANAGER-local/transdata_DBHtml/transmenu.htm","")
+rezoIci=rezoIci.replace("readLibelDATA-REC-MODULE.html","")
+rezoIci=rezoIci.replace("readLibelDATA-REC-MODULE-MENU.html","")
+rezoIci=rezoIci.replace("bienvenueRDV.html","")
+//------------------------cette plateforme
+rezo[rezo.length]=rezoIci
+nomrezo[nomrezo.length]="this Platform : "+window.location.href.split("/")[window.location.href.split("/").length-2]
+InRezo[rezo.length-1]="pour changer le libellé de cette plateforme, allez dans le fichier A-MANAGER-local/transdata_rezo.js"
+
+
+function listePC(linkthere,k){
+page=linkthere+"LISTE-PAGESCARTO.htm"
+window.frames.LPC.location.href=page
+document.getElementById("divLPC").style.display="inline"
+document.getElementById("dossier").innerHTML="liste des PageCarto du dossier <br><b>"+nomrezo[k]+"</b>"
+
+}
+function colorbarre(a){
+a.setAttribute("style","background-color:gray")
+}
+function decolorbarre(a){
+a.setAttribute("style","background-color:white")
+}
+
+function afficheNote(a){
+window.open(a+"index.html")
+}
+
+function plie(){document.getElementById('SdC').style.display='none'}
+function deplie(){document.getElementById('SdC').style.display='inline'}
+</script>
+<script language="javascript" src="file:///C:/wamp/www/REZOperso.js"></script>
+<script language="javascript" src="discussionsAltercarto/listeaide.js"></script>
+<script language="javascript"></script>
+
+</head><body><br>
+<center>
+
+<dt style="font-family:arial;font-size:18px" ><b>Liste des Plateformes sous Wampserver<br> <small style="color:navy">SUIVI de CHANTIER : <a href="javascript:deplie()"  style="color:blue">déplier</a> / <a href="javascript:plie()"  style="color:blue">replier</a></small></b><br>
+<small><small><b>
+
+<a href="file:///C:/wamp/www/" target="_blank">Répertoire wwww</a><br>
+
+<a href="file:///C:/wamp/www/A0 Suivi de chantier/SUIVI de CHANTIER/discussionsAltercarto/telechargements" target="_blank">Répertoire des documents</a><br>
+
+</b></small></small>
+
+</dt>
+<center id="SdC" style="display:none"><iframe src="http://localhost/A0 Suivi de chantier/SUIVI de CHANTIER/SaisieMAJ-CP/MENUchantier.html?modif=1" frameborder="0" style="width:720px;height:450px;border:0px solid gray"></iframe></center>
+<table  style='font-family:arial;font-size:10px'><tr style="vertical-align:top">
+<td>
+<dt id="tabici"></dt>
+</td><td style=";border:1px solid gray;">
+<div id="divLPC" ><center><span id="dossier"></span><br><iframe id="LPC" name="LPC"  style="width:245px;height:200px;border:0px" scrolling="no" border="0"></iframe></center></div>
+</td></tr></table>
+<br>
+
+<dt style="font-family:arial;font-size:12px;"><b>Répertoires des documents</b></dt>
+<dt id="listDirDownload"></dt>
+
+<script language="javascript">
+var listDirD='<table style="font-family:arial;font-size:10px;border;1px solid gray"><tr><td></td></tr>'
+for(i=0;i<liste.length;i++){
+listDirD+='<tr><td><a href="file:///C:/wamp/www/A0 Suivi de chantier/SUIVI de CHANTIER/discussionsAltercarto/discussion-'+(i+1)+'" target="_blank"><small>Rep discussion - '+(i+1)+'</small></a></td></tr>'
+}
+listDirD+='</table>'
+document.getElementById("listDirDownload").innerHTML=listDirD
+</script>
+</span>
+<br>
+<a style="font-family:arial;font-size:12px;" href="http://localhost/A0 Suivi de chantier/Moderation.htm" target="_blank"><b>Administrer les discussions</b></a>
+<br><span style="font-family:arial;font-size:12px;color:blue;cursor:pointer" onclick="javascript: window.frames.discut.location.href='http://localhost/A0 Suivi de chantier/SUIVI de CHANTIER/discussionsAltercarto/GestionDiscussion.html'" target="_blank"><b><u>Rafraîchir la liste des discussions</u></b></span>
+<br><br>
+<iframe id="discut" name="discut" src="http://localhost/A0 Suivi de chantier/SUIVI de CHANTIER/discussionsAltercarto/GestionDiscussion.html" style="width:600px;height:650px;border:0px solid gray" scrolling="no" border="0"></iframe><br>
+
+</center>
+
+<script language="javascript">
+var k=1
+var kC=0
+var tableau="<Table style='font-family:arial'>"
+tableau+="<Tr onmouseover='a=this;colorbarre(a)'   onmouseout='a=this;decolorbarre(a)'><td> </td><td> </td><td>Plateformes</td><td> ----- </td><td>répertoires</td><td> ----- </td><td>PageCartos</td></Tr>"
+for(i=1;i<rezo.length;i++){
+var lien="file:///C:/wamp/www/"+rezo[i].replace("http://localhost/","")
+if(InRezo[i]==""){
+kC+=1
+var br=""
+if(kC>1){var br="<br>"}
+tableau+="<Tr><td></td><td></td><td style='font-size:14px'><b style='color:red'>"+br+""+kC+"</b>-"+nomrezo[i]+"</td><td></td><td></td><td></td></tr>"
+
+k=1
+}else{
+
+var lienPC=rezo[i]
+//<textarea style='width:200px;height:15px'></textarea>
+tableau+="<Tr style='vertical-align:top' onmouseover='a=this;colorbarre(a)'  onmouseout='a=this;decolorbarre(a)'><td >n°<b style='color:red'>"+kC+"."+k+"</b> - </td><td><img onclick='javascript:afficheNote(\""+rezo[i]+"\")' style='cursor:pointer' width='15px' src='doc rtf.jpg' /></td><td><a href='"+rezo[i]+"A0 PageCarto serpent encaps.html?tail=3&mtp2=admin' target='_blank' title='"+InRezo[i]+"'>"+nomrezo[i]+"</a></td><td> ----- </td><td><a href='"+lien+"' target='_blank'><img src='dossier.gif' /></a></td><td> ----- </td><td><img onclick='javascript:listePC(\""+lienPC+"\","+i+")' style='cursor:pointer' width='15px' src='cir_bleu.gif' /></td></Tr>"
+k+=1
+}
+}
+tableau+="</Table>"
+document.getElementById("tabici").innerHTML=tableau
+
+
+</script>
+<script language="javascript"></script>
+
+
+</body></html>

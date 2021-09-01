@@ -1,0 +1,222 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache, max-age:10, must-revalidate">
+  <meta http-equiv="cache-control" content="no-store">
+<!--style>
+
+a.lienmenu:link { color:black;}
+
+a.lienmenu:visited { color:black;}
+
+</style-->
+  <script type="text/javascript">
+var listUtil=new Array()
+  </script>
+  <script type="text/javascript"
+ src="A-MANAGER-local/Utilisateurs-ADMIN/listeUtil.js?updated=1234567890"></script><!--script type="text/javascript" src="listeUtil.js"></script-->
+  <script type="text/javascript">
+
+
+    var urlvar=''
+    
+    if (window.location.search != '') {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split('&');
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf('=');
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/,' ');
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+var discut=urlvar['listdiscut']
+function rien(){}
+function saisieMotPas(){
+
+}
+function creerdiscut(){
+saisieMotPas()
+document.getElementById("contrib").style.display="block"
+document.getElementById("infotext").style.display="none"
+}
+function positionScroll(){
+window.frames.discuss.document.body.scrollTop=Xscroll
+}
+function recharge(){
+Xscroll=window.frames.discuss.document.body.scrollTop
+window.frames.discuss.location.href="listediscussions.html"
+
+}
+function envoi(){
+var textmessage=document.getElementById("message0").value
+
+
+textmessage=textmessage.replace(">","**gt**")
+textmessage=textmessage.replace("<","**lt**")
+textmessage=textmessage.replace("\n","<br/>")
+
+document.getElementById("message").innerHTML=textmessage
+//document.getElementById("message").value=textmessage
+document.getElementById("contrib").style.display="none"
+document.getElementById("infotext").style.display="block"
+document.contrib.submit()
+}
+function annuleCreer(){
+document.getElementById("contrib").style.display="none"
+document.getElementById("infotext").style.display="block"
+}
+var util=""
+var indicValidTestCoord=0
+function testCompte(){
+var rang=""
+document.getElementById('mesloginadh').innerHTML=""
+document.getElementById('mesmo2pasadh').innerHTML=""
+// forcé
+				//document.getElementById('loginadh').value="hp4"
+				//document.getElementById('mo2pasadh').value="hp0456"
+//fin de forcé
+
+a=document.getElementById('loginadh').value
+b=document.getElementById('mo2pasadh').value
+
+
+var testa=1
+var testb=1
+for(i=0;i<listUtil.length;i++)
+{
+if(a==listUtil[i][0]){testa=0}
+if(b==listUtil[i][1]){testb=0}
+if(testa==0 & testb==0){rang=i;i=listUtil.length}
+}
+if(testa==1){document.getElementById('mesloginadh').innerHTML="login inexistant"}
+if(testb==1 & testa==0){document.getElementById('mesmo2pasadh').innerHTML="mot de passe érroné"}
+if(testa==1 || testb==1){indicValidTestCoord=0}else{
+util=a
+indicValidTestCoord=1;
+document.getElementById("contact").value=listUtil[rang][2]
+document.getElementById("coord").style.display="none"
+document.getElementById("champs").style.display="block"
+//poursuivre()
+
+}
+
+}
+
+  </script>
+</head>
+<body style="font-family: arial; font-size: 11px;background-color:#E4E4E4"">
+<center>
+<table style="font-family: arial; font-size: 11px;width:560px">
+  <tbody>
+    <tr>
+      <td> <span style="position: relative; top: -10px;"> <b
+ style="color: rgb(51, 102, 255);"><big>Liste des discussions</big></b></span><span
+ style="color: rgb(51, 102, 255);"> </span><br>
+      <iframe name="discuss" style="border: 0.5px solid gray; overflow: scroll; width: 565px; height: 280px;" onload="positionScroll();setTimeout('recharge()',20000)"></iframe> 
+	  </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;"> 
+	  <span id="infotext" style="display: block;">
+      <span style="color: rgb(65, 107, 161);"><b>Contribuer à une discussion </b></span> 
+	  <br>
+      Pour accéder au
+contenu d'une discussion, cliquez sur son titre. Cette action vous
+transporte dans la page de discussion. Pour participer à la discussion,
+créez un compte sur la page de discussion que vous avez ouverte. Ce
+compte vous permet de participer à toutes les discussions du site. <br>
+      <br>
+      <b>Format et fonctionnement des discussions</b><br>
+Les discussions sont ouvertes par les administrateurs du site altercarto.fr. Vous pouvez proposer un thème de discussion (<a style="color: rgb(65, 107, 161);"
+ href="mailto:altercarto@wanadoo.fr">contact</a>).
+Le format de discussion est celui d'un chat libre. Chaque discussion est introduite par un petit
+texte de cadrage du thème. 
+<br>
+</span> 
+</td>
+</tr><tr><td style="text-align:right">
+<span style="color: rgb(65, 107, 161); cursor: pointer;text-align:right"
+ onclick="creerdiscut()"><b><u><small><i>Créer une discussion </small></i></u>&nbsp;&nbsp;</b></span> 
+</td>
+    </tr>
+    <tr>
+      <td>
+      <form name="contrib" id="contrib" action="ajoutDiscut.php"
+ style="display: none;">
+        <center id="coord" style="display: block;"><span id="adh"
+ style="">
+        <table
+ style="font-family: arial; font-size: 11px; text-align: center;">
+          <tbody>
+            <tr>
+              <td style="color: red; font-weight: bold;"
+ id="mesloginadh"><br>
+
+              </td>
+              <td style="color: red; font-weight: bold;"
+ id="mesmo2pasadh"><br>
+
+              </td>
+            </tr>
+            <tr>
+              <td><b style="color: navy;">Login</b><br>
+              <input id="loginadh" name="N[0]" style="width: 150px;"
+ type="text" value="hp4"> <br>
+              <br>
+              <br>
+              </td>
+              <td><b style="color: navy;">Mot de passe</b><br>
+              <input id="mo2pasadh" style="width: 150px;" type="text" value="hp0456"> <br>
+              <br>
+              <br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input value="OK" onclick="testCompte()" type="button"> <input onclick="annuleCreer()" value="annuler" type="button"><br>
+        <br>
+        <br>
+        <br>
+        </span></center>
+        <input style="display: none;" id="contact" name="C[0]" value="">
+        <div id="champs" style="display: none;"><b><big
+ style="color: navy;">Titre</big></b> <br>
+        <input id="TitreDiscussion" name="T[0]" value=""> <br>
+        <b><big style="color: navy;">Objet de la nouvelle discussion</big></b>
+        <dt style="border: 0.5px solid gray;"><textarea id="message0"
+ style="overflow: scroll; width: 500px; height: 100px;"></textarea><br>
+          <textarea id="message" name="M[0]"
+ style="width: 500px; height: 200px; display: none;"></textarea> <br>
+          <br>
+          <br>
+        </dt>
+        <br>
+        <center><input onclick="envoi()" value="envoyer" type="button"></center>
+        </div>
+      </form>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<script type="text/javascript">
+
+recharge()
+
+</script>
+</body>
+</html>

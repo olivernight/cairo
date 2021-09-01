@@ -1,0 +1,594 @@
+﻿ 
+
+Editer et Modifier les hypertextes dans 
+GaïaMundi 
+
+ 
+
+1 – Travailler avec les hypertextes 
+
+ 
+
+A - Naviguer dans les hypertextes 
+
+ 
+
+Principe de fonctionnement de l’hypertexte 
+
+L’hypertexte contient du texte et des boutons de couleurs. Les boutons de couleurs contiennent 
+des liens qui activent l’affichage de cartes, de données sur els cartes et de graphiques qui 
+s’affichent lorsqu’on clique sur une aire de la carte. 
+
+A l’ouverture du site, l’hypertexte Sommaire est affiché. 
+
+ 
+
+ 
+
+ 
+
+On change d’hypertexte au moyen du menu déroulant « Cartes et Commentaires » situé au 
+dessus du cadre de l’hypertexte courant. 
+
+ 
+
+ 
+
+ 
+
+On peut trouver cinq types de boutons insérés dans les hypertextes: 
+
+ 
+
+Les rouges : ils activent une carte et ses données associées. L’ouverture d'un hypertexte 
+déclenche le chargement et l’affichage de la carte pointée par le premier bouton rouge inséré 
+dans l’hypertexte, ainsi que les données associées à cette carte, et les menus déroulant 
+permettant d’afficher ces données sur la carte. 
+
+ 
+
+Les bleus : ils activent l’affichage d’un variable sous forme d’icône (rond, flèche, triangle, 
+étoile) proportionnels à la valeur de la variable pour chaque aire géographique. Leur couleur est 
+déterminé par une classification des aires géographique par quantiles. Ils activent aussi un 
+graphique encadré. 
+
+ 
+
+Les verts : ils activent l’affichage d’une variable sous forme de fond de carte coloré selon une 
+classification des aires géographiques par quantiles. Ils activement aussi un graphique encadré. 
+
+ 
+
+Les violets : ils cumulent les fonctions des boutons bleus et verts, c'est-à-dire qu’ils affichent 
+une variable en icones, une variable en fond de carte coloré et un graphique. 
+
+ 
+
+Les jaunes : ils affichent un graphique seul sans changer les variables affichées sur la carte. 
+(histogrammes simples, histogrammes multiples, courbes, radars) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Retour au 
+sommaire 
+
+ 
+
+
+
+
+Exemple d’hypertexte 
+
+ 
+
+ 
+
+ 
+
+Vue d’ensemble du site lorsqu’on a cliqué sur le bouton violet 
+
+ 
+
+ 
+
+ 
+
+Avec les légendes et le graphique 
+
+ 
+
+
+
+
+ 
+
+2 - Présentation de l’éditeur d’hypertexte 
+
+Pour ouvrier l’éditeur : 
+
+ 
+
+ 
+
+Modifier l’hypertexte ouvre l’hypertexte sélectionné avec le menu « Cartes et Commentaires » 
+du panneau de droite. (NB .Ne jamais introduire de boutons cartes et données dans l’hypertexte 
+Sommaire) 
+
+Nouvel hypertexte crée un nouvel Hypertexte . (Il faut saisir un nouveau nom dans les deux 
+champs Titre court et Titre long situés en bas de l’éditeur). Après l’avoir enregistré, il faudra 
+vider le cache et redémarrer la plateforme pour qu’il apparaisse dans le menu « Cartes et 
+Commentaires) 
+
+Nouveau à partir de crée un nouvel hypertexte à partir de l’hypertexte courant sélectionné dans 
+le menu « Cartes et Commentaires » (Il faut saisir un nouveau nom dans les deux champs Titre 
+court et Titre long situés en bas de l’éditeur). Après l’avoir enregistré, il faudra vider le cache et 
+redémarrer la plateforme pour qu’il apparaisse dans le menu « Cartes et Commentaires) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3 - Les fonctions spéciales de l’éditeur Wysiwyg 
+
+ 
+
+I - Les fonctions « couper spécial », « copier spécial », « coller spécial » 
+
+Pour des raisons de sécurité informatique, depuis 2010 Firefox n’autorise plus la copie par 
+copier-coller de segments de texte comprenant des éléments JavaScript. Pour cette raison, et en 
+toute sécurité puisqu’on reste dans la même page, des fonctions spéciales copier coller et 
+couper collé ont été implantées dans l’éditeur de PageCarto pour permettre de façonner 
+l’hypertexte. 
+
+ 
+
+ Couper « spécial » : 
+
+sélectionnez le segment de texte à couper puis cliquez sur le bouton. 
+
+ 
+
+ Copier « spécial » : 
+
+ sélectionner le segment de texte à couper puis cliquez sur le bouton. 
+
+ 
+
+
+
+
+ Coller « spécial » : 
+
+Lorsqu’on a couper ou coller « spécial », ce bouton apparaît dans la barre d’outils , signalant que 
+des éléments sont conservés en mémoire pour être collés. 
+
+Placez le curseur à l’endroit désiré dans l’hypertexte et cliquez sur ce bouton. Le texte en 
+mémoire sera inséré dans l’hypertexte en conservant les propriétés actives des liens compris 
+dans la partie copiée ou coupée « spécial » 
+
+ 
+
+II - Les liens hypertextes 
+
+ 
+
+ 
+
+Vous avez le choix entre l’option « interne » qui charge la page web pointée par le lien à la place 
+de l’hypertexte ; et l’option « externe » qui ouvre le document pointé dans un nouvel onglet du 
+navigateur (préférable) 
+
+ 
+
+Pour créer un lien : 
+
+a - écrivez le texte du lien à l’endroit désiré, par exemple : site altercarto 
+
+b - Sélectionnez ensuite ce texte. 
+
+c - Puis cliquez sur le bouton choisi (ext ou int) 
+
+ 
+
+Une invite de saisie vous demande l’url sur laquelle va pointer le lien. 
+
+ 
+
+Après validation le texte que vous avez sélectionné est transformé en lien hypertexte : 
+
+site altercarto 
+
+ 
+
+III - L’insertion segment de code HTML (pour utilisateur avancé) 
+
+Placez le curseur à l’endroit désiré dans le texte. 
+
+Cliquez sur le bouton 
+
+ 
+
+Une invite de saisie vous demande le code HTML à insérer. 
+
+ 
+
+ 
+
+Après validation, le code est inséré et exécuté ce qui donne ceci dans l’exemple : 
+
+ 
+
+ 
+
+NB. Si vous insérez des attributs comprenant des guillemets, respectez l’emboîtement doubles 
+guillemets puis simples guillemets comme dans l’exemple ci-dessous. 
+
+<span onclick="alert('ici')">essai</span> 
+
+N’insérez pas de code HTML comprenant des triples emboîtements de guillemets avec des 
+antislashs. Ne faites pas de fautes de code, au risque de déstabiliser tout le jeu des balises de 
+lien vers les cartes. 
+
+
+
+
+ 
+
+4 - Insérer des Cartes et des « boutons de données » 
+dans les Hypertextes 
+
+Les procédés indiqués ici s’appliquent aussi bien à la création qu’à la modification des 
+hypertextes. 
+
+Une fois l’hypertexte ouvert dans l’éditeur, on choisi une carte : 
+
+. si c’est la première ouverture de carte, on utilise le module 
+. sinon, on utilise le menu « Cartes » situé en dessus de l’espace d’affichage des cartes. 
+
+
+ 
+
+Dès qu’une carte est affichée, le bouton rouge situé en haut de l’éditeur contient les 
+coordonnées de la carte, tandis que le bouton jaune contient le graphique associé à la carte à 
+son ouverture, soit le premier graphique de la liste Graphique N°1 
+
+ 
+
+Si l’on change la carte affichée, le bouton rouge contient les coordonnées de la nouvelle carte et 
+le bouton jaune le premier graphique de la nouvelle liste graphique N°1 
+
+ 
+
+Si l’on change le graphique, le bouton jaune contient les coordonnées du nouveau graphique. 
+
+On peut ainsi énoncer le principe suivant : le bouton contient les éléments affichés sur la carte 
+
+ 
+
+Le rouge contient la carte affichée. 
+
+ 
+
+Le bleu s’affiche s’il y a des icones sur la carte ( rond, flèche, étoile, radar). Il contient les 
+coordonnées de la variable et les réglages effectués sur celle-ci : taille des icones, couleurs, 
+quantiles. Il contient aussi le graphique sélectionné à ce moment sur le carte. 
+
+ 
+
+ Le vert s’affiche s’il ya un fond coloré sur la carte. Il contient les coordonnées de la variable 
+et les réglages effectués sur celle-ci : couleurs, quantiles. Il contient aussi le graphique 
+sélectionné à ce moment sur le carte. 
+
+ 
+
+le violet s’affiche s’il ya à la fois des icones et un fond coloré. Il contient les coordonnées des 
+variables et des réglages des icones et du fond. Il contient aussi les coordonnées du graphique 
+sélectionné à ce moment. 
+
+ 
+
+Le jaune contient les coordonné du graphique sélectionné à ce moment. (histogrammes 
+simples, histogrammes multiples, courbes, radars) 
+
+ 
+
+Une séquence d’hypertexte, ou segment de scénario, commence toujours par un bouton rouge. 
+Les boutons bleus, verts, violets et jaunes qui suivent un bouton rouge appelle les données 
+associées à la carte pointée par le bouton rouge. On peut enchaîner plusieurs segments de 
+scénario sur un même hypertexte en changeant de carte à chaque fois. Lorsqu’on navigue dans 
+l’hypertexte, l’interface de l’hypertexte identifie à quelle carte est rattaché un bouton de donnée 
+ou de graphique. On peut donc remonter dans le texte sans nécessairement passer par le bouton 
+carte. 
+
+ 
+
+ 
+
+Pour insérer les boutons dans l’hypertexte, on procède comme suit : 
+
+. Placer le curseur dans l’hypertexte ouvert dans l’éditeur, 
+. Puis cliquer sur le bouton désiré choisi parmi les boutons affichés en haut de l’éditeur. 
+. Ce geste place le bouton à l’endroit sélectionné dans le texte. On note ensuite à droite 
+du bouton à quoi il correspond (libellé du bouton). 
+. Puis on change les réglages de la carte et ainsi de suite. 
+
+
+
+
+
+ 
+
+NB. Léger défaut d’initialisation des quantiles à l’ouverture de l’hypertexte. Lorsqu’on vient 
+d’ouvrir l’hypertexte en mode éditeur, le quantile de fond de carte est positionné à 2 même si 
+une carte est déjà réglée avec un quantile supérieur. Si l’on veut un fond coloré avec un quantile 
+supérieur à 2, il faut dans ce cas refaire la carte avant d’enregistrer le bouton vert dans 
+l’hypertexte. Par la suite, il n’y a plus ce problème. 
+
+ 
+
+Dans l’exemple ci-dessous, il y a une carte affichée avec une variable projetée en fond coloré, un 
+variable en icône rond proportionnel et un graphique sélectionné. 
+
+C’est pourquoi il y a que cinq boutons : le rouge pour la carte, le vert pour la variable en fond 
+coloré, le bleu pour les ronds, le violet pour la superposition des ronds et du fond coloré, et enfin 
+le jaune pour le graphique. 
+
+ 
+
+NB. Il y a toujours un graphique associé, même s’il n’est pas visible. C’est pourquoi il faut bien 
+penser à choisir un graphique en cohérence avec les données affichées. 
+
+ 
+
+ 
+
+ 
+
+Insérer des liens pointant vers des aires géographiques de la carte. 
+
+Sélectionnez une aire de la carte. Cela entraîne deux actions : l’affichage du graphique et 
+l’inscription d’un lien vers l’aire sélectionné dans le cadre blanc dans la barre d’outils de 
+l’éditeur : 
+
+ 
+
+ Puis placez le curseur à l’endroit désiré dans l’hypertexte et cliquez sur le lien inséré dans le 
+cadre. Cette action entraîne l’insertion du lien dans l’hypertexte. 
+
+ 
+
+ 
+
+Une fois l’hypertexte enregistré et affiché, cliquer sur le lien entraîne la sélection de l’aire 
+géographique concernée et l’affichage du graphique courant (Le lien ne commande pas le choix 
+du graphique mais seulement son affichage). 
+
+ 
+
+
+
+
+Une fois le travail achevé, on enregistre. L’enregistrement déclenche l’affichage de l’hypertexte à 
+la place de l’éditeur. La carte correspondant au premier bouton rouge trouvé dans le texte est 
+affichée automatiquement à l’ouverture de l’hypertexte. 
+
+On peut maintenant l’utiliser en cliquant sur les boutons (il n’est pas nécessaire de cliquer sur le 
+premier bouton rouge puisque la carte correspondante est affichée automatiquement à 
+l’ouverture de l’hypertexte). 
+
+ 
+
+Cependant le contenu nouvel hypertexte n’apparaît pas encore. Il faut actualiser l’hypertexte. 
+Pour cela il faut vider le cache et cliquer droit sur l’hypertexte, choisir « ce cadre » puis 
+« actualiser ce cadre » 
+
+ 
+
+3 - Les couches insérées dans la carte 
+
+Il existe deux types de couches : 
+
+ 
+
+1 - des couches graphiques appelées couches nappes (elles représentent des objets ajoutés à la 
+carte, soit des formes, par exemple des régions climatiques colorées, soit des objets ponctuels, 
+comme les obstacles géographiques etc.) 
+
+Les couches nappes sont identifiées par des noms insérés dans un fichier de registre contenu 
+dans le répertoire de la carte correspondant au bouton rouge en cours d’insertion dans 
+l’hypertexte : 
+
+Répertoire racine/répertoire de carte/ listeLegNap.js 
+
+Leur nom est accessible soit en ouvrant le fichier, soit en affichant la carte dans GaïaMundi : le 
+menu de données Icones X indique les noms de couches. 
+
+ 
+
+On peut les activer par le couple de lien afficher / effacer associé au nom de la couche. 
+
+Pour cela : 
+
+ 
+
+a- on place le curseur dans le texte à l’endroit où l’on veut insérer le lien couche nappe 
+
+b - on clique sur le bouton suivant : 
+
+ 
+
+ 
+
+ 
+
+c - une invite de saisie s’affiche, dans laquelle on saisit le nom exacte de la couche : 
+
+ 
+
+ 
+
+Avec avoir cliqué sur OK, la balise suivante est intégrée dans le texte : 
+
+ 
+
+ 
+
+ 
+
+On voit apparaître, dans cet exemple, les points les plus sensibles à l’élévation du niveau 
+
+de la mer à l’horizon 2050 dans un scénario médian du changement climatique. 
+
+ 
+
+ 
+
+
+
+
+ 
+
+2 – des « couches contour ». Elles se distinguent des « couches nappe » en ce qu’elles ne sont 
+que des contours générés par l’interface cartographique à partir d’un fichier de données 
+géographique inclus dans le module PageCarto, comme dans l’exemple suivant : 
+
+ 
+
+ 
+
+Le procédé est le même que dans le cas des couches nappes en choisissant cette fois le bouton 
+suivant : 
+
+ 
+
+L’invite de saisie comporte ici deux séquences : 
+
+. Une première invite demande le numéro de la couche la numérotation commençant à 
+1. La liste couches contour est disponible dans le fichier 
+
+
+Répertoire racine/répertoire de carte/ listeAdditifContoursSVG.js ou dans le menu «Données » de 
+la carte dans GaïaMundi 
+
+ 
+
+ 
+
+ 
+
+. Une seconde invite demande le nom que vous souhaitez donner à la couche 
+
+
+ 
+
+ 
+
+Après qu’on a validé la seconde invite, le lien suivant est inséré dans le texte : 
+
+ 
+
+ 
+
+ 
+
+4 – Visualiser les résultats de votre travail sur 
+l’hypertexte 
+
+Dans la plupart des cas lorsque vous aurez enregistré votre travail, le résultat n’apparaîtra pas 
+dans l’hypertexte à la fermeture de l’éditeur. La raison est que vous devez d’bord « vider le 
+cache » du navigateur et réactualiser les pages contenues dans les cadres d’affichage. 
+
+ 
+
+ Rappel pour vider le cache de Firefox : 
+
+ menu « outils » de Firefox, -> choisir options -> sélectionner l'onglet réseau - > cliquer sur 
+"vider le cache maintenant" 
+
+
+
+
+Ou bien incorporer le module complémentaire ClearCache et placer l’icône dans la barre d’outils 
+de Firefox Pour vider le cache, il suffit alors de cliquez su ce bouton 
+
+ 
+
+Après avoir vidé le cache : 
+
+Placez le curseur sur l’hypertexte compris dans l’éditeur et avec le clic droit de la souris, suivez le 
+menu « ce cadre » puis « actualiser ce cadre ». Faire de même avec l’hypertexte compris dans le 
+module PageCarto. Vous pouvez ainsi visualiser le résultat de votre travail 
+
+ 
+
+ATTENTION ; les liens contenus dans l’hypertexte de l’éditeur ne sont pas fonctionnels car 
+l’éditeur est indépendant de la carte. Pour tester les liens, vous devez cliquer sur les liens de 
+l’hypertexte contenu dans le module PageCarto ( c’est une habitude à prendre !) 
+
+ 
+
+ 
+
+ 
+
+4 – Gérer la liste des hypertextes dans le menu 
+« Cartes et Commentaires ». 
+
+Vous ne pouvez pas supprimer un hypertexte créé. Cependant, vous pouvez le faire apparaître 
+ou non sur dans le menu « Cartes et Commentaires » 
+
+Pour cela utiliser le menu gestion des sites-> Actualiser hypertexte partagés 
+
+ 
+
+ 
+
+ 
+
+Ce choix déclenche l’affichage suivant dans le panneau de droite : 
+
+ 
+
+ 
+
+Choisissez Global 
+
+Vous recevez l’invite suivante : 
+
+ 
+
+ 
+
+Le mot de passe par défaut est « admin ». 
+
+La validation entraîne l’affichage suivant : 
+
+
+
+
+ 
+
+ 
+
+pour enlever un hypertexte du menu « Cartes et Commentaires » décocher l’avis de publication. 
+Pour le faire apparaître de nouveau, vous devrez cocher de nouveau l’avis à la publication. 
+
+ 
+
+
+
+ 
+
+

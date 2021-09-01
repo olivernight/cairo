@@ -1,0 +1,346 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="html balise" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <title>SVG incorporé dans un fichier XHTML</title>
+   <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8"  />
+   <script id="scrpt"  language="javascript" ><![CDATA[   
+   top.frames.Num0.frames.couches.zoom.xxxxxx()
+
+   var dim=new Array()
+   dim=top.frames.Num0.frames.couches.zoom.recupDim("return Xdim")
+
+var carre= dim[0]//"200";//
+var retrait=dim[1]//"35"//"25";//
+parent.document.getElementById('zam2').width=carre+"px"
+//alert(parent.document.getElementById('zam2').parentNode.parentNode.parentNode.parentNode.parentNode.style.right)
+if(top.location.href.indexOf("Site-")>0){
+
+parent.document.getElementById('zam2').parentNode.style.right=0+"px"
+}else{
+parent.document.getElementById('zam2').parentNode.parentNode.parentNode.parentNode.parentNode.style.right=0+"px"
+}
+parent.document.getElementById('zam2').height=carre+"px"//(parseInt(carre)+10)+"px"
+//parent.document.getElementById('mobile2').style.left=(parent.parent.document.getElementById('couches').offsetWidth-parseInt(carre)-20)+"px"
+
+
+var coul=new Array()
+var axescote=new Array()
+var axescoteref=new Array()
+var libelaxe=new Array()
+]]></script>
+   <!--script id="scrpt"  language="javascript" src="xcommandesgraph.js" ></script-->
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+   
+function AjoutBaliseTitre(IdDeOu,IdBaliseTitre){
+var nouveauTitre=document.createElementNS(svgns,"title")
+nouveauTitre.setAttribute("id",IdBaliseTitre)//"TitreAire"+(i+1)
+document.getElementById(IdDeOu).appendChild(nouveauTitre)//(i+1)
+var nouveauText=document.createTextNode(" ")
+document.getElementById(IdBaliseTitre).appendChild(nouveauText)
+}
+
+function changeInBaliseTitre(IdBaliseTitre,Texte){
+var nt1=document.createTextNode(Texte)
+var nt2=document.getElementById(IdBaliseTitre).firstChild
+document.getElementById(IdBaliseTitre).replaceChild(nt1,nt2)
+}
+ 
+
+var libel=new Array()
+
+var maxsup=0;
+
+var sup=0
+
+var p;
+var Coef10=1;
+var sign=1
+var commentClasRecept=new Array()
+
+var menu=new Array()
+var baseColIci=new Array()
+var commentClasrecept=top.frames.Num0.frames.couches.zoom.returnBasede02("return base0ici")	
+var DATArecept=new Array()
+var TITRED=new Array()
+
+//reception des données et calcul du facteur d'échelle ----------------------------------------------------
+
+DATArecept=top.frames.Num0.frames.couches.zoom.transDATA2("return datax")
+
+menu=top.frames.Num0.frames.couches.zoom.retourneMenu("return menu")		
+				
+baseColIci=top.frames.Num0.frames.couches.zoom.retourneBaseCol("return baseCol")
+
+TITRED=commentClasrecept					
+						//alert(baseColIci)
+						//alert(DATArecept)
+						//alert(commentClasrecept)
+						//alert(menu)
+
+for(i=1;i<commentClasrecept.length-2;i++){
+libel[libel.length]=commentClasrecept[i]
+}
+
+var stopDATA=baseColIci.length
+var rayon=(carre/2-retrait*carre/100)
+if(rayon<50){rayon=50}
+var Coefech=new Array()
+var CoefechX=1
+
+
+
+
+						
+						
+						
+//fin de la boucle en i
+
+
+if(menu[11][1]==1){// CAS % de la valeur de référence
+for(i=1;i<stopDATA+1;i++){
+Coefech[i]=Math.abs(2.5/baseColIci[i-1])
+}
+}else{
+
+	for(var i=1;i<stopDATA+1;i++){
+	sup=DATArecept[i];
+	if(sup>maxsup){maxsup=sup;}
+	}
+	for(var i=0;i<baseColIci.length;i++){
+	sup=baseColIci[i];
+	if(sup>maxsup){maxsup=sup;}
+	}
+	//alert(maxsup)
+	CoefechX=5/maxsup
+	}
+
+
+
+
+var som=0
+var valx=new Array()
+var maxici=-100000000000
+var valxref=new Array()
+
+
+					for(i=0;i<baseColIci.length;i++){
+					if(parseInt(baseColIci[i])==-99999){affichvalref="nd"}else{affichvalref=baseColIci[i]}
+					if(parseInt(baseColIci[i])==-19999){affichvalref=""}
+					if(menu[11][0]!=0){
+					if(menu[11][1]==1){axescoteref[i]=2.5	}else{axescoteref[i]=baseColIci[i]*CoefechX}
+					if(affichvalref=="nd"){valxref[i]="nd";}else{valxref[i]=parseInt(10*affichvalref)/10}
+					
+					}
+					if(affichvalref==""){valxref[i]="";}
+					}
+					
+for(i=1;i<stopDATA+1;i++){
+var affichval
+if(parseInt(DATArecept[i])==-99999){affichval="nd"}else{affichval=DATArecept[i];som+=parseFloat(DATArecept[i]);if(parseFloat(DATArecept[i])>=maxici){maxici=parseFloat(DATArecept[i])}}
+libelaxe[i-1]=commentClasrecept[i]
+if(parseInt(DATArecept[i])==-99999){axescote[i-1]=0}else{
+if(menu[11][1]==1){axescote[i-1]=DATArecept[i]*Coefech[i];}else{axescote[i-1]=DATArecept[i]*CoefechX}
+}
+
+coul[i-1]="#313939";
+if(affichval=="nd"){valx[i-1]="nd"}else{valx[i-1]=parseInt(10*affichval)/10}
+}
+
+						
+						
+var titre="<span style='font-weight:bold;font-size:11px;color:navy'>"+DATArecept[stopDATA+1]+"</span><br/><span style='font-size:10px;'><b>"+TITRED[0]+"</b><br/><i><small>"+TITRED[stopDATA+1]+" </small></i></span>";
+var nbaxes=libelaxe.length
+retrait=carre*retrait/100
+
+]]></script>
+</head>
+  <body  style="font-family:arial;font-size:11px;" >
+
+
+
+<div id="table" style="position:absolute;top:0px;left:0px">
+<table style="border:1px dotted black;background-color:white;line-height:90%">
+<tr ><td style="background-color:#ABABD5">
+<center><span id="titre">
+
+</span></center>
+</td></tr>
+
+<tr id="htable"><td><div style="position:relative;top:-15px">
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+document.getElementById("table").style.width=carre+"px"
+document.getElementById("titre").innerHTML=titre
+]]></script>
+
+
+
+<svg id="bouton2" name="bouton2"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+
+   >
+    <metadata
+     id="metadata7">
+    <rdf:RDF>
+
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+<stop class="begin" offset="0.5" style="stop-color:green"/>
+
+<stop class="end" offset="1" style="stop-color:red"/>
+</radialGradient>
+</defs>
+<g>
+<!--clipPath id="chemindecoupe">
+<circle  cx="65" cy="65" r="55" />
+</clipPath-->
+<defs>
+<g opacity="0" >
+<g id="ensemble" >
+<g stroke="black" stroke-width="0.5px"><path id="p0" d=""></path></g>
+  <ellipse rx="10" ry="10"  onclick="javascript:NoDatx=id;svgclick2()" cy="0" cx="0" stroke-opacity="1" stroke-linejoin="miter" stroke-linecap="butt" stroke-width="1px" stroke="none" fill-rule="evenodd" fill-opacity="0.2" fill="gray" id="c0"></ellipse>
+
+
+</g> 
+</g> 
+</defs>
+<g transform="matrix(1 0 0 1 0 -20)">
+
+		  <g id="radTot" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.3" stroke-width="1px"><path id="p2" d=""></path></g>
+		 <g id="rad" stroke="black" fill="blue" fill-opacity="0.2" stroke-width="1.5px"><path id="p1" d=""></path></g>		
+		 <g id="radref" stroke="red" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p3" d=""></path></g>
+ <g id="g1"><use id="userond1" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte1"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB1">  </text><text id="texteC1">  </text></g>
+ <g id="g2"><use id="userond2" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte2"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB2">  </text><text id="texteC2">  </text></g>
+  <g id="g3"><use id="userond3" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte3"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB3">  </text><text id="texteC3">  </text></g>
+   <g id="g4"><use id="userond4" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte4"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB4">  </text><text id="texteC4">  </text></g>
+    <g id="g5"><use id="userond5" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte5"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB5">  </text><text id="texteC5">  </text></g>
+	 <g id="g6"><use id="userond6" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte6"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB6">  </text><text id="texteC6">  </text></g>
+	  <g id="g7"><use id="userond7" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte7"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB7">  </text><text id="texteC7">  </text></g>
+	   <g id="g8"><use id="userond8" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte8"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB8">  </text><text id="texteC8">  </text></g>
+	    <g id="g9"><use id="userond9" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte9"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB9">  </text><text id="texteC9">  </text></g>
+		 <g id="g10"><use id="userond10" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte10"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB10">  </text><text id="texteC10">  </text></g>
+		 
+		 
+		  <g id="g11"><use id="userond11" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte11"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB11">  </text><text id="texteC11">  </text></g>
+ <g id="g12"><use id="userond12" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte12"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB12">  </text><text id="texteC12">  </text></g>
+  <g id="g13"><use id="userond13" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte13"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB13">  </text><text id="texteC13">  </text></g>
+   <g id="g14"><use id="userond14" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte14"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB14">  </text><text id="texteC14">  </text></g>
+    <g id="g15"><use id="userond15" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte15"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB15">  </text><text id="texteC15">  </text></g>
+	 <g id="g16"><use id="userond16" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte16"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB16">  </text><text id="texteC16">  </text></g>
+	  <g id="g17"><use id="userond17" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte17"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB17">  </text><text id="texteC17">  </text></g>
+	   <g id="g18"><use id="userond18" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte18"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB18">  </text><text id="texteC18">  </text></g>
+	    <g id="g19"><use id="userond19" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte19"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB19">  </text><text id="texteC19">  </text></g>
+		 <g id="g20"><use id="userond20" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte20"  style="stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB20">  </text><text id="texteC20">  </text></g>
+
+
+</g>		 
+</g>
+</svg> 
+</div>
+</td></tr></table>
+</div>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+document.getElementById("bouton2").setAttribute("width",carre)
+document.getElementById("bouton2").setAttribute("height",parseInt(carre)-15)
+var rad=""
+var radref=""
+var radTot=""
+var rad0=""
+var rad0ref=""
+var rad0Tot=""
+
+var dd="M 0 0 "+rayon+" 0"
+document.getElementById("p0").setAttribute("d",dd)
+document.getElementById("c0").setAttribute("cx",rayon)
+var angle0=360/nbaxes
+var angle=-angle0-90
+for(i=1;i<nbaxes+1;i++){
+
+angle+=angle0
+var a = 3.1416 * (angle) / 180 
+
+var tr=Math.cos(a)+" "+Math.sin(a)+" "+(-Math.sin(a))+" "+Math.cos(a)+" "+(carre/2)+" "+(carre/2) // rotation
+document.getElementById("userond"+i).setAttribute("transform","matrix("+tr+")")
+document.getElementById("userond"+i).setAttribute("opacity",0.5)
+
+
+var svgns = "http://www.w3.org/2000/svg";
+var tr="matrix(1 0 0 1 "+(carre/2+rayon*Math.cos(a)*1.2)+" "+(carre/2+rayon*Math.sin(a)*1.2)+")"
+document.getElementById("texte"+i).setAttribute("transform",tr)
+//document.getElementById("texte"+i).setAttribute("title",libelaxe[i-1]+" / "+DATArecept[stopDATA+1]+" : "+DATArecept[i])
+document.getElementById("texte"+i).firstChild.nodeValue=libel[i-1]
+AjoutBaliseTitre("texte"+i,"Titretexte"+i)
+changeInBaliseTitre("Titretexte"+i,libelaxe[i-1]+" / "+DATArecept[stopDATA+1]+" : "+DATArecept[i])
+//
+
+var tr="matrix(1 0 0 1 "+(carre/2+rayon*Math.cos(a)*1.2)+" "+(carre/2+rayon*Math.sin(a)*1.2+10)+")"
+document.getElementById("texteB"+i).setAttribute("transform",tr)
+//document.getElementById("texteB"+i).setAttribute("title",libelaxe[i-1]+" / "+DATArecept[stopDATA+1]+" : "+DATArecept[i])
+document.getElementById("texteB"+i).firstChild.nodeValue=valx[i-1]
+AjoutBaliseTitre("texteB"+i,"TitretexteB"+i)
+changeInBaliseTitre("TitretexteB"+i,libelaxe[i-1]+" / "+DATArecept[stopDATA+1]+" : "+DATArecept[i])
+if(baseColIci.length>0){
+var tr="matrix(1 0 0 1 "+(carre/2+rayon*Math.cos(a)*1.2)+" "+(carre/2+rayon*Math.sin(a)*1.2+19)+")"
+document.getElementById("texteC"+i).setAttribute("transform",tr)
+document.getElementById("texteC"+i).setAttribute("title",libelaxe[i-1]+" / "+menu[8][0]+" : "+baseColIci[i-1])
+document.getElementById("texteC"+i).firstChild.nodeValue=valxref[i-1]
+AjoutBaliseTitre("texteC"+i,"TitretexteC"+i)
+changeInBaliseTitre("TitretexteC"+i,libelaxe[i-1]+" / "+menu[8][0]+" : "+baseColIci[i-1])
+
+}
+document.getElementById("texte"+i).setAttribute("style","stroke:black;stroke-width:0px;fill:navy;font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texte"+i).setAttribute("font-size",14*carre/370)
+
+document.getElementById("texteB"+i).setAttribute("style","stroke:black;stroke-width:0px;fill:"+coul[i-1]+";font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texteB"+i).setAttribute("font-size",14*carre/370)
+document.getElementById("texteC"+i).setAttribute("style","stroke:black;stroke-width:0px;fill:red;font-family:Arial;text-anchor:middle;opacity:1")
+document.getElementById("texteC"+i).setAttribute("font-size",14*carre/370)
+var ML
+if(i==1){ML="M"}else{ML="L"}
+rad+=ML+" "+((carre/2)+rayon*Math.cos(a)/5*axescote[i-1])+" "+((carre/2)+rayon*Math.sin(a)/5*axescote[i-1])+" "
+if(i==1){rad0=" "+((carre/2)+rayon*Math.cos(a)/5*axescote[i-1])+" "+((carre/2)+rayon*Math.sin(a)/5*axescote[i-1])}
+
+if(i==1){ML="M"}else{ML="L"}
+radTot+=ML+" "+((carre/2)+rayon*Math.cos(a))+" "+((carre/2)+rayon*Math.sin(a))+" "
+if(i==1){rad0Tot=" "+((carre/2)+rayon*Math.cos(a))+" "+((carre/2)+rayon*Math.sin(a))}
+
+
+if(i==1){ML="M"}else{ML="L"}
+radref+=ML+" "+((carre/2)+rayon*Math.cos(a)/5*axescoteref[i-1])+" "+((carre/2)+rayon*Math.sin(a)/5*axescoteref[i-1])+" "
+if(i==1){rad0ref=" "+((carre/2)+rayon*Math.cos(a)/5*axescoteref[i-1])+" "+((carre/2)+rayon*Math.sin(a)/5*axescoteref[i-1])}
+
+}
+rad+=rad0
+document.getElementById("p1").setAttribute("d",rad)
+radTot+=rad0Tot
+document.getElementById("p2").setAttribute("d",radTot)
+
+radref+=rad0ref
+document.getElementById("p3").setAttribute("d",radref)
+
+parent.document.getElementById('zam2').height=parseInt(carre)-15//+30
+if(top.location.href.indexOf("Site-")<0){
+parent.document.getElementById('mobile2').style.left=(parent.parent.document.getElementById('couches').offsetWidth-carre-10)+"px"//
+}
+]]></script>
+</body >
+</html>

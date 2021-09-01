@@ -1,0 +1,2827 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html id="html balise" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <title>SVG incorporé dans un fichier XHTML</title>
+   <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8"  />
+   <script id="scrpt"  language="javascript" ><![CDATA[
+var parent=parent.framecarte
+   //xxxxxxxxxxxxxxxxxxxxxxxxxxxx module MetaData xxxxxxxxxxxxxxxxxxxxxxxxx
+var coefCorrecteurContresaut=1 // la valeur par défaut de ce paramètre de la fonction retard2 peut être modifiée dans le fichier parametresCourbe.js
+var facteurAvanceRetard2=0 // la valeur par défaut de ce paramètre de la fonction retard2 peut être modifiée dans le fichier parametresCourbe.js
+var inhibproject=0// inhibe l'affiche de la coube verte de projection si ==1 et affiche si ==0
+var NumeroGraphiqueInhib=new Array() // liste des numéros de graphiques pour lesquels la courbe de projection verte est inhibée
+var rappel1=0//active si =1 : Paramètre de rappel sur fonction retard1 (pour les cas de changements très brutaux (MDG-7 graphique 7)
+
+var tablo=new Array()
+var footnotes=new Array()
+var tabRef=new Array()
+]]></script>  
+<script id="scrpt"  language="javascript" src="parametresCourbe.js"><![CDATA[]]></script>
+<script id="scrpt"  language="javascript" src="RESULTAT_PopRef.js"><![CDATA[]]></script>
+<script id="scrpt"  language="javascript" src="codesvariables.js"><![CDATA[]]></script>
+<script id="scrpt"  language="javascript" src="footnotes.js"><![CDATA[]]></script>
+<script id="scrpt"  language="javascript" ><![CDATA[
+var lang="Fr"
+]]></script> 
+<script language="javascript" src="../lang.js"><![CDATA[]]></script>  
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+//document.getElementById("scrptfootnotes").setAttribute("src","footnotes.js")
+var txtMetaData=""
+var indicmeta=0
+var CodeYearTemp=0
+function metaData(codePays,codeVar,CodeYear){
+if(codeVar==0){codePays=0}
+if(CodeYearTemp!=CodeYear){indicmeta=0}
+if(indicmeta==0){
+indicmeta=1;metadataMDG(codePays,codeVar,CodeYear);CodeYearTemp=CodeYear
+}else{
+indicmeta=0;OffmetadataMDG()
+}
+}
+function ConvChar( str ) {
+
+  c = new Array( '&quot;' , '"'  , '&apos;' , '\'' ,
+        '&amp;' ,'&' ,  '&lt;', '<' , '&gt;' , '>' );
+  for(m=1;m<c.length;m+=2){
+  str=str.replace(c[m],c[m-1])
+  }
+  return str
+}
+var METADATA=""
+var Close1=""
+function metadataMDG(codePays,codeVar,CodeYear){
+txtMetaData=""
+
+var adtablo=tablo[codePays+"-"+codeVar].split(",")[CodeYear-1990].split(";")
+
+for(i=0;i<adtablo.length;i++){
+if(i==0){txtMetaData+="<table style='position: relative; top:2px;border: 1px solid gray;background-color:white;cursor:pointer;' onmouseover='document.getElementById(\"metaX\").style.height=\"0px\"'><tr><td>"+Close1+"</td></tr></table> <center><span style='color:navy'><b>"+METADATA+" "+CodeYear+"</b></span><br/><br/><span>"+menu[1]+"</span></center>"}
+txtMetaData+="<p>"+ConvChar(footnotes[""+adtablo[i]]+" ")+"</p>"
+
+var to=(typeof footnotes[""+adtablo[i]] === 'undefined')
+if( to==true  ){txtMetaData="<table style='position: relative; top:2px;border: 1px solid gray;background-color:white;cursor:pointer;' onmouseover='document.getElementById(\"metaX\").style.height=\"0px\"'><tr><td>"+Close1+"</td></tr></table> <center><span style='color:navy'><b>"+METADATA+" "+CodeYear+"</b></span><br/><br/><span>"+menu[1]+"</span><br/><br/><u><i>Non Disponible</i></u></center>"
+i=adtablo.length
+}
+}
+
+var widthla=parent.document.getElementById("hypertexte").getAttribute("width")
+var heightla=parent.document.getElementById("hypertexte").getAttribute("height")
+
+parent.document.getElementById("metaX").setAttribute("style","position:absolute;top:0px;left:0px;width:"+widthla+"px;height:"+heightla+"px;overflow:scroll;background-color:yellow;padding-left:8px")
+
+parent.document.getElementById("metaX").innerHTML=txtMetaData
+}
+function OffmetadataMDG(){
+parent.document.getElementById("metaX").setAttribute("style","position:absolute;top:0px;left:0px;width:0px;height:0px;overflow:scroll;background-color:yellow;padding-left:8px")
+}
+OffmetadataMDG()
+
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxx module drag and drop xxxxxxxxxxxxxxxxxxxxxxxxx 
+var DEF=1
+var initialized=false
+var XY0=0
+var X
+var Y
+var CX=0
+var CY=0
+var CX0=0
+var CY0=0
+var X1=0;
+var Y1=0;
+var ax0
+var ay0
+var dragdepart
+
+function calcul(){
+parent.effaceRondX()
+var reg=new RegExp("[ ,;]+", "g");
+var zoo=document.getElementById("rectcible").getAttribute("transform").split(reg)
+var xii=document.getElementById("rectcible").getAttribute("x")
+var yii=document.getElementById("rectcible").getAttribute("y")
+var wii=parseFloat(document.getElementById("rectcible").getAttribute("width"))
+var XX1=(parseFloat(zoo[4])+parseFloat(xii))
+var YY1=(parseFloat(zoo[5])+parseFloat(yii))
+
+for(i=1;i<CoordXN.length;i++){
+					var x1=document.getElementById("Rond"+Idcarte[i]).getAttribute("cx")//
+					var y1=document.getElementById("Rond"+Idcarte[i]).getAttribute("cy")//
+					if(x1>XX1 & x1<XX1+wii & y1>YY1 & y1<YY1+wii){
+					parent.document.getElementById("c"+Idcarte[i]).setAttribute("r",8)
+					
+					parent.document.getElementById("c"+Idcarte[i]).setAttribute("fill","blue")
+					
+					parent.document.getElementById("c"+Idcarte[i]).setAttribute("onmouseover","passon(this)")
+					parent.document.getElementById("c"+Idcarte[i]).setAttribute("onmouseout","passout(this)")
+					
+					var Texte=NomXY[i]+" ( "+CoordX[i]+"  ;  "+DATArecept[i]+" )"
+					if(tri==1){var Texte=NomXY[i]+" ( "+menu[4][i-1]+"  :  "+DATArecept[i]+" )"}
+if(parent.document.getElementById("TitreCercle"+Idcarte[i]).firstChild){
+var nt1=document.createTextNode(Texte)
+var nt2=parent.document.getElementById("TitreCercle"+Idcarte[i]).firstChild
+parent.document.getElementById("TitreCercle"+Idcarte[i]).replaceChild(nt1,nt2)
+}else{					
+					var nouveauText=document.createTextNode(NomXY[i])
+					parent.document.getElementById("TitreCercle"+Idcarte[i]).appendChild(nouveauText)	
+}					
+					}
+					}
+
+clic=0
+}
+
+
+function moveZoomBox(event){ 
+//-----------------------------------------------------------------cas FireFox
+
+if(XY0==1){
+if(initialized==true){
+X1=-(event.clientX-X)
+Y1=-(event.clientY-Y)
+var reg=new RegExp("[ ,;]+", "g");
+var zoo=document.getElementById("rectcible").getAttribute("transform").split(reg)
+zoo[0]=parseFloat(zoo[0].replace("matrix(",""))
+var mat="matrix("+zoo[0]+", 0, 0, "+zoo[3]+", "+(CX-X1)+", "+(CY-Y1)+" )"
+document.getElementById("rectcible").setAttribute("transform",mat)
+}
+}//fin de if XY0
+document.getElementById("rectcible").addEventListener("mouseup",disable,true)
+//return false;
+}
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxx disable xxxxxxxxxxxxxxxxxxxxxxxxx
+
+function disable(event){
+//------------------------------------------------------------------------------cas FireFox----------------------------------------------------
+
+XY0=0
+if(XY0==0){
+initialized=false;
+CX=CX-X1
+CY=CY-Y1
+X1=0
+Y1=0
+}//fin du if XY==0 
+var rectc=document.getElementById('positiondevant').removeChild(document.getElementById('rectcible'))
+document.getElementById('positionderriere').appendChild(rectc)
+
+}
+
+function initXY(event){
+						
+clic=1
+XY0=1
+if(XY0==1){
+if(DEF==1 & initialized==false){
+X = event.clientX;
+Y = event.clientY;
+initialized=true;
+}
+}
+var rectc=document.getElementById('positionderriere').removeChild(document.getElementById('rectcible'))
+document.getElementById('positiondevant').appendChild(rectc)
+}
+// fin du module drag and drop de la carte
+
+   
+function AjoutBaliseTitre(IdDeOu,IdBaliseTitre){
+var nouveauTitre=document.createElementNS(svgns,"title")
+nouveauTitre.setAttribute("id",IdBaliseTitre)//
+document.getElementById(IdDeOu).appendChild(nouveauTitre)//
+var nouveauText=document.createTextNode(" ")
+document.getElementById(IdBaliseTitre).appendChild(nouveauText)
+}
+
+function changeInBaliseTitre(IdBaliseTitre,Texte){
+var nt1=document.createTextNode(Texte)
+var nt2=document.getElementById(IdBaliseTitre).firstChild
+document.getElementById(IdBaliseTitre).replaceChild(nt1,nt2)
+}
+  
+   
+   
+   var dim=new Array()
+   dim=parent.recupDim("return Xdim")
+var carre="190"// dim[0];//
+var retrait="15";//dim[1]//"35"//
+
+parent.document.getElementById('zam2').width=carre+"px"
+parent.document.getElementById('zam2').height=carre+"px"//
+
+
+
+var svgns = "http://www.w3.org/2000/svg";
+var coul=new Array("navy","brown","green","#904953","#3F70FF","#E33703","red")
+var axescote=new Array()
+var axescoteref=new Array()
+var libelaxe=new Array()
+]]></script>
+ 
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+var paramreg=new Array()
+var libel=new Array()
+var DATArecept=new Array()
+var TITRED=new Array()
+var commentClasrecept=new Array()
+var baseColIci=new Array()
+var menu=new Array()
+
+var ligneLibel=new Array()
+DATArecept=parent.transDATA("return datax")
+for(i=0;i<CourbeAvecZeros*DATArecept.length;i++){
+if(DATArecept[i]==0){DATArecept[i]=0.000001} //SPECIAL MDG-7
+}
+var aireici0=DATArecept[0]
+var aireici=DATArecept[0]
+var NomAire=DATArecept[DATArecept.length-1]
+
+commentClasrecept=parent.returnBasede0("return base0ici")
+
+baseColIci=parent.retourneBaseCol("return baseCol")
+
+menu=parent.retourneMenu("return menu")	
+var numinhib=0
+for(g=0;g<NumeroGraphiqueInhib.length;g++){if(NumeroGraphiqueInhib[g]==menu[10]){numinhib=1}}// repérage des numéro de graphique pour lesquelle on inhibe la courbe de projection
+var axedesxNuage=menu[4][menu[4].length-6]
+
+var infx=menu[4][menu[4].length-5]
+var supx=menu[4][menu[4].length-4]
+var infy=menu[4][menu[4].length-3]
+var supy=menu[4][menu[4].length-2]
+var forcenegatifazero=0
+var forcepositifinfa100=0
+var forcemin=-99999
+var forcemax=-99999
+
+if(menu[2].indexOf("negative=&gt;0")>0){
+forcenegatifazero=1
+
+
+}
+if(menu[2].indexOf("positive=&lt;100")>0){
+forcepositifinfa100=1
+
+}
+
+if(menu[2].indexOf("max=")>0){
+var mdeux=menu[2].split(" ")
+for(i=0;i<mdeux.length;i++){if(mdeux[i].indexOf("ax=")>0){forcemax=parseFloat(mdeux[i].replace("max=",""))}}
+
+
+}
+if(menu[2].indexOf("min=")>0){
+var mdeux=menu[2].split(" ")
+for(i=0;i<mdeux.length;i++){if(mdeux[i].indexOf("in=")>0){forcemin=parseFloat(mdeux[i].replace("min=",""))}}
+
+
+}
+
+var adcourbe=0 // cas MDG : 1 et aussi 2
+var nblignes=(parseInt(menu[6]))+1
+var nbcolonnes=parseInt(menu[7])
+var DataRef=new Array()
+var MenuIndexTemp=0
+var nblignesTEMP=0
+var nuage=0
+
+
+function triX(a,b){ // sous fonction de la fonction tri croissant 
+return a-b
+}
+
+function testcloud(){return "cloud"}
+                           var CLOUD0=new Array()
+						   var CLOUD=new Array()
+						   var CoordX=new Array()
+						   var CoordXN=new Array()
+						   var Idcarte=new Array()
+						   var NomXY=new Array()
+						   //
+						   var x10=0
+						   var y10=0
+						   var MaxX
+						   var MinX
+						   var Xtri=new Array()
+						   var CLOUDAsso=new Array()
+						   var tri=0
+						   var paramAux=""+menu[4][menu[4].length-1]
+						   var adlibelx=""
+						   function DrawCloud(){
+						   
+						   
+						   if(paramAux.indexOf("cloud")>0 & menu[0].length==2){
+						   nuage=1						   
+						   
+																			if(paramAux.indexOf("TRI")>0){ //nuage trié
+																			if(paramAux.split("-")[1]){
+																			adlibelx=paramAux.split("-")[1]
+																			}
+																			CLOUD0=parent.recupDataCLOUD(menu[0][0],menu[0][1])
+																			
+																			
+																			
+																			
+																			tri=1
+																			
+																		// trier les valeur par ordre croissant dans Xtri
+																			var k=1;														for(i=1;i<CLOUD0.length;i++){
+																			if(CLOUD0[i][1]!=-99999){Xtri[k]=CLOUD0[i][1];k=k+1}
+																			CLOUD0[i][5]=0
+																			}
+																			
+																			var lxt=Xtri.length
+																			
+																			Xtri.sort(triX)
+																			
+																			//faire le fichier CLOUD enordre croissant
+																			CLOUD=new Array()
+																			var k=1
+																			for(i=0;i<Xtri.length-1;i++){
+																				for(j=1;j<CLOUD0.length;j++){
+																					if(CLOUD0[j][1]==Xtri[i] & CLOUD0[j][5]!=1){
+																					
+																					CLOUD[k]=CLOUD0[j]
+																					CLOUD[k][4]=i
+																					CLOUD[k][5]=k
+																					k+=1
+																					CLOUD0[j][5]=1
+																					}
+																				}
+
+																			}
+																			
+																			}else{// nuage bidimenstionnel classique
+																			CLOUD0=parent.recupDataCLOUD(menu[0][0],menu[0][1])
+																			CLOUD=CLOUD0
+																			}
+						   DATArecept=new Array()
+						   menu[4]=new Array()
+						   DATArecept[0]=aireici0
+	var kselect=new Array()
+
+	for(i=1;i<CLOUD.length;i++){// !!!!!!!!!!!!!!!!! Selection entre les bornes :   bornes incluses !!!!!!!!!!!!!!!!!!
+	kselect[i]=0
+	// les x
+  	if(infx!=-99999){if (CLOUD[i][0]<infx  ){kselect[i]=1}}
+	if(supx!=-99999){if (CLOUD[i][0]>supx  ){kselect[i]=1}}
+	// les y
+	if(infy!=-99999){if (CLOUD[i][1]<infy  ){kselect[i]=1}}
+	if(supy!=-99999){if (CLOUD[i][1]>supy  ){kselect[i]=1}}
+	
+	
+	}
+						   var compte=0
+
+
+							var MM4=new Array()
+							var mm4=1
+											
+							for(i=1;i<CLOUD.length;i++){
+
+							if(CLOUD[i][1]!=-99999 & CLOUD[i][0]!=-99999 & kselect[i]==0){
+							compte+=1
+							MM4[mm4]=mm4
+							if(mm4>1){
+							if((CLOUD[i][1]==CLOUD[i-1][1])){
+							MM4[mm4]=MM4[mm4-1]
+							}
+							}
+							mm4=mm4+1
+							}
+							}						   	   
+
+						   var m=0
+						   for(i=1;i<CLOUD.length;i++){
+						   if(CLOUD[i][1]!=-99999 & CLOUD[i][0]!=-99999 & kselect[i]==0){//
+	   					   
+						   
+						   if(tri==1){
+						   if(menu[0][0]==0){// cas de la série simple où x est la colonne 0
+						   
+						   
+
+						   menu[4][m]=" (position="+(MM4[m+1])+"/"+compte+")";
+						   
+						   }else{
+						  
+
+						   menu[4][m]=adlibelx+" "+CLOUD[i][0]+" (position="+(MM4[m+1])+"/"+compte+")";
+						   }
+									   
+									   CoordX[m+1]=CLOUD[i][4]
+									  //alert(forcenegatifazero)
+						   if(forcenegatifazero==1 & CLOUD[i][1]<0){CLOUD[i][1]=0}
+						   if(forcepositifinfa100==1 & CLOUD[i][1]>100){CLOUD[i][1]=100}
+						   						   	
+						   if(forcemax!=-99999 & CLOUD[i][1]>forcemax){CLOUD[i][1]=forcemax}
+						   if(forcemin!=-99999 & CLOUD[i][1]<forcemin){CLOUD[i][1]=forcemin}
+						   }else{
+									   menu[4][m]=""+parseInt(CLOUD[i][0]*100)/100;
+									   CoordX[m+1]=CLOUD[i][0]
+									  
+						   }
+						   DATArecept[m+1]=CLOUD[i][1]
+						   
+						  // 
+						   Idcarte[m+1]=CLOUD[i][2]
+
+						   NomXY[m+1]=CLOUD[i][3]
+						   
+
+						   m=m+1
+						   
+						   }
+						   }
+						   //alert(m)
+						  
+						   menu[4][menu[4].length]=axedesxNuage
+						   menu[4][menu[4].length]=infx
+						   menu[4][menu[4].length]=supx
+						   menu[4][menu[4].length]=infy
+						   menu[4][menu[4].length]=supy
+						   menu[4][menu[4].length]=paramAux
+						   DATArecept[DATArecept.length]=NomAire
+						   
+						   nblignes=2
+						   menu[6]=1
+						   nbcolonnes=DATArecept.length-2
+						   menu[7]=""+DATArecept.length-2
+						 
+						   }  
+						   parent.xnuage(nuage)
+						   }
+						   DrawCloud()
+						   
+						   function pointerArea(a){//a=id de l'aire séelctionnée sur la carte par survol appelée par section 4 functiuon passonnuage()
+						  
+						   if(document.getElementById(a)){
+						   document.getElementById(a).setAttribute('r',ray)
+						   
+						   if(a.replace("Rond","")==aireici){document.getElementById(a).setAttribute('fill',"blue")}else{document.getElementById(a).setAttribute('fill',"brown")}
+						   }
+							if(CLOUD0[parseInt(a.replace("Rond",""))]){				   
+						   afficheNomAireNuage(CLOUD0[parseInt(a.replace("Rond",""))][3],"brown") 
+						   }
+						   }
+						   
+						   
+						   function DepointerArea(a){//a=id de l'aire séelctionnée sur la carte par survol appelée par section 4 functiuon passoutnuage()
+						   
+						   if(a.replace("Rond","")!=aireici){
+						   if(document.getElementById(a)){
+						   document.getElementById(a).setAttribute('fill',"navy")
+						   if(tri==1){var qf=2}else{var qf=3}
+						   document.getElementById(a).setAttribute('r',qf*carreajust/200)
+						    }
+						   occulteNomAireNuage()
+						  
+						   }else{
+						   
+						   if(document.getElementById(a)){
+						   document.getElementById(a).setAttribute('r',ray)
+						   document.getElementById(a).setAttribute('fill',"green")
+						   }
+						   occulteNomAireNuage()
+						   }
+						   
+						   }
+						   function afficheNomAireNuage(a,xc){
+						   NomCourbes(1,xc,a)
+						   document.getElementById("g"+1).setAttribute("visibility","visible")
+						   }
+						   function occulteNomAireNuage(){
+						   document.getElementById("g"+1).setAttribute("visibility","hidden")
+						   }
+
+
+
+//COURBE DE REFERENCE CHOISIE ---  COURBE DE REFERENCE CHOISIE --- COURBE DE REFERENCE CHOISIE --- COURBE DE REFERENCE CHOISIE --- 
+//  OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION OPTION
+var OPTION=0 // pour les courbes de ref tracées à partir des données de la base de données
+var OPTION=1 // pour les DROITES de ref tracées à partir des données des points extrèmes constenues dans le fichier RESULTAT_PopRef.js
+
+												function ChargeMDGcompare(a){
+												
+												parent.stockmenucompareMDGs(a)
+												
+												MenuIndexTemp=a
+												var numcolref=menu[0]
+												var codeRef
+											if(OPTION==0){
+											/*
+												if(a==0){codeRef=0}
+												if(a==1){codeRef=30}		//Argentine	Pays Arabes 
+												if(a==2){codeRef=14}			//Brasil	Maghreb 
+												if(a==3){codeRef=7}			//	Machreq 
+												if(a==4){codeRef=8}			//	LDC 
+												if(a==5){codeRef=9}			//	Monde 
+												*/
+											}else{
+											
+											
+											
+											}
+											
+												if(a==0 & nblignesTEMP!=0){
+												
+												document.getElementById("radref").setAttribute("visibility","hidden");document.getElementById("g"+nblignesTEMP).setAttribute("visibility","hidden")
+												
+												if(OPTION==1){
+												PopRefTEMP=""
+												parent.stockmenucompareMDGsREF(PopRefTEMP)
+												}
+												
+												}else{
+												nblignesTEMP=nblignes
+												document.getElementById("radref").setAttribute("visibility","visible");document.getElementById("g"+nblignes).setAttribute("visibility","visible")
+												
+											if(OPTION==0){
+											
+												DataRef=parent.recupDataPourMDGs(codeRef)												
+												baseColIci=new Array()
+												for(i=0;i<numcolref.length;i++){baseColIci[i]=DataRef[numcolref[i]]}
+											}else{
+
+											baseColIci=new Array()
+											RadRef=new Array()
+											
+											for(c=0;c<nbcolonnes+2;c++){baseColIci[c]=-99999}	
+
+											baseColIci[0]=parseFloat(coordRefMenu[a].split("_")[0])
+
+											baseColIci[nbcolonnes-1]=parseFloat(coordRefMenu[a].split("_")[1])
+											
+											// affichage réduit à l'intervalle entre les points de mesures
+														var RefDeb=baseColIci[0]
+														var RefFin=baseColIci[nbcolonnes-1]
+
+														var AA=(parseFloat(baseColIci[nbcolonnes-1])-parseFloat(baseColIci[0]))/(nbcolonnes-1) // pente de la droite de référence
+														
+																	baseColIci[0]=-99999
+																	baseColIci[nbcolonnes-1]=-99999
+														
+														
+																	var T1=Math.max(rangdeb-1,5)
+																	var T2=Math.max(rangfin-1,15)
+																	var t1=T1
+																	var t2=T2
+																
+																	baseColIci[T1]=-AA*(nbcolonnes-T1)+parseFloat(RefFin)
+																	baseColIci[T2]=AA*T2+parseFloat(RefDeb)
+																	
+																	
+																	if(forcemax!=-99999 || forcemin!=-99999){
+																	var valbaseColLa1=baseColIci[T1]
+																	var valbaseColLa2=baseColIci[T2]
+																	
+																	if(RefDeb>RefFin){
+																	
+																	//valbaseColLa2=baseColIci[T1]//max au début
+																	//valbaseColLa1=baseColIci[T2]// et min à la fin
+																	
+																	}
+																	
+														if(RefDeb<RefFin){//ascendant
+																	if(forcemin!=-99999){
+																	for(t=T1;t<T2+1;t++){
+																	valbaseColLa1=-AA*(nbcolonnes-t)+parseFloat(RefFin)
+																	
+																	if(valbaseColLa1>=forcemin){t1=t;valbaseColLa1=-AA*(nbcolonnes-t1)+parseFloat(RefFin);t=nbcolonnes}
+																	}
+																	}														
+																	if(forcemax!=-99999 ){
+																	for(t=T2;t>T1-1;t--){
+																	valbaseColLa2=AA*(t)+parseFloat(RefDeb)
+																	if(valbaseColLa2<=forcemax){t2=t;valbaseColLa2=AA*(t2)+parseFloat(RefDeb);t=0}
+																	}
+																	}
+														}else{//descendant
+														
+														
+																	if(forcemin!=-99999){
+																	for(t=T2;t>T1-1;t--){
+																	valbaseColLa1=-AA*(nbcolonnes-t)+parseFloat(RefFin)
+																	if(valbaseColLa1<=forcemin){t1=t;valbaseColLa1=-AA*(nbcolonnes-t1)+parseFloat(RefFin);t=0}
+																	}
+																	}														
+																	if(forcemax!=-99999 ){
+																	for(t=T1;t<T2+1;t++){
+																	valbaseColLa2=AA*(t)+parseFloat(RefDeb)
+																	if(valbaseColLa2>=forcemax){t2=t;valbaseColLa2=AA*(t2)+parseFloat(RefDeb);t=nbcolonnes}
+																	}
+																	}
+														
+														}
+														
+														baseColIci[T1]=-99999
+														baseColIci[T2]=-99999
+																	baseColIci[t1]=valbaseColLa1
+																	baseColIci[t2]=valbaseColLa2
+
+													
+														
+																	}
+																	
+
+														
+
+															
+											// fin de l'affichage réduit à l'intervalle entre les points de mesures
+											
+									PopRefTEMP=tabRef[a][0]+""
+									parent.stockmenucompareMDGsREF(PopRefTEMP)
+																						
+											}
+											
+
+											menu[5][menu[5].length-1]=document.getElementsByTagName("option")[a].innerHTML
+												
+												NomCourbes(5,"gray","")
+
+															var Node = document.getElementById("texteB"+5);
+															var NodeListe = Node.childNodes
+
+															  while(Node.hasChildNodes()==true){
+																var Enfant=NodeListe.item(0);
+																Node.removeChild(Enfant);
+															  }
+												
+												
+												var nt1=document.createTextNode(menu[5][menu[5].length-1])//
+												document.getElementById("texteB"+5).appendChild(nt1)
+												AjoutBaliseTitre("texteB"+5,"TitretexteB"+5)
+												changeInBaliseTitre("TitretexteB"+5,menu[5][menu[5].length-1])
+
+												CalculMaxMin();
+												COURBES();cerclesCOURBES();
+												CourbeRef();CercleCourberef();LibelAxesEtOrigine()
+												document.getElementById("radref").setAttribute("visibility","visible");document.getElementById("g"+nblignes).setAttribute("visibility","visible")
+												
+												//if(menu[6]==1){effcourbe3()}
+												}
+												}
+												
+												
+												var coordRefMenu=new Array()
+												var PopRefTemp="" // tampon pour le libellé de la pop de référence
+												
+												function ChargemenuRefOPTION1(){
+
+												
+												var rgcolref=0
+												
+												for(i=1;i<tabRef[0].length;i++){// teste si la variable est présente dans la table des populations de référence
+												if(tabRef[0][i].split(" - ")[1]==codeMDG){
+												
+												rgcolref=i												
+												}
+												}
+												
+												if(rgcolref==0){// occultation du menu des populations de référence
+												document.getElementById("comparex").style.display="none"
+												
+												}else{
+											PopRefTEMP=parent.RetournemenucompareMDGsREF()
+											var indexTemp=0
+												coordRefMenu=new Array()
+												coordRefMenu[0]=""									
+												// calcul et affichage du meu des pop de référence
+												var Refmenu="<option>Choose the Sub-Region of reference</option>"
+												for(i=1;i<tabRef.length;i++){// teste si la variable est présente dans la table des populations de référence
+												var SousReg=tabRef[i][0]+""
+											if(PopRefTEMP==SousReg){indexTemp=i}
+											
+												var coordRefA=tabRef[i][rgcolref].split("_")//.split(" - ")[1]
+												if(coordRefA=="0,0"){coordRef=coordRefA}else{
+												if(coordRefA[0]<10){koef=100}else{koef=10};if(coordRefA[0]<1){koef=10000}
+												var coordRefA1=parseInt(coordRefA[0]*koef)/koef
+												if(coordRefA[1]<10){koef=100}else{koef=10};if(coordRefA[1]<1){koef=10000}
+												var coordRefA2=parseInt(coordRefA[1]*koef)/koef
+												var coordRef=coordRefA1+"_"+coordRefA2
+												}
+												if(coordRef=="0,0"){} else{
+												coordRefMenu[coordRefMenu.length]=coordRef
+												Refmenu+="<option title='"+ConvChar(SousReg)+"'>"+ConvChar(SousReg)+"</option>"//    "+coordRef+"
+												}
+												
+												}
+												
+												
+												document.getElementById("comparex").innerHTML=Refmenu
+											if(indexTemp!=0){
+											ChargeMDGcompare(indexTemp)
+											document.getElementById("comparex").selectedIndex=indexTemp
+											}
+												
+												}
+												
+												
+												
+												}
+
+
+var valdepart
+var objectif2015
+var projection2015
+var percentObj2015	
+
+var rangdeb
+var valdeb
+var rangfin	
+var valfin	
+
+var rangdeb2
+var valdeb2
+var rangfin2
+var valfin2	
+
+
+
+var pente
+var ordonneeFin
+var ordonnee0
+var pente2
+var ordonneeFin2
+var ordonnee02
+var DataLigneSelected=new Array()
+var PasdObjectif=0
+function appelleLigneData(a){
+DataLigneSelected=new Array()
+DataLigneSelected=parent.recupDataPourMDGs(a)
+
+												
+if(paramMDGs[4]+paramMDGs[5]+paramMDGs[6]=="MDG"){
+
+if(menu[6]>1){PasdObjectif=1}
+}
+
+}
+var Ord00=0
+var valdeb0=1000000000
+var rangdeb0=0
+var rangdfin0=0
+var valfin0=1000000000
+var ordonneeFin0=0
+function ParamAccrois(){
+valdeb0=1000000000
+// récupération des rangs et valeurs des points de la droite d'accroisseement entre les extrêmes
+
+for(i=1;i<DATArecept.length-1;i++){if(DATArecept[i]!=-99999 & DATArecept[i]!=0){rangdeb=i;valdeb=DATArecept[i];i=DATArecept.length}}
+for(i=DATArecept.length-2;i>0;i--){if(DATArecept[i]!=-99999	& DATArecept[i]!=0){rangfin=i;valfin=DATArecept[i];i=0}}
+
+//calcul des ordonnées aux origines et fins
+
+if(valfin==valdeb & rangfin==rangdeb){rangfin=rangdeb+1}
+pente=(valfin-valdeb)/(rangfin-rangdeb)
+ordonneeFin=(DATArecept.length-2+projectionPlus-rangdeb)*(valfin-valdeb)/(rangfin-rangdeb)  +valdeb
+
+ordonnee0=(1-rangdeb)*(valfin-valdeb)/(rangfin-rangdeb)  +valdeb
+
+						/* cas spécial première valeur nulle*/
+			for(i=1;i<DATArecept.length-1;i++){if(DATArecept[i]!=-99999){if(DATArecept[i]==0){;rangdeb0=i;valdeb0=DATArecept[i];i=DATArecept.length}else{;i=DATArecept.length;valdeb0=valdeb;rangdeb0=rangdeb}}	}
+			
+			for(i=DATArecept.length-2;i>0;i--){if(DATArecept[i]!=-99999	){if(DATArecept[i]==0){;rangfin0=i;valfin0=DATArecept[i];i=0}else{i=0;valfin0=valfin;rangfin0=rangfin}}}
+			
+
+			if(valdeb0!=1000000000){
+
+			
+			if(valfin==valdeb0 & rangfin==rangdeb0){rangfin=rangdeb+1}
+			pente=(valfin0-valdeb0)/(rangfin0-rangdeb0)
+			ordonneeFin0=(DATArecept.length-2+projectionPlus-rangdeb0)*(valfin0-valdeb0)/(rangfin0-rangdeb0)  +valdeb0
+
+			Ord00=(1-rangdeb0)*(valfin0-valdeb0)/(rangfin0-rangdeb0)  +valdeb0
+			
+			}
+
+			
+
+
+
+}
+function ParamAccrois2(){
+// récupération des rangs et valeurs des points de la droite d'accroisseement entre les extrêmes
+valdeb=-99999
+valfin=-99999
+															
+for(i=1;i<(DATArecept.length-2)/2;i=i+1){if(DATArecept[i]!=-99999){rangdeb=i;valdeb=DATArecept[i];i=DATArecept.length}}
+for(i=(DATArecept.length-2)/2;i>0;i=i-1){if(DATArecept[i]!=-99999){rangfin=i;valfin=DATArecept[i];i=0}}
+
+//calcul des ordonnées aux origines et fins
+
+if(valfin==valdeb & rangfin==rangdeb){rangfin=rangdeb+1}
+pente=(valfin-valdeb)/(rangfin-rangdeb)
+
+ordonneeFin=((DATArecept.length-2)/2-rangdeb)*(valfin-valdeb)/(rangfin-rangdeb)  +valdeb
+ordonnee0=(1-rangdeb)*(valfin-valdeb)/(rangfin-rangdeb)  +valdeb
+
+
+valdeb2=-99999
+valfin2=-99999
+for(i=(DATArecept.length-2)/2;i<DATArecept.length-2;i++){if(DATArecept[i]!=-99999){rangdeb2=i;valdeb2=DATArecept[i];i=DATArecept.length}}
+for(i=DATArecept.length-2;i>(DATArecept.length-2)/2;i--){if(DATArecept[i]!=-99999){rangfin2=i;valfin2=DATArecept[i];i=0}}
+
+//calcul des ordonnées aux origines et fins
+if(valfin2==valdeb2 & rangfin2==rangdeb2){rangfin2=rangdeb2+1}
+pente2=(valfin2-valdeb2)/(rangfin2-rangdeb2)
+
+ordonneeFin2=(DATArecept.length-2-rangdeb2)*(valfin2-valdeb2)/(rangfin2-rangdeb2)  +valdeb2
+ordonnee02=((DATArecept.length-2)/2+1-rangdeb2)*(valfin2-valdeb2)/(rangfin2-rangdeb2)  +valdeb2
+
+}
+
+
+
+function traceObjectifAccrois(){
+DATArecept=parent.transDATA("return datax")
+for(i=0;i<CourbeAvecZeros*DATArecept.length;i++){
+if(DATArecept[i]==0){DATArecept[i]=0.000001} //SPECIAL MDG-7
+}
+aireici=DATArecept[0]
+
+
+appelleLigneData(DATArecept[0])
+if(menu[6]==2){//occulte les noms des courbes 1 et 2
+document.getElementById("rad1").setAttribute("visibility","hidden");document.getElementById("g"+1).setAttribute("visibility","hidden")
+document.getElementById("rad2").setAttribute("visibility","hidden");document.getElementById("g"+2).setAttribute("visibility","hidden")
+}
+/*
+if(
+menu[1].indexOf("Ligne de pauvreté Nationale (dollars PPA")>=0 
+|| menu[1].indexOf("Indice de pauvreté pour")>=0 
+|| menu[1].indexOf("Estimation de la ligne de pauvreté")>=0
+|| menu[1].indexOf("DP per capita")>=0
+
+){
+document.getElementById("rad1").setAttribute("visibility","hidden");document.getElementById("g"+1).setAttribute("visibility","hidden")		
+}
+*/										//
+
+//essaiMDG()//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+if(adcourbe>1){
+
+ParamAccrois2();
+}else{
+
+ParamAccrois();valINIT2()
+}
+// initie la balise de texte pour indiquer le nom de la courbe de référence
+
+INIT_MDG();CalculMaxMin();COURBES();cerclesCOURBES();CourbeRef();CercleCourberef();;;LibelAxesEtOrigine()//;;ChargeMDGcompare(MenuIndexTemp)
+if(adcourbe==2){	
+if(menu[4][menu[4].length-1].indexOf("project1")>0){
+
+if(document.getElementById("linea4").checked==true){affcourbe1et2()}else{}
+
+}
+}
+zf=nblignes+adcourbe-1
+
+infosMDG(valdepart,objectif2015,projection2015,percentObj2015)
+
+if(menu[6]==1){effcourbe3()}
+}
+var moderegression=100
+function traceObjectifRegresss(){
+moderegression=1
+DATArecept=parent.transDATA("return datax")
+for(i=0;i<CourbeAvecZeros*DATArecept.length;i++){
+if(DATArecept[i]==0){DATArecept[i]=0.000001} //SPECIAL MDG-7
+}
+aireici=DATArecept[0]
+appelleLigneData(DATArecept[0])
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ParamAccrois()
+valINIT()
+
+
+INIT_MDG();CalculMaxMin();COURBES();cerclesCOURBES();CourbeRef();CercleCourberef();;;LibelAxesEtOrigine()	
+zf=nblignes+adcourbe-1
+infosMDG(valdepart,objectif2015,projection2015,percentObj2015)
+//
+if(menu[6]==1){effcourbe3()}
+}
+
+var projectionPlus=0
+
+				
+						   //..... PARAMETRES special MDGs ...............
+						   //
+						   // affichage de la fiche légende spécifique au MDGs
+						   var paramMDGs=""+menu[4][menu[4].length-1]
+						   if(paramMDGs[4]+paramMDGs[5]+paramMDGs[6]=="MDG"){
+						   adcourbe=parseInt(menu[6])
+						   if(adcourbe==1 ){
+
+						   projectionPlus=3//menu[5][menu[5].length-1]
+						   }
+						   var MDGslegende=paramMDGs[0]//menu[4][menu[4].length-1]// = 1 fiche active, =0 fiche inactive
+						   }else{var MDGslegende=0;projectionPlus=0}
+						   var menu7=parseInt(menu[7])+projectionPlus
+						   			
+									nbcolonnes=menu7
+									
+						   
+						   // n° de de la courbe "nuage de point" ou tracée
+						   var numColPoints=paramMDGs[1] //  si =0 alors les propriétés suivantes ne s'appliquent pas souf, numéro de courbe ou =9 pour toutes
+						   
+						   
+									// tracé ou points
+									var tracPoints=paramMDGs[2] // =0 pour tracé seul et =1 pour points et tracé et =2 pour point seuls
+										//si option tracé (0) : type de tracé : tous les points reliés ou seulement les consécutifs
+										var typeTrace=paramMDGs[3] // =0 pour tous les points reliés, =1 pour seulement les points consécutifs
+ var datafab=new Array()  
+var leg1
+var leg2
+var leg3
+var leg4
+var koef=10
+function valINIT2(){
+//Calcul des coordonénes de la droite d'accroissement (BLEUE)
+		if(ordonnee0<10){koef=100}else{koef=10};if(ordonnee0<1){koef=10000}
+		valdepart=parseInt(ordonnee0*koef)/koef//
+		projection2015=parseInt(ordonneeFin*koef)/koef
+
+
+
+
+
+
+}
+var coefA=0
+var projectionregfin=-99999
+var valdepartregdeb=-99999
+function valINIT(){ // Calcul de la droite regressive
+
+if(ordonnee0<10){koef=100}else{koef=10};if(ordonnee0<1){koef=1000}
+
+valdepart=parseInt(DataLigneSelected[menu[0][menu[0].length-1]+5]*koef)/koef
+projection2015=parseInt(DataLigneSelected[menu[0][menu[0].length-1]+6]*koef)/koef
+
+			// CALCUL REGRESSION LINEAIRE
+			//moyenne des X sauf valeurs=0
+			moyX=0
+			moyY=0
+			var k=0
+			for(i=1;i<DATArecept.length-1;i++){if(DATArecept[i]!=-99999 ){moyX+=i;moyY+=DATArecept[i];k+=1}}
+			moyX=moyX/k
+			moyY=moyY/k
+
+			//moyenne des Y
+			coefA=0
+			var coefAnum=0
+			var coefAdenom=0
+
+			for(i=1;i<DATArecept.length-1;i++){
+			if(DATArecept[i]!=-99999 & DATArecept[i]!=0 ){
+			coefAnum+=(DATArecept[i]-moyY)*(i-moyX)
+			coefAdenom+=(i-moyX)*(i-moyX)
+			}}
+
+			coefA=coefAnum/coefAdenom
+			var constB=moyY-moyX*coefA
+			projection2015=coefA*(DATArecept.length-2+projectionPlus)+constB
+			valdepart=coefA*(1)+constB
+			
+			projectionregfin=coefA*(rangfin)+constB
+			valdepartregdeb=coefA*(rangdeb)+constB			
+			
+			
+			 //if(forcemin!=-99999 & projection2015<forcemin){}
+			 //if(forcemax!=-99999 & projection2015>forcemax){}
+
+
+}
+valINIT()				
+ParamAccrois()	
+
+
+var codeIns=0
+var codeMDG=0	
+var rgencours=0	
+var nbx=0	
+
+var yavantder=0
+var yder=0
+var rgavantder=0
+var rgder=0
+var penteder=0
+var penteavantder=0
+var yplus=0
+var rgplus=0
+var rgavantderMoins1=0
+var yder0=0
+var iyd=0
+var itemp=1
+var comptei=0
+var icimax=-100000000000
+var icimin=100000000000
+var rangicimax=0
+var rangicimin=0
+var dernierevaleurnonnulle=-99999
+var rangdernierevaleurnonnulle=0
+var debmoymob=-99999
+var valdebmoymob=0
+var occultfinproj=0
+function INIT_MDG(){
+var rgmob1=0
+var valmob1=-99999
+var rgmob2=0
+var valmob2=-99999
+var rgmob3=0
+var valmob3=-99999
+comptei=0
+iyd=0
+
+if(MDGslegende==1){	
+
+
+
+leg1=menu[4][menu[4].length-5]
+leg2=menu[4][menu[4].length-4]
+leg3=menu[4][menu[4].length-3]
+leg4=menu[4][menu[4].length-2]
+														
+													
+datafab=new Array()
+if(adcourbe==1){
+
+
+ligneLibel=parent.recupDataPourMDGs(0) // récupération des libellés de colonens pour extraire le code de la variable MDG
+var splitlibel=ligneLibel[menu[0][0]].split(" - ")
+
+if(splitlibel){
+if(splitlibel.length>=3){
+codeMDG=splitlibel[splitlibel.length-2]
+}else{codeMDG=0}
+}else{codeMDG=0}
+if(codeMDG.length==0){codeMDG=0}
+
+ligneLibel=parent.recupDataPourMDGs(aireici0) // récupération du code numérique ISO de l'aire géographique
+codeIns=ligneLibel[2]
+
+coul=new Array("red","navy","green","brown","yellow")
+
+												
+
+if(projection20150=0){projection2015=0.00000000001}
+var nbdata=0
+								for(i=1;i<DATArecept.length-1;i++){
+//if(DATArecept[i]==0){DATArecept[i]=0.001} //SPECIAL MDG-7
+								if(DATArecept[i]!=-99999 & DATArecept[i]!=0){
+								nbdata+=1
+								if(DATArecept[i]<icimin){icimin=DATArecept[i];rangicimin=i}
+								if(DATArecept[i]>icimax){icimax=DATArecept[i];rangicimax=i}
+								dernierevaleurnonnulle=DATArecept[i];rangdernierevaleurnonnulle=i
+								}
+								}
+								var penteTrend1=0
+								var ecartTrend=0
+								var valdepartTrend1=0
+								
+								var penteTrend2=0
+								var ecartTrend2=0
+								var valdepartTrend2=0
+																
+								var penteTrendMaxMin=0
+								var ecartTrendMaxMin=0
+								var valdepartTrendMaxMin=0
+								
+								
+
+
+
+								if(Math.abs(dernierevaleurnonnulle-icimax)>Math.abs(dernierevaleurnonnulle-icimin)){//il faudrait pondérerparla distance 
+								penteTrendMaxMin=(dernierevaleurnonnulle-icimax)/(rangdernierevaleurnonnulle-rangicimax)
+								valdepartTrendMaxMin=icimax
+
+								ecartTrendMaxMin=(rangdernierevaleurnonnulle-rangicimax)
+								}else{
+								penteTrendMaxMin=(dernierevaleurnonnulle-icimin)/(rangdernierevaleurnonnulle-rangicimin)
+								valdepartTrendMaxMin=icimin
+								ecartTrendMaxMin=(rangdernierevaleurnonnulle-rangicimin)
+								}
+								
+				
+				var pentedepuisdeb=0
+				var pentecourante=0
+				var sommePondpentes=0
+				var itemp=rangdernierevaleurnonnulle
+				var itemp0=rangdernierevaleurnonnulle
+				var ider=rangdernierevaleurnonnulle
+				var firstRankTrend=ider
+		
+		var kla=0
+		var kla2=0
+
+		for(i=itemp0;i>0;i--){
+		kla+=1
+		if(DATArecept[i]!=-99999 & DATArecept[i]!=0){
+
+		
+			if(kla2>0 ){
+pentecourante=(DATArecept[itemp]-DATArecept[i])/(itemp-i)			
+			var pentedepuisdebici=(DATArecept[itemp0]-DATArecept[i])/(itemp0-i)	
+	
+if(itemp==itemp0){pentedepuisdeb=pentedepuisdebici}
+			if( Math.abs(pentecourante) > Math.abs(pentedepuisdeb*1.4) || Math.abs(pentecourante) < Math.abs(pentedepuisdeb*0.63) || pentedepuisdeb*pentecourante<0){
+
+			ecartTrend=itemp0-itemp;
+
+			penteTrend1=(DATArecept[itemp0]-DATArecept[itemp])/(itemp0-itemp)	//pentedepuisdeb;
+			valdepartTrend1=DATArecept[itemp];
+			
+			ider=i;
+			firstRankTrend=itemp
+			i=0;
+			}
+			}
+		if(i!=0 ){//
+		kla2+=1
+		if(i!=itemp0){
+		sommePondpentes+=(DATArecept[itemp]-DATArecept[i])*(itemp-i)
+		pentedepuisdeb=sommePondpentes/(itemp0-i)
+		}
+		itemp=i
+		if(i==rangdeb){i=0;penteTrend1=pentedepuisdeb}
+		}
+		}
+		
+		}
+		
+		
+				var pentedepuisdeb2=0
+				
+				var sommePondpentes=0
+				var dernierevaleurnonnulle2=0
+				var rangdernierevaleurnonnulle2=0
+				
+								for(i=1;i<ider;i++){
+								if(DATArecept[i]!=-99999 & DATArecept[i]!=0){
+								dernierevaleurnonnulle2=DATArecept[i];rangdernierevaleurnonnulle2=i
+								}
+								}
+				
+				var itemp=rangdernierevaleurnonnulle2
+				var itemp0=rangdernierevaleurnonnulle2
+				var pentecourante=0
+				
+
+				var klb=-1
+				var kla2=0
+				for(i=itemp0-1;i>0;i--){
+				klb+=1
+				if(DATArecept[i]!=-99999 & DATArecept[i]!=0){
+			
+						if(kla2>0 ){	
+						pentecourante=(DATArecept[itemp]-DATArecept[i])/(itemp-i)
+						var pentedepuisdebici=(DATArecept[itemp0]-DATArecept[i])/(itemp0-i)
+						if(itemp==itemp0){pentedepuisdeb2=pentedepuisdebici2}
+						if(Math.abs(pentecourante) > Math.abs(pentedepuisdeb2*1.4) || Math.abs(pentecourante) < Math.abs(pentedepuisdeb2*0.63) || pentedepuisdeb2*pentecourante<0){
+						ecartTrend2=itemp0-itemp;
+						penteTrend2=(DATArecept[itemp0]-DATArecept[itemp])/(itemp0-itemp)	//pentedepuisdeb2;
+						valdepartTrend2=DATArecept[itemp];
+						ider=i;
+						firstRankTrend=itemp
+						i=0;
+						}
+						}
+				if(i!=0 ){//
+				kla2+=1
+				if(i!=itemp0){
+				sommePondpentes+=(DATArecept[itemp]-DATArecept[i])*(itemp-i)
+				pentedepuisdeb2=sommePondpentes/(itemp0-i)
+				}
+				itemp=i
+				if(i==rangdeb){i=0;penteTrend2=pentedepuisdeb2}
+				}
+				}
+				
+				}
+
+var valdepartTrend=valdepartTrend1
+var penteTrend=penteTrend1
+
+if(penteTrend2!=0){
+
+valdepartTrend=valdepartTrend2
+var LACoef=5
+penteTrend=(penteTrend1*(ecartTrend)*LACoef + penteTrend2*(ecartTrend2))/(LACoef*ecartTrend+ecartTrend2+0.000001)
+ecartTrend=(ecartTrend+ecartTrend2)
+}	
+		
+rgencours=0
+
+
+			//critères d'occultation de la droite d'objectifs"
+			if(rangdeb>5 || menu[2].indexOf("obj=")<0){;PasdObjectif=0}else{PasdObjectif=1}//
+
+			
+			var xdep=-99999			
+			
+for(j=0;j<3+adcourbe;j++){
+var li=1
+for(i=1+j*menu7;i<(j+1)*menu7+1;i++){
+if(datafab[i]){}else{datafab[i]=-99999}
+
+
+
+
+			
+			
+
+//courbe d'objectifs(ROUGE)
+{
+			if(j==0 & i==1+j*menu7){
+			
+			xdep=parseFloat(valdeb+0.5*(ordonnee0-valdeb)*(1-(rangdeb-1)/(menu7-projectionPlus))) ; 
+			if(xdep<=forcemin){xdep=forcemin}
+			if(xdep<10){koef=100}else{koef=10};if(xdep<1){koef=10000}
+			valdepart=parseInt(xdep*koef)/koef
+			if(PasdObjectif==1){
+			
+			datafab[i]= xdep
+			}else{
+			datafab[i]==-99999
+			}
+			
+
+			}
+			if(j==0 & i==(j+1)*menu7){
+			
+			
+			if(PasdObjectif==1){
+			var coefObjectif="-99999"
+
+			if(menu[2].indexOf("obj=")>0){
+			var mdeux=menu[2].split(" ")
+			for(z=0;z<mdeux.length;z++){
+			if(mdeux[z].indexOf("bj=")>0){coefObjectif=mdeux[z].replace("obj=","");PadObjectif=1}
+			}
+					if(coefObjectif.indexOf("%")>0){
+					coefObjectif=parseFloat(coefObjectif.replace("%",""))
+					objectif2015=xdep*(1+coefObjectif/100)
+					}else{
+					coefObjectif=parseFloat(coefObjectif)
+					objectif2015=coefObjectif
+					}
+					if(objectif2015<10){koef=100}else{koef=10};if(objectif2015<1){koef=10000}
+					objectif2015=parseInt(objectif2015*koef)/koef
+			}
+
+			if(valdeb0!=1000000000 || valfin0!=1000000000){
+			
+			}
+			
+			}else{objectif2015=-99999}
+
+			
+
+			
+			datafab[i]=objectif2015;
+			}
+}
+
+if(moderegression==0){// Affichage mode droite d'accroissement (BLEUE)
+			if(j==1 & i==rangdeb+j*menu7){datafab[i]=valdeb }
+			if(j==1 & i==rangfin+j*menu7){datafab[i]=valfin;}
+
+}else{ 
+if(moderegression==1){//affichage droite de régression  (BLEUE)
+			if(j==1 & i==rangdeb+j*menu7){datafab[i]=valdepartregdeb ;}
+			if(j==1 & i==rangfin+j*menu7){datafab[i]=projectionregfin;}
+}
+if(moderegression==100){//Aucun affichage 
+			if(j==1 & i==rangdeb+j*menu7){datafab[i]=-99999 ;}
+			if(j==1 & i==rangfin+j*menu7){datafab[i]=-99999;}
+}
+}
+
+if(adcourbe==1){ // calculpour la ligne verte additionnelle (VERTE)
+/* // OPTION droite SIMPLE
+if(j==2 & i==rangdeb+j*menu7){datafab[i]=valdeb }
+if(j==2 & i==rangfin+j*menu7){datafab[i]=valfin}
+*/
+
+
+// OPTION COURBE EN MOYENNE MOBILE
+if(j==2){
+if(i==j*menu7+1 & rangdeb<6 & nbdata>1){//origine de la courbe de moyenne mobile
+
+
+datafab[i]=xdep
+rgmob1=parseInt(j*menu7+1+rangdeb/2)
+valmob1=(valdeb+xdep)/2
+rgmob2=parseInt((j*menu7+1+rgmob1+rangdeb)/2-0.5)
+valmob2=(valdeb+valmob1)/2
+}
+
+if(i==rgmob1){
+
+datafab[rgmob1]=valmob1
+}
+if(i==rgmob2){
+
+datafab[rgmob2]=valmob2
+}
+
+if( (i)>=rangdeb+j*menu7 & (i)<=rangfin+j*menu7){
+
+if(DATArecept[i-j*menu7]!=-99999 & DATArecept[i-j*menu7]!=0){
+
+				var datafabX=DATArecept[i-j*menu7]
+				if(datafabX!=-99999){var dernierevaleur=datafabX}
+				nbx=1
+				var nbxp=0
+				var k10=i//+1
+				var k1=i
+				
+								for(k=i+1;k<=rangfin+j*menu7;k++){
+							
+								if(DATArecept[k-j*menu7]!=-99999 & DATArecept[k-j*menu7]!=0){nbxp+=1 ;datafabX+=DATArecept[k-j*menu7];k1=k}
+
+								if(nbxp==1){k=rangfin+j*menu7+1;}//fin de boucle
+								}
+								
+				//}
+				
+				var nbxm=0
+				var k20=i
+				var k2=i
+				
+								for(k=i-1;k>=rangdeb+j*menu7;k--){						
+
+								if(DATArecept[k-j*menu7]!=-99999 & DATArecept[k-j*menu7]!=0){nbxm+=1 ;datafabX+=DATArecept[k-j*menu7];k2=k}
+
+								if(nbxm==1){k=rangdeb+j*menu7-1;}//fin de boucle
+								}
+				
+
+				k1=k1-k10
+				k2=k2-k20
+			
+				
+var a=i				
+var fact=2
+var dec=0
+var aa=i+(k1+k2)/fact
+a=parseInt(i+(k1+k2)/fact)
+//alert(a+"   "+i+"   k1="+k1+"   k2="+k2+"   yavantder="+yavantder+" penteavantder="+penteavantder+"   rgder="+rgder)
+if( Math.abs((k1+k2)/2-parseInt((k1+k2)/2))==0.5){dec=0.5}	
+var inhibDansleCas2etMoins=0
+if(nbdata>2){
+if(nbdata>4){
+if( (i)>(rangfin+j*menu7) & dec!=0){
+a=parseInt((i+rgavantder)/2)+1
+datafab[a]=yavantder+penteavantder*((a-rgavantder))
+}else{
+datafab[a]=datafabX/(nbx+nbxp+nbxm)
+}
+}else{a=i;datafab[a]=DATArecept[i-j*menu7]}
+}else{
+var inhibDansleCas2etMoins=1
+}
+
+penteder=(yder-yavantder)/(rgder+dec-rgavantder+0.00001)
+	
+				if(nbdata==2 & DATArecept[i-j*menu7]!=0 & inhibDansleCas2etMoins==1){
+				
+				penteder=(DATArecept[i-j*menu7]-DATArecept[i+k2-j*menu7])/Math.abs(k2); 
+				
+				yder=DATArecept[i-j*menu7]
+				datafab[i]=DATArecept[i-j*menu7]
+				a=i
+				}
+				
+ if(forcemin!=-99999 & datafab[a]<forcemin){datafab[a]=forcemin}
+ if(forcemax!=-99999 & datafab[a]>forcemax){datafab[a]=forcemax}
+
+if(debmoymob!=-99999){}else{debmoymob=a;valdebmoymob=datafab[a]}
+rgder=a				
+yder=datafab[a]
+yder0=yder
+penteavantder=penteder
+yavantderMoins1=yavantder
+yavantder=yder
+rgavantderMoins1=rgavantder
+rgavantder=rgder		
+				
+}
+				
+}
+//calcul yder à la dernière date de mesure
+if(i==rangfin+j*menu7+0 ){
+
+var ampl=icimax-icimin+0.00001
+var maxamplTrend=Math.max(Math.abs(yder-valdepartTrend1),Math.abs(yder-valdepartTrend2))
+
+var coefEcartPosMoy=0.5//
+if(nbdata>2){coefEcartPosMoy=2.2*(ecartTrend/(rangfin-rangdeb+10))*Math.abs(( maxamplTrend))/ampl}
+if(ecartTrend==(rangfin-rangdeb) || ecartTrend==0 ){coefEcartPosMoy=1}
+
+if(nbdata ==2  & inhibDansleCas2etMoins==1){
+		coefEcartPosMoy=0.5;
+		yder=yder0
+		ecartTrend=k2/2
+}else{
+		var xcoef=1
+		
+		yder=(1-rappel1)*penteTrend*(i-a)*xcoef+yder0
+		//alert(i+"   "+a+"   "+penteTrend)
+}
+ if(penteTrend==0){yder=yder0;coefEcartPosMoy=1}
+ 
+ if(forcemin!=-99999 & yder<forcemin){yder=forcemin}
+ if(forcemax!=-99999 & yder>forcemax){yder=forcemax}
+
+datafab[i]=yder
+if(nbdata>2){
+penteavantder=penteTrend
+}
+penteavantder0=penteavantder
+var signePente=penteavantder/Math.abs(penteavantder+0.0001)
+//alert(i+"    "+datafab[i])
+var saut=1*Math.abs(yder-yder0)
+if(penteder<0){
+var contresaut=1*Math.abs(penteavantder)*(yder-icimin)
+var contresaut2=(dernierevaleur-icimin+0.001)
+}else{
+var contresaut=1*Math.abs(penteavantder)*(icimax-yder)
+var contresaut2=(icimax-dernierevaleur+0.001)
+}
+var penteVar=(valfin-valdeb)/(rangfin-rangdeb)
+
+//alert(penteVar)
+
+//alert(casAcrroisligne)
+//& contresaut2!=0.001
+var PR=menu7-rangfin
+var periodM=rangfin-rangdeb+1
+
+var penteNormalder0=penteavantder0/ampl
+var coteoppose=i-rgavantder
+var sinalpha=coteoppose/(saut+0.0001)/(ampl+0.0001)
+if(sinalpha>1){sinalpha=1}
+var tauxdata1=nbdata/(menu7-projectionPlus)
+//alert(sinalpha)
+var casAcligneSoSurAmpl=0
+var casAcrroisligne=0
+if((contresaut2==0.001 || contresaut2>0.66*ampl) & ((rangicimax-rangfin)==0 || (rangicimin-rangfin)==0) & saut<(ampl/5) & nbdata>4 ){
+casAcrroisligne=1//100*Math.abs(penteVar)/ampl
+casAcligneSoSurAmpl=1
+//contresaut2=ampl
+}
+occultfinproj=0
+if(menu7-projectionPlus-rangfin>6){occultfinproj=menu7-projectionPlus-rangfin-1}//test sur la distance entre dernière mesure et fin de période de mesure
+
+//alert(casAcrroisligne)
+//alert(nbdata)
+//alert(saut/ampl)
+}
+
+// projection après la courbe de moyenne mobile : 
+if( (i)>rangfin+j*menu7 +0 & (i)<(j+1)*menu7+1){//== BONRNER LA LONGUEUR de PROJECTION
+var krg=(i-(rangfin+j*menu7))//-1 : supprimé le -1 pour accélérer l'effet amortisseur en commençant à krg=2
+
+var pentedeKrg   =  1*(
+					(1-krg/(menu7-rangfin)*(1-(0.5+0.5*Math.abs(ecartTrend)/ecartTrendMaxMin)))*penteavantder0 
+					+
+					1*krg/(menu7-rangfin)*(0.5+0.5*Math.abs(ecartTrend)/ecartTrendMaxMin)*(//
+
+														coefA*(1-signePente*(ecartTrendMaxMin)/(rangfin-rangdeb))
+														+
+														penteTrendMaxMin*(ecartTrendMaxMin/(rangfin-rangdeb))
+														)
+					)
+var alpha=1
+var retard1=(1-0.8*(krg)/(PR*(1-1*rappel1/2+0.00001)))//rappel1**(1-rappel1*(saut/ampl)*1)//*(1-0.8*(krg)/PR+0)		
+					
+					var coefSaut=0
+//var periodDyn=0
+
+var alpha2=2*(1-sinalpha)*(1-(coefCorrecteurContresaut*contresaut2/ampl))*(tauxdata1+0.1+coefCorrecteurContresaut)//((saut)/ampl)*(1-contresaut2/ampl)	
+var decal2=1
+decal2=(alpha2*1*(contresaut2/ampl)+4*alpha2)//0.5			
+		//alert(casAcrroisligne	)
+		//alert(tauxdata1)
+		//alert(menu7-projectionPlus-rangfin)
+			//alert((1-sinalpha))	
+var retard2=(1-(1-1*casAcrroisligne)*((krg+facteurAvanceRetard2)*1*alpha2+1*decal2)/(PR/(1)))//*(1-((krg*alpha2+(1+alpha2)*PR/4)/PR/4)+0)						
+					
+	var retard3=(tauxdata1/(2*krg))//(PR-krg/2)/PRtauxdata1*
+	//alert(casAcrroisligne)
+var retard3=
+			casAcrroisligne
+			*
+			(0.3+0.7/(2*Math.abs(penteTrend)+1))*((1-1*(krg+1/2)/PR+0))
+			*
+			(tauxdata1+(3/23)/(tauxdata1+2/23) + 0.5)/(1.0*krg)*((20)/(menu7-projectionPlus-rangfin+15))	
+
+            +
+			
+			(1-casAcrroisligne)
+			*
+			1
+			*
+			(tauxdata1+(3/23)/(tauxdata1+2/23) + 0.0)/(1.3*(krg))*((15)/(menu7-projectionPlus-rangfin+15/(tauxdata1+(3/23))))	
+					
+					
+					
+var amort=retard1*retard2*retard3
+//alert("retard1="+retard1+"    retard2="+retard2)
+yplus=pentedeKrg*amort*1+yder
+					
+					/* BON sauf grandes séries 
+					yplus=
+					1*(
+					(1-krg/(menu7-rangfin)*(1-(0.5+0.5*Math.abs(ecartTrend)/ecartTrendMaxMin)))*penteavantder0 
+					+
+					1*krg/(menu7-rangfin)*(0.5+0.5*Math.abs(ecartTrend)/ecartTrendMaxMin)*(//
+
+														coefA*(1-signePente*(ecartTrendMaxMin)/(rangfin-rangdeb))
+														+
+														penteTrendMaxMin*(ecartTrendMaxMin/(rangfin-rangdeb))
+														)
+					)*(
+					1-0.8*(krg/(menu7-rangfin))
+					)
+					*(1-(krg-1)*Math.abs(penteavantder0*ktrend1)/ampl)
+					*(1/(1.5*(krg)))*(1-((krg-1)/(krg))*Math.abs(1.2*penteavantder0)/ampl)
+					
+					//*(1-(rangfin-rangdeb)/(rangfin-rangdeb-1*nbdata+1))
+
+
+					+yder //constante= valeur précédente de yplus
+					*/
+//alert(penteTrend/ampl)
+					/*yplus=
+					(
+					1*(1-krg/(menu7-rangfin)*(1-(0.5+0.5*Math.abs(ecartTrend)/ecartTrendMaxMin)))*penteavantder0 
+					+
+					1*krg/(menu7-rangfin)*(0.5+0.5*Math.abs(ecartTrend)/ecartTrendMaxMin)*(//
+
+														coefA*(1-signePente*(ecartTrendMaxMin)/(rangfin-rangdeb))
+														+
+														penteTrendMaxMin*(ecartTrendMaxMin/(rangfin-rangdeb))
+														)
+					)*
+					
+	
+					(
+					1-0.8*(krg/(menu7-rangfin))
+					)
+					*Math.abs(penteTrend/ampl)*(1-Math.abs(penteTrend)/ampl*(krg+1)*0.8-(0))
+					//*signePente*(1-signePente*1.0*(krg-0.4-5*casAcrroisligne)*Math.abs(penteavantder0)/(ampl-1*signePente*contresaut)-0*signePente*(1/(1/2*krg+3+1*casAcrroisligne))-0)
+					//*(1/(
+							//((rangfin-rangdeb+1-nbdata)/(rangfin-rangdeb+1)+0.5)  *  ((menu7-projectionPlus)/(nbdata+10))  
+						//)
+					  //)
+					
+					//*(1-signePente*((krg-1)/(krg))*Math.abs(1.2*penteavantder0)/(ampl+1*casAcrroisligne))
+					
+
+					+yder //constante= valeur précédente de yplus */
+//alert(signePente*(1-1.0*(krg-0.4-5*casAcrroisligne)*Math.abs(penteavantder0)/(ampl-0*contresaut)-(1/(1/2*krg+3+1*casAcrroisligne))-1))
+//*signePente se place dans (1.0*ampl-1*signePente*contresaut/2)
+					
+//travaux de modèle pour les droites montantes : -0.1*(8)*Math.abs(valfin-valdeb)/(saut+2*contresaut2)amplampl
+					
+					
+					//*Math.abs(penteavantder0)*Math.abs(penteavantder0)signePente*-signePente*2*contresaut-2*contresaut-0.4-5*casAcrroisligne-0.4-5*casAcrroisligne
+//alert((1-0.3*(krg)/(1)-(0)))					
+	//fin de l'expression de yplus-0*signePente*(1/(1/2*krg+3+1*casAcrroisligne))-0*signePente*(1/(1/2*krg+3+1*casAcrroisligne))
+
+ if(forcemin!=-99999 & yplus<forcemin){yplus=forcemin}
+ if(forcemax!=-99999 & yplus>forcemax){yplus=forcemax}
+
+datafab[i]=yplus
+
+
+rgplus=i
+penteder=(yplus-yder)/1
+penteavantder=penteder
+rgder=rgplus
+yder0=yder
+yder=yplus
+
+if(i==(j+1)*menu7){
+if(yplus<10){koef=100}else{koef=10};if(yplus<1){koef=10000}
+projection2015=parseInt(yplus*koef)/koef
+}
+
+}
+}
+}
+if(j==2+adcourbe){datafab[i]=DATArecept[li];li=li+1}
+}
+}
+
+// Début de recalcul de la courbe d'estimation par les moyennes mobiles
+/**/
+if(nbdata>4){
+			var RNN=new Array()
+			var datafabula=new Array()
+			for(d=(2)*menu7;d<(3)*menu7+1;d++){if(datafab[d]!=-99999){RNN[RNN.length]=d}}
+			for(e=2;e<RNN.length-3;e++){
+			var pentebc=(datafab[RNN[e+1]]-datafab[RNN[e-1]])/(RNN[e+1]-RNN[e-1])
+			var ydebc=pentebc*(RNN[e]-RNN[e-1])+datafab[RNN[e-1]]
+			var ymoy=(datafab[RNN[e]]+1*ydebc)/2
+			datafabula[RNN[e]]=ymoy
+			
+			}
+for(e=2;e<RNN.length-3;e++){
+datafab[RNN[e]]=datafabula[RNN[e]]
+}
+}
+
+
+
+if (inhibproject==1 || numinhib==1){// inhibition de la courbe de projection
+
+
+for(d=(2)*menu7;d<(3)*menu7+1;d++){
+datafab[d]=-99999
+}
+}
+// fin de recalcul de la courbe d'estimation par les moyennes mobiles
+nblignes=3+adcourbe+1
+}
+
+if(adcourbe==2){
+
+coul=new Array("#227A49","blue","green","navy")
+for(j=0;j<2;j++){
+for(i=1+j*menu[7];i<(j+1)*menu[7]+1;i++){
+datafab[i]=-99999
+if(j==0 & i==1+j*menu[7]){datafab[i]=ordonnee0}
+if(j==0 & i==(j+1)*menu[7]){datafab[i]=ordonneeFin}
+
+if(j==1 & i==1+j*menu[7]){datafab[i]=ordonnee02}
+if(j==1 & i==(j+1)*menu[7]){datafab[i]=ordonneeFin2}
+
+}
+}
+
+for(i=1;i<DATArecept.length;i++){
+datafab[datafab.length]=DATArecept[i]
+
+
+}
+
+nblignes=1+adcourbe+2
+}
+
+datafab[datafab.length]=DATArecept[DATArecept.length-1]
+
+
+DATArecept=datafab
+
+
+}	
+									
+}
+//
+INIT_MDG()
+		retrait=40
+
+		var hauteurCadre=carre-2*retrait-10
+		var decalvertic=30
+		var bas=hauteurCadre+decalvertic
+
+		var decalorigine=15
+		var carreajust=carre-retrait-55//60
+		
+TITRED=commentClasrecept
+for(i=1;i<commentClasrecept.length-2;i++){
+libel[libel.length]=commentClasrecept[i]
+}
+
+
+var maxsup
+var maxinf
+var stopDATA
+
+var men8=menu[8][0].split(",")
+var indic99999=0
+
+
+
+var MAX
+var MIN
+
+var zero
+
+var som=0
+var valx=new Array()
+var valxref=new Array()
+var Coefech
+function CalculMaxMin(){
+
+for(i=0;i<DATArecept.length-1;i++){
+if(DATArecept[i]==0 & men8[men8.length-1]==-99999){
+indic99999=1
+DATArecept[i]=-99999
+}
+}
+
+maxsup=-1000000000
+
+maxinf=1000000000
+
+stopDATA=DATArecept.length-2						
+						for(i=1;i<DATArecept.length-1;i++){
+						
+						
+							if(DATArecept[i]!=-99999){
+							if(DATArecept[i]>=maxsup){maxsup=DATArecept[i]}
+							if(DATArecept[i]<=maxinf){maxinf=DATArecept[i]}
+							}
+						}
+
+						for(i=0;i<baseColIci.length;i++){
+							if(baseColIci[i]!=-99999){
+							if(baseColIci[i]>=maxsup){maxsup=parseFloat(baseColIci[i])}
+							if(baseColIci[i]<=maxinf){maxinf=parseFloat(baseColIci[i])}
+							}
+						}
+
+if(maxinf>0){maxinf=0}
+if(maxsup<0){maxsup=0}
+MAX=maxsup
+MIN=maxinf
+
+
+
+
+
+if(maxsup==0 & maxinf==0){maxsup=hauteurCadre}
+
+Coefech=(hauteurCadre)/(parseFloat(maxsup)+Math.abs(parseFloat(maxinf)))
+
+maxsup=maxsup*Coefech
+maxinf=maxinf*Coefech
+
+zero=bas-Math.abs(maxinf)
+
+som=0
+valx=new Array()
+valxref=new Array()
+
+					for(i=1;i<stopDATA+1;i++){
+					var affichval
+					if(parseInt(DATArecept[i])==-99999){affichval="NA"}else{affichval=DATArecept[i];som+=parseFloat(DATArecept[i]);}
+					libelaxe[i-1]=commentClasrecept[i]
+					
+					if(parseInt(DATArecept[i])==-99999 ){axescote[i-1]=-99999}else{axescote[i-1]=DATArecept[i]*Coefech;}
+
+					
+					valx[i-1]=affichval
+
+					}
+
+					for(i=0;i<baseColIci.length;i++){
+					var affichvalref
+					if(parseInt(baseColIci[i])==-99999){affichvalref="NA"}else{affichvalref=baseColIci[i]}
+					if(parseInt(baseColIci[i])==-99999){axescoteref[i]=-99999}else{axescoteref[i]=baseColIci[i]*Coefech;}
+					valxref[i]=affichvalref
+					}
+					
+}
+
+	
+if(menu[1].replace("; percentage"," (%)").length>80 & carreajust<170){var xsiz=8}else{var xsiz=10}	
+			
+var titre="<span style='font-weight:bold;font-size:11px;color:navy'>"+DATArecept[DATArecept.length-1]+"</span><br/><span title='"+menu[1]+"' style='font-size:"+xsiz+"px;'><b>"+menu[1].replace("; percentage"," (%)")+"</b> - <i><small>"+menu[2]+" </small></i></span>";
+
+var nbaxes=menu7
+
+
+]]></script>
+</head>
+  <body id="bod" style="font-family:arial;font-size:11px;" >
+  
+<div id="table" style="position:absolute;top:0px;left:0px">
+<table style="border:1px dotted black;background-color:white;line-height:90%">
+<tr ><td style="background-color:#ABABD5">
+<center><span id="titre">
+
+</span></center>
+</td></tr>
+
+<tr id="htable"><td><div style="position:relative;top:-15px">
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+document.getElementById("table").style.width=(carre)+"px"
+
+document.getElementById("titre").innerHTML="<span style='font-size:9px'>n° "+menu[10]+" - </span>"+titre
+]]></script>
+
+<svg id="bouton2" name="bouton2"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+
+
+   >
+    <metadata
+     id="metadata7">
+    <rdf:RDF>
+
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+
+<defs>
+<radialGradient id="grad1" >
+<stop class="begin" offset="0.5" style="stop-color:green"/>
+
+<stop class="end" offset="1" style="stop-color:red"/>
+</radialGradient>
+</defs>
+<g>
+
+<defs>
+<g opacity="0" >
+<g id="ensemble" >
+
+</g> 
+</g> 
+</defs>
+<rect x="0" y="0" width="80" height="80" id="rectmove" style=" fill: #E4E4E4 ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"   ></rect>
+<g transform="matrix(1 0 0 1 0 0)" id="espacecourbe">
+
+ <g id="g1"><use id="userond1" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte1"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB1">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg1"></rect></g>
+ <g id="g2"><use id="userond2" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte2"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB2">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg2"></rect></g>
+  <g id="g3"><use id="userond3" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte3"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB3">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg3"></rect></g>
+   <g id="g4"><use id="userond4" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte4"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB4">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg4"></rect></g>
+    <g id="g5"><use id="userond5" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte5"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB5">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg5"></rect></g>
+	 <g id="g6"><use id="userond6" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte6"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB6">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg6"></rect></g>
+	  <g id="g7"><use id="userond7" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte7"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB7">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg7"></rect></g>
+	   <g id="g8"><use id="userond8" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte8"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB8">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg8"></rect></g>
+	    <g id="g9"><use id="userond9" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte9"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB9">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg9"></rect></g>
+		 <g id="g10"><use id="userond10" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte10"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB10">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg10"></rect></g>
+		 
+		 
+		  <g id="g11"><use id="userond11" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte11"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB11">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg11"></rect></g>
+ <g id="g12"><use id="userond12" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte12"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB12">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg12"></rect></g>
+  <g id="g13"><use id="userond13" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte13"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB13">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg13"></rect></g>
+   <g id="g14"><use id="userond14" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte14"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB14">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg14"></rect></g>
+    <g id="g15"><use id="userond15" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte15"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB15">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg15"></rect></g>
+	 <g id="g16"><use id="userond16" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte16"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB16">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg16"></rect></g>
+	  <g id="g17"><use id="userond17" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte17"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB17">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg17"></rect></g>
+	   <g id="g18"><use id="userond18" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte18"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB18">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg18"></rect></g>
+	    <g id="g19"><use id="userond19" xlink:href="#ensemble"  opacity="0"  x="0" y="0"/><text id="texte19"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB19">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg19"></rect></g>
+		 <g id="g20"><use id="userond20" xlink:href="#ensemble" opacity="0"   x="0" y="0"/><text id="texte20"  style="stroke:black;stroke-width:0.0001px;fill:red;font-family:Arial;text-anchor:middle;opacity:1" font-size="11"   x="0" y="0" >  </text><text id="texteB20">  </text><rect x="0" y="0" width="3" height="3" style=" fill:transparent ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="carreleg20"></rect></g>
+
+		  <g id="radTot" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.7" stroke-width="1px"><path id="pTot" d=""></path></g>
+		  <g id="radvertic" stroke="gray" fill="gray" fill-opacity="0.1" stroke-opacity="0.7" stroke-width="1px"><path id="pvertic" d=""></path></g>
+		 <g id="rad1" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p1" d=""></path></g>	
+		 <g id="rad2" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p2" d=""></path></g>		 
+		 <g id="rad3" stroke="gray" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p3" d=""></path></g>			 
+		 <g id="rad4" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p4" d=""></path></g>			 
+		 <g id="rad5" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p5" d=""></path></g>			 
+		 <g id="rad6" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p6" d=""></path></g>			 
+		 <g id="rad7" stroke="navy" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="p7" d=""></path></g>			 
+		 			 
+		 <g id="radref" stroke="gray" fill="none" fill-opacity="0.2" stroke-width="1.5px"><path id="pref" d=""></path></g>
+		 
+<g><text style="stroke:none;stroke-width:0.0001px;fill:black;font-family:Arial;text-anchor:left;opacity:1" font-size="9"  x="10" y="10" id="valSup">sup</text></g>
+<g><text style="stroke:none;stroke-width:0.0001px;fill:black;font-family:Arial;text-anchor:left;opacity:1" font-size="9"  x="0" y="0" id="valInf">inf</text></g>
+<g><text style="stroke:none;stroke-width:0.0001px;fill:black;font-family:Arial;text-anchor:left;opacity:1" font-size="9"  x="0" y="0" id="valZero">zéro</text></g>
+
+<g id="positionderriere"><rect transform="matrix(1 0 0 1 0 0)" x="50" y="50" width="40" height="40" id="rectcible" style="cursor:pointer; fill: gray ; fill-opacity: 0.3; stroke: gray; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;"   ></rect></g>
+<g id="espacecerclescourbes"></g><g id="espacecerclesref"></g>
+<g id="positiondevant"></g>
+
+</g>		 
+</g>
+
+</svg> 
+</div>
+</td></tr></table>
+</div>
+<div id="linearisation" style="display: none;position:absolute;right:0px;top:203px">
+
+
+<table>
+
+<tr>
+<td>
+<dt style="position: relative; top:10px;left:3px">
+<span id="tbt1" title="Estimation par la droite de regression linéraire" style="font-size:8px;cursor:pointer" >Reg</span>
+
+<span id="tbt2" title="Estimation par la courbe des moyenne mobil (1/3) et modèle de projection graphique" style="font-size:7px;"  >&nbsp;&nbsp;Estim</span>
+
+<span id="tbt3" title="Affiche l'estimation par la droite reliant la première à la dernière mesure effectuée" style="font-size:8px;cursor:pointer"  >&nbsp;&nbsp;&nbsp;Var</span>
+<span id="tbt4" title="Affiche les mesures effectuées" style="font-size:8px;display:none;cursor:pointer"  >&nbsp;&nbsp;Courbe</span>
+</dt>
+<input   style="position:relative;bottom:-5px"  id="linea1"  name="linea"  type="radio" onmousedown="parent.stockcurveselector(1);traceObjectifRegresss()" />
+<input   style="position:relative;bottom:-5px"  id="linea2" type="radio" name="linea" onmousedown="parent.stockcurveselector(2);moderegression=100;traceObjectifAccrois();affcourbe3()" /><!-- correposnd au libellé Estim id="tbt2" -->
+<!--span  id="linea2"  name="linea"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span-->
+<input   style="position:relative;bottom:-5px"  id="linea4" type="radio" name="linea" onmousedown="parent.stockcurveselector(4);;affcourbe1et2()" />
+<input   style="position:relative;bottom:-5px"  id="linea3" type="radio" name="linea" onmousedown="parent.stockcurveselector(3);moderegression=0;document.getElementById('linea3').checked=true;traceObjectifAccrois()" />
+
+
+</td>
+</tr>
+</table>
+
+<div style="position:absolute;right:15px;top:118px" ><!-- pour MODELE BLANC Grand Format onmouseover="xdecalmenu()"  onmouseout="xramenemenu()" -->
+
+<table style="; border:0px solid gray">
+
+<tr>
+<td>
+<form name="compx" title="Choose the Sub-Region of reference or select this item to hidde references">
+<select style="position:relative;top:-2px;left:9px;font-size:9px;;float:left;display:table-cell;;width:330px" name="comparex" id="comparex" onchange=";ChargeMDGcompare(this.selectedIndex);" >
+
+
+</select></form>
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<script id="scrpt"  language="javascript" ><![CDATA[
+function decalmenu(){
+
+document.getElementById("comparex").setAttribute("style","position:relative;top:-2px;left:9px;width:62px;font-size:9px;;float:left;display:table-cell;;width:375px")
+}
+function ramenemenu(){
+setTimeout('ramenemenu2()',1200)
+}
+function ramenemenu2(){
+document.getElementById("comparex").setAttribute("style","position:relative;top:-2px;left:9px;width:62px;font-size:9px;")
+
+//setTimeout('redmenu()',50)
+}
+
+function affcourbe3(){
+
+document.getElementById("rad3").setAttribute("visibility","visible");document.getElementById("g"+3).setAttribute("visibility","visible")
+if(document.getElementById("Rond"+(2*nbcolonnes+1))){
+document.getElementById("Rond"+(2*nbcolonnes+1)).setAttribute("style","display:online")
+document.getElementById("Rond"+(3*nbcolonnes)).setAttribute("style","display:online")
+}
+}
+function effcourbe3(){
+document.getElementById("rad3").setAttribute("visibility","hidden");document.getElementById("g"+3).setAttribute("visibility","hidden")
+if(document.getElementById("Rond"+(2*nbcolonnes+1))){
+document.getElementById("Rond"+(2*nbcolonnes+1)).setAttribute("style","display:none")
+document.getElementById("Rond"+(3*nbcolonnes)).setAttribute("style","display:none")
+}
+}
+function affcourbe1et2(){
+
+var indicvis31=1
+var indicvis32=1
+if(menu[4][menu[4].length-1].indexOf("project1")>0){
+//alert(valfin+"  "+valdeb+"   "+valdeb2+"    "+valfin2)
+if(valfin==valdeb){indicvis31=1}else{indicvis31=0}
+if(valfin2==valdeb2){indicvis32=1}else{indicvis32=0}
+}
+if(indicvis31==1){
+document.getElementById("rad1").setAttribute("visibility","visible");document.getElementById("g"+1).setAttribute("visibility","visible")
+}
+if(indicvis32==1){
+document.getElementById("rad2").setAttribute("visibility","visible");document.getElementById("g"+2).setAttribute("visibility","visible")
+}
+}
+function effcourbe1et2(){
+document.getElementById("rad1").setAttribute("visibility","hidden");document.getElementById("g"+1).setAttribute("visibility","hidden")
+document.getElementById("rad2").setAttribute("visibility","hidden");document.getElementById("g"+2).setAttribute("visibility","hidden")
+}
+if(MDGslegende==1){
+
+}
+document.getElementById("bouton2").setAttribute("width",carre-9)
+document.getElementById("bouton2").setAttribute("height",parseInt(carre)-15)
+
+			function NomCourbes(z,couli,Nmc){ //z= n° de courbe; couli = couleur de la courbe; Nmc= nom courbe
+			//alert(" z dans NomCournes="+z)
+if(z==1 & PasdObjectif==0 & paramMDGs[4]+paramMDGs[5]+paramMDGs[6]=="MDG"){}else{
+			document.getElementById("texteB"+z).setAttribute("style","stroke:"+couli+";stroke-width:0.0001;fill:"+couli+";font-family:Arial;text-anchor:left;opacity:1")
+			if(parseInt(14*carreajust/carre)<9){var tail=9}else{var tail=parseInt(15*carreajust/carre)}
+			document.getElementById("texteB"+z).setAttribute("font-size",tail)
+			
+
+			var tr="matrix(1 0 0 1 "+(decalorigine+carreajust+10)+" "+(decalvertic+z*10)+")"//positionnement des items de légende
+			document.getElementById("texteB"+z).setAttribute("transform",tr)//
+			//document.getElementById("texteB"+z).setAttribute("title",Nmc)
+			document.getElementById("texteB"+z).firstChild.nodeValue=Nmc
+
+AjoutBaliseTitre("texteB"+z,"TitretexteB"+z)
+changeInBaliseTitre("TitretexteB"+z,Nmc)
+			
+			document.getElementById("carreleg"+z).setAttribute("style"," fill: "+couli+" ; fill-opacity: 1; stroke:  "+couli+"; stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;")
+			document.getElementById("carreleg"+z).setAttribute("x",(decalorigine+carreajust+5))
+			document.getElementById("carreleg"+z).setAttribute("y",(decalvertic+(z-1)*10+5))
+}
+			}
+//FicheMDG(rang du texte,couleur, texte à afficher, "bold",  titre)
+var gras="bold"
+
+var textobj=""
+if(carre<240){var dec0=2;var fact=8.7}else{
+var dec0=1;var fact=9.2
+document.getElementById("rectcible").setAttribute("width","80")
+document.getElementById("rectcible").setAttribute("height","80")
+}
+
+function FicheMDG(z,couli,indicMDG,gras, txtobj){ //
+//document.getElementById("texteB"+z).setAttribute("stroke-width","5px")
+			document.getElementById("texteB"+z).setAttribute("style","stroke:"+couli+";stroke-width:0.0001;fill:"+couli+";font-family:Arial;text-anchor:left;opacity:1;font-weight:"+gras+";")
+			
+			if(parseInt(14*carreajust/carre)<8){var tail=8}else{var tail=parseInt(15*carreajust/carre)}
+			document.getElementById("texteB"+z).setAttribute("font-size",tail)//"20px"
+			
+
+			var tr="matrix(1 0 0 1 "+(decalorigine+carreajust+10)+" "+(decalvertic+z*fact+dec0)+")"//positionnement des items de légende
+			dec0=0
+			document.getElementById("texteB"+z).setAttribute("transform",tr)//
+			//document.getElementById("texteB"+z).setAttribute("title",Nmc)
+			document.getElementById("texteB"+z).firstChild.nodeValue=indicMDG//Nmc
+
+AjoutBaliseTitre("texteB"+z,"TitretexteB"+z)
+changeInBaliseTitre("TitretexteB"+z,txtobj)
+			/*
+			document.getElementById("carreleg"+z).setAttribute("style"," fill: "+couli+" ; fill-opacity: 1; stroke: rgb(0, 0, 0); stroke-width: 3; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;")
+			document.getElementById("carreleg"+z).setAttribute("x",(decalorigine+carreajust+5))
+			document.getElementById("carreleg"+z).setAttribute("y",(decalvertic+(z-1)*10+5))
+*/
+			}
+
+var rad=""
+var radref=""
+var radTot=""
+var rad0=""
+var rad0ref=""
+var rad0Tot=""
+
+
+var angle0=360/nbaxes
+var angle=-angle0-90
+
+var indicebezier=0
+if(menu[11][1]){
+if(menu[11][1]==1){indicebezier=0.15}
+if(menu[11][1]==2){indicebezier=0.35}
+if(menu[11][1]==3){indicebezier=0.5}
+if(menu[11][1]==4){indicebezier=0.75}
+if(menu[11][1]==5){indicebezier=1}
+}
+
+document.getElementById("rectmove").setAttribute("width",(carreajust))
+document.getElementById("rectmove").setAttribute("height",(hauteurCadre))
+document.getElementById("rectmove").setAttribute("x",(decalorigine))
+document.getElementById("rectmove").setAttribute("y",decalvertic)
+var ixtemp
+var iytemp
+
+// ------------------------------------------------------------------TRACER les COURBES
+
+var axescoteTemp=0
+var bezier
+var sign=1
+function COURBES(){
+
+var x1Temp , y1Temp , x2Temp , y2Temp;
+radTot=""
+for(j=1;j<nblignes;j++){
+
+rad=""
+
+var deb=(1+(j-1)*nbcolonnes)
+var fin=(j*nbcolonnes+1)
+if(adcourbe==1 & j==3 & occultfinproj!=0){fin=fin-5}else{}
+var k=0
+var k0=0
+for(i=deb;i<fin;i++){//
+k=k+1
+var a=1
+bezier=0
+var kapas=0
+
+if(menu[11][1]>0 & menu[11][1]<6){bezier=1}
+//alert("j="+j+"   bezier="+bezier+"   tracPoints="+tracPoints+"   MDGslegende="+MDGslegende)   
+
+if(adcourbe==1 & j==3){bezier=0 ; MDGslegende=0 ; tracPoints=0;indicebezier=1.5;}else{
+
+if(paramAux.indexOf("cloud")<0 ){
+bezier=1 ; MDGslegende=1 ; tracPoints=1;indicebezier=0
+}
+}
+
+if(bezier==0 & MDGslegende==0 & tracPoints<2){
+
+// --- BEZIER avec partage du point de contrôle
+var ML
+
+
+var ix=(carreajust/(nbaxes-1))/2
+
+		if(typeTrace==1){// Seulement les points jointifs
+
+				
+				if(k==1 & (axescote[i-1]!=-99999 & axescote[i]!=-99999 ) || (k>1 & axescote[i-1]!=-99999 & axescote[i-2]==-99999 ) ){//
+
+				iy=(axescote[i]-axescote[i-1])/2
+				var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y1=(zero-axescote[i-1])
+				var cx=x1+ix*indicebezier
+
+
+				if( axescote[i]==-99999){
+
+				y1=(zero-axescote[i-1])
+				iy=iytemp
+				 ix=ix/2//carreajust/(nbaxes)/4
+				 iy=iy/Math.abs(iy)*carreajust/MAX
+				}
+				var cy=y1
+				var x2=x1+ix
+				var y2=y1-iy
+
+
+
+				iytemp=iy
+				rad+="M "+x1+" "+y1+" "//
+				rad+="Q "+cx+"  "+cy+" "+x2+"  "+y2+" "
+				
+				}else{
+
+				if( (axescote[i]!=-99999 & axescote[i-1]!=-99999) || ((k>1 & axescote[i-1]!=-99999 ) & (i+1 <fin))){
+
+				iy=iytemp
+				var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y2=(zero-axescote[i-1])
+				var cx=x2-ix*indicebezier
+				var cy=y2
+				rad+="Q"+" "+cx+"  "+cy+" "+x2+"  "+y2+" "
+				if(k<nbcolonnes){
+				iytemp=iy
+				}
+				}
+				}
+				
+		}else{ //TOUS les points reliés
+				if( k==1 & (axescote[i-1]!=-99999 ) || (k>1 & axescote[i-1]!=-99999 & axescote[i-2]==-99999 )){// 
+//alert("1 --- "+(k-1))
+				var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y1=(zero-axescote[i-1])
+				var iplus=i-1
+				for(s=i;s<fin;s++){if(axescote[s]!=-99999){iplus=s;s=fin}}
+				var x2=(carreajust/(nbaxes-1)*(k)+decalorigine)
+				var y2=(zero-axescote[iplus])
+var pte=(y2-y1)/(x2-x1)
+var cx=x1-(x2-x1)*indicebezier/10//x1-ix
+var cy=pte*(cx-x1)+y1
+	
+				if(k0==0){
+				rad+="M "+x1+" "+y1+" "//
+				rad+="Q "+(x1)+"  "+y1+" "+(x1)+"  "+y1+" "
+				k0=1
+				}else{				
+				rad+="Q "+(cx)+"  "+cy+" "+(x1)+"  "+y1+" "
+				}
+				}else{			
+				if( ((k>1 & axescote[i-1]!=-99999 ) & (i+1 <fin))){//	
+//alert("2 --- "+(k-1))				
+				var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y1=(zero-axescote[i-1])
+				var iplus=i-1
+				for(s=i;s<fin;s++){if(axescote[s]!=-99999){iplus=s;s=fin}}
+				var x2=(carreajust/(nbaxes-1)*(k)+decalorigine)
+				var y2=(zero-axescote[iplus])
+var pte=(y2-y1)/(x2-x1)
+var cx=x1-(x2-x1)*indicebezier/10//x1-ix
+var cy=pte*(cx-x1)+y1
+				rad+="Q "+cx+"  "+cy+" "+x1+"  "+y1+" "
+				}
+				}
+				if(i==(fin-1)){				
+				var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y1=(zero-axescote[i-1])
+				rad+="Q "+x1+"  "+y1+" "+x1+"  "+y1+" "
+				}
+		}
+		
+}else{//Fin de bezier
+//--------------------------------------
+
+//------------------
+//alert(j)
+if(j!=numColPoints & numColPoints!=9 || tracPoints!=2){
+
+if(typeTrace==0){
+
+var ML
+ 
+if(k0==0){
+ML="M" 
+if(axescote[i-1]!=-99999){
+k0=1
+rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "
+axescoteTemp=axescote[i-1]
+}
+
+}else{
+ML="L"
+//if(i==25){alert(axescote[i])}
+if(axescote[i-1]!=-99999 & i<fin){
+rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "
+axescoteTemp=axescote[i-1]
+}
+}
+
+
+
+
+
+}else{ 
+
+					var ML
+					if(k==1 & axescote[i-1]!=-99999 || (k>1 & axescote[i-1]!=-99999 & axescote[i-2]==-99999 ) ){//
+					
+					ML="M"
+													//if(j==numColPoints & k>1 & tracPoints==1 ){ ML="L"}
+					rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "//
+					
+					}else{
+					if( (axescote[i]!=-99999 & axescote[i-1]!=-99999) || ((k>1 & axescote[i-1]!=-99999 ) & (i+1 <fin))){//& axescote[i+1]==-99999 
+					//alert(j);
+					ML="L"
+					//if(j==numColPoints & k>1 & tracPoints==1 ){ ML="M"}
+					
+					rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "//
+					}
+					}
+	}
+}
+					//rad+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero-axescote[i-1])+" "//
+
+}
+//---------------------------
+
+					if(j==1){// coordonnées de la ligne du zero
+					
+								if(k==1){ML="M"}else{ML="L"}
+								radTot+=ML+" "+(carreajust/(nbaxes-1)*(k-1)+decalorigine)+" "+(zero)+" "//
+
+
+					}
+
+
+}
+//if(j>3){alert("j="+j+"    rad="+rad)}
+document.getElementById("p"+j).setAttribute("d",rad)
+document.getElementById("rad"+j).setAttribute("stroke",coul[j-1])
+
+
+
+NomCourbes(j,coul[j-1],menu[5][j-1])
+}
+// affichage de la ligne du zero
+document.getElementById("pTot").setAttribute("d",radTot)
+}
+//COURBES() 
+function CourbeRef(){
+//alert("bezier forcé à ="+0)
+
+radref=""
+var k0=0
+			var k=0
+			
+			
+			for(i=1;i<nbcolonnes+1;i++){// coordonnées de la courbe de référence
+													if(bezier==1){
+													
+													
+																										k=k+1
+										// --- BEZIER avec partage du point de contrôle
+										var ML
+										var ix=(carreajust/(nbaxes-1))/2
+													
+				if( k==1 & (axescoteref[i-1]!=-99999 ) || (k>1 & axescoteref[i-1]!=-99999 & axescoteref[i-2]==-99999 ) ){
+
+				iy=(axescoteref[i]-axescoteref[i-1])/2
+
+				
+				var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y1=(zero-axescoteref[i-1])
+				var cx=x1+ix*indicebezier
+
+				
+				var cy=y1
+				var x2=x1+ix
+				var y2=y1-iy
+
+				if(k0==0){
+				radref+="M "+x1+" "+y1+" "//
+				k0=1
+				}
+
+				radref+="Q "+(cx=x1+sign*ix*indicebezier)+"  "+cy+" "+(x2-ix)+"  "+y1+" "
+				}else{
+				
+				if( ((k>1 & axescoteref[i-1]!=-99999 ) & (i+1 <nbcolonnes+2))){
+
+				
+				var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y2=(zero-axescoteref[i-1])
+				var cx=x2-sign*ix*indicebezier
+				var cy=y2
+				radref+="Q"+" "+cx+"  "+cy+" "+x2+"  "+y2+" "
+
+
+				}
+				}
+													
+/*
+													
+													k=k+1
+										// --- BEZIER avec partage du point de contrôle
+										var ML
+										var ix=(carreajust/(nbaxes-1))/2
+										
+				if( k==1 & (axescoteref[i-1]!=-99999 ) || (k>1 & axescoteref[i-1]!=-99999 & axescoteref[i-2]==-99999 ) ){
+
+				iy=(axescoteref[i]-axescoteref[i-1])/2
+
+				//if(axescoteref[i-1]=-99999){iy=0}
+				var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y1=(zero-axescoteref[i-1])
+				var cx=x1+ix*indicebezier
+
+				
+
+				
+				var cy=y1
+				var x2=x1+ix
+				var y2=y1-iy
+
+				if(k0==0){
+				radref+="M "+x1+" "+y1+" "//
+				k0=1
+				}
+
+				radref+="Q "+(cx=x1+sign*ix*indicebezier)+"  "+cy+" "+(x2-ix)+"  "+y1+" "
+				}else{
+				
+				if( ((k>1 & axescoteref[i-1]!=-99999 ) & (i+1 <nbcolonnes+1))){
+
+				
+				var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+				var y2=(zero-axescoteref[i-1])
+				var cx=x2-sign*ix*indicebezier
+				var cy=y2
+				radref+="Q"+" "+cx+"  "+cy+" "+x2+"  "+y2+" "
+
+
+				}
+				}
+*/
+										}else{//Fin de bezier
+
+						
+														
+					var ML
+					if(i==1 & axescoteref[i-1]!=-99999 || (i>1 & axescoteref[i-1]!=-99999 & axescoteref[i-2]==-99999 ) ){//
+					
+					ML="M"
+													
+					radref+=ML+" "+(carreajust/(nbaxes-1)*(i-1)+decalorigine)+" "+(zero-axescoteref[i-1])+" "//
+					
+					}else{
+					if( (axescoteref[i]!=-99999 & axescoteref[i-1]!=-99999) || ((i>1 & axescoteref[i-1]!=-99999 ) & (i <nbcolonnes+1))){//& 
+					
+					ML="L"
+					
+					radref+=ML+" "+(carreajust/(nbaxes-1)*(i-1)+decalorigine)+" "+(zero-axescoteref[i-1])+" "//
+					}
+					}
+										}
+										}					
+			// affichage de la courbe de référence
+			
+			document.getElementById("pref").setAttribute("d",radref)
+}
+//CourbeRef()
+//------------------------------------------------------------------------------------libellé des axes et origine	
+var unit
+var valMAXici
+var unit2
+var decalzero	
+var valzeroici
+function LibelAxesEtOrigine(){
+unit="("+menu[8][0].replace(",-99999","")+")"
+valMAXici=parseInt(MAX*koef)/koef
+if(MAX==0){unit="";valMAXici=""}
+			document.getElementById("valSup").firstChild.nodeValue=valMAXici+" "+unit
+			document.getElementById("valSup").setAttribute("x",(decalorigine-5))
+			document.getElementById("valSup").setAttribute("y",decalvertic-5)
+
+if(MIN<0){
+			document.getElementById("valInf").firstChild.nodeValue=parseInt(MIN*koef)/koef
+			document.getElementById("valInf").setAttribute("x",(decalorigine-5))
+			document.getElementById("valInf").setAttribute("y",(zero-maxinf+0))
+	}	
+unit2=""
+decalzero=0	
+valzeroici=0
+if(MIN>=0){decalzero=0}
+
+if(MAX==0 & MIN!=0){valzeroici=0;unit2="("+menu[8][0].replace(",-99999","")+")";decalzero=-10}
+				
+			document.getElementById("valZero").firstChild.nodeValue=valzeroici+" "+unit2
+			document.getElementById("valZero").setAttribute("x",(decalorigine-5))
+			document.getElementById("valZero").setAttribute("y",zero+decalzero)
+
+}
+//LibelAxesEtOrigine()
+
+// ------------------------------------------------------------------------------------fin de TRACER les COURBES
+
+//intercartivité textuelle des courbes	-----------------------------------------------------------------------	
+var clic=0
+function xclic(){
+if(clic==0){clic=1}else{clic=0}
+}
+var xcolor="gray"
+var zcolor="transparent"
+var ray=carreajust/(nbaxes-1)/2
+if(ray<8){ray=8}
+// -- COURBES générale ------------------------
+function cerclesCOURBES(){
+
+var Node = document.getElementById("espacecerclescourbes");
+var NodeListe = Node.getElementsByTagName("circle");
+  while(Node.hasChildNodes()==true){
+    var Enfant=NodeListe.item(0);
+    Node.removeChild(Enfant);
+  }
+  
+if(nuage==0){
+for(j=1;j<nblignes;j++){
+rad=""
+
+var deb=(1+(j-1)*nbcolonnes)
+var fin=(j*nbcolonnes+1)
+var k=0
+
+for(i=deb;i<fin;i++){//
+k=k+1
+
+if(k==1){
+var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+var y1=(zero-axescote[i-1])
+var nouveau0=document.createElementNS(svgns,"circle")
+nouveau0.setAttribute("cx",x1)
+nouveau0.setAttribute("cy",y1)
+
+nouveau0.setAttribute("fill","transparent")
+								if(tracPoints!=0 & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("fill",coul[j-1])}
+nouveau0.setAttribute("fill-opacity","0.5")
+nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+if(j==numColPoints & MDGslegende==1){
+nouveau0.setAttribute("onclick","metaData("+codeIns+","+codeMDG+","+menu[4][k-1]+")")
+}
+
+				if(tracPoints!=0 & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r','"+ray+"')")}//'"+xcolor+"'
+				if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r',"+3*carreajust/200+")")}
+nouveau0.setAttribute("r",ray)
+				if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("r",3*carreajust/200)}			
+			
+
+document.getElementById("espacecerclescourbes").appendChild(nouveau0)
+
+nouveau0.setAttribute("id","Rond"+i)
+AjoutBaliseTitre("Rond"+i,"TitreRond"+i)
+if(j==numColPoints || numColPoints==9 || numColPoints==0){var trd=" ("+menu[4][k-1]+") : "}else{var trd=" : "}
+changeInBaliseTitre("TitreRond"+i,menu[5][j-1]+trd+parseInt(valx[i-1]*koef)/koef)//- "+menu[4][k-1]+" 
+}else{
+var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+var y2=(zero-axescote[i-1])
+
+var nouveau0=document.createElementNS(svgns,"circle")
+nouveau0.setAttribute("cx",x2)
+nouveau0.setAttribute("cy",y2)
+nouveau0.setAttribute("fill","transparent")
+				if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("fill",coul[j-1])}
+nouveau0.setAttribute("fill-opacity","0.5")
+nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")//
+if(j==numColPoints & MDGslegende==1){
+nouveau0.setAttribute("onclick","metaData("+codeIns+","+codeMDG+","+menu[4][k-1]+")")
+}
+
+
+				if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r','"+ray+"')")}//'"+xcolor+"'
+				if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r',"+3*carreajust/200+")")}
+nouveau0.setAttribute("r",ray)
+//alert("tracPoints="+tracPoints+"   j="+j+"    numColPoints="+numColPoints )
+				if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("r",3*carreajust/200)}
+//nouveau0.setAttribute("title","yyy")//menu[5][j-1]+" - "+menu[4][k-1]+" : "+valx[i-1]
+
+document.getElementById("espacecerclescourbes").appendChild(nouveau0)
+
+nouveau0.setAttribute("id","Rond"+i)
+AjoutBaliseTitre("Rond"+i,"TitreRond"+i)
+//if(j==3 & i==deb){alert(deb+"  "+(fin-1))}
+if(j==numColPoints || numColPoints==9 || numColPoints==0){var trd=" ("+menu[4][k-1]+") : "}else{
+
+if((k-1)<(menu7-projectionPlus)){
+var trd="("+menu[4][k-1]+") : "}else{var trd="("+(parseInt(menu[4][menu7-projectionPlus-1])+k-(menu7-projectionPlus))+") : "}
+}
+changeInBaliseTitre("TitreRond"+i,menu[5][j-1]+trd+parseInt(valx[i-1]*koef)/koef)//- "+menu[4][k-1]+" 
+}
+}
+}
+}else{// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Cas nuage de points !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//recherfche du MAX  dans le vecteur CoordX des valeurs de l'axe des x
+MaxX=-1000000000000
+MinX=1000000000000
+for(i=1;i<CoordX.length;i++){
+if(CoordX[i]>MaxX){MaxX=CoordX[i]}
+if(CoordX[i]<MinX){MinX=CoordX[i]}
+}
+var decalX=0
+decalX=0-MinX
+CoordXN=new Array()
+for(i=1;i<CoordX.length;i++){
+CoordXN[i]=(CoordX[i]+decalX)*carreajust/(MaxX-MinX)
+}
+//alert("nbcolonnes="+nbcolonnes+"   CoordXN.length="+CoordXN.length)   
+					for(j=1;j<nblignes;j++){
+					rad=""
+
+					var deb=(1+(j-1)*nbcolonnes)
+					var fin=(j*nbcolonnes+1)
+					var k=0
+
+					for(i=deb;i<fin;i++){//
+					k=k+1
+
+					if(k==1){
+					var x1=(CoordXN[k]+decalorigine)
+					var y1=(zero-axescote[i-1])
+		if(Idcarte[k]==aireici){
+			  x10=x1
+			  y10=y1
+			 }
+					var nouveau0=document.createElementNS(svgns,"circle")
+					nouveau0.setAttribute("cx",x1)
+					nouveau0.setAttribute("cy",y1)
+					nouveau0.setAttribute("id","Rond"+Idcarte[k])
+					//nouveau0.setAttribute("id","cerclecible"+k)
+
+					nouveau0.setAttribute("fill","transparent")
+									if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("fill",coul[j-1])}
+									if(tracPoints!=0  & (j==numColPoints || numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("fill","green")}
+					nouveau0.setAttribute("fill-opacity","0.5")
+					nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+					nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+					//nouveau0.setAttribute("onclick","alert('"+menu[4][k]+"  "+aireici+"')")
+									//if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("onclick","alert('cl');xclic()")}
+									if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("onclick","parent.svgclick1();parent.marqueurcarte()")}
+					
+									if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("onmouseover","if(clic==0){;parent.fixnodatx("+Idcarte[k]+");parent.marqueurcarte();this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r','"+ray+"');afficheNomAireNuage('"+NomXY[k]+"','navy') }")}//'"+xcolor+"'
+									if(tracPoints!=0  & (numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("onmouseover","if(clic==0){;parent.fixnodatx("+Idcarte[k]+");parent.marqueurcarte();this.setAttribute('fill','blue');this.setAttribute('r','"+ray+"');afficheNomAireNuage('"+NomXY[k]+"','navy')}")}//'"+xcolor+"'
+					if(tri==1){var qf=2}else{var qf=3}			
+									if(tracPoints!=0  & (numColPoints==9) ){nouveau0.setAttribute("onmouseout","if(clic==0){parent.effacemaqueurcarte();this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r',"+qf*carreajust/200+");occulteNomAireNuage();parent.fixnodatx("+aireici0+")}")}
+									if(tracPoints!=0  & (numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("onmouseout","if(clic==0){parent.effacemaqueurcarte();this.setAttribute('fill','green');this.setAttribute('r',"+10*carreajust/200+");occulteNomAireNuage();parent.fixnodatx("+aireici0+")}")}
+					nouveau0.setAttribute("r",ray)
+					//alert("tracPoints="+tracPoints+"   j="+j+"    numColPoints="+numColPoints )
+									if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("r",qf*carreajust/200)}
+									if(tracPoints!=0  & (numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("r",10*carreajust/200)}										
+								
+
+					document.getElementById("espacecerclescourbes").appendChild(nouveau0)
+
+					
+					AjoutBaliseTitre("Rond"+Idcarte[k],"TitreRond"+Idcarte[k])
+					changeInBaliseTitre("TitreRond"+Idcarte[k],NomXY[k]+"  "+menu[4][k-1]+" : "+parseInt(valx[i-1]*koef)/koef)
+					}else{
+					var x2=(CoordXN[k]+decalorigine)
+					var y2=(zero-axescote[i-1])
+		if(Idcarte[k]==aireici){
+			  x10=x2
+			  y10=y2
+			 }
+					var nouveau0=document.createElementNS(svgns,"circle")
+					nouveau0.setAttribute("cx",x2)
+					nouveau0.setAttribute("cy",y2)
+					nouveau0.setAttribute("id","Rond"+Idcarte[k])
+					//nouveau0.setAttribute("id","cerclecible"+k)
+					nouveau0.setAttribute("fill","transparent")
+									if(tracPoints!=0  & (j==numColPoints || numColPoints==9)){nouveau0.setAttribute("fill",coul[j-1])}
+									if(tracPoints!=0  & (j==numColPoints || numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("fill","green")}
+					nouveau0.setAttribute("fill-opacity","0.5")
+					nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+					nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")//
+					//nouveau0.setAttribute("onclick","alert('"+menu[4][k]+"  "+aireici+"')")
+									
+									//if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("onclick","alert('cl');xclic()")}
+									if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("onclick","parent.svgclick1();parent.marqueurcarte()")}
+					
+									if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("onmouseover","if(clic==0){;parent.fixnodatx("+Idcarte[k]+");parent.marqueurcarte();this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r','"+ray+"');afficheNomAireNuage('"+NomXY[k]+"','navy')}")}//'"+xcolor+"'
+									if(tracPoints!=0  & (numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("onmouseover","if(clic==0){;parent.fixnodatx("+Idcarte[k]+");parent.marqueurcarte();this.setAttribute('fill','blue');this.setAttribute('r','"+ray+"');afficheNomAireNuage('"+NomXY[k]+"','navy')}")}//'"+xcolor+"'
+					if(tri==1){var qf=2}else{var qf=3}
+									if(tracPoints!=0  & (numColPoints==9) ){nouveau0.setAttribute("onmouseout","if(clic==0){parent.effacemaqueurcarte();this.setAttribute('fill','"+coul[j-1]+"');this.setAttribute('r',"+qf*carreajust/200+");occulteNomAireNuage();parent.fixnodatx("+aireici0+")}")}
+									if(tracPoints!=0  & (numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("onmouseout","if(clic==0){parent.effacemaqueurcarte();this.setAttribute('fill','green');this.setAttribute('r',"+10*carreajust/200+");occulteNomAireNuage();parent.fixnodatx("+aireici0+")}")}
+					nouveau0.setAttribute("r",ray)
+					//alert("tracPoints="+tracPoints+"   j="+j+"    numColPoints="+numColPoints )
+									if(tracPoints!=0  & (numColPoints==9)){nouveau0.setAttribute("r",qf*carreajust/200)}
+									if(tracPoints!=0  & (numColPoints==9) & (Idcarte[k]==aireici)){nouveau0.setAttribute("r",10*carreajust/200)}
+					//nouveau0.setAttribute("title","yyy")//menu[5][j-1]+" - "+menu[4][k-1]+" : "+valx[i-1]
+
+					document.getElementById("espacecerclescourbes").appendChild(nouveau0)
+
+					
+					AjoutBaliseTitre("Rond"+Idcarte[k],"TitreRond"+Idcarte[k])
+					changeInBaliseTitre("TitreRond"+Idcarte[k],NomXY[k]+"  "+menu[4][k-1]+" : "+parseInt(valx[i-1]*koef)/koef)
+					}
+					}
+					}
+					
+					var radvertic="M "+((decalX)*carreajust/(MaxX-MinX)+decalorigine)+" "+bas+" L "+((decalX)*carreajust/(MaxX-MinX)+decalorigine)+" "+(bas-carreajust-10)
+					
+					document.getElementById("pvertic").setAttribute("d",radvertic)
+}
+}
+//cerclesCOURBES()
+			// -- COURBES de référence ------------------------
+			function CercleCourberef(){
+			
+var Node = document.getElementById("espacecerclesref");
+var NodeListe = Node.getElementsByTagName("circle");
+  while(Node.hasChildNodes()==true){
+    var Enfant=NodeListe.item(0);
+    Node.removeChild(Enfant);
+  }
+
+			for(j=1;j<2;j++){
+			rad=""
+			
+			var deb=(1+(j-1)*(axescoteref.length-1))
+			var fin=(j*(axescoteref.length-1)+1)
+			
+			var k=0
+			for(i=deb;i<fin+1;i++){//
+			k=k+1
+
+			if(k==1){
+			var x1=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+			var y1=(zero-axescoteref[i-1])
+			var nouveau0=document.createElementNS(svgns,"circle")
+			nouveau0.setAttribute("cx",x1)
+			nouveau0.setAttribute("cy",y1)
+			nouveau0.setAttribute("fill","transparent")
+			nouveau0.setAttribute("fill-opacity","0.5")
+			nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+			nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+			nouveau0.setAttribute("r",ray)
+			//nouveau0.setAttribute("title",menu[5][1]+" - "+menu[4][k-1]+" : "+valxref[i-1])
+			document.getElementById("espacecerclesref").appendChild(nouveau0)
+			
+nouveau0.setAttribute("id","Rondref"+i)
+AjoutBaliseTitre("Rondref"+i,"TitreRondref"+i)
+changeInBaliseTitre("TitreRondref"+i,menu[5][menu[5].length-1]+" - "+menu[4][k-1]+" : "+parseInt(100*valxref[i-1])/100)
+			}else{
+			var x2=(carreajust/(nbaxes-1)*(k-1)+decalorigine)
+			var y2=(zero-axescoteref[i-1])
+
+			var nouveau0=document.createElementNS(svgns,"circle")
+			nouveau0.setAttribute("cx",x2)
+			nouveau0.setAttribute("cy",y2)
+			nouveau0.setAttribute("fill","transparent")
+			nouveau0.setAttribute("fill-opacity","0.5")
+			nouveau0.setAttribute("onmouseover","this.setAttribute('fill','"+xcolor+"')")
+			nouveau0.setAttribute("onmouseout","this.setAttribute('fill','"+zcolor+"')")
+			nouveau0.setAttribute("r",ray)
+			//nouveau0.setAttribute("title",menu[5][1]+" - "+menu[4][k-1]+" : "+valxref[i-1])
+			document.getElementById("espacecerclesref").appendChild(nouveau0)
+			
+nouveau0.setAttribute("id","Rondref"+i)
+AjoutBaliseTitre("Rondref"+i,"TitreRondref"+i)
+changeInBaliseTitre("TitreRondref"+i,menu[5][menu[5].length-1]+" - "+menu[4][k-1]+" : "+parseInt(100*valxref[i-1])/100)
+			}
+			}
+			}
+			}
+			CercleCourberef()
+
+function NomCourbeREF(){	
+
+if(menu[11][0]>0){NomCourbes((menu[5].length),"gray",menu[5][menu[5].length-1])}
+// fin de l'interactivité textuelle des courbes -------------------------------------------------------------------	
+
+
+}
+parent.document.getElementById('zam2').height=parseInt(carre)-15//+30
+NomCourbeREF()
+//FicheMDG(rang du texte,couleur, texte à afficher, "bold",  titre)
+var zf=nblignes+adcourbe-1
+]]></script>
+<script id="scrpt"  language="javascript" src="infosMDG.js" ><![CDATA[]]></script>
+<script id="scrpt"  language="javascript" ><![CDATA[
+
+function infosNuage(variable,mn){
+zf+=1;FicheMDG(zf,"gray","axe des x","bold","")
+
+zf+=1;FicheMDG(zf,"black",variable,"normal",variable)
+zf+=1;FicheMDG(zf,"gray","","bold","")
+zf+=1;FicheMDG(zf,"gray","[min ; max]","normal","")
+zf+=1;FicheMDG(zf,"black",mn,"normal",mn)
+}
+if(MDGslegende==1){
+if(menu[6]==2){document.getElementById("comparex").style.display="none"}
+infosMDG(valdepart,objectif2015,projection2015,percentObj2015)
+if(menu[6]==1){
+effcourbe3()
+document.getElementById("linea4").style.display="none"
+//document.getElementById("linea3").checked=true
+var selectradiocurve=parent.recupcurveselector()
+if(selectradiocurve!=""){
+document.getElementById("linea"+selectradiocurve).checked=true
+var SelectedFunction=document.getElementById("linea"+selectradiocurve).getAttribute("onmousedown")
+setTimeout(SelectedFunction,10)
+}
+
+
+}else{
+
+
+}
+
+if(menu[6]==2){
+effcourbe1et2()
+document.getElementById("tbt1").style.display="none"
+document.getElementById("tbt3").style.display="none"
+document.getElementById("tbt4").style.display="inline"
+document.getElementById("linea1").style.display="none"
+document.getElementById("linea2").style.display="none"
+if(menu[4][menu[4].length-1].indexOf("project1")>0){document.getElementById("linea4").checked=true}else{document.getElementById("linea3").checked=true}
+}
+
+
+document.getElementById("linearisation").style.display="block"
+traceObjectifAccrois()
+document.getElementById("comparex").selectedIndex=parent.RetournemenucompareMDGs("return menucompareMDGs")
+if(OPTION==0){
+ChargeMDGcompare(document.getElementById("comparex").selectedIndex)
+}
+
+}else{
+
+INIT_MDG();CalculMaxMin();COURBES();cerclesCOURBES();CourbeRef();CercleCourberef();;;LibelAxesEtOrigine()
+}
+if(nuage==1){
+document.getElementById("g"+1).setAttribute("visibility","hidden")// occulte le nom de de la première courbe
+if(x10==0 & y10==0){x10=220 ; y10=70}// calage cadre de capture
+
+var decxy=document.getElementById("rectcible").getAttribute("width").replace("px","")/2
+
+document.getElementById("rectcible").setAttribute("x",x10-decxy)//200
+document.getElementById("rectcible").setAttribute("y",y10-decxy)//50
+calcul()
+document.getElementById("rectcible").addEventListener("mousemove",moveZoomBox,true)
+document.getElementById("rectcible").addEventListener("mousedown",initXY,true)
+document.getElementById("rectcible").addEventListener("mouseup",calcul,true)
+//parent.passonnuage(aireici)
+
+if(carreajust>170){zf=14}else{zf=8}
+if(tri==0){infosNuage(axedesxNuage,"["+MinX+" ; "+MaxX+"]")}
+}else{
+document.getElementById("rectcible").setAttribute("x",-200)
+document.getElementById("rectcible").setAttribute("y",-200)
+}
+												if(adcourbe==1 & MDGslegende==1){
+												if(OPTION==1){
+												
+												ChargemenuRefOPTION1()
+												}
+												}
+if (inhibproject==1 || numinhib==1){ // inhibition du bouton  d'affichage de la courbe verte et de son nom
+document.getElementById("tbt2").setAttribute("style","display:none")
+document.getElementById("linea2").setAttribute("style","display:none")
+}
+]]></script>
+</body >
+</html>

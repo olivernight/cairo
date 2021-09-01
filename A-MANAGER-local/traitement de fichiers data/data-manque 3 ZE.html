@@ -1,0 +1,306 @@
+﻿<html id="GaÃ&#402;Â¯aMundi AlterCarto.com"><head>
+<script id="chargedatajs" language="JavaScript">
+var base00 = new Array()
+var k=2
+var colox=new Array()
+var colox0=new Array()
+var base00Aselect= new Array()
+var base00select= new Array()
+var LL
+var LLx0
+var typeicone0=new Array()
+var kb=0
+var trabas0=new Array()
+function longueurdata(){
+longa=LLx0
+return longa
+}
+var rangappel=0
+function rgappel(a){
+rangappel=a
+}
+function transbas00de0(){
+var lignelabel=base00[rangappel]
+return lignelabel
+}
+
+function recuptypeiconeonmap(){
+SL=top.frames.Num0.frames.selectana.selectvar("return selectx")
+if(SL==1){
+typeicone0=top.frames.Num0.frames.ico.transiconetypex("return iconetypex")
+}else{
+typeicone0=top.frames.Num0.frames.analyse.transiconetypex("return iconetypex")
+}
+}
+
+function recuptypeiconeencadre(){
+typeicone0=top.frames.Num0.frames.precarte.transiconetypex("return iconetypex")
+}
+function recuptypehistomulti(){
+typeicone0=top.frames.Num0.frames.precarte.transiconetypex("return iconetypex")
+addressDATA0=top.frames.Num0.frames.precarte.transaddressDATAx("return addressDATAx")
+}
+
+function Nouvelle(a){
+this.donnees=a;
+}
+
+function Nouvelle2(a){
+this.donnees=a;
+}
+
+
+function ajouter(a){
+base00[base00.length]=new Nouvelle(a)
+}
+
+function ajouter2(a){
+var bastrans=new Array()
+base00Aselect[base00Aselect.length]=new Nouvelle2(a)
+
+//if(kb<LLx0+1){
+bastrans=base00Aselect[base00Aselect.length-1].donnees.split(',')
+base00select[kb]=bastrans
+kb+=1
+//}
+}
+
+
+function calculcolox0(){
+if(typeicone0[0]==1 || typeicone0[0]==2){
+
+colox[0]=0
+colox[colox0.length+1]=1
+for(i=1;i<colox0.length+1;i++){colox[i]=colox0[i-1]}
+
+}
+if(typeicone0[0]==3){
+
+colox[0]=0
+colox[1]=1
+for(i=2;i<colox0.length+2;i++){colox[i]=colox0[i-2]}
+
+}
+}
+
+
+function calculbaseselct(){
+kb=0
+colox=new Array()
+colox0=new Array()
+base00select= new Array()
+base00Aselect=new Array()
+if(typeicone0[0]==1 || typeicone0[0]==3){
+
+colox0=top.frames.Num0.frames.precarte.transcolonx("return colonx")//varaible tableau contenant les nÃ&#8218;Â°de colonne des donnÃ&#402;Â©es de l\'histo dans la base
+calculcolox0()
+}
+if(typeicone0[0]==2){
+if(SL==1){
+colox0=top.frames.Num0.frames.ico.transcolonx("return colonx")//varaible tableau contenant les nÃ&#8218;Â°de colonne des donnÃ&#402;Â©es de l\'histo dans la base
+calculcolox0()
+}else{
+colox0=top.frames.Num0.frames.analyse.transcolonx("return colonx")
+calculcolox0()
+}
+}
+
+
+for (i=0;i<LLx0+1;i++){
+
+var transitici=""
+var lignbase00=new Array()
+lignbase00=base00[i]
+
+for (j=0;j<colox.length;j++){
+//alert(lignbase00[colox[j]])
+
+if(j==0){transitici+=lignbase00[colox[j]]}else{transitici+=","+lignbase00[colox[j]]}
+if(j==0 && i==0){
+
+if(typeicone0[0]==1 ){transitici=top.frames.Num0.frames.precarte.transtitrex("return titrex")}
+if(typeicone0[0]==2){
+var LLx01=LLx0+1; 
+if(SL==1){
+transitici=top.frames.Num0.frames.ico.transtitrex("return titrex")+","+LLx01;
+}else{
+transitici=top.frames.Num0.frames.analyse.transtitrex("return titrex")+","+LLx01;
+}
+
+}
+
+
+}
+if(j==colox.length-2 && i==0 && typeicone0[0]==1){transitici+=","+top.frames.Num0.frames.precarte.transsourcex("return sourcex")}
+if(j==0 && i>0 && typeicone0[0]==3){transitici+=","+addressDATA0}
+
+}//fin boucle j
+if(typeicone0[0]==3 && i==0){transitici=top.frames.Num0.frames.precarte.transtitrex("return titrex")}
+if(typeicone0[0]==3 && i==LLx0){transitici=i+","+0+",ensemble"}
+
+if(typeicone0[0]==2 & typeicone0[1]==1 & i>0 & i<LLx0-1){//CAS type ico(2,1) qui correspond Ã  pourcentage premiÃ¨re colonne sur deuxiÃ¨me colonne
+
+var trici=transitici.split(',')
+if(trici[1]==-99999 || trici[1]==-99999){percentici=-99999}else{
+var percentici=parseInt(100*trici[1]/trici[2]*100)/100
+}
+transitici=new Array()
+transitici=trici[0]+","+percentici+","+trici[3]
+
+}
+
+
+
+
+ajouter2(transitici)
+//alert(transitici)
+}//fin boucle i
+//alert(base00select[188].donnees.split(','))
+
+
+// --------------------- dÃ&#402;Â©but calcul des donnÃ&#402;Â©es de lÃ&#402;Â©gende de l\'histo
+
+if(typeicone0[0]!=3){ 
+for (j=0;j<colox.length-2;j++){
+var transitici=""
+var kx=0
+
+if(typeicone0[0]==[1]){kx=6}
+if(typeicone0[0]==[2]){kx=2}
+
+for (i=1;i<kx;i++){
+var lignbase00=new Array()
+lignbase00=base00[i+LLx0]
+
+
+//alert(lignbase00[colox[j+1]])
+
+if(i==1){transitici+=lignbase00[colox[j+1]]}else{transitici+=","+lignbase00[colox[j+1]]}
+
+
+
+
+
+}// fin de boucle en i
+
+ajouter2(transitici)
+
+}//fin boucle j
+}
+
+// --------------------- dÃ&#402;Â©but calcul ddes commentaires dÃ&#402;Â©taillÃ&#402;Â©s
+if(typeicone0[0]==[1]){
+var transitici=""
+var lignbase00=new Array()
+lignbase00=base00[7+LLx0]
+for (j=0;j<colox.length-2;j++){
+transitici=lignbase00[colox[j+1]]
+
+ajouter2(transitici)
+}
+}
+
+
+if(typeicone0[0]==[3]){
+var debj=1
+var transitici=""
+var lignbase00=new Array()
+lignbase00=base00[1+LLx0]
+for (j=0;j<colox.length-2;j++){
+transitici=lignbase00[colox[j+1+debj]]
+
+ajouter2(transitici)
+}
+}
+
+
+
+
+
+//-------------------dÃ&#402;Â©clachement de l\'affichage
+if(typeicone0[0]==1 || typeicone0[0]==3){
+
+
+
+top.frames.Num0.frames.precarte.recupbaseinit() //dÃ&#402;Â©clenche le chargement de donnÃ&#402;Â©es dans le fichier Data-histo... lui mÃ&#402;Âªme ouvert par selection dans un menu de pilote
+}
+if(typeicone0[0]==2){
+if(SL==1){
+top.frames.Num0.frames.ico.recupbaseinit() //dÃ&#402;Â©clenche le chargement de donnÃ&#402;Â©es dans le fichier Data-ico... lui mÃ&#402;Âªme ouvert par selection dans un menu de pilote2
+}else{
+top.frames.Num0.frames.analyse.recupbaseinit()
+}
+
+
+}
+}//fin function
+function actubase0(){
+for(i=0;i<LLx0+1;i++){
+base00select[i]=base00Aselect[i].donnees.split(',')
+}
+trabas0=base00select
+return trabas0
+}
+function transbase00(){
+return base00Aselect
+}
+function transbase0(){
+
+var trabas0=base00select
+return trabas0
+}
+function transbase00(){
+return base00
+};
+;base00[0]=new Array("idcarte","libel","codeINSEE","pop Total","%Actif en emploi","%Chômeur/total","%Chômeur/actifs","%Total actif/total","%Ancien actif","%Elève étud stag","% autre inactif","Total de la pop active","15-29ans/total en %","%15-29actifs/totactifs","%15-29 emploi/actifs","%15-29-Chôm/actifs15-29","%15-29ans-Ancien actif","%15-29 autres inactifs+..)/pop15-29","%30-49 du total","%30-49actifs/actifs","%30-49Actif emplo/actifs30-49","%30-49Chomeurs/actifs30-49"," %30-49 anciens actifs","%30-49autre inactif/poptot30-49","%50ans +/ pop tot","% 50+actifs/actifs","%50+ actifs emploi/actifs50+","%50+ Chomeurs/actifs50+","%50+ Ancien actif/tot 50ans","%50+autre inactif/tot 50ans","%55ans+/poptot","%  55+actifs/actifs","%55+emploi/actifs55+","%55+Chomeurs/actifs55+","%55+-autre inactif/pop tot","%55+Ancien actif/pop tot","-99999","% 04 sal-agric","% 04 sal-indus","% 04 sal-cons","% 04 sal-commer","% 04 sal-serv","% 04 total salariés","% 04 Non salariés","Evol % 98-04 sal-agric","Evol % 98-04 sal-indus","Evol % 98-04 sal-cons","Evol % 98-04 sal-commer","Evol % 98-04 sal-serv","Evol % 98-04 total salariés","Evol % 98-04 Non salariés","Tx chom moy 1999","Tx chom moy 2000","Tx chom moy 2001","Tx chom moy 2002","Tx chom moy 2003","Tx chom moy 2004","Tx chom moy 2005","Tx chom moy -Evol 99-05","moins de 3 sal en %","moins de 3 sal en %","de 3 à 9 sal","% 3 à 9 sal","de 10 à 49 sal","% 10 à 49 sal ","de 50 à 199 sal","% 50 à 199 sal","De 200 à 499 sal","% 200 à 499 sal","plu de 500 sal","%500+ sal","%Commerce","%Construction","%Industrie","%Services","% Tot Pos prof non précisée","% H Pos prof non précisée","% F Pos prof non précisée","%  man&#339;uvre+(OS1 à OS3. etc)","% H man&#339;uvre+(OS1 à OS3. etc)","% F man&#339;uvre+(OS1 à OS3. etc)","% OQ et + (P1 à P3. TA. OQ. OQH. etc.)","% H OQ et +(P1 à P3. TA. OQ. OQH. etc.)","% F OQ et +(P1 à P3. TA. OQ. OQH. etc.)","% agt service aide soignant(e) employé de maison","% H agt service aide soignant(e) employé de maison","% F agt service aide soignant(e) employé de maison","% employ commerce bureau pers admin C ou D FP","% H employ commerce bureau pers admin C ou D FP","% F employ commerce bureau pers admin C ou D FP","% agent maîtr > ouvriers - maîtrise administ commerciale informatique","% H agent maîtr > ouvriers - maîtrise administ commerciale informatique","% F agent maîtr > ouvriers - maîtrise administ commerciale informatique","% agt maîtrise> techniciens + agts de maîtrise","%H  agt maîtrise> techniciens + agts de maîtrise","% F agt maîtrise> techniciens + agts de maîtrise","% technicien dessinateur VRP","% H technicien dessinateur VRP","% F  technicien dessinateur VRP","% instit infirm tr social tech médical cat B FP","% H instit infirm tr social tech médical cat B FP","% F instit infirm tr social tech médical cat B FP","%  ingénieur cadre ","% H  ingénieur cadre ","% F ingénieur cadre ","% cat A FP + assim","% H cat A FP + assim","% F cat A FP + assim","% Non sal:indépendant","% H Non sal:indépendant","% F Non sal:indépendant","% employeur","% H employeur","% F employeur","%non sal aide familial","% H non sal aide familial","% F non sal aide familial","H actifs emploi","F actifs emploi","Total actif emploi","%non scol Ecole primaire","% non scol  6e à 3e  CAP BEP","%non scol 2 1 Term","%non scol Etudes sup","% Tot Tps complet","% H Tps complet","% F Tps complet","% Tot Tps partiel>mi-Tps","% H Tps partiel>mi-Tps","% F Tps partiel>mi-Tps","% Tot Tps partiel<=miTps","% H Tps partiel<=miTps","% F Tps partiel<=miTps","% Apprenti","% Interim","% Emploi aidé","% Stagiaire rémunéré","% Aide familial","% CDD yc saison","% Titulaire fonction publique","% CDI ou emploi DI","% Indépendant","% Employeur","%cumul autres","% chomage moins d'un an","% chomage plus d'un an","% chomage durée non précisée","%établiss>50sal","eff M","eff P","eff UC","Q2 M","Q2 P","Q2 Uc","D1 M","D1 P","D1 Uc","D9 M","D9 P","D9 Uc","D9/D1 M","D9/D1 P","D9/D1 Uc","04-sal-agriculture","04-sal-industrie","04-sal-construction","04-sal-commerce","04-sal-services","04-total-salariés","04-Non-salariés",0
+);
+
+base00[1]=new Array(1,"Porto-Vecchio",9416,18929,37.62,9.51,20.18,47.14,21.67,8,23.15,8923,20.59,21.63,43.67,32.02,-99999,50.24,35.79,57.55,81.62,18.38,0.96,23.08,43.62,20.82,87.14,12.86,48.88,28.62,36.34,10.68,86.57,13.43,10.44,20.86,-99999,2.45,4.72,14.1,13.57,49.22,84.07,15.93,-6.38,26.27,85.61,27.6,8.99,20.52,8.51,17.5,14.7,12.9,11.4,11.7,11.8,11.5,-6,2147,81.11,393,14.85,102,3.85,5,0.19,0,0,0,0,25.2,17.42,6.16,51.23,11.79,7.1,4.69,12.24,11.58,0.66,9.17,8.37,0.8,7.16,2.4,4.76,18.07,6.42,11.65,2.19,1.4,0.79,0.49,0.42,0.07,1.74,1.49,0.25,6.18,2.11,4.07,1.43,0.95,0.48,6,3.47,2.53,10.61,7.2,3.41,10.87,8.09,2.78,2.05,0.86,1.19,4406,2716,7122,27,36,22,15,86.9,58.06,28.84,6.57,1.97,4.61,6.53,1.84,4.69,1.15,-99999,2.84,0.62,2.05,10.28,19.1,42.49,10.61,10.87,1.77,43.5,53,3.5,0.19,9310,22577,15211.5,20296,8522,12981,4876,2400,4032,50469,20905,29256,10.35,8.71,7.26,220,423,1264,1216,4412,7535,1428,0
+);
+base00[2]=new Array(2,"Le-Santerre-Oise ",2210,27809,48.82,7.59,13.45,56.41,20.75,9.59,13.01,15686,25.13,24.2,44.55,23,-99999,44.71,38.18,57.84,89.8,10.2,0.43,14.07,36.69,17.96,88.92,11.08,56.1,16.29,28.9,6.76,87.45,12.55,4.67,20.43,-99999,3.37,30.48,5.7,12.02,36.67,88.24,11.76,-25.5,-3.2,0.39,11.05,5.84,1.24,-5.66,10.7,9.4,9.1,9.6,10.3,10,10.2,-0.5,657,72.36,171,18.83,61,6.72,17,1.87,2,0.22,0,0,25.77,17.07,14.43,42.73,7.81,4.61,3.2,18.3,12.73,5.57,18.55,16.37,2.18,7,1.08,5.92,13.83,3.48,10.35,4.65,3.12,1.52,1.27,1.07,0.21,4.15,3.42,0.73,6.48,1.78,4.71,2.48,1.97,0.52,3.85,2,1.84,5.27,3.59,1.68,4.83,3.76,1.08,1.52,0.43,1.09,8066,5510,13576,34,43,12,11,86.45,56.67,29.77,6.5,1.33,5.18,7.05,1.41,5.63,1.86,2.46,2.67,0.46,1.52,7.33,13.4,60.19,5.27,4.83,4.78,44.1,52.4,3.6,2.09,13453,36340.5,23404.2,24822,9232,14503,10297,3338,6152,48088,18394,25975,4.67,5.51,4.22,301,2725,510,1075,3278,7889,1051,0
+);
+
+base00[3]=new Array(3,"Corte",9414,13277,30.16,5.52,15.47,35.69,23.26,19.91,21.01,4738,28.22,20.3,79.08,29.11,-99999,73.82,26.43,58.76,87.18,12.82,1.25,18.61,45.35,20.94,90.32,9.68,50.56,32.97,39.3,9.67,92.36,7.64,13.32,22.53,-99999,2.56,5.32,8.17,9.59,57.66,83.29,16.71,-0.82,17.21,43.87,28.61,21.06,22.71,0.13,11,9.2,8.3,7.5,7.1,7.2,8,-3,751,81.37,144,15.6,28,3.03,0,0,0,0,0,0,25.46,15.49,8.99,50.05,16.7,10.04,6.67,7.14,6.34,0.8,7.17,6.77,0.4,7.57,2.37,5.19,14.61,4.94,9.66,1.4,0.92,0.47,0.45,0.37,0.07,2.35,1.72,0.62,7.02,2.7,4.32,1.75,1.22,0.52,8.64,5.27,3.37,15.23,10.44,4.79,8.29,6.12,2.17,1.7,0.77,0.92,2403,1602,4005,28,33,22,17,86.92,56.23,30.69,6.72,1.9,4.82,6.37,1.87,4.49,0.75,-99999,3.47,1.52,1.7,7.12,30.09,31.84,15.23,8.29,2.27,41.7,50.1,8.2,0,5498,11656.5,8289.1,17819,8863,13014,3720,2533,3722,44700,19818,26378,12.02,7.82,7.09,121,252,387,454,2730,3944,791,0
+);
+
+
+base00[4]=new Array(4,"Le-Vimeu",99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,-99999,0
+);
+base00[5]=new Array(5,"ensemble",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-99999,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+);
+base00[6]=new Array("6","-99999","codeINSEE","pop Total","%Actif en emploi","%Chômeur/total","%Chômeur/actifs","%Total actif/total","%Ancien actif","%Elève étud stag","%<15 ans autre inactif","Total de la pop active","15-29ans/total en %","%15-29/totactifs","%15-29 emploi/actifs","%15-29-Chôm/actifs15-29","%15-29ans-Ancien actif","%15-29 autres inactifs+..)/pop15-29","%30-49 du total","%30-49/actifs","%30-49Actif emplo/actifs30-49","%30-49Chomeurs/actifs30-49"," %30-49 anciens actifs","%30-49autre inactif/poptot30-49","%50ans +/ pop tot","% 50+/actifs","%50+ actifs emploi/actifs50+","%50+ Chomeurs/actifs50+","%50+ Ancien actif/tot 50ans","%50+autre inactif/tot 50ans","%55ans+/poptot","%  55+/actifs","%55+emploi/actifs55+","%55+Chomeurs/actifs55+","%55+-autre inactif/pop tot","%55+Ancien actif/pop tot","-99999","% 04 sal-agric","% 04 sal-indus","% 04 sal-cons","% 04 sal-commer","% 04 sal-serv","% 04 total salariés","% 04 Non salariés","Evol % 98-04 sal-agric","Evol % 98-04 sal-indus","Evol % 98-04 sal-cons","Evol % 98-04 sal-commer","Evol % 98-04 sal-serv","Evol % 98-04 total salariés","Evol % 98-04 Non salariés","Tx chom moy 1999","Tx chom moy 2000","Tx chom moy 2001","Tx chom moy 2002","Tx chom moy 2003","Tx chom moy 2004","Tx chom moy 2005","Tx chom moy -Evol 99-05","moins de 3 sal en %","moins de 3 sal en %","de 3 à 9 sal","% 3 à 9 sal","de 10 à 49 sal","% 10 à 49 sal ","de 50 à 199 sal","% 50 à 199 sal","De 200 à 499 sal","% 200 à 499 sal","plu de 500 sal","%500+ sal","%Commerce","%Construction","%Industrie","%Services","% Tot Pos prof non précisée","% H Pos prof non précisée","% F Pos prof non précisée","%  man&#339;uvre+(OS1 à OS3. etc)","% H man&#339;uvre+(OS1 à OS3. etc)","% F man&#339;uvre+(OS1 à OS3. etc)","% OQ et + (P1 à P3. TA. OQ. OQH. etc.)","% H OQ et +(P1 à P3. TA. OQ. OQH. etc.)","% F OQ et +(P1 à P3. TA. OQ. OQH. etc.)","% agt service aide soignant(e) employé de maison","% H agt service aide soignant(e) employé de maison","% F agt service aide soignant(e) employé de maison","% employ commerce bureau pers admin C ou D FP","% H employ commerce bureau pers admin C ou D FP","% F employ commerce bureau pers admin C ou D FP","% agent maîtr > ouvriers - maîtrise administ commerciale informatique","% H agent maîtr > ouvriers - maîtrise administ commerciale informatique","% F agent maîtr > ouvriers - maîtrise administ commerciale informatique","% agt maîtrise> techniciens + agts de maîtrise","%H  agt maîtrise> techniciens + agts de maîtrise","% F agt maîtrise> techniciens + agts de maîtrise","% technicien dessinateur VRP","% H technicien dessinateur VRP","% F  technicien dessinateur VRP","% instit infirm tr social tech médical cat B FP","% H instit infirm tr social tech médical cat B FP","% F instit infirm tr social tech médical cat B FP","%  ingénieur cadre ","% H  ingénieur cadre ","% F ingénieur cadre ","% cat A FP + assim","% H cat A FP + assim","% F cat A FP + assim","% Non sal:indépendant","% H Non sal:indépendant","% F Non sal:indépendant","% employeur","% H employeur","% F employeur","%non sal aide familial","% H non sal aide familial","% F non sal aide familial","H actifs emploi","F actifs emploi","Total actif emploi","%non scol Ecole primaire","% non scol  6e à 3e  CAP BEP","%non scol 2 1 Term","%non scol Etudes sup","% Tot Tps complet","% H Tps complet","% F Tps complet","% Tot Tps partiel>mi-Tps","% H Tps partiel>mi-Tps","% F Tps partiel>mi-Tps","% Tot Tps partiel<=miTps","% H Tps partiel<=miTps","% F Tps partiel<=miTps","% Apprenti","% Interim","% Emploi aidé","% Stagiaire rémunéré","% Aide familial","% CDD yc saison","% Titulaire fonction publique","% CDI ou emploi DI","% Indépendant","% Employeur","%cumul autres","% chomage moins d'un an","% chomage plus d'un an","% chomage durée non précisée","%établiss>50sal","eff M","eff P","eff UC","Q2 M","Q2 P","Q2 Uc","D1 M","D1 P","D1 Uc","D9 M","D9 P","D9 Uc","D9/D1 M","D9/D2 P","D9/D3 Uc","04-sal-agriculture","04-sal-industrie","04-sal-construction","04-sal-commerce","04-sal-services","04-total-salariés","04-Non-salariés",0
+);
+base00[7]=new Array(7,"-99999","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",0
+);
+base00[8]=new Array(8,"-99999","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",0
+);
+base00[9]=new Array(9,"-99999","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",0
+);
+base00[10]=new Array(10,"-99999","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",0
+);
+base00[11]=new Array(11,"-99999","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",0
+);
+base00[12]=new Array("12","-99999","codeINSEE","pop Total","%Actif en emploi","%Chômeur/total","%Chômeur/actifs","%Total actif/total","%Ancien actif","%Elève étud stag","%<15 ans autre inactif","Total de la pop active","15-29ans/total en %","%15-29/totactifs","%15-29 emploi/actifs","%15-29-Chôm/actifs15-29","%15-29ans-Ancien actif","%15-29 autres inactifs+..)/pop15-29","%30-49 du total","%30-49/actifs","%30-49Actif emplo/actifs30-49","%30-49Chomeurs/actifs30-49"," %30-49 anciens actifs","%30-49autre inactif/poptot30-49","%50ans +/ pop tot","% 50+/actifs","%50+ actifs emploi/actifs50+","%50+ Chomeurs/actifs50+","%50+ Ancien actif/tot 50ans","%50+autre inactif/tot 50ans","%55ans+/poptot","%  55+/actifs","%55+emploi/actifs55+","%55+Chomeurs/actifs55+","%55+-autre inactif/pop tot","%55+Ancien actif/pop tot","-99999","% 04 sal-agric","% 04 sal-indus","% 04 sal-cons","% 04 sal-commer","% 04 sal-serv","% 04 total salariés","% 04 Non salariés","Evol % 98-04 sal-agric","Evol % 98-04 sal-indus","Evol % 98-04 sal-cons","Evol % 98-04 sal-commer","Evol % 98-04 sal-serv","Evol % 98-04 total salariés","Evol % 98-04 Non salariés","Tx chom moy 1999","Tx chom moy 2000","Tx chom moy 2001","Tx chom moy 2002","Tx chom moy 2003","Tx chom moy 2004","Tx chom moy 2005","Tx chom moy -Evol 99-05","moins de 3 sal en %","moins de 3 sal en %","de 3 à 9 sal","% 3 à 9 sal","de 10 à 49 sal","% 10 à 49 sal ","de 50 à 199 sal","% 50 à 199 sal","De 200 à 499 sal","% 200 à 499 sal","plu de 500 sal","%500+ sal","%Commerce","%Construction","%Industrie","%Services","% Tot Pos prof non précisée","% H Pos prof non précisée","% F Pos prof non précisée","%  man&#339;uvre+(OS1 à OS3. etc)","% H man&#339;uvre+(OS1 à OS3. etc)","% F man&#339;uvre+(OS1 à OS3. etc)","% OQ et + (P1 à P3. TA. OQ. OQH. etc.)","% H OQ et +(P1 à P3. TA. OQ. OQH. etc.)","% F OQ et +(P1 à P3. TA. OQ. OQH. etc.)","% agt service aide soignant(e) employé de maison","% H agt service aide soignant(e) employé de maison","% F agt service aide soignant(e) employé de maison","% employ commerce bureau pers admin C ou D FP","% H employ commerce bureau pers admin C ou D FP","% F employ commerce bureau pers admin C ou D FP","% agent maîtr > ouvriers - maîtrise administ commerciale informatique","% H agent maîtr > ouvriers - maîtrise administ commerciale informatique","% F agent maîtr > ouvriers - maîtrise administ commerciale informatique","% agt maîtrise> techniciens + agts de maîtrise","%H  agt maîtrise> techniciens + agts de maîtrise","% F agt maîtrise> techniciens + agts de maîtrise","% technicien dessinateur VRP","% H technicien dessinateur VRP","% F  technicien dessinateur VRP","% instit infirm tr social tech médical cat B FP","% H instit infirm tr social tech médical cat B FP","% F instit infirm tr social tech médical cat B FP","%  ingénieur cadre ","% H  ingénieur cadre ","% F ingénieur cadre ","% cat A FP + assim","% H cat A FP + assim","% F cat A FP + assim","% Non sal:indépendant","% H Non sal:indépendant","% F Non sal:indépendant","% employeur","% H employeur","% F employeur","%non sal aide familial","% H non sal aide familial","% F non sal aide familial","H actifs emploi","F actifs emploi","Total actif emploi","%non scol Ecole primaire","% non scol  6e à 3e  CAP BEP","%non scol 2 1 Term","%non scol Etudes sup","% Tot Tps complet","% H Tps complet","% F Tps complet","% Tot Tps partiel>mi-Tps","% H Tps partiel>mi-Tps","% F Tps partiel>mi-Tps","% Tot Tps partiel<=miTps","% H Tps partiel<=miTps","% F Tps partiel<=miTps","% Apprenti","% Interim","% Emploi aidé","% Stagiaire rémunéré","% Aide familial","% CDD yc saison","% Titulaire fonction publique","% CDI ou emploi DI","% Indépendant","% Employeur","%cumul autres","% chomage moins d'un an","% chomage plus d'un an","% chomage durée non précisée","%établiss>50sal","eff M","eff P","eff UC","Q2 M","Q2 P","Q2 Uc","D1 M","D1 P","D1 Uc","D9 M","D9 P","D9 Uc","D9/D1 M","D9/D2 P","D9/D3 Uc","04-sal-agriculture","04-sal-industrie","04-sal-construction","04-sal-commerce","04-sal-services","04-total-salariés","04-Non-salariés",0
+);
+
+</script></head><body><script language="JavaScript">
+
+
+var ly
+var ly1
+var xx=new Array()
+
+LLx0=base00.length-8
+var i=0
+var essai=new Array()
+
+
+var indicouvcarte=top.frames.Num0.frames.pilote.transindicouvcarte("return indicouvcarte")
+if (indicouvcarte==0){
+top.frames.Num0.frames.couches.location.href="../carte.htm"
+}else{
+top.frames.Num0.frames.datacarte.choixdata()}
+
+
+</script>
+</body></html>

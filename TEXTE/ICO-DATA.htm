@@ -1,0 +1,91 @@
+<html id="GaïaMundi AlterCarto.com">
+<head>
+<title>Untitled Document</title>
+
+<script  id="chargedatajs" language="JavaScript">
+var transparamreg=new Array()
+var paramHisto=new Array()
+paramHisto=top.frames.datacarte.recupparamHisto()
+
+var colonx0=paramHisto[0]
+var titrex=paramHisto[1]
+var sourcex=paramHisto[2]
+var iconetypex=paramHisto[3]
+
+
+
+var colonx=new Array()
+var base0 = new Array()
+//var datahistomulti = new Array
+var Sana=top.frames.selectana.selectvar("return selectx")
+
+//_______________________bloc de paramètres de l'histogramme________________________________
+
+colonx[0]=colonx0[0] // 15 // n° des colonnes de données de l'histogramme dans la Base de donnée iconeencadre
+var LLx=top.frames.iconeencadre.longueurdata("return longa")// position =id de l'Ã©rea "ensemble" // nombre d'Areas dans la carte
+//var titrex="CAF 2003:Prestations/enfance"
+//à faire : indicateurs pour différentier les histo.htm et histo2.htm 
+//var iconetypex=new Array(2,0) //1er=2 indique icone sur la carte type ICO-DATA le 2ème pouvant servir pour les valeurs négatives impliquant un cgangement d'îcone (triangle)
+//___________________________________________________________________________________________
+top.frames.iconeencadre.recuptypeiconeonmap()
+
+function transiconetypex(){
+
+return iconetypex
+}
+
+function transtitrex(){
+return titrex
+}
+
+function transLLx(){
+return LLx
+}
+
+function transcolonx(){
+return colonx
+}
+top.frames.iconeencadre.calculbaseselct()
+
+function recupbaseinit(){
+
+
+base0=top.frames.iconeencadre.transbase0("return trabas0")
+
+
+if(Sana==1){
+
+top.frames.tab.changeXFOND()
+}else{
+
+top.frames.tab2.changeXFOND()
+}
+
+}
+
+function transbase(){
+
+var trabas=base0
+return trabas
+}
+
+
+</script>
+
+
+
+<script  language="JavaScript" >
+
+
+
+
+
+</script>
+
+
+</head>
+
+<body >
+
+</body >
+</html>

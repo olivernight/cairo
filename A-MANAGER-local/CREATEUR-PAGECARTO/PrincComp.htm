@@ -1,0 +1,45 @@
+﻿<html id="GaiaMundi AlterCarto.com"><head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language="JavaScript" src="../../enteteDATAhaut.js"></script><script language="JavaScript" id="chargedatajs"></script><script  language="JavaScript">
+
+	var urlvar=""
+    
+    if (window.location.search != "") {
+    longueur = window.location.search.length - 1;
+    
+    data = window.location.search.substr(1,longueur);
+    donnees = data.split("&");
+    urlvar = new Array();
+    urlvarnum = new Array();
+    for (var i=0; i < donnees.length; i++) {
+    position = donnees[i].indexOf("=");
+    variable = donnees[i].substr(0,position);
+    pos = position + 1;
+    valeur = decodeURI(donnees[i].substr(pos,donnees[i].length));
+    while (valeur.search(/\+/) != -1)
+    valeur = valeur.replace(/\+/," ");
+    urlvar[variable] = valeur;
+    urlvarnum[i] = valeur;
+    }
+    }
+	var visiblebalise=urlvar['balisevisible']
+var cible=urlvar['cible']
+document.getElementById("chargedatajs").src=cible+"?updated=1234567890"
+
+
+
+
+
+</script></head><body><script language="JavaScript" id="bas" ></script>
+
+<script language="JavaScript" >
+function Bas(){
+
+if(base00[base00.length-7]){
+document.getElementById("bas").src="../../enteteDATAbas.js"
+}else{setTimeout("Bas()",250)}
+
+}
+Bas()
+</script>
+</body></html>

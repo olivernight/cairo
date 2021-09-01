@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" /><title>UMAP-GAIA Lyon SIRENE</title>
+<!--script type="text/javascript" src="azimut.js"></script-->
+<script type="text/javascript">
+var listeLegNappes=new Array()
+</script>
+<script type="text/javascript" src="listeLegNap.js" ></script>
+<script type="text/javascript" >
+
+
+function AjoutBaliseTitre(IdDeOu,IdBaliseTitre){
+if(document.getElementById(IdDeOu)){
+var nouveauTitre=document.createElementNS(svgns,"title")
+nouveauTitre.setAttribute("id",IdBaliseTitre)//"TitreAire"+(i+1)
+document.getElementById(IdDeOu).appendChild(nouveauTitre)//(i+1)
+var nouveauText=document.createTextNode(" ")
+document.getElementById(IdBaliseTitre).appendChild(nouveauText)
+}
+}
+
+function changeInBaliseTitre(IdBaliseTitre,Texte){
+var nt1=document.createTextNode(Texte)
+if(document.getElementById(IdBaliseTitre)){
+var nt2=document.getElementById(IdBaliseTitre).firstChild
+document.getElementById(IdBaliseTitre).replaceChild(nt1,nt2)
+}
+}
+
+var haut='<?xml version="1.0" encoding="UTF-8" standalone="no"?>      <svg     xmlns:dc="http://purl.org/dc/elements/1.1/"     xmlns:cc="http://creativecommons.org/ns#"     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"     xmlns:svg="http://www.w3.org/2000/svg"     xmlns="http://www.w3.org/2000/svg"     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"   >    <defs       id="defs4633" />   ';
+haut+='<xscript type="text/javascript"> function passon(){};function passout(){};function svgclick1(){};function svgclick2(){} ;</xscript> ';
+haut+='  <metadata       id="metadata4636">      <rdf:RDF>        <cc:Work           rdf:about="">          <dc:format>image/svg+xml</dc:format>          <dc:type             rdf:resource="http://purl.org/dc/dcmitype/StillImage" />          <dc:title></dc:title>        </cc:Work>      </rdf:RDF>    </metadata>    <g       inkscape:label="Calque 1"       inkscape:groupmode="layer"       id="layer1" >';
+
+var bas='</g></svg>'
+
+</script>
+<body>
+<div id="capturesvg"></div>
+<div id="capturelegFOND"></div>
+<form style="display:none" name="creeCarte" action="creation_CarteExport.php" method="post">
+
+<br>
+<br>
+<b>Nom du dossier</b><br>
+<textarea name="N[0]" id="lacarte" style="width:80%;height:40px"></textarea>
+<textarea name="N[1]" id="legrond" style="width:80%;height:40px"></textarea>
+<textarea name="N[2]" id="legfond" style="width:80%;height:40px"></textarea>
+<textarea name="N[3]" id="hauteur" style="width:80%;height:40px"></textarea>
+<textarea name="N[4]" id="libelrond" style="width:80%;height:40px"></textarea>
+<textarea name="N[5]" id="libelfond" style="width:80%;height:40px"></textarea>
+<textarea name="N[6]" id="chemin" style="width:80%;height:40px"></textarea>
+<textarea name="N[7]" id="largeur" style="width:80%;height:40px"></textarea>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" >
+var MaxMin=new Array();
+var minx=600000000000;
+var miny=600000000000;
+var maxx=0;
+var maxy=0;
+
+
+
+document.getElementById("capturesvg").innerHTML=haut+parent.document.getElementById("dragin").innerHTML+bas
+
+
+
+
+
+var nbc=document.getElementsByTagName("circle").length
+
+for(i=0;i<nbc;i++){
+
+if(document.getElementById("c"+i)){
+
+var lec=document.getElementById("c"+i)
+if(lec){
+		if(lec.getAttribute("cx")=="" || lec.getAttribute("cy")=="" || lec.getAttribute("cx")=="0" || lec.getAttribute("cy")=="0"){}else{
+		var coourant=new Array(i,lec.getAttribute("cx"),lec.getAttribute("cy"))
+
+		if(parseFloat(coourant[1])<minx){minx=parseFloat(coourant[1])}
+		if(parseFloat(coourant[2])<miny){miny=parseFloat(coourant[2])}
+		if(parseFloat(coourant[1])>maxx){maxx=parseFloat(coourant[1])}
+		if(parseFloat(coourant[2])>maxy){maxy=parseFloat(coourant[2])}
+		}
+}
+}
+}
+MaxMin[0]=minx
+MaxMin[1]=miny
+MaxMin[2]=maxx
+MaxMin[3]=maxy
+
+var nbi=document.getElementsByTagName("g").length
+
+for(i=1;i<nbi;i++){
+
+if(document.getElementById(i)){
+
+var lei=document.getElementById(i)
+if(lei){
+document.getElementById(i).setAttribute("transform","matrix(0.95,0,0,0.95,"+(-MaxMin[0]+38)+","+(-MaxMin[1]+22)+")")
+}
+if(document.getElementById("c"+i)){
+document.getElementById("c"+i).setAttribute("transform","matrix(0.95,0,0,0.95,"+(-MaxMin[0]+38)+","+(-MaxMin[1]+22)+")")
+}
+if(document.getElementById("n"+i)){
+document.getElementById("n"+i).setAttribute("transform","matrix(0.95,0,0,0.95,"+(-MaxMin[0]+38)+","+(-MaxMin[1]+22)+")")
+}
+if(document.getElementById("f"+i)){
+document.getElementById("f"+i).setAttribute("transform","matrix(0.95,0,0,0.95,"+(-MaxMin[0]+38)+","+(-MaxMin[1]+22)+")")
+}
+
+}
+}
+if(document.getElementById("coucheslignes")){
+document.getElementById("coucheslignes").setAttribute("transform","matrix(0.95,0,0,0.95,"+(-MaxMin[0]+38)+","+(-MaxMin[1]+22)+")")
+}
+for(i=0;i<listeLegNappes.length;i++){
+
+if(document.getElementById(listeLegNappes[i][0])){
+var niou=document.createElement("g")
+niou.setAttribute("id","niou")
+niou.setAttribute("transform","matrix(0.95,0,0,0.95,"+(-MaxMin[0]+38)+","+(-MaxMin[1]+22)+")")
+var trans=document.getElementById(listeLegNappes[i][0]).parentNode.removeChild(document.getElementById(listeLegNappes[i][0]))
+niou.appendChild(trans)
+
+document.getElementById("layer1").appendChild(niou)
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+var chemArray=parent.location.href.split("/")
+
+var lien='<a target="_blank" href="'+parent.location.href+'">'+chemArray[chemArray.length-5]+'/'+chemArray[chemArray.length-4]+'</a>';
+lien=lien.replace("normal","complete")
+document.getElementById("chemin").innerHTML=lien
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById("hauteur").innerHTML=MaxMin[3]-MaxMin[1]+50
+document.getElementById("largeur").innerHTML=MaxMin[2]-MaxMin[0]+30
+
+var efrest=document.getElementById("layer1").removeChild(document.getElementsByTagName("rect")[0])
+if(document.getElementById("imagesfond1")){
+//alert(document.getElementById("layer1").innerHTML)
+document.getElementById("imagesfond1").parentNode.removeChild(document.getElementById("imagesfond1"))
+document.getElementById("imagesfond2").parentNode.removeChild(document.getElementById("imagesfond2"))
+}else{
+var efimg=document.getElementById("layer1").removeChild(document.getElementsByTagName("image")[0])
+var efimg=document.getElementById("layer1").removeChild(document.getElementsByTagName("image")[0])
+}
+document.getElementById("cercleR").setAttribute("r","0")
+
+var NomDe
+if(document.getElementById("affichNOM")){
+NomDe=document.getElementById("affichNOM").parentNode.removeChild(document.getElementById("affichNOM"))
+}
+if(document.getElementById("affichNOM")){
+NomDe=document.getElementById("affichNOM").parentNode.removeChild(document.getElementById("affichNOM"))
+}
+
+if(document.getElementById("affichNOM")){
+NomDe=document.getElementById("affichNOM").parentNode.removeChild(document.getElementById("affichNOM"))
+}
+
+///////////////////////////////////////////////
+
+var nbt=document.getElementsByTagName("text")
+for(i=0;i<nbt.length;i++){
+var t=document.getElementsByTagName("text")[i];
+if(t.id=="affichNOM")
+var rem=t.parentNode.removeChild(t)
+};
+
+var nbt=document.getElementsByTagName("circle")
+for(i=0;i<nbt.length;i++){
+var tx=document.getElementsByTagName("circle")[i]
+
+if(tx.id.substr(0,1)=="c"){
+if(parseFloat(tx.getAttribute("r"))==0){
+if(tx.id){
+if(document.getElementById(tx.id.replace("c","n"))){
+var rem=document.getElementById(tx.id.replace("c","n")).parentNode.removeChild(document.getElementById(tx.id.replace("c","n")))
+var rem=document.getElementById(tx.id.replace("c","f")).parentNode.removeChild(document.getElementById(tx.id.replace("c","f")))
+}
+
+}
+
+var rem=tx.parentNode.removeChild(tx)
+
+
+i=i-1;var nbt=document.getElementsByTagName("circle")
+}
+}
+}
+
+
+var nbt=document.getElementsByTagName("path")
+for(i=0;i<nbt.length;i++){
+
+var t=document.getElementsByTagName("path")[i]
+if(t){
+			/**/
+			if(t.getAttribute("d")){
+			if(t.getAttribute("d")=="" || t.getAttribute("d").indexOf("m 0 0 l0 0 0 0 0 0 0 0")>=0){
+			//alert(t.id)//.replace("p","")
+			//if(t.id.substr(0,1)=="p"){
+
+			var tparent=t.parentNode
+			var rem=tparent.parentNode.removeChild(tparent)
+			i=i-1;var nbt=document.getElementsByTagName("path")
+
+			//}
+			}
+			}
+}else{}
+}
+
+
+		var nbt=document.getElementsByTagName("polyline").length
+		for(i=0;i<nbt;i++){
+		var t=document.getElementsByTagName("polyline")[i]
+		if(t.getAttribute("points")){
+		if(t.getAttribute("points").split(",").length<=4 || t.getAttribute("points")==""){
+		var rem=t.parentNode.removeChild(t)
+		i=i-1;var nbt=document.getElementsByTagName("polyline").length
+		}
+		}
+		}
+/**/		
+if(document.getElementById("zoneico")){
+var rem=document.getElementById("zoneico").parentNode.removeChild(document.getElementById("zoneico"))
+}
+/////////////////////////////////////////////FONDS
+var libellegendeFOND=parent.document.getElementById("legfondtablibel").innerHTML 
+if(libellegendeFOND.indexOf("title=")>=0){
+
+libellegendeFOND=libellegendeFOND.split("<span")[0]+"<span>"+libellegendeFOND.split("<span")[1].split('">')[1]
+}
+var legfond=""
+if(libellegendeFOND.indexOf("!")<0){
+libellegendeFOND=libellegendeFOND.replace(/<b xmlns="http:\/\/www.w3.org\/1999\/xhtml"><span>/g,"")
+libellegendeFOND=libellegendeFOND.replace(/<\/span><\/b>/g,"")
+
+
+var lblr=libellegendeFOND.split("(Source")
+var lblrtexte=lblr[0].replace(/  /g," ")
+var sorc="(Source"+lblr[1]
+
+var lg=30
+var k=1
+var tsp=""
+legfond='<g><text y="'+(k*13)+'" x="5" font-size="11px" style="font-family:Arial;font-weight:bold;text-anchor:start">'
+for(i=0;i<lblrtexte.length;i++){
+
+var seg=lblrtexte.substr(i,1);
+
+if(seg==" " & i>=k*lg){
+k+=1
+{tsp='</text><text y="'+(k*13)+'" x="31" font-size="11px" style="font-family:Arial;font-weight:bold;text-anchor:start">'}
+
+
+}
+legfond+=tsp+lblrtexte.substr(i,1)
+tsp=""
+}
+if(k>0){legfond+="</text>"}
+k+=1
+legfond=legfond+'<text y="'+(k*13)+'" x="31" font-size="11px" style="font-family:Arial;;text-anchor:start">'+sorc+"</text>"
+
+
+
+
+
+var tablelegendeFOND=parent.document.getElementById("legfondtab").innerHTML.replace(/ xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g,"").replace(/<table>/g,"").replace(/<\/table>/g,"").replace(/<tr>/g,"").replace(/<\/tr>/g,"").replace(/<\/tr>/g,"").replace(/<td style="background-color:/g,"").replace(/;width:10px"/g,"").replace(/><\/td><td><\/td><td>/g,"@@").replace(/><\/td><td><\/td><\/td>/g,"").replace(/<td><td>/g,"").replace(/<\/td>/g,"!").split("@@")
+var decaltab=k*13+5+5
+
+for(i=0;i<tablelegendeFOND.length;i++){
+var colorrect=tablelegendeFOND[i].split("!")[1]
+var interval=tablelegendeFOND[i].split("!")[0]
+legfond+='<rect y="'+(decaltab+i*14+4-5)+'" x="15" height="10" width="10" style="fill:'+colorrect+'; fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0;" transform="matrix(1, 0, 0, 1, 0, 0)"/><text y="'+(decaltab+8+i*14)+'" x="31" font-size="11px" style="font-family:Arial;text-anchor:start">'+interval+'</text>'
+
+
+}
+legfond+="</g>"
+legfond=haut+legfond+bas
+}
+/////////////////////////////////////////////RONDS
+var libellegendeROND=parent.document.getElementById("legicotablibel").innerHTML 
+if(libellegendeROND.indexOf("title=")>=0){
+
+libellegendeROND=libellegendeROND.split("<span")[0]+"<span>"+libellegendeROND.split("<span")[1].split('">')[1]
+
+}
+var legrond=""
+if(libellegendeROND.indexOf("!")<0){
+
+libellegendeROND=libellegendeROND.replace(/<b xmlns="http:\/\/www.w3.org\/1999\/xhtml"><span>/g,"")
+libellegendeROND=libellegendeROND.replace(/<\/span><\/b>/g,"")
+
+var lblr=libellegendeROND.split("(Source")
+var lblrtexte=lblr[0].replace(/  /g," ")
+var sorc="(Source"+lblr[1]
+
+var lg=30
+var k=1
+var tsp=""
+legrond='<g><text y="'+(k*13)+'" x="5" font-size="11px" style="font-family:Arial;font-weight:bold;text-anchor:start">'
+for(i=0;i<lblrtexte.length;i++){
+
+var seg=lblrtexte.substr(i,1);
+
+if(seg==" " & i>=k*lg){
+k+=1
+{tsp='</text><text y="'+(k*13)+'" x="31" font-size="11px" style="font-family:Arial;font-weight:bold;text-anchor:start">'}
+
+
+}
+legrond+=tsp+lblrtexte.substr(i,1)
+tsp=""
+}
+if(k>0){legrond+="</text>"}
+k+=1
+legrond=legrond+'<text y="'+(k*13)+'" x="31" font-size="11px" style="font-family:Arial;;text-anchor:start">'+sorc+"</text>"
+
+var tablelegendeROND=parent.document.getElementById("legicotab").innerHTML.replace(/ xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g,"").replace(/<table>/g,"").replace(/<\/table>/g,"").replace(/<tr>/g,"").replace(/<\/tr>/g,"").replace(/<\/tr>/g,"").replace(/<td style="background-color:/g,"").replace(/;width:10px"/g,"").replace(/><\/td><td><\/td><td>/g,"@@").replace(/><\/td><td><\/td><\/td>/g,"").replace(/<td><td>/g,"").replace(/<\/td>/g,"!").split("@@")
+var decaltab=k*13+5+5//25
+
+
+
+for(i=0;i<tablelegendeROND.length;i++){
+var colorrect=tablelegendeROND[i].split("!")[1]
+var interval=tablelegendeROND[i].split("!")[0]
+legrond+='<circle cy="'+(decaltab+i*14+4)+'" cx="21" r="5" style="fill:'+colorrect+'; fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0;" transform="matrix(1, 0, 0, 1, 0, 0)"/><text y="'+(decaltab+8+i*14)+'" x="31" font-size="11px" style="font-family:Arial;text-anchor:start">'+interval+'</text>'
+
+
+}
+legrond+="</g>"
+legrond=haut+legrond+bas
+}
+
+
+
+
+
+
+
+
+
+
+document.getElementById("lacarte").innerHTML=document.getElementById("capturesvg").innerHTML
+document.getElementById("legrond").innerHTML=legrond
+document.getElementById("legfond").innerHTML=legfond
+document.getElementById("libelrond").innerHTML=libellegendeROND
+document.getElementById("libelfond").innerHTML=libellegendeFOND
+
+document.creeCarte.submit()
+</script>
+
+
+</body>
+</html>
